@@ -8,21 +8,11 @@
 import Foundation
 
 public final class WLKStorage {
-    func getLists() -> [List] {
+    func getLists() -> [WLKList] {
         return []
     }
 
-    func getList() -> List {
-        return List(title: "List0", items: [])
+    func getList() -> WLKList {
+        return WLKList(title: "List0")
     }
-}
-
-struct List {
-    var title: String
-    var items: [Item]
-}
-
-struct Item {
-    var title: String
-    var isComplete: Bool
 }

@@ -11,17 +11,25 @@ import WatchListWatchKit
 struct ListView: View {
     @State var items: [WLKListItem] = []
     var body: some View {
-        List {
-            ForEach(items) { item in
-                ListItemView(isComplete: item.isComplete, title: item.title)
-                    .onTapGesture {
-                        if let index = items.firstIndex(where: { $0.id == item.id }) {
-                            items.remove(at: index)
-                            items.append(WLKListItem(title: item.title, isComplete: true))
+        NavigationView {
+            List {
+                ForEach(items) { item in
+                    ListItemView(isComplete: item.isComplete, title: item.title)
+                        .onTapGesture {
+                            if let index = items.firstIndex(where: { $0.id == item.id }) {
+                                items.remove(at: index)
+                                items.append(WLKListItem(title: item.title, isComplete: true))
+                            }
                         }
-                    }
+                }
+                .onDelete(perform: delete)
             }
+            .navigationBarTitle("Grocery")
         }
+    }
+
+    func delete(at offsets: IndexSet) {
+        items.remove(atOffsets: offsets)
     }
 }
 

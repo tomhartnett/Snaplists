@@ -20,12 +20,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 
         // Create the SwiftUI view that provides the window contents.
-        let contentView = ListView(items: [
-            WLKListItem(title: "Meat", isComplete: false),
-            WLKListItem(title: "Strawberries", isComplete: false),
-            WLKListItem(title: "Vegetable - asparagus", isComplete: false),
-            WLKListItem(title: "Sorbet", isComplete: false),
-            WLKListItem(title: "Beer", isComplete: false)
+        let contentView = ListsView(lists: [
+            WLKList(title: "Grocery"),
+            WLKList(title: "Target/Walmart"),
+            WLKList(title: "Lowes/Home Depot"),
+            WLKList(title: "Whatever")
         ])
 
         // Use a UIHostingController as window root view controller.

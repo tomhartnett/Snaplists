@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E22E152024E05BBC002A140E /* WLKList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E151F24E05BBC002A140E /* WLKList.swift */; };
+		E22E152124E05BBC002A140E /* WLKList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E151F24E05BBC002A140E /* WLKList.swift */; };
+		E22E152324E060C2002A140E /* ListsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E152224E060C2002A140E /* ListsView.swift */; };
 		E235D79324DF5B59007D95BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D79224DF5B59007D95BE /* AppDelegate.swift */; };
 		E235D79524DF5B59007D95BE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D79424DF5B59007D95BE /* SceneDelegate.swift */; };
 		E235D79724DF5B59007D95BE /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D79624DF5B59007D95BE /* ListView.swift */; };
@@ -19,8 +22,6 @@
 		E235D7BA24DF5B89007D95BE /* HostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D7B924DF5B89007D95BE /* HostingController.swift */; };
 		E235D7BC24DF5B89007D95BE /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D7BB24DF5B89007D95BE /* ListView.swift */; };
 		E235D7BE24DF5B89007D95BE /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D7BD24DF5B89007D95BE /* ExtensionDelegate.swift */; };
-		E235D7C024DF5B89007D95BE /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D7BF24DF5B89007D95BE /* NotificationController.swift */; };
-		E235D7C224DF5B89007D95BE /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D7C124DF5B89007D95BE /* NotificationView.swift */; };
 		E235D7C424DF5B89007D95BE /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D7C324DF5B89007D95BE /* ComplicationController.swift */; };
 		E235D7C624DF5B89007D95BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E235D7C524DF5B89007D95BE /* Assets.xcassets */; };
 		E235D7C924DF5B89007D95BE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E235D7C824DF5B89007D95BE /* Preview Assets.xcassets */; };
@@ -121,6 +122,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E22E151F24E05BBC002A140E /* WLKList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WLKList.swift; sourceTree = "<group>"; };
+		E22E152224E060C2002A140E /* ListsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsView.swift; sourceTree = "<group>"; };
 		E235D78F24DF5B59007D95BE /* WatchList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E235D79224DF5B59007D95BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E235D79424DF5B59007D95BE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -137,13 +140,10 @@
 		E235D7B924DF5B89007D95BE /* HostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingController.swift; sourceTree = "<group>"; };
 		E235D7BB24DF5B89007D95BE /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		E235D7BD24DF5B89007D95BE /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
-		E235D7BF24DF5B89007D95BE /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
-		E235D7C124DF5B89007D95BE /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		E235D7C324DF5B89007D95BE /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
 		E235D7C524DF5B89007D95BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E235D7C824DF5B89007D95BE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E235D7CA24DF5B89007D95BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E235D7CB24DF5B89007D95BE /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		E235D7D724E036F6007D95BE /* WatchList.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WatchList.entitlements; sourceTree = "<group>"; };
 		E235D7D924E0372D007D95BE /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		E235D7DB24E0374A007D95BE /* WatchApp Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "WatchApp Extension.entitlements"; sourceTree = "<group>"; };
@@ -197,6 +197,51 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E22E152424E06963002A140E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E235D79624DF5B59007D95BE /* ListView.swift */,
+				E235D7F524E04B42007D95BE /* ListItemView.swift */,
+				E22E152224E060C2002A140E /* ListsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E22E152524E06976002A140E /* Startup */ = {
+			isa = PBXGroup;
+			children = (
+				E235D79224DF5B59007D95BE /* AppDelegate.swift */,
+				E235D79424DF5B59007D95BE /* SceneDelegate.swift */,
+			);
+			path = Startup;
+			sourceTree = "<group>";
+		};
+		E22E152624E0698B002A140E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E235D7BB24DF5B89007D95BE /* ListView.swift */,
+				E235D7F924E04C3F007D95BE /* ListItemView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E22E152724E06A4F002A140E /* Startup */ = {
+			isa = PBXGroup;
+			children = (
+				E235D7B924DF5B89007D95BE /* HostingController.swift */,
+				E235D7BD24DF5B89007D95BE /* ExtensionDelegate.swift */,
+			);
+			path = Startup;
+			sourceTree = "<group>";
+		};
+		E22E152824E06A6E002A140E /* Complication */ = {
+			isa = PBXGroup;
+			children = (
+				E235D7C324DF5B89007D95BE /* ComplicationController.swift */,
+			);
+			path = Complication;
+			sourceTree = "<group>";
+		};
 		E235D78624DF5B58007D95BE = {
 			isa = PBXGroup;
 			children = (
@@ -225,11 +270,9 @@
 		E235D79124DF5B59007D95BE /* WatchList */ = {
 			isa = PBXGroup;
 			children = (
+				E22E152524E06976002A140E /* Startup */,
+				E22E152424E06963002A140E /* Views */,
 				E235D7D724E036F6007D95BE /* WatchList.entitlements */,
-				E235D79224DF5B59007D95BE /* AppDelegate.swift */,
-				E235D79424DF5B59007D95BE /* SceneDelegate.swift */,
-				E235D79624DF5B59007D95BE /* ListView.swift */,
-				E235D7F524E04B42007D95BE /* ListItemView.swift */,
 				E235D79824DF5B5A007D95BE /* Assets.xcassets */,
 				E235D79D24DF5B5A007D95BE /* LaunchScreen.storyboard */,
 				E235D7A024DF5B5A007D95BE /* Info.plist */,
@@ -259,17 +302,12 @@
 		E235D7B824DF5B89007D95BE /* WatchApp Extension */ = {
 			isa = PBXGroup;
 			children = (
+				E22E152824E06A6E002A140E /* Complication */,
+				E22E152724E06A4F002A140E /* Startup */,
+				E22E152624E0698B002A140E /* Views */,
 				E235D7DB24E0374A007D95BE /* WatchApp Extension.entitlements */,
-				E235D7B924DF5B89007D95BE /* HostingController.swift */,
-				E235D7BB24DF5B89007D95BE /* ListView.swift */,
-				E235D7F924E04C3F007D95BE /* ListItemView.swift */,
-				E235D7BD24DF5B89007D95BE /* ExtensionDelegate.swift */,
-				E235D7BF24DF5B89007D95BE /* NotificationController.swift */,
-				E235D7C124DF5B89007D95BE /* NotificationView.swift */,
-				E235D7C324DF5B89007D95BE /* ComplicationController.swift */,
 				E235D7C524DF5B89007D95BE /* Assets.xcassets */,
 				E235D7CA24DF5B89007D95BE /* Info.plist */,
-				E235D7CB24DF5B89007D95BE /* PushNotificationPayload.apns */,
 				E235D7C724DF5B89007D95BE /* Preview Content */,
 			);
 			path = "WatchApp Extension";
@@ -300,6 +338,7 @@
 				E235D7F024E03801007D95BE /* WatchList.xcdatamodeld */,
 				E235D7F324E046D7007D95BE /* WLKStorage.swift */,
 				E235D7FB24E04CC1007D95BE /* WLKListItem.swift */,
+				E22E151F24E05BBC002A140E /* WLKList.swift */,
 			);
 			path = WatchListKit;
 			sourceTree = "<group>";
@@ -528,6 +567,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E235D79324DF5B59007D95BE /* AppDelegate.swift in Sources */,
+				E22E152324E060C2002A140E /* ListsView.swift in Sources */,
 				E235D79524DF5B59007D95BE /* SceneDelegate.swift in Sources */,
 				E235D79724DF5B59007D95BE /* ListView.swift in Sources */,
 				E235D7F624E04B42007D95BE /* ListItemView.swift in Sources */,
@@ -541,9 +581,7 @@
 				E235D7BC24DF5B89007D95BE /* ListView.swift in Sources */,
 				E235D7FA24E04C3F007D95BE /* ListItemView.swift in Sources */,
 				E235D7BA24DF5B89007D95BE /* HostingController.swift in Sources */,
-				E235D7C024DF5B89007D95BE /* NotificationController.swift in Sources */,
 				E235D7BE24DF5B89007D95BE /* ExtensionDelegate.swift in Sources */,
-				E235D7C224DF5B89007D95BE /* NotificationView.swift in Sources */,
 				E235D7C424DF5B89007D95BE /* ComplicationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -554,6 +592,7 @@
 			files = (
 				E235D7F424E046D7007D95BE /* WLKStorage.swift in Sources */,
 				E235D7F224E03801007D95BE /* WatchList.xcdatamodeld in Sources */,
+				E22E152024E05BBC002A140E /* WLKList.swift in Sources */,
 				E235D7FC24E04CC1007D95BE /* WLKListItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -562,6 +601,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E22E152124E05BBC002A140E /* WLKList.swift in Sources */,
 				E235D81724E050DC007D95BE /* WLKStorage.swift in Sources */,
 				E235D81824E050DF007D95BE /* WLKListItem.swift in Sources */,
 			);
