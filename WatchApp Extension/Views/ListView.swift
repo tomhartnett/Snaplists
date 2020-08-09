@@ -9,38 +9,30 @@ import SwiftUI
 import WatchListWatchKit
 
 struct ListView: View {
-    @State var items: [WLKListItem] = []
+    @State var list: WLKList
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(items) { item in
-                    ListItemView(isComplete: item.isComplete, title: item.title)
-                        .onTapGesture {
-                            if let index = items.firstIndex(where: { $0.id == item.id }) {
-                                items.remove(at: index)
-                                items.append(WLKListItem(title: item.title, isComplete: true))
-                            }
+        List {
+            ForEach(list.items) { item in
+                ListItemView(isComplete: item.isComplete, title: item.title)
+                    .onTapGesture {
+                        if let index = list.items.firstIndex(where: { $0.id == item.id }) {
+                            list.items.remove(at: index)
+                            list.items.append(WLKListItem(title: item.title, isComplete: true))
                         }
-                }
-                .onDelete(perform: delete)
+                    }
             }
-            .navigationBarTitle("Grocery")
+            .onDelete(perform: delete)
         }
+        .navigationBarTitle(list.title)
     }
 
     func delete(at offsets: IndexSet) {
-        items.remove(atOffsets: offsets)
+        list.items.remove(atOffsets: offsets)
     }
 }
 
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {
-        ListView(items: [
-            WLKListItem(title: "Meat", isComplete: false),
-            WLKListItem(title: "Strawberries", isComplete: false),
-            WLKListItem(title: "Vegetable - asparagus", isComplete: false),
-            WLKListItem(title: "Sorbet", isComplete: false),
-            WLKListItem(title: "Beer", isComplete: false)
-        ])
+        ListView(list: WLKList(title: "Grocery"))
     }
 }

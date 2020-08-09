@@ -10,6 +10,7 @@
 		E22E152024E05BBC002A140E /* WLKList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E151F24E05BBC002A140E /* WLKList.swift */; };
 		E22E152124E05BBC002A140E /* WLKList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E151F24E05BBC002A140E /* WLKList.swift */; };
 		E22E152324E060C2002A140E /* ListsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E152224E060C2002A140E /* ListsView.swift */; };
+		E22E152A24E0769E002A140E /* ListsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E152924E0769E002A140E /* ListsView.swift */; };
 		E235D79324DF5B59007D95BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D79224DF5B59007D95BE /* AppDelegate.swift */; };
 		E235D79524DF5B59007D95BE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D79424DF5B59007D95BE /* SceneDelegate.swift */; };
 		E235D79724DF5B59007D95BE /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D79624DF5B59007D95BE /* ListView.swift */; };
@@ -124,6 +125,7 @@
 /* Begin PBXFileReference section */
 		E22E151F24E05BBC002A140E /* WLKList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WLKList.swift; sourceTree = "<group>"; };
 		E22E152224E060C2002A140E /* ListsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsView.swift; sourceTree = "<group>"; };
+		E22E152924E0769E002A140E /* ListsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsView.swift; sourceTree = "<group>"; };
 		E235D78F24DF5B59007D95BE /* WatchList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E235D79224DF5B59007D95BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E235D79424DF5B59007D95BE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 			children = (
 				E235D7BB24DF5B89007D95BE /* ListView.swift */,
 				E235D7F924E04C3F007D95BE /* ListItemView.swift */,
+				E22E152924E0769E002A140E /* ListsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -582,6 +585,7 @@
 				E235D7FA24E04C3F007D95BE /* ListItemView.swift in Sources */,
 				E235D7BA24DF5B89007D95BE /* HostingController.swift in Sources */,
 				E235D7BE24DF5B89007D95BE /* ExtensionDelegate.swift in Sources */,
+				E22E152A24E0769E002A140E /* ListsView.swift in Sources */,
 				E235D7C424DF5B89007D95BE /* ComplicationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -703,7 +707,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -758,7 +762,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -780,6 +784,7 @@
 				DEVELOPMENT_TEAM = 25V97QMNV5;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = WatchList/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -803,6 +808,7 @@
 				DEVELOPMENT_TEAM = 25V97QMNV5;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = WatchList/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -835,7 +841,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 7.0;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
 			};
 			name = Debug;
 		};
@@ -860,7 +866,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 7.0;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
 			};
 			name = Release;
 		};
@@ -880,7 +886,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 7.0;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
 			};
 			name = Debug;
 		};
@@ -900,7 +906,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 7.0;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
 			};
 			name = Release;
 		};
@@ -918,6 +924,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = WatchListKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -948,6 +955,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = WatchListKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -989,7 +997,7 @@
 				TARGETED_DEVICE_FAMILY = 4;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
-				WATCHOS_DEPLOYMENT_TARGET = 7.0;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
 			};
 			name = Debug;
 		};
@@ -1019,7 +1027,7 @@
 				TARGETED_DEVICE_FAMILY = 4;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
-				WATCHOS_DEPLOYMENT_TARGET = 7.0;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
 			};
 			name = Release;
 		};

@@ -10,14 +10,13 @@ import SwiftUI
 import WatchKit
 import WatchListWatchKit
 
-class HostingController: WKHostingController<ListView> {
-    override var body: ListView {
-        return ListView(items: [
-            WLKListItem(title: "Meat", isComplete: false),
-            WLKListItem(title: "Strawberries", isComplete: false),
-            WLKListItem(title: "Vegetable - asparagus", isComplete: false),
-            WLKListItem(title: "Sorbet", isComplete: false),
-            WLKListItem(title: "Beer", isComplete: false)
+class HostingController: WKHostingController<ListsView> {
+    override var body: ListsView {
+        return ListsView(lists: [
+            WLKList(title: "Grocery"),
+            WLKList(title: "Target/Walmart"),
+            WLKList(title: "Lowes/Home Depot"),
+            WLKList(title: "Whatever")
         ])
     }
 }
