@@ -5,18 +5,19 @@
 //  Created by Tom Hartnett on 8/8/20.
 //
 
-import WatchKit
 import Foundation
 import SwiftUI
+import WatchKit
+import WatchListWatchKit
 
-class HostingController: WKHostingController<ContentView> {
-    override var body: ContentView {
-        return ContentView(items: [
-            ListItem(title: "Meat", isComplete: false),
-            ListItem(title: "Strawberries", isComplete: false),
-            ListItem(title: "Vegetable - asparagus", isComplete: false),
-            ListItem(title: "Sorbet", isComplete: false),
-            ListItem(title: "Beer", isComplete: false)
+class HostingController: WKHostingController<ListView> {
+    override var body: ListView {
+        return ListView(items: [
+            WLKListItem(title: "Meat", isComplete: false),
+            WLKListItem(title: "Strawberries", isComplete: false),
+            WLKListItem(title: "Vegetable - asparagus", isComplete: false),
+            WLKListItem(title: "Sorbet", isComplete: false),
+            WLKListItem(title: "Beer", isComplete: false)
         ])
     }
 }
