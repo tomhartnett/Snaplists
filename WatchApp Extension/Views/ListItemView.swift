@@ -6,10 +6,10 @@
 //
 
 import SwiftUI
+import WatchListWatchKit
 
 struct ListItemView: View {
-    var isComplete: Bool
-    var title: String
+    @State var item: WLKListItem
     var body: some View {
         HStack(spacing: 16) {
             ZStack {
@@ -19,10 +19,13 @@ struct ListItemView: View {
 
                 Circle()
                     .frame(width: 20, height: 20)
-                    .foregroundColor(isComplete ? .white : .clear)
+                    .foregroundColor(item.isComplete ? .white : .clear)
             }
 
-            Text(title)
+            Text(item.title)
+        }
+        .onTapGesture {
+            item.isComplete.toggle()
         }
     }
 }
@@ -30,8 +33,8 @@ struct ListItemView: View {
 struct ListItemView_Previews: PreviewProvider {
     static var previews: some View {
         VStack(alignment: .leading) {
-            ListItemView(isComplete: true, title: "Bananas")
-            ListItemView(isComplete: false, title: "Beer")
+            ListItemView(item: WLKListItem(title: "Beer", isComplete: false))
+            ListItemView(item: WLKListItem(title: "Bananas", isComplete: true))
         }
     }
 }

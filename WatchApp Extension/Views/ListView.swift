@@ -13,13 +13,7 @@ struct ListView: View {
     var body: some View {
         List {
             ForEach(list.items) { item in
-                ListItemView(isComplete: item.isComplete, title: item.title)
-                    .onTapGesture {
-                        if let index = list.items.firstIndex(where: { $0.id == item.id }) {
-                            list.items.remove(at: index)
-                            list.items.append(WLKListItem(title: item.title, isComplete: true))
-                        }
-                    }
+                ListItemView(item: item)
             }
             .onDelete(perform: delete)
         }
