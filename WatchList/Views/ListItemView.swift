@@ -9,7 +9,9 @@ import SwiftUI
 import WatchListKit
 
 struct ListItemView: View {
+    @EnvironmentObject var storage: WLKStorage
     @State var item: WLKListItem
+
     var body: some View {
         HStack(spacing: 16) {
             ZStack {
@@ -26,6 +28,7 @@ struct ListItemView: View {
         }
         .onTapGesture {
             item.isComplete.toggle()
+            storage.updateItem(item)
         }
     }
 }

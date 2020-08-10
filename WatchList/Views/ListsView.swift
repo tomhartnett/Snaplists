@@ -9,14 +9,15 @@ import SwiftUI
 import WatchListKit
 
 struct ListsView: View {
+    @EnvironmentObject var storage: WLKStorage
     @State private var newListTitle = ""
-    @State var lists: [WLKList]
+    @State private var lists: [WLKList] = []
     var body: some View {
         NavigationView {
             VStack {
                 List {
                     ForEach(lists) { list in
-                        NavigationLink(destination: ListView(list: list)) {
+                        NavigationLink(destination: ListView(list: list).environmentObject(storage)) {
                             Text(list.title)
                         }
                     }
@@ -28,9 +29,15 @@ struct ListsView: View {
             }
             .navigationBarTitle("Lists")
         }
+        .onAppear {
+            lists = storage.getLists()
+        }
     }
 
     func delete(at offsets: IndexSet) {
+        offsets.forEach {
+            storage.deleteList(lists[$0])
+        }
         lists.remove(atOffsets: offsets)
     }
 
@@ -38,16 +45,13 @@ struct ListsView: View {
         let list = WLKList(title: newListTitle)
         lists.append(list)
         newListTitle = ""
+
+        storage.addList(list)
     }
 }
 
 struct ListsView_Previews: PreviewProvider {
     static var previews: some View {
-        ListsView(lists: [
-            WLKList(title: "Grocery"),
-            WLKList(title: "Target/Walmart"),
-            WLKList(title: "Lowes/Home Depot"),
-            WLKList(title: "Whatever")
-        ])
+        ListsView()
     }
 }

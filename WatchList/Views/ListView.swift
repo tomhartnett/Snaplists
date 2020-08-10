@@ -9,13 +9,14 @@ import SwiftUI
 import WatchListKit
 
 struct ListView: View {
+    @EnvironmentObject var storage: WLKStorage
     @State private var newItem = ""
     @State var list: WLKList
     var body: some View {
         VStack {
             List {
                 ForEach(list.items) { item in
-                    ListItemView(item: item)
+                    ListItemView(item: item).environmentObject(storage)
                 }
                 .onDelete(perform: delete)
 
@@ -27,6 +28,9 @@ struct ListView: View {
     }
 
     func delete(at offsets: IndexSet) {
+        offsets.forEach {
+            storage.deleteItem(list.items[$0])
+        }
         list.items.remove(atOffsets: offsets)
     }
 
@@ -34,6 +38,8 @@ struct ListView: View {
         let item = WLKListItem(title: newItem, isComplete: false)
         list.items.append(item)
         newItem = ""
+
+        storage.addItem(item, to: list)
     }
 }
 

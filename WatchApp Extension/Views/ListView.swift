@@ -9,11 +9,12 @@ import SwiftUI
 import WatchListWatchKit
 
 struct ListView: View {
+    @EnvironmentObject var storage: WLKStorage
     @State var list: WLKList
     var body: some View {
         List {
             ForEach(list.items) { item in
-                ListItemView(item: item)
+                ListItemView(item: item).environmentObject(storage)
             }
             .onDelete(perform: delete)
         }
@@ -21,6 +22,9 @@ struct ListView: View {
     }
 
     func delete(at offsets: IndexSet) {
+        offsets.forEach {
+            storage.deleteItem(list.items[$0])
+        }
         list.items.remove(atOffsets: offsets)
     }
 }

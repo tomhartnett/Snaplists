@@ -11,6 +11,11 @@
 		E22E152124E05BBC002A140E /* WLKList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E151F24E05BBC002A140E /* WLKList.swift */; };
 		E22E152324E060C2002A140E /* ListsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E152224E060C2002A140E /* ListsView.swift */; };
 		E22E152A24E0769E002A140E /* ListsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E152924E0769E002A140E /* ListsView.swift */; };
+		E22E152C24E0809F002A140E /* WLK+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E152B24E0809F002A140E /* WLK+CoreData.swift */; };
+		E22E152D24E080A4002A140E /* WLK+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E152B24E0809F002A140E /* WLK+CoreData.swift */; };
+		E22E152E24E08242002A140E /* WatchList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E235D7F024E03801007D95BE /* WatchList.xcdatamodeld */; };
+		E22E153024E0871D002A140E /* WLKPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E152F24E0871D002A140E /* WLKPersistentContainer.swift */; };
+		E22E153124E0871D002A140E /* WLKPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E152F24E0871D002A140E /* WLKPersistentContainer.swift */; };
 		E235D79324DF5B59007D95BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D79224DF5B59007D95BE /* AppDelegate.swift */; };
 		E235D79524DF5B59007D95BE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D79424DF5B59007D95BE /* SceneDelegate.swift */; };
 		E235D79724DF5B59007D95BE /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D79624DF5B59007D95BE /* ListView.swift */; };
@@ -126,6 +131,8 @@
 		E22E151F24E05BBC002A140E /* WLKList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WLKList.swift; sourceTree = "<group>"; };
 		E22E152224E060C2002A140E /* ListsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsView.swift; sourceTree = "<group>"; };
 		E22E152924E0769E002A140E /* ListsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsView.swift; sourceTree = "<group>"; };
+		E22E152B24E0809F002A140E /* WLK+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WLK+CoreData.swift"; sourceTree = "<group>"; };
+		E22E152F24E0871D002A140E /* WLKPersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WLKPersistentContainer.swift; sourceTree = "<group>"; };
 		E235D78F24DF5B59007D95BE /* WatchList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E235D79224DF5B59007D95BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E235D79424DF5B59007D95BE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -342,6 +349,8 @@
 				E235D7F324E046D7007D95BE /* WLKStorage.swift */,
 				E235D7FB24E04CC1007D95BE /* WLKListItem.swift */,
 				E22E151F24E05BBC002A140E /* WLKList.swift */,
+				E22E152B24E0809F002A140E /* WLK+CoreData.swift */,
+				E22E152F24E0871D002A140E /* WLKPersistentContainer.swift */,
 			);
 			path = WatchListKit;
 			sourceTree = "<group>";
@@ -595,9 +604,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				E235D7F424E046D7007D95BE /* WLKStorage.swift in Sources */,
+				E22E152C24E0809F002A140E /* WLK+CoreData.swift in Sources */,
 				E235D7F224E03801007D95BE /* WatchList.xcdatamodeld in Sources */,
 				E22E152024E05BBC002A140E /* WLKList.swift in Sources */,
 				E235D7FC24E04CC1007D95BE /* WLKListItem.swift in Sources */,
+				E22E153024E0871D002A140E /* WLKPersistentContainer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -606,8 +617,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				E22E152124E05BBC002A140E /* WLKList.swift in Sources */,
+				E22E152D24E080A4002A140E /* WLK+CoreData.swift in Sources */,
+				E22E152E24E08242002A140E /* WatchList.xcdatamodeld in Sources */,
 				E235D81724E050DC007D95BE /* WLKStorage.swift in Sources */,
 				E235D81824E050DF007D95BE /* WLKListItem.swift in Sources */,
+				E22E153124E0871D002A140E /* WLKPersistentContainer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
