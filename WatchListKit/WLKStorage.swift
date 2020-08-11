@@ -40,6 +40,12 @@ public final class WLKStorage: ObservableObject {
         return lists
     }
 
+    public func getList(with id: UUID) -> WLKList? {
+        guard let listEntity = getListEntity(with: id) else { return nil }
+
+        return WLKList(entity: listEntity)
+    }
+
     public func addList(_ list: WLKList) {
         let listEntity = ListEntity(context: context)
         listEntity.identifier = list.id
@@ -49,7 +55,7 @@ public final class WLKStorage: ObservableObject {
     }
 
     public func updateList(_ list: WLKList) {
-        guard let listEntity = getList(with: list.id) else { return }
+        guard let listEntity = getListEntity(with: list.id) else { return }
 
         listEntity.title = list.title
 
@@ -57,15 +63,21 @@ public final class WLKStorage: ObservableObject {
     }
 
     public func deleteList(_ list: WLKList) {
-        guard let listEntity = getList(with: list.id) else { return }
+        guard let listEntity = getListEntity(with: list.id) else { return }
 
         context.delete(listEntity)
 
         saveChanges()
     }
 
+    public func getItem(with id: UUID) -> WLKListItem? {
+        guard let itemEntity = getItemEntity(with: id) else { return nil }
+
+        return WLKListItem(entity: itemEntity)
+    }
+
     public func addItem(_ item: WLKListItem, to list: WLKList) {
-        guard let listEntity = getList(with: list.id) else { return }
+        guard let listEntity = getListEntity(with: list.id) else { return }
 
         let itemEntity = ItemEntity(context: context)
         itemEntity.identifier = item.id
@@ -79,7 +91,7 @@ public final class WLKStorage: ObservableObject {
     }
 
     public func deleteItem(_ item: WLKListItem) {
-        guard let itemEntity = getItem(with: item.id) else { return }
+        guard let itemEntity = getItemEntity(with: item.id) else { return }
 
         context.delete(itemEntity)
 
@@ -88,7 +100,7 @@ public final class WLKStorage: ObservableObject {
 
     public func updateItem(_ item: WLKListItem) {
 
-        guard let itemEntity = getItem(with: item.id) else { return }
+        guard let itemEntity = getItemEntity(with: item.id) else { return }
 
         itemEntity.title = item.title
         itemEntity.isComplete = item.isComplete
@@ -96,7 +108,7 @@ public final class WLKStorage: ObservableObject {
         saveChanges()
     }
 
-    private func getList(with identifier: UUID) -> ListEntity? {
+    private func getListEntity(with identifier: UUID) -> ListEntity? {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "List")
         request.predicate = NSPredicate(format: "identifier = %@", identifier.uuidString)
 
@@ -111,7 +123,7 @@ public final class WLKStorage: ObservableObject {
         return nil
     }
 
-    private func getItem(with identifier: UUID) -> ItemEntity? {
+    private func getItemEntity(with identifier: UUID) -> ItemEntity? {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Item")
         request.predicate = NSPredicate(format: "identifier = %@", identifier.uuidString)
 
@@ -129,7 +141,6 @@ public final class WLKStorage: ObservableObject {
     private func saveChanges() {
         do {
             try context.save()
-            objectWillChange.send()
         } catch {
             print("\(#function) - error: \(error.localizedDescription)")
         }

@@ -14,7 +14,7 @@ import WatchListWatchKit
 class HostingController: WKHostingController<AnyView> {
     override var body: AnyView {
         let storage = createStorage()
-        return AnyView(ListsView(lists: []).environmentObject(storage))
+        return AnyView(WatchListsView(lists: []).environmentObject(storage))
     }
 
     private func createStorage() -> WLKStorage {

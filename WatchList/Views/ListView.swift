@@ -9,6 +9,7 @@ import SwiftUI
 import WatchListKit
 
 struct ListView: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var storage: WLKStorage
     @State private var newItem = ""
     @State var list: WLKList
@@ -24,22 +25,33 @@ struct ListView: View {
                     .padding([.top, .bottom])
             }
             .navigationBarTitle(list.title)
+            .onReceive(storage.objectWillChange, perform: { _ in
+                reload()
+            })
         }
     }
 
-    func delete(at offsets: IndexSet) {
+    private func addNewItem() {
+        let item = WLKListItem(title: newItem, isComplete: false)
+        list.items.append(item)
+        newItem = ""
+
+        storage.addItem(item, to: list)
+    }
+
+    private func delete(at offsets: IndexSet) {
         offsets.forEach {
             storage.deleteItem(list.items[$0])
         }
         list.items.remove(atOffsets: offsets)
     }
 
-    func addNewItem() {
-        let item = WLKListItem(title: newItem, isComplete: false)
-        list.items.append(item)
-        newItem = ""
-
-        storage.addItem(item, to: list)
+    private func reload() {
+        if let newList = storage.getList(with: list.id) {
+            list = newList
+        } else {
+            presentationMode.wrappedValue.dismiss()
+        }
     }
 }
 

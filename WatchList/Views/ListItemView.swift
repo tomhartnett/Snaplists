@@ -9,6 +9,7 @@ import SwiftUI
 import WatchListKit
 
 struct ListItemView: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var storage: WLKStorage
     @State var item: WLKListItem
 
@@ -29,6 +30,15 @@ struct ListItemView: View {
         .onTapGesture {
             item.isComplete.toggle()
             storage.updateItem(item)
+        }
+        .onReceive(storage.objectWillChange, perform: { _ in
+            reload()
+        })
+    }
+
+    private func reload() {
+        if let newItem = storage.getItem(with: item.id) {
+            item = newItem
         }
     }
 }
