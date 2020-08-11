@@ -17,7 +17,9 @@ struct ListView: View {
         VStack {
             List {
                 ForEach(list.items) { item in
-                    ListItemView(item: item).environmentObject(storage)
+                    ListItemView(item: item, tapAction: {
+                        storage.updateItem(id: item.id, title: item.title, isComplete: !item.isComplete)
+                    })
                 }
                 .onDelete(perform: delete)
 

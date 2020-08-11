@@ -15,7 +15,9 @@ struct WatchListView: View {
     var body: some View {
         List {
             ForEach(list.items) { item in
-                WatchListItemView(item: item).environmentObject(storage)
+                WatchListItemView(item: item, tapAction: {
+                    storage.updateItem(id: item.id, title: item.title, isComplete: !item.isComplete)
+                })
             }
             .onDelete(perform: delete)
         }

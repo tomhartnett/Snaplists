@@ -13,7 +13,12 @@ extension WLKList {
 
         self.id = id
         self.title = title
-        self.items = items.compactMap {
+        self.items = items.sorted(by: { (item1, item2) -> Bool in
+            guard let e1 = item1 as? ItemEntity, let e2 = item2 as? ItemEntity else { return false }
+            let title1 = e1.title ?? ""
+            let title2 = e2.title ?? ""
+            return title1 < title2
+        }).compactMap {
             guard let item = $0 as? ItemEntity else { return nil }
             return WLKListItem(entity: item)
         }

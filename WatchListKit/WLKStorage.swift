@@ -28,6 +28,7 @@ public final class WLKStorage: ObservableObject {
         var lists: [WLKList] = []
 
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "List")
+        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
 
         do {
             if let results = try context.fetch(request) as? [ListEntity] {
@@ -98,12 +99,11 @@ public final class WLKStorage: ObservableObject {
         saveChanges()
     }
 
-    public func updateItem(_ item: WLKListItem) {
+    public func updateItem(id: UUID, title: String, isComplete: Bool) {
+        guard let itemEntity = getItemEntity(with: id) else { return }
 
-        guard let itemEntity = getItemEntity(with: item.id) else { return }
-
-        itemEntity.title = item.title
-        itemEntity.isComplete = item.isComplete
+        itemEntity.title = title
+        itemEntity.isComplete = isComplete
 
         saveChanges()
     }

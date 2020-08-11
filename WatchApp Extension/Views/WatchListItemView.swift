@@ -9,9 +9,10 @@ import SwiftUI
 import WatchListWatchKit
 
 struct WatchListItemView: View {
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @EnvironmentObject var storage: WLKStorage
-    @State var item: WLKListItem
+    var item: WLKListItem
+
+    var tapAction: () -> Void
+
     var body: some View {
         HStack(spacing: 16) {
             ZStack {
@@ -27,20 +28,7 @@ struct WatchListItemView: View {
             Text(item.title)
         }
         .onTapGesture {
-            item.isComplete.toggle()
-
-            storage.updateItem(item)
-        }
-        .onReceive(storage.objectWillChange, perform: { _ in
-            reload()
-        })
-    }
-
-    private func reload() {
-        if let newItem = storage.getItem(with: item.id) {
-            item = newItem
-        } else {
-            presentationMode.wrappedValue.dismiss()
+            tapAction()
         }
     }
 }
@@ -48,8 +36,8 @@ struct WatchListItemView: View {
 struct ListItemView_Previews: PreviewProvider {
     static var previews: some View {
         VStack(alignment: .leading) {
-            WatchListItemView(item: WLKListItem(title: "Beer", isComplete: false))
-            WatchListItemView(item: WLKListItem(title: "Bananas", isComplete: true))
+            WatchListItemView(item: WLKListItem(title: "Beer", isComplete: false), tapAction: {})
+            WatchListItemView(item: WLKListItem(title: "Bananas", isComplete: true), tapAction: {})
         }
     }
 }
