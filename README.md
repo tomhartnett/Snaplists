@@ -1,6 +1,18 @@
 # WatchList
-A simple shopping list app for iOS &amp; watchOS. Its purpose is an easy-to-use list app for the Apple Watch.
+A simple shopping list app for iOS &amp; watchOS. Its goal is an easy-to-use list app for the Apple Watch.
 
-The app uses CloudKit sync to keep lists updated across Apple Watch and iOS devices.
+The app uses Core Data locally and CloudKit to sync data across Apple Watch and iOS devices.
 
-![Screenshot 1](screenshot1.png)
+Apple Watch:
+
+![watch screenshot](watch.PNG)
+
+
+iPhone:
+
+![iPhone screenshot](iPhone.PNG)
+
+
+iPad:
+
+![iPad screenshot](iPad.PNG)
