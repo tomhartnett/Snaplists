@@ -20,8 +20,15 @@ struct ListsView: View {
             }
         }
         .onAppear {
-            lists = storage.getLists()
+            reload()
         }
+        .onReceive(storage.objectWillChange, perform: { _ in
+            reload()
+        })
+    }
+
+    private func reload() {
+        lists = storage.getLists()
     }
 }
 

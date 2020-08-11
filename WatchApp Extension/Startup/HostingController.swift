@@ -37,6 +37,9 @@ class HostingController: WKHostingController<AnyView> {
             }
         })
 
+        container.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
+        container.viewContext.automaticallyMergesChangesFromParent = true
+        
         return WLKStorage(context: container.viewContext)
     }
 }

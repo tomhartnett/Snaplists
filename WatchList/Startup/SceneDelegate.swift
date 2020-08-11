@@ -50,6 +50,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             }
         })
 
+        container.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
+        container.viewContext.automaticallyMergesChangesFromParent = true
+        
         return WLKStorage(context: container.viewContext)
     }
 }

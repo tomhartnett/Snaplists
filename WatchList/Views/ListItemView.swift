@@ -16,12 +16,12 @@ struct ListItemView: View {
         HStack(spacing: 16) {
             ZStack {
                 Circle()
-                    .stroke(Color.black, lineWidth: 2)
+                    .stroke(Color.primary, lineWidth: 2)
                     .frame(width: 25, height: 25)
 
                 Circle()
                     .frame(width: 20, height: 20)
-                    .foregroundColor(item.isComplete ? .black : .clear)
+                    .foregroundColor(item.isComplete ? .primary : .clear)
             }
 
             Text(item.title)

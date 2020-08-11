@@ -11,7 +11,7 @@ import WatchListKit
 struct ListsView: View {
     @EnvironmentObject var storage: WLKStorage
     @State private var newListTitle = ""
-    @State private var lists: [WLKList] = []
+    @State var lists: [WLKList] = []
     var body: some View {
         NavigationView {
             VStack {
@@ -30,23 +30,30 @@ struct ListsView: View {
             .navigationBarTitle("Lists")
         }
         .onAppear {
-            lists = storage.getLists()
+            reload()
         }
+        .onReceive(storage.objectWillChange, perform: { _ in
+            reload()
+        })
     }
 
-    func delete(at offsets: IndexSet) {
+    private func delete(at offsets: IndexSet) {
         offsets.forEach {
             storage.deleteList(lists[$0])
         }
         lists.remove(atOffsets: offsets)
     }
 
-    func addNewList() {
+    private func addNewList() {
         let list = WLKList(title: newListTitle)
         lists.append(list)
         newListTitle = ""
 
         storage.addList(list)
+    }
+
+    private func reload() {
+        lists = storage.getLists()
     }
 }
 

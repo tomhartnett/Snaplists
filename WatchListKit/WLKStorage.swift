@@ -5,14 +5,22 @@
 //  Created by Tom Hartnett on 8/9/20.
 //
 
+import Combine
 import CoreData
 
 public final class WLKStorage: ObservableObject {
+
+    public let objectWillChange = PassthroughSubject<(), Never>()
 
     private let context: NSManagedObjectContext
 
     public init(context: NSManagedObjectContext) {
         self.context = context
+
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(notifyRemoteChange),
+                                               name: Notification.Name.NSPersistentStoreRemoteChange,
+                                               object: context.persistentStoreCoordinator)
     }
 
     public func getLists() -> [WLKList] {
@@ -37,11 +45,7 @@ public final class WLKStorage: ObservableObject {
         listEntity.identifier = list.id
         listEntity.title = list.title
 
-        do {
-            try context.save()
-        } catch {
-            print("\(#function) - error: \(error.localizedDescription)")
-        }
+        saveChanges()
     }
 
     public func updateList(_ list: WLKList) {
@@ -49,11 +53,7 @@ public final class WLKStorage: ObservableObject {
 
         listEntity.title = list.title
 
-        do {
-            try context.save()
-        } catch {
-            print("\(#function) - error: \(error.localizedDescription)")
-        }
+        saveChanges()
     }
 
     public func deleteList(_ list: WLKList) {
@@ -61,11 +61,7 @@ public final class WLKStorage: ObservableObject {
 
         context.delete(listEntity)
 
-        do {
-            try context.save()
-        } catch {
-            print("\(#function) - error: \(error.localizedDescription)")
-        }
+        saveChanges()
     }
 
     public func addItem(_ item: WLKListItem, to list: WLKList) {
@@ -79,11 +75,7 @@ public final class WLKStorage: ObservableObject {
         let items = NSSet(set: listEntity.items?.adding(itemEntity) ?? [])
         listEntity.items = items
 
-        do {
-            try context.save()
-        } catch {
-            print("\(#function) - error: \(error.localizedDescription)")
-        }
+        saveChanges()
     }
 
     public func deleteItem(_ item: WLKListItem) {
@@ -91,11 +83,7 @@ public final class WLKStorage: ObservableObject {
 
         context.delete(itemEntity)
 
-        do {
-            try context.save()
-        } catch {
-            print("\(#function) - error: \(error.localizedDescription)")
-        }
+        saveChanges()
     }
 
     public func updateItem(_ item: WLKListItem) {
@@ -105,11 +93,7 @@ public final class WLKStorage: ObservableObject {
         itemEntity.title = item.title
         itemEntity.isComplete = item.isComplete
 
-        do {
-            try context.save()
-        } catch {
-            print("\(#function) - error: \(error.localizedDescription)")
-        }
+        saveChanges()
     }
 
     private func getList(with identifier: UUID) -> ListEntity? {
@@ -140,5 +124,21 @@ public final class WLKStorage: ObservableObject {
         }
 
         return nil
+    }
+
+    private func saveChanges() {
+        do {
+            try context.save()
+            objectWillChange.send()
+        } catch {
+            print("\(#function) - error: \(error.localizedDescription)")
+        }
+    }
+
+    @objc
+    private func notifyRemoteChange() {
+        DispatchQueue.main.async { [weak self] in
+            self?.objectWillChange.send()
+        }
     }
 }
