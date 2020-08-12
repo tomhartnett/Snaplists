@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -31,7 +31,7 @@
 		E235D7C424DF5B89007D95BE /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D7C324DF5B89007D95BE /* ComplicationController.swift */; };
 		E235D7C624DF5B89007D95BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E235D7C524DF5B89007D95BE /* Assets.xcassets */; };
 		E235D7C924DF5B89007D95BE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E235D7C824DF5B89007D95BE /* Preview Assets.xcassets */; };
-		E235D7CE24DF5B89007D95BE /* WatchApp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = E235D7A824DF5B88007D95BE /* WatchApp.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E235D7CE24DF5B89007D95BE /* WatchApp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = E235D7A824DF5B88007D95BE /* WatchApp.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E235D7DA24E0372D007D95BE /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E235D7D924E0372D007D95BE /* CloudKit.framework */; };
 		E235D7DD24E0374D007D95BE /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E235D7DC24E0374D007D95BE /* CloudKit.framework */; };
 		E235D7E724E037B9007D95BE /* WatchListKit.h in Headers */ = {isa = PBXBuildFile; fileRef = E235D7E524E037B9007D95BE /* WatchListKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -635,6 +635,7 @@
 		};
 		E235D7CD24DF5B89007D95BE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = E235D7A724DF5B88007D95BE /* WatchApp */;
 			targetProxy = E235D7CC24DF5B89007D95BE /* PBXContainerItemProxy */;
 		};
@@ -805,6 +806,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sleekible.WatchList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -829,6 +831,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sleekible.WatchList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
