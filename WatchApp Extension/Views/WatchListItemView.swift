@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import WatchListWatchKit
+import SimplistsWatchKit
 
 struct WatchListItemView: View {
     var item: WLKListItem

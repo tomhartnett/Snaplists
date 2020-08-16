@@ -1,4 +1,4 @@
-# WatchList
+# Simplists
 A simple shopping list app for iOS &amp; watchOS. Its goal is an easy-to-use list app for the Apple Watch.
 
 The app uses Core Data locally and CloudKit to sync data across Apple Watch and iOS devices.  The UI is built with SwiftUI.

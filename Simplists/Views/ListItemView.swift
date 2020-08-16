@@ -1,12 +1,12 @@
 //
 //  ListItemView.swift
-//  WatchList
+//  Simplists
 //
 //  Created by Tom Hartnett on 8/9/20.
 //
 
 import SwiftUI
-import WatchListKit
+import SimplistsKit
 
 struct ListItemView: View {
     var item: WLKListItem

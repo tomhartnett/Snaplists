@@ -9,7 +9,7 @@ import CoreData
 import Foundation
 import SwiftUI
 import WatchKit
-import WatchListWatchKit
+import SimplistsWatchKit
 
 class HostingController: WKHostingController<AnyView> {
     override var body: AnyView {

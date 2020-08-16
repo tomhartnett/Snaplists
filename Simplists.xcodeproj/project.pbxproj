@@ -20,7 +20,7 @@
 		E235D79524DF5B59007D95BE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D79424DF5B59007D95BE /* SceneDelegate.swift */; };
 		E235D79724DF5B59007D95BE /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D79624DF5B59007D95BE /* ListView.swift */; };
 		E235D79924DF5B5A007D95BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E235D79824DF5B5A007D95BE /* Assets.xcassets */; };
-		E235D79C24DF5B5A007D95BE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E235D79B24DF5B5A007D95BE /* Preview Assets.xcassets */; };
+		E235D79C24DF5B5A007D95BE /* PreviewAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E235D79B24DF5B5A007D95BE /* PreviewAssets.xcassets */; };
 		E235D79F24DF5B5A007D95BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E235D79D24DF5B5A007D95BE /* LaunchScreen.storyboard */; };
 		E235D7AC24DF5B88007D95BE /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E235D7AA24DF5B88007D95BE /* Interface.storyboard */; };
 		E235D7AE24DF5B89007D95BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E235D7AD24DF5B89007D95BE /* Assets.xcassets */; };
@@ -34,17 +34,17 @@
 		E235D7CE24DF5B89007D95BE /* WatchApp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = E235D7A824DF5B88007D95BE /* WatchApp.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E235D7DA24E0372D007D95BE /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E235D7D924E0372D007D95BE /* CloudKit.framework */; };
 		E235D7DD24E0374D007D95BE /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E235D7DC24E0374D007D95BE /* CloudKit.framework */; };
-		E235D7E724E037B9007D95BE /* WatchListKit.h in Headers */ = {isa = PBXBuildFile; fileRef = E235D7E524E037B9007D95BE /* WatchListKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E235D7EA24E037B9007D95BE /* WatchListKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E235D7E324E037B9007D95BE /* WatchListKit.framework */; };
-		E235D7EB24E037B9007D95BE /* WatchListKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E235D7E324E037B9007D95BE /* WatchListKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E235D7E724E037B9007D95BE /* SimplistsKit.h in Headers */ = {isa = PBXBuildFile; fileRef = E235D7E524E037B9007D95BE /* SimplistsKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E235D7EA24E037B9007D95BE /* SimplistsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E235D7E324E037B9007D95BE /* SimplistsKit.framework */; };
+		E235D7EB24E037B9007D95BE /* SimplistsKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E235D7E324E037B9007D95BE /* SimplistsKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E235D7F224E03801007D95BE /* WatchList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E235D7F024E03801007D95BE /* WatchList.xcdatamodeld */; };
 		E235D7F424E046D7007D95BE /* WLKStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D7F324E046D7007D95BE /* WLKStorage.swift */; };
 		E235D7F624E04B42007D95BE /* ListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D7F524E04B42007D95BE /* ListItemView.swift */; };
 		E235D7FA24E04C3F007D95BE /* WatchListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D7F924E04C3F007D95BE /* WatchListItemView.swift */; };
 		E235D7FC24E04CC1007D95BE /* WLKListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D7FB24E04CC1007D95BE /* WLKListItem.swift */; };
-		E235D80F24E050CD007D95BE /* WatchListWatchKit.h in Headers */ = {isa = PBXBuildFile; fileRef = E235D80D24E050CD007D95BE /* WatchListWatchKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E235D81224E050CD007D95BE /* WatchListWatchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E235D80B24E050CD007D95BE /* WatchListWatchKit.framework */; };
-		E235D81324E050CD007D95BE /* WatchListWatchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E235D80B24E050CD007D95BE /* WatchListWatchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E235D80F24E050CD007D95BE /* SimplistsWatchKit.h in Headers */ = {isa = PBXBuildFile; fileRef = E235D80D24E050CD007D95BE /* SimplistsWatchKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E235D81224E050CD007D95BE /* SimplistsWatchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E235D80B24E050CD007D95BE /* SimplistsWatchKit.framework */; };
+		E235D81324E050CD007D95BE /* SimplistsWatchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E235D80B24E050CD007D95BE /* SimplistsWatchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E235D81724E050DC007D95BE /* WLKStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D7F324E046D7007D95BE /* WLKStorage.swift */; };
 		E235D81824E050DF007D95BE /* WLKListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D7FB24E04CC1007D95BE /* WLKListItem.swift */; };
 /* End PBXBuildFile section */
@@ -69,14 +69,14 @@
 			containerPortal = E235D78724DF5B58007D95BE /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = E235D7E224E037B9007D95BE;
-			remoteInfo = WatchListKit;
+			remoteInfo = SimplistsKit;
 		};
 		E235D81024E050CD007D95BE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E235D78724DF5B58007D95BE /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = E235D80A24E050CD007D95BE;
-			remoteInfo = WatchListWatchKit;
+			remoteInfo = SimplistsWatchKit;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -109,7 +109,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				E235D7EB24E037B9007D95BE /* WatchListKit.framework in Embed Frameworks */,
+				E235D7EB24E037B9007D95BE /* SimplistsKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -120,7 +120,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				E235D81324E050CD007D95BE /* WatchListWatchKit.framework in Embed Frameworks */,
+				E235D81324E050CD007D95BE /* SimplistsWatchKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -133,12 +133,12 @@
 		E22E152924E0769E002A140E /* WatchListsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListsView.swift; sourceTree = "<group>"; };
 		E22E152B24E0809F002A140E /* WLK+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WLK+CoreData.swift"; sourceTree = "<group>"; };
 		E22E152F24E0871D002A140E /* WLKPersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WLKPersistentContainer.swift; sourceTree = "<group>"; };
-		E235D78F24DF5B59007D95BE /* WatchList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchList.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E235D78F24DF5B59007D95BE /* Simplists.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Simplists.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E235D79224DF5B59007D95BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E235D79424DF5B59007D95BE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E235D79624DF5B59007D95BE /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		E235D79824DF5B5A007D95BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E235D79B24DF5B5A007D95BE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E235D79B24DF5B5A007D95BE /* PreviewAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = PreviewAssets.xcassets; sourceTree = "<group>"; };
 		E235D79E24DF5B5A007D95BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E235D7A024DF5B5A007D95BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E235D7A824DF5B88007D95BE /* WatchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -153,20 +153,20 @@
 		E235D7C524DF5B89007D95BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E235D7C824DF5B89007D95BE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E235D7CA24DF5B89007D95BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E235D7D724E036F6007D95BE /* WatchList.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WatchList.entitlements; sourceTree = "<group>"; };
+		E235D7D724E036F6007D95BE /* Simplists.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Simplists.entitlements; sourceTree = "<group>"; };
 		E235D7D924E0372D007D95BE /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		E235D7DB24E0374A007D95BE /* WatchApp Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "WatchApp Extension.entitlements"; sourceTree = "<group>"; };
 		E235D7DC24E0374D007D95BE /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS7.0.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
-		E235D7E324E037B9007D95BE /* WatchListKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WatchListKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E235D7E524E037B9007D95BE /* WatchListKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WatchListKit.h; sourceTree = "<group>"; };
+		E235D7E324E037B9007D95BE /* SimplistsKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SimplistsKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E235D7E524E037B9007D95BE /* SimplistsKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimplistsKit.h; sourceTree = "<group>"; };
 		E235D7E624E037B9007D95BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E235D7F124E03801007D95BE /* WatchList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WatchList.xcdatamodel; sourceTree = "<group>"; };
 		E235D7F324E046D7007D95BE /* WLKStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WLKStorage.swift; sourceTree = "<group>"; };
 		E235D7F524E04B42007D95BE /* ListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemView.swift; sourceTree = "<group>"; };
 		E235D7F924E04C3F007D95BE /* WatchListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListItemView.swift; sourceTree = "<group>"; };
 		E235D7FB24E04CC1007D95BE /* WLKListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WLKListItem.swift; sourceTree = "<group>"; };
-		E235D80B24E050CD007D95BE /* WatchListWatchKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WatchListWatchKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E235D80D24E050CD007D95BE /* WatchListWatchKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WatchListWatchKit.h; sourceTree = "<group>"; };
+		E235D80B24E050CD007D95BE /* SimplistsWatchKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SimplistsWatchKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E235D80D24E050CD007D95BE /* SimplistsWatchKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimplistsWatchKit.h; sourceTree = "<group>"; };
 		E235D80E24E050CD007D95BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -176,7 +176,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E235D7DA24E0372D007D95BE /* CloudKit.framework in Frameworks */,
-				E235D7EA24E037B9007D95BE /* WatchListKit.framework in Frameworks */,
+				E235D7EA24E037B9007D95BE /* SimplistsKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,7 +184,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E235D81224E050CD007D95BE /* WatchListWatchKit.framework in Frameworks */,
+				E235D81224E050CD007D95BE /* SimplistsWatchKit.framework in Frameworks */,
 				E235D7DD24E0374D007D95BE /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -255,11 +255,11 @@
 		E235D78624DF5B58007D95BE = {
 			isa = PBXGroup;
 			children = (
-				E235D79124DF5B59007D95BE /* WatchList */,
+				E235D79124DF5B59007D95BE /* Simplists */,
 				E235D7A924DF5B88007D95BE /* WatchApp */,
 				E235D7B824DF5B89007D95BE /* WatchApp Extension */,
-				E235D7E424E037B9007D95BE /* WatchListKit */,
-				E235D80C24E050CD007D95BE /* WatchListWatchKit */,
+				E235D7E424E037B9007D95BE /* SimplistsKit */,
+				E235D80C24E050CD007D95BE /* SimplistsWatchKit */,
 				E235D79024DF5B59007D95BE /* Products */,
 				E235D7D824E0372D007D95BE /* Frameworks */,
 			);
@@ -268,35 +268,35 @@
 		E235D79024DF5B59007D95BE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E235D78F24DF5B59007D95BE /* WatchList.app */,
+				E235D78F24DF5B59007D95BE /* Simplists.app */,
 				E235D7A824DF5B88007D95BE /* WatchApp.app */,
 				E235D7B424DF5B89007D95BE /* WatchApp Extension.appex */,
-				E235D7E324E037B9007D95BE /* WatchListKit.framework */,
-				E235D80B24E050CD007D95BE /* WatchListWatchKit.framework */,
+				E235D7E324E037B9007D95BE /* SimplistsKit.framework */,
+				E235D80B24E050CD007D95BE /* SimplistsWatchKit.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		E235D79124DF5B59007D95BE /* WatchList */ = {
+		E235D79124DF5B59007D95BE /* Simplists */ = {
 			isa = PBXGroup;
 			children = (
 				E22E152524E06976002A140E /* Startup */,
 				E22E152424E06963002A140E /* Views */,
-				E235D7D724E036F6007D95BE /* WatchList.entitlements */,
+				E235D7D724E036F6007D95BE /* Simplists.entitlements */,
 				E235D79824DF5B5A007D95BE /* Assets.xcassets */,
 				E235D79D24DF5B5A007D95BE /* LaunchScreen.storyboard */,
 				E235D7A024DF5B5A007D95BE /* Info.plist */,
-				E235D79A24DF5B5A007D95BE /* Preview Content */,
+				E235D79A24DF5B5A007D95BE /* PreviewContent */,
 			);
-			path = WatchList;
+			path = Simplists;
 			sourceTree = "<group>";
 		};
-		E235D79A24DF5B5A007D95BE /* Preview Content */ = {
+		E235D79A24DF5B5A007D95BE /* PreviewContent */ = {
 			isa = PBXGroup;
 			children = (
-				E235D79B24DF5B5A007D95BE /* Preview Assets.xcassets */,
+				E235D79B24DF5B5A007D95BE /* PreviewAssets.xcassets */,
 			);
-			path = "Preview Content";
+			path = PreviewContent;
 			sourceTree = "<group>";
 		};
 		E235D7A924DF5B88007D95BE /* WatchApp */ = {
@@ -340,10 +340,10 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		E235D7E424E037B9007D95BE /* WatchListKit */ = {
+		E235D7E424E037B9007D95BE /* SimplistsKit */ = {
 			isa = PBXGroup;
 			children = (
-				E235D7E524E037B9007D95BE /* WatchListKit.h */,
+				E235D7E524E037B9007D95BE /* SimplistsKit.h */,
 				E235D7E624E037B9007D95BE /* Info.plist */,
 				E235D7F024E03801007D95BE /* WatchList.xcdatamodeld */,
 				E235D7F324E046D7007D95BE /* WLKStorage.swift */,
@@ -352,16 +352,16 @@
 				E22E152B24E0809F002A140E /* WLK+CoreData.swift */,
 				E22E152F24E0871D002A140E /* WLKPersistentContainer.swift */,
 			);
-			path = WatchListKit;
+			path = SimplistsKit;
 			sourceTree = "<group>";
 		};
-		E235D80C24E050CD007D95BE /* WatchListWatchKit */ = {
+		E235D80C24E050CD007D95BE /* SimplistsWatchKit */ = {
 			isa = PBXGroup;
 			children = (
-				E235D80D24E050CD007D95BE /* WatchListWatchKit.h */,
+				E235D80D24E050CD007D95BE /* SimplistsWatchKit.h */,
 				E235D80E24E050CD007D95BE /* Info.plist */,
 			);
-			path = WatchListWatchKit;
+			path = SimplistsWatchKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -371,7 +371,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E235D7E724E037B9007D95BE /* WatchListKit.h in Headers */,
+				E235D7E724E037B9007D95BE /* SimplistsKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,16 +379,16 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E235D80F24E050CD007D95BE /* WatchListWatchKit.h in Headers */,
+				E235D80F24E050CD007D95BE /* SimplistsWatchKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		E235D78E24DF5B59007D95BE /* WatchList */ = {
+		E235D78E24DF5B59007D95BE /* Simplists */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E235D7A324DF5B5A007D95BE /* Build configuration list for PBXNativeTarget "WatchList" */;
+			buildConfigurationList = E235D7A324DF5B5A007D95BE /* Build configuration list for PBXNativeTarget "Simplists" */;
 			buildPhases = (
 				E235D78B24DF5B59007D95BE /* Sources */,
 				E235D78C24DF5B59007D95BE /* Frameworks */,
@@ -403,9 +403,9 @@
 				E235D7CD24DF5B89007D95BE /* PBXTargetDependency */,
 				E235D7E924E037B9007D95BE /* PBXTargetDependency */,
 			);
-			name = WatchList;
-			productName = WatchList;
-			productReference = E235D78F24DF5B59007D95BE /* WatchList.app */;
+			name = Simplists;
+			productName = Simplists;
+			productReference = E235D78F24DF5B59007D95BE /* Simplists.app */;
 			productType = "com.apple.product-type.application";
 		};
 		E235D7A724DF5B88007D95BE /* WatchApp */ = {
@@ -446,9 +446,9 @@
 			productReference = E235D7B424DF5B89007D95BE /* WatchApp Extension.appex */;
 			productType = "com.apple.product-type.watchkit2-extension";
 		};
-		E235D7E224E037B9007D95BE /* WatchListKit */ = {
+		E235D7E224E037B9007D95BE /* SimplistsKit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E235D7EC24E037B9007D95BE /* Build configuration list for PBXNativeTarget "WatchListKit" */;
+			buildConfigurationList = E235D7EC24E037B9007D95BE /* Build configuration list for PBXNativeTarget "SimplistsKit" */;
 			buildPhases = (
 				E235D7DE24E037B9007D95BE /* Headers */,
 				E235D7DF24E037B9007D95BE /* Sources */,
@@ -460,14 +460,14 @@
 			);
 			dependencies = (
 			);
-			name = WatchListKit;
-			productName = WatchListKit;
-			productReference = E235D7E324E037B9007D95BE /* WatchListKit.framework */;
+			name = SimplistsKit;
+			productName = SimplistsKit;
+			productReference = E235D7E324E037B9007D95BE /* SimplistsKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		E235D80A24E050CD007D95BE /* WatchListWatchKit */ = {
+		E235D80A24E050CD007D95BE /* SimplistsWatchKit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E235D81424E050CD007D95BE /* Build configuration list for PBXNativeTarget "WatchListWatchKit" */;
+			buildConfigurationList = E235D81424E050CD007D95BE /* Build configuration list for PBXNativeTarget "SimplistsWatchKit" */;
 			buildPhases = (
 				E235D80624E050CD007D95BE /* Headers */,
 				E235D80724E050CD007D95BE /* Sources */,
@@ -479,9 +479,9 @@
 			);
 			dependencies = (
 			);
-			name = WatchListWatchKit;
-			productName = WatchListWatchKit;
-			productReference = E235D80B24E050CD007D95BE /* WatchListWatchKit.framework */;
+			name = SimplistsWatchKit;
+			productName = SimplistsWatchKit;
+			productReference = E235D80B24E050CD007D95BE /* SimplistsWatchKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -511,7 +511,7 @@
 					};
 				};
 			};
-			buildConfigurationList = E235D78A24DF5B58007D95BE /* Build configuration list for PBXProject "WatchList" */;
+			buildConfigurationList = E235D78A24DF5B58007D95BE /* Build configuration list for PBXProject "Simplists" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -524,11 +524,11 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E235D78E24DF5B59007D95BE /* WatchList */,
+				E235D78E24DF5B59007D95BE /* Simplists */,
 				E235D7A724DF5B88007D95BE /* WatchApp */,
 				E235D7B324DF5B89007D95BE /* WatchApp Extension */,
-				E235D7E224E037B9007D95BE /* WatchListKit */,
-				E235D80A24E050CD007D95BE /* WatchListWatchKit */,
+				E235D7E224E037B9007D95BE /* SimplistsKit */,
+				E235D80A24E050CD007D95BE /* SimplistsWatchKit */,
 			);
 		};
 /* End PBXProject section */
@@ -539,7 +539,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E235D79F24DF5B5A007D95BE /* LaunchScreen.storyboard in Resources */,
-				E235D79C24DF5B5A007D95BE /* Preview Assets.xcassets in Resources */,
+				E235D79C24DF5B5A007D95BE /* PreviewAssets.xcassets in Resources */,
 				E235D79924DF5B5A007D95BE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -739,12 +739,12 @@
 		};
 		E235D7E924E037B9007D95BE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = E235D7E224E037B9007D95BE /* WatchListKit */;
+			target = E235D7E224E037B9007D95BE /* SimplistsKit */;
 			targetProxy = E235D7E824E037B9007D95BE /* PBXContainerItemProxy */;
 		};
 		E235D81124E050CD007D95BE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = E235D80A24E050CD007D95BE /* WatchListWatchKit */;
+			target = E235D80A24E050CD007D95BE /* SimplistsWatchKit */;
 			targetProxy = E235D81024E050CD007D95BE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -891,13 +891,13 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = WatchList/WatchList.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Simplists/Simplists.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"WatchList/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = Simplists/PreviewContent;
 				DEVELOPMENT_TEAM = 25V97QMNV5;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = WatchList/Info.plist;
+				INFOPLIST_FILE = Simplists/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -917,13 +917,13 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = WatchList/WatchList.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Simplists/Simplists.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"WatchList/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = Simplists/PreviewContent;
 				DEVELOPMENT_TEAM = 25V97QMNV5;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = WatchList/Info.plist;
+				INFOPLIST_FILE = Simplists/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1043,7 +1043,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = WatchListKit/Info.plist;
+				INFOPLIST_FILE = SimplistsKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1051,7 +1051,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.sleekible.WatchListKit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sleekible.SimplistsKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1074,7 +1074,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = WatchListKit/Info.plist;
+				INFOPLIST_FILE = SimplistsKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1082,7 +1082,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.sleekible.WatchListKit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sleekible.SimplistsKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -1103,14 +1103,14 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = WatchListWatchKit/Info.plist;
+				INFOPLIST_FILE = SimplistsWatchKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.sleekible.WatchListWatchKit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sleekible.SimplistsWatchKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1133,14 +1133,14 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = WatchListWatchKit/Info.plist;
+				INFOPLIST_FILE = SimplistsWatchKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.sleekible.WatchListWatchKit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sleekible.SimplistsWatchKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1155,7 +1155,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E235D78A24DF5B58007D95BE /* Build configuration list for PBXProject "WatchList" */ = {
+		E235D78A24DF5B58007D95BE /* Build configuration list for PBXProject "Simplists" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E235D7A124DF5B5A007D95BE /* Debug */,
@@ -1164,7 +1164,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E235D7A324DF5B5A007D95BE /* Build configuration list for PBXNativeTarget "WatchList" */ = {
+		E235D7A324DF5B5A007D95BE /* Build configuration list for PBXNativeTarget "Simplists" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E235D7A424DF5B5A007D95BE /* Debug */,
@@ -1191,7 +1191,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E235D7EC24E037B9007D95BE /* Build configuration list for PBXNativeTarget "WatchListKit" */ = {
+		E235D7EC24E037B9007D95BE /* Build configuration list for PBXNativeTarget "SimplistsKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E235D7ED24E037B9007D95BE /* Debug */,
@@ -1200,7 +1200,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E235D81424E050CD007D95BE /* Build configuration list for PBXNativeTarget "WatchListWatchKit" */ = {
+		E235D81424E050CD007D95BE /* Build configuration list for PBXNativeTarget "SimplistsWatchKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E235D81524E050CD007D95BE /* Debug */,

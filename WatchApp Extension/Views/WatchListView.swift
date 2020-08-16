@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import WatchListWatchKit
+import SimplistsWatchKit
 
 struct WatchListView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>

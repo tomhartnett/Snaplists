@@ -8,7 +8,7 @@
 import CoreData
 import UIKit
 import SwiftUI
-import WatchListKit
+import SimplistsKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 

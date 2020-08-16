@@ -1,12 +1,12 @@
 //
 //  ListView.swift
-//  WatchList
+//  Simplists
 //
 //  Created by Tom Hartnett on 8/8/20.
 //
 
 import SwiftUI
-import WatchListKit
+import SimplistsKit
 
 struct ListView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>

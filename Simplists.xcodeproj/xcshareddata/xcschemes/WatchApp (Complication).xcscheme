@@ -17,7 +17,7 @@
                BlueprintIdentifier = "E235D7A724DF5B88007D95BE"
                BuildableName = "WatchApp.app"
                BlueprintName = "WatchApp"
-               ReferencedContainer = "container:WatchList.xcodeproj">
+               ReferencedContainer = "container:Simplists.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E235D78E24DF5B59007D95BE"
-               BuildableName = "WatchList.app"
-               BlueprintName = "WatchList"
-               ReferencedContainer = "container:WatchList.xcodeproj">
+               BuildableName = "Simplists.app"
+               BlueprintName = "Simplists"
+               ReferencedContainer = "container:Simplists.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -54,17 +54,19 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES"
-      launchAutomaticallySubstyle = "8">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      launchAutomaticallySubstyle = "32">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.Carousel"
+         RemotePath = "/Simplists">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E235D7A724DF5B88007D95BE"
             BuildableName = "WatchApp.app"
             BlueprintName = "WatchApp"
-            ReferencedContainer = "container:WatchList.xcodeproj">
+            ReferencedContainer = "container:Simplists.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </RemoteRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -72,17 +74,28 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES"
-      launchAutomaticallySubstyle = "8">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      launchAutomaticallySubstyle = "32">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.Carousel"
+         RemotePath = "/Simplists">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E235D7A724DF5B88007D95BE"
             BuildableName = "WatchApp.app"
             BlueprintName = "WatchApp"
-            ReferencedContainer = "container:WatchList.xcodeproj">
+            ReferencedContainer = "container:Simplists.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </RemoteRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "E235D7A724DF5B88007D95BE"
+            BuildableName = "WatchApp.app"
+            BlueprintName = "WatchApp"
+            ReferencedContainer = "container:Simplists.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

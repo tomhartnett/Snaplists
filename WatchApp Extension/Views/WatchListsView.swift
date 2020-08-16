@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import WatchListWatchKit
+import SimplistsWatchKit
 
 struct WatchListsView: View {
     @EnvironmentObject var storage: WLKStorage

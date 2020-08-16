@@ -1,6 +1,6 @@
 //
 //  WLKPersistentContainer.swift
-//  WatchList
+//  Simplists
 //
 //  Created by Tom Hartnett on 8/9/20.
 //
