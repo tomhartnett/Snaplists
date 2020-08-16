@@ -47,6 +47,7 @@
 		E235D81324E050CD007D95BE /* SimplistsWatchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E235D80B24E050CD007D95BE /* SimplistsWatchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E235D81724E050DC007D95BE /* WLKStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D7F324E046D7007D95BE /* WLKStorage.swift */; };
 		E235D81824E050DF007D95BE /* WLKListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D7FB24E04CC1007D95BE /* WLKListItem.swift */; };
+		E23F380224E9ADF50000556D /* AdaptsToKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23F380124E9ADF50000556D /* AdaptsToKeyboard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -168,6 +169,7 @@
 		E235D80B24E050CD007D95BE /* SimplistsWatchKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SimplistsWatchKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E235D80D24E050CD007D95BE /* SimplistsWatchKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimplistsWatchKit.h; sourceTree = "<group>"; };
 		E235D80E24E050CD007D95BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E23F380124E9ADF50000556D /* AdaptsToKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptsToKeyboard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +214,7 @@
 				E235D79624DF5B59007D95BE /* ListView.swift */,
 				E235D7F524E04B42007D95BE /* ListItemView.swift */,
 				E22E152224E060C2002A140E /* ListsView.swift */,
+				E23F380124E9ADF50000556D /* AdaptsToKeyboard.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -680,6 +683,7 @@
 				E22E152324E060C2002A140E /* ListsView.swift in Sources */,
 				E235D79524DF5B59007D95BE /* SceneDelegate.swift in Sources */,
 				E235D79724DF5B59007D95BE /* ListView.swift in Sources */,
+				E23F380224E9ADF50000556D /* AdaptsToKeyboard.swift in Sources */,
 				E235D7F624E04B42007D95BE /* ListItemView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -18,6 +18,7 @@ struct WatchListsView: View {
                     Text(list.title)
                 }
             }
+            .onDelete(perform: delete)
         }
         .onAppear {
             reload()
@@ -25,6 +26,14 @@ struct WatchListsView: View {
         .onReceive(storage.objectWillChange, perform: { _ in
             reload()
         })
+        .navigationBarTitle("Simplists")
+    }
+
+    private func delete(at offsets: IndexSet) {
+        offsets.forEach {
+            storage.deleteList(lists[$0])
+        }
+        lists.remove(atOffsets: offsets)
     }
 
     private func reload() {

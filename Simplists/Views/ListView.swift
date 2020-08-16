@@ -31,9 +31,12 @@ struct ListView: View {
                 reload()
             })
         }
+        .modifier(AdaptsToKeyboard())
     }
 
     private func addNewItem() {
+        if newItem.isEmpty { return }
+
         let item = WLKListItem(title: newItem, isComplete: false)
         list.items.append(item)
         newItem = ""
