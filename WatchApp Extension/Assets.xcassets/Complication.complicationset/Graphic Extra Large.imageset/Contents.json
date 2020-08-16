@@ -7,7 +7,7 @@
       "screen-width" : "<=145"
     },
     {
-      "filename" : "AppIcon240px-1.png",
+      "filename" : "AppIcon240px.png",
       "idiom" : "watch",
       "scale" : "2x",
       "screen-width" : ">161"
