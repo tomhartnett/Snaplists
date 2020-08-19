@@ -9,7 +9,7 @@ import SwiftUI
 import SimplistsWatchKit
 
 struct WatchListItemView: View {
-    var item: WLKListItem
+    var item: SMPListItem
 
     var tapAction: () -> Void
 
@@ -36,8 +36,8 @@ struct WatchListItemView: View {
 struct ListItemView_Previews: PreviewProvider {
     static var previews: some View {
         VStack(alignment: .leading) {
-            WatchListItemView(item: WLKListItem(title: "Beer", isComplete: false), tapAction: {})
-            WatchListItemView(item: WLKListItem(title: "Bananas", isComplete: true), tapAction: {})
+            WatchListItemView(item: SMPListItem(title: "Beer", isComplete: false), tapAction: {})
+            WatchListItemView(item: SMPListItem(title: "Bananas", isComplete: true), tapAction: {})
         }
     }
 }

@@ -9,8 +9,8 @@ import SwiftUI
 import SimplistsWatchKit
 
 struct WatchListsView: View {
-    @EnvironmentObject var storage: WLKStorage
-    @State var lists: [WLKList]
+    @EnvironmentObject var storage: SMPStorage
+    @State var lists: [SMPList]
     var body: some View {
         List {
             ForEach(lists) { list in

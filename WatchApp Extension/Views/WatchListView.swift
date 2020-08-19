@@ -10,8 +10,8 @@ import SimplistsWatchKit
 
 struct WatchListView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @EnvironmentObject var storage: WLKStorage
-    @State var list: WLKList
+    @EnvironmentObject var storage: SMPStorage
+    @State var list: SMPList
     var body: some View {
         List {
             ForEach(list.items) { item in
@@ -45,6 +45,6 @@ struct WatchListView: View {
 
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {
-        WatchListView(list: WLKList(title: "Grocery"))
+        WatchListView(list: SMPList(title: "Grocery"))
     }
 }

@@ -1,6 +1,6 @@
 //
 //  SceneDelegate.swift
-//  WatchList
+//  Simplists
 //
 //  Created by Tom Hartnett on 8/8/20.
 //
@@ -33,8 +33,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
     }
 
-    private func createStorage() -> WLKStorage {
-        let container = WLKPersistentContainer(name: "WatchList")
+    private func createStorage() -> SMPStorage {
+        let container = SMPPersistentContainer(name: "Simplists")
 
         guard let description = container.persistentStoreDescriptions.first else {
             fatalError("\(#function) - No persistent store descriptions found.")
@@ -53,6 +53,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         container.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
         container.viewContext.automaticallyMergesChangesFromParent = true
         
-        return WLKStorage(context: container.viewContext)
+        return SMPStorage(context: container.viewContext)
     }
 }

@@ -17,8 +17,8 @@ class HostingController: WKHostingController<AnyView> {
         return AnyView(WatchListsView(lists: []).environmentObject(storage))
     }
 
-    private func createStorage() -> WLKStorage {
-        let container = WLKPersistentContainer(name: "WatchList")
+    private func createStorage() -> SMPStorage {
+        let container = SMPPersistentContainer(name: "Simplists")
 
         guard let description = container.persistentStoreDescriptions.first else {
             fatalError("\(#function) - No persistent store descriptions found.")
@@ -40,6 +40,6 @@ class HostingController: WKHostingController<AnyView> {
         container.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
         container.viewContext.automaticallyMergesChangesFromParent = true
         
-        return WLKStorage(context: container.viewContext)
+        return SMPStorage(context: container.viewContext)
     }
 }

@@ -1,6 +1,6 @@
 //
 //  ListsView.swift
-//  WatchList
+//  Simplists
 //
 //  Created by Tom Hartnett on 8/9/20.
 //
@@ -9,9 +9,9 @@ import SwiftUI
 import SimplistsKit
 
 struct ListsView: View {
-    @EnvironmentObject var storage: WLKStorage
+    @EnvironmentObject var storage: SMPStorage
     @State private var newListTitle = ""
-    @State var lists: [WLKList] = []
+    @State var lists: [SMPList] = []
     var body: some View {
         NavigationView {
             VStack {
@@ -45,7 +45,7 @@ struct ListsView: View {
     }
 
     private func addNewList() {
-        let list = WLKList(title: newListTitle)
+        let list = SMPList(title: newListTitle)
         lists.append(list)
         newListTitle = ""
 

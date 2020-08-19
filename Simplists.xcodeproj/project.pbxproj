@@ -7,15 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E22E152024E05BBC002A140E /* WLKList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E151F24E05BBC002A140E /* WLKList.swift */; };
-		E22E152124E05BBC002A140E /* WLKList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E151F24E05BBC002A140E /* WLKList.swift */; };
+		E22E152024E05BBC002A140E /* SMPList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E151F24E05BBC002A140E /* SMPList.swift */; };
+		E22E152124E05BBC002A140E /* SMPList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E151F24E05BBC002A140E /* SMPList.swift */; };
 		E22E152324E060C2002A140E /* ListsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E152224E060C2002A140E /* ListsView.swift */; };
 		E22E152A24E0769E002A140E /* WatchListsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E152924E0769E002A140E /* WatchListsView.swift */; };
-		E22E152C24E0809F002A140E /* WLK+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E152B24E0809F002A140E /* WLK+CoreData.swift */; };
-		E22E152D24E080A4002A140E /* WLK+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E152B24E0809F002A140E /* WLK+CoreData.swift */; };
-		E22E152E24E08242002A140E /* WatchList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E235D7F024E03801007D95BE /* WatchList.xcdatamodeld */; };
-		E22E153024E0871D002A140E /* WLKPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E152F24E0871D002A140E /* WLKPersistentContainer.swift */; };
-		E22E153124E0871D002A140E /* WLKPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E152F24E0871D002A140E /* WLKPersistentContainer.swift */; };
+		E22E152C24E0809F002A140E /* SMP+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E152B24E0809F002A140E /* SMP+CoreData.swift */; };
+		E22E152D24E080A4002A140E /* SMP+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E152B24E0809F002A140E /* SMP+CoreData.swift */; };
+		E22E153024E0871D002A140E /* SMPPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E152F24E0871D002A140E /* SMPPersistentContainer.swift */; };
+		E22E153124E0871D002A140E /* SMPPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E152F24E0871D002A140E /* SMPPersistentContainer.swift */; };
 		E235D79324DF5B59007D95BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D79224DF5B59007D95BE /* AppDelegate.swift */; };
 		E235D79524DF5B59007D95BE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D79424DF5B59007D95BE /* SceneDelegate.swift */; };
 		E235D79724DF5B59007D95BE /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D79624DF5B59007D95BE /* ListView.swift */; };
@@ -37,17 +36,18 @@
 		E235D7E724E037B9007D95BE /* SimplistsKit.h in Headers */ = {isa = PBXBuildFile; fileRef = E235D7E524E037B9007D95BE /* SimplistsKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E235D7EA24E037B9007D95BE /* SimplistsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E235D7E324E037B9007D95BE /* SimplistsKit.framework */; };
 		E235D7EB24E037B9007D95BE /* SimplistsKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E235D7E324E037B9007D95BE /* SimplistsKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E235D7F224E03801007D95BE /* WatchList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E235D7F024E03801007D95BE /* WatchList.xcdatamodeld */; };
-		E235D7F424E046D7007D95BE /* WLKStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D7F324E046D7007D95BE /* WLKStorage.swift */; };
+		E235D7F424E046D7007D95BE /* SMPStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D7F324E046D7007D95BE /* SMPStorage.swift */; };
 		E235D7F624E04B42007D95BE /* ListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D7F524E04B42007D95BE /* ListItemView.swift */; };
 		E235D7FA24E04C3F007D95BE /* WatchListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D7F924E04C3F007D95BE /* WatchListItemView.swift */; };
-		E235D7FC24E04CC1007D95BE /* WLKListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D7FB24E04CC1007D95BE /* WLKListItem.swift */; };
+		E235D7FC24E04CC1007D95BE /* SMPListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D7FB24E04CC1007D95BE /* SMPListItem.swift */; };
 		E235D80F24E050CD007D95BE /* SimplistsWatchKit.h in Headers */ = {isa = PBXBuildFile; fileRef = E235D80D24E050CD007D95BE /* SimplistsWatchKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E235D81224E050CD007D95BE /* SimplistsWatchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E235D80B24E050CD007D95BE /* SimplistsWatchKit.framework */; };
 		E235D81324E050CD007D95BE /* SimplistsWatchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E235D80B24E050CD007D95BE /* SimplistsWatchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E235D81724E050DC007D95BE /* WLKStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D7F324E046D7007D95BE /* WLKStorage.swift */; };
-		E235D81824E050DF007D95BE /* WLKListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D7FB24E04CC1007D95BE /* WLKListItem.swift */; };
+		E235D81724E050DC007D95BE /* SMPStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D7F324E046D7007D95BE /* SMPStorage.swift */; };
+		E235D81824E050DF007D95BE /* SMPListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D7FB24E04CC1007D95BE /* SMPListItem.swift */; };
 		E23F380224E9ADF50000556D /* AdaptsToKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23F380124E9ADF50000556D /* AdaptsToKeyboard.swift */; };
+		E27CDF5C24ECA7BC004B6A32 /* Simplists.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E27CDF5A24ECA7BC004B6A32 /* Simplists.xcdatamodeld */; };
+		E27CDF5D24ECAB4D004B6A32 /* Simplists.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E27CDF5A24ECA7BC004B6A32 /* Simplists.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,11 +129,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		E22E151F24E05BBC002A140E /* WLKList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WLKList.swift; sourceTree = "<group>"; };
+		E22E151F24E05BBC002A140E /* SMPList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMPList.swift; sourceTree = "<group>"; };
 		E22E152224E060C2002A140E /* ListsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsView.swift; sourceTree = "<group>"; };
 		E22E152924E0769E002A140E /* WatchListsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListsView.swift; sourceTree = "<group>"; };
-		E22E152B24E0809F002A140E /* WLK+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WLK+CoreData.swift"; sourceTree = "<group>"; };
-		E22E152F24E0871D002A140E /* WLKPersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WLKPersistentContainer.swift; sourceTree = "<group>"; };
+		E22E152B24E0809F002A140E /* SMP+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SMP+CoreData.swift"; sourceTree = "<group>"; };
+		E22E152F24E0871D002A140E /* SMPPersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMPPersistentContainer.swift; sourceTree = "<group>"; };
 		E235D78F24DF5B59007D95BE /* Simplists.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Simplists.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E235D79224DF5B59007D95BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E235D79424DF5B59007D95BE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -161,15 +161,15 @@
 		E235D7E324E037B9007D95BE /* SimplistsKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SimplistsKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E235D7E524E037B9007D95BE /* SimplistsKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimplistsKit.h; sourceTree = "<group>"; };
 		E235D7E624E037B9007D95BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E235D7F124E03801007D95BE /* WatchList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WatchList.xcdatamodel; sourceTree = "<group>"; };
-		E235D7F324E046D7007D95BE /* WLKStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WLKStorage.swift; sourceTree = "<group>"; };
+		E235D7F324E046D7007D95BE /* SMPStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMPStorage.swift; sourceTree = "<group>"; };
 		E235D7F524E04B42007D95BE /* ListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemView.swift; sourceTree = "<group>"; };
 		E235D7F924E04C3F007D95BE /* WatchListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListItemView.swift; sourceTree = "<group>"; };
-		E235D7FB24E04CC1007D95BE /* WLKListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WLKListItem.swift; sourceTree = "<group>"; };
+		E235D7FB24E04CC1007D95BE /* SMPListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMPListItem.swift; sourceTree = "<group>"; };
 		E235D80B24E050CD007D95BE /* SimplistsWatchKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SimplistsWatchKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E235D80D24E050CD007D95BE /* SimplistsWatchKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimplistsWatchKit.h; sourceTree = "<group>"; };
 		E235D80E24E050CD007D95BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E23F380124E9ADF50000556D /* AdaptsToKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptsToKeyboard.swift; sourceTree = "<group>"; };
+		E27CDF5B24ECA7BC004B6A32 /* Simplists.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Simplists.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -348,12 +348,12 @@
 			children = (
 				E235D7E524E037B9007D95BE /* SimplistsKit.h */,
 				E235D7E624E037B9007D95BE /* Info.plist */,
-				E235D7F024E03801007D95BE /* WatchList.xcdatamodeld */,
-				E235D7F324E046D7007D95BE /* WLKStorage.swift */,
-				E235D7FB24E04CC1007D95BE /* WLKListItem.swift */,
-				E22E151F24E05BBC002A140E /* WLKList.swift */,
-				E22E152B24E0809F002A140E /* WLK+CoreData.swift */,
-				E22E152F24E0871D002A140E /* WLKPersistentContainer.swift */,
+				E27CDF5A24ECA7BC004B6A32 /* Simplists.xcdatamodeld */,
+				E235D7F324E046D7007D95BE /* SMPStorage.swift */,
+				E235D7FB24E04CC1007D95BE /* SMPListItem.swift */,
+				E22E151F24E05BBC002A140E /* SMPList.swift */,
+				E22E152B24E0809F002A140E /* SMP+CoreData.swift */,
+				E22E152F24E0871D002A140E /* SMPPersistentContainer.swift */,
 			);
 			path = SimplistsKit;
 			sourceTree = "<group>";
@@ -705,12 +705,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E235D7F424E046D7007D95BE /* WLKStorage.swift in Sources */,
-				E22E152C24E0809F002A140E /* WLK+CoreData.swift in Sources */,
-				E235D7F224E03801007D95BE /* WatchList.xcdatamodeld in Sources */,
-				E22E152024E05BBC002A140E /* WLKList.swift in Sources */,
-				E235D7FC24E04CC1007D95BE /* WLKListItem.swift in Sources */,
-				E22E153024E0871D002A140E /* WLKPersistentContainer.swift in Sources */,
+				E235D7F424E046D7007D95BE /* SMPStorage.swift in Sources */,
+				E27CDF5C24ECA7BC004B6A32 /* Simplists.xcdatamodeld in Sources */,
+				E22E152C24E0809F002A140E /* SMP+CoreData.swift in Sources */,
+				E22E152024E05BBC002A140E /* SMPList.swift in Sources */,
+				E235D7FC24E04CC1007D95BE /* SMPListItem.swift in Sources */,
+				E22E153024E0871D002A140E /* SMPPersistentContainer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -718,12 +718,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E22E152124E05BBC002A140E /* WLKList.swift in Sources */,
-				E22E152D24E080A4002A140E /* WLK+CoreData.swift in Sources */,
-				E22E152E24E08242002A140E /* WatchList.xcdatamodeld in Sources */,
-				E235D81724E050DC007D95BE /* WLKStorage.swift in Sources */,
-				E235D81824E050DF007D95BE /* WLKListItem.swift in Sources */,
-				E22E153124E0871D002A140E /* WLKPersistentContainer.swift in Sources */,
+				E22E152124E05BBC002A140E /* SMPList.swift in Sources */,
+				E22E152D24E080A4002A140E /* SMP+CoreData.swift in Sources */,
+				E27CDF5D24ECAB4D004B6A32 /* Simplists.xcdatamodeld in Sources */,
+				E235D81724E050DC007D95BE /* SMPStorage.swift in Sources */,
+				E235D81824E050DF007D95BE /* SMPListItem.swift in Sources */,
+				E22E153124E0871D002A140E /* SMPPersistentContainer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1216,13 +1216,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		E235D7F024E03801007D95BE /* WatchList.xcdatamodeld */ = {
+		E27CDF5A24ECA7BC004B6A32 /* Simplists.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				E235D7F124E03801007D95BE /* WatchList.xcdatamodel */,
+				E27CDF5B24ECA7BC004B6A32 /* Simplists.xcdatamodel */,
 			);
-			currentVersion = E235D7F124E03801007D95BE /* WatchList.xcdatamodel */;
-			path = WatchList.xcdatamodeld;
+			currentVersion = E27CDF5B24ECA7BC004B6A32 /* Simplists.xcdatamodel */;
+			path = Simplists.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

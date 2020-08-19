@@ -1,11 +1,11 @@
 //
-//  WLKList+CoreData.swift
+//  SMPList+CoreData.swift
 //  SimplistsKit
 //
 //  Created by Tom Hartnett on 8/9/20.
 //
 
-extension WLKList {
+extension SMPList {
     init?(entity: ListEntity) {
         guard let id = entity.identifier,
               let items = entity.items,
@@ -20,12 +20,12 @@ extension WLKList {
             return title1 < title2
         }).compactMap {
             guard let item = $0 as? ItemEntity else { return nil }
-            return WLKListItem(entity: item)
+            return SMPListItem(entity: item)
         }
     }
 }
 
-extension WLKListItem {
+extension SMPListItem {
     init?(entity: ItemEntity) {
         guard let id = entity.identifier,
               let title = entity.title else { return nil }

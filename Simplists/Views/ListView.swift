@@ -10,9 +10,9 @@ import SimplistsKit
 
 struct ListView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @EnvironmentObject var storage: WLKStorage
+    @EnvironmentObject var storage: SMPStorage
     @State private var newItem = ""
-    @State var list: WLKList
+    @State var list: SMPList
     var body: some View {
         VStack {
             List {
@@ -37,7 +37,7 @@ struct ListView: View {
     private func addNewItem() {
         if newItem.isEmpty { return }
 
-        let item = WLKListItem(title: newItem, isComplete: false)
+        let item = SMPListItem(title: newItem, isComplete: false)
         list.items.append(item)
         newItem = ""
 
@@ -64,6 +64,6 @@ struct ListView: View {
 
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {
-        ListView(list: WLKList(title: "Grocery"))
+        ListView(list: SMPList(title: "Grocery"))
     }
 }

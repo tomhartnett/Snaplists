@@ -1,5 +1,5 @@
 //
-//  WLKStorage.swift
+//  SMPStorage.swift
 //  SimplistsKit
 //
 //  Created by Tom Hartnett on 8/9/20.
@@ -8,7 +8,7 @@
 import Combine
 import CoreData
 
-public final class WLKStorage: ObservableObject {
+public final class SMPStorage: ObservableObject {
 
     public let objectWillChange = PassthroughSubject<(), Never>()
 
@@ -23,16 +23,16 @@ public final class WLKStorage: ObservableObject {
                                                object: context.persistentStoreCoordinator)
     }
 
-    public func getLists() -> [WLKList] {
+    public func getLists() -> [SMPList] {
 
-        var lists: [WLKList] = []
+        var lists: [SMPList] = []
 
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "List")
         request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
 
         do {
             if let results = try context.fetch(request) as? [ListEntity] {
-                lists.append(contentsOf: results.compactMap { WLKList(entity: $0) })
+                lists.append(contentsOf: results.compactMap { SMPList(entity: $0) })
             }
         } catch {
             print("\(#function) - error: \(error.localizedDescription)")
@@ -41,13 +41,13 @@ public final class WLKStorage: ObservableObject {
         return lists
     }
 
-    public func getList(with id: UUID) -> WLKList? {
+    public func getList(with id: UUID) -> SMPList? {
         guard let listEntity = getListEntity(with: id) else { return nil }
 
-        return WLKList(entity: listEntity)
+        return SMPList(entity: listEntity)
     }
 
-    public func addList(_ list: WLKList) {
+    public func addList(_ list: SMPList) {
         let listEntity = ListEntity(context: context)
         listEntity.identifier = list.id
         listEntity.title = list.title
@@ -55,7 +55,7 @@ public final class WLKStorage: ObservableObject {
         saveChanges()
     }
 
-    public func updateList(_ list: WLKList) {
+    public func updateList(_ list: SMPList) {
         guard let listEntity = getListEntity(with: list.id) else { return }
 
         listEntity.title = list.title
@@ -63,7 +63,7 @@ public final class WLKStorage: ObservableObject {
         saveChanges()
     }
 
-    public func deleteList(_ list: WLKList) {
+    public func deleteList(_ list: SMPList) {
         guard let listEntity = getListEntity(with: list.id) else { return }
 
         context.delete(listEntity)
@@ -71,13 +71,13 @@ public final class WLKStorage: ObservableObject {
         saveChanges()
     }
 
-    public func getItem(with id: UUID) -> WLKListItem? {
+    public func getItem(with id: UUID) -> SMPListItem? {
         guard let itemEntity = getItemEntity(with: id) else { return nil }
 
-        return WLKListItem(entity: itemEntity)
+        return SMPListItem(entity: itemEntity)
     }
 
-    public func addItem(_ item: WLKListItem, to list: WLKList) {
+    public func addItem(_ item: SMPListItem, to list: SMPList) {
         guard let listEntity = getListEntity(with: list.id) else { return }
 
         let itemEntity = ItemEntity(context: context)
@@ -91,7 +91,7 @@ public final class WLKStorage: ObservableObject {
         saveChanges()
     }
 
-    public func deleteItem(_ item: WLKListItem) {
+    public func deleteItem(_ item: SMPListItem) {
         guard let itemEntity = getItemEntity(with: item.id) else { return }
 
         context.delete(itemEntity)

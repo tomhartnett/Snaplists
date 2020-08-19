@@ -9,7 +9,7 @@ import SwiftUI
 import SimplistsKit
 
 struct ListItemView: View {
-    var item: WLKListItem
+    var item: SMPListItem
 
     var tapAction: () -> Void
 
@@ -36,8 +36,8 @@ struct ListItemView: View {
 struct ListItemView_Previews: PreviewProvider {
     static var previews: some View {
         VStack(alignment: .leading) {
-            ListItemView(item: WLKListItem(title: "Beer", isComplete: false), tapAction: {})
-            ListItemView(item: WLKListItem(title: "Bananas", isComplete: true), tapAction: {})
+            ListItemView(item: SMPListItem(title: "Beer", isComplete: false), tapAction: {})
+            ListItemView(item: SMPListItem(title: "Bananas", isComplete: true), tapAction: {})
         }
     }
 }
