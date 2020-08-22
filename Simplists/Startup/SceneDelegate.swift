@@ -34,6 +34,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     private func createStorage() -> SMPStorage {
+
         let container = SMPPersistentContainer(name: "Simplists")
 
         guard let description = container.persistentStoreDescriptions.first else {

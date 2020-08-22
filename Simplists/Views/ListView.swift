@@ -22,10 +22,12 @@ struct ListView: View {
                     })
                 }
                 .onDelete(perform: delete)
+                .onMove(perform: move)
 
                 TextField("Add new item...", text: $newItem, onCommit: addNewItem)
                     .padding([.top, .bottom])
             }
+            .navigationBarItems(trailing: EditButton())
             .navigationBarTitle(list.title)
             .onReceive(storage.objectWillChange, perform: { _ in
                 reload()
@@ -49,6 +51,11 @@ struct ListView: View {
             storage.deleteItem(list.items[$0])
         }
         list.items.remove(atOffsets: offsets)
+    }
+
+    private func move(from source: IndexSet, to destination: Int) {
+        list.items.move(fromOffsets: source, toOffset: destination)
+        storage.updateList(list)
     }
 
     private func reload() {

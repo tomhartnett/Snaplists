@@ -60,6 +60,9 @@ public final class SMPStorage: ObservableObject {
 
         listEntity.title = list.title
 
+        let itemIDs = list.items.map { $0.id.uuidString }
+        listEntity.sortOrder = itemIDs
+
         saveChanges()
     }
 
@@ -88,6 +91,10 @@ public final class SMPStorage: ObservableObject {
         let items = NSSet(set: listEntity.items?.adding(itemEntity) ?? [])
         listEntity.items = items
 
+        var itemIDs = listEntity.sortOrder ?? []
+        itemIDs.append(item.id.uuidString)
+        listEntity.sortOrder = itemIDs
+        
         saveChanges()
     }
 
