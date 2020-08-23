@@ -50,6 +50,8 @@
 		E27CDF5D24ECAB4D004B6A32 /* Simplists.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E27CDF5A24ECA7BC004B6A32 /* Simplists.xcdatamodeld */; };
 		E2AFBDBC24F16348008D9E3F /* ListEntity+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AFBDBB24F16348008D9E3F /* ListEntity+Extensions.swift */; };
 		E2AFBDBD24F1634E008D9E3F /* ListEntity+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AFBDBB24F16348008D9E3F /* ListEntity+Extensions.swift */; };
+		E2AFBDBF24F194CC008D9E3F /* SMPListSortOrderTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AFBDBE24F194CC008D9E3F /* SMPListSortOrderTransformer.swift */; };
+		E2AFBDC024F194CC008D9E3F /* SMPListSortOrderTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AFBDBE24F194CC008D9E3F /* SMPListSortOrderTransformer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -173,6 +175,7 @@
 		E23F380124E9ADF50000556D /* AdaptsToKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptsToKeyboard.swift; sourceTree = "<group>"; };
 		E27CDF5B24ECA7BC004B6A32 /* Simplists.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Simplists.xcdatamodel; sourceTree = "<group>"; };
 		E2AFBDBB24F16348008D9E3F /* ListEntity+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListEntity+Extensions.swift"; sourceTree = "<group>"; };
+		E2AFBDBE24F194CC008D9E3F /* SMPListSortOrderTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMPListSortOrderTransformer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -358,6 +361,7 @@
 				E22E152B24E0809F002A140E /* SMP+CoreData.swift */,
 				E22E152F24E0871D002A140E /* SMPPersistentContainer.swift */,
 				E2AFBDBB24F16348008D9E3F /* ListEntity+Extensions.swift */,
+				E2AFBDBE24F194CC008D9E3F /* SMPListSortOrderTransformer.swift */,
 			);
 			path = SimplistsKit;
 			sourceTree = "<group>";
@@ -714,6 +718,7 @@
 				E22E152C24E0809F002A140E /* SMP+CoreData.swift in Sources */,
 				E22E152024E05BBC002A140E /* SMPList.swift in Sources */,
 				E235D7FC24E04CC1007D95BE /* SMPListItem.swift in Sources */,
+				E2AFBDBF24F194CC008D9E3F /* SMPListSortOrderTransformer.swift in Sources */,
 				E2AFBDBC24F16348008D9E3F /* ListEntity+Extensions.swift in Sources */,
 				E22E153024E0871D002A140E /* SMPPersistentContainer.swift in Sources */,
 			);
@@ -728,6 +733,7 @@
 				E27CDF5D24ECAB4D004B6A32 /* Simplists.xcdatamodeld in Sources */,
 				E235D81724E050DC007D95BE /* SMPStorage.swift in Sources */,
 				E235D81824E050DF007D95BE /* SMPListItem.swift in Sources */,
+				E2AFBDC024F194CC008D9E3F /* SMPListSortOrderTransformer.swift in Sources */,
 				E2AFBDBD24F1634E008D9E3F /* ListEntity+Extensions.swift in Sources */,
 				E22E153124E0871D002A140E /* SMPPersistentContainer.swift in Sources */,
 			);
