@@ -31,6 +31,7 @@ struct ListsView: View {
                 }
             }
             .navigationBarTitle("Lists")
+            .modifier(AdaptsToKeyboard())
         }
         .onAppear {
             reload()
@@ -48,6 +49,10 @@ struct ListsView: View {
     }
 
     private func addNewList() {
+        if newListTitle.isEmpty {
+            return
+        }
+
         let list = SMPList(title: newListTitle)
         lists.append(list)
         newListTitle = ""
