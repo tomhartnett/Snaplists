@@ -12,6 +12,7 @@ struct ListView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var storage: SMPStorage
     @State private var newItem = ""
+    @State private var newItemHasFocus = false
     @State var list: SMPList
     var body: some View {
         VStack {
@@ -24,7 +25,10 @@ struct ListView: View {
                 .onDelete(perform: delete)
                 .onMove(perform: move)
 
-                TextField("Add new item...", text: $newItem, onCommit: addNewItem)
+                FocusableTextField("Add new item...",
+                                   text: $newItem,
+                                   isFirstResponder: newItemHasFocus,
+                                   onCommit: addNewItem)
                     .padding([.top, .bottom])
             }
             .navigationBarItems(trailing: EditButton())
@@ -37,11 +41,15 @@ struct ListView: View {
     }
 
     private func addNewItem() {
-        if newItem.isEmpty { return }
+        if newItem.isEmpty {
+            newItemHasFocus = false
+            return
+        }
 
         let item = SMPListItem(title: newItem, isComplete: false)
         list.items.append(item)
         newItem = ""
+        newItemHasFocus = true
 
         storage.addItem(item, to: list)
     }
@@ -66,8 +74,6 @@ struct ListView: View {
         }
     }
 }
-
-
 
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {

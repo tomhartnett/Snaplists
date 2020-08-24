@@ -46,6 +46,7 @@
 		E235D81724E050DC007D95BE /* SMPStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D7F324E046D7007D95BE /* SMPStorage.swift */; };
 		E235D81824E050DF007D95BE /* SMPListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D7FB24E04CC1007D95BE /* SMPListItem.swift */; };
 		E23F380224E9ADF50000556D /* AdaptsToKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23F380124E9ADF50000556D /* AdaptsToKeyboard.swift */; };
+		E256DD6924F2E98600649855 /* FocusableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E256DD6824F2E98600649855 /* FocusableTextField.swift */; };
 		E27CDF5C24ECA7BC004B6A32 /* Simplists.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E27CDF5A24ECA7BC004B6A32 /* Simplists.xcdatamodeld */; };
 		E27CDF5D24ECAB4D004B6A32 /* Simplists.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E27CDF5A24ECA7BC004B6A32 /* Simplists.xcdatamodeld */; };
 		E2AFBDBC24F16348008D9E3F /* ListEntity+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AFBDBB24F16348008D9E3F /* ListEntity+Extensions.swift */; };
@@ -173,6 +174,7 @@
 		E235D80D24E050CD007D95BE /* SimplistsWatchKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimplistsWatchKit.h; sourceTree = "<group>"; };
 		E235D80E24E050CD007D95BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E23F380124E9ADF50000556D /* AdaptsToKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptsToKeyboard.swift; sourceTree = "<group>"; };
+		E256DD6824F2E98600649855 /* FocusableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusableTextField.swift; sourceTree = "<group>"; };
 		E27CDF5B24ECA7BC004B6A32 /* Simplists.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Simplists.xcdatamodel; sourceTree = "<group>"; };
 		E2AFBDBB24F16348008D9E3F /* ListEntity+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListEntity+Extensions.swift"; sourceTree = "<group>"; };
 		E2AFBDBE24F194CC008D9E3F /* SMPListSortOrderTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMPListSortOrderTransformer.swift; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 				E235D7F524E04B42007D95BE /* ListItemView.swift */,
 				E22E152224E060C2002A140E /* ListsView.swift */,
 				E23F380124E9ADF50000556D /* AdaptsToKeyboard.swift */,
+				E256DD6824F2E98600649855 /* FocusableTextField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -688,6 +691,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E235D79324DF5B59007D95BE /* AppDelegate.swift in Sources */,
+				E256DD6924F2E98600649855 /* FocusableTextField.swift in Sources */,
 				E22E152324E060C2002A140E /* ListsView.swift in Sources */,
 				E235D79524DF5B59007D95BE /* SceneDelegate.swift in Sources */,
 				E235D79724DF5B59007D95BE /* ListView.swift in Sources */,

@@ -23,7 +23,10 @@ struct ListsView: View {
                     }
                     .onDelete(perform: delete)
 
-                    TextField("Add new list...", text: $newListTitle, onCommit: addNewList)
+                    FocusableTextField("Add new list...",
+                                       text: $newListTitle,
+                                       isFirstResponder: false,
+                                       onCommit: addNewList)
                         .padding([.top, .bottom])
                 }
             }
