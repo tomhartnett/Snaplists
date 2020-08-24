@@ -21,12 +21,15 @@ struct AdaptsToKeyboard: ViewModifier {
                 .animation(.easeOut(duration: 0.16))
                 .onAppear(perform: {
                     NotificationCenter.Publisher(center: NotificationCenter.default, name: UIResponder.keyboardWillShowNotification)
-                        .merge(with: NotificationCenter.Publisher(center: NotificationCenter.default, name: UIResponder.keyboardWillChangeFrameNotification))
                         .compactMap { notification in
                             notification.userInfo?["UIKeyboardFrameEndUserInfoKey"] as? CGRect
                     }
                     .map { rect in
-                        rect.height - geometry.safeAreaInsets.bottom
+                        if #available(iOS 14.0, *) {
+                            return CGFloat.zero
+                        } else {
+                            return rect.height - geometry.safeAreaInsets.bottom
+                        }
                     }
                     .subscribe(Subscribers.Assign(object: self, keyPath: \.currentHeight))
 

@@ -24,7 +24,9 @@ struct FocusableTextField: UIViewRepresentable {
             }
         }
 
-        func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        func textField(_ textField: UITextField,
+                       shouldChangeCharactersIn range: NSRange,
+                       replacementString string: String) -> Bool {
             if string == "\n" {
                 textField.resignFirstResponder()
                 parent.onCommit?()
