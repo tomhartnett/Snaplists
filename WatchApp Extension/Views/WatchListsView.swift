@@ -12,21 +12,28 @@ struct WatchListsView: View {
     @EnvironmentObject var storage: SMPStorage
     @State var lists: [SMPList]
     var body: some View {
-        List {
-            ForEach(lists) { list in
-                NavigationLink(destination: WatchListView(list: list).environmentObject(storage)) {
-                    Text(list.title)
+        Group {
+            if lists.count > 0 {
+                List {
+                    ForEach(lists) { list in
+                        NavigationLink(destination: WatchListView(list: list).environmentObject(storage)) {
+                            Text(list.title)
+                        }
+                    }
+                    .onDelete(perform: delete)
                 }
+            } else {
+                Text("No lists")
+                    .foregroundColor(.secondary)
             }
-            .onDelete(perform: delete)
         }
+        .navigationBarTitle("Simplists")
         .onAppear {
             reload()
         }
         .onReceive(storage.objectWillChange, perform: { _ in
             reload()
         })
-        .navigationBarTitle("Simplists")
     }
 
     private func delete(at offsets: IndexSet) {

@@ -25,13 +25,18 @@ struct ListView: View {
                 .onDelete(perform: delete)
                 .onMove(perform: move)
 
-                FocusableTextField("Add new item...",
-                                   text: $newItem,
-                                   isFirstResponder: newItemHasFocus,
-                                   onCommit: addNewItem)
-                    .padding([.top, .bottom])
+                HStack {
+                    Image(systemName: "plus.circle")
+                        .foregroundColor(.secondary)
+
+                    FocusableTextField("Add new item...",
+                                       text: $newItem,
+                                       isFirstResponder: newItemHasFocus,
+                                       onCommit: addNewItem)
+                        .padding([.top, .bottom])
+                }
             }
-            .navigationBarItems(trailing: EditButton())
+            .navigationBarItems(trailing: NavBarItemsView(showEditButton: list.items.count > 0))
             .navigationBarTitle(list.title)
             .onReceive(storage.objectWillChange, perform: { _ in
                 reload()

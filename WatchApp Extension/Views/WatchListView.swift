@@ -13,13 +13,19 @@ struct WatchListView: View {
     @EnvironmentObject var storage: SMPStorage
     @State var list: SMPList
     var body: some View {
-        List {
-            ForEach(list.items) { item in
-                WatchListItemView(item: item, tapAction: {
-                    storage.updateItem(id: item.id, title: item.title, isComplete: !item.isComplete)
-                })
+        Group {
+            if list.items.count > 0 {
+                List {
+                    ForEach(list.items) { item in
+                        WatchListItemView(item: item, tapAction: {
+                            storage.updateItem(id: item.id, title: item.title, isComplete: !item.isComplete)
+                        })
+                    }
+                    .onDelete(perform: delete)
+                }
+            } else {
+                Text("No Items")
             }
-            .onDelete(perform: delete)
         }
         .navigationBarTitle(list.title)
         .onReceive(storage.objectWillChange, perform: { _ in

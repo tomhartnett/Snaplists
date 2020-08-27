@@ -23,11 +23,16 @@ struct ListsView: View {
                     }
                     .onDelete(perform: delete)
 
-                    FocusableTextField("Add new list...",
-                                       text: $newListTitle,
-                                       isFirstResponder: false,
-                                       onCommit: addNewList)
-                        .padding([.top, .bottom])
+                    HStack {
+                        Image(systemName: "plus.circle")
+                            .foregroundColor(.secondary)
+
+                        FocusableTextField("Add new list...",
+                                           text: $newListTitle,
+                                           isFirstResponder: false,
+                                           onCommit: addNewList)
+                            .padding([.top, .bottom])
+                    }
                 }
             }
             .navigationBarTitle("Lists")
