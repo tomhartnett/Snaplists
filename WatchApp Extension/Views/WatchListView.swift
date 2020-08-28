@@ -25,6 +25,7 @@ struct WatchListView: View {
                 }
             } else {
                 Text("No Items")
+                    .foregroundColor(.secondary)
             }
         }
         .navigationBarTitle(list.title)
