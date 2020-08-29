@@ -12,9 +12,17 @@ struct ListsView: View {
     @EnvironmentObject var storage: SMPStorage
     @State private var newListTitle = ""
     @State var lists: [SMPList] = []
+
+    var versionString: String {
+        let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
+        let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? ""
+
+        return "Version \(version) (\(build))"
+    }
+
     var body: some View {
         NavigationView {
-            VStack {
+            VStack(alignment: .leading) {
                 List {
                     ForEach(lists) { list in
                         NavigationLink(destination: ListView(list: list).environmentObject(storage)) {
@@ -34,6 +42,11 @@ struct ListsView: View {
                             .padding([.top, .bottom])
                     }
                 }
+
+                Spacer()
+
+                Text(versionString)
+                    .padding([.leading, .bottom])
             }
             .navigationBarTitle("Lists")
             .modifier(AdaptsToKeyboard())
