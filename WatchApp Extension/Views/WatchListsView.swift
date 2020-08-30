@@ -25,10 +25,7 @@ struct WatchListsView: View {
                 List {
                     ForEach(lists) { list in
                         NavigationLink(destination: WatchListView(list: list).environmentObject(storage)) {
-                            HStack {
-                                Image(systemName: "square")
-                                Text(list.title)
-                            }
+                            Text(list.title)
                         }
                     }
                     .onDelete(perform: delete)
