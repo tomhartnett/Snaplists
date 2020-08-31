@@ -18,16 +18,31 @@ struct ListView: View {
         VStack {
             List {
                 ForEach(list.items) { item in
-                    ListItemView(item: item, tapAction: {
-                        storage.updateItem(id: item.id, title: item.title, isComplete: !item.isComplete)
-                    })
+                    ListItemView(title: item.title,
+                                 isComplete: item.isComplete,
+                                 tapAction: {
+                                    storage.updateItem(id: item.id, title: item.title, isComplete: !item.isComplete)
+                                 }, editAction: { title in
+                                    if title.isEmpty {
+                                        storage.deleteItem(item)
+                                    } else {
+                                        storage.updateItem(id: item.id, title: title, isComplete: item.isComplete)
+                                    }
+                                 })
                 }
                 .onDelete(perform: delete)
                 .onMove(perform: move)
 
                 HStack {
-                    Image(systemName: "plus.circle")
-                        .foregroundColor(.secondary)
+                    ZStack {
+                        Circle()
+                            .stroke(Color.clear)
+                            .foregroundColor(.clear)
+                            .frame(width: 25, height: 25)
+
+                        Image(systemName: "plus.circle")
+                            .foregroundColor(.secondary)
+                    }
 
                     FocusableTextField("Add new item...",
                                        text: $newItem,

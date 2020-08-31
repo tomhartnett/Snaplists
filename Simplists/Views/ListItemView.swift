@@ -9,9 +9,13 @@ import SwiftUI
 import SimplistsKit
 
 struct ListItemView: View {
-    var item: SMPListItem
+    @State var title: String
 
-    var tapAction: () -> Void
+    var isComplete: Bool
+
+    var tapAction: (() -> Void)?
+
+    var editAction: ((String) -> Void)?
 
     var body: some View {
         HStack(spacing: 16) {
@@ -22,13 +26,15 @@ struct ListItemView: View {
 
                 Circle()
                     .frame(width: 20, height: 20)
-                    .foregroundColor(item.isComplete ? .primary : .clear)
+                    .foregroundColor(isComplete ? .primary : .clear)
+            }
+            .onTapGesture {
+                tapAction?()
             }
 
-            Text(item.title)
-        }
-        .onTapGesture {
-            tapAction()
+            FocusableTextField("", text: $title, isFirstResponder: false, onCommit: {
+                editAction?(title)
+            })
         }
     }
 }
@@ -36,8 +42,8 @@ struct ListItemView: View {
 struct ListItemView_Previews: PreviewProvider {
     static var previews: some View {
         VStack(alignment: .leading) {
-            ListItemView(item: SMPListItem(title: "Beer", isComplete: false), tapAction: {})
-            ListItemView(item: SMPListItem(title: "Bananas", isComplete: true), tapAction: {})
+            ListItemView(title: "Beer", isComplete: false)
+            ListItemView(title: "Bananas", isComplete: true)
         }
     }
 }
