@@ -23,6 +23,7 @@ struct ListView: View {
                                  tapAction: {
                                     storage.updateItem(id: item.id, title: item.title, isComplete: !item.isComplete)
                                  }, editAction: { title in
+                                    newItemHasFocus = false
                                     if title.isEmpty {
                                         storage.deleteItem(item)
                                     } else {
