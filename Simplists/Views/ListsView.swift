@@ -11,6 +11,7 @@ import SimplistsKit
 struct ListsView: View {
     @EnvironmentObject var storage: SMPStorage
     @State private var newListTitle = ""
+    @State private var isPresentingRename = false
     @State var lists: [SMPList] = []
 
     var versionString: String {
@@ -27,6 +28,28 @@ struct ListsView: View {
                     ForEach(lists) { list in
                         NavigationLink(destination: ListView(list: list).environmentObject(storage)) {
                             Text(list.title)
+                                .contextMenu {
+                                    Button(action: {
+                                        isPresentingRename.toggle()
+                                    }, label: {
+                                        Text("Rename")
+                                        Image(systemName: "pencil")
+                                    })
+
+                                    Button(action: {
+                                        storage.deleteList(list)
+                                    }, label: {
+                                        Text("Delete")
+                                        Image(systemName: "trash")
+                                    })
+                                }
+                        }
+                        .sheet(isPresented: $isPresentingRename) {
+                            RenameView(title: list.title) { text in
+                                var listToUpdate = list
+                                listToUpdate.title = text
+                                storage.updateList(listToUpdate)
+                            }
                         }
                     }
                     .onDelete(perform: delete)
@@ -48,7 +71,7 @@ struct ListsView: View {
                 Text(versionString)
                     .padding([.leading, .bottom])
             }
-            .navigationBarTitle("Lists")
+            .navigationBarTitle("Simplists")
             .modifier(AdaptsToKeyboard())
         }
         .onAppear {

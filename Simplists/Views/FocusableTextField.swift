@@ -31,6 +31,12 @@ struct FocusableTextField: UIViewRepresentable {
                 textField.resignFirstResponder()
                 parent.onCommit?()
                 return false
+            } else {
+                let currentText = textField.text ?? ""
+                guard let stringRange = Range(range, in: currentText) else { return false }
+                let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+                
+                parent.onTextChanged?(updatedText)
             }
 
             return true
@@ -41,15 +47,18 @@ struct FocusableTextField: UIViewRepresentable {
     var isFirstResponder: Bool = false
     var placeholder = ""
     var onCommit: (() -> Void)?
+    var onTextChanged: ((String) -> Void)?
 
     init(_ placeholder: String = "",
          text: Binding<String>,
          isFirstResponder: Bool,
-         onCommit: (() -> Void)? = nil) {
+         onCommit: (() -> Void)? = nil,
+         onTextChanged: ((String) -> Void)? = nil) {
         self.placeholder = placeholder
         _text = text
         self.isFirstResponder = isFirstResponder
         self.onCommit = onCommit
+        self.onTextChanged = onTextChanged
     }
 
     func makeUIView(context: Context) -> UITextField {
