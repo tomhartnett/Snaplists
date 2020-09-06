@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E21123DB2504420700B3D76D /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21123DA2504420700B3D76D /* PrivacyPolicyView.swift */; };
+		E21123DD2504441900B3D76D /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21123DC2504441900B3D76D /* AboutView.swift */; };
 		E21BBD6C2503B0A500964F67 /* RenameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21BBD6B2503B0A500964F67 /* RenameView.swift */; };
 		E22E152024E05BBC002A140E /* SMPList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E151F24E05BBC002A140E /* SMPList.swift */; };
 		E22E152124E05BBC002A140E /* SMPList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E151F24E05BBC002A140E /* SMPList.swift */; };
@@ -136,6 +138,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E21123DA2504420700B3D76D /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyView.swift; sourceTree = "<group>"; };
+		E21123DC2504441900B3D76D /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		E21BBD6B2503B0A500964F67 /* RenameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenameView.swift; sourceTree = "<group>"; };
 		E22E151F24E05BBC002A140E /* SMPList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMPList.swift; sourceTree = "<group>"; };
 		E22E152224E060C2002A140E /* ListsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsView.swift; sourceTree = "<group>"; };
@@ -230,6 +234,8 @@
 				E21BBD6B2503B0A500964F67 /* RenameView.swift */,
 				E23F380124E9ADF50000556D /* AdaptsToKeyboard.swift */,
 				E256DD6824F2E98600649855 /* FocusableTextField.swift */,
+				E21123DA2504420700B3D76D /* PrivacyPolicyView.swift */,
+				E21123DC2504441900B3D76D /* AboutView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -698,7 +704,9 @@
 			files = (
 				E235D79324DF5B59007D95BE /* AppDelegate.swift in Sources */,
 				E256DD6924F2E98600649855 /* FocusableTextField.swift in Sources */,
+				E21123DD2504441900B3D76D /* AboutView.swift in Sources */,
 				E22E152324E060C2002A140E /* ListsView.swift in Sources */,
+				E21123DB2504420700B3D76D /* PrivacyPolicyView.swift in Sources */,
 				E21BBD6C2503B0A500964F67 /* RenameView.swift in Sources */,
 				E235D79524DF5B59007D95BE /* SceneDelegate.swift in Sources */,
 				E235D79724DF5B59007D95BE /* ListView.swift in Sources */,

@@ -14,65 +14,76 @@ struct ListsView: View {
     @State private var isPresentingRename = false
     @State var lists: [SMPList] = []
 
-    var versionString: String {
-        let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
-        let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? ""
-
-        return "Version \(version) (\(build))"
-    }
-
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
                 List {
-                    ForEach(lists) { list in
-                        NavigationLink(destination: ListView(list: list).environmentObject(storage)) {
-                            Text(list.title)
-                                .contextMenu {
-                                    Button(action: {
-                                        isPresentingRename.toggle()
-                                    }, label: {
-                                        Text("Rename")
-                                        Image(systemName: "pencil")
-                                    })
+                    Section {
+                        ForEach(lists) { list in
+                            NavigationLink(destination: ListView(list: list).environmentObject(storage)) {
+                                Text(list.title)
+                                    .contextMenu {
+                                        Button(action: {
+                                            isPresentingRename.toggle()
+                                        }, label: {
+                                            Text("Rename")
+                                            Image(systemName: "pencil")
+                                        })
 
-                                    Button(action: {
-                                        storage.deleteList(list)
-                                    }, label: {
-                                        Text("Delete")
-                                        Image(systemName: "trash")
-                                    })
+                                        Button(action: {
+                                            storage.deleteList(list)
+                                        }, label: {
+                                            Text("Delete")
+                                            Image(systemName: "trash")
+                                        })
+                                    }
+                            }
+                            .sheet(isPresented: $isPresentingRename) {
+                                RenameView(title: list.title) { text in
+                                    var listToUpdate = list
+                                    listToUpdate.title = text
+                                    storage.updateList(listToUpdate)
                                 }
+                            }
                         }
-                        .sheet(isPresented: $isPresentingRename) {
-                            RenameView(title: list.title) { text in
-                                var listToUpdate = list
-                                listToUpdate.title = text
-                                storage.updateList(listToUpdate)
+                        .onDelete(perform: delete)
+
+                        HStack {
+                            Image(systemName: "plus.circle")
+                                .frame(width: 25, height: 25)
+                                .foregroundColor(.secondary)
+
+                            FocusableTextField("Add new list...",
+                                               text: $newListTitle,
+                                               isFirstResponder: false,
+                                               onCommit: addNewList)
+                                .padding([.top, .bottom])
+                        }
+                    }
+
+                    Section(header: Text("Other Stuff")) {
+                        NavigationLink(destination: PrivacyPolicyView()) {
+                            HStack {
+                                Image(systemName: "lock")
+                                    .frame(width: 25, height: 25)
+                                    .foregroundColor(Color("TextSecondary"))
+                                Text("Privacy Policy")
+                            }
+                        }
+                        NavigationLink(destination: AboutView()) {
+                            HStack {
+                                Image(systemName: "info.circle")
+                                    .frame(width: 25, height: 25)
+                                    .foregroundColor(Color("TextSecondary"))
+                                Text("About")
                             }
                         }
                     }
-                    .onDelete(perform: delete)
-
-                    HStack {
-                        Image(systemName: "plus.circle")
-                            .foregroundColor(.secondary)
-
-                        FocusableTextField("Add new list...",
-                                           text: $newListTitle,
-                                           isFirstResponder: false,
-                                           onCommit: addNewList)
-                            .padding([.top, .bottom])
-                    }
                 }
-
-                Spacer()
-
-                Text(versionString)
-                    .padding([.leading, .bottom])
+                .listStyle(GroupedListStyle())
+                .modifier(AdaptsToKeyboard())
             }
             .navigationBarTitle("Simplists")
-            .modifier(AdaptsToKeyboard())
         }
         .onAppear {
             reload()
