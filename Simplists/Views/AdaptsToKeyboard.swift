@@ -39,7 +39,7 @@ struct AdaptsToKeyboard: ViewModifier {
 
                     NotificationCenter.Publisher(center: NotificationCenter.default,
                                                  name: UIResponder.keyboardWillHideNotification)
-                        .compactMap { notification in
+                        .compactMap { _ in
                             CGFloat.zero
                     }
                     .subscribe(Subscribers.Assign(object: self, keyPath: \.currentHeight))

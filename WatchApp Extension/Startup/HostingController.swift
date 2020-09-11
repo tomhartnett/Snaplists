@@ -26,12 +26,12 @@ class HostingController: WKHostingController<AnyView> {
 
         description.cloudKitContainerOptions = NSPersistentCloudKitContainerOptions(
             containerIdentifier: "iCloud.com.sleekible.CloudKitDemo")
-        
+
         // https://developer.apple.com/documentation/coredata/consuming_relevant_store_changes
         description.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
         description.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
 
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+        container.loadPersistentStores(completionHandler: { _, error in
             if let error = error {
                 fatalError("\(#function) - Error loading persistent stores: \(error.localizedDescription)")
             }
@@ -39,7 +39,7 @@ class HostingController: WKHostingController<AnyView> {
 
         container.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
         container.viewContext.automaticallyMergesChangesFromParent = true
-        
+
         return SMPStorage(context: container.viewContext)
     }
 }

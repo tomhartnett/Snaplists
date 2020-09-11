@@ -94,7 +94,7 @@ public final class SMPStorage: ObservableObject {
         var itemIDs = listEntity.sortOrder ?? []
         itemIDs.append(item.id.uuidString)
         listEntity.sortOrder = itemIDs
-        
+
         saveChanges()
     }
 

@@ -18,7 +18,7 @@ struct ListsView: View {
         NavigationView {
             VStack(alignment: .leading) {
                 List {
-                    Section {
+                    Section(header: Text("Lists")) {
                         ForEach(lists) { list in
                             NavigationLink(destination: ListView(list: list).environmentObject(storage)) {
                                 Text(list.title)
@@ -61,7 +61,22 @@ struct ListsView: View {
                         }
                     }
 
-                    Section(header: Text("Other Stuff")) {
+                    Section(header: Text("Feedback")) {
+                        NavigationLink(destination: EmptyView()) {
+                            Image(systemName: "star")
+                                .frame(width: 25, height: 25)
+                                .foregroundColor(Color("TextSecondary"))
+                            Text("Please Rate this App")
+                        }
+                        NavigationLink(destination: EmptyView()) {
+                            Image(systemName: "envelope")
+                                .frame(width: 25, height: 25)
+                                .foregroundColor(Color("TextSecondary"))
+                            Text("Send Feedback via Email")
+                        }
+                    }
+
+                    Section(header: Text("About the App")) {
                         NavigationLink(destination: PrivacyPolicyView()) {
                             HStack {
                                 Image(systemName: "lock")

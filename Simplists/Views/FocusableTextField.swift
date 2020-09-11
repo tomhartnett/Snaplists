@@ -19,8 +19,8 @@ struct FocusableTextField: UIViewRepresentable {
         }
 
         func textFieldDidChangeSelection(_ textField: UITextField) {
-            DispatchQueue.main.async { [self] in
-                parent.text = textField.text ?? ""
+            DispatchQueue.main.async {
+                self.parent.text = textField.text ?? ""
             }
         }
 
@@ -35,7 +35,7 @@ struct FocusableTextField: UIViewRepresentable {
                 let currentText = textField.text ?? ""
                 guard let stringRange = Range(range, in: currentText) else { return false }
                 let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
-                
+
                 parent.onTextChanged?(updatedText)
             }
 

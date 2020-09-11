@@ -7,24 +7,26 @@
 
 import ClockKit
 
-
 class ComplicationController: NSObject, CLKComplicationDataSource {
 
     // MARK: - Timeline Configuration
-    
+
     func getTimelineEndDate(for complication: CLKComplication, withHandler handler: @escaping (Date?) -> Void) {
-        // Call the handler with the last entry date you can currently provide or nil if you can't support future timelines
+        // Call the handler with the last entry date you can currently provide or nil if you can't support future
+        // timelines
         handler(nil)
     }
-    
-    func getPrivacyBehavior(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationPrivacyBehavior) -> Void) {
+
+    func getPrivacyBehavior(for complication: CLKComplication,
+                            withHandler handler: @escaping (CLKComplicationPrivacyBehavior) -> Void) {
         // Call the handler with your desired behavior when the device is locked
         handler(.showOnLockScreen)
     }
 
     // MARK: - Timeline Population
-    
-    func getCurrentTimelineEntry(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTimelineEntry?) -> Void) {
+
+    func getCurrentTimelineEntry(for complication: CLKComplication,
+                                 withHandler handler: @escaping (CLKComplicationTimelineEntry?) -> Void) {
 
         var entry: CLKComplicationTimelineEntry?
 
@@ -36,8 +38,9 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     }
 
     // MARK: - Sample Templates
-    
-    func getLocalizableSampleTemplate(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTemplate?) -> Void) {
+
+    func getLocalizableSampleTemplate(for complication: CLKComplication,
+                                      withHandler handler: @escaping (CLKComplicationTemplate?) -> Void) {
 
         let template = getTemplate(for: complication)
 
