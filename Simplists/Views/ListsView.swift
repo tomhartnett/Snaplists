@@ -12,11 +12,23 @@ struct ListsView: View {
     @EnvironmentObject var storage: SMPStorage
     @State private var newListTitle = ""
     @State private var isPresentingRename = false
+    @State private var isPresentingAuthError = false
     @State var lists: [SMPList] = []
 
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
+
+                AuthenticationErrorView()
+                    .onTapGesture {
+                        isPresentingAuthError.toggle()
+                    }
+                    .alert(isPresented: $isPresentingAuthError) {
+                        Alert(title: Text("Not signed in to iCloud"),
+                              message: Text("You can still use the app, but your lists will not sync across your devices."),
+                              dismissButton: .default(Text("OK")))
+                    }
+
                 List {
                     Section(header: Text("Lists")) {
                         ForEach(lists) { list in
