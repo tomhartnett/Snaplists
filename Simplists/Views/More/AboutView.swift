@@ -49,11 +49,13 @@ struct AboutView: View {
             Text("about-created-by-text")
                 .foregroundColor(Color("TextSecondary"))
 
-            Button(action: {}) {
+            Button(action: {
+                UIApplication.shared.open(URL(string: "https://twitter.com/tomhartnett")!)
+            }, label: {
                 Text("Tom Hartnett")
                     .foregroundColor(Color("TextSecondary"))
                     .underline()
-            }
+            })
         }
     }
 }

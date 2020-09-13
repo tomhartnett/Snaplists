@@ -1,5 +1,5 @@
 //
-//  WatchListsView.swift
+//  WatchHomeView.swift
 //  WatchApp Extension
 //
 //  Created by Tom Hartnett on 8/9/20.
@@ -8,7 +8,7 @@
 import SwiftUI
 import SimplistsWatchKit
 
-struct WatchListsView: View {
+struct WatchHomeView: View {
     @EnvironmentObject var storage: SMPStorage
     @State var lists: [SMPList]
 
@@ -67,6 +67,6 @@ struct WatchListsView: View {
 
 struct ListsView_Previews: PreviewProvider {
     static var previews: some View {
-        WatchListsView(lists: [])
+        WatchHomeView(lists: [])
     }
 }

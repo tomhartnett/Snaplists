@@ -13,7 +13,7 @@
 		E22E152024E05BBC002A140E /* SMPList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E151F24E05BBC002A140E /* SMPList.swift */; };
 		E22E152124E05BBC002A140E /* SMPList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E151F24E05BBC002A140E /* SMPList.swift */; };
 		E22E152324E060C2002A140E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E152224E060C2002A140E /* HomeView.swift */; };
-		E22E152A24E0769E002A140E /* WatchListsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E152924E0769E002A140E /* WatchListsView.swift */; };
+		E22E152A24E0769E002A140E /* WatchHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E152924E0769E002A140E /* WatchHomeView.swift */; };
 		E22E152C24E0809F002A140E /* SMP+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E152B24E0809F002A140E /* SMP+CoreData.swift */; };
 		E22E152D24E080A4002A140E /* SMP+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E152B24E0809F002A140E /* SMP+CoreData.swift */; };
 		E22E153024E0871D002A140E /* SMPPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E152F24E0871D002A140E /* SMPPersistentContainer.swift */; };
@@ -146,7 +146,7 @@
 		E21BBD6B2503B0A500964F67 /* RenameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenameView.swift; sourceTree = "<group>"; };
 		E22E151F24E05BBC002A140E /* SMPList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMPList.swift; sourceTree = "<group>"; };
 		E22E152224E060C2002A140E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		E22E152924E0769E002A140E /* WatchListsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListsView.swift; sourceTree = "<group>"; };
+		E22E152924E0769E002A140E /* WatchHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchHomeView.swift; sourceTree = "<group>"; };
 		E22E152B24E0809F002A140E /* SMP+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SMP+CoreData.swift"; sourceTree = "<group>"; };
 		E22E152F24E0871D002A140E /* SMPPersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMPPersistentContainer.swift; sourceTree = "<group>"; };
 		E235D78F24DF5B59007D95BE /* Simplists.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Simplists.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -233,17 +233,14 @@
 		E22E152424E06963002A140E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E2A32107250E8AC600A022B8 /* More */,
+				E2A32104250E8AA200A022B8 /* Shared */,
+				E2A32103250E8A9A00A022B8 /* ViewModifiers */,
 				E26DD858250BA13E00FCC495 /* AuthenticationErrorView.swift */,
+				E22E152224E060C2002A140E /* HomeView.swift */,
 				E235D79624DF5B59007D95BE /* ListView.swift */,
 				E235D7F524E04B42007D95BE /* ListItemView.swift */,
-				E22E152224E060C2002A140E /* HomeView.swift */,
-				E2ECD76024F74B560046AEC9 /* NavBarItemsView.swift */,
 				E21BBD6B2503B0A500964F67 /* RenameView.swift */,
-				E23F380124E9ADF50000556D /* AdaptsToKeyboard.swift */,
-				E256DD6824F2E98600649855 /* FocusableTextField.swift */,
-				E21123DA2504420700B3D76D /* PrivacyPolicyView.swift */,
-				E21123DC2504441900B3D76D /* AboutView.swift */,
-				E2A32101250E628200A022B8 /* MoreView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -262,7 +259,7 @@
 			children = (
 				E235D7BB24DF5B89007D95BE /* WatchListView.swift */,
 				E235D7F924E04C3F007D95BE /* WatchListItemView.swift */,
-				E22E152924E0769E002A140E /* WatchListsView.swift */,
+				E22E152924E0769E002A140E /* WatchHomeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -397,6 +394,33 @@
 				E235D80E24E050CD007D95BE /* Info.plist */,
 			);
 			path = SimplistsWatchKit;
+			sourceTree = "<group>";
+		};
+		E2A32103250E8A9A00A022B8 /* ViewModifiers */ = {
+			isa = PBXGroup;
+			children = (
+				E23F380124E9ADF50000556D /* AdaptsToKeyboard.swift */,
+			);
+			path = ViewModifiers;
+			sourceTree = "<group>";
+		};
+		E2A32104250E8AA200A022B8 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				E256DD6824F2E98600649855 /* FocusableTextField.swift */,
+				E2ECD76024F74B560046AEC9 /* NavBarItemsView.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		E2A32107250E8AC600A022B8 /* More */ = {
+			isa = PBXGroup;
+			children = (
+				E21123DC2504441900B3D76D /* AboutView.swift */,
+				E2A32101250E628200A022B8 /* MoreView.swift */,
+				E21123DA2504420700B3D76D /* PrivacyPolicyView.swift */,
+			);
+			path = More;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -755,7 +779,7 @@
 				E235D7FA24E04C3F007D95BE /* WatchListItemView.swift in Sources */,
 				E235D7BA24DF5B89007D95BE /* HostingController.swift in Sources */,
 				E235D7BE24DF5B89007D95BE /* ExtensionDelegate.swift in Sources */,
-				E22E152A24E0769E002A140E /* WatchListsView.swift in Sources */,
+				E22E152A24E0769E002A140E /* WatchHomeView.swift in Sources */,
 				E235D7C424DF5B89007D95BE /* ComplicationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

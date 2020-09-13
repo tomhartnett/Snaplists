@@ -14,7 +14,7 @@ import SimplistsWatchKit
 class HostingController: WKHostingController<AnyView> {
     override var body: AnyView {
         let storage = createStorage()
-        return AnyView(WatchListsView(lists: []).environmentObject(storage))
+        return AnyView(WatchHomeView(lists: []).environmentObject(storage))
     }
 
     private func createStorage() -> SMPStorage {
