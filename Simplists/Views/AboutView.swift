@@ -12,8 +12,9 @@ struct AboutView: View {
     var versionString: String {
         let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "?"
         let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "?"
+        let versionFormatString = NSLocalizedString("about-version-format-string", comment: "")
 
-        return "Version \(version) (\(build))"
+        return String(format: versionFormatString, version, build)
     }
 
     var copyRightString: String {
@@ -30,7 +31,7 @@ struct AboutView: View {
 
     var body: some View {
         VStack(spacing: 8) {
-            Text("Simplists")
+            Text("about-header-text")
                 .font(.system(size: 48))
                 .fontWeight(.semibold)
 
@@ -45,7 +46,7 @@ struct AboutView: View {
             Text(copyRightString)
                 .foregroundColor(Color("TextSecondary"))
 
-            Text("Created By")
+            Text("about-created-by-text")
                 .foregroundColor(Color("TextSecondary"))
 
             Button(action: {}) {

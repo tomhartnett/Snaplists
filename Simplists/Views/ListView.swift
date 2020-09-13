@@ -45,7 +45,7 @@ struct ListView: View {
                             .foregroundColor(.secondary)
                     }
 
-                    FocusableTextField("Add new item...",
+                    FocusableTextField(NSLocalizedString("list-new-item-placeholder", comment: ""),
                                        text: $newItem,
                                        isFirstResponder: newItemHasFocus,
                                        onCommit: addNewItem)

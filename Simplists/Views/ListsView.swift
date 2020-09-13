@@ -24,13 +24,13 @@ struct ListsView: View {
                         isPresentingAuthError.toggle()
                     }
                     .alert(isPresented: $isPresentingAuthError) {
-                        Alert(title: Text("Not signed in to iCloud"),
-                              message: Text("You can still use the app, but your lists will not sync across your devices."),
-                              dismissButton: .default(Text("OK")))
+                        Alert(title: Text("icloud-warning-alert-title"),
+                              message: Text("icloud-warning-alert-message"),
+                              dismissButton: .default(Text("icloud-warning-alert-button-text")))
                     }
 
                 List {
-                    Section(header: Text("Lists")) {
+                    Section(header: Text("home-section-lists-header")) {
                         ForEach(lists) { list in
                             NavigationLink(destination: ListView(list: list).environmentObject(storage)) {
                                 Text(list.title)
@@ -38,14 +38,14 @@ struct ListsView: View {
                                         Button(action: {
                                             isPresentingRename.toggle()
                                         }, label: {
-                                            Text("Rename")
+                                            Text("home-rename-button-text")
                                             Image(systemName: "pencil")
                                         })
 
                                         Button(action: {
                                             storage.deleteList(list)
                                         }, label: {
-                                            Text("Delete")
+                                            Text("home-delete-button-text")
                                             Image(systemName: "trash")
                                         })
                                     }
@@ -65,7 +65,7 @@ struct ListsView: View {
                                 .frame(width: 25, height: 25)
                                 .foregroundColor(.secondary)
 
-                            FocusableTextField("Add new list...",
+                            FocusableTextField(NSLocalizedString("home-add-list-placeholder", comment: ""),
                                                text: $newListTitle,
                                                isFirstResponder: false,
                                                onCommit: addNewList)
@@ -78,13 +78,13 @@ struct ListsView: View {
                             Image(systemName: "star")
                                 .frame(width: 25, height: 25)
                                 .foregroundColor(Color("TextSecondary"))
-                            Text("Please Rate this App")
+                            Text("home-rate-app-text")
                         }
                         NavigationLink(destination: EmptyView()) {
                             Image(systemName: "envelope")
                                 .frame(width: 25, height: 25)
                                 .foregroundColor(Color("TextSecondary"))
-                            Text("Send Feedback via Email")
+                            Text("home-email-feedback-text")
                         }
                     }
 
@@ -94,7 +94,7 @@ struct ListsView: View {
                                 Image(systemName: "lock")
                                     .frame(width: 25, height: 25)
                                     .foregroundColor(Color("TextSecondary"))
-                                Text("Privacy Policy")
+                                Text("home-privacy-policy-text")
                             }
                         }
                         NavigationLink(destination: AboutView()) {
@@ -102,7 +102,7 @@ struct ListsView: View {
                                 Image(systemName: "info.circle")
                                     .frame(width: 25, height: 25)
                                     .foregroundColor(Color("TextSecondary"))
-                                Text("About")
+                                Text("home-about-text")
                             }
                         }
                     }
@@ -110,7 +110,7 @@ struct ListsView: View {
                 .listStyle(GroupedListStyle())
                 .modifier(AdaptsToKeyboard())
             }
-            .navigationBarTitle("Simplists")
+            .navigationBarTitle("home-navigation-bar-title")
         }
         .onAppear {
             reload()

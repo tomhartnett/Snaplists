@@ -17,7 +17,7 @@ struct RenameView: View {
     var body: some View {
         NavigationView {
             Form {
-                FocusableTextField("Enter name...",
+                FocusableTextField(NSLocalizedString("rename-name-placeholder", comment: ""),
                                    text: $title,
                                    isFirstResponder: false,
                                    onCommit: {
@@ -31,17 +31,17 @@ struct RenameView: View {
                 leading: Button(action: {
                     dismiss()
                 }) {
-                    Text("Cancel")
+                    Text("rename-cancel-button-text")
                         .fontWeight(.regular)
                 },
                 trailing: Button(action: {
                     saveChanges()
                 }) {
-                    Text("Done")
+                    Text("rename-done-button-text")
                         .fontWeight(.semibold)
                         .foregroundColor(isDoneEnabled ? .primary : .secondary)
                 }.disabled(!isDoneEnabled))
-            .navigationBarTitle("Rename", displayMode: .inline)
+            .navigationBarTitle("rename-navigation-bar-title", displayMode: .inline)
         }
     }
 

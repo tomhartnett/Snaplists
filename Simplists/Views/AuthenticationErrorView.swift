@@ -20,7 +20,7 @@ struct AuthenticationErrorView: View {
                 HStack {
                     Image(systemName: "exclamationmark.triangle")
                         .frame(width: 25, height: 25)
-                    Text("Warning: not signed in to iCloud")
+                    Text("icloud-warning-banner-text")
                 }
                 .padding([.vertical], 4)
                 .foregroundColor(Color("WarningForeground"))

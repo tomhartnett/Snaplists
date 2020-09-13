@@ -1,0 +1,37 @@
+/* 
+  Localizable.strings
+  Simplists
+
+  Created by Tom Hartnett on 9/12/20.
+  
+*/
+
+"icloud-warning-banner-text" = "Warning: not signed in to iCloud";
+"icloud-warning-alert-title" = "Not signed in to iCloud";
+"icloud-warning-alert-message" = "You can still use the app, but your lists will not sync across your devices.";
+"icloud-warning-alert-button-text" = "OK";
+
+"home-navigation-bar-title" = "Simplists";
+"home-section-lists-header" = "Lists";
+"home-rename-button-text" = "Rename";
+"home-delete-button-text" = "Delete";
+"home-add-list-placeholder" = "Add new list...";
+
+"home-section-feedback-header" = "Feedback";
+"home-rate-app-text" = "Please Rate this App";
+"home-email-feedback-text" = "Send Feedback via Email";
+
+"home-section-about-header" = "About the App";
+"home-privacy-policy-text" = "Privacy Policy";
+"home-about-text" = "About";
+
+"rename-navigation-bar-title" = "Rename";
+"rename-name-placeholder" = "Enter name...";
+"rename-cancel-button-text" = "Cancel";
+"rename-done-button-text" = "Done";
+
+"list-new-item-placeholder" = "Add new item...";
+
+"about-header-text" = "Simplists";
+"about-created-by-text" = "Created by";
+"about-version-format-string" = "Version %@ (%@)";
