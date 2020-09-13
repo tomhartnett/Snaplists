@@ -13,7 +13,6 @@ struct HomeView: View {
     @State private var newListTitle = ""
     @State private var isPresentingRename = false
     @State private var isPresentingAuthError = false
-    @State private var isPresentingMore = false
     @State var lists: [SMPList] = []
 
     var body: some View {
@@ -31,7 +30,7 @@ struct HomeView: View {
                     }
 
                 List {
-                    Section(header: Text("home-section-lists-header")) {
+                    Section {
                         ForEach(lists) { list in
                             NavigationLink(destination: ListView(list: list).environmentObject(storage)) {
                                 Text(list.title)
@@ -83,15 +82,10 @@ struct HomeView: View {
                         }
                     }
                 }
+                .navigationBarTitle("home-navigation-bar-title")
                 .listStyle(GroupedListStyle())
                 .modifier(AdaptsToKeyboard())
             }
-            .navigationBarTitle("home-navigation-bar-title")
-            .navigationBarItems(trailing: Button(action: {
-                isPresentingMore.toggle()
-            }, label: {
-                Image(systemName: "ellipsis.circle")
-            }))
         }
         .onAppear {
             reload()
@@ -99,9 +93,6 @@ struct HomeView: View {
         .onReceive(storage.objectWillChange, perform: { _ in
             reload()
         })
-        .sheet(isPresented: $isPresentingMore) {
-            MoreView()
-        }
     }
 
     private func delete(at offsets: IndexSet) {

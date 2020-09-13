@@ -12,18 +12,17 @@
 "icloud-warning-alert-button-text" = "OK";
 
 "home-navigation-bar-title" = "Simplists";
-"home-section-lists-header" = "Lists";
 "home-rename-button-text" = "Rename";
 "home-delete-button-text" = "Delete";
 "home-add-list-placeholder" = "Add new list...";
 
-"home-section-feedback-header" = "Feedback";
-"home-rate-app-text" = "Please Rate this App";
-"home-email-feedback-text" = "Send Feedback via Email";
-
-"home-section-about-header" = "About the App";
-"home-privacy-policy-text" = "Privacy Policy";
-"home-about-text" = "About";
+"more-navigation-bar-title" = "More";
+"more-section-feedback-header" = "Feedback";
+"more-rate-app-text" = "Please Rate this App";
+"more-email-feedback-text" = "Send Feedback via Email";
+"more-section-about-header" = "About the App";
+"more-privacy-policy-text" = "Privacy Policy";
+"more-about-text" = "About";
 
 "rename-navigation-bar-title" = "Rename";
 "rename-name-placeholder" = "Enter name...";
