@@ -5,12 +5,14 @@
 //  Created by Tom Hartnett on 8/9/20.
 //
 
+import CloudKit
 import SwiftUI
 import SimplistsWatchKit
 
 struct WatchHomeView: View {
     @EnvironmentObject var storage: SMPStorage
     @State var lists: [SMPList]
+    @State private var isPresentingAuthError = false
 
     var versionString: String {
         let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
@@ -47,10 +49,14 @@ struct WatchHomeView: View {
         .navigationBarTitle("Simplists")
         .onAppear {
             reload()
+            checkAccountStatus()
         }
         .onReceive(storage.objectWillChange, perform: { _ in
             reload()
         })
+        .sheet(isPresented: $isPresentingAuthError) {
+            AuthenticationErrorView()
+        }
     }
 
     private func delete(at offsets: IndexSet) {
@@ -62,6 +68,15 @@ struct WatchHomeView: View {
 
     private func reload() {
         lists = storage.getLists()
+    }
+
+    private func checkAccountStatus() {
+        let container = CKContainer.default()
+        container.accountStatus { status, _ in
+            if status != .available {
+                self.isPresentingAuthError.toggle()
+            }
+        }
     }
 }
 

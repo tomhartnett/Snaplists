@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  Simplists
+
+  Created by Tom Hartnett on 9/22/20.
+  
+*/
+
+"icloud-error-title" = "Not signed in";
+"icloud-error-message" = "Sign in to iCloud on your iPhone to use this app";
+
+"list-no-items" = "No Items";

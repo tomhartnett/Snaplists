@@ -23,6 +23,10 @@ struct WatchListItemView: View {
                 Circle()
                     .frame(width: 20, height: 20)
                     .foregroundColor(item.isComplete ? .white : .clear)
+
+                Image(systemName: "checkmark")
+                    .frame(width: 13, height: 13)
+                    .foregroundColor(item.isComplete ? .black : .clear)
             }
 
             Text(item.title)
