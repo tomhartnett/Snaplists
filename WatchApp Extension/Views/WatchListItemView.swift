@@ -25,7 +25,7 @@ struct WatchListItemView: View {
                     .foregroundColor(item.isComplete ? .white : .clear)
 
                 Image(systemName: "checkmark")
-                    .frame(width: 13, height: 13)
+                    .font(.system(size: 15, weight: .bold))
                     .foregroundColor(item.isComplete ? .black : .clear)
             }
 

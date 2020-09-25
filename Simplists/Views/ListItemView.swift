@@ -27,6 +27,10 @@ struct ListItemView: View {
                 Circle()
                     .frame(width: 20, height: 20)
                     .foregroundColor(isComplete ? .primary : .clear)
+
+                Image(systemName: "checkmark")
+                    .font(.system(size: 15, weight: .bold))
+                    .foregroundColor(isComplete ? Color(.systemBackground) : .clear)
             }
             .onTapGesture {
                 tapAction?()
