@@ -28,7 +28,7 @@ public final class SMPStorage: ObservableObject {
         var lists: [SMPList] = []
 
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "List")
-        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+        request.sortDescriptors = [NSSortDescriptor(key: "modified", ascending: false)]
 
         do {
             if let results = try context.fetch(request) as? [ListEntity] {
@@ -51,6 +51,7 @@ public final class SMPStorage: ObservableObject {
         let listEntity = ListEntity(context: context)
         listEntity.identifier = list.id
         listEntity.title = list.title
+        listEntity.modified = Date()
 
         saveChanges()
     }
@@ -62,6 +63,7 @@ public final class SMPStorage: ObservableObject {
 
         let itemIDs = list.items.map { $0.id.uuidString }
         listEntity.sortOrder = itemIDs
+        listEntity.modified = Date()
 
         saveChanges()
     }
@@ -94,23 +96,34 @@ public final class SMPStorage: ObservableObject {
         var itemIDs = listEntity.sortOrder ?? []
         itemIDs.append(item.id.uuidString)
         listEntity.sortOrder = itemIDs
+        listEntity.modified = Date()
 
         saveChanges()
     }
 
-    public func deleteItem(_ item: SMPListItem) {
+    public func deleteItem(_ item: SMPListItem, list: SMPList? = nil) {
         guard let itemEntity = getItemEntity(with: item.id) else { return }
+
+        if let list = list, let listEntity = getListEntity(with: list.id) {
+            listEntity.modified = Date()
+            listEntity.sortOrder = list.items.filter({ $0.id != item.id }).map { $0.id.uuidString }
+        }
 
         context.delete(itemEntity)
 
         saveChanges()
     }
 
-    public func updateItem(id: UUID, title: String, isComplete: Bool) {
+    public func updateItem(id: UUID, title: String, isComplete: Bool, list: SMPList? = nil) {
         guard let itemEntity = getItemEntity(with: id) else { return }
 
         itemEntity.title = title
         itemEntity.isComplete = isComplete
+
+        if let list = list, let listEntity = getListEntity(with: list.id) {
+            listEntity.modified = Date()
+            listEntity.sortOrder = list.items.map { $0.id.uuidString }
+        }
 
         saveChanges()
     }

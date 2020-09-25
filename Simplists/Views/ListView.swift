@@ -21,13 +21,20 @@ struct ListView: View {
                     ListItemView(title: item.title,
                                  isComplete: item.isComplete,
                                  tapAction: {
-                                    storage.updateItem(id: item.id, title: item.title, isComplete: !item.isComplete)
+                                    storage.updateItem(id: item.id,
+                                                       title: item.title,
+                                                       isComplete: !item.isComplete,
+                                                       list: list)
                                  }, editAction: { title in
                                     newItemHasFocus = false
                                     if title.isEmpty {
-                                        storage.deleteItem(item)
+                                        storage.deleteItem(item, list: list)
                                     } else {
-                                        storage.updateItem(id: item.id, title: title, isComplete: item.isComplete)
+                                        storage.updateItem(id: item.id,
+                                                           title: title,
+                                                           isComplete:
+                                                            item.isComplete,
+                                                           list: list)
                                     }
                                  })
                 }
@@ -77,7 +84,7 @@ struct ListView: View {
 
     private func delete(at offsets: IndexSet) {
         offsets.forEach {
-            storage.deleteItem(list.items[$0])
+            storage.deleteItem(list.items[$0], list: list)
         }
         list.items.remove(atOffsets: offsets)
     }

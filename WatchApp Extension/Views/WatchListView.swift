@@ -18,7 +18,7 @@ struct WatchListView: View {
                 List {
                     ForEach(list.items) { item in
                         WatchListItemView(item: item, tapAction: {
-                            storage.updateItem(id: item.id, title: item.title, isComplete: !item.isComplete)
+                            storage.updateItem(id: item.id, title: item.title, isComplete: !item.isComplete, list: list)
                         })
                     }
                     .onDelete(perform: delete)
@@ -36,7 +36,7 @@ struct WatchListView: View {
 
     private func delete(at offsets: IndexSet) {
         offsets.forEach {
-            storage.deleteItem(list.items[$0])
+            storage.deleteItem(list.items[$0], list: list)
         }
         list.items.remove(atOffsets: offsets)
     }
