@@ -65,6 +65,18 @@ public final class SMPStorage: ObservableObject {
         listEntity.sortOrder = itemIDs
         listEntity.modified = Date()
 
+        list.items.forEach {
+            if let itemEntity = getItemEntity(with: $0.id) {
+                if itemEntity.title != $0.title {
+                    itemEntity.title = $0.title
+                }
+
+                if itemEntity.isComplete != $0.isComplete {
+                    itemEntity.isComplete = $0.isComplete
+                }
+            }
+        }
+
         saveChanges()
     }
 

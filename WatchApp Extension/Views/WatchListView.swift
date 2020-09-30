@@ -18,7 +18,7 @@ struct WatchListView: View {
                 List {
                     ForEach(list.items) { item in
                         WatchListItemView(item: item, tapAction: {
-                            storage.updateItem(id: item.id, title: item.title, isComplete: !item.isComplete, list: list)
+                            updateItem(id: item.id, title: item.title, isComplete: !item.isComplete)
                         })
                     }
                     .onDelete(perform: delete)
@@ -47,6 +47,30 @@ struct WatchListView: View {
         } else {
             presentationMode.wrappedValue.dismiss()
         }
+    }
+
+    private func updateItem(id: UUID,
+                            title: String,
+                            isComplete: Bool) {
+
+        guard let itemIndex = list.items.firstIndex(where: { $0.id == id }),
+              let currentCheckedStatus = list.items.first(where: { $0.id == id })?.isComplete else { return }
+
+        let lastUncheckedItem = isComplete &&
+            list.items.filter({ $0.isComplete == true }).count == list.items.count - 1
+        let lastCheckedItem = !isComplete &&
+            list.items.filter({ $0.isComplete == false }).count == list.items.count - 1
+
+        let firstCheckedItemOrEnd = list.items.firstIndex(where: { $0.isComplete }) ?? list.items.endIndex
+
+        list.items[itemIndex].title = title
+        list.items[itemIndex].isComplete = isComplete
+
+        if currentCheckedStatus != isComplete && !lastCheckedItem && !lastUncheckedItem {
+            list.items.move(fromOffsets: IndexSet(integer: itemIndex), toOffset: firstCheckedItemOrEnd)
+        }
+
+        storage.updateList(list)
     }
 }
 

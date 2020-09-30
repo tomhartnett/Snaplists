@@ -21,20 +21,13 @@ struct ListView: View {
                     ListItemView(title: item.title,
                                  isComplete: item.isComplete,
                                  tapAction: {
-                                    storage.updateItem(id: item.id,
-                                                       title: item.title,
-                                                       isComplete: !item.isComplete,
-                                                       list: list)
+                                    updateItem(id: item.id, title: item.title, isComplete: !item.isComplete)
                                  }, editAction: { title in
                                     newItemHasFocus = false
                                     if title.isEmpty {
                                         storage.deleteItem(item, list: list)
                                     } else {
-                                        storage.updateItem(id: item.id,
-                                                           title: title,
-                                                           isComplete:
-                                                            item.isComplete,
-                                                           list: list)
+                                        updateItem(id: item.id, title: title, isComplete: item.isComplete)
                                     }
                                  })
                 }
@@ -100,6 +93,30 @@ struct ListView: View {
         } else {
             presentationMode.wrappedValue.dismiss()
         }
+    }
+
+    private func updateItem(id: UUID,
+                            title: String,
+                            isComplete: Bool) {
+
+        guard let itemIndex = list.items.firstIndex(where: { $0.id == id }),
+              let currentCheckedStatus = list.items.first(where: { $0.id == id })?.isComplete else { return }
+
+        let lastUncheckedItem = isComplete &&
+            list.items.filter({ $0.isComplete == true }).count == list.items.count - 1
+        let lastCheckedItem = !isComplete &&
+            list.items.filter({ $0.isComplete == false }).count == list.items.count - 1
+
+        let firstCheckedItemOrEnd = list.items.firstIndex(where: { $0.isComplete }) ?? list.items.endIndex
+
+        list.items[itemIndex].title = title
+        list.items[itemIndex].isComplete = isComplete
+
+        if currentCheckedStatus != isComplete && !lastCheckedItem && !lastUncheckedItem {
+            list.items.move(fromOffsets: IndexSet(integer: itemIndex), toOffset: firstCheckedItemOrEnd)
+        }
+
+        storage.updateList(list)
     }
 }
 
