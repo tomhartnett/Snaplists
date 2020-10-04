@@ -66,6 +66,13 @@
             ReferencedContainer = "container:Simplists.xcodeproj">
          </BuildableReference>
       </RemoteRunnable>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "DEBUG_AUTH"
+            value = "1"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

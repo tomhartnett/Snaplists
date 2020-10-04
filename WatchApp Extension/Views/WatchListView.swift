@@ -24,7 +24,7 @@ struct WatchListView: View {
                     .onDelete(perform: delete)
                 }
             } else {
-                Text("list-no-items")
+                Text("list-no-items-message")
                     .foregroundColor(.secondary)
             }
         }

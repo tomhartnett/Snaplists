@@ -9,4 +9,7 @@
 "icloud-error-title" = "Not signed in";
 "icloud-error-message" = "Sign in to iCloud on your iPhone to use this app";
 
-"list-no-items" = "No Items";
+"home-no-items-message" = "No lists";
+"home-new-list-button.title" = "New List";
+
+"list-no-items-message" = "No items";

@@ -9,10 +9,23 @@ import CloudKit
 import SwiftUI
 import SimplistsWatchKit
 
+struct BlueButtonStyle: PrimitiveButtonStyle {
+    typealias Body = Button
+
+    func makeBody(configuration: Configuration) -> some View {
+        return Button(configuration)
+            .background(Color("iMessage Blue Button"))
+            .clipShape(RoundedRectangle(cornerRadius: 20))
+    }
+}
+
 struct WatchHomeView: View {
     @EnvironmentObject var storage: SMPStorage
     @State var lists: [SMPList]
+    @State private var newListTitle = ""
     @State private var isPresentingAuthError = false
+    @State private var isPresentingNewList = false
+    @State private var scrollAmount = 0.0
 
     var versionString: String {
         let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
@@ -22,29 +35,37 @@ struct WatchHomeView: View {
     }
 
     var body: some View {
-        Group {
-            if lists.count > 0 {
-                List {
+        VStack {
+            List {
+                Button("home-new-list-button.title") {
+                    isPresentingNewList.toggle()
+                }
+                .buttonStyle(PlainButtonStyle())
+                .frame(maxWidth: .infinity, maxHeight: 44)
+                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                .background(Color("iMessage Blue Button"))
+                .clipShape(RoundedRectangle(cornerRadius: 8))
+                .listRowBackground(Color.clear)
+
+                if lists.count > 0 {
                     ForEach(lists) { list in
                         NavigationLink(destination: WatchListView(list: list).environmentObject(storage)) {
                             Text(list.title)
                         }
                     }
                     .onDelete(perform: delete)
+                } else {
+                    Text("home-no-items-message")
+                        .frame(height: 88)
+                        .foregroundColor(.secondary)
+                        .listRowBackground(Color.clear)
                 }
-            } else {
 
-                Spacer()
-
-                Text("No lists")
+                Text(versionString)
+                    .font(.footnote)
                     .foregroundColor(.secondary)
+                    .listRowBackground(Color.clear)
             }
-
-            Spacer()
-
-            Text(versionString)
-                .font(.footnote)
-                .foregroundColor(.secondary)
         }
         .navigationBarTitle("Simplists")
         .onAppear {
@@ -57,6 +78,23 @@ struct WatchHomeView: View {
         .sheet(isPresented: $isPresentingAuthError) {
             AuthenticationErrorView()
         }
+        .sheet(isPresented: $isPresentingNewList, content: {
+            AddNewListView(saveAction: { newListTitle in
+                isPresentingNewList = false
+                addNewList(newListTitle: newListTitle)
+            })
+        })
+    }
+
+    private func addNewList(newListTitle: String) {
+        if newListTitle.isEmpty {
+            return
+        }
+
+        let list = SMPList(title: newListTitle)
+        lists.insert(list, at: 0)
+
+        storage.addList(list)
     }
 
     private func delete(at offsets: IndexSet) {
@@ -73,7 +111,8 @@ struct WatchHomeView: View {
     private func checkAccountStatus() {
         let container = CKContainer.default()
         container.accountStatus { status, _ in
-            if status != .available {
+            let isDebugAuthEnabled = ProcessInfo.processInfo.environment["DEBUG_AUTH"] == "1"
+            if !isDebugAuthEnabled && status != .available {
                 self.isPresentingAuthError.toggle()
             }
         }
