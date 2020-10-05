@@ -25,7 +25,6 @@ struct WatchHomeView: View {
     @State private var newListTitle = ""
     @State private var isPresentingAuthError = false
     @State private var isPresentingNewList = false
-    @State private var scrollAmount = 0.0
 
     var versionString: String {
         let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
@@ -78,12 +77,12 @@ struct WatchHomeView: View {
         .sheet(isPresented: $isPresentingAuthError) {
             AuthenticationErrorView()
         }
-        .sheet(isPresented: $isPresentingNewList, content: {
-            AddNewListView(saveAction: { newListTitle in
+        .sheet(isPresented: $isPresentingNewList) {
+            WatchAddNewView(placeholderText: "List name...", saveAction: { newListTitle in
                 isPresentingNewList = false
                 addNewList(newListTitle: newListTitle)
             })
-        })
+        }
     }
 
     private func addNewList(newListTitle: String) {

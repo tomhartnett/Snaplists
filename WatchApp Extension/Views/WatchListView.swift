@@ -12,26 +12,58 @@ struct WatchListView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var storage: SMPStorage
     @State var list: SMPList
+    @State private var isPresentingNewItem = false
+
     var body: some View {
-        Group {
-            if list.items.count > 0 {
-                List {
+        VStack {
+            List {
+                if list.items.count > 0 {
                     ForEach(list.items) { item in
                         WatchListItemView(item: item, tapAction: {
                             updateItem(id: item.id, title: item.title, isComplete: !item.isComplete)
                         })
                     }
                     .onDelete(perform: delete)
+                } else {
+                    Text("list-no-items-message")
+                        .frame(height: 88)
+                        .foregroundColor(.secondary)
+                        .listRowBackground(Color.clear)
                 }
-            } else {
-                Text("list-no-items-message")
-                    .foregroundColor(.secondary)
+
+                Button("list-new-item-button.title") {
+                    isPresentingNewItem.toggle()
+                }
+                .buttonStyle(PlainButtonStyle())
+                .frame(maxWidth: .infinity, maxHeight: 44)
+                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                .background(Color("iMessage Blue Button"))
+                .clipShape(RoundedRectangle(cornerRadius: 8))
+                .listRowBackground(Color.clear)
             }
+
         }
         .navigationBarTitle(list.title)
         .onReceive(storage.objectWillChange, perform: { _ in
             reload()
         })
+        .sheet(isPresented: $isPresentingNewItem) {
+            WatchAddNewView(placeholderText: "Item name...", saveAction: { newItemTitle in
+                isPresentingNewItem = false
+                addNewItem(newItemTitle: newItemTitle)
+            })
+        }
+    }
+
+    private func addNewItem(newItemTitle: String) {
+        if newItemTitle.isEmpty {
+            return
+        }
+
+        let item = SMPListItem(title: newItemTitle, isComplete: false)
+        list.items.append(item)
+
+        storage.addItem(item, to: list)
     }
 
     private func delete(at offsets: IndexSet) {
