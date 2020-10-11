@@ -9,16 +9,6 @@ import CloudKit
 import SwiftUI
 import SimplistsWatchKit
 
-struct BlueButtonStyle: PrimitiveButtonStyle {
-    typealias Body = Button
-
-    func makeBody(configuration: Configuration) -> some View {
-        return Button(configuration)
-            .background(Color("iMessage Blue Button"))
-            .clipShape(RoundedRectangle(cornerRadius: 20))
-    }
-}
-
 struct WatchHomeView: View {
     @EnvironmentObject var storage: SMPStorage
     @State var lists: [SMPList]
@@ -39,12 +29,7 @@ struct WatchHomeView: View {
                 Button("home-new-list-button.title") {
                     isPresentingNewList.toggle()
                 }
-                .buttonStyle(PlainButtonStyle())
-                .frame(maxWidth: .infinity, maxHeight: 44)
-                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-                .background(Color("iMessage Blue Button"))
-                .clipShape(RoundedRectangle(cornerRadius: 8))
-                .listRowBackground(Color.clear)
+                .modifier(BlueButtonStyle())
 
                 if lists.count > 0 {
                     ForEach(lists) { list in

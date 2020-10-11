@@ -34,13 +34,9 @@ struct WatchListView: View {
                 Button("list-new-item-button.title") {
                     isPresentingNewItem.toggle()
                 }
-                .buttonStyle(PlainButtonStyle())
-                .frame(maxWidth: .infinity, maxHeight: 44)
-                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-                .background(Color("iMessage Blue Button"))
-                .clipShape(RoundedRectangle(cornerRadius: 8))
-                .listRowBackground(Color.clear)
+                .modifier(BlueButtonStyle())
             }
+            .animation(.default)
 
         }
         .navigationBarTitle(list.title)
