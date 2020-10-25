@@ -84,7 +84,6 @@ struct HomeView: View {
                 }
                 .navigationBarTitle("home-navigation-bar-title")
                 .listStyle(GroupedListStyle())
-                .modifier(AdaptsToKeyboard())
             }
         }
         .onAppear {

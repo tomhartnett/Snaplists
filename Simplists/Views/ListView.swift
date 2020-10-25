@@ -58,7 +58,6 @@ struct ListView: View {
                 reload()
             })
         }
-        .modifier(AdaptsToKeyboard())
     }
 
     private func addNewItem() {

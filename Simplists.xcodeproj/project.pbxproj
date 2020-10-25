@@ -48,7 +48,6 @@
 		E235D81324E050CD007D95BE /* SimplistsWatchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E235D80B24E050CD007D95BE /* SimplistsWatchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E235D81724E050DC007D95BE /* SMPStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D7F324E046D7007D95BE /* SMPStorage.swift */; };
 		E235D81824E050DF007D95BE /* SMPListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D7FB24E04CC1007D95BE /* SMPListItem.swift */; };
-		E23F380224E9ADF50000556D /* AdaptsToKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23F380124E9ADF50000556D /* AdaptsToKeyboard.swift */; };
 		E24FACA4251CEC7C002B0B97 /* AuthenticationErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24FACA3251CEC7C002B0B97 /* AuthenticationErrorView.swift */; };
 		E256DD6924F2E98600649855 /* FocusableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E256DD6824F2E98600649855 /* FocusableTextField.swift */; };
 		E260CC43251A1DF000208E90 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E260CC42251A1DF000208E90 /* Localizable.strings */; };
@@ -187,7 +186,6 @@
 		E235D80B24E050CD007D95BE /* SimplistsWatchKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SimplistsWatchKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E235D80D24E050CD007D95BE /* SimplistsWatchKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimplistsWatchKit.h; sourceTree = "<group>"; };
 		E235D80E24E050CD007D95BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E23F380124E9ADF50000556D /* AdaptsToKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptsToKeyboard.swift; sourceTree = "<group>"; };
 		E24FACA3251CEC7C002B0B97 /* AuthenticationErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationErrorView.swift; sourceTree = "<group>"; };
 		E256DD6824F2E98600649855 /* FocusableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusableTextField.swift; sourceTree = "<group>"; };
 		E260CC42251A1DF000208E90 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -243,7 +241,6 @@
 			children = (
 				E2A32107250E8AC600A022B8 /* More */,
 				E2A32104250E8AA200A022B8 /* Shared */,
-				E2A32103250E8A9A00A022B8 /* ViewModifiers */,
 				E26DD858250BA13E00FCC495 /* AuthenticationErrorView.swift */,
 				E22E152224E060C2002A140E /* HomeView.swift */,
 				E235D79624DF5B59007D95BE /* ListView.swift */,
@@ -406,14 +403,6 @@
 				E235D80E24E050CD007D95BE /* Info.plist */,
 			);
 			path = SimplistsWatchKit;
-			sourceTree = "<group>";
-		};
-		E2A32103250E8A9A00A022B8 /* ViewModifiers */ = {
-			isa = PBXGroup;
-			children = (
-				E23F380124E9ADF50000556D /* AdaptsToKeyboard.swift */,
-			);
-			path = ViewModifiers;
 			sourceTree = "<group>";
 		};
 		E2A32104250E8AA200A022B8 /* Shared */ = {
@@ -778,7 +767,6 @@
 				E21BBD6C2503B0A500964F67 /* RenameView.swift in Sources */,
 				E235D79524DF5B59007D95BE /* SceneDelegate.swift in Sources */,
 				E235D79724DF5B59007D95BE /* ListView.swift in Sources */,
-				E23F380224E9ADF50000556D /* AdaptsToKeyboard.swift in Sources */,
 				E235D7F624E04B42007D95BE /* ListItemView.swift in Sources */,
 				E2ECD76124F74B560046AEC9 /* NavBarItemsView.swift in Sources */,
 			);
@@ -935,7 +923,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -990,7 +978,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1013,7 +1001,7 @@
 				DEVELOPMENT_TEAM = 25V97QMNV5;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Simplists/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1039,7 +1027,7 @@
 				DEVELOPMENT_TEAM = 25V97QMNV5;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Simplists/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1074,7 +1062,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 6.0;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
 			};
 			name = Debug;
 		};
@@ -1100,7 +1088,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 6.0;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
 			};
 			name = Release;
 		};
@@ -1121,7 +1109,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 6.0;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
 			};
 			name = Debug;
 		};
@@ -1142,7 +1130,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 6.0;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
 			};
 			name = Release;
 		};
@@ -1160,7 +1148,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = SimplistsKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1191,7 +1179,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = SimplistsKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1233,7 +1221,7 @@
 				TARGETED_DEVICE_FAMILY = 4;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
-				WATCHOS_DEPLOYMENT_TARGET = 6.0;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
 			};
 			name = Debug;
 		};
@@ -1263,7 +1251,7 @@
 				TARGETED_DEVICE_FAMILY = 4;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
-				WATCHOS_DEPLOYMENT_TARGET = 6.0;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
 			};
 			name = Release;
 		};

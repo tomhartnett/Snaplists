@@ -9,6 +9,30 @@ import ClockKit
 
 class ComplicationController: NSObject, CLKComplicationDataSource {
 
+    // MARK: - Complication Configuration
+
+    func getComplicationDescriptors(handler: @escaping ([CLKComplicationDescriptor]) -> Void) {
+        let descriptors = [
+            CLKComplicationDescriptor(identifier: "complication",
+                                      displayName: "Simplists",
+                                      supportedFamilies: [.circularSmall,
+                                                          .extraLarge,
+                                                          .modularSmall,
+                                                          .utilitarianSmall,
+                                                          .utilitarianLarge,
+                                                          .graphicCorner,
+                                                          .graphicCircular,
+                                                          .graphicBezel])
+        ]
+
+        // Call the handler with the currently supported complication descriptors
+        handler(descriptors)
+    }
+
+    func handleSharedComplicationDescriptors(_ complicationDescriptors: [CLKComplicationDescriptor]) {
+        // Do any necessary work to support these newly shared complication descriptors
+    }
+
     // MARK: - Timeline Configuration
 
     func getTimelineEndDate(for complication: CLKComplication, withHandler handler: @escaping (Date?) -> Void) {
@@ -55,53 +79,46 @@ private extension ComplicationController {
 
         switch complication.family {
         case .circularSmall:
-            let t = CLKComplicationTemplateCircularSmallSimpleImage()
             let image = UIImage(named: "Complication/Circular") ?? UIImage()
-            t.imageProvider = CLKImageProvider(onePieceImage: image)
-            template = t
+            let imageProvider = CLKImageProvider(onePieceImage: image)
+            template = CLKComplicationTemplateCircularSmallSimpleImage(imageProvider: imageProvider)
         case .modularSmall:
-            let t = CLKComplicationTemplateModularSmallSimpleImage()
             let image = UIImage(named: "Complication/Modular") ?? UIImage()
-            t.imageProvider = CLKImageProvider(onePieceImage: image)
-            template = t
+            let imageProvider = CLKImageProvider(onePieceImage: image)
+            template = CLKComplicationTemplateModularSmallSimpleImage(imageProvider: imageProvider)
         case .modularLarge:
             break
         case .utilitarianSmall:
-            let t = CLKComplicationTemplateUtilitarianSmallSquare()
             let image = UIImage(named: "Complication/Utilitarian") ?? UIImage()
-            t.imageProvider = CLKImageProvider(onePieceImage: image)
-            template = t
+            let imageProvider = CLKImageProvider(onePieceImage: image)
+            template = CLKComplicationTemplateUtilitarianSmallSquare(imageProvider: imageProvider)
         case .utilitarianSmallFlat:
             break
         case .utilitarianLarge:
-            let t = CLKComplicationTemplateUtilitarianLargeFlat()
-            t.textProvider = CLKSimpleTextProvider(text: "• Simplists")
-            template = t
+            let textProvider = CLKSimpleTextProvider(text: "• Simplists")
+            template = CLKComplicationTemplateUtilitarianLargeFlat(textProvider: textProvider)
         case .extraLarge:
-            let t = CLKComplicationTemplateExtraLargeSimpleImage()
             let image = UIImage(named: "Complication/Extra Large") ?? UIImage()
-            t.imageProvider = CLKImageProvider(onePieceImage: image)
-            t.imageProvider.tintColor = .white
-            template = t
+            let imageProvider = CLKImageProvider(onePieceImage: image)
+            imageProvider.tintColor = .white
+            template = CLKComplicationTemplateExtraLargeSimpleImage(imageProvider: imageProvider)
         case .graphicCorner:
-            let t = CLKComplicationTemplateGraphicCornerTextImage()
             let image = UIImage(named: "Complication/Graphic Corner") ?? UIImage()
-            t.imageProvider = CLKFullColorImageProvider(fullColorImage: image)
-            t.textProvider = CLKSimpleTextProvider(text: "Simplists")
-            template = t
+            let imageProvider = CLKFullColorImageProvider(fullColorImage: image)
+            let textProvider = CLKSimpleTextProvider(text: "Simplists")
+            template = CLKComplicationTemplateGraphicCornerTextImage(textProvider: textProvider,
+                                                                     imageProvider: imageProvider)
         case .graphicBezel:
-            let t = CLKComplicationTemplateGraphicBezelCircularText()
-            let c = CLKComplicationTemplateGraphicCircularImage()
             let image = UIImage(named: "Complication/Graphic Circular") ?? UIImage()
-            c.imageProvider = CLKFullColorImageProvider(fullColorImage: image)
-            t.circularTemplate = c
-            t.textProvider = CLKSimpleTextProvider(text: "Simplists")
-            template = t
+            let imageProvider = CLKFullColorImageProvider(fullColorImage: image)
+            let circularTemplate = CLKComplicationTemplateGraphicCircularImage(imageProvider: imageProvider)
+            let textProvider = CLKSimpleTextProvider(text: "Simplists")
+            template = CLKComplicationTemplateGraphicBezelCircularText(circularTemplate: circularTemplate,
+                                                                       textProvider: textProvider)
         case .graphicCircular:
-            let t = CLKComplicationTemplateGraphicCircularImage()
             let image = UIImage(named: "Complication/Graphic Circular") ?? UIImage()
-            t.imageProvider = CLKFullColorImageProvider(fullColorImage: image)
-            template = t
+            let imageProvider = CLKFullColorImageProvider(fullColorImage: image)
+            template = CLKComplicationTemplateGraphicCircularImage(imageProvider: imageProvider)
         case .graphicRectangular:
             break
         case .graphicExtraLarge:
