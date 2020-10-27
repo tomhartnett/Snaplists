@@ -16,32 +16,25 @@ struct WatchListView: View {
 
     var body: some View {
         VStack {
-            ScrollViewReader { scrollProxy in
-                List {
-                    Button("list-new-item-button.title") {
-                        isPresentingNewItem.toggle()
-                    }
-                    .modifier(BlueButtonStyle())
-
-                    if list.items.count > 0 {
-                        ForEach(list.items) { item in
-                            WatchListItemView(item: item, tapAction: {
-                                updateItem(id: item.id, title: item.title, isComplete: !item.isComplete)
-                            })
-                        }
-                        .onDelete(perform: delete)
-                    } else {
-                        Text("list-no-items-message")
-                            .frame(height: 88)
-                            .foregroundColor(.secondary)
-                            .listRowBackground(Color.clear)
-                    }
+            List {
+                Button("list-new-item-button.title") {
+                    isPresentingNewItem.toggle()
                 }
-                .onAppear(perform: {
-                    if let item = list.items.first {
-                        scrollProxy.scrollTo(item.id, anchor: .top)
+                .modifier(BlueButtonStyle())
+
+                if list.items.count > 0 {
+                    ForEach(list.items) { item in
+                        WatchListItemView(item: item, tapAction: {
+                            updateItem(id: item.id, title: item.title, isComplete: !item.isComplete)
+                        })
                     }
-                })
+                    .onDelete(perform: delete)
+                } else {
+                    Text("list-no-items-message")
+                        .frame(height: 88)
+                        .foregroundColor(.secondary)
+                        .listRowBackground(Color.clear)
+                }
             }
         }
         .animation(.default)
