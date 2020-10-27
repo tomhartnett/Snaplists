@@ -25,32 +25,40 @@ struct WatchHomeView: View {
 
     var body: some View {
         VStack {
-            List {
-                Button("home-new-list-button.title") {
-                    isPresentingNewList.toggle()
-                }
-                .modifier(BlueButtonStyle())
-
-                if lists.count > 0 {
-                    ForEach(lists) { list in
-                        NavigationLink(destination: WatchListView(list: list).environmentObject(storage)) {
-                            Text(list.title)
-                        }
+            ScrollViewReader { scrollProxy in
+                List {
+                    Button("home-new-list-button.title") {
+                        isPresentingNewList.toggle()
                     }
-                    .onDelete(perform: delete)
-                } else {
-                    Text("home-no-items-message")
-                        .frame(height: 88)
+                    .modifier(BlueButtonStyle())
+
+                    if lists.count > 0 {
+                        ForEach(lists) { list in
+                            NavigationLink(destination: WatchListView(list: list).environmentObject(storage)) {
+                                Text(list.title)
+                            }
+                        }
+                        .onDelete(perform: delete)
+                    } else {
+                        Text("home-no-items-message")
+                            .frame(height: 88)
+                            .foregroundColor(.secondary)
+                            .listRowBackground(Color.clear)
+                    }
+
+                    Text(versionString)
+                        .font(.footnote)
                         .foregroundColor(.secondary)
                         .listRowBackground(Color.clear)
                 }
-
-                Text(versionString)
-                    .font(.footnote)
-                    .foregroundColor(.secondary)
-                    .listRowBackground(Color.clear)
+                .onAppear(perform: {
+                    if let list = lists.first {
+                        scrollProxy.scrollTo(list.id, anchor: .top)
+                    }
+                })
             }
         }
+        .animation(.default)
         .navigationBarTitle("Simplists")
         .onAppear {
             reload()

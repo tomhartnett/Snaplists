@@ -16,29 +16,35 @@ struct WatchListView: View {
 
     var body: some View {
         VStack {
-            List {
-                if list.items.count > 0 {
-                    ForEach(list.items) { item in
-                        WatchListItemView(item: item, tapAction: {
-                            updateItem(id: item.id, title: item.title, isComplete: !item.isComplete)
-                        })
+            ScrollViewReader { scrollProxy in
+                List {
+                    Button("list-new-item-button.title") {
+                        isPresentingNewItem.toggle()
                     }
-                    .onDelete(perform: delete)
-                } else {
-                    Text("list-no-items-message")
-                        .frame(height: 88)
-                        .foregroundColor(.secondary)
-                        .listRowBackground(Color.clear)
-                }
+                    .modifier(BlueButtonStyle())
 
-                Button("list-new-item-button.title") {
-                    isPresentingNewItem.toggle()
+                    if list.items.count > 0 {
+                        ForEach(list.items) { item in
+                            WatchListItemView(item: item, tapAction: {
+                                updateItem(id: item.id, title: item.title, isComplete: !item.isComplete)
+                            })
+                        }
+                        .onDelete(perform: delete)
+                    } else {
+                        Text("list-no-items-message")
+                            .frame(height: 88)
+                            .foregroundColor(.secondary)
+                            .listRowBackground(Color.clear)
+                    }
                 }
-                .modifier(BlueButtonStyle())
+                .onAppear(perform: {
+                    if let item = list.items.first {
+                        scrollProxy.scrollTo(item.id, anchor: .top)
+                    }
+                })
             }
-            .animation(.default)
-
         }
+        .animation(.default)
         .navigationBarTitle(list.title)
         .onReceive(storage.objectWillChange, perform: { _ in
             reload()
