@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="19G2021" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17510.1" systemVersion="20B5012d" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Item" representedClassName="ItemEntity" syncable="YES" codeGenerationType="class">
         <attribute name="identifier" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="isComplete" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
@@ -8,6 +8,7 @@
     </entity>
     <entity name="List" representedClassName="ListEntity" syncable="YES" codeGenerationType="class">
         <attribute name="identifier" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="isArchived" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="modified" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="sortOrder" optional="YES" attributeType="Transformable" valueTransformerName="SMPListSortOrderTransformer" customClassName="[String]"/>
         <attribute name="title" optional="YES" attributeType="String"/>
@@ -15,6 +16,6 @@
     </entity>
     <elements>
         <element name="Item" positionX="-63" positionY="-18" width="128" height="103"/>
-        <element name="List" positionX="-54" positionY="-9" width="128" height="118"/>
+        <element name="List" positionX="-54" positionY="-9" width="128" height="119"/>
     </elements>
 </model>

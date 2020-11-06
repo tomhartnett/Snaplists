@@ -5,8 +5,8 @@
 //  Created by Tom Hartnett on 8/8/20.
 //
 
-import SwiftUI
 import SimplistsKit
+import SwiftUI
 
 struct ListView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>

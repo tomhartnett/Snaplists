@@ -23,16 +23,20 @@ public final class SMPStorage: ObservableObject {
                                                object: context.persistentStoreCoordinator)
     }
 
-    public func getLists() -> [SMPList] {
+    public func getLists(isArchived: Bool = false) -> [SMPList] {
 
         var lists: [SMPList] = []
 
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "List")
+//        request.predicate = NSPredicate(format: "isArchived == %@", NSNumber(value: isArchived))
         request.sortDescriptors = [NSSortDescriptor(key: "modified", ascending: false)]
 
         do {
             if let results = try context.fetch(request) as? [ListEntity] {
-                lists.append(contentsOf: results.compactMap { SMPList(entity: $0) })
+                // TODO: not using predicate above to preserve dev data and not deal with migrations.
+                // Consider making isArchived non-optional before shipping and just deleting all dev data.
+                lists.append(contentsOf:
+                                results.filter({ $0.isArchived == isArchived }).compactMap { SMPList(entity: $0) })
             }
         } catch {
             print("\(#function) - error: \(error.localizedDescription)")
@@ -51,6 +55,7 @@ public final class SMPStorage: ObservableObject {
         let listEntity = ListEntity(context: context)
         listEntity.identifier = list.id
         listEntity.title = list.title
+        listEntity.isArchived = list.isArchived
         listEntity.modified = Date()
 
         saveChanges()
@@ -60,9 +65,8 @@ public final class SMPStorage: ObservableObject {
         guard let listEntity = getListEntity(with: list.id) else { return }
 
         listEntity.title = list.title
-
-        let itemIDs = list.items.map { $0.id.uuidString }
-        listEntity.sortOrder = itemIDs
+        listEntity.sortOrder = list.items.map { $0.id.uuidString }
+        listEntity.isArchived = list.isArchived
         listEntity.modified = Date()
 
         list.items.forEach {

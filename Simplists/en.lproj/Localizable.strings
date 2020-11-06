@@ -13,8 +13,21 @@
 
 "home-navigation-bar-title" = "Simplists";
 "home-rename-button-text" = "Rename";
+"home-archive-button-text" = "Archive";
 "home-delete-button-text" = "Delete";
 "home-add-list-placeholder" = "Add new list...";
+"home-backlog-title" = "Backlog Items";
+"home-archived-title" = "Archived Lists";
+"home-more-title" = "More";
+
+"rename-navigation-bar-title" = "Rename";
+"rename-name-placeholder" = "Enter name...";
+"rename-cancel-button-text" = "Cancel";
+"rename-done-button-text" = "Done";
+
+"list-new-item-placeholder" = "Add new item...";
+
+"archived-navigation-bar-title" = "Archived Lists";
 
 "more-navigation-bar-title" = "More";
 "more-section-feedback-header" = "Feedback";
@@ -23,13 +36,6 @@
 "more-section-about-header" = "About the App";
 "more-privacy-policy-text" = "Privacy Policy";
 "more-about-text" = "About";
-
-"rename-navigation-bar-title" = "Rename";
-"rename-name-placeholder" = "Enter name...";
-"rename-cancel-button-text" = "Cancel";
-"rename-done-button-text" = "Done";
-
-"list-new-item-placeholder" = "Add new item...";
 
 "about-header-text" = "Simplists";
 "about-created-by-text" = "Created by";

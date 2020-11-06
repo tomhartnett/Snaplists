@@ -43,6 +43,15 @@ struct HomeView: View {
                                         })
 
                                         Button(action: {
+                                            var listToUpdate = list
+                                            listToUpdate.isArchived.toggle()
+                                            storage.updateList(listToUpdate)
+                                        }, label: {
+                                            Text("home-archive-button-text")
+                                            Image(systemName: "archivebox")
+                                        })
+
+                                        Button(action: {
                                             storage.deleteList(list)
                                         }, label: {
                                             Text("home-delete-button-text")
@@ -74,11 +83,27 @@ struct HomeView: View {
                     }
 
                     Section {
+                        NavigationLink(destination: EmptyView()) {
+
+                            Image(systemName: "list.bullet.rectangle")
+                                .frame(width: 25, height: 25)
+                                .foregroundColor(Color("TextSecondary"))
+                            Text("home-backlog-title")
+                        }
+                        NavigationLink(destination: ArchivedListsView()) {
+                            Image(systemName: "archivebox")
+                                .frame(width: 25, height: 25)
+                                .foregroundColor(Color("TextSecondary"))
+                            Text("home-archived-title")
+                        }
+                    }
+
+                    Section {
                         NavigationLink(destination: MoreView()) {
                             Image(systemName: "ellipsis.circle")
                                 .frame(width: 25, height: 25)
                                 .foregroundColor(Color("TextSecondary"))
-                            Text("More")
+                            Text("home-more-title")
                         }
                     }
                 }
