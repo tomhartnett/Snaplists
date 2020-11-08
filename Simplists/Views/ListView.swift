@@ -14,8 +14,21 @@ struct ListView: View {
     @State private var newItem = ""
     @State private var newItemHasFocus = false
     @State var list: SMPList
+
     var body: some View {
         VStack {
+
+            if list.isArchived {
+                HStack {
+                    Text("list-archived-text")
+                        .padding(.leading)
+                        .font(.subheadline)
+                        .foregroundColor(Color("TextSecondary"))
+                    Spacer()
+                }
+                .frame(maxWidth: .infinity)
+            }
+
             List {
                 ForEach(list.items) { item in
                     ListItemView(title: item.title,
@@ -52,11 +65,16 @@ struct ListView: View {
                         .padding([.top, .bottom])
                 }
             }
-            .navigationBarItems(trailing: NavBarItemsView(showEditButton: list.items.count > 0))
+            .animation(.default)
+            .navigationBarItems(trailing: NavBarItemsView(showEditButton: !list.items.isEmpty))
             .navigationBarTitle(list.title)
             .onReceive(storage.objectWillChange, perform: { _ in
                 reload()
             })
+
+            Spacer()
+
+            FakeToolbar(list: $list).environmentObject(storage)
         }
     }
 

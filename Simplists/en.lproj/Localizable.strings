@@ -20,12 +20,21 @@
 "home-archived-title" = "Archived Lists";
 "home-more-title" = "More";
 
-"rename-navigation-bar-title" = "Rename";
+"rename-navigation-bar-title" = "Rename List";
 "rename-name-placeholder" = "Enter name...";
 "rename-cancel-button-text" = "Cancel";
 "rename-done-button-text" = "Done";
 
+"list-archived-text" = "ARCHIVED";
 "list-new-item-placeholder" = "Add new item...";
+
+"toolbar-actions-button-text" = "Actions";
+"toolbar-moveitems-button-text" = "Move items...";
+"toolbar-markincomplete-button-text" = "Mark all incomplete";
+"toolbar-markcomplete-button-text" = "Mark all complete";
+"toolbar-delete-button-text" = "Delete list";
+"toolbar-archive-button-text" = "Archive list";
+"toolbar-unarchive-button-text" = "Unarchive list";
 
 "archived-navigation-bar-title" = "Archived Lists";
 
