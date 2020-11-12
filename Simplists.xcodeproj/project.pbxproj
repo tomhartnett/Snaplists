@@ -52,11 +52,14 @@
 		E24FACA4251CEC7C002B0B97 /* AuthenticationErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24FACA3251CEC7C002B0B97 /* AuthenticationErrorView.swift */; };
 		E256DD6924F2E98600649855 /* FocusableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E256DD6824F2E98600649855 /* FocusableTextField.swift */; };
 		E260CC43251A1DF000208E90 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E260CC42251A1DF000208E90 /* Localizable.strings */; };
+		E2633FCD2558A35100901471 /* MoveListsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2633FCC2558A35100901471 /* MoveListsView.swift */; };
+		E2633FD5255C215A00901471 /* MoveItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2633FD4255C215A00901471 /* MoveItemView.swift */; };
 		E26DD859250BA13E00FCC495 /* AuthenticationErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26DD858250BA13E00FCC495 /* AuthenticationErrorView.swift */; };
 		E27CDF5C24ECA7BC004B6A32 /* Simplists.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E27CDF5A24ECA7BC004B6A32 /* Simplists.xcdatamodeld */; };
 		E27CDF5D24ECAB4D004B6A32 /* Simplists.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E27CDF5A24ECA7BC004B6A32 /* Simplists.xcdatamodeld */; };
 		E27E8949252A9EB40098374C /* WatchAddNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27E8948252A9EB40098374C /* WatchAddNewView.swift */; };
 		E28E91512556F99A003E9F21 /* FakeToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28E91502556F99A003E9F21 /* FakeToolbar.swift */; };
+		E28E917925587E8D003E9F21 /* MoveItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28E917825587E8D003E9F21 /* MoveItemsView.swift */; };
 		E2A320FE250D704700A022B8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E2A32100250D704700A022B8 /* Localizable.strings */; };
 		E2A32102250E628200A022B8 /* MoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A32101250E628200A022B8 /* MoreView.swift */; };
 		E2AFBDBC24F16348008D9E3F /* ListEntity+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AFBDBB24F16348008D9E3F /* ListEntity+Extensions.swift */; };
@@ -192,10 +195,13 @@
 		E24FACA3251CEC7C002B0B97 /* AuthenticationErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationErrorView.swift; sourceTree = "<group>"; };
 		E256DD6824F2E98600649855 /* FocusableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusableTextField.swift; sourceTree = "<group>"; };
 		E260CC42251A1DF000208E90 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		E2633FCC2558A35100901471 /* MoveListsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveListsView.swift; sourceTree = "<group>"; };
+		E2633FD4255C215A00901471 /* MoveItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveItemView.swift; sourceTree = "<group>"; };
 		E26DD858250BA13E00FCC495 /* AuthenticationErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationErrorView.swift; sourceTree = "<group>"; };
 		E27CDF5B24ECA7BC004B6A32 /* Simplists.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Simplists.xcdatamodel; sourceTree = "<group>"; };
 		E27E8948252A9EB40098374C /* WatchAddNewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchAddNewView.swift; sourceTree = "<group>"; };
 		E28E91502556F99A003E9F21 /* FakeToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeToolbar.swift; sourceTree = "<group>"; };
+		E28E917825587E8D003E9F21 /* MoveItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveItemsView.swift; sourceTree = "<group>"; };
 		E2A320FF250D704700A022B8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E2A32101250E628200A022B8 /* MoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreView.swift; sourceTree = "<group>"; };
 		E2AFBDBB24F16348008D9E3F /* ListEntity+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListEntity+Extensions.swift"; sourceTree = "<group>"; };
@@ -243,13 +249,15 @@
 		E22E152424E06963002A140E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E2633FCB2558A33400901471 /* MoveItems */,
 				E2A32107250E8AC600A022B8 /* More */,
-				E2A32104250E8AA200A022B8 /* Shared */,
 				E22C615C255432710004B561 /* ArchivedListsView.swift */,
 				E26DD858250BA13E00FCC495 /* AuthenticationErrorView.swift */,
+				E256DD6824F2E98600649855 /* FocusableTextField.swift */,
 				E22E152224E060C2002A140E /* HomeView.swift */,
 				E235D79624DF5B59007D95BE /* ListView.swift */,
 				E235D7F524E04B42007D95BE /* ListItemView.swift */,
+				E2ECD76024F74B560046AEC9 /* NavBarItemsView.swift */,
 				E21BBD6B2503B0A500964F67 /* RenameView.swift */,
 				E28E91502556F99A003E9F21 /* FakeToolbar.swift */,
 			);
@@ -411,13 +419,14 @@
 			path = SimplistsWatchKit;
 			sourceTree = "<group>";
 		};
-		E2A32104250E8AA200A022B8 /* Shared */ = {
+		E2633FCB2558A33400901471 /* MoveItems */ = {
 			isa = PBXGroup;
 			children = (
-				E256DD6824F2E98600649855 /* FocusableTextField.swift */,
-				E2ECD76024F74B560046AEC9 /* NavBarItemsView.swift */,
+				E28E917825587E8D003E9F21 /* MoveItemsView.swift */,
+				E2633FCC2558A35100901471 /* MoveListsView.swift */,
+				E2633FD4255C215A00901471 /* MoveItemView.swift */,
 			);
-			path = Shared;
+			path = MoveItems;
 			sourceTree = "<group>";
 		};
 		E2A32107250E8AC600A022B8 /* More */ = {
@@ -650,7 +659,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		E26642DD24E4D5EE008F6778 /* Increment Build Number */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			files = (
 			);
 			inputFileListPaths = (
@@ -662,13 +671,13 @@
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "buildNumber=$(git rev-parse --short HEAD)\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\n";
 		};
 		E26642DE24E4D69F008F6778 /* Increment Build Number */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			files = (
 			);
 			inputFileListPaths = (
@@ -680,13 +689,13 @@
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = "buildNumber=$(git rev-parse --short HEAD)\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\n";
+			shellScript = "buildNumber=$(git rev-parse --short HEAD) \n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\n";
 		};
 		E26642DF24E4D6B5008F6778 /* Increment Build Number */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			files = (
 			);
 			inputFileListPaths = (
@@ -698,13 +707,13 @@
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "buildNumber=$(git rev-parse --short HEAD)\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\n";
 		};
 		E26642E024E4D6C5008F6778 /* Increment Build Number */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			files = (
 			);
 			inputFileListPaths = (
@@ -716,13 +725,13 @@
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "buildNumber=$(git rev-parse --short HEAD)\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\n";
 		};
 		E26642E124E4D6D4008F6778 /* Increment Build Number */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			files = (
 			);
 			inputFileListPaths = (
@@ -734,7 +743,7 @@
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "buildNumber=$(git rev-parse --short HEAD)\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\n";
 		};
@@ -766,6 +775,9 @@
 				E235D79324DF5B59007D95BE /* AppDelegate.swift in Sources */,
 				E256DD6924F2E98600649855 /* FocusableTextField.swift in Sources */,
 				E21123DD2504441900B3D76D /* AboutView.swift in Sources */,
+				E2633FD5255C215A00901471 /* MoveItemView.swift in Sources */,
+				E28E917925587E8D003E9F21 /* MoveItemsView.swift in Sources */,
+				E2633FCD2558A35100901471 /* MoveListsView.swift in Sources */,
 				E2A32102250E628200A022B8 /* MoreView.swift in Sources */,
 				E28E91512556F99A003E9F21 /* FakeToolbar.swift in Sources */,
 				E22E152324E060C2002A140E /* HomeView.swift in Sources */,

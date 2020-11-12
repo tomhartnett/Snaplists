@@ -104,7 +104,7 @@ struct WatchHomeView: View {
     }
 }
 
-struct ListsView_Previews: PreviewProvider {
+struct WatchHomeView_Previews: PreviewProvider {
     static var previews: some View {
         WatchHomeView(lists: [])
     }

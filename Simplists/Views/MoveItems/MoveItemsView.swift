@@ -10,34 +10,38 @@ import SwiftUI
 
 struct MoveItemsView: View {
     @State var list: SMPList
-    @State private var isNewList = true
-    @State private var newListName = ""
+    @State var itemsToMove: [SMPListItem] = []
 
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
-                Text("Move Items")
-                    .padding(.leading)
-                    .font(.headline)
-
                 List {
-                    Section {
-                        NavigationLink(destination: EmptyView()) {
+                    Section(header: Text("MOVE TO:")) {
+                        NavigationLink(destination: MoveListsView()) {
                             Text("New list")
-                        }
-
-                        if isNewList {
-                            TextField("Enter list name...", text: $newListName)
                         }
                     }
 
-                    ForEach(list.items) { item in
-                        Text(item.title)
+                    Section(header: Text("\(itemsToMove.count) selected items")) {
+                        ForEach(list.items) { item in
+                            MoveItemView(item: item)
+                                .simultaneousGesture(
+                                    TapGesture()
+                                        .onEnded { _ in
+                                            if itemsToMove.contains(where: { $0.id == item.id }) {
+                                                itemsToMove.removeAll(where: { $0.id == item.id })
+                                            } else {
+                                                itemsToMove.append(item)
+                                            }
+                                        }
+                                )
+                        }
                     }
                 }
                 .listStyle(GroupedListStyle())
             }
-            .navigationBarTitle(list.title)
+            .navigationBarTitle("Move Items", displayMode: .inline)
+            .navigationBarItems(leading: Button("Cancel", action: {}), trailing: Button("Save", action: {}))
         }
     }
 }

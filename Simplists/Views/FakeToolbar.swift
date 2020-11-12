@@ -11,12 +11,13 @@ import SwiftUI
 struct FakeToolbar: View {
     @EnvironmentObject var storage: SMPStorage
     @Binding var list: SMPList
+    @Binding var isPresentingMoveItems: Bool
 
     var body: some View {
         HStack {
             Menu {
                 Button(action: {
-
+                    isPresentingMoveItems.toggle()
                 }) {
                     Text("toolbar-moveitems-button-text")
                     Image(systemName: "folder")
@@ -70,6 +71,6 @@ struct FakeToolbar_Previews: PreviewProvider {
         FakeToolbar(list: .constant(SMPList(title: "Preview List", isArchived: false, items: [
             SMPListItem(title: "Item 1", isComplete: false),
             SMPListItem(title: "Item 2", isComplete: true)
-        ])))
+        ])), isPresentingMoveItems: .constant(false))
     }
 }

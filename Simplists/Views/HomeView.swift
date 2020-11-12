@@ -83,13 +83,6 @@ struct HomeView: View {
                     }
 
                     Section {
-                        NavigationLink(destination: EmptyView()) {
-
-                            Image(systemName: "list.bullet.rectangle")
-                                .frame(width: 25, height: 25)
-                                .foregroundColor(Color("TextSecondary"))
-                            Text("home-backlog-title")
-                        }
                         NavigationLink(destination: ArchivedListsView()) {
                             Image(systemName: "archivebox")
                                 .frame(width: 25, height: 25)
@@ -143,7 +136,7 @@ struct HomeView: View {
     }
 }
 
-struct ListsView_Previews: PreviewProvider {
+struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
     }
