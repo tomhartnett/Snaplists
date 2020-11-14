@@ -11,13 +11,13 @@ import SwiftUI
 struct ListView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var storage: SMPStorage
+    @State var list: SMPList
     @State private var newItem = ""
     @State private var newItemHasFocus = false
-    @State var list: SMPList
+    @State private var isPresentingMoveItems = false
 
     var body: some View {
         VStack {
-
             if list.isArchived {
                 HStack {
                     Text("list-archived-text")
@@ -74,8 +74,11 @@ struct ListView: View {
 
             Spacer()
 
-            FakeToolbar(list: $list).environmentObject(storage)
+            FakeToolbar(list: $list, isPresentingMoveItems: $isPresentingMoveItems).environmentObject(storage)
         }
+        .sheet(isPresented: $isPresentingMoveItems, content: {
+            MoveItemsView(list: list)
+        })
     }
 
     private func addNewItem() {

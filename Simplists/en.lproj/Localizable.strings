@@ -16,14 +16,33 @@
 "home-archive-button-text" = "Archive";
 "home-delete-button-text" = "Delete";
 "home-add-list-placeholder" = "Add new list...";
-"home-backlog-title" = "Backlog Items";
 "home-archived-title" = "Archived Lists";
 "home-more-title" = "More";
 
+/* RenameView */
 "rename-navigation-bar-title" = "Rename List";
 "rename-name-placeholder" = "Enter name...";
 "rename-cancel-button-text" = "Cancel";
 "rename-done-button-text" = "Done";
+
+/* NewListNameView (very similar to RenameView */
+"new-list-navigation-bar-title" = "New List";
+"new-list-name-placeholder" = "Enter name...";
+"new-list-cancel-button-text" = "Cancel";
+"new-list-done-button-text" = "Done";
+
+/* MoveItemsView */
+"move-items-new-list-text" = "New list";
+"move-items-move-to-text" = "MOVE TO:";
+"move-items-navigation-bar-title" = "Move Items";
+"move-items-cancel-button-text" = "Cancel";
+"move-items-save-button-text" = "Save";
+"move-items-" = "";
+
+/* MoveListsView */
+"move-lists-choose-list-text" = "Choose list";
+"move-lists-create-new-list-text" = "Create New List";
+"move-lists-move-items-text" = "Move Items";
 
 "list-archived-text" = "ARCHIVED";
 "list-new-item-placeholder" = "Add new item...";
