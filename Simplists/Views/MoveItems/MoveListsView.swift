@@ -9,22 +9,51 @@ import SimplistsKit
 import SwiftUI
 
 struct MoveListsView: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var storage: SMPStorage
     @State var lists: [SMPList] = []
 
+    var fromListID: UUID
+
+    var selectListAction: ((SMPList) -> Void)?
+
+    var createListAction: (() -> Void)?
+
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Choose list")
-                .padding(.leading)
+            Text("move-lists-choose-list-text")
+                .padding([.leading, .top])
                 .font(.headline)
 
             List {
                 ForEach(lists) { list in
-                    Text(list.title)
+                    if list.id != fromListID {
+                        HStack {
+                            Text(list.title)
+
+                            Spacer()
+                        }
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            selectListAction?(list)
+                            presentationMode.wrappedValue.dismiss()
+                        }
+                    }
                 }
             }
+
+            Button(action: {
+                createListAction?()
+                presentationMode.wrappedValue.dismiss()
+            }) {
+                HStack {
+                    Text("move-lists-create-new-list-text")
+                }
+                .frame(maxWidth: .infinity)
+                .contentShape(Rectangle())
+            }
         }
-        .navigationBarTitle("Move Items")
+        .navigationBarTitle("move-lists-move-items-text")
         .onAppear {
             reload()
         }
@@ -37,6 +66,6 @@ struct MoveListsView: View {
 
 struct ListsView_Previews: PreviewProvider {
     static var previews: some View {
-        MoveListsView()
+        MoveListsView(fromListID: UUID())
     }
 }

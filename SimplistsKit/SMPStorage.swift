@@ -144,6 +144,67 @@ public final class SMPStorage: ObservableObject {
         saveChanges()
     }
 
+    public func moveItems(_ items: [SMPListItem], from fromList: SMPList, to toList: SMPList) {
+        guard let fromListEntity = getListEntity(with: fromList.id) else {
+            return
+        }
+
+        let toListEntity: ListEntity
+        if let tempList = getListEntity(with: toList.id) {
+            toListEntity = tempList
+        } else {
+            toListEntity = ListEntity(context: context)
+            toListEntity.identifier = toList.id
+            toListEntity.title = toList.title
+            toListEntity.isArchived = toList.isArchived
+            toListEntity.modified = Date()
+        }
+
+        guard let fromSet = fromListEntity.items, let toSet = toListEntity.items else {
+            return
+        }
+
+        let movingItemsArray = fromSet.filter { x in
+            if let item = x as? ItemEntity,
+               let identifier = item.identifier,
+               items.contains(where: { $0.id == identifier }) {
+                return true
+            } else {
+                return false
+            }
+        }
+
+        let remainingItemsArray = fromSet.filter { x in
+            if let item = x as? ItemEntity,
+               let identifier = item.identifier,
+               !items.contains(where: { $0.id == identifier }) {
+                return true
+            } else {
+                return false
+            }
+        }
+
+        let combinedItemSet = toSet.addingObjects(from: movingItemsArray)
+
+        fromListEntity.items = NSSet(array: remainingItemsArray)
+        let fromSortOrder = fromListEntity.sortOrder ?? []
+        fromListEntity.sortOrder = fromSortOrder.filter({ item -> Bool in
+            if items.first(where: { $0.id.uuidString == item }) != nil {
+                return false
+            } else {
+                return true
+            }
+        })
+
+        toListEntity.items = NSSet(set: combinedItemSet)
+        var toSortOrder = toListEntity.sortOrder ?? []
+        let appendIDs = items.map { $0.id.uuidString }
+        toSortOrder.append(contentsOf: appendIDs)
+        toListEntity.sortOrder = toSortOrder
+
+        saveChanges()
+    }
+
     private func getListEntity(with identifier: UUID) -> ListEntity? {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "List")
         request.predicate = NSPredicate(format: "identifier = %@", identifier.uuidString)

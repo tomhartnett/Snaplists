@@ -1,13 +1,13 @@
 //
-//  RenameView.swift
+//  NewListNameView.swift
 //  Simplists
 //
-//  Created by Tom Hartnett on 9/5/20.
+//  Created by Tom Hartnett on 11/14/20.
 //
 
 import SwiftUI
 
-struct RenameView: View {
+struct NewListNameView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State var title = ""
     @State private var isDoneEnabled = false
@@ -17,7 +17,7 @@ struct RenameView: View {
     var body: some View {
         NavigationView {
             Form {
-                FocusableTextField(NSLocalizedString("rename-name-placeholder", comment: ""),
+                FocusableTextField(NSLocalizedString("new-list-name-placeholder", comment: ""),
                                    text: $title,
                                    isFirstResponder: false,
                                    onCommit: {
@@ -30,18 +30,19 @@ struct RenameView: View {
             .navigationBarItems(
                 leading: Button(action: {
                     dismiss()
-                }) {
-                    Text("rename-cancel-button-text")
+                }, label: {
+                    Text("new-list-cancel-button-text")
                         .fontWeight(.regular)
-                },
+                }),
                 trailing: Button(action: {
                     saveChanges()
-                }) {
-                    Text("rename-done-button-text")
+                }, label: {
+                    Text("new-list-done-button-text")
                         .fontWeight(.semibold)
-                        .foregroundColor(isDoneEnabled ? .primary : .secondary)
-                }.disabled(!isDoneEnabled))
-            .navigationBarTitle("rename-navigation-bar-title", displayMode: .inline)
+                })
+                .disabled(!isDoneEnabled)
+            )
+            .navigationBarTitle("new-list-navigation-bar-title", displayMode: .inline)
         }
     }
 
@@ -57,10 +58,8 @@ struct RenameView: View {
     }
 }
 
-struct RenameView_Previews: PreviewProvider {
+struct NewListNameView_Previews: PreviewProvider {
     static var previews: some View {
-        Group {
-            RenameView(title: "Weekend TODOs")
-        }
+        NewListNameView()
     }
 }

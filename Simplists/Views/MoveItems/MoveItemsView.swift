@@ -9,19 +9,38 @@ import SimplistsKit
 import SwiftUI
 
 struct MoveItemsView: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @EnvironmentObject var storage: SMPStorage
     @State var list: SMPList
     @State var itemsToMove: [SMPListItem] = []
+    @State var isPresentingNewListName = false
+    @State var destinationListTitle = "move-items-new-list-text".localize()
+    @State var destinationList: SMPList? {
+        didSet {
+            if let list = destinationList {
+                destinationListTitle = list.title
+            } else {
+                destinationListTitle = "move-items-new-list-text".localize()
+            }
+        }
+    }
 
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
                 List {
-                    Section(header: Text("MOVE TO:")) {
-                        NavigationLink(destination: MoveListsView()) {
-                            Text("New list")
+                    Section(header: Text("move-items-move-to-text")) {
+                        NavigationLink(destination: MoveListsView(fromListID: list.id, selectListAction: { list in
+                            destinationList = list
+                        },
+                        createListAction: {
+                            destinationList = nil
+                        })) {
+                            Text(destinationListTitle)
                         }
                     }
 
+                    // TODO: localize and pluralize
                     Section(header: Text("\(itemsToMove.count) selected items")) {
                         ForEach(list.items) { item in
                             MoveItemView(item: item)
@@ -40,9 +59,46 @@ struct MoveItemsView: View {
                 }
                 .listStyle(GroupedListStyle())
             }
-            .navigationBarTitle("Move Items", displayMode: .inline)
-            .navigationBarItems(leading: Button("Cancel", action: {}), trailing: Button("Save", action: {}))
+            .navigationBarTitle("move-items-navigation-bar-title", displayMode: .inline)
+            .navigationBarItems(leading:
+                                    Button(action: {
+                                        presentationMode.wrappedValue.dismiss()
+                                    }, label: {
+                                        Text("move-items-cancel-button-text")
+                                            .fontWeight(.regular)
+                                    }),
+                                trailing:
+                                    Button(action: {
+                                        if destinationList != nil {
+                                            saveToExistingList()
+                                        } else {
+                                            isPresentingNewListName.toggle()
+                                        }
+                                    }, label: {
+                                        Text("move-items-save-button-text")
+                                            .fontWeight(.semibold)
+                                    })
+                                    .disabled(itemsToMove.isEmpty)
+            )
+            .sheet(isPresented: $isPresentingNewListName) {
+                NewListNameView(doneAction: { title in
+                    storage.moveItems(itemsToMove,
+                                      from: list,
+                                      to: SMPList(title: title))
+                    presentationMode.wrappedValue.dismiss()
+                })
+            }
         }
+    }
+
+    private func saveToExistingList() {
+        guard let destinationList = destinationList else {
+            return
+        }
+
+        storage.moveItems(itemsToMove, from: list, to: destinationList)
+
+        presentationMode.wrappedValue.dismiss()
     }
 }
 

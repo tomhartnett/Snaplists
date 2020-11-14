@@ -60,7 +60,7 @@ struct HomeView: View {
                                     }
                             }
                             .sheet(isPresented: $isPresentingRename) {
-                                RenameView(title: list.title) { text in
+                                RenameListView(title: list.title) { text in
                                     var listToUpdate = list
                                     listToUpdate.title = text
                                     storage.updateList(listToUpdate)
