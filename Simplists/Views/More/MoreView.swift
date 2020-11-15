@@ -46,7 +46,7 @@ struct MoreView: View {
                 }
             }
             .navigationBarTitle("more-navigation-bar-title")
-            .listStyle(GroupedListStyle())
+            .listStyle(InsetGroupedListStyle())
         }
     }
 }

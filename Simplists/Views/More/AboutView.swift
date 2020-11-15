@@ -17,7 +17,7 @@ struct AboutView: View {
         return String(format: versionFormatString, version, build)
     }
 
-    var copyRightString: String {
+    var copyrightString: String {
         let beginYear = 2020
         let comps = Calendar.current.dateComponents([.year], from: Date())
         let currentYear = comps.year ?? beginYear
@@ -43,7 +43,7 @@ struct AboutView: View {
                 .frame(width: 200, height: 200)
                 .padding([.top, .bottom], 48)
 
-            Text(copyRightString)
+            Text(copyrightString)
                 .foregroundColor(Color("TextSecondary"))
 
             Text("about-created-by-text")
@@ -56,6 +56,8 @@ struct AboutView: View {
                     .foregroundColor(Color("TextSecondary"))
                     .underline()
             })
+
+            Spacer()
         }
     }
 }

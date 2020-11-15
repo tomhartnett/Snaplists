@@ -101,7 +101,7 @@ struct HomeView: View {
                     }
                 }
                 .navigationBarTitle("home-navigation-bar-title")
-                .listStyle(GroupedListStyle())
+                .listStyle(InsetGroupedListStyle())
             }
         }
         .onAppear {

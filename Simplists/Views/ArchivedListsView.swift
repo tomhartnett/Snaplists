@@ -23,6 +23,7 @@ struct ArchivedListsView: View {
                     }
                 }
             }
+            .listStyle(InsetGroupedListStyle())
         }
         .navigationBarTitle("archived-navigation-bar-title")
         .onAppear {

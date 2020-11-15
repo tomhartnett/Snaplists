@@ -57,7 +57,7 @@ struct MoveItemsView: View {
                         }
                     }
                 }
-                .listStyle(GroupedListStyle())
+                .listStyle(InsetGroupedListStyle())
             }
             .navigationBarTitle("move-items-navigation-bar-title", displayMode: .inline)
             .navigationBarItems(leading:

@@ -65,6 +65,7 @@ struct ListView: View {
                         .padding([.top, .bottom])
                 }
             }
+            .listStyle(InsetGroupedListStyle())
             .animation(.default)
             .navigationBarItems(trailing: NavBarItemsView(showEditButton: !list.items.isEmpty))
             .navigationBarTitle(list.title)

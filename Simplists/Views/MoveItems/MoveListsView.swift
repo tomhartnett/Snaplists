@@ -21,37 +21,38 @@ struct MoveListsView: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            Text("move-lists-choose-list-text")
-                .padding([.leading, .top])
-                .font(.headline)
-
             List {
-                ForEach(lists) { list in
-                    if list.id != fromListID {
-                        HStack {
-                            Text(list.title)
+                Section(header: Text("move-lists-choose-list-text")) {
+                    ForEach(lists) { list in
+                        if list.id != fromListID {
+                            HStack {
+                                Text(list.title)
 
-                            Spacer()
-                        }
-                        .contentShape(Rectangle())
-                        .onTapGesture {
-                            selectListAction?(list)
-                            presentationMode.wrappedValue.dismiss()
+                                Spacer()
+                            }
+                            .contentShape(Rectangle())
+                            .onTapGesture {
+                                selectListAction?(list)
+                                presentationMode.wrappedValue.dismiss()
+                            }
                         }
                     }
                 }
-            }
 
-            Button(action: {
-                createListAction?()
-                presentationMode.wrappedValue.dismiss()
-            }) {
-                HStack {
-                    Text("move-lists-create-new-list-text")
+                Section {
+                    Button(action: {
+                        createListAction?()
+                        presentationMode.wrappedValue.dismiss()
+                    }) {
+                        HStack {
+                            Text("move-lists-create-new-list-text")
+                        }
+                        .frame(maxWidth: .infinity)
+                        .contentShape(Rectangle())
+                    }
                 }
-                .frame(maxWidth: .infinity)
-                .contentShape(Rectangle())
             }
+            .listStyle(InsetGroupedListStyle())
         }
         .navigationBarTitle("move-lists-move-items-text")
         .onAppear {
