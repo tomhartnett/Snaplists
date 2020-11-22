@@ -1,14 +1,14 @@
 //
-//  ListView.swift
+//  ArchivedListView.swift
 //  Simplists
 //
-//  Created by Tom Hartnett on 8/8/20.
+//  Created by Tom Hartnett on 11/15/2020.
 //
 
 import SimplistsKit
 import SwiftUI
 
-struct ListView: View {
+struct ArchivedListView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var storage: SMPStorage
     @State var list: SMPList
@@ -67,58 +67,12 @@ struct ListView: View {
             }
             .listStyle(InsetGroupedListStyle())
             .animation(.default)
+            .navigationBarItems(trailing: NavBarItemsView(showEditButton: !list.items.isEmpty))
+            .navigationBarTitle(list.title)
             .onReceive(storage.objectWillChange, perform: { _ in
                 reload()
             })
         }
-        .navigationBarItems(trailing: NavBarItemsView(showEditButton: !list.items.isEmpty))
-        .navigationBarTitle(list.title)
-        .toolbar {
-            ToolbarItem(placement: .bottomBar) {
-                Menu {
-                    Button(action: {
-                        isPresentingMoveItems.toggle()
-                    }) {
-                        Text("toolbar-moveitems-button-text")
-                        Image(systemName: "folder")
-                    }
-
-                    Button(action: {
-                        markAllItems(isComplete: false)
-                    }) {
-                        Text("toolbar-markincomplete-button-text")
-                        Image(systemName: "circle")
-                    }
-
-                    Button(action: {
-                        markAllItems(isComplete: true)
-                    }) {
-                        Text("toolbar-markcomplete-button-text")
-                        Image(systemName: "checkmark.circle")
-                    }
-
-                    Button(action: {
-                        storage.deleteList(list)
-                    }) {
-                        Text("toolbar-delete-button-text")
-                        Image(systemName: "trash")
-                    }
-
-                    Button(action: {
-                        list.isArchived.toggle()
-                        storage.updateList(list)
-                    }) {
-                        Text(list.isArchived ? "toolbar-unarchive-button-text" : "toolbar-archive-button-text")
-                        Image(systemName: "archivebox")
-                    }
-                } label: {
-                    Text("toolbar-actions-button-text")
-                }
-            }
-        }
-        .sheet(isPresented: $isPresentingMoveItems, content: {
-            MoveItemsView(list: list)
-        })
     }
 
     private func addNewItem() {
@@ -178,16 +132,9 @@ struct ListView: View {
 
         storage.updateList(list)
     }
-
-    private func markAllItems(isComplete: Bool) {
-        for index in 0..<list.items.count {
-            list.items[index].isComplete = isComplete
-        }
-        storage.updateList(list)
-    }
 }
 
-struct ListView_Previews: PreviewProvider {
+struct ArchivedListView_Previews: PreviewProvider {
     static var previews: some View {
         ListView(list: SMPList(title: "Grocery"))
     }
