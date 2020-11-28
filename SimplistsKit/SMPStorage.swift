@@ -28,13 +28,13 @@ public final class SMPStorage: ObservableObject {
         var lists: [SMPList] = []
 
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "List")
-//        request.predicate = NSPredicate(format: "isArchived == %@", NSNumber(value: isArchived))
         request.sortDescriptors = [NSSortDescriptor(key: "modified", ascending: false)]
 
         do {
             if let results = try context.fetch(request) as? [ListEntity] {
                 // TODO: not using predicate above to preserve dev data and not deal with migrations.
                 // Consider making isArchived non-optional before shipping and just deleting all dev data.
+                // e.g. request.predicate = NSPredicate(format: "isArchived == %@", NSNumber(value: isArchived))
                 lists.append(contentsOf:
                                 results.filter({ $0.isArchived == isArchived }).compactMap { SMPList(entity: $0) })
             }

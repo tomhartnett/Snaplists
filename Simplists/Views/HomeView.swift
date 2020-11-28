@@ -12,6 +12,8 @@ struct HomeView: View {
     @EnvironmentObject var storage: SMPStorage
     @State private var newListTitle = ""
     @State private var isPresentingRename = false
+    @State private var renameListID = ""
+    @State private var renameListTitle = ""
     @State private var isPresentingAuthError = false
     @State var lists: [SMPList] = []
 
@@ -36,6 +38,8 @@ struct HomeView: View {
                                 Text(list.title)
                                     .contextMenu {
                                         Button(action: {
+                                            renameListID = list.id.uuidString
+                                            renameListTitle = list.title
                                             isPresentingRename.toggle()
                                         }, label: {
                                             Text("home-rename-button-text")
@@ -60,10 +64,13 @@ struct HomeView: View {
                                     }
                             }
                             .sheet(isPresented: $isPresentingRename) {
-                                RenameListView(title: list.title) { text in
-                                    var listToUpdate = list
-                                    listToUpdate.title = text
-                                    storage.updateList(listToUpdate)
+                                RenameListView(id: $renameListID, title: $renameListTitle) { id, newTitle in
+                                    if var list = lists.first(where: { $0.id.uuidString == id }) {
+                                        list.title = newTitle
+                                        storage.updateList(list)
+                                        renameListID = ""
+                                        renameListTitle = ""
+                                    }
                                 }
                             }
                         }

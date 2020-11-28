@@ -9,10 +9,11 @@ import SwiftUI
 
 struct RenameListView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @State var title = ""
+    @Binding var id: String
+    @Binding var title: String
     @State private var isDoneEnabled = false
 
-    var doneAction: ((String) -> Void)?
+    var doneAction: ((String, String) -> Void)?
 
     var body: some View {
         NavigationView {
@@ -53,7 +54,7 @@ struct RenameListView: View {
     private func saveChanges() {
         guard !title.isEmpty else { return }
 
-        doneAction?(title)
+        doneAction?(id, title)
         presentationMode.wrappedValue.dismiss()
     }
 }
@@ -61,7 +62,7 @@ struct RenameListView: View {
 struct RenameView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            RenameListView(title: "Weekend TODOs")
+            RenameListView(id: .constant("12345"), title: .constant("Weekend TODOs"))
         }
     }
 }
