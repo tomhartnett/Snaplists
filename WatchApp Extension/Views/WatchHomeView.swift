@@ -33,7 +33,7 @@ struct WatchHomeView: View {
 
                 if lists.count > 0 {
                     ForEach(lists) { list in
-                        NavigationLink(destination: WatchListView(list: list).environmentObject(storage)) {
+                        NavigationLink(destination: WatchListView(list: list)) {
                             Text(list.title)
                         }
                     }

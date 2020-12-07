@@ -34,7 +34,7 @@ struct HomeView: View {
                 List {
                     Section {
                         ForEach(lists) { list in
-                            NavigationLink(destination: ListView(list: list).environmentObject(storage)) {
+                            NavigationLink(destination: ListView(list: list)) {
                                 Text(list.title)
                                     .contextMenu {
                                         Button(action: {

@@ -1,0 +1,29 @@
+{
+  "products" : [
+    {
+      "displayPrice" : "2.99",
+      "familyShareable" : true,
+      "internalID" : "BBCE4170",
+      "localizations" : [
+        {
+          "description" : "",
+          "displayName" : "Premium Mode",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.sleekible.Simplists.iap-premium",
+      "referenceName" : "Premium Mode",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 1,
+    "minor" : 0
+  }
+}
