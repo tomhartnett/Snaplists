@@ -60,6 +60,7 @@
 		E2633FCD2558A35100901471 /* MoveListsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2633FCC2558A35100901471 /* MoveListsView.swift */; };
 		E2633FD5255C215A00901471 /* MoveItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2633FD4255C215A00901471 /* MoveItemView.swift */; };
 		E26D01D9257E71C2009049F3 /* StoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26027A22579227900FBF0E3 /* StoreService.swift */; };
+		E26D01E225810AED009049F3 /* StoreDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26D01E125810AED009049F3 /* StoreDataSource.swift */; };
 		E26DD859250BA13E00FCC495 /* AuthenticationErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26DD858250BA13E00FCC495 /* AuthenticationErrorView.swift */; };
 		E27CDF5C24ECA7BC004B6A32 /* Simplists.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E27CDF5A24ECA7BC004B6A32 /* Simplists.xcdatamodeld */; };
 		E27CDF5D24ECAB4D004B6A32 /* Simplists.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E27CDF5A24ECA7BC004B6A32 /* Simplists.xcdatamodeld */; };
@@ -206,6 +207,7 @@
 		E260CC42251A1DF000208E90 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		E2633FCC2558A35100901471 /* MoveListsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveListsView.swift; sourceTree = "<group>"; };
 		E2633FD4255C215A00901471 /* MoveItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveItemView.swift; sourceTree = "<group>"; };
+		E26D01E125810AED009049F3 /* StoreDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDataSource.swift; sourceTree = "<group>"; };
 		E26DD858250BA13E00FCC495 /* AuthenticationErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationErrorView.swift; sourceTree = "<group>"; };
 		E27CDF5B24ECA7BC004B6A32 /* Simplists.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Simplists.xcdatamodel; sourceTree = "<group>"; };
 		E27E8948252A9EB40098374C /* WatchAddNewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchAddNewView.swift; sourceTree = "<group>"; };
@@ -444,6 +446,7 @@
 			children = (
 				E260279C25752E6600FBF0E3 /* Configuration.storekit */,
 				E26027A22579227900FBF0E3 /* StoreService.swift */,
+				E26D01E125810AED009049F3 /* StoreDataSource.swift */,
 			);
 			path = InAppPurchase;
 			sourceTree = "<group>";
@@ -809,6 +812,7 @@
 				E2633FCD2558A35100901471 /* MoveListsView.swift in Sources */,
 				E2A32102250E628200A022B8 /* MoreView.swift in Sources */,
 				E22E152324E060C2002A140E /* HomeView.swift in Sources */,
+				E26D01E225810AED009049F3 /* StoreDataSource.swift in Sources */,
 				E21123DB2504420700B3D76D /* PrivacyPolicyView.swift in Sources */,
 				E26DD859250BA13E00FCC495 /* AuthenticationErrorView.swift in Sources */,
 				E26027A32579227900FBF0E3 /* StoreService.swift in Sources */,

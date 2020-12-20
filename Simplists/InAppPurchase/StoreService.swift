@@ -8,6 +8,10 @@
 import Combine
 import StoreKit
 
+enum ProductID {
+    static let premium = "com.sleekible.Simplists.iap-premium"
+}
+
 protocol StoreService {
     var productsResponse: AnyPublisher<SKProductsResponse, Error> { get }
     func getProducts()
@@ -20,7 +24,7 @@ class StoreClient: NSObject, StoreService {
     }
 
     func getProducts() {
-        let request = SKProductsRequest(productIdentifiers: ["com.sleekible.Simplists.iap-premium"])
+        let request = SKProductsRequest(productIdentifiers: [ProductID.premium])
         request.delegate = self
         request.start()
     }

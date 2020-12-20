@@ -250,3 +250,10 @@ public final class SMPStorage: ObservableObject {
         }
     }
 }
+
+public extension SMPStorage {
+    static var previewStorage: SMPStorage {
+        let container = NSPersistentContainer(name: "Whatever")
+        return SMPStorage(context: container.viewContext)
+    }
+}

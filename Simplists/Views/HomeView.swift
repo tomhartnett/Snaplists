@@ -15,7 +15,7 @@ struct HomeView: View {
     @State private var renameListID = ""
     @State private var renameListTitle = ""
     @State private var isPresentingAuthError = false
-    @State var lists: [SMPList] = []
+    @State private var lists: [SMPList] = []
 
     var body: some View {
         NavigationView {
@@ -145,6 +145,6 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        HomeView().environmentObject(SMPStorage.previewStorage)
     }
 }
