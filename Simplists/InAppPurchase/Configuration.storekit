@@ -20,7 +20,41 @@
 
   },
   "subscriptionGroups" : [
+    {
+      "id" : "3E14F71C",
+      "localizations" : [
 
+      ],
+      "name" : "Subscription Group Name",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "displayPrice" : "2.99",
+          "familyShareable" : true,
+          "groupNumber" : 1,
+          "internalID" : "9D3920A0",
+          "introductoryOffer" : {
+            "internalID" : "CD16084B",
+            "paymentMode" : "free",
+            "subscriptionPeriod" : "P1W"
+          },
+          "localizations" : [
+            {
+              "description" : "Premium Mode Sub Desc",
+              "displayName" : "Premium Mode Subscription",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "com.sleekible.Simplists.iap-premium-subscription",
+          "recurringSubscriptionPeriod" : "P1Y",
+          "referenceName" : "Premium Mode Subscription",
+          "subscriptionGroupID" : "3E14F71C",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    }
   ],
   "version" : {
     "major" : 1,

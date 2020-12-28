@@ -10,6 +10,7 @@ import StoreKit
 
 enum ProductID {
     static let premium = "com.sleekible.Simplists.iap-premium"
+    static let premiumSubscription = "com.sleekible.Simplists.iap-premium-subscription"
 }
 
 protocol StoreService {
@@ -24,7 +25,7 @@ class StoreClient: NSObject, StoreService {
     }
 
     func getProducts() {
-        let request = SKProductsRequest(productIdentifiers: [ProductID.premium])
+        let request = SKProductsRequest(productIdentifiers: [ProductID.premium, ProductID.premiumSubscription])
         request.delegate = self
         request.start()
     }
@@ -39,6 +40,7 @@ class StoreClient: NSObject, StoreService {
 
 extension StoreClient: SKProductsRequestDelegate {
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
+        print("\(#function) - products: \(response.products.count)")
         productsResponseSubject.send(response)
     }
 }

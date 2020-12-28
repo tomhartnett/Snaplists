@@ -58,7 +58,7 @@
 "archived-navigation-bar-title" = "Archived Lists";
 
 "more-navigation-bar-title" = "More";
-"more-section-iap-header" = "Optional In-App Purchases";
+"more-section-purchases" = "Optional In-App Purchases";
 "more-section-feedback-header" = "Feedback";
 "more-rate-app-text" = "Please Rate this App";
 "more-email-feedback-text" = "Send Feedback via Email";
@@ -69,3 +69,10 @@
 "about-header-text" = "Simplists";
 "about-created-by-text" = "Created by";
 "about-version-format-string" = "Version %@ (%@)";
+
+"store-header-text" = "Premium Mode is an optional subscription that unlocks additional app functionality and helps support future development of the app.";
+"store-features-header-text" = "Premium Features";
+"store-feature-icloud-text" = "iCloud Sync and Backup";
+"store-feature-unlimited-list" = "Unlimited number of lists";
+"store-restore-purchases-text" = "Restore Previous Purchases";
+"store-privacy-policy-text" = "Privacy Policy";

@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct MoreView: View {
-    @ObservedObject var storeDataSource: StoreDataSource = StoreDataSource(service: StoreClient())
 
     var body: some View {
         VStack {
             List {
-                if let premiumIAP = storeDataSource.premiumIAP {
-                    Section(header: Text("more-section-iap-header")) {
-                        Text("\(premiumIAP.title) - \(premiumIAP.price)")
+                Section(header: Text("more-section-purchases")) {
+                    NavigationLink(destination: StoreView()) {
+                        Image(systemName: "dollarsign.circle")
+                            .frame(width: 25, height: 25)
+                            .foregroundColor(Color("TextSecondary"))
+                        Text("Premium Mode")
                     }
                 }
 
@@ -55,9 +57,6 @@ struct MoreView: View {
             }
             .navigationBarTitle("more-navigation-bar-title")
             .listStyle(InsetGroupedListStyle())
-        }
-        .onAppear {
-            storeDataSource.refresh()
         }
     }
 }
