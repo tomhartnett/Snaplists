@@ -5,46 +5,90 @@
 //  Created by Tom Hartnett on 12/20/20.
 //
 
+import Purchases
 import SwiftUI
 
-struct StoreView: View {
-    @ObservedObject var storeDataSource: StoreDataSource = StoreDataSource(service: StoreClient())
+struct CheckmarkRow: View {
+    var isSelected = false
+    var title: String
+    var price: String
 
     var body: some View {
-        VStack {
-
-            Text("store-header-text")
-                .padding()
-
-            Text("Subscribe for $2.99 per year")
-                .font(.headline)
-                .padding(.horizontal, 24)
-                .padding(.vertical, 8)
-                .background(Color.gray)
-                .foregroundColor(.white)
-                .cornerRadius(8)
-
-            VStack(alignment: .leading) {
-                Text("store-features-header-text")
-                    .font(.headline)
-                FeatureBullet("store-feature-icloud-text")
-                FeatureBullet("store-feature-unlimited-list")
+        HStack {
+            Text(title)
+            Spacer()
+            Text(price)
+            if isSelected {
+                Image(systemName: "checkmark")
+                    .frame(width: 20, height: 20)
+            } else {
+                Rectangle()
+                    .foregroundColor(Color.clear)
+                    .frame(width: 20, height: 20)
             }
-            .padding()
-
-            Button(action: {}, label: {
-                Text("store-restore-purchases-text")
-            })
-            .padding()
-
-            Button(action: {}, label: {
-                Text("store-privacy-policy-text")
-            })
-            .padding()
         }
-        .onAppear {
-            storeDataSource.refresh()
-        }
+    }
+}
+
+struct StoreView: View {
+    @ObservedObject var storeDataSource: StoreDataSource = StoreDataSource()
+    @State var selectedItemID = ""
+
+    var body: some View {
+            List {
+                Section {
+                    Text("store-header-text")
+                }
+
+                Section(header: Text("store-options-header-text")) {
+                    ForEach(storeDataSource.products) { product in
+                        CheckmarkRow(isSelected: selectedItemID == product.id,
+                                     title: product.title,
+                                     price: product.price)
+                            .contentShape(Rectangle())
+                            .onTapGesture {
+                                self.selectedItemID = product.id
+                            }
+                    }
+                }
+
+                Section {
+                    Button(action: {}, label: {
+                        Text("store-subscribe-button-text")
+                    })
+                }
+
+                Section {
+                    VStack(alignment: .leading) {
+                        Text("store-features-header-text")
+                            .font(.headline)
+                        FeatureBullet("store-feature-icloud-text".localize())
+                        FeatureBullet("store-feature-unlimited-list".localize())
+                    }
+                }
+
+                Section {
+                    Button(action: {}, label: {
+                        Text("store-restore-button-text")
+                    })
+                }
+
+                Section {
+                    Button(action: {}, label: {
+                        Text("store-privacy-button-text")
+                    })
+                }
+            }
+            .listStyle(GroupedListStyle())
+            .navigationBarTitle("Simplists Premium")
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                    guard let firstProductID = self.storeDataSource.products.first?.id else { return }
+                    if self.selectedItemID.isEmpty == true {
+                        self.selectedItemID = firstProductID
+                    }
+                }
+            }
     }
 }
 

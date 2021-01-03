@@ -70,9 +70,12 @@
 "about-created-by-text" = "Created by";
 "about-version-format-string" = "Version %@ (%@)";
 
+"store-navigation-bar-title" = "Simplists Premium";
 "store-header-text" = "Premium Mode is an optional subscription that unlocks additional app functionality and helps support future development of the app.";
+"store-options-header-text" = "OPTIONS";
 "store-features-header-text" = "Premium Features";
 "store-feature-icloud-text" = "iCloud Sync and Backup";
 "store-feature-unlimited-list" = "Unlimited number of lists";
-"store-restore-purchases-text" = "Restore Previous Purchases";
-"store-privacy-policy-text" = "Privacy Policy";
+"store-subscribe-button-text" = "Subscribe";
+"store-restore-button-text" = "Restore Previous Purchases";
+"store-privacy-button-text" = "Privacy Policy";
