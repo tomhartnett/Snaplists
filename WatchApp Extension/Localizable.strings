@@ -9,8 +9,6 @@
 "icloud-error-title" = "Not signed in";
 "icloud-error-message" = "Sign in to iCloud on your iPhone to use this app";
 
-"home-no-items-message" = "No lists";
-"home-new-list-button.title" = "New List";
+"home-no-items-message" = "No lists. Create a list in the app on your iPhone or iPad.";
 
-"list-no-items-message" = "No items";
-"list-new-item-button.title" = "Add Item";
+"list-no-items-message" = "No items. Add items to this list in the app on your iPhone or iPad.";

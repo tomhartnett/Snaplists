@@ -12,29 +12,22 @@ struct WatchListView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var storage: SMPStorage
     @State var list: SMPList
-    @State private var isPresentingNewItem = false
 
     var body: some View {
         VStack {
-            List {
-                Button("list-new-item-button.title") {
-                    isPresentingNewItem.toggle()
-                }
-                .modifier(BlueButtonStyle())
-
-                if list.items.count > 0 {
+            if list.items.isEmpty {
+                Text("list-no-items-message")
+                    .foregroundColor(.secondary)
+            } else {
+                List {
                     ForEach(list.items) { item in
                         WatchListItemView(item: item, tapAction: {
                             updateItem(id: item.id, title: item.title, isComplete: !item.isComplete)
                         })
                     }
                     .onDelete(perform: delete)
-                } else {
-                    Text("list-no-items-message")
-                        .frame(height: 88)
-                        .foregroundColor(.secondary)
-                        .listRowBackground(Color.clear)
                 }
+                .padding(.top, 10)
             }
         }
         .animation(.default)
@@ -42,23 +35,6 @@ struct WatchListView: View {
         .onReceive(storage.objectWillChange, perform: { _ in
             reload()
         })
-        .sheet(isPresented: $isPresentingNewItem) {
-            WatchAddNewView(placeholderText: "Item name...", saveAction: { newItemTitle in
-                isPresentingNewItem = false
-                addNewItem(newItemTitle: newItemTitle)
-            })
-        }
-    }
-
-    private func addNewItem(newItemTitle: String) {
-        if newItemTitle.isEmpty {
-            return
-        }
-
-        let item = SMPListItem(title: newItemTitle, isComplete: false)
-        list.items.append(item)
-
-        storage.addItem(item, to: list)
     }
 
     private func delete(at offsets: IndexSet) {
@@ -103,6 +79,12 @@ struct WatchListView: View {
 
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {
-        WatchListView(list: SMPList(title: "Grocery"))
+        WatchListView(list: SMPList(
+                        title: "Grocery",
+                        items: [
+                            SMPListItem(title: "Item 1", isComplete: false),
+                            SMPListItem(title: "Item 2", isComplete: true),
+                            SMPListItem(title: "Item 3", isComplete: true)
+                        ])).environmentObject(SMPStorage.previewStorage)
     }
 }
