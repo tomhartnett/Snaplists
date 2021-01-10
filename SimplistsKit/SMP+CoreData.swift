@@ -13,6 +13,7 @@ extension SMPList {
         self.id = id
         self.title = title
         self.isArchived = entity.isArchived
+        self.lastModified = entity.modified ?? Date()
         self.items = entity.sortedItems.compactMap { SMPListItem(entity: $0) }
     }
 }

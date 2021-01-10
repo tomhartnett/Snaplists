@@ -12,6 +12,7 @@
 		E21823042560467F00CAA92C /* NewListNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21823032560467F00CAA92C /* NewListNameView.swift */; };
 		E218230C25605F0200CAA92C /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E218230B25605F0200CAA92C /* String+Extensions.swift */; };
 		E21BBD6C2503B0A500964F67 /* RenameListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21BBD6B2503B0A500964F67 /* RenameListView.swift */; };
+		E22077C725AB941800866341 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = E22077C925AB941800866341 /* Localizable.stringsdict */; };
 		E22C615D255432710004B561 /* ArchivedListsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22C615C255432710004B561 /* ArchivedListsView.swift */; };
 		E22E152024E05BBC002A140E /* SMPList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E151F24E05BBC002A140E /* SMPList.swift */; };
 		E22E152124E05BBC002A140E /* SMPList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E151F24E05BBC002A140E /* SMPList.swift */; };
@@ -158,6 +159,7 @@
 		E21823032560467F00CAA92C /* NewListNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewListNameView.swift; sourceTree = "<group>"; };
 		E218230B25605F0200CAA92C /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		E21BBD6B2503B0A500964F67 /* RenameListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenameListView.swift; sourceTree = "<group>"; };
+		E22077C825AB941800866341 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		E22C615C255432710004B561 /* ArchivedListsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedListsView.swift; sourceTree = "<group>"; };
 		E22E151F24E05BBC002A140E /* SMPList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMPList.swift; sourceTree = "<group>"; };
 		E22E152224E060C2002A140E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -346,6 +348,7 @@
 				E235D79D24DF5B5A007D95BE /* LaunchScreen.storyboard */,
 				E235D7A024DF5B5A007D95BE /* Info.plist */,
 				E2A32100250D704700A022B8 /* Localizable.strings */,
+				E22077C925AB941800866341 /* Localizable.stringsdict */,
 				E235D79A24DF5B5A007D95BE /* PreviewContent */,
 			);
 			path = Simplists;
@@ -650,6 +653,7 @@
 			files = (
 				E235D79F24DF5B5A007D95BE /* LaunchScreen.storyboard in Resources */,
 				E2A320FE250D704700A022B8 /* Localizable.strings in Resources */,
+				E22077C725AB941800866341 /* Localizable.stringsdict in Resources */,
 				E235D79C24DF5B5A007D95BE /* PreviewAssets.xcassets in Resources */,
 				E235D79924DF5B5A007D95BE /* Assets.xcassets in Resources */,
 			);
@@ -901,6 +905,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		E22077C925AB941800866341 /* Localizable.stringsdict */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E22077C825AB941800866341 /* en */,
+			);
+			name = Localizable.stringsdict;
+			sourceTree = "<group>";
+		};
 		E235D79D24DF5B5A007D95BE /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

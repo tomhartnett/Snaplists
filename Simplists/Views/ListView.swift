@@ -16,6 +16,20 @@ struct ListView: View {
     @State private var newItemHasFocus = false
     @State private var isPresentingMoveItems = false
 
+    var itemCountText: String {
+        let formatString = NSLocalizedString("list item count",
+                                             bundle: Bundle.main,
+                                             comment: "")
+        let result = String.localizedStringWithFormat(formatString, list.items.count)
+        return result
+    }
+
+    var lastUpdatedText: String {
+        return DateFormatter.localizedString(from: list.lastModified,
+                                             dateStyle: .medium,
+                                             timeStyle: .short)
+    }
+
     var body: some View {
         VStack {
             if list.isArchived {
@@ -30,22 +44,30 @@ struct ListView: View {
             }
 
             List {
-                ForEach(list.items) { item in
-                    ListItemView(title: item.title,
-                                 isComplete: item.isComplete,
-                                 tapAction: {
-                                    updateItem(id: item.id, title: item.title, isComplete: !item.isComplete)
-                                 }, editAction: { title in
-                                    newItemHasFocus = false
-                                    if title.isEmpty {
-                                        storage.deleteItem(item, list: list)
-                                    } else {
-                                        updateItem(id: item.id, title: title, isComplete: item.isComplete)
-                                    }
-                                 })
-                }
-                .onDelete(perform: delete)
-                .onMove(perform: move)
+                Section(header:
+                            HStack {
+                                Text(itemCountText)
+                                Spacer()
+                                Text(lastUpdatedText)
+                            },
+                        content: {
+                            ForEach(list.items) { item in
+                                ListItemView(title: item.title,
+                                             isComplete: item.isComplete,
+                                             tapAction: {
+                                                updateItem(id: item.id, title: item.title, isComplete: !item.isComplete)
+                                             }, editAction: { title in
+                                                newItemHasFocus = false
+                                                if title.isEmpty {
+                                                    storage.deleteItem(item, list: list)
+                                                } else {
+                                                    updateItem(id: item.id, title: title, isComplete: item.isComplete)
+                                                }
+                                             })
+                            }
+                            .onDelete(perform: delete)
+                            .onMove(perform: move)
+                        })
 
                 HStack {
                     ZStack {
