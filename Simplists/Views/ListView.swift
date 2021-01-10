@@ -189,6 +189,14 @@ struct ListView: View {
 
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {
-        ListView(list: SMPList(title: "Grocery"))
+        ListView(list: SMPList(
+                    title: "Grocery",
+                    items: [
+                        SMPListItem(title: "Item 1", isComplete: false),
+                        SMPListItem(title: "Item 2", isComplete: false),
+                        SMPListItem(title: "Item 3", isComplete: true),
+                        SMPListItem(title: "Item 4", isComplete: true)
+                    ])
+        ).environmentObject(SMPStorage.previewStorage)
     }
 }
