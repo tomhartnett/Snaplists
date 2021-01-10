@@ -10,12 +10,16 @@ import SimplistsKit
 
 struct HomeView: View {
     @EnvironmentObject var storage: SMPStorage
+    @State var lists: [SMPList]
     @State private var newListTitle = ""
     @State private var isPresentingRename = false
     @State private var renameListID = ""
     @State private var renameListTitle = ""
     @State private var isPresentingAuthError = false
-    @State private var lists: [SMPList] = []
+
+    var archivedListCount: Int {
+        return storage.getListsCount(isArchived: true)
+    }
 
     var body: some View {
         NavigationView {
@@ -35,33 +39,38 @@ struct HomeView: View {
                     Section {
                         ForEach(lists) { list in
                             NavigationLink(destination: ListView(list: list)) {
-                                Text(list.title)
-                                    .contextMenu {
-                                        Button(action: {
-                                            renameListID = list.id.uuidString
-                                            renameListTitle = list.title
-                                            isPresentingRename.toggle()
-                                        }, label: {
-                                            Text("home-rename-button-text")
-                                            Image(systemName: "pencil")
-                                        })
+                                HStack {
+                                    Text(list.title)
+                                    Spacer()
+                                    Text("\(list.items.count)")
+                                        .foregroundColor(.secondary)
+                                }
+                                .contextMenu {
+                                    Button(action: {
+                                        renameListID = list.id.uuidString
+                                        renameListTitle = list.title
+                                        isPresentingRename.toggle()
+                                    }, label: {
+                                        Text("home-rename-button-text")
+                                        Image(systemName: "pencil")
+                                    })
 
-                                        Button(action: {
-                                            var listToUpdate = list
-                                            listToUpdate.isArchived.toggle()
-                                            storage.updateList(listToUpdate)
-                                        }, label: {
-                                            Text("home-archive-button-text")
-                                            Image(systemName: "archivebox")
-                                        })
+                                    Button(action: {
+                                        var listToUpdate = list
+                                        listToUpdate.isArchived.toggle()
+                                        storage.updateList(listToUpdate)
+                                    }, label: {
+                                        Text("home-archive-button-text")
+                                        Image(systemName: "archivebox")
+                                    })
 
-                                        Button(action: {
-                                            storage.deleteList(list)
-                                        }, label: {
-                                            Text("home-delete-button-text")
-                                            Image(systemName: "trash")
-                                        })
-                                    }
+                                    Button(action: {
+                                        storage.deleteList(list)
+                                    }, label: {
+                                        Text("home-delete-button-text")
+                                        Image(systemName: "trash")
+                                    })
+                            }
                             }
                             .sheet(isPresented: $isPresentingRename) {
                                 RenameListView(id: $renameListID, title: $renameListTitle) { id, newTitle in
@@ -91,10 +100,15 @@ struct HomeView: View {
 
                     Section {
                         NavigationLink(destination: ArchivedListsView()) {
-                            Image(systemName: "archivebox")
-                                .frame(width: 25, height: 25)
-                                .foregroundColor(Color("TextSecondary"))
-                            Text("home-archived-title")
+                            HStack {
+                                Image(systemName: "archivebox")
+                                    .frame(width: 25, height: 25)
+                                    .foregroundColor(Color("TextSecondary"))
+                                Text("home-archived-title")
+                                Spacer()
+                                Text("\(archivedListCount)")
+                                    .foregroundColor(.secondary)
+                            }
                         }
                     }
 
@@ -139,12 +153,29 @@ struct HomeView: View {
     }
 
     private func reload() {
+        #if DEBUG
+        if ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1" {
+            return
+        }
+        #endif
+
         lists = storage.getLists()
     }
 }
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView().environmentObject(SMPStorage.previewStorage)
+        HomeView(lists: [
+            SMPList(title: "List 1",
+                    isArchived: false,
+                    items: [
+                        SMPListItem(title: "Item 1", isComplete: false)
+                    ]),
+            SMPList(title: "List 2",
+                    isArchived: false,
+                    items: [
+                        SMPListItem(title: "Item 1", isComplete: false)
+                    ])
+        ]).environmentObject(SMPStorage.previewStorage)
     }
 }

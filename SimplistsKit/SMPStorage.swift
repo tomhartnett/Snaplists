@@ -23,6 +23,23 @@ public final class SMPStorage: ObservableObject {
                                                object: context.persistentStoreCoordinator)
     }
 
+    public func getListsCount(isArchived: Bool? = nil) -> Int {
+
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "List")
+        if isArchived != nil {
+            request.predicate = NSPredicate(format: "isArchived == %@", NSNumber(value: isArchived!))
+        } else {
+            request.predicate = NSPredicate(value: true)
+        }
+
+        do {
+            return try context.count(for: request)
+        } catch {
+            print("\(#function) - error: \(error.localizedDescription)")
+            return 0
+        }
+    }
+
     public func getLists(isArchived: Bool = false) -> [SMPList] {
 
         var lists: [SMPList] = []

@@ -18,7 +18,12 @@ struct ArchivedListsView: View {
                 Section {
                     ForEach(lists) { list in
                         NavigationLink(destination: ListView(list: list)) {
-                            Text(list.title)
+                            HStack {
+                                Text(list.title)
+                                Spacer()
+                                Text("\(list.items.count)")
+                                    .foregroundColor(.secondary)
+                            }
                         }
                     }
                 }

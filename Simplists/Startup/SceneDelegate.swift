@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let storage = createStorage()
 
         // Create the SwiftUI view that provides the window contents.
-        let listsView = HomeView()
+        let listsView = HomeView(lists: [])
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
