@@ -25,9 +25,26 @@ struct ListView: View {
     }
 
     var lastUpdatedText: String {
-        return DateFormatter.localizedString(from: list.lastModified,
-                                             dateStyle: .medium,
-                                             timeStyle: .short)
+        let elapsedTime = Date().timeIntervalSince(list.lastModified)
+        let format = "list-modified-format-string".localize()
+
+        // If lastModified more than a week ago, show explicit date.
+        // Otherwise show relative date offset e.g. "Yesterday".
+        if elapsedTime > 604800 {
+            let dateString = DateFormatter.localizedString(from: list.lastModified,
+                                                 dateStyle: .medium,
+                                                 timeStyle: .none)
+
+            return String(format: format, dateString)
+        } else if elapsedTime < 60 {
+            return String(format: format, "list-modified-just-now-text".localize())
+        } else {
+            let formatter = RelativeDateTimeFormatter()
+            formatter.unitsStyle = .full
+            let dateString = formatter.localizedString(for: list.lastModified, relativeTo: Date())
+
+            return String(format: format, dateString)
+        }
     }
 
     var body: some View {
@@ -67,7 +84,7 @@ struct ListView: View {
                             }
                             .onDelete(perform: delete)
                             .onMove(perform: move)
-                        })
+                        }).textCase(nil) // Use "original" case of header text and do not upper-case.
 
                 HStack {
                     ZStack {
