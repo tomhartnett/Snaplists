@@ -45,7 +45,7 @@
 "move-lists-move-items-text" = "Move Items";
 
 "list-archived-text" = "ARCHIVED";
-"list-modified-format-string" = "modified: %@";
+"list-modified-format-string" = "updated: %@";
 "list-modified-just-now-text" = "just now";
 "list-new-item-placeholder" = "Add new item...";
 

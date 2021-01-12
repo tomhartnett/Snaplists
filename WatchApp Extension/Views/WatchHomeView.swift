@@ -27,7 +27,6 @@ struct WatchHomeView: View {
                             Text(list.title)
                         }
                     }
-                    .onDelete(perform: delete)
                 }
                 .padding(.top, 10)
             }
@@ -44,13 +43,6 @@ struct WatchHomeView: View {
         .sheet(isPresented: $isPresentingAuthError) {
             AuthenticationErrorView()
         }
-}
-
-    private func delete(at offsets: IndexSet) {
-        offsets.forEach {
-            storage.deleteList(lists[$0])
-        }
-        lists.remove(atOffsets: offsets)
     }
 
     private func reload() {

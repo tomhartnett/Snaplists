@@ -25,7 +25,6 @@ struct WatchListView: View {
                             updateItem(id: item.id, title: item.title, isComplete: !item.isComplete)
                         })
                     }
-                    .onDelete(perform: delete)
                 }
                 .padding(.top, 10)
             }
@@ -35,13 +34,6 @@ struct WatchListView: View {
         .onReceive(storage.objectWillChange, perform: { _ in
             reload()
         })
-    }
-
-    private func delete(at offsets: IndexSet) {
-        offsets.forEach {
-            storage.deleteItem(list.items[$0], list: list)
-        }
-        list.items.remove(atOffsets: offsets)
     }
 
     private func reload() {
