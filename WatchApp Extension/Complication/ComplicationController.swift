@@ -102,12 +102,6 @@ private extension ComplicationController {
             let imageProvider = CLKImageProvider(onePieceImage: image)
             imageProvider.tintColor = .white
             template = CLKComplicationTemplateExtraLargeSimpleImage(imageProvider: imageProvider)
-        case .graphicCorner:
-            let image = UIImage(named: "Complication/Graphic Corner") ?? UIImage()
-            let imageProvider = CLKFullColorImageProvider(fullColorImage: image)
-            let textProvider = CLKSimpleTextProvider(text: "Simplists")
-            template = CLKComplicationTemplateGraphicCornerTextImage(textProvider: textProvider,
-                                                                     imageProvider: imageProvider)
         case .graphicBezel:
             let image = UIImage(named: "Complication/Graphic Circular") ?? UIImage()
             let imageProvider = CLKFullColorImageProvider(fullColorImage: image)
@@ -115,8 +109,12 @@ private extension ComplicationController {
             let textProvider = CLKSimpleTextProvider(text: "Simplists")
             template = CLKComplicationTemplateGraphicBezelCircularText(circularTemplate: circularTemplate,
                                                                        textProvider: textProvider)
+        case .graphicCorner:
+            let image = UIImage(named: "GraphicCornerFullColor")!
+            let imageProvider = CLKFullColorImageProvider(fullColorImage: image)
+            template = CLKComplicationTemplateGraphicCornerCircularImage(imageProvider: imageProvider)
         case .graphicCircular:
-            let image = UIImage(named: "Complication/Graphic Circular") ?? UIImage()
+            let image = UIImage(named: "Complication/Graphic Circular")!
             let imageProvider = CLKFullColorImageProvider(fullColorImage: image)
             template = CLKComplicationTemplateGraphicCircularImage(imageProvider: imageProvider)
         case .graphicRectangular:
