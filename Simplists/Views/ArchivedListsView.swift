@@ -17,20 +17,38 @@ struct ArchivedListsView: View {
             List {
                 Section {
                     ForEach(lists) { list in
-                        NavigationLink(destination: ListView(list: list)) {
-                            HStack {
-                                Text(list.title)
-                                Spacer()
-                                Text("\(list.items.count)")
-                                    .foregroundColor(.secondary)
-                            }
+                        HStack {
+                            Text(list.title)
+                            Spacer()
+                            Text("\(list.items.count)")
+                                .foregroundColor(.secondary)
+                        }
+                        .contextMenu {
+
+                            Button(action: {
+                                var listToUpdate = list
+                                listToUpdate.isArchived = false
+                                storage.updateList(listToUpdate)
+                            }, label: {
+                                Text("archived-restore-button-text")
+                                Image(systemName: "trash.slash")
+                            })
+
+                            Button(action: {
+                                storage.deleteList(list)
+                            }, label: {
+                                Text("archived-delete-button-text")
+                                Image(systemName: "trash")
+                            })
                         }
                     }
+                    .onDelete(perform: delete)
                 }
             }
             .listStyle(InsetGroupedListStyle())
         }
         .navigationBarTitle("archived-navigation-bar-title")
+        .navigationBarItems(trailing: NavBarItemsView(showEditButton: !lists.isEmpty))
         .onAppear {
             getArchivedLists()
         }
@@ -41,6 +59,13 @@ struct ArchivedListsView: View {
 
     private func getArchivedLists() {
         lists = storage.getLists(isArchived: true)
+    }
+
+    private func delete(at offsets: IndexSet) {
+        offsets.forEach {
+            storage.deleteList(lists[$0])
+        }
+        lists.remove(atOffsets: offsets)
     }
 }
 

@@ -51,6 +51,12 @@ struct HomeView: View {
                                 }
                                 .contextMenu {
                                     Button(action: {
+
+                                    }, label: {
+                                        Text("Duplicate")
+                                        Image(systemName: "plus.square.on.square")
+                                    })
+                                    Button(action: {
                                         renameListID = list.id.uuidString
                                         renameListTitle = list.title
                                         isPresentingRename.toggle()
@@ -60,16 +66,7 @@ struct HomeView: View {
                                     })
 
                                     Button(action: {
-                                        var listToUpdate = list
-                                        listToUpdate.isArchived.toggle()
-                                        storage.updateList(listToUpdate)
-                                    }, label: {
-                                        Text("home-archive-button-text")
-                                        Image(systemName: "archivebox")
-                                    })
-
-                                    Button(action: {
-                                        storage.deleteList(list)
+                                        archive(list: list)
                                     }, label: {
                                         Text("home-delete-button-text")
                                         Image(systemName: "trash")
@@ -87,7 +84,7 @@ struct HomeView: View {
                                 }
                             }
                         }
-                        .onDelete(perform: delete)
+                        .onDelete(perform: archive)
 
                         HStack {
                             Image(systemName: "plus.circle")
@@ -148,13 +145,6 @@ struct HomeView: View {
         })
     }
 
-    private func delete(at offsets: IndexSet) {
-        offsets.forEach {
-            storage.deleteList(lists[$0])
-        }
-        lists.remove(atOffsets: offsets)
-    }
-
     private func addNewList() {
         if newListTitle.isEmpty {
             return
@@ -165,6 +155,20 @@ struct HomeView: View {
         newListTitle = ""
 
         storage.addList(list)
+    }
+
+    private func archive(list: SMPList) {
+        var listToUpdate = list
+        listToUpdate.isArchived = true
+        storage.updateList(listToUpdate)
+    }
+
+    private func archive(at offsets: IndexSet) {
+        offsets.forEach {
+            var listToUpdate = lists[$0]
+            listToUpdate.isArchived = true
+            storage.updateList(listToUpdate)
+        }
     }
 
     private func reload(completion: (() -> Void)? = nil) {

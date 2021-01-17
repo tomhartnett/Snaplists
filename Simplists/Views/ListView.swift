@@ -137,18 +137,11 @@ struct ListView: View {
                     }
 
                     Button(action: {
-                        storage.deleteList(list)
+                        list.isArchived = true
+                        storage.updateList(list)
                     }) {
                         Text("toolbar-delete-button-text")
                         Image(systemName: "trash")
-                    }
-
-                    Button(action: {
-                        list.isArchived.toggle()
-                        storage.updateList(list)
-                    }) {
-                        Text(list.isArchived ? "toolbar-unarchive-button-text" : "toolbar-archive-button-text")
-                        Image(systemName: "archivebox")
                     }
                 } label: {
                     Text("toolbar-actions-button-text")
