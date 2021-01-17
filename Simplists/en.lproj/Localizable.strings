@@ -18,6 +18,7 @@
 "home-add-list-placeholder" = "Add new list...";
 "home-archived-title" = "Archived Lists";
 "home-more-title" = "More";
+"home-empty-state-text" = "No Lists";
 
 /* RenameView */
 "rename-navigation-bar-title" = "Rename List";

@@ -16,6 +16,8 @@ struct HomeView: View {
     @State private var renameListID = ""
     @State private var renameListTitle = ""
     @State private var isPresentingAuthError = false
+    @State private var selectedItemID: String?
+    @State private var showEmptyState = false
 
     var archivedListCount: Int {
         return storage.getListsCount(isArchived: true)
@@ -38,7 +40,9 @@ struct HomeView: View {
                 List {
                     Section {
                         ForEach(lists) { list in
-                            NavigationLink(destination: ListView(list: list)) {
+                            NavigationLink(destination: ListView(list: list),
+                                           tag: list.id.uuidString,
+                                           selection: $selectedItemID) {
                                 HStack {
                                     Text(list.title)
                                     Spacer()
@@ -70,7 +74,7 @@ struct HomeView: View {
                                         Text("home-delete-button-text")
                                         Image(systemName: "trash")
                                     })
-                            }
+                                }
                             }
                             .sheet(isPresented: $isPresentingRename) {
                                 RenameListView(id: $renameListID, title: $renameListTitle) { id, newTitle in
@@ -123,13 +127,24 @@ struct HomeView: View {
                 }
                 .navigationBarTitle("home-navigation-bar-title")
                 .listStyle(InsetGroupedListStyle())
+
+                NavigationLink(destination: Text("home-empty-state-text").font(.title).foregroundColor(.secondary),
+                               isActive: $showEmptyState) {
+                    EmptyView()
+                }
             }
         }
         .onAppear {
-            reload()
+            reload {
+                showEmptyState = lists.isEmpty
+                selectedItemID = lists.first?.id.uuidString
+            }
         }
         .onReceive(storage.objectWillChange, perform: { _ in
-            reload()
+            reload {
+                showEmptyState = lists.isEmpty
+                selectedItemID = lists.first?.id.uuidString
+            }
         })
     }
 
@@ -152,7 +167,7 @@ struct HomeView: View {
         storage.addList(list)
     }
 
-    private func reload() {
+    private func reload(completion: (() -> Void)? = nil) {
         #if DEBUG
         if ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1" {
             return
@@ -160,6 +175,8 @@ struct HomeView: View {
         #endif
 
         lists = storage.getLists()
+
+        completion?()
     }
 }
 
