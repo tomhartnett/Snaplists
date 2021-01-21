@@ -18,7 +18,8 @@
 "home-add-list-placeholder" = "Add new list...";
 "home-archived-title" = "Deleted Lists";
 "home-more-title" = "More";
-"home-empty-state-text" = "No Lists";
+"home-empty-no-lists-text" = "No Lists";
+"home-empty-no-selection-text" = "No Selection";
 
 /* RenameView */
 "rename-navigation-bar-title" = "Rename List";
@@ -45,7 +46,6 @@
 "move-lists-create-new-list-text" = "Create New List";
 "move-lists-move-items-text" = "Move Items";
 
-"list-archived-text" = "ARCHIVED";
 "list-modified-format-string" = "updated: %@";
 "list-modified-just-now-text" = "just now";
 "list-new-item-placeholder" = "Add new item...";

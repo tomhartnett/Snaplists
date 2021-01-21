@@ -15,8 +15,9 @@ struct ListView: View {
     @State private var newItem = ""
     @State private var newItemHasFocus = false
     @State private var isPresentingMoveItems = false
+    @State private var showEmptyState = false
 
-    var itemCountText: String {
+    private var itemCountText: String {
         let formatString = NSLocalizedString("list item count",
                                              bundle: Bundle.main,
                                              comment: "")
@@ -24,7 +25,7 @@ struct ListView: View {
         return result
     }
 
-    var lastUpdatedText: String {
+    private var lastUpdatedText: String {
         let elapsedTime = Date().timeIntervalSince(list.lastModified)
         let format = "list-modified-format-string".localize()
 
@@ -32,8 +33,8 @@ struct ListView: View {
         // Otherwise show relative date offset e.g. "Yesterday".
         if elapsedTime > 604800 {
             let dateString = DateFormatter.localizedString(from: list.lastModified,
-                                                 dateStyle: .medium,
-                                                 timeStyle: .none)
+                                                           dateStyle: .medium,
+                                                           timeStyle: .none)
 
             return String(format: format, dateString)
         } else if elapsedTime < 60 {
@@ -49,69 +50,66 @@ struct ListView: View {
 
     var body: some View {
         VStack {
-            if list.isArchived {
-                HStack {
-                    Text("list-archived-text")
-                        .padding(.leading)
-                        .font(.subheadline)
-                        .foregroundColor(Color("TextSecondary"))
-                    Spacer()
-                }
-                .frame(maxWidth: .infinity)
-            }
+            if showEmptyState {
+                EmptyStateView(emptyStateType: .noSelection)
+            } else {
+                List {
+                    Section(header:
+                                HStack {
+                                    Text(itemCountText)
+                                    Spacer()
+                                    Text(lastUpdatedText)
+                                },
+                            content: {
+                                ForEach(list.items) { item in
+                                    ListItemView(title: item.title,
+                                                 isComplete: item.isComplete,
+                                                 tapAction: {
+                                                    updateItem(id: item.id,
+                                                               title: item.title,
+                                                               isComplete: !item.isComplete)
+                                                 }, editAction: { title in
+                                                    newItemHasFocus = false
+                                                    if title.isEmpty {
+                                                        storage.deleteItem(item, list: list)
+                                                    } else {
+                                                        updateItem(id: item.id,
+                                                                   title: title,
+                                                                   isComplete: item.isComplete)
+                                                    }
+                                                 })
+                                }
+                                .onDelete(perform: delete)
+                                .onMove(perform: move)
+                            }).textCase(nil) // Use "original" case of header text and do not upper-case.
 
-            List {
-                Section(header:
-                            HStack {
-                                Text(itemCountText)
-                                Spacer()
-                                Text(lastUpdatedText)
-                            },
-                        content: {
-                            ForEach(list.items) { item in
-                                ListItemView(title: item.title,
-                                             isComplete: item.isComplete,
-                                             tapAction: {
-                                                updateItem(id: item.id, title: item.title, isComplete: !item.isComplete)
-                                             }, editAction: { title in
-                                                newItemHasFocus = false
-                                                if title.isEmpty {
-                                                    storage.deleteItem(item, list: list)
-                                                } else {
-                                                    updateItem(id: item.id, title: title, isComplete: item.isComplete)
-                                                }
-                                             })
-                            }
-                            .onDelete(perform: delete)
-                            .onMove(perform: move)
-                        }).textCase(nil) // Use "original" case of header text and do not upper-case.
+                    HStack {
+                        ZStack {
+                            Circle()
+                                .stroke(Color.clear)
+                                .foregroundColor(.clear)
+                                .frame(width: 25, height: 25)
 
-                HStack {
-                    ZStack {
-                        Circle()
-                            .stroke(Color.clear)
-                            .foregroundColor(.clear)
-                            .frame(width: 25, height: 25)
+                            Image(systemName: "plus.circle")
+                                .foregroundColor(.secondary)
+                        }
 
-                        Image(systemName: "plus.circle")
-                            .foregroundColor(.secondary)
+                        FocusableTextField(NSLocalizedString("list-new-item-placeholder", comment: ""),
+                                           text: $newItem,
+                                           isFirstResponder: newItemHasFocus,
+                                           onCommit: addNewItem)
+                            .padding([.top, .bottom])
                     }
-
-                    FocusableTextField(NSLocalizedString("list-new-item-placeholder", comment: ""),
-                                       text: $newItem,
-                                       isFirstResponder: newItemHasFocus,
-                                       onCommit: addNewItem)
-                        .padding([.top, .bottom])
                 }
+                .listStyle(InsetGroupedListStyle())
+                .animation(.default)
+                .onReceive(storage.objectWillChange, perform: { _ in
+                    reload()
+                })
             }
-            .listStyle(InsetGroupedListStyle())
-            .animation(.default)
-            .onReceive(storage.objectWillChange, perform: { _ in
-                reload()
-            })
         }
         .navigationBarItems(trailing: NavBarItemsView(showEditButton: !list.items.isEmpty))
-        .navigationBarTitle(list.title)
+        .navigationBarTitle(showEmptyState ? "" : list.title)
         .toolbar {
             ToolbarItem(placement: .bottomBar) {
                 Menu {
@@ -139,6 +137,8 @@ struct ListView: View {
                     Button(action: {
                         list.isArchived = true
                         storage.updateList(list)
+                        presentationMode.wrappedValue.dismiss()
+                        showEmptyState = true
                     }) {
                         Text("toolbar-delete-button-text")
                         Image(systemName: "trash")
@@ -184,6 +184,7 @@ struct ListView: View {
             list = newList
         } else {
             presentationMode.wrappedValue.dismiss()
+            showEmptyState = true
         }
     }
 

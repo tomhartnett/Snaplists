@@ -109,6 +109,27 @@ public final class SMPStorage: ObservableObject {
         saveChanges()
     }
 
+    public func duplicateList(_ list: SMPList) {
+        let listEntity = ListEntity(context: context)
+        listEntity.identifier = UUID()
+        listEntity.title = "\(list.title) copy"
+        listEntity.isArchived = false
+
+        var items = [ItemEntity]()
+        list.items.forEach {
+            let itemEntity = ItemEntity(context: context)
+            itemEntity.identifier = UUID()
+            itemEntity.isComplete = false
+            itemEntity.title = $0.title
+            items.append(itemEntity)
+        }
+        listEntity.items = NSSet(array: items)
+        listEntity.sortOrder = items.compactMap { $0.identifier?.uuidString }
+        listEntity.modified = Date()
+
+        saveChanges()
+    }
+
     public func getItem(with id: UUID) -> SMPListItem? {
         guard let itemEntity = getItemEntity(with: id) else { return nil }
 

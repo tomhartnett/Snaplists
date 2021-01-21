@@ -16,10 +16,8 @@ struct HomeView: View {
     @State private var renameListID = ""
     @State private var renameListTitle = ""
     @State private var isPresentingAuthError = false
-    @State private var selectedItemID: String?
-    @State private var showEmptyState = false
 
-    var archivedListCount: Int {
+    private var archivedListCount: Int {
         return storage.getListsCount(isArchived: true)
     }
 
@@ -40,9 +38,7 @@ struct HomeView: View {
                 List {
                     Section {
                         ForEach(lists) { list in
-                            NavigationLink(destination: ListView(list: list),
-                                           tag: list.id.uuidString,
-                                           selection: $selectedItemID) {
+                            NavigationLink(destination: ListView(list: list)) {
                                 HStack {
                                     Text(list.title)
                                     Spacer()
@@ -51,7 +47,7 @@ struct HomeView: View {
                                 }
                                 .contextMenu {
                                     Button(action: {
-
+                                        storage.duplicateList(list)
                                     }, label: {
                                         Text("Duplicate")
                                         Image(systemName: "plus.square.on.square")
@@ -124,24 +120,20 @@ struct HomeView: View {
                 }
                 .navigationBarTitle("home-navigation-bar-title")
                 .listStyle(InsetGroupedListStyle())
-
-                NavigationLink(destination: Text("home-empty-state-text").font(.title).foregroundColor(.secondary),
-                               isActive: $showEmptyState) {
-                    EmptyView()
+            }
+            VStack {
+                if lists.isEmpty {
+                    EmptyStateView(emptyStateType: .noLists)
+                } else {
+                    EmptyStateView(emptyStateType: .noSelection)
                 }
             }
         }
         .onAppear {
-            reload {
-                showEmptyState = lists.isEmpty
-                selectedItemID = lists.first?.id.uuidString
-            }
+            reload()
         }
         .onReceive(storage.objectWillChange, perform: { _ in
-            reload {
-                showEmptyState = lists.isEmpty
-                selectedItemID = lists.first?.id.uuidString
-            }
+            reload()
         })
     }
 
@@ -171,7 +163,7 @@ struct HomeView: View {
         }
     }
 
-    private func reload(completion: (() -> Void)? = nil) {
+    private func reload() {
         #if DEBUG
         if ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1" {
             return
@@ -179,8 +171,6 @@ struct HomeView: View {
         #endif
 
         lists = storage.getLists()
-
-        completion?()
     }
 }
 
