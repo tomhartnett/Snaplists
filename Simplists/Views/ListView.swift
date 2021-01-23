@@ -49,108 +49,115 @@ struct ListView: View {
     }
 
     var body: some View {
-        VStack {
-            if showEmptyState {
-                EmptyStateView(emptyStateType: .noSelection)
-            } else {
-                List {
-                    Section(header:
-                                HStack {
-                                    Text(itemCountText)
-                                    Spacer()
-                                    Text(lastUpdatedText)
-                                },
-                            content: {
-                                ForEach(list.items) { item in
-                                    ListItemView(title: item.title,
-                                                 isComplete: item.isComplete,
-                                                 tapAction: {
-                                                    updateItem(id: item.id,
-                                                               title: item.title,
-                                                               isComplete: !item.isComplete)
-                                                 }, editAction: { title in
-                                                    newItemHasFocus = false
-                                                    if title.isEmpty {
-                                                        storage.deleteItem(item, list: list)
-                                                    } else {
+        GeometryReader { geometry in
+            VStack {
+                if showEmptyState {
+                    EmptyStateView(emptyStateType: .noSelection)
+                } else {
+                    List {
+                        Section(header:
+                                    HStack {
+                                        Text(itemCountText)
+                                        Spacer()
+                                        Text(lastUpdatedText)
+                                    },
+                                content: {
+                                    ForEach(list.items) { item in
+                                        ListItemView(title: item.title,
+                                                     isComplete: item.isComplete,
+                                                     tapAction: {
                                                         updateItem(id: item.id,
-                                                                   title: title,
-                                                                   isComplete: item.isComplete)
-                                                    }
-                                                 })
+                                                                   title: item.title,
+                                                                   isComplete: !item.isComplete)
+                                                     }, editAction: { title in
+                                                        newItemHasFocus = false
+                                                        if title.isEmpty {
+                                                            storage.deleteItem(item, list: list)
+                                                        } else {
+                                                            updateItem(id: item.id,
+                                                                       title: title,
+                                                                       isComplete: item.isComplete)
+                                                        }
+                                                     })
+                                    }
+                                    .onDelete(perform: delete)
+                                    .onMove(perform: move)
+
+                                    HStack {
+                                        ZStack {
+                                            Circle()
+                                                .stroke(Color.clear)
+                                                .foregroundColor(.clear)
+                                                .frame(width: 25, height: 25)
+
+                                            Image(systemName: "plus.circle")
+                                                .foregroundColor(.secondary)
+                                        }
+
+                                        FocusableTextField(NSLocalizedString("list-new-item-placeholder", comment: ""),
+                                                           text: $newItem,
+                                                           isFirstResponder: newItemHasFocus,
+                                                           onCommit: addNewItem)
+                                            .padding([.top, .bottom])
+                                    }
+                                }).textCase(nil) // Use "original" case of header text and do not upper-case.
+                    }
+                    .listStyle(InsetGroupedListStyle())
+                    .animation(.default)
+                    .onReceive(storage.objectWillChange, perform: { _ in
+                        reload()
+                    })
+                }
+            }
+            .navigationBarItems(trailing: NavBarItemsView(showEditButton: !list.items.isEmpty))
+            .navigationBarTitle(showEmptyState ? "" : list.title)
+            .toolbar {
+                ToolbarItem(placement: .bottomBar) {
+                        HStack {
+                            Button(action: {
+                                list.isArchived = true
+                                storage.updateList(list)
+                                presentationMode.wrappedValue.dismiss()
+                                showEmptyState = true
+                            }) {
+                                Image(systemName: "trash")
+                            }
+                            .frame(maxWidth: .infinity)
+
+                            Menu {
+                                Button(action: {
+                                    markAllItems(isComplete: false)
+                                }) {
+                                    Text("toolbar-markincomplete-button-text")
+                                    Image(systemName: "circle")
                                 }
-                                .onDelete(perform: delete)
-                                .onMove(perform: move)
-                            }).textCase(nil) // Use "original" case of header text and do not upper-case.
 
-                    HStack {
-                        ZStack {
-                            Circle()
-                                .stroke(Color.clear)
-                                .foregroundColor(.clear)
-                                .frame(width: 25, height: 25)
+                                Button(action: {
+                                    markAllItems(isComplete: true)
+                                }) {
+                                    Text("toolbar-markcomplete-button-text")
+                                    Image(systemName: "checkmark.circle")
+                                }
+                            } label: {
+                                Image(systemName: "checkmark.circle")
+                            }
+                            .frame(maxWidth: .infinity)
 
-                            Image(systemName: "plus.circle")
-                                .foregroundColor(.secondary)
+                            Button(action: {
+                                isPresentingMoveItems.toggle()
+                            }) {
+                                Image(systemName: "folder")
+                            }
+                            .frame(maxWidth: .infinity)
                         }
-
-                        FocusableTextField(NSLocalizedString("list-new-item-placeholder", comment: ""),
-                                           text: $newItem,
-                                           isFirstResponder: newItemHasFocus,
-                                           onCommit: addNewItem)
-                            .padding([.top, .bottom])
-                    }
-                }
-                .listStyle(InsetGroupedListStyle())
-                .animation(.default)
-                .onReceive(storage.objectWillChange, perform: { _ in
-                    reload()
-                })
-            }
-        }
-        .navigationBarItems(trailing: NavBarItemsView(showEditButton: !list.items.isEmpty))
-        .navigationBarTitle(showEmptyState ? "" : list.title)
-        .toolbar {
-            ToolbarItem(placement: .bottomBar) {
-                Menu {
-                    Button(action: {
-                        isPresentingMoveItems.toggle()
-                    }) {
-                        Text("toolbar-moveitems-button-text")
-                        Image(systemName: "folder")
-                    }
-
-                    Button(action: {
-                        markAllItems(isComplete: false)
-                    }) {
-                        Text("toolbar-markincomplete-button-text")
-                        Image(systemName: "circle")
-                    }
-
-                    Button(action: {
-                        markAllItems(isComplete: true)
-                    }) {
-                        Text("toolbar-markcomplete-button-text")
-                        Image(systemName: "checkmark.circle")
-                    }
-
-                    Button(action: {
-                        list.isArchived = true
-                        storage.updateList(list)
-                        presentationMode.wrappedValue.dismiss()
-                        showEmptyState = true
-                    }) {
-                        Text("toolbar-delete-button-text")
-                        Image(systemName: "trash")
-                    }
-                } label: {
-                    Text("toolbar-actions-button-text")
+                        .frame(width: geometry.size.width)
                 }
             }
+            .sheet(isPresented: $isPresentingMoveItems, content: {
+                MoveItemsView(list: list)
+            })
         }
-        .sheet(isPresented: $isPresentingMoveItems, content: {
-            MoveItemsView(list: list)
-        })
+
     }
 
     private func addNewItem() {
@@ -222,14 +229,16 @@ struct ListView: View {
 
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {
-        ListView(list: SMPList(
-                    title: "Grocery",
-                    items: [
-                        SMPListItem(title: "Item 1", isComplete: false),
-                        SMPListItem(title: "Item 2", isComplete: false),
-                        SMPListItem(title: "Item 3", isComplete: true),
-                        SMPListItem(title: "Item 4", isComplete: true)
-                    ])
-        ).environmentObject(SMPStorage.previewStorage)
+        NavigationView {
+            ListView(list: SMPList(
+                        title: "Grocery",
+                        items: [
+                            SMPListItem(title: "Item 1", isComplete: false),
+                            SMPListItem(title: "Item 2", isComplete: false),
+                            SMPListItem(title: "Item 3", isComplete: true),
+                            SMPListItem(title: "Item 4", isComplete: true)
+                        ])
+            ).environmentObject(SMPStorage.previewStorage)
+        }
     }
 }

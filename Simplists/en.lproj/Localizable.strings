@@ -48,15 +48,12 @@
 
 "list-modified-format-string" = "updated: %@";
 "list-modified-just-now-text" = "just now";
+"list-empty-no-items-text" = "No Items";
 "list-new-item-placeholder" = "Add new item...";
 
-"toolbar-actions-button-text" = "Actions";
-"toolbar-moveitems-button-text" = "Move items...";
 "toolbar-markincomplete-button-text" = "Mark all incomplete";
 "toolbar-markcomplete-button-text" = "Mark all complete";
 "toolbar-delete-button-text" = "Delete list";
-"toolbar-archive-button-text" = "Archive list";
-"toolbar-unarchive-button-text" = "Unarchive list";
 
 "archived-navigation-bar-title" = "Deleted Lists";
 "archived-restore-button-text" = "Restore";
