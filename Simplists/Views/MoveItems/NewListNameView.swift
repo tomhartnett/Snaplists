@@ -17,15 +17,17 @@ struct NewListNameView: View {
     var body: some View {
         NavigationView {
             Form {
-                FocusableTextField(NSLocalizedString("new-list-name-placeholder", comment: ""),
-                                   text: $title,
-                                   isFirstResponder: false,
-                                   onCommit: {
-                                       saveChanges()
-                                   },
-                                   onTextChanged: { text in
-                                       isDoneEnabled = !text.isEmpty
-                                   })
+                Section {
+                    FocusableTextField(NSLocalizedString("new-list-name-placeholder", comment: ""),
+                                       text: $title,
+                                       isFirstResponder: false,
+                                       onCommit: {
+                                        saveChanges()
+                                       },
+                                       onTextChanged: { text in
+                                        isDoneEnabled = !text.isEmpty
+                                       })
+                }
             }
             .navigationBarItems(
                 leading: Button(action: {
@@ -44,6 +46,7 @@ struct NewListNameView: View {
             )
             .navigationBarTitle("new-list-navigation-bar-title", displayMode: .inline)
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 
     private func dismiss() {

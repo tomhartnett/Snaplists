@@ -29,7 +29,7 @@
 
 /* NewListNameView (very similar to RenameView */
 "new-list-navigation-bar-title" = "New List";
-"new-list-name-placeholder" = "Enter name...";
+"new-list-name-placeholder" = "Enter new list name...";
 "new-list-cancel-button-text" = "Cancel";
 "new-list-done-button-text" = "Done";
 
@@ -39,7 +39,6 @@
 "move-items-navigation-bar-title" = "Move Items";
 "move-items-cancel-button-text" = "Cancel";
 "move-items-save-button-text" = "Save";
-"move-items-" = "";
 
 /* MoveListsView */
 "move-lists-choose-list-text" = "Choose list";
