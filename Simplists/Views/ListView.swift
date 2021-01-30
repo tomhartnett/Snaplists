@@ -14,6 +14,7 @@ struct ListView: View {
     @State var list: SMPList
     @State private var newItem = ""
     @State private var newItemHasFocus = false
+    @State private var isPresentingIAP = false
     @State private var isPresentingMoveItems = false
     @State private var showEmptyState = false
 
@@ -153,9 +154,12 @@ struct ListView: View {
                         .frame(width: geometry.size.width)
                 }
             }
-            .sheet(isPresented: $isPresentingMoveItems, content: {
+            .sheet(isPresented: $isPresentingMoveItems) {
                 MoveItemsView(list: list)
-            })
+            }
+            .sheet(isPresented: $isPresentingIAP) {
+                StoreView()
+            }
         }
 
     }
@@ -163,6 +167,11 @@ struct ListView: View {
     private func addNewItem() {
         if newItem.isEmpty {
             newItemHasFocus = false
+            return
+        }
+
+        if list.items.count == 3 {
+            isPresentingIAP.toggle()
             return
         }
 

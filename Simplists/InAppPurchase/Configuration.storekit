@@ -1,0 +1,29 @@
+{
+  "products" : [
+    {
+      "displayPrice" : "2.99",
+      "familyShareable" : true,
+      "internalID" : "2A658D84",
+      "localizations" : [
+        {
+          "description" : "Premium features not available for free.",
+          "displayName" : "Premium Features",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.sleekible.simplists.iap.premium",
+      "referenceName" : "Simplists Premium",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 1,
+    "minor" : 0
+  }
+}

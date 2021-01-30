@@ -5,7 +5,6 @@
 //  Created by Tom Hartnett on 12/20/20.
 //
 
-import Purchases
 import SwiftUI
 
 struct CheckmarkRow: View {
@@ -31,8 +30,7 @@ struct CheckmarkRow: View {
 }
 
 struct StoreView: View {
-    @ObservedObject var storeDataSource: StoreDataSource = StoreDataSource()
-    @State var selectedItemID = ""
+    @ObservedObject var storeDataSource: StoreDataSource = StoreDataSource(service: StoreClient())
 
     var body: some View {
             List {
@@ -40,21 +38,15 @@ struct StoreView: View {
                     Text("store-header-text")
                 }
 
-                Section(header: Text("store-options-header-text")) {
-                    ForEach(storeDataSource.products) { product in
-                        CheckmarkRow(isSelected: selectedItemID == product.id,
-                                     title: product.title,
-                                     price: product.price)
-                            .contentShape(Rectangle())
-                            .onTapGesture {
-                                self.selectedItemID = product.id
-                            }
+                if let premiumIAP = storeDataSource.premiumIAP {
+                    Section(header: Text("more-section-iap-header")) {
+                        Text("\(premiumIAP.title) - \(premiumIAP.price)")
                     }
                 }
 
                 Section {
                     Button(action: {}, label: {
-                        Text("store-subscribe-button-text")
+                        Text("store-purchase-button-text")
                     })
                 }
 
@@ -62,8 +54,8 @@ struct StoreView: View {
                     VStack(alignment: .leading) {
                         Text("store-features-header-text")
                             .font(.headline)
-                        FeatureBullet("store-feature-icloud-text".localize())
                         FeatureBullet("store-feature-unlimited-list".localize())
+                        FeatureBullet("store-feature-unlimited-item".localize())
                     }
                 }
 
@@ -82,12 +74,7 @@ struct StoreView: View {
             .listStyle(GroupedListStyle())
             .navigationBarTitle("Simplists Premium")
             .onAppear {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                    guard let firstProductID = self.storeDataSource.products.first?.id else { return }
-                    if self.selectedItemID.isEmpty == true {
-                        self.selectedItemID = firstProductID
-                    }
-                }
+                storeDataSource.refresh()
             }
     }
 }

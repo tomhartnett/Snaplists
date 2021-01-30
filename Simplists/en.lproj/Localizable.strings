@@ -75,8 +75,8 @@
 "store-header-text" = "Premium Mode is an optional subscription that unlocks additional app functionality and helps support future development of the app.";
 "store-options-header-text" = "OPTIONS";
 "store-features-header-text" = "Premium Features";
-"store-feature-icloud-text" = "iCloud Sync and Backup";
 "store-feature-unlimited-list" = "Unlimited number of lists";
-"store-subscribe-button-text" = "Subscribe";
-"store-restore-button-text" = "Restore Previous Purchases";
+"store-feature-unlimited-item" = "Unlimited number of items";
+"store-purchase-button-text" = "Purchase";
+"store-restore-button-text" = "Restore Previous Purchase";
 "store-privacy-button-text" = "Privacy Policy";

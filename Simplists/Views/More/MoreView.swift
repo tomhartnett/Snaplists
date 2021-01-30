@@ -8,16 +8,20 @@
 import SwiftUI
 
 struct MoreView: View {
+    @State private var isPresentingIAP = false
 
     var body: some View {
         VStack {
             List {
                 Section(header: Text("more-section-purchases")) {
-                    NavigationLink(destination: StoreView()) {
+                    HStack {
                         Image(systemName: "dollarsign.circle")
                             .frame(width: 25, height: 25)
                             .foregroundColor(Color("TextSecondary"))
                         Text("Premium Mode")
+                    }
+                    .onTapGesture {
+                        isPresentingIAP.toggle()
                     }
                 }
 
@@ -57,6 +61,9 @@ struct MoreView: View {
             }
             .navigationBarTitle("more-navigation-bar-title")
             .listStyle(InsetGroupedListStyle())
+        }
+        .sheet(isPresented: $isPresentingIAP) {
+            StoreView()
         }
     }
 }

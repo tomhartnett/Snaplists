@@ -63,7 +63,6 @@
 		E27CDF5C24ECA7BC004B6A32 /* Simplists.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E27CDF5A24ECA7BC004B6A32 /* Simplists.xcdatamodeld */; };
 		E27CDF5D24ECAB4D004B6A32 /* Simplists.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E27CDF5A24ECA7BC004B6A32 /* Simplists.xcdatamodeld */; };
 		E281EBD9259A2C7400DF1CEB /* FeatureBullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E281EBD8259A2C7400DF1CEB /* FeatureBullet.swift */; };
-		E281EBDF259A3CAF00DF1CEB /* Purchases in Frameworks */ = {isa = PBXBuildFile; productRef = E281EBDE259A3CAF00DF1CEB /* Purchases */; };
 		E281EBE4259A3CD800DF1CEB /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E281EBE3259A3CD800DF1CEB /* StoreKit.framework */; };
 		E28E917925587E8D003E9F21 /* MoveItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28E917825587E8D003E9F21 /* MoveItemsView.swift */; };
 		E2A0302825B4CE81003BD447 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A0302725B4CE80003BD447 /* EmptyStateView.swift */; };
@@ -74,6 +73,9 @@
 		E2AFBDBF24F194CC008D9E3F /* SMPListSortOrderTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AFBDBE24F194CC008D9E3F /* SMPListSortOrderTransformer.swift */; };
 		E2AFBDC024F194CC008D9E3F /* SMPListSortOrderTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AFBDBE24F194CC008D9E3F /* SMPListSortOrderTransformer.swift */; };
 		E2ECD76124F74B560046AEC9 /* NavBarItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2ECD76024F74B560046AEC9 /* NavBarItemsView.swift */; };
+		E2F3818925C04D47002740F3 /* StoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F3818825C04D47002740F3 /* StoreService.swift */; };
+		E2F3819125C58E11002740F3 /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = E2F3819025C58E10002740F3 /* Configuration.storekit */; };
+		E2F3819625C58F23002740F3 /* SKProduct+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F3819525C58F23002740F3 /* SKProduct+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -219,6 +221,9 @@
 		E2AFBDBB24F16348008D9E3F /* ListEntity+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListEntity+Extensions.swift"; sourceTree = "<group>"; };
 		E2AFBDBE24F194CC008D9E3F /* SMPListSortOrderTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMPListSortOrderTransformer.swift; sourceTree = "<group>"; };
 		E2ECD76024F74B560046AEC9 /* NavBarItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarItemsView.swift; sourceTree = "<group>"; };
+		E2F3818825C04D47002740F3 /* StoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreService.swift; sourceTree = "<group>"; };
+		E2F3819025C58E10002740F3 /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
+		E2F3819525C58F23002740F3 /* SKProduct+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKProduct+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,7 +233,6 @@
 			files = (
 				E235D7DA24E0372D007D95BE /* CloudKit.framework in Frameworks */,
 				E235D7EA24E037B9007D95BE /* SimplistsKit.framework in Frameworks */,
-				E281EBDF259A3CAF00DF1CEB /* Purchases in Frameworks */,
 				E281EBE4259A3CD800DF1CEB /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -448,7 +452,10 @@
 		E26D01D8257E71A9009049F3 /* InAppPurchase */ = {
 			isa = PBXGroup;
 			children = (
+				E2F3819025C58E10002740F3 /* Configuration.storekit */,
+				E2F3819525C58F23002740F3 /* SKProduct+Extensions.swift */,
 				E26D01E125810AED009049F3 /* StoreDataSource.swift */,
+				E2F3818825C04D47002740F3 /* StoreService.swift */,
 			);
 			path = InAppPurchase;
 			sourceTree = "<group>";
@@ -515,7 +522,6 @@
 			);
 			name = Simplists;
 			packageProductDependencies = (
-				E281EBDE259A3CAF00DF1CEB /* Purchases */,
 			);
 			productName = Simplists;
 			productReference = E235D78F24DF5B59007D95BE /* Simplists.app */;
@@ -634,7 +640,6 @@
 			);
 			mainGroup = E235D78624DF5B58007D95BE;
 			packageReferences = (
-				E281EBDD259A3CAF00DF1CEB /* XCRemoteSwiftPackageReference "purchases-ios" */,
 			);
 			productRefGroup = E235D79024DF5B59007D95BE /* Products */;
 			projectDirPath = "";
@@ -655,6 +660,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E235D79F24DF5B5A007D95BE /* LaunchScreen.storyboard in Resources */,
+				E2F3819125C58E11002740F3 /* Configuration.storekit in Resources */,
 				E2A320FE250D704700A022B8 /* Localizable.strings in Resources */,
 				E22077C725AB941800866341 /* Localizable.stringsdict in Resources */,
 				E235D79C24DF5B5A007D95BE /* PreviewAssets.xcassets in Resources */,
@@ -814,6 +820,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E235D79324DF5B59007D95BE /* AppDelegate.swift in Sources */,
+				E2F3818925C04D47002740F3 /* StoreService.swift in Sources */,
 				E256DD6924F2E98600649855 /* FocusableTextField.swift in Sources */,
 				E21123DD2504441900B3D76D /* AboutView.swift in Sources */,
 				E2633FD5255C215A00901471 /* MoveItemView.swift in Sources */,
@@ -835,6 +842,7 @@
 				E235D7F624E04B42007D95BE /* ListItemView.swift in Sources */,
 				E241A046258FBA7D000277BE /* StoreView.swift in Sources */,
 				E2ECD76124F74B560046AEC9 /* NavBarItemsView.swift in Sources */,
+				E2F3819625C58F23002740F3 /* SKProduct+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1385,25 +1393,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		E281EBDD259A3CAF00DF1CEB /* XCRemoteSwiftPackageReference "purchases-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/RevenueCat/purchases-ios.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.9.2;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		E281EBDE259A3CAF00DF1CEB /* Purchases */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E281EBDD259A3CAF00DF1CEB /* XCRemoteSwiftPackageReference "purchases-ios" */;
-			productName = Purchases;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		E27CDF5A24ECA7BC004B6A32 /* Simplists.xcdatamodeld */ = {

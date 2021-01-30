@@ -16,6 +16,7 @@ struct HomeView: View {
     @State private var renameListID = ""
     @State private var renameListTitle = ""
     @State private var isPresentingAuthError = false
+    @State private var isPresentingIAP = false
 
     private var archivedListCount: Int {
         return storage.getListsCount(isArchived: true)
@@ -140,10 +141,18 @@ struct HomeView: View {
         .onReceive(storage.objectWillChange, perform: { _ in
             reload()
         })
+        .sheet(isPresented: $isPresentingIAP) {
+            StoreView()
+        }
     }
 
     private func addNewList() {
         if newListTitle.isEmpty {
+            return
+        }
+
+        if lists.count == 2 {
+            isPresentingIAP.toggle()
             return
         }
 

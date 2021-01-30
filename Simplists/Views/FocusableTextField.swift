@@ -65,6 +65,7 @@ struct FocusableTextField: UIViewRepresentable {
         let textField = UITextField(frame: .zero)
         textField.placeholder = placeholder
         textField.returnKeyType = .done
+        textField.clearButtonMode = .whileEditing
         textField.delegate = context.coordinator
         return textField
     }
