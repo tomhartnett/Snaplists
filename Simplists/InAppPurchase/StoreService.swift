@@ -8,23 +8,43 @@
 import Combine
 import StoreKit
 
-enum ProductID {
-    static let premium = "com.sleekible.simplists.iap.premium"
+enum PurchaseStatus {
+    case notPurchased
+    case purchasing
+    case purchased
+    case failed
+    case deferred
 }
 
 protocol StoreService {
     var productsResponse: AnyPublisher<SKProductsResponse, Error> { get }
-    func getProducts()
+    var purchaseStatus: AnyPublisher<PurchaseStatus, Never> { get }
+    func getProducts(productIdentifiers: Set<String>)
     func purchaseProduct(_ product: SKProduct)
+    func restorePurchases()
 }
 
-class StoreClient: NSObject, StoreService {
+class StoreClient: NSObject {
+    private let productsResponseSubject = PassthroughSubject<SKProductsResponse, Error>()
+    private let purchaseStatusSubject: CurrentValueSubject<PurchaseStatus, Never>
+
+    override init() {
+        purchaseStatusSubject = CurrentValueSubject<PurchaseStatus, Never>(.notPurchased)
+        super.init()
+    }
+}
+
+extension StoreClient: StoreService {
     var productsResponse: AnyPublisher<SKProductsResponse, Error> {
         productsResponseSubject.eraseToAnyPublisher()
     }
 
-    func getProducts() {
-        let request = SKProductsRequest(productIdentifiers: [ProductID.premium])
+    var purchaseStatus: AnyPublisher<PurchaseStatus, Never> {
+        purchaseStatusSubject.eraseToAnyPublisher()
+    }
+
+    func getProducts(productIdentifiers: Set<String>) {
+        let request = SKProductsRequest(productIdentifiers: productIdentifiers)
         request.delegate = self
         request.start()
     }
@@ -34,7 +54,9 @@ class StoreClient: NSObject, StoreService {
         SKPaymentQueue.default().add(payment)
     }
 
-    private var productsResponseSubject = PassthroughSubject<SKProductsResponse, Error>()
+    func restorePurchases() {
+        SKPaymentQueue.default().restoreCompletedTransactions()
+    }
 }
 
 extension StoreClient: SKProductsRequestDelegate {
@@ -57,16 +79,21 @@ extension StoreClient: SKRequestDelegate, SKPaymentTransactionObserver {
             switch transaction.transactionState {
             case .purchasing:
                 print("\(#function) - purchasing")
-            case .purchased:
-                print("\(#function) - purchased")
+                purchaseStatusSubject.send(.purchasing)
+            case .purchased, .restored:
+                print("\(#function) - purchased / restored")
+                purchaseStatusSubject.send(.purchased)
+                queue.finishTransaction(transaction)
             case .failed:
                 print("\(#function) - failed")
-            case .restored:
-                print("\(#function) - restored")
+                purchaseStatusSubject.send(.failed)
+                queue.finishTransaction(transaction)
             case .deferred:
+                purchaseStatusSubject.send(.deferred)
                 print("\(#function) - deferred")
             @unknown default:
                 print("\(#function) - unknown")
+                fatalError("\(#function) - unknown")
             }
         }
     }

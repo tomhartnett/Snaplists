@@ -10,6 +10,7 @@ import SimplistsKit
 
 struct HomeView: View {
     @EnvironmentObject var storage: SMPStorage
+    @EnvironmentObject var storeDataSource: StoreDataSource
     @State var lists: [SMPList]
     @State private var newListTitle = ""
     @State private var isPresentingRename = false
@@ -52,7 +53,12 @@ struct HomeView: View {
                                     }
                                     .contextMenu {
                                         Button(action: {
-                                            storage.duplicateList(list)
+                                            if lists.count == FreeLimits.allowedNumberOfLists &&
+                                                storeDataSource.premiumIAPPurchaseStatus != .purchased {
+                                                isPresentingIAP.toggle()
+                                            } else {
+                                                storage.duplicateList(list)
+                                            }
                                         }, label: {
                                             Text("Duplicate")
                                             Image(systemName: "plus.square.on.square")
@@ -151,7 +157,8 @@ struct HomeView: View {
             return
         }
 
-        if lists.count == 2 {
+        if lists.count == FreeLimits.allowedNumberOfLists &&
+            storeDataSource.premiumIAPPurchaseStatus != .purchased {
             isPresentingIAP.toggle()
             return
         }

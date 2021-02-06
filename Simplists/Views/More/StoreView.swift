@@ -30,7 +30,7 @@ struct CheckmarkRow: View {
 }
 
 struct StoreView: View {
-    @ObservedObject var storeDataSource: StoreDataSource = StoreDataSource(service: StoreClient())
+    @EnvironmentObject var storeDataSource: StoreDataSource
 
     var body: some View {
             List {
@@ -45,7 +45,9 @@ struct StoreView: View {
                 }
 
                 Section {
-                    Button(action: {}, label: {
+                    Button(action: {
+                        storeDataSource.purchaseIAP()
+                    }, label: {
                         Text("store-purchase-button-text")
                     })
                 }
@@ -74,7 +76,7 @@ struct StoreView: View {
             .listStyle(GroupedListStyle())
             .navigationBarTitle("Simplists Premium")
             .onAppear {
-                storeDataSource.refresh()
+                storeDataSource.getProducts()
             }
     }
 }

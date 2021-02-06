@@ -60,6 +60,7 @@
 		E2633FD5255C215A00901471 /* MoveItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2633FD4255C215A00901471 /* MoveItemView.swift */; };
 		E26D01E225810AED009049F3 /* StoreDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26D01E125810AED009049F3 /* StoreDataSource.swift */; };
 		E26DD859250BA13E00FCC495 /* AuthenticationErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26DD858250BA13E00FCC495 /* AuthenticationErrorView.swift */; };
+		E26EBDA125C83ADB000D031D /* FreeLimits.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26EBDA025C83ADB000D031D /* FreeLimits.swift */; };
 		E27CDF5C24ECA7BC004B6A32 /* Simplists.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E27CDF5A24ECA7BC004B6A32 /* Simplists.xcdatamodeld */; };
 		E27CDF5D24ECAB4D004B6A32 /* Simplists.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E27CDF5A24ECA7BC004B6A32 /* Simplists.xcdatamodeld */; };
 		E281EBD9259A2C7400DF1CEB /* FeatureBullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E281EBD8259A2C7400DF1CEB /* FeatureBullet.swift */; };
@@ -211,6 +212,7 @@
 		E2633FD4255C215A00901471 /* MoveItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveItemView.swift; sourceTree = "<group>"; };
 		E26D01E125810AED009049F3 /* StoreDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDataSource.swift; sourceTree = "<group>"; };
 		E26DD858250BA13E00FCC495 /* AuthenticationErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationErrorView.swift; sourceTree = "<group>"; };
+		E26EBDA025C83ADB000D031D /* FreeLimits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeLimits.swift; sourceTree = "<group>"; };
 		E27CDF5B24ECA7BC004B6A32 /* Simplists.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Simplists.xcdatamodel; sourceTree = "<group>"; };
 		E281EBD8259A2C7400DF1CEB /* FeatureBullet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureBullet.swift; sourceTree = "<group>"; };
 		E281EBE3259A3CD800DF1CEB /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -453,6 +455,7 @@
 			isa = PBXGroup;
 			children = (
 				E2F3819025C58E10002740F3 /* Configuration.storekit */,
+				E26EBDA025C83ADB000D031D /* FreeLimits.swift */,
 				E2F3819525C58F23002740F3 /* SKProduct+Extensions.swift */,
 				E26D01E125810AED009049F3 /* StoreDataSource.swift */,
 				E2F3818825C04D47002740F3 /* StoreService.swift */,
@@ -827,6 +830,7 @@
 				E28E917925587E8D003E9F21 /* MoveItemsView.swift in Sources */,
 				E2633FCD2558A35100901471 /* MoveListsView.swift in Sources */,
 				E2A32102250E628200A022B8 /* MoreView.swift in Sources */,
+				E26EBDA125C83ADB000D031D /* FreeLimits.swift in Sources */,
 				E22E152324E060C2002A140E /* HomeView.swift in Sources */,
 				E281EBD9259A2C7400DF1CEB /* FeatureBullet.swift in Sources */,
 				E26D01E225810AED009049F3 /* StoreDataSource.swift in Sources */,

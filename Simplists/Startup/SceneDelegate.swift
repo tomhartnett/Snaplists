@@ -6,9 +6,10 @@
 //
 
 import CoreData
-import UIKit
-import SwiftUI
 import SimplistsKit
+import StoreKit
+import SwiftUI
+import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -20,13 +21,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let storage = createStorage()
 
+        let client = StoreClient()
+        SKPaymentQueue.default().add(client)
+
+        let storeDataSource = StoreDataSource(service: client)
+
         // Create the SwiftUI view that provides the window contents.
         let listsView = HomeView(lists: [])
+            .environmentObject(storage)
+            .environmentObject(storeDataSource)
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
+
             let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: listsView.environmentObject(storage))
+            window.rootViewController = UIHostingController(rootView: listsView)
+
             self.window = window
             window.makeKeyAndVisible()
         }

@@ -11,6 +11,7 @@ import SwiftUI
 struct ListView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var storage: SMPStorage
+    @EnvironmentObject var storeDataSource: StoreDataSource
     @State var list: SMPList
     @State private var newItem = ""
     @State private var newItemHasFocus = false
@@ -170,7 +171,8 @@ struct ListView: View {
             return
         }
 
-        if list.items.count == 3 {
+        if list.items.count == FreeLimits.allowedNumberOfItems &&
+            storeDataSource.premiumIAPPurchaseStatus != .purchased {
             isPresentingIAP.toggle()
             return
         }
