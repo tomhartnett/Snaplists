@@ -87,4 +87,4 @@
 "purchased-body-text" = "Thank you!";
 
 "cannotpurchase-header-text" = "Sorry!";
-"cannotpurchase-body-text" = "Purchases may be restricted on your device.";
+"cannotpurchase-body-text" = "You can't make purchases on this device.";

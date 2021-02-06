@@ -38,7 +38,7 @@ struct StoreView: View {
             }
 
             if !storeDataSource.isAuthorizedForPayments {
-                ErrorMessageView(message: "store-not-authorized-error-message")
+                ErrorMessageView(message: "store-not-authorized-error-message".localize())
             }
 
             ZStack {
