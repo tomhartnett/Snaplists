@@ -54,7 +54,7 @@ struct HomeView: View {
                                     .contextMenu {
                                         Button(action: {
                                             if lists.count == FreeLimits.allowedNumberOfLists &&
-                                                storeDataSource.premiumIAPPurchaseStatus != .purchased {
+                                                !storeDataSource.hasPurchasedIAP {
                                                 isPresentingIAP.toggle()
                                             } else {
                                                 storage.duplicateList(list)
@@ -158,7 +158,7 @@ struct HomeView: View {
         }
 
         if lists.count == FreeLimits.allowedNumberOfLists &&
-            storeDataSource.premiumIAPPurchaseStatus != .purchased {
+            !storeDataSource.hasPurchasedIAP {
             isPresentingIAP.toggle()
             return
         }

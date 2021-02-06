@@ -8,10 +8,10 @@
 import Combine
 import StoreKit
 
-enum PurchaseStatus {
-    case notPurchased
+enum PurchaseStatus: Equatable {
+    case initial
     case purchasing
-    case purchased
+    case purchased(productIdentifier: String)
     case failed
     case deferred
 }
@@ -29,7 +29,7 @@ class StoreClient: NSObject {
     private let purchaseStatusSubject: CurrentValueSubject<PurchaseStatus, Never>
 
     override init() {
-        purchaseStatusSubject = CurrentValueSubject<PurchaseStatus, Never>(.notPurchased)
+        purchaseStatusSubject = CurrentValueSubject<PurchaseStatus, Never>(.initial)
         super.init()
     }
 }
@@ -82,11 +82,16 @@ extension StoreClient: SKRequestDelegate, SKPaymentTransactionObserver {
                 purchaseStatusSubject.send(.purchasing)
             case .purchased, .restored:
                 print("\(#function) - purchased / restored")
-                purchaseStatusSubject.send(.purchased)
+                purchaseStatusSubject.send(.purchased(productIdentifier: transaction.payment.productIdentifier))
                 queue.finishTransaction(transaction)
             case .failed:
-                print("\(#function) - failed")
-                purchaseStatusSubject.send(.failed)
+                if let error = transaction.error as? SKError, error.code == .paymentCancelled {
+                    print("\(#function) - cancelled")
+                    purchaseStatusSubject.send(.initial)
+                } else {
+                    print("\(#function) - failed")
+                    purchaseStatusSubject.send(.failed)
+                }
                 queue.finishTransaction(transaction)
             case .deferred:
                 purchaseStatusSubject.send(.deferred)
@@ -96,5 +101,14 @@ extension StoreClient: SKRequestDelegate, SKPaymentTransactionObserver {
                 fatalError("\(#function) - unknown")
             }
         }
+    }
+
+    func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
+        print(#function)
+    }
+
+    func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: Error) {
+        print(#function)
+        purchaseStatusSubject.send(.failed)
     }
 }

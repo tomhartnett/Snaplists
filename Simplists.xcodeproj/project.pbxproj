@@ -73,6 +73,7 @@
 		E2AFBDBD24F1634E008D9E3F /* ListEntity+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AFBDBB24F16348008D9E3F /* ListEntity+Extensions.swift */; };
 		E2AFBDBF24F194CC008D9E3F /* SMPListSortOrderTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AFBDBE24F194CC008D9E3F /* SMPListSortOrderTransformer.swift */; };
 		E2AFBDC024F194CC008D9E3F /* SMPListSortOrderTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AFBDBE24F194CC008D9E3F /* SMPListSortOrderTransformer.swift */; };
+		E2B9C3A325CED96F0024B9F6 /* DebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B9C3A225CED96F0024B9F6 /* DebugView.swift */; };
 		E2ECD76124F74B560046AEC9 /* NavBarItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2ECD76024F74B560046AEC9 /* NavBarItemsView.swift */; };
 		E2F3818925C04D47002740F3 /* StoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F3818825C04D47002740F3 /* StoreService.swift */; };
 		E2F3819125C58E11002740F3 /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = E2F3819025C58E10002740F3 /* Configuration.storekit */; };
@@ -222,6 +223,7 @@
 		E2A32101250E628200A022B8 /* MoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreView.swift; sourceTree = "<group>"; };
 		E2AFBDBB24F16348008D9E3F /* ListEntity+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListEntity+Extensions.swift"; sourceTree = "<group>"; };
 		E2AFBDBE24F194CC008D9E3F /* SMPListSortOrderTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMPListSortOrderTransformer.swift; sourceTree = "<group>"; };
+		E2B9C3A225CED96F0024B9F6 /* DebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugView.swift; sourceTree = "<group>"; };
 		E2ECD76024F74B560046AEC9 /* NavBarItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarItemsView.swift; sourceTree = "<group>"; };
 		E2F3818825C04D47002740F3 /* StoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreService.swift; sourceTree = "<group>"; };
 		E2F3819025C58E10002740F3 /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
@@ -479,6 +481,7 @@
 				E21123DA2504420700B3D76D /* PrivacyPolicyView.swift */,
 				E241A045258FBA7D000277BE /* StoreView.swift */,
 				E281EBD8259A2C7400DF1CEB /* FeatureBullet.swift */,
+				E2B9C3A225CED96F0024B9F6 /* DebugView.swift */,
 			);
 			path = More;
 			sourceTree = "<group>";
@@ -832,6 +835,7 @@
 				E2A32102250E628200A022B8 /* MoreView.swift in Sources */,
 				E26EBDA125C83ADB000D031D /* FreeLimits.swift in Sources */,
 				E22E152324E060C2002A140E /* HomeView.swift in Sources */,
+				E2B9C3A325CED96F0024B9F6 /* DebugView.swift in Sources */,
 				E281EBD9259A2C7400DF1CEB /* FeatureBullet.swift in Sources */,
 				E26D01E225810AED009049F3 /* StoreDataSource.swift in Sources */,
 				E2A0302825B4CE81003BD447 /* EmptyStateView.swift in Sources */,

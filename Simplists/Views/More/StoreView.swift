@@ -33,51 +33,53 @@ struct StoreView: View {
     @EnvironmentObject var storeDataSource: StoreDataSource
 
     var body: some View {
-            List {
-                Section {
-                    Text("store-header-text")
-                }
+        List {
+            Section {
+                Text("store-header-text")
+            }
 
-                if let premiumIAP = storeDataSource.premiumIAP {
-                    Section(header: Text("more-section-iap-header")) {
-                        Text("\(premiumIAP.title) - \(premiumIAP.price)")
-                    }
-                }
-
-                Section {
-                    Button(action: {
-                        storeDataSource.purchaseIAP()
-                    }, label: {
-                        Text("store-purchase-button-text")
-                    })
-                }
-
-                Section {
-                    VStack(alignment: .leading) {
-                        Text("store-features-header-text")
-                            .font(.headline)
-                        FeatureBullet("store-feature-unlimited-list".localize())
-                        FeatureBullet("store-feature-unlimited-item".localize())
-                    }
-                }
-
-                Section {
-                    Button(action: {}, label: {
-                        Text("store-restore-button-text")
-                    })
-                }
-
-                Section {
-                    Button(action: {}, label: {
-                        Text("store-privacy-button-text")
-                    })
+            if let premiumIAP = storeDataSource.premiumIAP {
+                Section(header: Text("more-section-iap-header")) {
+                    Text("\(premiumIAP.title) - \(premiumIAP.price)")
                 }
             }
-            .listStyle(GroupedListStyle())
-            .navigationBarTitle("Simplists Premium")
-            .onAppear {
-                storeDataSource.getProducts()
+
+            Section {
+                Button(action: {
+                    storeDataSource.purchaseIAP()
+                }, label: {
+                    Text("store-purchase-button-text")
+                })
             }
+
+            Section {
+                VStack(alignment: .leading) {
+                    Text("store-features-header-text")
+                        .font(.headline)
+                    FeatureBullet("store-feature-unlimited-list".localize())
+                    FeatureBullet("store-feature-unlimited-item".localize())
+                }
+            }
+
+            Section {
+                Button(action: {
+                    storeDataSource.restoreIAP()
+                }, label: {
+                    Text("store-restore-button-text")
+                })
+            }
+
+            Section {
+                Button(action: {}, label: {
+                    Text("store-privacy-button-text")
+                })
+            }
+        }
+        .listStyle(GroupedListStyle())
+        .navigationBarTitle("Simplists Premium")
+        .onAppear {
+            storeDataSource.getProducts()
+        }
     }
 }
 

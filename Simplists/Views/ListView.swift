@@ -172,7 +172,7 @@ struct ListView: View {
         }
 
         if list.items.count == FreeLimits.allowedNumberOfItems &&
-            storeDataSource.premiumIAPPurchaseStatus != .purchased {
+            !storeDataSource.hasPurchasedIAP {
             isPresentingIAP.toggle()
             return
         }

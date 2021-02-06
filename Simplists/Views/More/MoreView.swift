@@ -58,6 +58,19 @@ struct MoreView: View {
                         }
                     }
                 }
+
+                #if DEBUG
+                Section {
+                    NavigationLink(destination: DebugView()) {
+                        HStack {
+                            Image(systemName: "gearshape.2")
+                                .frame(width: 25, height: 25)
+                                .foregroundColor(Color("TextSecondary"))
+                            Text("Debug")
+                        }
+                    }
+                }
+                #endif
             }
             .navigationBarTitle("more-navigation-bar-title")
             .listStyle(InsetGroupedListStyle())
