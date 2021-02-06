@@ -15,6 +15,7 @@ struct FeatureBullet: View {
             Circle()
                 .frame(width: 8, height: 8)
             Text(featureText)
+            Spacer()
         }
     }
 

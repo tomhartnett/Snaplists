@@ -53,7 +53,7 @@ struct HomeView: View {
                                     }
                                     .contextMenu {
                                         Button(action: {
-                                            if lists.count == FreeLimits.allowedNumberOfLists &&
+                                            if lists.count == FreeLimits.numberOfLists.limit &&
                                                 !storeDataSource.hasPurchasedIAP {
                                                 isPresentingIAP.toggle()
                                             } else {
@@ -99,7 +99,7 @@ struct HomeView: View {
                                 .frame(width: 25, height: 25)
                                 .foregroundColor(.secondary)
 
-                            FocusableTextField(NSLocalizedString("home-add-list-placeholder", comment: ""),
+                            FocusableTextField("home-add-list-placeholder".localize(),
                                                text: $newListTitle,
                                                isFirstResponder: false,
                                                onCommit: addNewList)
@@ -148,7 +148,7 @@ struct HomeView: View {
             reload()
         })
         .sheet(isPresented: $isPresentingIAP) {
-            StoreView()
+            StoreView(freeLimitMessage: FreeLimits.numberOfLists.message)
         }
     }
 
@@ -157,7 +157,7 @@ struct HomeView: View {
             return
         }
 
-        if lists.count == FreeLimits.allowedNumberOfLists &&
+        if lists.count == FreeLimits.numberOfLists.limit &&
             !storeDataSource.hasPurchasedIAP {
             isPresentingIAP.toggle()
             return
@@ -192,6 +192,10 @@ struct HomeView: View {
         #endif
 
         lists = storage.getLists()
+    }
+
+    private func showStoreView() {
+
     }
 }
 

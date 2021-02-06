@@ -12,7 +12,7 @@ struct AboutView: View {
     var versionString: String {
         let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "?"
         let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "?"
-        let versionFormatString = NSLocalizedString("about-version-format-string", comment: "")
+        let versionFormatString = "about-version-format-string".localize()
 
         return String(format: versionFormatString, version, build)
     }

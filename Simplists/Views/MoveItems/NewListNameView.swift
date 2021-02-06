@@ -18,7 +18,7 @@ struct NewListNameView: View {
         NavigationView {
             Form {
                 Section {
-                    FocusableTextField(NSLocalizedString("new-list-name-placeholder", comment: ""),
+                    FocusableTextField("new-list-name-placeholder".localize(),
                                        text: $title,
                                        isFirstResponder: false,
                                        onCommit: {

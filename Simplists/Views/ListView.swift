@@ -20,9 +20,7 @@ struct ListView: View {
     @State private var showEmptyState = false
 
     private var itemCountText: String {
-        let formatString = NSLocalizedString("list item count",
-                                             bundle: Bundle.main,
-                                             comment: "")
+        let formatString = "list item count".localize()
         let result = String.localizedStringWithFormat(formatString, list.items.count)
         return result
     }
@@ -96,7 +94,7 @@ struct ListView: View {
                                                 .foregroundColor(.secondary)
                                         }
 
-                                        FocusableTextField(NSLocalizedString("list-new-item-placeholder", comment: ""),
+                                        FocusableTextField("list-new-item-placeholder".localize(),
                                                            text: $newItem,
                                                            isFirstResponder: newItemHasFocus,
                                                            onCommit: addNewItem)
@@ -159,7 +157,7 @@ struct ListView: View {
                 MoveItemsView(list: list)
             }
             .sheet(isPresented: $isPresentingIAP) {
-                StoreView()
+                StoreView(freeLimitMessage: FreeLimits.numberOfItems.message)
             }
         }
 
@@ -171,7 +169,7 @@ struct ListView: View {
             return
         }
 
-        if list.items.count == FreeLimits.allowedNumberOfItems &&
+        if list.items.count == FreeLimits.numberOfItems.limit &&
             !storeDataSource.hasPurchasedIAP {
             isPresentingIAP.toggle()
             return

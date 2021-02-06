@@ -8,6 +8,24 @@
 import Foundation
 
 enum FreeLimits {
-    static let allowedNumberOfLists = 2
-    static let allowedNumberOfItems = 3
+    case numberOfLists
+    case numberOfItems
+
+    var limit: Int {
+        switch self {
+        case .numberOfLists:
+            return 2
+        case .numberOfItems:
+            return 3
+        }
+    }
+
+    var message: String {
+        switch self {
+        case .numberOfLists:
+            return "store-limits-number-of-lists".localize()
+        case .numberOfItems:
+            return "store-limits-number-of-items".localize()
+        }
+    }
 }

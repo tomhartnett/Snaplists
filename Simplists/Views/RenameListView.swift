@@ -18,7 +18,7 @@ struct RenameListView: View {
     var body: some View {
         NavigationView {
             Form {
-                FocusableTextField(NSLocalizedString("rename-name-placeholder", comment: ""),
+                FocusableTextField("rename-name-placeholder".localize(),
                                    text: $title,
                                    isFirstResponder: false,
                                    onCommit: {
