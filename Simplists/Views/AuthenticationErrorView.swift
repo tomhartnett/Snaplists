@@ -16,17 +16,7 @@ struct AuthenticationErrorView: View {
         if isUserSignedIn {
             EmptyView()
         } else {
-            HStack {
-                HStack {
-                    Image(systemName: "exclamationmark.triangle")
-                        .frame(width: 25, height: 25)
-                    Text("icloud-warning-banner-text")
-                }
-                .padding([.vertical], 4)
-                .foregroundColor(Color("WarningForeground"))
-            }
-            .frame(maxWidth: .infinity)
-            .background(Color("WarningBackground"))
+            ErrorMessageView(message: "icloud-warning-banner-text".localize())
         }
     }
 }

@@ -53,7 +53,7 @@ struct HomeView: View {
                                     }
                                     .contextMenu {
                                         Button(action: {
-                                            if lists.count == FreeLimits.numberOfLists.limit &&
+                                            if lists.count >= FreeLimits.numberOfLists.limit &&
                                                 !storeDataSource.hasPurchasedIAP {
                                                 isPresentingIAP.toggle()
                                             } else {
@@ -157,7 +157,7 @@ struct HomeView: View {
             return
         }
 
-        if lists.count == FreeLimits.numberOfLists.limit &&
+        if lists.count >= FreeLimits.numberOfLists.limit &&
             !storeDataSource.hasPurchasedIAP {
             isPresentingIAP.toggle()
             return

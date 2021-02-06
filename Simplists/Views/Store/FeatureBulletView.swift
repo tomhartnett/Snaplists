@@ -1,5 +1,5 @@
 //
-//  FeatureBullet.swift
+//  FeatureBulletView.swift
 //  Simplists
 //
 //  Created by Tom Hartnett on 12/28/20.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct FeatureBullet: View {
+struct FeatureBulletView: View {
     var featureText: String
 
     var body: some View {
@@ -26,6 +26,6 @@ struct FeatureBullet: View {
 
 struct FeatureBullet_Previews: PreviewProvider {
     static var previews: some View {
-        FeatureBullet("iCloud Sync and Backup")
+        FeatureBulletView("iCloud Sync and Backup")
     }
 }

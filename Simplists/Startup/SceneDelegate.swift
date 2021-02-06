@@ -25,6 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         SKPaymentQueue.default().add(client)
 
         let storeDataSource = StoreDataSource(service: client)
+        storeDataSource.getProducts()
 
         // Create the SwiftUI view that provides the window contents.
         let listsView = HomeView(lists: [])

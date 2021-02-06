@@ -19,6 +19,19 @@ final class StoreDataSource: ObservableObject {
 
     let objectWillChange = PassthroughSubject<(), Never>()
 
+    var isAuthorizedForPayments: Bool {
+        return SKPaymentQueue.canMakePayments()
+    }
+
+    var hasPurchasedIAP: Bool {
+        if case .purchased(let productIdentifier) = premiumIAPPurchaseStatus {
+            if productIdentifier == premiumProductIdentifier {
+                return true
+            }
+        }
+        return false
+    }
+
     var premiumIAP: PremiumIAP? {
         didSet {
             objectWillChange.send()
@@ -29,15 +42,6 @@ final class StoreDataSource: ObservableObject {
         didSet {
             objectWillChange.send()
         }
-    }
-
-    var hasPurchasedIAP: Bool {
-        if case .purchased(let productIdentifier) = premiumIAPPurchaseStatus {
-            if productIdentifier == premiumProductIdentifier {
-                return true
-            }
-        }
-        return false
     }
 
     private let premiumProductIdentifier = "com.sleekible.simplists.iap.premium"
