@@ -10,6 +10,8 @@ import SwiftUI
 struct StoreView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var storeDataSource: StoreDataSource
+    @State var showPurchasedView = false
+    @State var showCannotPurchaseView = false
 
     var freeLimitMessage: String?
 
@@ -36,20 +38,44 @@ struct StoreView: View {
             }
 
             if !storeDataSource.isAuthorizedForPayments {
-                ErrorMessageView(message: "Not authorized to make purchases.")
+                ErrorMessageView(message: "store-not-authorized-error-message")
             }
 
-            PurchaseButtonsView()
+            ZStack {
+                PurchaseButtonsView()
+                    .disabled(storeDataSource.hasPurchasedIAP || !storeDataSource.isAuthorizedForPayments)
+
+                if showPurchasedView {
+                    PurchasedView()
+                } else if showCannotPurchaseView {
+                    CannotPurchaseView()
+                }
+            }
 
             FeaturesView()
 
-            Text("Your purchase supports development of the app 💙")
+            Text("store-support-the-app-text")
                 .padding()
 
             Spacer()
         }
+        .onReceive(storeDataSource.objectWillChange.eraseToAnyPublisher()) {
+            if storeDataSource.hasPurchasedIAP {
+                withAnimation(Animation.easeIn.delay(0.5)) {
+                    showPurchasedView.toggle()
+                }
+            }
+        }
         .onAppear {
-//            storeDataSource.getProducts()
+            if storeDataSource.hasPurchasedIAP {
+                withAnimation(Animation.easeIn.delay(0.5)) {
+                    showPurchasedView.toggle()
+                }
+            } else if !storeDataSource.isAuthorizedForPayments {
+                withAnimation(Animation.easeIn.delay(0.5)) {
+                    showCannotPurchaseView.toggle()
+                }
+            }
         }
     }
 }

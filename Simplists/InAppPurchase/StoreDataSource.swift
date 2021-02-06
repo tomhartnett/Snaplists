@@ -20,6 +20,12 @@ final class StoreDataSource: ObservableObject {
     let objectWillChange = PassthroughSubject<(), Never>()
 
     var isAuthorizedForPayments: Bool {
+        #if DEBUG
+        if UserDefaults.standard.string(forKey: DebugView.isAuthorizedForPaymentsKey) != nil {
+            return false
+        }
+        #endif
+
         return SKPaymentQueue.canMakePayments()
     }
 

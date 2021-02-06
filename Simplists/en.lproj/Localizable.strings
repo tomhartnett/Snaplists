@@ -71,6 +71,7 @@
 "about-created-by-text" = "Created by";
 "about-version-format-string" = "Version %@ (%@)";
 
+"store-not-authorized-error-message" = "Not authorized to make purchases.";
 "store-limits-number-of-lists" = "You have reached the allowed number of lists in the free version of the app.";
 "store-limits-number-of-items" = "You have reached the allowed number of items in the free version of the app.";
 "store-title-text" = "Simplists Premium";
@@ -80,4 +81,10 @@
 "store-feature-unlimited-item" = "Unlimited number of items";
 "store-purchase-button-format-string" = "Purchase %@";
 "store-restore-button-text" = "Restore Purchase";
-"store-support-the-app-text" = "Also, your purchase helps support development of the app 💙";
+"store-support-the-app-text" = "Your purchase supports development of the app 💙";
+
+"purchased-header-text" = "Purchased";
+"purchased-body-text" = "Thank you!";
+
+"cannotpurchase-header-text" = "Sorry!";
+"cannotpurchase-body-text" = "Purchases may be restricted on your device.";
