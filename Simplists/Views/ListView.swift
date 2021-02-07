@@ -8,8 +8,8 @@
 import SimplistsKit
 import SwiftUI
 
-enum ActiveSheet: Identifiable {
-    case moveItems
+enum ListViewActiveSheet: Identifiable {
+    case moveItemsView
     case storeView
 
     var id: Int {
@@ -25,7 +25,7 @@ struct ListView: View {
     @State private var newItem = ""
     @State private var newItemHasFocus = false
     @State private var showEmptyState = false
-    @State private var activeSheet: ActiveSheet?
+    @State private var activeSheet: ListViewActiveSheet?
 
     private var itemCountText: String {
         let formatString = "list item count".localize()
@@ -152,7 +152,7 @@ struct ListView: View {
                             .frame(maxWidth: .infinity)
 
                             Button(action: {
-                                activeSheet = .moveItems
+                                activeSheet = .moveItemsView
                             }) {
                                 Image(systemName: "folder")
                             }
@@ -163,7 +163,7 @@ struct ListView: View {
             }
             .sheet(item: $activeSheet) { item in
                 switch item {
-                case .moveItems:
+                case .moveItemsView:
                     MoveItemsView(list: list)
                 case .storeView:
                     StoreView(freeLimitMessage: FreeLimits.numberOfItems.message)
