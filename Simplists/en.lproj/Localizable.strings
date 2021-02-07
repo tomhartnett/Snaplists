@@ -94,3 +94,23 @@
 "error-failed-restore-text" = "An error has occurred and the restore could not be completed.";
 
 "premium-widget-text" = "Premium Mode";
+
+"privacy-commitment-header-text" = "Our Commitment to Privacy";
+"privacy-commitment-body-text" = "Your privacy is important to us. To protect that privacy, we provide this notice to explain our information collection practices.";
+
+"privacy-data-header-text" = "Your Data is Private";
+"privacy-data-body-text" = "The Simplists app does not collect any user information. There is no sign-up, sign-in, or opportunity in the app to give us your personal information.  The app uses Apple’s iCloud service to sync your lists across your devices.  We cannot see your data:  your lists, the list title, the items on the list, even then number of lists you create in the app.  We cannot view any of this data.";
+
+"privacy-feedback-header-text" = "In-App Feedback";
+"privacy-feedback-body-text" = "The app does provide a feedback feature to allow you to provide us feedback about the app. This feature opens a simple email to us. Be aware that by sending the email, you are giving us your email address. We do not use this email address for anything other than responding to your feedback, via email.  If you prefer, you can tweet us at @simplistsapp.";
+
+"privacy-external-services-header-text" = "No External Services";
+"privacy-external-services-body-text" = "The Simplists app does not use any 3rd party/external services.  There are no analytics gathering, behavior tracking, etc.  This app uses only Apple-provided APIs and frameworks.";
+
+"privacy-contact-us-header-text" = "How to Contact Us";
+"privacy-contact-us-body-text" = "Should you have other questions or concerns about this privacy policy, please email simplists@sleekible.com. At this time, we only have the ability to receive and send English-language communications.";
+
+"privacy-changes-header-text" = "Changes to This Policy";
+"privacy-changes-body-text" = "We reserve the right to change this policy at any time. Please check this page periodically for changes.";
+
+"privacy-effective-date-text" = "Effective Date: February 7, 2021";
