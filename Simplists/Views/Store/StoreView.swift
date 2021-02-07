@@ -10,8 +10,9 @@ import SwiftUI
 struct StoreView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var storeDataSource: StoreDataSource
-    @State var showPurchasedView = false
-    @State var showCannotPurchaseView = false
+    @State private var purchaseStatusMessage: String?
+    @State private var showPurchasedView = false
+    @State private var showCannotPurchaseView = false
 
     var freeLimitMessage: String?
 
@@ -41,6 +42,10 @@ struct StoreView: View {
                 ErrorMessageView(message: "store-not-authorized-error-message".localize())
             }
 
+            if let message = purchaseStatusMessage {
+                ErrorMessageView(message: message)
+            }
+
             ZStack {
                 PurchaseButtonsView()
                     .disabled(storeDataSource.hasPurchasedIAP || !storeDataSource.isAuthorizedForPayments)
@@ -60,21 +65,32 @@ struct StoreView: View {
             Spacer()
         }
         .onReceive(storeDataSource.objectWillChange.eraseToAnyPublisher()) {
-            if storeDataSource.hasPurchasedIAP {
-                withAnimation(Animation.easeIn.delay(0.5)) {
-                    showPurchasedView.toggle()
-                }
-            }
+            displayPurchaseStatus()
         }
         .onAppear {
-            if storeDataSource.hasPurchasedIAP {
-                withAnimation(Animation.easeIn.delay(0.5)) {
-                    showPurchasedView.toggle()
-                }
-            } else if !storeDataSource.isAuthorizedForPayments {
-                withAnimation(Animation.easeIn.delay(0.5)) {
-                    showCannotPurchaseView.toggle()
-                }
+            displayPurchaseStatus()
+        }
+    }
+
+    func displayPurchaseStatus() {
+        switch storeDataSource.premiumIAPPurchaseStatus {
+        case .purchased:
+            guard storeDataSource.hasPurchasedIAP else { return }
+            withAnimation(Animation.easeIn.delay(0.5)) {
+                showPurchasedView.toggle()
+            }
+            purchaseStatusMessage = nil
+        case .failed(errorMessage: let errorMessage):
+            purchaseStatusMessage = errorMessage
+        case .deferred:
+            purchaseStatusMessage = "Purchase is pending approval."
+        default:
+            purchaseStatusMessage = nil
+        }
+
+        if !storeDataSource.isAuthorizedForPayments {
+            withAnimation(Animation.easeIn.delay(0.5)) {
+                showCannotPurchaseView.toggle()
             }
         }
     }

@@ -88,3 +88,6 @@
 
 "cannotpurchase-header-text" = "Sorry!";
 "cannotpurchase-body-text" = "You can't make purchases on this device.";
+
+"error-failed-transaction-text" = "An error has occurred and the purchase could not be completed.";
+"error-failed-restore-text" = "An error has occurred and the restore could not be completed.";

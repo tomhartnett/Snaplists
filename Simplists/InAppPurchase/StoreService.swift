@@ -12,7 +12,7 @@ enum PurchaseStatus: Equatable {
     case initial
     case purchasing
     case purchased(productIdentifier: String)
-    case failed
+    case failed(errorMessage: String)
     case deferred
 }
 
@@ -90,7 +90,7 @@ extension StoreClient: SKRequestDelegate, SKPaymentTransactionObserver {
                     purchaseStatusSubject.send(.initial)
                 } else {
                     print("\(#function) - failed")
-                    purchaseStatusSubject.send(.failed)
+                    purchaseStatusSubject.send(.failed(errorMessage: "error-failed-transaction-text".localize()))
                 }
                 queue.finishTransaction(transaction)
             case .deferred:
@@ -109,6 +109,6 @@ extension StoreClient: SKRequestDelegate, SKPaymentTransactionObserver {
 
     func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: Error) {
         print(#function)
-        purchaseStatusSubject.send(.failed)
+        purchaseStatusSubject.send(.failed(errorMessage: "error-failed-restore-text".localize()))
     }
 }
