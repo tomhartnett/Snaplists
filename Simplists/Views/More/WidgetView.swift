@@ -1,5 +1,5 @@
 //
-//  PreviewModeWidget.swift
+//  WidgetView.swift
 //  Simplists
 //
 //  Created by Tom Hartnett on 2/7/21.
@@ -7,13 +7,17 @@
 
 import SwiftUI
 
-struct PreviewModeWidget: View {
+struct WidgetView: View {
+
+    var systemImageName: String
+    var lableText: String
+
     var body: some View {
         HStack {
-            Image(systemName: "dollarsign.circle")
+            Image(systemName: systemImageName)
                 .frame(width: 25, height: 25)
                 .foregroundColor(Color("TextSecondary"))
-            Text("premium-widget-text")
+            Text(lableText)
             Spacer()
         }
         .frame(maxWidth: .infinity)
@@ -21,8 +25,8 @@ struct PreviewModeWidget: View {
     }
 }
 
-struct PreviewModeWidget_Previews: PreviewProvider {
+struct WidgetView_Previews: PreviewProvider {
     static var previews: some View {
-        PreviewModeWidget()
+        WidgetView(systemImageName: "envelope", lableText: "more-email-feedback-text".localize())
     }
 }

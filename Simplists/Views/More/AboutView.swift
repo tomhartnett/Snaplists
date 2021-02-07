@@ -50,7 +50,8 @@ struct AboutView: View {
                 .foregroundColor(Color("TextSecondary"))
 
             Button(action: {
-                UIApplication.shared.open(URL(string: "https://twitter.com/tomhartnett")!)
+                guard let url = URL(string: "https://twitter.com/tomhartnett") else { return }
+                UIApplication.shared.open(url)
             }, label: {
                 Text("Tom Hartnett")
                     .foregroundColor(Color("TextSecondary"))

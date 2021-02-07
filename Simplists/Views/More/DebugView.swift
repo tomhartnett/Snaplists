@@ -35,24 +35,30 @@ struct DebugView: View {
     }
 
     var body: some View {
-        VStack {
-            Text("IAP status: \(premiumIAPStatus)")
+        Form {
+            Section(header: Text("IAP Status")) {
+                HStack {
+                    Text(premiumIAPStatus)
+                    Spacer()
+                    Button(action: {
+                        storeDataSource.resetIAP()
+                    }, label: {
+                        Text("Reset")
+                    })
+                }
+            }
 
-            Button(action: {
-                storeDataSource.resetIAP()
-            }, label: {
-                Text("Reset IAP")
-            })
-            .padding()
-
-            Text("Is Authorized for payments: \(isAuthorizedForPayments)")
-
-            Button(action: {
-                toggleIsAuthorizedForPayments()
-            }, label: {
-                Text("Toggle Is Authorized")
-            })
-            .padding()
+            Section(header: Text("Authorized for Payments")) {
+                HStack {
+                    Text(isAuthorizedForPayments)
+                    Spacer()
+                    Button(action: {
+                        toggleIsAuthorizedForPayments()
+                    }, label: {
+                        Text("Toggle Is Authorized")
+                    })
+                }
+            }
 
             if isHack {
                 EmptyView()

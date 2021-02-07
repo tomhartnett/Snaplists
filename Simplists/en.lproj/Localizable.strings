@@ -63,6 +63,7 @@
 "more-section-feedback-header" = "Feedback";
 "more-rate-app-text" = "Please Rate this App";
 "more-email-feedback-text" = "Send Feedback via Email";
+"more-email-send-error-text" = "Email can't be sent from this device.";
 "more-section-about-header" = "About the App";
 "more-privacy-policy-text" = "Privacy Policy";
 "more-about-text" = "About";
@@ -91,3 +92,5 @@
 
 "error-failed-transaction-text" = "An error has occurred and the purchase could not be completed.";
 "error-failed-restore-text" = "An error has occurred and the restore could not be completed.";
+
+"premium-widget-text" = "Premium Mode";
