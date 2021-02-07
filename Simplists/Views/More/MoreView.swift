@@ -14,15 +14,10 @@ struct MoreView: View {
         VStack {
             List {
                 Section(header: Text("more-section-purchases")) {
-                    HStack {
-                        Image(systemName: "dollarsign.circle")
-                            .frame(width: 25, height: 25)
-                            .foregroundColor(Color("TextSecondary"))
-                        Text("Premium Mode")
-                    }
-                    .onTapGesture {
-                        isPresentingIAP.toggle()
-                    }
+                    PreviewModeWidget()
+                        .onTapGesture {
+                            isPresentingIAP.toggle()
+                        }
                 }
 
                 Section(header: Text("more-section-feedback-header")) {

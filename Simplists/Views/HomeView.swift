@@ -5,8 +5,17 @@
 //  Created by Tom Hartnett on 8/9/20.
 //
 
-import SwiftUI
 import SimplistsKit
+import SwiftUI
+
+enum HomeViewActiveSheet: Identifiable {
+    case storeView
+    case storeViewHitLimit
+
+    var id: Int {
+        hashValue
+    }
+}
 
 struct HomeView: View {
     @EnvironmentObject var storage: SMPStorage
@@ -17,7 +26,7 @@ struct HomeView: View {
     @State private var renameListID = ""
     @State private var renameListTitle = ""
     @State private var isPresentingAuthError = false
-    @State private var isPresentingIAP = false
+    @State private var activeSheet: HomeViewActiveSheet?
 
     private var archivedListCount: Int {
         return storage.getListsCount(isArchived: true)
@@ -38,6 +47,16 @@ struct HomeView: View {
                     }
 
                 List {
+
+                    if !storeDataSource.hasPurchasedIAP {
+                        Section {
+                            PreviewModeWidget()
+                                .onTapGesture {
+                                    activeSheet = .storeView
+                                }
+                        }
+                    }
+
                     Section {
                         if lists.isEmpty {
                             Text("home-empty-no-lists-text")
@@ -55,7 +74,7 @@ struct HomeView: View {
                                         Button(action: {
                                             if lists.count >= FreeLimits.numberOfLists.limit &&
                                                 !storeDataSource.hasPurchasedIAP {
-                                                isPresentingIAP.toggle()
+                                                activeSheet = .storeViewHitLimit
                                             } else {
                                                 storage.duplicateList(list)
                                             }
@@ -147,8 +166,13 @@ struct HomeView: View {
         .onReceive(storage.objectWillChange, perform: { _ in
             reload()
         })
-        .sheet(isPresented: $isPresentingIAP) {
-            StoreView(freeLimitMessage: FreeLimits.numberOfLists.message)
+        .sheet(item: $activeSheet) { item in
+            switch item {
+            case .storeViewHitLimit:
+                StoreView(freeLimitMessage: FreeLimits.numberOfLists.message)
+            case .storeView:
+                StoreView()
+            }
         }
     }
 
@@ -159,7 +183,7 @@ struct HomeView: View {
 
         if lists.count >= FreeLimits.numberOfLists.limit &&
             !storeDataSource.hasPurchasedIAP {
-            isPresentingIAP.toggle()
+            activeSheet = .storeViewHitLimit
             return
         }
 
@@ -193,14 +217,14 @@ struct HomeView: View {
 
         lists = storage.getLists()
     }
-
-    private func showStoreView() {
-
-    }
 }
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
+
+        let client = StoreClient()
+        let dataSource = StoreDataSource(service: client)
+
         HomeView(lists: [
             SMPList(title: "List 1",
                     isArchived: false,
@@ -212,6 +236,8 @@ struct HomeView_Previews: PreviewProvider {
                     items: [
                         SMPListItem(title: "Item 1", isComplete: false)
                     ])
-        ]).environmentObject(SMPStorage.previewStorage)
+        ])
+        .environmentObject(SMPStorage.previewStorage)
+        .environmentObject(dataSource)
     }
 }

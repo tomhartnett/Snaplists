@@ -55,6 +55,7 @@
 		E241A046258FBA7D000277BE /* StoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E241A045258FBA7D000277BE /* StoreView.swift */; };
 		E24FACA4251CEC7C002B0B97 /* AuthenticationErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24FACA3251CEC7C002B0B97 /* AuthenticationErrorView.swift */; };
 		E256DD6924F2E98600649855 /* FocusableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E256DD6824F2E98600649855 /* FocusableTextField.swift */; };
+		E2578B8125D033A600BCC948 /* PreviewModeWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2578B8025D033A600BCC948 /* PreviewModeWidget.swift */; };
 		E260CC43251A1DF000208E90 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E260CC42251A1DF000208E90 /* Localizable.strings */; };
 		E2633FCD2558A35100901471 /* MoveListsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2633FCC2558A35100901471 /* MoveListsView.swift */; };
 		E2633FD5255C215A00901471 /* MoveItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2633FD4255C215A00901471 /* MoveItemView.swift */; };
@@ -213,6 +214,7 @@
 		E241A045258FBA7D000277BE /* StoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreView.swift; sourceTree = "<group>"; };
 		E24FACA3251CEC7C002B0B97 /* AuthenticationErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationErrorView.swift; sourceTree = "<group>"; };
 		E256DD6824F2E98600649855 /* FocusableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusableTextField.swift; sourceTree = "<group>"; };
+		E2578B8025D033A600BCC948 /* PreviewModeWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewModeWidget.swift; sourceTree = "<group>"; };
 		E260CC42251A1DF000208E90 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		E2633FCC2558A35100901471 /* MoveListsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveListsView.swift; sourceTree = "<group>"; };
 		E2633FD4255C215A00901471 /* MoveItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveItemView.swift; sourceTree = "<group>"; };
@@ -505,6 +507,7 @@
 				E2C6670B25CF1BD80063D7E8 /* PurchaseButtonsView.swift */,
 				E2C6671025CF1F3B0063D7E8 /* FeaturesView.swift */,
 				E2C6671825CF277D0063D7E8 /* PurchasedView.swift */,
+				E2578B8025D033A600BCC948 /* PreviewModeWidget.swift */,
 			);
 			path = Store;
 			sourceTree = "<group>";
@@ -877,6 +880,7 @@
 				E235D7F624E04B42007D95BE /* ListItemView.swift in Sources */,
 				E241A046258FBA7D000277BE /* StoreView.swift in Sources */,
 				E2ECD76124F74B560046AEC9 /* NavBarItemsView.swift in Sources */,
+				E2578B8125D033A600BCC948 /* PreviewModeWidget.swift in Sources */,
 				E2C6671E25CF2FF20063D7E8 /* CannotPurchaseView.swift in Sources */,
 				E2F3819625C58F23002740F3 /* SKProduct+Extensions.swift in Sources */,
 			);
