@@ -8,6 +8,15 @@
 import SimplistsKit
 import SwiftUI
 
+enum ActiveSheet: Identifiable {
+    case moveItems
+    case storeView
+
+    var id: Int {
+        hashValue
+    }
+}
+
 struct ListView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var storage: SMPStorage
@@ -15,9 +24,8 @@ struct ListView: View {
     @State var list: SMPList
     @State private var newItem = ""
     @State private var newItemHasFocus = false
-    @State private var isPresentingIAP = false
-    @State private var isPresentingMoveItems = false
     @State private var showEmptyState = false
+    @State private var activeSheet: ActiveSheet?
 
     private var itemCountText: String {
         let formatString = "list item count".localize()
@@ -144,7 +152,7 @@ struct ListView: View {
                             .frame(maxWidth: .infinity)
 
                             Button(action: {
-                                isPresentingMoveItems.toggle()
+                                activeSheet = .moveItems
                             }) {
                                 Image(systemName: "folder")
                             }
@@ -153,11 +161,13 @@ struct ListView: View {
                         .frame(width: geometry.size.width)
                 }
             }
-            .sheet(isPresented: $isPresentingMoveItems) {
-                MoveItemsView(list: list)
-            }
-            .sheet(isPresented: $isPresentingIAP) {
-                StoreView(freeLimitMessage: FreeLimits.numberOfItems.message)
+            .sheet(item: $activeSheet) { item in
+                switch item {
+                case .moveItems:
+                    MoveItemsView(list: list)
+                case .storeView:
+                    StoreView(freeLimitMessage: FreeLimits.numberOfItems.message)
+                }
             }
         }
 
@@ -171,7 +181,7 @@ struct ListView: View {
 
         if list.items.count >= FreeLimits.numberOfItems.limit &&
             !storeDataSource.hasPurchasedIAP {
-            isPresentingIAP.toggle()
+            activeSheet = .storeView
             return
         }
 
