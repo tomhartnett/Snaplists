@@ -46,14 +46,16 @@ struct StoreView: View {
                 ErrorMessageView(message: message)
             }
 
-            ZStack {
+            ZStack(alignment: .leading) {
                 PurchaseButtonsView()
                     .disabled(storeDataSource.hasPurchasedIAP || !storeDataSource.isAuthorizedForPayments)
 
                 if showPurchasedView {
                     PurchasedView()
+                        .padding()
                 } else if showCannotPurchaseView {
                     CannotPurchaseView()
+                        .padding()
                 }
             }
 

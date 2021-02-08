@@ -293,14 +293,14 @@
 				E2A32107250E8AC600A022B8 /* More */,
 				E22C615C255432710004B561 /* ArchivedListsView.swift */,
 				E26DD858250BA13E00FCC495 /* AuthenticationErrorView.swift */,
+				E2A0302725B4CE80003BD447 /* EmptyStateView.swift */,
+				E2C6670625CF17010063D7E8 /* ErrorMessageView.swift */,
 				E256DD6824F2E98600649855 /* FocusableTextField.swift */,
 				E22E152224E060C2002A140E /* HomeView.swift */,
 				E235D79624DF5B59007D95BE /* ListView.swift */,
 				E235D7F524E04B42007D95BE /* ListItemView.swift */,
 				E2ECD76024F74B560046AEC9 /* NavBarItemsView.swift */,
 				E21BBD6B2503B0A500964F67 /* RenameListView.swift */,
-				E2A0302725B4CE80003BD447 /* EmptyStateView.swift */,
-				E2C6670625CF17010063D7E8 /* ErrorMessageView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
