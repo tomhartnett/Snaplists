@@ -23,7 +23,6 @@ struct ListView: View {
     @EnvironmentObject var storeDataSource: StoreDataSource
     @State var list: SMPList
     @State private var newItem = ""
-    @State private var newItemHasFocus = false
     @State private var showEmptyState = false
     @State private var activeSheet: ListViewActiveSheet?
 
@@ -78,7 +77,6 @@ struct ListView: View {
                                                                    title: item.title,
                                                                    isComplete: !item.isComplete)
                                                      }, editAction: { title in
-                                                        newItemHasFocus = false
                                                         if title.isEmpty {
                                                             storage.deleteItem(item, list: list)
                                                         } else {
@@ -104,7 +102,7 @@ struct ListView: View {
 
                                         FocusableTextField("list-new-item-placeholder".localize(),
                                                            text: $newItem,
-                                                           isFirstResponder: newItemHasFocus,
+                                                           isFirstResponder: false,
                                                            onCommit: addNewItem)
                                             .padding([.top, .bottom])
                                     }
@@ -170,12 +168,10 @@ struct ListView: View {
                 }
             }
         }
-
     }
 
     private func addNewItem() {
         if newItem.isEmpty {
-            newItemHasFocus = false
             return
         }
 
@@ -188,7 +184,6 @@ struct ListView: View {
         let item = SMPListItem(title: newItem, isComplete: false)
         list.items.append(item)
         newItem = ""
-        newItemHasFocus = true
 
         storage.addItem(item, to: list)
     }

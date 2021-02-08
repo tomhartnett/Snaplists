@@ -99,7 +99,7 @@
 "privacy-commitment-body-text" = "Your privacy is important to us. To protect that privacy, we provide this notice to explain our information collection practices.";
 
 "privacy-data-header-text" = "Your Data is Private";
-"privacy-data-body-text" = "The Simplists app does not collect any user information. There is no sign-up, sign-in, or opportunity in the app to give us your personal information.  The app uses Apple’s iCloud service to sync your lists across your devices.  We cannot see your data:  your lists, the list title, the items on the list, even then number of lists you create in the app.  We cannot view any of this data.";
+"privacy-data-body-text" = "The Simplists app does not collect any user information. There is no sign-up, sign-in, or opportunity in the app to give us your personal information.  The app uses Apple’s iCloud service to sync your lists across your devices.  We cannot see your data:  your lists, the list title, the items on the list, even the number of lists you create in the app.  We cannot view any of this data.";
 
 "privacy-feedback-header-text" = "In-App Feedback";
 "privacy-feedback-body-text" = "The app does provide a feedback feature to allow you to provide us feedback about the app. This feature opens a simple email to us. Be aware that by sending the email, you are giving us your email address. We do not use this email address for anything other than responding to your feedback, via email.  If you prefer, you can tweet us at @simplistsapp.";
