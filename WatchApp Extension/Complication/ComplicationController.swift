@@ -110,8 +110,8 @@ private extension ComplicationController {
             template = CLKComplicationTemplateGraphicBezelCircularText(circularTemplate: circularTemplate,
                                                                        textProvider: textProvider)
         case .graphicCorner:
-            let tintForeground = UIImage(named: "GraphicCornerTemplate")!
-            let tintBackground = UIImage(named: "GraphicCornerTransparent")!
+            let tintBackground = UIImage(named: "GraphicCornerTemplate")!
+            let tintForeground = UIImage(named: "GraphicCornerTransparent")!
             let fullColorImage = UIImage(named: "GraphicCornerFullColor")!
             let tintedImageProvider = CLKImageProvider(onePieceImage: tintForeground,
                                                        twoPieceImageBackground: tintBackground,
@@ -120,8 +120,12 @@ private extension ComplicationController {
                                                                    tintedImageProvider: tintedImageProvider)
             template = CLKComplicationTemplateGraphicCornerCircularImage(imageProvider: fullColorImageProvider)
         case .graphicCircular:
-            let tintForeground = UIImage(named: "GraphicCircularTemplate")!
-            let tintBackground = UIImage(named: "GraphicCircularTransparent")!
+            // tintBackground & tintForeground are swapped to make the "template" image the "background".
+            // This keeps it white instead of giving it the tint color, which I thought looks odd.
+            // Probably not necessary, but did the same with .graphicCorner above. That complication didn't
+            // use the tint color; it was white, but decided to future-proof with same "swapping".
+            let tintBackground = UIImage(named: "GraphicCircularTemplate")!
+            let tintForeground = UIImage(named: "GraphicCircularTransparent")!
             let fullColorImage = UIImage(named: "GraphicCircularFullColor")!
             let tintedImageProvider = CLKImageProvider(onePieceImage: tintForeground,
                                                        twoPieceImageBackground: tintBackground,
