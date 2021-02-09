@@ -110,13 +110,25 @@ private extension ComplicationController {
             template = CLKComplicationTemplateGraphicBezelCircularText(circularTemplate: circularTemplate,
                                                                        textProvider: textProvider)
         case .graphicCorner:
-            let image = UIImage(named: "GraphicCornerFullColor")!
-            let imageProvider = CLKFullColorImageProvider(fullColorImage: image)
-            template = CLKComplicationTemplateGraphicCornerCircularImage(imageProvider: imageProvider)
+            let tintForeground = UIImage(named: "GraphicCornerTemplate")!
+            let tintBackground = UIImage(named: "GraphicCornerTransparent")!
+            let fullColorImage = UIImage(named: "GraphicCornerFullColor")!
+            let tintedImageProvider = CLKImageProvider(onePieceImage: tintForeground,
+                                                       twoPieceImageBackground: tintBackground,
+                                                       twoPieceImageForeground: tintForeground)
+            let fullColorImageProvider = CLKFullColorImageProvider(fullColorImage: fullColorImage,
+                                                                   tintedImageProvider: tintedImageProvider)
+            template = CLKComplicationTemplateGraphicCornerCircularImage(imageProvider: fullColorImageProvider)
         case .graphicCircular:
-            let image = UIImage(named: "Complication/Graphic Circular")!
-            let imageProvider = CLKFullColorImageProvider(fullColorImage: image)
-            template = CLKComplicationTemplateGraphicCircularImage(imageProvider: imageProvider)
+            let tintForeground = UIImage(named: "GraphicCircularTemplate")!
+            let tintBackground = UIImage(named: "GraphicCircularTransparent")!
+            let fullColorImage = UIImage(named: "GraphicCircularFullColor")!
+            let tintedImageProvider = CLKImageProvider(onePieceImage: tintForeground,
+                                                       twoPieceImageBackground: tintBackground,
+                                                       twoPieceImageForeground: tintForeground)
+            let fullColorImageProvider = CLKFullColorImageProvider(fullColorImage: fullColorImage,
+                                                                   tintedImageProvider: tintedImageProvider)
+            template = CLKComplicationTemplateGraphicCircularImage(imageProvider: fullColorImageProvider)
         case .graphicRectangular:
             break
         case .graphicExtraLarge:
