@@ -27,10 +27,18 @@ struct DebugView: View {
     }
 
     var isAuthorizedForPayments: String {
-        if UserDefaults.standard.string(forKey: DebugView.isAuthorizedForPaymentsKey) != nil {
-            return "No"
-        } else {
+        if UserDefaults.simplistsAppDebug.isAuthorizedForPayments {
             return "Yes"
+        } else {
+            return "No"
+        }
+    }
+
+    var isSampleListCreated: String {
+        if UserDefaults.simplistsApp.isSampleListCreated {
+            return "Yes"
+        } else {
+            return "No"
         }
     }
 
@@ -60,6 +68,18 @@ struct DebugView: View {
                 }
             }
 
+            Section(header: Text("Sample list")) {
+                HStack {
+                    Text(isSampleListCreated)
+                    Spacer()
+                    Button(action: {
+                        toggleIsSampleListCreated()
+                    }, label: {
+                        Text("Toggle Sample List")
+                    })
+                }
+            }
+
             if isHack {
                 EmptyView()
             }
@@ -67,20 +87,18 @@ struct DebugView: View {
     }
 
     func toggleIsAuthorizedForPayments() {
-        if storeDataSource.isAuthorizedForPayments {
-            UserDefaults.standard.setValue("no", forKey: DebugView.isAuthorizedForPaymentsKey)
-        } else {
-            UserDefaults.standard.set(nil, forKey: DebugView.isAuthorizedForPaymentsKey)
-        }
+        let isAuthorized = UserDefaults.simplistsAppDebug.isAuthorizedForPayments
+        UserDefaults.simplistsAppDebug.setIsAuthorizedForPayments(!isAuthorized)
+        isHack.toggle()
+    }
+
+    func toggleIsSampleListCreated() {
+        let isCreated = UserDefaults.simplistsApp.isSampleListCreated
+        UserDefaults.simplistsApp.setIsSampleListCreated(!isCreated)
         isHack.toggle()
     }
 }
 
-extension DebugView {
-    static var isAuthorizedForPaymentsKey: String {
-        return "Debug-isAuthorizedForPayments"
-    }
-}
 struct DebugView_Previews: PreviewProvider {
     static var previews: some View {
 

@@ -21,6 +21,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let storage = createStorage()
 
+        createSampleList(storage: storage)
+
         let client = StoreClient()
         SKPaymentQueue.default().add(client)
 
@@ -65,5 +67,25 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         container.viewContext.automaticallyMergesChangesFromParent = true
 
         return SMPStorage(context: container.viewContext)
+    }
+
+    private func createSampleList(storage: SMPStorage) {
+
+        if UserDefaults.simplistsApp.isSampleListCreated {
+            return
+        }
+
+        storage.addList(SMPList(title: "TODOs",
+                                isArchived: false,
+                                lastModified: Date().addingTimeInterval(-86400),
+                                items: [
+                                    SMPListItem(title: "Try adding a new list", isComplete: false),
+                                    SMPListItem(title: "Try adding new items to a list", isComplete: false),
+                                    SMPListItem(title: "Mark an item complete", isComplete: false),
+                                    SMPListItem(title: "Delete an item", isComplete: false),
+                                    SMPListItem(title: "View this sample list", isComplete: true)
+                                ]))
+
+        UserDefaults.simplistsApp.setIsSampleListCreated(true)
     }
 }

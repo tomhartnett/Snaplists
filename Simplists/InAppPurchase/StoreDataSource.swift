@@ -21,12 +21,10 @@ final class StoreDataSource: ObservableObject {
 
     var isAuthorizedForPayments: Bool {
         #if DEBUG
-        if UserDefaults.standard.string(forKey: DebugView.isAuthorizedForPaymentsKey) != nil {
-            return false
-        }
-        #endif
-
+        return UserDefaults.simplistsAppDebug.isAuthorizedForPayments
+        #else
         return SKPaymentQueue.canMakePayments()
+        #endif
     }
 
     var hasPurchasedIAP: Bool {
@@ -51,7 +49,6 @@ final class StoreDataSource: ObservableObject {
     }
 
     private let premiumProductIdentifier = "com.sleekible.simplists.iap.premium"
-    private let premiumIAPPurchasedKey = "com.sleekible.simplists.iap.premium.purchased"
     private var premiumProduct: SKProduct?
     private let service: StoreService
     private var subscriptions = Set<AnyCancellable>()
@@ -112,14 +109,13 @@ private extension StoreDataSource {
             .first()
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] status in
-                guard let key = self?.premiumIAPPurchasedKey,
-                      let premiumProductIdentifier = self?.premiumProductIdentifier else { return }
+                guard let premiumProductIdentifier = self?.premiumProductIdentifier else { return }
 
                 if status == .initial {
                     // Super-secure IAP validation here 🙃
                     // TODO: implement complicated actual receipt validation
                     // https://www.raywenderlich.com/9257-in-app-purchases-receipt-validation-tutorial
-                    if UserDefaults.standard.bool(forKey: key) == true {
+                    if UserDefaults.simplistsApp.isPremiumIAPPurchased {
                         self?.premiumIAPPurchaseStatus = .purchased(productIdentifier: premiumProductIdentifier)
                     }
                 }
@@ -130,13 +126,10 @@ private extension StoreDataSource {
             .dropFirst()
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] status in
-                guard let key = self?.premiumIAPPurchasedKey,
-                      let premiumProductIdentifier = self?.premiumProductIdentifier else { return }
+                guard let premiumProductIdentifier = self?.premiumProductIdentifier else { return }
 
-                if case .purchased(let productIdentifier) = status {
-                    if productIdentifier == premiumProductIdentifier {
-                        UserDefaults.standard.set(true, forKey: key)
-                    }
+                if case .purchased(let productIdentifier) = status, productIdentifier == premiumProductIdentifier {
+                    UserDefaults.simplistsApp.setIsPremiumIAPPurchased(true)
                 }
                 self?.premiumIAPPurchaseStatus = status
             })
@@ -147,7 +140,7 @@ private extension StoreDataSource {
 #if DEBUG
 extension StoreDataSource {
     func resetIAP() {
-        UserDefaults.standard.set(false, forKey: premiumIAPPurchasedKey)
+        UserDefaults.simplistsApp.setIsPremiumIAPPurchased(false)
         premiumIAPPurchaseStatus = .initial
     }
 }

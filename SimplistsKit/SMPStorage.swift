@@ -75,6 +75,17 @@ public final class SMPStorage: ObservableObject {
         listEntity.isArchived = list.isArchived
         listEntity.modified = Date()
 
+        let items: [ItemEntity] = list.items.map {
+            let itemEntity = ItemEntity(context: context)
+            itemEntity.identifier = $0.id
+            itemEntity.isComplete = $0.isComplete
+            itemEntity.title = $0.title
+            return itemEntity
+        }
+
+        listEntity.items = NSSet(array: items)
+        listEntity.sortOrder = list.items.map { $0.id.uuidString }
+
         saveChanges()
     }
 
