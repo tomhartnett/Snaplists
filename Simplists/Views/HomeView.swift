@@ -37,6 +37,7 @@ struct HomeView: View {
             VStack(alignment: .leading) {
 
                 AuthenticationErrorView()
+                    .padding()
                     .onTapGesture {
                         isPresentingAuthError.toggle()
                     }
