@@ -17,60 +17,82 @@ struct StoreView: View {
     var freeLimitMessage: String?
 
     var body: some View {
-        VStack(alignment: .leading) {
-            HStack {
-                Text("store-title-text")
-                    .font(.system(size: 20, weight: .semibold))
+        ScrollView {
+            VStack(alignment: .leading) {
+                HStack {
+                    Text("store-title-text")
+                        .font(.system(size: 24, weight: .semibold))
+
+                    Spacer()
+
+                    Button(action: {
+                        presentationMode.wrappedValue.dismiss()
+                    }, label: {
+                        Image(systemName: "xmark")
+                            .font(.system(size: 24))
+                            .foregroundColor(Color("TextSecondary"))
+                    })
+                }
+
+                if let message = freeLimitMessage {
+                    ErrorMessageView(message: message)
+                }
+
+                if !storeDataSource.isAuthorizedForPayments {
+                    ErrorMessageView(message: "store-not-authorized-error-message".localize())
+                }
+
+                if let message = purchaseStatusMessage {
+                    ErrorMessageView(message: message)
+                }
+
+                Text("store-header-text")
+                    .padding(.top, 15)
+                    .fixedSize(horizontal: false, vertical: true)
+
+                HStack {
+                    ZStack {
+                        PurchaseButtonsView()
+                            .disabled(storeDataSource.hasPurchasedIAP || !storeDataSource.isAuthorizedForPayments)
+
+                            PurchasedView()
+                                .opacity(showPurchasedView ? 1.0 : 0.0)
+
+                            CannotPurchaseView()
+                                .opacity(showCannotPurchaseView ? 1.0 : 0.0)
+
+                    }
+                    .padding([.top, .bottom], 50)
+                    .frame(maxWidth: .infinity)
+                }
+
+                FeaturesView(headerText: "store-features-header-text".localize(),
+                             bulletPoints: [
+                                "store-feature-unlimited-list".localize(),
+                                "store-feature-unlimited-item".localize()
+                             ])
+                    .padding(.bottom, 15)
+
+                FeaturesView(headerText: "store-freelimits-header-text".localize(),
+                             bulletPoints: [
+                                String.localizedStringWithFormat(
+                                    "free limit list count".localize(), FreeLimits.numberOfLists.limit),
+                                String.localizedStringWithFormat(
+                                    "free limit item count".localize(), FreeLimits.numberOfItems.limit)
+                             ])
+                    .padding(.bottom, 15)
+
+                Text("store-support-the-app-text")
 
                 Spacer()
-
-                Button(action: {
-                    presentationMode.wrappedValue.dismiss()
-                }, label: {
-                    Image(systemName: "xmark")
-                        .font(.system(size: 24))
-                        .foregroundColor(Color("TextSecondary"))
-                })
             }
             .padding()
-
-            if let message = freeLimitMessage {
-                ErrorMessageView(message: message)
+            .onReceive(storeDataSource.objectWillChange.eraseToAnyPublisher()) {
+                displayPurchaseStatus()
             }
-
-            if !storeDataSource.isAuthorizedForPayments {
-                ErrorMessageView(message: "store-not-authorized-error-message".localize())
+            .onAppear {
+                displayPurchaseStatus()
             }
-
-            if let message = purchaseStatusMessage {
-                ErrorMessageView(message: message)
-            }
-
-            ZStack(alignment: .leading) {
-                PurchaseButtonsView()
-                    .disabled(storeDataSource.hasPurchasedIAP || !storeDataSource.isAuthorizedForPayments)
-
-                if showPurchasedView {
-                    PurchasedView()
-                        .padding()
-                } else if showCannotPurchaseView {
-                    CannotPurchaseView()
-                        .padding()
-                }
-            }
-
-            FeaturesView()
-
-            Text("store-support-the-app-text")
-                .padding()
-
-            Spacer()
-        }
-        .onReceive(storeDataSource.objectWillChange.eraseToAnyPublisher()) {
-            displayPurchaseStatus()
-        }
-        .onAppear {
-            displayPurchaseStatus()
         }
     }
 
@@ -85,7 +107,7 @@ struct StoreView: View {
         case .failed(errorMessage: let errorMessage):
             purchaseStatusMessage = errorMessage
         case .deferred:
-            purchaseStatusMessage = "Purchase is pending approval."
+            purchaseStatusMessage = "deferred-purchase-status-text".localize()
         default:
             purchaseStatusMessage = nil
         }
@@ -102,6 +124,6 @@ struct StoreView_Previews: PreviewProvider {
     static var previews: some View {
         let client = StoreClient()
         let dataSource = StoreDataSource(service: client)
-        StoreView(freeLimitMessage: "Buy it now! Buy it.").environmentObject(dataSource)
+        StoreView(freeLimitMessage: "You've reached the maximum number of lists in the free version of the app.").environmentObject(dataSource)
     }
 }

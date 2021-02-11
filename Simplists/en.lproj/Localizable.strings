@@ -77,9 +77,13 @@
 "store-limits-number-of-items" = "You've reached the maximum number of items in the free version of the app.";
 "store-title-text" = "Simplists Premium";
 "store-header-text" = "Premium mode is an optional in-app purchase that unlocks additional app features.";
+
 "store-features-header-text" = "Premium features";
 "store-feature-unlimited-list" = "Unlimited number of lists";
 "store-feature-unlimited-item" = "Unlimited number of items";
+
+"store-freelimits-header-text" = "Free limits";
+
 "store-purchase-button-format-string" = "Purchase %@";
 "store-restore-button-text" = "Restore Purchase";
 "store-support-the-app-text" = "Your purchase supports development of the app 💙";
@@ -89,6 +93,8 @@
 
 "cannotpurchase-header-text" = "Sorry!";
 "cannotpurchase-body-text" = "You can't make purchases on this device.";
+
+"deferred-purchase-status-text" = "Purchase is pending approval.";
 
 "error-failed-transaction-text" = "An error has occurred and the purchase could not be completed.";
 "error-failed-restore-text" = "An error has occurred and the restore could not be completed.";

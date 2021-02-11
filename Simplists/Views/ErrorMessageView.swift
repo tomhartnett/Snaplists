@@ -17,6 +17,7 @@ struct ErrorMessageView: View {
                     .frame(width: 25, height: 25)
                     .padding(.leading, 10)
                 Text(message)
+                    .fixedSize(horizontal: false, vertical: true)
                 Spacer()
             }
             .padding([.vertical], 4)

@@ -8,22 +8,29 @@
 import SwiftUI
 
 struct FeaturesView: View {
+    var headerText: String
+
+    var bulletPoints: [String]
+
     var body: some View {
         VStack(alignment: .leading) {
-            Text("store-features-header-text")
+            Text(headerText)
                 .font(.system(size: 20, weight: .semibold))
 
-            FeatureBulletView("store-feature-unlimited-list".localize())
-            FeatureBulletView("store-feature-unlimited-item".localize())
+            ForEach(bulletPoints, id: \.self) { bulletPoint in
+                FeatureBulletView(bulletPoint)
+            }
         }
-        .padding()
         .background(Color(UIColor.systemBackground))
-        .cornerRadius(16)
     }
 }
 
 struct FeaturesView_Previews: PreviewProvider {
     static var previews: some View {
-        FeaturesView()
+        FeaturesView(headerText: "store-features-header-text".localize(),
+                     bulletPoints: [
+                        "store-feature-unlimited-list".localize(),
+                        "store-feature-unlimited-item".localize()
+        ])
     }
 }

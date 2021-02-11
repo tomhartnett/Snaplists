@@ -103,9 +103,15 @@ private extension ComplicationController {
             imageProvider.tintColor = .white
             template = CLKComplicationTemplateExtraLargeSimpleImage(imageProvider: imageProvider)
         case .graphicBezel:
-            let image = UIImage(named: "Complication/Graphic Circular") ?? UIImage()
-            let imageProvider = CLKFullColorImageProvider(fullColorImage: image)
-            let circularTemplate = CLKComplicationTemplateGraphicCircularImage(imageProvider: imageProvider)
+            let tintBackground = UIImage(named: "GraphicCircularTemplate")!
+            let tintForeground = UIImage(named: "GraphicCircularTransparent")!
+            let fullColorImage = UIImage(named: "GraphicCircularFullColor")!
+            let tintedImageProvider = CLKImageProvider(onePieceImage: tintForeground,
+                                                       twoPieceImageBackground: tintBackground,
+                                                       twoPieceImageForeground: tintForeground)
+            let fullColorImageProvider = CLKFullColorImageProvider(fullColorImage: fullColorImage,
+                                                                   tintedImageProvider: tintedImageProvider)
+            let circularTemplate = CLKComplicationTemplateGraphicCircularImage(imageProvider: fullColorImageProvider)
             let textProvider = CLKSimpleTextProvider(text: "Simplists")
             template = CLKComplicationTemplateGraphicBezelCircularText(circularTemplate: circularTemplate,
                                                                        textProvider: textProvider)
@@ -124,6 +130,7 @@ private extension ComplicationController {
             // This keeps it white instead of giving it the tint color, which I thought looks odd.
             // Probably not necessary, but did the same with .graphicCorner above. That complication didn't
             // use the tint color; it was white, but decided to future-proof with same "swapping".
+            // Definitely also necessary for .graphicBezel above. It's basically just .graphicCircular with text.
             let tintBackground = UIImage(named: "GraphicCircularTemplate")!
             let tintForeground = UIImage(named: "GraphicCircularTransparent")!
             let fullColorImage = UIImage(named: "GraphicCircularFullColor")!

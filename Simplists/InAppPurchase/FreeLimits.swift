@@ -14,9 +14,9 @@ enum FreeLimits {
     var limit: Int {
         switch self {
         case .numberOfLists:
-            return 2
-        case .numberOfItems:
             return 3
+        case .numberOfItems:
+            return 10
         }
     }
 

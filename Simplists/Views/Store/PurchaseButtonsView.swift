@@ -17,35 +17,27 @@ struct PurchaseButtonsView: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading) {
-            Text("store-header-text")
+        HStack {
+            Button(action: {
+                storeDataSource.purchaseIAP()
+            }, label: {
+                Text(purchaseButtonText)
+                    .foregroundColor(Color(UIColor.systemBackground))
+            })
+            .disabled(!storeDataSource.isAuthorizedForPayments)
+            .padding()
+            .background(Color(UIColor.label))
+            .cornerRadius(8)
 
-            HStack {
-                Button(action: {
-                    storeDataSource.purchaseIAP()
-                }, label: {
-                    Text(purchaseButtonText)
-                        .foregroundColor(Color(UIColor.systemBackground))
-                })
-                .disabled(!storeDataSource.isAuthorizedForPayments)
-                .padding()
-                .background(Color(UIColor.label))
-                .cornerRadius(8)
-
-                Button(action: {
-                    storeDataSource.restoreIAP()
-                }, label: {
-                    Text("store-restore-button-text")
-                        .foregroundColor(.primary)
-                        .underline()
-                })
-                .padding(.leading, 25)
-            }
-            .padding([.top, .bottom], 10)
+            Button(action: {
+                storeDataSource.restoreIAP()
+            }, label: {
+                Text("store-restore-button-text")
+                    .foregroundColor(.primary)
+                    .underline()
+            })
+            .padding(.leading, 25)
         }
-        .padding()
-        .background(Color(UIColor.systemBackground))
-        .cornerRadius(16)
     }
 }
 
