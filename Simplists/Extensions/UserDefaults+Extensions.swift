@@ -37,7 +37,8 @@ extension UserDefaults {
     }
 }
 
-#if DEBUG
+// MARK: - For use from DebugView
+
 extension UserDefaults {
     struct SimplistsAppDebug {
         var isAuthorizedForPayments: Bool {
@@ -53,4 +54,3 @@ extension UserDefaults {
         return SimplistsAppDebug()
     }
 }
-#endif

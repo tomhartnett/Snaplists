@@ -137,11 +137,11 @@ private extension StoreDataSource {
     }
 }
 
-#if DEBUG
+// MARK: - For use from DebugView
+
 extension StoreDataSource {
     func resetIAP() {
         UserDefaults.simplistsApp.setIsPremiumIAPPurchased(false)
         premiumIAPPurchaseStatus = .initial
     }
 }
-#endif
