@@ -27,6 +27,7 @@ struct HomeView: View {
     @State private var renameListTitle = ""
     @State private var isPresentingAuthError = false
     @State private var activeSheet: HomeViewActiveSheet?
+    @State private var selectedListID: UUID?
 
     private var archivedListCount: Int {
         return storage.getListsCount(isArchived: true)
@@ -59,8 +60,11 @@ struct HomeView: View {
                     }
 
                     Section {
+                        // List of lists
                         ForEach(lists) { list in
-                            NavigationLink(destination: ListView(list: list)) {
+                            NavigationLink(destination: ListView(selectedListID: $selectedListID, list: list),
+                                           tag: list.id,
+                                           selection: $selectedListID) {
                                 HStack {
                                     Text(list.title)
                                     Spacer()
@@ -95,20 +99,21 @@ struct HomeView: View {
                                         Image(systemName: "trash")
                                     })
                                 }
-                            }
-                            .sheet(isPresented: $isPresentingRename) {
-                                RenameListView(id: $renameListID, title: $renameListTitle) { id, newTitle in
-                                    if var list = lists.first(where: { $0.id.uuidString == id }) {
-                                        list.title = newTitle
-                                        storage.updateList(list)
-                                        renameListID = ""
-                                        renameListTitle = ""
+                                .sheet(isPresented: $isPresentingRename) {
+                                    RenameListView(id: $renameListID, title: $renameListTitle) { id, newTitle in
+                                        if var list = lists.first(where: { $0.id.uuidString == id }) {
+                                            list.title = newTitle
+                                            storage.updateList(list)
+                                            renameListID = ""
+                                            renameListTitle = ""
+                                        }
                                     }
                                 }
                             }
                         }
                         .onDelete(perform: archive)
 
+                        // Add New Item
                         HStack {
                             Image(systemName: "plus.circle")
                                 .frame(width: 25, height: 25)
@@ -194,6 +199,10 @@ struct HomeView: View {
         var listToUpdate = list
         listToUpdate.isArchived = true
         storage.updateList(listToUpdate)
+
+        if selectedListID == list.id {
+            selectedListID = nil
+        }
     }
 
     private func archive(at offsets: IndexSet) {
@@ -201,6 +210,10 @@ struct HomeView: View {
             var listToUpdate = lists[$0]
             listToUpdate.isArchived = true
             storage.updateList(listToUpdate)
+
+            if selectedListID == listToUpdate.id {
+                selectedListID = nil
+            }
         }
     }
 

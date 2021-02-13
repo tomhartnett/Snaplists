@@ -21,9 +21,9 @@ struct ListView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var storage: SMPStorage
     @EnvironmentObject var storeDataSource: StoreDataSource
+    @Binding var selectedListID: UUID?
     @State var list: SMPList
     @State private var newItem = ""
-    @State private var showEmptyState = false
     @State private var activeSheet: ListViewActiveSheet?
 
     private var itemCountText: String {
@@ -58,8 +58,9 @@ struct ListView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                if showEmptyState {
-                    EmptyStateView(emptyStateType: .noSelection)
+                if selectedListID == nil {
+                        EmptyStateView(emptyStateType: .noSelection)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
                 } else {
                     List {
                         Section(header:
@@ -112,52 +113,52 @@ struct ListView: View {
                     .onReceive(storage.objectWillChange, perform: { _ in
                         reload()
                     })
+                    .toolbar {
+                        ToolbarItem(placement: .bottomBar) {
+                                HStack {
+                                    Button(action: {
+                                        list.isArchived = true
+                                        storage.updateList(list)
+                                        presentationMode.wrappedValue.dismiss()
+                                        selectedListID = nil
+                                    }) {
+                                        Image(systemName: "trash")
+                                    }
+                                    .frame(maxWidth: .infinity)
+
+                                    Menu {
+                                        Button(action: {
+                                            markAllItems(isComplete: false)
+                                        }) {
+                                            Text("toolbar-markincomplete-button-text")
+                                            Image(systemName: "circle")
+                                        }
+
+                                        Button(action: {
+                                            markAllItems(isComplete: true)
+                                        }) {
+                                            Text("toolbar-markcomplete-button-text")
+                                            Image(systemName: "checkmark.circle")
+                                        }
+                                    } label: {
+                                        Image(systemName: "checkmark.circle")
+                                    }
+                                    .frame(maxWidth: .infinity)
+
+                                    Button(action: {
+                                        activeSheet = .moveItemsView
+                                    }) {
+                                        Image(systemName: "folder")
+                                    }
+                                    .frame(maxWidth: .infinity)
+                                }
+                                .frame(width: geometry.size.width)
+                        }
+                    }
                 }
             }
             .navigationBarItems(trailing: NavBarItemsView(showEditButton: !list.items.isEmpty))
-            .navigationBarTitle(showEmptyState ? "" : list.title)
-            .toolbar {
-                ToolbarItem(placement: .bottomBar) {
-                        HStack {
-                            Button(action: {
-                                list.isArchived = true
-                                storage.updateList(list)
-                                presentationMode.wrappedValue.dismiss()
-                                showEmptyState = true
-                            }) {
-                                Image(systemName: "trash")
-                            }
-                            .frame(maxWidth: .infinity)
-
-                            Menu {
-                                Button(action: {
-                                    markAllItems(isComplete: false)
-                                }) {
-                                    Text("toolbar-markincomplete-button-text")
-                                    Image(systemName: "circle")
-                                }
-
-                                Button(action: {
-                                    markAllItems(isComplete: true)
-                                }) {
-                                    Text("toolbar-markcomplete-button-text")
-                                    Image(systemName: "checkmark.circle")
-                                }
-                            } label: {
-                                Image(systemName: "checkmark.circle")
-                            }
-                            .frame(maxWidth: .infinity)
-
-                            Button(action: {
-                                activeSheet = .moveItemsView
-                            }) {
-                                Image(systemName: "folder")
-                            }
-                            .frame(maxWidth: .infinity)
-                        }
-                        .frame(width: geometry.size.width)
-                }
-            }
+            .navigationBarTitle(selectedListID == nil ? "" : list.title)
             .sheet(item: $activeSheet) { item in
                 switch item {
                 case .moveItemsView:
@@ -207,7 +208,7 @@ struct ListView: View {
             list = newList
         } else {
             presentationMode.wrappedValue.dismiss()
-            showEmptyState = true
+            selectedListID = nil
         }
     }
 
@@ -248,7 +249,8 @@ struct ListView: View {
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ListView(list: SMPList(
+            ListView(selectedListID: .constant(UUID()),
+                     list: SMPList(
                         title: "Grocery",
                         items: [
                             SMPListItem(title: "Item 1", isComplete: false),
