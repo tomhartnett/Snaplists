@@ -8,12 +8,17 @@
 import SwiftUI
 
 struct AuthenticationErrorView: View {
+
+    var isFakeAuthenticationEnabled: Bool {
+        return UserDefaults.simplistsAppDebug.isFakeAuthenticationEnabled
+    }
+
     var isUserSignedIn: Bool {
         return FileManager.default.ubiquityIdentityToken != nil
     }
 
     var body: some View {
-        if isUserSignedIn {
+        if isUserSignedIn || isFakeAuthenticationEnabled {
             EmptyView()
         } else {
             ErrorMessageView(message: "icloud-warning-banner-text".localize())

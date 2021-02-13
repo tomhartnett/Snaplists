@@ -14,6 +14,7 @@ import SimplistsWatchKit
 class HostingController: WKHostingController<AnyView> {
     override var body: AnyView {
         let storage = createStorage()
+        createScreenshotSampleData(storage: storage)
         return AnyView(WatchHomeView(lists: []).environmentObject(storage))
     }
 
@@ -42,5 +43,13 @@ class HostingController: WKHostingController<AnyView> {
         container.viewContext.automaticallyMergesChangesFromParent = true
 
         return SMPStorage(context: container.viewContext)
+    }
+
+    private func createScreenshotSampleData(storage: SMPStorage) {
+        #if DEBUG
+        if ProcessInfo.processInfo.environment["CREATE_SCREENSHOT_SAMPLE_DATA"] == "1" {
+            storage.createScreenshotSampleData()
+        }
+        #endif
     }
 }

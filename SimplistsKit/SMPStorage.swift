@@ -310,3 +310,50 @@ public extension SMPStorage {
         return SMPStorage(context: container.viewContext)
     }
 }
+
+public extension SMPStorage {
+    func createScreenshotSampleData() {
+
+        // Delete any existing lists
+        let lists = getLists()
+        for list in lists {
+            deleteList(list)
+        }
+
+        // Delete any existing "archived" lists
+        let deletedLists = getLists(isArchived: true)
+        for list in deletedLists {
+            deleteList(list)
+        }
+
+        // Create sample lists for screenshots
+        let list0 = SMPList(title: "Trashed list", isArchived: true, lastModified: Date(), items: [])
+        addList(list0)
+
+        let list1 = SMPList(title: "Workout routine", isArchived: false, lastModified: Date(), items: [
+            SMPListItem(title: "5 min warmup", isComplete: false),
+            SMPListItem(title: "20 push ups", isComplete: false),
+            SMPListItem(title: "10 burpees", isComplete: false),
+            SMPListItem(title: "20 crunches", isComplete: false),
+            SMPListItem(title: "5 min cool down", isComplete: false)
+        ])
+        addList(list1)
+
+        let list2 = SMPList(title: "Grocery", isArchived: false, lastModified: Date(), items: [
+            SMPListItem(title: "Milk", isComplete: false),
+            SMPListItem(title: "Lunch meat", isComplete: false),
+            SMPListItem(title: "Cheese slices", isComplete: false),
+            SMPListItem(title: "Bread", isComplete: true),
+            SMPListItem(title: "Bananas", isComplete: true)
+        ])
+        addList(list2)
+
+        let list3 = SMPList(title: "TODOs", isArchived: false, lastModified: Date(), items: [
+            SMPListItem(title: "Mow lawn", isComplete: false),
+            SMPListItem(title: "Clean up garage", isComplete: false),
+            SMPListItem(title: "Vacuum & dust", isComplete: true),
+            SMPListItem(title: "Pick out clothes for donation", isComplete: true)
+        ])
+        addList(list3)
+    }
+}

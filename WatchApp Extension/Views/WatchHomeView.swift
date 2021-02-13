@@ -52,18 +52,7 @@ struct WatchHomeView: View {
         }
         #endif
 
-        #if targetEnvironment(simulator)
-        lists = [SMPList(title: "List 1",
-                         isArchived: false,
-                         lastModified: Date(timeIntervalSinceReferenceDate: -59),
-                         items: [
-                            SMPListItem(title: "Item 1", isComplete: false),
-                            SMPListItem(title: "Item 2", isComplete: false),
-                            SMPListItem(title: "Item 3", isComplete: false)
-                         ])]
-        #else
         lists = storage.getLists()
-        #endif
     }
 
     private func checkAccountStatus() {

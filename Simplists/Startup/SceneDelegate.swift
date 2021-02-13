@@ -79,14 +79,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             return
         }
 
-        storage.addList(SMPList(title: "TODOs",
+        storage.addList(SMPList(title: "Welcome 👋",
                                 isArchived: false,
                                 lastModified: Date().addingTimeInterval(-86400),
                                 items: [
                                     SMPListItem(title: "Try adding a new list", isComplete: false),
                                     SMPListItem(title: "Try adding new items to a list", isComplete: false),
                                     SMPListItem(title: "Mark an item complete", isComplete: false),
-                                    SMPListItem(title: "Delete an item", isComplete: false),
+                                    SMPListItem(title: "Swipe to delete an item", isComplete: false),
+                                    SMPListItem(title: "Swipe to delete a list", isComplete: false),
                                     SMPListItem(title: "View this sample list", isComplete: true)
                                 ]))
 
