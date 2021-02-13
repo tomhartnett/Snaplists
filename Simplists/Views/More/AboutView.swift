@@ -18,7 +18,7 @@ struct AboutView: View {
     }
 
     var copyrightString: String {
-        let beginYear = 2020
+        let beginYear = 2021
         let comps = Calendar.current.dateComponents([.year], from: Date())
         let currentYear = comps.year ?? beginYear
 
