@@ -124,6 +124,7 @@ struct StoreView_Previews: PreviewProvider {
     static var previews: some View {
         let client = StoreClient()
         let dataSource = StoreDataSource(service: client)
-        StoreView(freeLimitMessage: "You've reached the maximum number of lists in the free version of the app.").environmentObject(dataSource)
+        let message = "You've reached the maximum number of lists in the free version of the app."
+        StoreView(freeLimitMessage: message).environmentObject(dataSource)
     }
 }
