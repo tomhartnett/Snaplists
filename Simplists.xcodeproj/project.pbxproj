@@ -555,7 +555,7 @@
 				E235D78D24DF5B59007D95BE /* Resources */,
 				E235D7D624DF5B89007D95BE /* Embed Watch Content */,
 				E235D7EF24E037B9007D95BE /* Embed Frameworks */,
-				E26642DD24E4D5EE008F6778 /* Increment Build Number */,
+				E26642DD24E4D5EE008F6778 /* Set Build Number */,
 				E26DD857250905A500FCC495 /* SwiftLint */,
 			);
 			buildRules = (
@@ -577,7 +577,7 @@
 			buildPhases = (
 				E235D7A624DF5B88007D95BE /* Resources */,
 				E235D7D224DF5B89007D95BE /* Embed App Extensions */,
-				E26642DE24E4D69F008F6778 /* Increment Build Number */,
+				E26642DE24E4D69F008F6778 /* Set Build Number */,
 			);
 			buildRules = (
 			);
@@ -597,7 +597,7 @@
 				E235D7B124DF5B89007D95BE /* Frameworks */,
 				E235D7B224DF5B89007D95BE /* Resources */,
 				E235D80524E04E3E007D95BE /* Embed Frameworks */,
-				E26642DF24E4D6B5008F6778 /* Increment Build Number */,
+				E26642DF24E4D6B5008F6778 /* Set Build Number */,
 			);
 			buildRules = (
 			);
@@ -617,7 +617,7 @@
 				E235D7DF24E037B9007D95BE /* Sources */,
 				E235D7E024E037B9007D95BE /* Frameworks */,
 				E235D7E124E037B9007D95BE /* Resources */,
-				E26642E024E4D6C5008F6778 /* Increment Build Number */,
+				E26642E024E4D6C5008F6778 /* Set Build Number */,
 			);
 			buildRules = (
 			);
@@ -636,7 +636,7 @@
 				E235D80724E050CD007D95BE /* Sources */,
 				E235D80824E050CD007D95BE /* Frameworks */,
 				E235D80924E050CD007D95BE /* Resources */,
-				E26642E124E4D6D4008F6778 /* Increment Build Number */,
+				E26642E124E4D6D4008F6778 /* Set Build Number */,
 			);
 			buildRules = (
 			);
@@ -748,7 +748,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		E26642DD24E4D5EE008F6778 /* Increment Build Number */ = {
+		E26642DD24E4D5EE008F6778 /* Set Build Number */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 12;
 			files = (
@@ -757,16 +757,16 @@
 			);
 			inputPaths = (
 			);
-			name = "Increment Build Number";
+			name = "Set Build Number";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ $ENABLE_PREVIEWS == \"NO\" ]\nthen\n    buildNumber=$(git rev-parse --short HEAD)\n    /usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\nfi\n";
+			shellScript = "if [ $ENABLE_PREVIEWS == \"NO\" ]\nthen\n    hexBuildNumber=$(git rev-parse --short HEAD | tr \"[:lower:]\" \"[:upper:]\")\n    decBuildNumber=$(echo \"ibase=16; $hexBuildNumber\" | bc)\n    /usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $decBuildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\nfi\n";
 		};
-		E26642DE24E4D69F008F6778 /* Increment Build Number */ = {
+		E26642DE24E4D69F008F6778 /* Set Build Number */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 12;
 			files = (
@@ -775,16 +775,16 @@
 			);
 			inputPaths = (
 			);
-			name = "Increment Build Number";
+			name = "Set Build Number";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ $ENABLE_PREVIEWS == \"NO\" ]\nthen\n    buildNumber=$(git rev-parse --short HEAD)\n    /usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\nfi\n\n";
+			shellScript = "if [ $ENABLE_PREVIEWS == \"NO\" ]\nthen\n    hexBuildNumber=$(git rev-parse --short HEAD | tr \"[:lower:]\" \"[:upper:]\")\n    decBuildNumber=$(echo \"ibase=16; $hexBuildNumber\" | bc)\n    /usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $decBuildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\nfi\n";
 		};
-		E26642DF24E4D6B5008F6778 /* Increment Build Number */ = {
+		E26642DF24E4D6B5008F6778 /* Set Build Number */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 12;
 			files = (
@@ -793,16 +793,16 @@
 			);
 			inputPaths = (
 			);
-			name = "Increment Build Number";
+			name = "Set Build Number";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ $ENABLE_PREVIEWS == \"NO\" ]\nthen\n    buildNumber=$(git rev-parse --short HEAD)\n    /usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\nfi\n\n";
+			shellScript = "if [ $ENABLE_PREVIEWS == \"NO\" ]\nthen\n    hexBuildNumber=$(git rev-parse --short HEAD | tr \"[:lower:]\" \"[:upper:]\")\n    decBuildNumber=$(echo \"ibase=16; $hexBuildNumber\" | bc)\n    /usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $decBuildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\nfi\n\n";
 		};
-		E26642E024E4D6C5008F6778 /* Increment Build Number */ = {
+		E26642E024E4D6C5008F6778 /* Set Build Number */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 12;
 			files = (
@@ -811,16 +811,16 @@
 			);
 			inputPaths = (
 			);
-			name = "Increment Build Number";
+			name = "Set Build Number";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ $ENABLE_PREVIEWS == \"NO\" ]\nthen\n    buildNumber=$(git rev-parse --short HEAD)\n    /usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\nfi\n\n";
+			shellScript = "if [ $ENABLE_PREVIEWS == \"NO\" ]\nthen\n    hexBuildNumber=$(git rev-parse --short HEAD | tr \"[:lower:]\" \"[:upper:]\")\n    decBuildNumber=$(echo \"ibase=16; $hexBuildNumber\" | bc)\n    /usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $decBuildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\nfi\n\n";
 		};
-		E26642E124E4D6D4008F6778 /* Increment Build Number */ = {
+		E26642E124E4D6D4008F6778 /* Set Build Number */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 12;
 			files = (
@@ -829,14 +829,14 @@
 			);
 			inputPaths = (
 			);
-			name = "Increment Build Number";
+			name = "Set Build Number";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ $ENABLE_PREVIEWS == \"NO\" ]\nthen\n    buildNumber=$(git rev-parse --short HEAD)\n    /usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\nfi\n\n";
+			shellScript = "if [ $ENABLE_PREVIEWS == \"NO\" ]\nthen\n    hexBuildNumber=$(git rev-parse --short HEAD | tr \"[:lower:]\" \"[:upper:]\")\n    decBuildNumber=$(echo \"ibase=16; $hexBuildNumber\" | bc)\n    /usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $decBuildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\nfi\n\n";
 		};
 		E26DD857250905A500FCC495 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
