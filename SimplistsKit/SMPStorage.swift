@@ -147,7 +147,7 @@ public final class SMPStorage: ObservableObject {
         return SMPListItem(entity: itemEntity)
     }
 
-    public func addItem(_ item: SMPListItem, to list: SMPList) {
+    public func addItem(_ item: SMPListItem, to list: SMPList, at index: Int? = nil) {
         guard let listEntity = getListEntity(with: list.id) else { return }
 
         let itemEntity = ItemEntity(context: context)
@@ -159,7 +159,11 @@ public final class SMPStorage: ObservableObject {
         listEntity.items = items
 
         var itemIDs = listEntity.sortOrder ?? []
-        itemIDs.append(item.id.uuidString)
+        if let index = index, index <= itemIDs.count {
+            itemIDs.insert(item.id.uuidString, at: index)
+        } else {
+            itemIDs.append(item.id.uuidString)
+        }
         listEntity.sortOrder = itemIDs
         listEntity.modified = Date()
 

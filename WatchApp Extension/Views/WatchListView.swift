@@ -29,7 +29,6 @@ struct WatchListView: View {
                 .padding(.top, 10)
             }
         }
-        .animation(.default)
         .navigationBarTitle(list.title)
         .onReceive(storage.objectWillChange, perform: { _ in
             reload()
@@ -62,7 +61,9 @@ struct WatchListView: View {
         list.items[itemIndex].isComplete = isComplete
 
         if currentCheckedStatus != isComplete && !lastCheckedItem && !lastUncheckedItem {
-            list.items.move(fromOffsets: IndexSet(integer: itemIndex), toOffset: firstCheckedItemOrEnd)
+            withAnimation {
+                list.items.move(fromOffsets: IndexSet(integer: itemIndex), toOffset: firstCheckedItemOrEnd)
+            }
         }
 
         storage.updateList(list)

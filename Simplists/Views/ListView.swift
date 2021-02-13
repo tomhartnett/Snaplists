@@ -109,7 +109,6 @@ struct ListView: View {
                                 }).textCase(nil) // Use "original" case of header text and do not upper-case.
                     }
                     .listStyle(InsetGroupedListStyle())
-                    .animation(.default)
                     .onReceive(storage.objectWillChange, perform: { _ in
                         reload()
                     })
@@ -182,10 +181,13 @@ struct ListView: View {
         }
 
         let item = SMPListItem(title: newItem, isComplete: false)
-        list.items.append(item)
+        let index = list.items.firstIndex(where: { $0.isComplete }) ?? list.items.count
+        withAnimation {
+            list.items.insert(item, at: index)
+        }
         newItem = ""
 
-        storage.addItem(item, to: list)
+        storage.addItem(item, to: list, at: index)
     }
 
     private func delete(at offsets: IndexSet) {
@@ -227,7 +229,9 @@ struct ListView: View {
         list.items[itemIndex].isComplete = isComplete
 
         if currentCheckedStatus != isComplete && !lastCheckedItem && !lastUncheckedItem {
-            list.items.move(fromOffsets: IndexSet(integer: itemIndex), toOffset: firstCheckedItemOrEnd)
+            withAnimation {
+                list.items.move(fromOffsets: IndexSet(integer: itemIndex), toOffset: firstCheckedItemOrEnd)
+            }
         }
 
         storage.updateList(list)
