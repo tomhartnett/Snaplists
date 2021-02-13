@@ -62,7 +62,9 @@ struct HomeView: View {
                     Section {
                         // List of lists
                         ForEach(lists) { list in
-                            NavigationLink(destination: ListView(selectedListID: $selectedListID, list: list),
+                            NavigationLink(destination: ListView(selectedListID: $selectedListID,
+                                                                 lists: $lists,
+                                                                 list: list),
                                            tag: list.id,
                                            selection: $selectedListID) {
                                 HStack {

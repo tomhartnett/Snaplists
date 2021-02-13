@@ -22,6 +22,7 @@ struct ListView: View {
     @EnvironmentObject var storage: SMPStorage
     @EnvironmentObject var storeDataSource: StoreDataSource
     @Binding var selectedListID: UUID?
+    @Binding var lists: [SMPList]
     @State var list: SMPList
     @State private var newItem = ""
     @State private var activeSheet: ListViewActiveSheet?
@@ -59,7 +60,7 @@ struct ListView: View {
         GeometryReader { geometry in
             VStack {
                 if selectedListID == nil {
-                        EmptyStateView(emptyStateType: .noSelection)
+                    EmptyStateView(emptyStateType: lists.count == 0 ? .noLists : .noSelection)
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                 } else {
                     List {
@@ -249,15 +250,18 @@ struct ListView: View {
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
+            let list = SMPList(
+                title: "Grocery",
+                items: [
+                    SMPListItem(title: "Item 1", isComplete: false),
+                    SMPListItem(title: "Item 2", isComplete: false),
+                    SMPListItem(title: "Item 3", isComplete: true),
+                    SMPListItem(title: "Item 4", isComplete: true)
+                ])
+
             ListView(selectedListID: .constant(UUID()),
-                     list: SMPList(
-                        title: "Grocery",
-                        items: [
-                            SMPListItem(title: "Item 1", isComplete: false),
-                            SMPListItem(title: "Item 2", isComplete: false),
-                            SMPListItem(title: "Item 3", isComplete: true),
-                            SMPListItem(title: "Item 4", isComplete: true)
-                        ])
+                     lists: .constant([list]),
+                     list: list
             ).environmentObject(SMPStorage.previewStorage)
         }
     }
