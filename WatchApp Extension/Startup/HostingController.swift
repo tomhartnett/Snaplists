@@ -24,8 +24,9 @@ class HostingController: WKHostingController<AnyView> {
             fatalError("\(#function) - No persistent store descriptions found.")
         }
 
+        // Not sure this line is really needed; iOS app works without it.
         description.cloudKitContainerOptions = NSPersistentCloudKitContainerOptions(
-            containerIdentifier: "iCloud.com.sleekible.CloudKitDemo")
+            containerIdentifier: "iCloud.com.sleekible.simplists")
 
         // https://developer.apple.com/documentation/coredata/consuming_relevant_store_changes
         description.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
