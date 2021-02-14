@@ -17,19 +17,44 @@ extension UserDefaults {
 
     struct SimplistsApp {
         var isPremiumIAPPurchased: Bool {
-            return UserDefaults.standard.bool(forKey: Key.isPremiumIAPPurchased)
+            return getValue(for: Key.isPremiumIAPPurchased)
         }
 
         var isSampleListCreated: Bool {
-            return UserDefaults.standard.bool(forKey: Key.isSampleListCreated)
+            return getValue(for: Key.isSampleListCreated)
         }
 
+        private var isSignedIn: Bool {
+            return FileManager.default.ubiquityIdentityToken != nil
+        }
+
+        private let iCloudKeyValueStore = NSUbiquitousKeyValueStore()
+
         func setIsPremiumIAPPurchased(_ value: Bool) {
-            UserDefaults.standard.setValue(value, forKey: Key.isPremiumIAPPurchased)
+            setValue(value, forKey: Key.isPremiumIAPPurchased)
         }
 
         func setIsSampleListCreated(_ value: Bool) {
-            UserDefaults.standard.setValue(value, forKey: Key.isSampleListCreated)
+            setValue(value, forKey: Key.isSampleListCreated)
+        }
+
+        private func getValue(for key: String) -> Bool {
+            if isSignedIn {
+                let iCloudValue = iCloudKeyValueStore.bool(forKey: key)
+                return iCloudValue
+            } else {
+                let localValue = UserDefaults.standard.bool(forKey: key)
+                return localValue
+            }
+        }
+
+        private func setValue(_ value: Bool, forKey: String) {
+            if isSignedIn {
+                iCloudKeyValueStore.set(value, forKey: forKey)
+                iCloudKeyValueStore.synchronize()
+            }
+
+            UserDefaults.standard.set(value, forKey: forKey)
         }
     }
 
