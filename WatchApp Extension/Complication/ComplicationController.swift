@@ -14,7 +14,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     func getComplicationDescriptors(handler: @escaping ([CLKComplicationDescriptor]) -> Void) {
         let descriptors = [
             CLKComplicationDescriptor(identifier: "complication",
-                                      displayName: "Simplists",
+                                      displayName: "Snaplists",
                                       supportedFamilies: [.circularSmall,
                                                           .extraLarge,
                                                           .modularSmall,
@@ -95,7 +95,7 @@ private extension ComplicationController {
         case .utilitarianSmallFlat:
             break
         case .utilitarianLarge:
-            let textProvider = CLKSimpleTextProvider(text: "• Simplists")
+            let textProvider = CLKSimpleTextProvider(text: "• Snaplists")
             template = CLKComplicationTemplateUtilitarianLargeFlat(textProvider: textProvider)
         case .extraLarge:
             let image = UIImage(named: "Complication/Extra Large") ?? UIImage()
@@ -112,7 +112,7 @@ private extension ComplicationController {
             let fullColorImageProvider = CLKFullColorImageProvider(fullColorImage: fullColorImage,
                                                                    tintedImageProvider: tintedImageProvider)
             let circularTemplate = CLKComplicationTemplateGraphicCircularImage(imageProvider: fullColorImageProvider)
-            let textProvider = CLKSimpleTextProvider(text: "Simplists")
+            let textProvider = CLKSimpleTextProvider(text: "Snaplists")
             template = CLKComplicationTemplateGraphicBezelCircularText(circularTemplate: circularTemplate,
                                                                        textProvider: textProvider)
         case .graphicCorner:

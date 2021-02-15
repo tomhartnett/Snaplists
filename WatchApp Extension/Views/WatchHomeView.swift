@@ -32,7 +32,7 @@ struct WatchHomeView: View {
             }
         }
         .animation(.default)
-        .navigationBarTitle("Simplists")
+        .navigationBarTitle("Snaplists")
         .onAppear {
             reload()
             checkAccountStatus()
