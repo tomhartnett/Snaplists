@@ -20,11 +20,15 @@ struct WatchListView: View {
                     .foregroundColor(.secondary)
             } else {
                 List {
-                    ForEach(list.items) { item in
-                        WatchListItemView(item: item, tapAction: {
-                            updateItem(id: item.id, title: item.title, isComplete: !item.isComplete)
-                        })
-                    }
+                    Section(header:
+                                WatchListHeaderView(itemCount: list.items.count),
+                            content: {
+                                ForEach(list.items) { item in
+                                    WatchListItemView(item: item, tapAction: {
+                                        updateItem(id: item.id, title: item.title, isComplete: !item.isComplete)
+                                    })
+                                }
+                            }).textCase(nil)
                 }
                 .padding(.top, 10)
             }
@@ -77,7 +81,13 @@ struct ListView_Previews: PreviewProvider {
                         items: [
                             SMPListItem(title: "Item 1", isComplete: false),
                             SMPListItem(title: "Item 2", isComplete: true),
-                            SMPListItem(title: "Item 3", isComplete: true)
+                            SMPListItem(title: "Item 3", isComplete: true),
+                            SMPListItem(title: "Item 4", isComplete: true)
+                        ])).environmentObject(SMPStorage.previewStorage)
+
+        WatchListView(list: SMPList(
+                        title: "Grocery",
+                        items: [
                         ])).environmentObject(SMPStorage.previewStorage)
     }
 }

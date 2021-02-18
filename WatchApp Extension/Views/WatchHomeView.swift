@@ -24,7 +24,12 @@ struct WatchHomeView: View {
                 List {
                     ForEach(lists) { list in
                         NavigationLink(destination: WatchListView(list: list).environmentObject(storage)) {
-                            Text(list.title)
+                            HStack {
+                                Text(list.title)
+                                Spacer()
+                                Text("\(list.items.count)")
+                                    .foregroundColor(.secondary)
+                            }
                         }
                     }
                 }
@@ -69,9 +74,18 @@ struct WatchHomeView: View {
 struct WatchHomeView_Previews: PreviewProvider {
     static var previews: some View {
         WatchHomeView(lists: [
-            SMPList(title: "List 1"),
-            SMPList(title: "List 2"),
-            SMPList(title: "List 3")
+            SMPList(title: "List 1", items: [
+                SMPListItem(title: "Item 1", isComplete: false)
+            ]),
+            SMPList(title: "List 2", items: [
+                SMPListItem(title: "Item 1", isComplete: false),
+                SMPListItem(title: "Item 2", isComplete: false)
+            ]),
+            SMPList(title: "Really long list title that doesn't fit", items: [
+                SMPListItem(title: "Item 1", isComplete: false),
+                SMPListItem(title: "Item 2", isComplete: false),
+                SMPListItem(title: "Item 3", isComplete: false)
+            ])
         ]).environmentObject(SMPStorage.previewStorage)
     }
 }
