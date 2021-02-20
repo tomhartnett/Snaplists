@@ -66,112 +66,111 @@ struct ListView: View {
                     EmptyStateView(emptyStateType: lists.count == 0 ? .noLists : .noSelection)
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                 } else {
-                    List {
-                        Section(header:
-                                    HStack {
-                                        Text(itemCountText)
-                                        Spacer()
-                                        Text(lastUpdatedText)
-                                    },
-                                content: {
-                                    ForEach(list.items) { item in
-                                        ListItemView(title: item.title,
-                                                     isComplete: item.isComplete,
-                                                     tapAction: {
-                                                        updateItem(id: item.id,
-                                                                   title: item.title,
-                                                                   isComplete: !item.isComplete)
-                                                     }, editAction: { title in
-                                                        if title.isEmpty {
-                                                            storage.deleteItem(item, list: list)
-                                                        } else {
+                    VStack(alignment: .leading) {
+                        Button(action: {
+                            renameListID = list.id.uuidString
+                            renameListTitle = list.title
+                            activeSheet = .renameListView
+                        }) {
+                            Text("Change list name")
+                                .font(.system(size: 13))
+                        }
+                        .padding(.leading, 20)
+                        .padding(.top, -6)
+
+                        List {
+                            Section(header:
+                                        HStack {
+                                            Text(itemCountText)
+                                            Spacer()
+                                            Text(lastUpdatedText)
+                                        },
+                                    content: {
+                                        ForEach(list.items) { item in
+                                            ListItemView(title: item.title,
+                                                         isComplete: item.isComplete,
+                                                         tapAction: {
                                                             updateItem(id: item.id,
-                                                                       title: title,
-                                                                       isComplete: item.isComplete)
-                                                        }
-                                                     })
-                                    }
-                                    .onDelete(perform: delete)
-                                    .onMove(perform: move)
+                                                                       title: item.title,
+                                                                       isComplete: !item.isComplete)
+                                                         }, editAction: { title in
+                                                            if title.isEmpty {
+                                                                storage.deleteItem(item, list: list)
+                                                            } else {
+                                                                updateItem(id: item.id,
+                                                                           title: title,
+                                                                           isComplete: item.isComplete)
+                                                            }
+                                                         })
+                                        }
+                                        .onDelete(perform: delete)
+                                        .onMove(perform: move)
 
+                                        HStack {
+                                            ZStack {
+                                                Circle()
+                                                    .stroke(Color.clear)
+                                                    .foregroundColor(.clear)
+                                                    .frame(width: 25, height: 25)
+
+                                                Image(systemName: "plus.circle")
+                                                    .foregroundColor(.secondary)
+                                            }
+
+                                            FocusableTextField("list-new-item-placeholder".localize(),
+                                                               text: $newItem,
+                                                               isFirstResponder: false,
+                                                               onCommit: addNewItem)
+                                                .padding([.top, .bottom])
+                                        }
+                                    }).textCase(nil) // Use "original" case of header text and do not upper-case.
+                        }
+                        .listStyle(InsetGroupedListStyle())
+                        .onReceive(storage.objectWillChange, perform: { _ in
+                            reload()
+                        })
+                        .toolbar {
+                            ToolbarItem(placement: .bottomBar) {
                                     HStack {
-                                        ZStack {
-                                            Circle()
-                                                .stroke(Color.clear)
-                                                .foregroundColor(.clear)
-                                                .frame(width: 25, height: 25)
-
-                                            Image(systemName: "plus.circle")
-                                                .foregroundColor(.secondary)
-                                        }
-
-                                        FocusableTextField("list-new-item-placeholder".localize(),
-                                                           text: $newItem,
-                                                           isFirstResponder: false,
-                                                           onCommit: addNewItem)
-                                            .padding([.top, .bottom])
-                                    }
-                                }).textCase(nil) // Use "original" case of header text and do not upper-case.
-                    }
-                    .listStyle(InsetGroupedListStyle())
-                    .onReceive(storage.objectWillChange, perform: { _ in
-                        reload()
-                    })
-                    .toolbar {
-                        ToolbarItem(placement: .bottomBar) {
-                                HStack {
-                                    Button(action: {
-                                        list.isArchived = true
-                                        storage.updateList(list)
-                                        presentationMode.wrappedValue.dismiss()
-                                        selectedListID = nil
-                                    }) {
-                                        Image(systemName: "trash")
-                                    }
-                                    .frame(maxWidth: .infinity)
-
-                                    Menu {
                                         Button(action: {
-                                            markAllItems(isComplete: false)
+                                            list.isArchived = true
+                                            storage.updateList(list)
+                                            presentationMode.wrappedValue.dismiss()
+                                            selectedListID = nil
                                         }) {
-                                            Text("toolbar-markincomplete-button-text")
-                                            Image(systemName: "circle")
+                                            Image(systemName: "trash")
                                         }
+                                        .frame(maxWidth: .infinity)
 
-                                        Button(action: {
-                                            markAllItems(isComplete: true)
-                                        }) {
-                                            Text("toolbar-markcomplete-button-text")
+                                        Menu {
+                                            Button(action: {
+                                                markAllItems(isComplete: false)
+                                            }) {
+                                                Text("toolbar-markincomplete-button-text")
+                                                Image(systemName: "circle")
+                                            }
+
+                                            Button(action: {
+                                                markAllItems(isComplete: true)
+                                            }) {
+                                                Text("toolbar-markcomplete-button-text")
+                                                Image(systemName: "checkmark.circle")
+                                            }
+                                        } label: {
                                             Image(systemName: "checkmark.circle")
                                         }
-                                    } label: {
-                                        Image(systemName: "checkmark.circle")
-                                    }
-                                    .frame(maxWidth: .infinity)
+                                        .frame(maxWidth: .infinity)
 
-                                    Button(action: {
-                                        activeSheet = .moveItemsView
-                                    }) {
-                                        Image(systemName: "folder")
-                                    }
-                                    .frame(maxWidth: .infinity)
-
-                                    Menu {
                                         Button(action: {
-                                            renameListID = list.id.uuidString
-                                            renameListTitle = list.title
-                                            activeSheet = .renameListView
+                                            activeSheet = .moveItemsView
                                         }) {
-                                            Text("toolbar-rename-list-button-text")
-                                            Image(systemName: "pencil")
+                                            Image(systemName: "folder")
                                         }
-                                    } label: {
-                                        Image(systemName: "gearshape")
+                                        .frame(maxWidth: .infinity)
                                     }
-                                    .frame(maxWidth: .infinity)
-                                }
-                                .frame(width: geometry.size.width)
-                        }
+                                    .frame(width: geometry.size.width)
+                            }
+                    }
                     }
                 }
             }
