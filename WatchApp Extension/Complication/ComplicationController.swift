@@ -106,7 +106,7 @@ private extension ComplicationController {
             let tintBackground = UIImage(named: "GraphicCircularTemplate")!
             let tintForeground = UIImage(named: "GraphicCircularTransparent")!
             let fullColorImage = UIImage(named: "GraphicCircularFullColor")!
-            let tintedImageProvider = CLKImageProvider(onePieceImage: tintForeground,
+            let tintedImageProvider = CLKImageProvider(onePieceImage: tintBackground,
                                                        twoPieceImageBackground: tintBackground,
                                                        twoPieceImageForeground: tintForeground)
             let fullColorImageProvider = CLKFullColorImageProvider(fullColorImage: fullColorImage,
@@ -119,7 +119,7 @@ private extension ComplicationController {
             let tintBackground = UIImage(named: "GraphicCornerTemplate")!
             let tintForeground = UIImage(named: "GraphicCornerTransparent")!
             let fullColorImage = UIImage(named: "GraphicCornerFullColor")!
-            let tintedImageProvider = CLKImageProvider(onePieceImage: tintForeground,
+            let tintedImageProvider = CLKImageProvider(onePieceImage: tintBackground,
                                                        twoPieceImageBackground: tintBackground,
                                                        twoPieceImageForeground: tintForeground)
             let fullColorImageProvider = CLKFullColorImageProvider(fullColorImage: fullColorImage,
@@ -134,7 +134,7 @@ private extension ComplicationController {
             let tintBackground = UIImage(named: "GraphicCircularTemplate")!
             let tintForeground = UIImage(named: "GraphicCircularTransparent")!
             let fullColorImage = UIImage(named: "GraphicCircularFullColor")!
-            let tintedImageProvider = CLKImageProvider(onePieceImage: tintForeground,
+            let tintedImageProvider = CLKImageProvider(onePieceImage: tintBackground,
                                                        twoPieceImageBackground: tintBackground,
                                                        twoPieceImageForeground: tintForeground)
             let fullColorImageProvider = CLKFullColorImageProvider(fullColorImage: fullColorImage,
