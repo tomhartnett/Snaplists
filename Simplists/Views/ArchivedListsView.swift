@@ -14,38 +14,44 @@ struct ArchivedListsView: View {
 
     var body: some View {
         VStack {
-            List {
-                Section {
-                    ForEach(lists) { list in
-                        HStack {
-                            Text(list.title)
-                            Spacer()
-                            Text("\(list.items.count)")
-                                .foregroundColor(.secondary)
-                        }
-                        .contextMenu {
+            if lists.isEmpty {
+                Text("archived-empty-state-text")
+                    .font(.title)
+                    .foregroundColor(.secondary)
+            } else {
+                List {
+                    Section {
+                        ForEach(lists) { list in
+                            HStack {
+                                Text(list.title)
+                                Spacer()
+                                Text("\(list.items.count)")
+                                    .foregroundColor(.secondary)
+                            }
+                            .contextMenu {
 
-                            Button(action: {
-                                var listToUpdate = list
-                                listToUpdate.isArchived = false
-                                storage.updateList(listToUpdate)
-                            }, label: {
-                                Text("archived-restore-button-text")
-                                Image(systemName: "trash.slash")
-                            })
+                                Button(action: {
+                                    var listToUpdate = list
+                                    listToUpdate.isArchived = false
+                                    storage.updateList(listToUpdate)
+                                }, label: {
+                                    Text("archived-restore-button-text")
+                                    Image(systemName: "trash.slash")
+                                })
 
-                            Button(action: {
-                                storage.deleteList(list)
-                            }, label: {
-                                Text("archived-delete-button-text")
-                                Image(systemName: "trash")
-                            })
+                                Button(action: {
+                                    storage.deleteList(list)
+                                }, label: {
+                                    Text("archived-delete-button-text")
+                                    Image(systemName: "trash")
+                                })
+                            }
                         }
+                        .onDelete(perform: delete)
                     }
-                    .onDelete(perform: delete)
                 }
+                .listStyle(InsetGroupedListStyle())
             }
-            .listStyle(InsetGroupedListStyle())
         }
         .navigationBarTitle("archived-navigation-bar-title")
         .navigationBarItems(trailing: NavBarItemsView(showEditButton: !lists.isEmpty))

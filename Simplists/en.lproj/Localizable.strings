@@ -58,6 +58,7 @@
 "archived-navigation-bar-title" = "Deleted Lists";
 "archived-restore-button-text" = "Restore";
 "archived-delete-button-text" = "Delete";
+"archived-empty-state-text" = "No deleted lists";
 
 "more-navigation-bar-title" = "More";
 "more-section-purchases" = "Optional In-App Purchases";
