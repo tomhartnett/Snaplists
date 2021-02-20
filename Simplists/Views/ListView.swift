@@ -72,7 +72,7 @@ struct ListView: View {
                             renameListTitle = list.title
                             activeSheet = .renameListView
                         }) {
-                            Text("Change list name")
+                            Text("list-rename-button-text")
                                 .font(.system(size: 13))
                         }
                         .padding(.leading, 20)
@@ -123,7 +123,7 @@ struct ListView: View {
                                                                onCommit: addNewItem)
                                                 .padding([.top, .bottom])
                                         }
-                                    }).textCase(nil) // Use "original" case of header text and do not upper-case.
+                                    }).textCase(nil) // Don't upper-case section header text.
                         }
                         .listStyle(InsetGroupedListStyle())
                         .onReceive(storage.objectWillChange, perform: { _ in

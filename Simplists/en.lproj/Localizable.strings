@@ -45,6 +45,7 @@
 "move-lists-create-new-list-text" = "Create New List";
 "move-lists-move-items-text" = "Move Items";
 
+"list-rename-button-text" = "Change list name";
 "list-modified-format-string" = "updated: %@";
 "list-modified-just-now-text" = "just now";
 "list-empty-no-items-text" = "No Items";

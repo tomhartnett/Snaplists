@@ -12,6 +12,12 @@ struct ArchivedListsView: View {
     @EnvironmentObject var storage: SMPStorage
     @State private var lists: [SMPList] = []
 
+    private var listCountText: String {
+        let formatString = "list count".localize()
+        let result = String.localizedStringWithFormat(formatString, lists.count)
+        return result
+    }
+
     var body: some View {
         VStack {
             if lists.isEmpty {
@@ -20,7 +26,9 @@ struct ArchivedListsView: View {
                     .foregroundColor(.secondary)
             } else {
                 List {
-                    Section {
+                    Section(header:
+                        Text(listCountText),
+                    content: {
                         ForEach(lists) { list in
                             HStack {
                                 Text(list.title)
@@ -48,7 +56,7 @@ struct ArchivedListsView: View {
                             }
                         }
                         .onDelete(perform: delete)
-                    }
+                    }).textCase(nil) // Don't upper-case section header text.
                 }
                 .listStyle(InsetGroupedListStyle())
             }
