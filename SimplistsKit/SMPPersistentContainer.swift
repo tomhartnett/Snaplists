@@ -14,6 +14,10 @@ public final class SMPPersistentContainer: NSPersistentCloudKitContainer {
             fatalError("Failed to create URL for application group container.")
         }
 
+        #if DEBUG
+        return appGroupURL.appendingPathComponent("debug")
+        #else
         return appGroupURL
+        #endif
     }
 }
