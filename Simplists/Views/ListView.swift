@@ -10,6 +10,7 @@ import SwiftUI
 
 enum ListViewActiveSheet: Identifiable {
     case moveItemsView
+    case renameListView
     case storeView
 
     var id: Int {
@@ -24,8 +25,10 @@ struct ListView: View {
     @Binding var selectedListID: UUID?
     @Binding var lists: [SMPList]
     @State var list: SMPList
-    @State private var newItem = ""
     @State private var activeSheet: ListViewActiveSheet?
+    @State private var newItem = ""
+    @State private var renameListID = ""
+    @State private var renameListTitle = ""
 
     private var itemCountText: String {
         let formatString = "list item count".localize()
@@ -152,6 +155,20 @@ struct ListView: View {
                                         Image(systemName: "folder")
                                     }
                                     .frame(maxWidth: .infinity)
+
+                                    Menu {
+                                        Button(action: {
+                                            renameListID = list.id.uuidString
+                                            renameListTitle = list.title
+                                            activeSheet = .renameListView
+                                        }) {
+                                            Text("toolbar-rename-list-button-text")
+                                            Image(systemName: "pencil")
+                                        }
+                                    } label: {
+                                        Image(systemName: "gearshape")
+                                    }
+                                    .frame(maxWidth: .infinity)
                                 }
                                 .frame(width: geometry.size.width)
                         }
@@ -164,6 +181,13 @@ struct ListView: View {
                 switch item {
                 case .moveItemsView:
                     MoveItemsView(list: list)
+                case .renameListView:
+                    RenameListView(id: $renameListID, title: $renameListTitle) { _, newTitle in
+                        list.title = newTitle
+                        storage.updateList(list)
+                        renameListID = ""
+                        renameListTitle = ""
+                    }
                 case .storeView:
                     StoreView(freeLimitMessage: FreeLimits.numberOfItems.message)
                 }

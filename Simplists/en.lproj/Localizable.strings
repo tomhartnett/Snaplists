@@ -53,6 +53,7 @@
 "toolbar-markincomplete-button-text" = "Mark all incomplete";
 "toolbar-markcomplete-button-text" = "Mark all complete";
 "toolbar-delete-button-text" = "Delete list";
+"toolbar-rename-list-button-text" = "Rename list";
 
 "archived-navigation-bar-title" = "Deleted Lists";
 "archived-restore-button-text" = "Restore";
