@@ -11,6 +11,7 @@ import SwiftUI
 struct ArchivedListsView: View {
     @EnvironmentObject var storage: SMPStorage
     @State private var lists: [SMPList] = []
+    @State private var isPresentingAlert = false
 
     private var listCountText: String {
         let formatString = "list count".localize()
@@ -59,7 +60,25 @@ struct ArchivedListsView: View {
                     }).textCase(nil) // Don't upper-case section header text.
                 }
                 .listStyle(InsetGroupedListStyle())
+                .toolbar {
+                    ToolbarItem(placement: .bottomBar) {
+                        Button(action: {
+                            isPresentingAlert.toggle()
+                        }) {
+                            Text("archived-delete-all-button-text")
+                        }
+                    }
+                }
             }
+        }
+        .alert(isPresented: $isPresentingAlert) {
+            let deleteButton = Alert.Button.destructive(Text("archived-alert-delete-button-text")) {
+                storage.purgeDeletedLists()
+                getArchivedLists()
+            }
+            let cancelButton = Alert.Button.cancel(Text("archived-alert-cancel-button-text"))
+
+            return Alert(title: Text("archived-alert-title"), primaryButton: deleteButton, secondaryButton: cancelButton)
         }
         .navigationBarTitle("archived-navigation-bar-title")
         .navigationBarItems(trailing: NavBarItemsView(showEditButton: !lists.isEmpty))

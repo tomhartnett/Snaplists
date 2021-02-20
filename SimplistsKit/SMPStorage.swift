@@ -46,14 +46,11 @@ public final class SMPStorage: ObservableObject {
 
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "List")
         request.sortDescriptors = [NSSortDescriptor(key: "modified", ascending: false)]
+        request.predicate = NSPredicate(format: "isArchived == %@", NSNumber(value: isArchived))
 
         do {
             if let results = try context.fetch(request) as? [ListEntity] {
-                // TODO: not using predicate above to preserve dev data and not deal with migrations.
-                // Consider making isArchived non-optional before shipping and just deleting all dev data.
-                // e.g. request.predicate = NSPredicate(format: "isArchived == %@", NSNumber(value: isArchived))
-                lists.append(contentsOf:
-                                results.filter({ $0.isArchived == isArchived }).compactMap { SMPList(entity: $0) })
+                lists.append(contentsOf: results.compactMap { SMPList(entity: $0) })
             }
         } catch {
             print("\(#function) - error: \(error.localizedDescription)")
@@ -139,6 +136,24 @@ public final class SMPStorage: ObservableObject {
         listEntity.modified = Date()
 
         saveChanges()
+    }
+
+    public func purgeDeletedLists() {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "List")
+        request.sortDescriptors = [NSSortDescriptor(key: "modified", ascending: false)]
+        request.predicate = NSPredicate(format: "isArchived == %@", NSNumber(value: true))
+
+        do {
+            if let results = try context.fetch(request) as? [ListEntity] {
+                for list in results {
+                    context.delete(list)
+                }
+
+                saveChanges()
+            }
+        } catch {
+            print("\(#function) - error: \(error.localizedDescription)")
+        }
     }
 
     public func getItem(with id: UUID) -> SMPListItem? {
@@ -257,8 +272,10 @@ public final class SMPStorage: ObservableObject {
 
         saveChanges()
     }
+}
 
-    private func getListEntity(with identifier: UUID) -> ListEntity? {
+private extension SMPStorage {
+    func getListEntity(with identifier: UUID) -> ListEntity? {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "List")
         request.predicate = NSPredicate(format: "identifier = %@", identifier.uuidString)
 
@@ -273,7 +290,7 @@ public final class SMPStorage: ObservableObject {
         return nil
     }
 
-    private func getItemEntity(with identifier: UUID) -> ItemEntity? {
+    func getItemEntity(with identifier: UUID) -> ItemEntity? {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Item")
         request.predicate = NSPredicate(format: "identifier = %@", identifier.uuidString)
 
@@ -288,7 +305,7 @@ public final class SMPStorage: ObservableObject {
         return nil
     }
 
-    private func saveChanges() {
+    func saveChanges() {
         do {
             try context.save()
         } catch {
@@ -297,7 +314,7 @@ public final class SMPStorage: ObservableObject {
     }
 
     @objc
-    private func notifyRemoteChange() {
+    func notifyRemoteChange() {
         DispatchQueue.main.async { [weak self] in
             self?.objectWillChange.send()
         }
