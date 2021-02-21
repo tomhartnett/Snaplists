@@ -12,13 +12,11 @@ struct WatchListView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var storage: SMPStorage
     @State var list: SMPList
+    @State private var isPresentingNewItem = false
 
     var body: some View {
-        VStack {
-            if list.items.isEmpty {
-                Text("list-no-items-message")
-                    .foregroundColor(.secondary)
-            } else {
+        ZStack {
+            VStack {
                 List {
                     Section(header:
                                 WatchListHeaderView(itemCount: list.items.count),
@@ -30,13 +28,31 @@ struct WatchListView: View {
                                 }
                             }).textCase(nil)
                 }
-                .padding(.top, 10)
             }
+            VStack {
+                Spacer()
+
+                HStack {
+                    Button(action: {
+                        isPresentingNewItem.toggle()
+                    }, label: {
+                        Image(systemName: "plus")
+                    })
+                    .background(Color.orange)
+                    .frame(width: 48, height: 24)
+                    .cornerRadius(12)
+                }
+                .padding(.bottom, 4)
+            }
+            .ignoresSafeArea(.all, edges: .bottom)
         }
         .navigationBarTitle(list.title)
         .onReceive(storage.objectWillChange, perform: { _ in
             reload()
         })
+        .sheet(isPresented: $isPresentingNewItem) {
+            WatchNewItemView(list: $list)
+        }
     }
 
     private func reload() {

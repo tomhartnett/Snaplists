@@ -6,21 +6,26 @@
 //
 
 import CloudKit
-import SwiftUI
 import SimplistsWatchKit
+import SwiftUI
+
+enum WatchHomeActiveSheet: Identifiable {
+    case authErrorView
+    case newListView
+
+    var id: Int {
+        hashValue
+    }
+}
 
 struct WatchHomeView: View {
     @EnvironmentObject var storage: SMPStorage
     @State var lists: [SMPList]
-    @State private var isPresentingAuthError = false
+    @State private var activeSheet: WatchHomeActiveSheet?
 
     var body: some View {
-        VStack {
-            if lists.isEmpty {
-                Text("home-no-items-message")
-                    .foregroundColor(.secondary)
-                    .listRowBackground(Color.clear)
-            } else {
+        ZStack {
+            VStack {
                 List {
                     ForEach(lists) { list in
                         NavigationLink(destination: WatchListView(list: list).environmentObject(storage)) {
@@ -33,8 +38,23 @@ struct WatchHomeView: View {
                         }
                     }
                 }
-                .padding(.top, 10)
             }
+            VStack {
+                Spacer()
+
+                HStack {
+                    Button(action: {
+                        activeSheet = .newListView
+                    }, label: {
+                        Image(systemName: "plus")
+                    })
+                    .background(Color.orange)
+                    .frame(width: 48, height: 24)
+                    .cornerRadius(12)
+                }
+                .padding(.bottom, 4)
+            }
+            .ignoresSafeArea(.all, edges: .bottom)
         }
         .animation(.default)
         .navigationBarTitle("Snaplists")
@@ -45,8 +65,13 @@ struct WatchHomeView: View {
         .onReceive(storage.objectWillChange, perform: { _ in
             reload()
         })
-        .sheet(isPresented: $isPresentingAuthError) {
-            AuthenticationErrorView()
+        .sheet(item: $activeSheet) { item in
+            switch item {
+            case .authErrorView:
+                WatchAuthenticationErrorView()
+            case .newListView:
+                WatchNewListView()
+            }
         }
     }
 
@@ -65,7 +90,7 @@ struct WatchHomeView: View {
         container.accountStatus { status, _ in
             let isDebugAuthEnabled = ProcessInfo.processInfo.environment["DEBUG_AUTH"] == "1"
             if !isDebugAuthEnabled && status != .available {
-                self.isPresentingAuthError.toggle()
+                activeSheet = .authErrorView
             }
         }
     }
@@ -81,7 +106,12 @@ struct WatchHomeView_Previews: PreviewProvider {
                 SMPListItem(title: "Item 1", isComplete: false),
                 SMPListItem(title: "Item 2", isComplete: false)
             ]),
-            SMPList(title: "Really long list title that doesn't fit", items: [
+            SMPList(title: "List 3", items: [
+                SMPListItem(title: "Item 1", isComplete: false),
+                SMPListItem(title: "Item 2", isComplete: false),
+                SMPListItem(title: "Item 3", isComplete: false)
+            ]),
+            SMPList(title: "List 4", items: [
                 SMPListItem(title: "Item 1", isComplete: false),
                 SMPListItem(title: "Item 2", isComplete: false),
                 SMPListItem(title: "Item 3", isComplete: false)
