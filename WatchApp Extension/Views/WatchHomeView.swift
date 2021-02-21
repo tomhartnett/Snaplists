@@ -37,6 +37,7 @@ struct WatchHomeView: View {
                             }
                         }
                     }
+                    .onDelete(perform: delete)
                 }
             }
             VStack {
@@ -72,6 +73,15 @@ struct WatchHomeView: View {
             case .newListView:
                 WatchNewListView()
             }
+        }
+    }
+
+    private func delete(at offsets: IndexSet) {
+        offsets.forEach {
+            storage.deleteList(lists[$0])
+        }
+        withAnimation {
+            lists.remove(atOffsets: offsets)
         }
     }
 

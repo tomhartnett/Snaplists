@@ -26,6 +26,7 @@ struct WatchListView: View {
                                         updateItem(id: item.id, title: item.title, isComplete: !item.isComplete)
                                     })
                                 }
+                                .onDelete(perform: delete)
                             }).textCase(nil)
                 }
             }
@@ -52,6 +53,15 @@ struct WatchListView: View {
         })
         .sheet(isPresented: $isPresentingNewItem) {
             WatchNewItemView(list: $list)
+        }
+    }
+
+    private func delete(at offsets: IndexSet) {
+        offsets.forEach {
+            storage.deleteItem(list.items[$0], list: list)
+        }
+        withAnimation {
+            list.items.remove(atOffsets: offsets)
         }
     }
 
