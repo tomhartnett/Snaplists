@@ -16,7 +16,11 @@ enum FreeLimits {
         case .numberOfLists:
             return 3
         case .numberOfItems:
+            #if DEBUG
+            return 3 // Easier debugging.
+            #else
             return 10
+            #endif
         }
     }
 

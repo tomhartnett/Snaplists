@@ -11,6 +11,7 @@ import SwiftUI
 
 enum WatchHomeActiveSheet: Identifiable {
     case authErrorView
+    case freeLimitView
     case newListView
 
     var id: Int {
@@ -45,11 +46,11 @@ struct WatchHomeView: View {
 
                 HStack {
                     Button(action: {
-                        activeSheet = .newListView
+                        addNewList()
                     }, label: {
                         Image(systemName: "plus")
                     })
-                    .background(Color.orange)
+                    .background(Color("AddButtonBlue"))
                     .frame(width: 48, height: 24)
                     .cornerRadius(12)
                 }
@@ -72,7 +73,17 @@ struct WatchHomeView: View {
                 WatchAuthenticationErrorView()
             case .newListView:
                 WatchNewListView()
+            case .freeLimitView:
+                WatchFreeLimitView(freeLimitMessage: FreeLimits.numberOfLists.message)
             }
+        }
+    }
+
+    private func addNewList() {
+        if lists.count < FreeLimits.numberOfLists.limit {
+            activeSheet = .newListView
+        } else {
+            activeSheet = .freeLimitView
         }
     }
 

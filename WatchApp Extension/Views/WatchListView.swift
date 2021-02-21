@@ -8,11 +8,20 @@
 import SwiftUI
 import SimplistsWatchKit
 
+enum WatchListActiveSheet: Identifiable {
+    case freeLimitView
+    case newItemView
+
+    var id: Int {
+        hashValue
+    }
+}
+
 struct WatchListView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var storage: SMPStorage
     @State var list: SMPList
-    @State private var isPresentingNewItem = false
+    @State private var activeSheet: WatchListActiveSheet?
 
     var body: some View {
         ZStack {
@@ -35,7 +44,7 @@ struct WatchListView: View {
 
                 HStack {
                     Button(action: {
-                        isPresentingNewItem.toggle()
+                        addNewItem()
                     }, label: {
                         Image(systemName: "plus")
                     })
@@ -51,8 +60,21 @@ struct WatchListView: View {
         .onReceive(storage.objectWillChange, perform: { _ in
             reload()
         })
-        .sheet(isPresented: $isPresentingNewItem) {
-            WatchNewItemView(list: $list)
+        .sheet(item: $activeSheet) { item in
+            switch item {
+            case .freeLimitView:
+                WatchFreeLimitView(freeLimitMessage: FreeLimits.numberOfItems.message)
+            case .newItemView:
+                WatchNewItemView(list: $list)
+            }
+        }
+    }
+
+    private func addNewItem() {
+        if list.items.count < FreeLimits.numberOfItems.limit {
+            activeSheet = .newItemView
+        } else {
+            activeSheet = .freeLimitView
         }
     }
 

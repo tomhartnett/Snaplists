@@ -79,6 +79,8 @@
 		E2AFBDBD24F1634E008D9E3F /* ListEntity+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AFBDBB24F16348008D9E3F /* ListEntity+Extensions.swift */; };
 		E2AFBDBF24F194CC008D9E3F /* SMPListSortOrderTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AFBDBE24F194CC008D9E3F /* SMPListSortOrderTransformer.swift */; };
 		E2AFBDC024F194CC008D9E3F /* SMPListSortOrderTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AFBDBE24F194CC008D9E3F /* SMPListSortOrderTransformer.swift */; };
+		E2B62B9A25E2C01A00898B21 /* WatchFreeLimitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B62B9925E2C01A00898B21 /* WatchFreeLimitView.swift */; };
+		E2B62BAF25E2C68E00898B21 /* FreeLimits.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26EBDA025C83ADB000D031D /* FreeLimits.swift */; };
 		E2B9C3A325CED96F0024B9F6 /* DebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B9C3A225CED96F0024B9F6 /* DebugView.swift */; };
 		E2BB0B4F25DEA327004A1AB6 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E218230B25605F0200CAA92C /* String+Extensions.swift */; };
 		E2BB0B5325DEA6A0004A1AB6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E2BB0B5525DEA6A0004A1AB6 /* Localizable.strings */; };
@@ -244,6 +246,7 @@
 		E2A6100425E2A67F000F492C /* WatchNewItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchNewItemView.swift; sourceTree = "<group>"; };
 		E2AFBDBB24F16348008D9E3F /* ListEntity+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListEntity+Extensions.swift"; sourceTree = "<group>"; };
 		E2AFBDBE24F194CC008D9E3F /* SMPListSortOrderTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMPListSortOrderTransformer.swift; sourceTree = "<group>"; };
+		E2B62B9925E2C01A00898B21 /* WatchFreeLimitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchFreeLimitView.swift; sourceTree = "<group>"; };
 		E2B9C3A225CED96F0024B9F6 /* DebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugView.swift; sourceTree = "<group>"; };
 		E2BB0B5425DEA6A0004A1AB6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E2BB0B5F25DEA6DE004A1AB6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
@@ -335,6 +338,7 @@
 				E2BB0B6425DEA9FD004A1AB6 /* WatchListHeaderView.swift */,
 				E235D7F924E04C3F007D95BE /* WatchListItemView.swift */,
 				E235D7BB24DF5B89007D95BE /* WatchListView.swift */,
+				E2B62B9925E2C01A00898B21 /* WatchFreeLimitView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -359,6 +363,7 @@
 		E235D78624DF5B58007D95BE = {
 			isa = PBXGroup;
 			children = (
+				E2B62BAE25E2C67900898B21 /* Shared */,
 				E235D79124DF5B59007D95BE /* Simplists */,
 				E235D7A924DF5B88007D95BE /* WatchApp */,
 				E235D7B824DF5B89007D95BE /* WatchApp Extension */,
@@ -492,7 +497,6 @@
 			isa = PBXGroup;
 			children = (
 				E2F3819025C58E10002740F3 /* Configuration.storekit */,
-				E26EBDA025C83ADB000D031D /* FreeLimits.swift */,
 				E2F3819525C58F23002740F3 /* SKProduct+Extensions.swift */,
 				E26D01E125810AED009049F3 /* StoreDataSource.swift */,
 				E2F3818825C04D47002740F3 /* StoreService.swift */,
@@ -521,6 +525,14 @@
 				E279EACE25D04D9D00A38ED6 /* WidgetView.swift */,
 			);
 			path = More;
+			sourceTree = "<group>";
+		};
+		E2B62BAE25E2C67900898B21 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				E26EBDA025C83ADB000D031D /* FreeLimits.swift */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 		E2B9C3A725CF039B0024B9F6 /* Store */ = {
@@ -926,8 +938,10 @@
 				E2A60FFA25E1C9AD000F492C /* WatchNewListView.swift in Sources */,
 				E235D7BA24DF5B89007D95BE /* HostingController.swift in Sources */,
 				E235D7BE24DF5B89007D95BE /* ExtensionDelegate.swift in Sources */,
+				E2B62B9A25E2C01A00898B21 /* WatchFreeLimitView.swift in Sources */,
 				E2BB0B4F25DEA327004A1AB6 /* String+Extensions.swift in Sources */,
 				E22E152A24E0769E002A140E /* WatchHomeView.swift in Sources */,
+				E2B62BAF25E2C68E00898B21 /* FreeLimits.swift in Sources */,
 				E24FACA4251CEC7C002B0B97 /* WatchAuthenticationErrorView.swift in Sources */,
 				E235D7C424DF5B89007D95BE /* ComplicationController.swift in Sources */,
 				E2A6100525E2A67F000F492C /* WatchNewItemView.swift in Sources */,
