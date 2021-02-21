@@ -25,38 +25,35 @@ struct WatchHomeView: View {
     @State private var activeSheet: WatchHomeActiveSheet?
 
     var body: some View {
-        ZStack {
-            VStack {
-                List {
-                    ForEach(lists) { list in
-                        NavigationLink(destination: WatchListView(list: list).environmentObject(storage)) {
-                            HStack {
-                                Text(list.title)
-                                Spacer()
-                                Text("\(list.items.count)")
-                                    .foregroundColor(.secondary)
-                            }
+        VStack {
+            List {
+                Button(action: {
+                    addNewList()
+                }, label: {
+                    HStack {
+                        Image(systemName: "plus")
+                        Text("home-new-list-button-text")
+                    }
+                })
+                .listRowBackground(
+                    Color("AddButtonBlue")
+                        .clipped()
+                        .cornerRadius(8)
+                )
+
+                ForEach(lists) { list in
+                    NavigationLink(destination: WatchListView(list: list).environmentObject(storage)) {
+                        HStack {
+                            Text(list.title)
+                            Spacer()
+                            Text("\(list.items.count)")
+                                .foregroundColor(.secondary)
                         }
                     }
-                    .onDelete(perform: delete)
                 }
+                .onDelete(perform: delete)
             }
-            VStack {
-                Spacer()
-
-                HStack {
-                    Button(action: {
-                        addNewList()
-                    }, label: {
-                        Image(systemName: "plus")
-                    })
-                    .background(Color("AddButtonBlue"))
-                    .frame(width: 48, height: 24)
-                    .cornerRadius(12)
-                }
-                .padding(.bottom, 4)
-            }
-            .ignoresSafeArea(.all, edges: .bottom)
+//            .padding(.top, 6) // TODO: why does this padding cause a crash?
         }
         .animation(.default)
         .navigationBarTitle("Snaplists")
@@ -119,7 +116,7 @@ struct WatchHomeView: View {
 
 struct WatchHomeView_Previews: PreviewProvider {
     static var previews: some View {
-        WatchHomeView(lists: [
+        let lists: [SMPList] = [
             SMPList(title: "List 1", items: [
                 SMPListItem(title: "Item 1", isComplete: false)
             ]),
@@ -137,6 +134,26 @@ struct WatchHomeView_Previews: PreviewProvider {
                 SMPListItem(title: "Item 2", isComplete: false),
                 SMPListItem(title: "Item 3", isComplete: false)
             ])
-        ]).environmentObject(SMPStorage.previewStorage)
+        ]
+
+        WatchHomeView(lists: lists)
+            .environmentObject(SMPStorage.previewStorage)
+            .previewDevice(PreviewDevice(rawValue: "Apple Watch Series 6 - 44mm"))
+            .previewDisplayName("Series 6 44mm")
+
+        WatchHomeView(lists: lists)
+            .environmentObject(SMPStorage.previewStorage)
+            .previewDevice(PreviewDevice(rawValue: "Apple Watch Series 6 - 40mm"))
+            .previewDisplayName("Series 6 40mm")
+
+        WatchHomeView(lists: lists)
+            .environmentObject(SMPStorage.previewStorage)
+            .previewDevice(PreviewDevice(rawValue: "Apple Watch Series 3 - 42mm"))
+            .previewDisplayName("Series 3 42mm")
+
+        WatchHomeView(lists: lists)
+            .environmentObject(SMPStorage.previewStorage)
+            .previewDevice(PreviewDevice(rawValue: "Apple Watch Series 3 - 38mm"))
+            .previewDisplayName("Series 3 38mm")
     }
 }

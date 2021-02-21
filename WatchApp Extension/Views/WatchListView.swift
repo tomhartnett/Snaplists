@@ -24,37 +24,35 @@ struct WatchListView: View {
     @State private var activeSheet: WatchListActiveSheet?
 
     var body: some View {
-        ZStack {
-            VStack {
-                List {
-                    Section(header:
-                                WatchListHeaderView(itemCount: list.items.count),
-                            content: {
-                                ForEach(list.items) { item in
-                                    WatchListItemView(item: item, tapAction: {
-                                        updateItem(id: item.id, title: item.title, isComplete: !item.isComplete)
-                                    })
-                                }
-                                .onDelete(perform: delete)
-                            }).textCase(nil)
-                }
-            }
-            VStack {
-                Spacer()
 
-                HStack {
-                    Button(action: {
-                        addNewItem()
-                    }, label: {
-                        Image(systemName: "plus")
-                    })
-                    .background(Color.orange)
-                    .frame(width: 48, height: 24)
-                    .cornerRadius(12)
-                }
-                .padding(.bottom, 4)
+        VStack {
+            List {
+                Section(header:
+                            WatchListHeaderView(itemCount: list.items.count),
+                        content: {
+                            Button(action: {
+                                addNewItem()
+                            }, label: {
+                                HStack {
+                                    Image(systemName: "plus")
+                                    Text("list-new-item-button-text")
+                                }
+                            })
+                            .listRowBackground(
+                                Color("AddButtonBlue")
+                                    .clipped()
+                                    .cornerRadius(8)
+                            )
+
+                            ForEach(list.items) { item in
+                                WatchListItemView(item: item, tapAction: {
+                                    updateItem(id: item.id, title: item.title, isComplete: !item.isComplete)
+                                })
+                            }
+                            .onDelete(perform: delete)
+                        }).textCase(nil)
             }
-            .ignoresSafeArea(.all, edges: .bottom)
+            .padding(.top, 6)
         }
         .navigationBarTitle(list.title)
         .onReceive(storage.objectWillChange, perform: { _ in
