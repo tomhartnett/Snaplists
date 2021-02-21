@@ -78,7 +78,9 @@ struct ArchivedListsView: View {
             }
             let cancelButton = Alert.Button.cancel(Text("archived-alert-cancel-button-text"))
 
-            return Alert(title: Text("archived-alert-title"), primaryButton: deleteButton, secondaryButton: cancelButton)
+            return Alert(title: Text("archived-alert-title"),
+                         primaryButton: deleteButton,
+                         secondaryButton: cancelButton)
         }
         .navigationBarTitle("archived-navigation-bar-title")
         .navigationBarItems(trailing: NavBarItemsView(showEditButton: !lists.isEmpty))
