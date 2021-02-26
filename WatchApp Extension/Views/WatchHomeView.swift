@@ -23,10 +23,27 @@ struct WatchHomeView: View {
     @EnvironmentObject var storage: SMPStorage
     @State var lists: [SMPList]
     @State private var activeSheet: WatchHomeActiveSheet?
+    @State private var isAuthenticated: Bool = false
 
     var body: some View {
         VStack {
             List {
+                if !isAuthenticated {
+                    HStack {
+                        Image(systemName: "exclamationmark.triangle")
+                            .frame(width: 25, height: 25)
+                        Text("icloud-warning-banner-text")
+                            .padding(.trailing, 4)
+                    }
+                    .foregroundColor(Color("WarningBackground"))
+                    .listRowBackground(Color("WarningForeground")
+                                        .clipped()
+                                        .cornerRadius(8))
+                    .onTapGesture {
+                        activeSheet = .authErrorView
+                    }
+                }
+
                 Button(action: {
                     addNewList()
                 }, label: {
@@ -52,6 +69,12 @@ struct WatchHomeView: View {
                     }
                 }
                 .onDelete(perform: delete)
+
+                #if DEBUG
+                NavigationLink(destination: WatchDebugView(isAuthenticated: $isAuthenticated)) {
+                    Text("Debug View")
+                }
+                #endif
             }
 //            .padding(.top, 6) // TODO: why does this padding cause a crash?
         }
@@ -77,10 +100,10 @@ struct WatchHomeView: View {
     }
 
     private func addNewList() {
-        if lists.count < FreeLimits.numberOfLists.limit {
-            activeSheet = .newListView
-        } else {
+        if lists.count >= FreeLimits.numberOfLists.limit && !UserDefaults.simplistsApp.isPremiumIAPPurchased {
             activeSheet = .freeLimitView
+        } else {
+            activeSheet = .newListView
         }
     }
 
@@ -104,12 +127,20 @@ struct WatchHomeView: View {
     }
 
     private func checkAccountStatus() {
+        if UserDefaults.simplistsAppDebug.isFakeAuthenticationEnabled {
+            isAuthenticated = true
+            return
+        }
+
         let container = CKContainer.default()
         container.accountStatus { status, _ in
-            let isDebugAuthEnabled = ProcessInfo.processInfo.environment["DEBUG_AUTH"] == "1"
-            if !isDebugAuthEnabled && status != .available {
-                activeSheet = .authErrorView
+            switch status {
+            case .available:
+                isAuthenticated = true
+            default:
+                isAuthenticated = false
             }
+            // TODO: May need/want to handle `.restricted` state on `WatchAuthenticationErrorView`.
         }
     }
 }
@@ -136,20 +167,20 @@ struct WatchHomeView_Previews: PreviewProvider {
             ])
         ]
 
-        WatchHomeView(lists: lists)
-            .environmentObject(SMPStorage.previewStorage)
-            .previewDevice(PreviewDevice(rawValue: "Apple Watch Series 6 - 44mm"))
-            .previewDisplayName("Series 6 44mm")
+//        WatchHomeView(lists: lists)
+//            .environmentObject(SMPStorage.previewStorage)
+//            .previewDevice(PreviewDevice(rawValue: "Apple Watch Series 6 - 44mm"))
+//            .previewDisplayName("Series 6 44mm")
 
         WatchHomeView(lists: lists)
             .environmentObject(SMPStorage.previewStorage)
             .previewDevice(PreviewDevice(rawValue: "Apple Watch Series 6 - 40mm"))
             .previewDisplayName("Series 6 40mm")
 
-        WatchHomeView(lists: lists)
-            .environmentObject(SMPStorage.previewStorage)
-            .previewDevice(PreviewDevice(rawValue: "Apple Watch Series 3 - 42mm"))
-            .previewDisplayName("Series 3 42mm")
+//        WatchHomeView(lists: lists)
+//            .environmentObject(SMPStorage.previewStorage)
+//            .previewDevice(PreviewDevice(rawValue: "Apple Watch Series 3 - 42mm"))
+//            .previewDisplayName("Series 3 42mm")
 
         WatchHomeView(lists: lists)
             .environmentObject(SMPStorage.previewStorage)

@@ -66,11 +66,6 @@
       </BuildableProductRunnable>
       <EnvironmentVariables>
          <EnvironmentVariable
-            key = "DEBUG_AUTH"
-            value = "1"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-         <EnvironmentVariable
             key = "CREATE_SCREENSHOT_SAMPLE_DATA"
             value = "1"
             isEnabled = "YES">

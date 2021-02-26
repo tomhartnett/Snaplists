@@ -6,8 +6,9 @@
   
 */
 
-"icloud-error-title" = "Not signed in";
-"icloud-error-message" = "Sign in to iCloud on your iPhone to use this app";
+"icloud-warning-banner-text" = "Not signed in";
+"icloud-warning-title" = "Not signed in to iCloud";
+"icloud-warning-message" = "You can still use the app, but your lists will not sync across your devices.";
 
 "home-new-list-button-text" = "Add new list";
 

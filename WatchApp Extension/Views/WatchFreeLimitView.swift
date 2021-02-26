@@ -22,10 +22,10 @@ struct WatchFreeLimitView: View {
                         Text(freeLimitMessage)
                             .padding(.trailing, 4)
                     }
+                    .padding(.vertical, 4)
                     .foregroundColor(Color("WarningForeground"))
                 }
                 .frame(maxWidth: .infinity)
-                .padding(.vertical, 4)
 
                 Text("store-header-text")
                     .font(.headline)

@@ -69,10 +69,10 @@ struct WatchListView: View {
     }
 
     private func addNewItem() {
-        if list.items.count < FreeLimits.numberOfItems.limit {
-            activeSheet = .newItemView
-        } else {
+        if list.items.count >= FreeLimits.numberOfItems.limit && !UserDefaults.simplistsApp.isPremiumIAPPurchased {
             activeSheet = .freeLimitView
+        } else {
+            activeSheet = .newItemView
         }
     }
 

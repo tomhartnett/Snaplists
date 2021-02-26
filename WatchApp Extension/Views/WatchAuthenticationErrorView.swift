@@ -10,10 +10,10 @@ import SwiftUI
 struct WatchAuthenticationErrorView: View {
     var body: some View {
         VStack {
-            Text("icloud-error-title")
+            Text("icloud-warning-title")
                 .font(.headline)
                 .padding()
-            Text("icloud-error-message")
+            Text("icloud-warning-message")
                 .font(.caption)
         }
         .foregroundColor(.secondary)

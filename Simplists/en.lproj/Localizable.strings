@@ -6,7 +6,7 @@
   
 */
 
-"icloud-warning-banner-text" = "Warning: not signed in to iCloud.";
+"icloud-warning-banner-text" = "Warning: not signed in to iCloud";
 "icloud-warning-alert-title" = "Not signed in to iCloud";
 "icloud-warning-alert-message" = "You can still use the app, but your lists will not sync across your devices.";
 "icloud-warning-alert-button-text" = "OK";
