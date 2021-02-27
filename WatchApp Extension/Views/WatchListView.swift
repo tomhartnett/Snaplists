@@ -39,7 +39,7 @@ struct WatchListView: View {
                                 }
                             })
                             .listRowBackground(
-                                Color("AddButtonBlue")
+                                Color("ButtonBlue")
                                     .clipped()
                                     .cornerRadius(8)
                             )

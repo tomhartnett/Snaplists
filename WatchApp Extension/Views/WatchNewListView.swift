@@ -16,8 +16,7 @@ struct WatchNewListView: View {
     let suggestions: [String] = [
         "Grocery",
         "TODOs",
-        "Shopping",
-        "Lowe's"
+        "Shopping"
     ]
 
     let listTopId = UUID()
@@ -30,7 +29,9 @@ struct WatchNewListView: View {
                     Section {
                         TextField("newlist-name-placeholder", text: $listTitle)
                             .id(listTopId)
+                    }
 
+                    Section {
                         Button(action: {
                             saveNewList()
                         }, label: {
@@ -38,7 +39,7 @@ struct WatchNewListView: View {
                                 .frame(maxWidth: .infinity)
                         })
                         .listRowBackground(
-                            Color("AddButtonBlue")
+                            Color("ButtonBlue")
                                 .clipped()
                                 .cornerRadius(8)
                         )
@@ -46,13 +47,14 @@ struct WatchNewListView: View {
 
                     Section(header: Text("newlist-suggestions-header-text"), content: {
                         ForEach(suggestions, id: \.self) { suggestion in
-                            Text(suggestion)
-                                .onTapGesture {
-                                    withAnimation {
-                                        listTitle = suggestion
-                                        proxy.scrollTo(listTopId, anchor: .top)
-                                    }
+                            Button(action: {
+                                withAnimation {
+                                    listTitle = suggestion
+                                    proxy.scrollTo(listTopId, anchor: .top)
                                 }
+                            }, label: {
+                                Text(suggestion)
+                            })
                         }
                     }).textCase(nil)
                 }

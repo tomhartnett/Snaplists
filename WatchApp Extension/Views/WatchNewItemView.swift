@@ -18,19 +18,23 @@ struct WatchNewItemView: View {
     var body: some View {
         VStack {
             List {
-                TextField("newitem-name-placeholder", text: $itemTitle)
-                
-                Button(action: {
-                    saveNewItem()
-                }, label: {
-                    Text("newitem-save-button-text")
-                        .frame(maxWidth: .infinity)
-                })
-                .listRowBackground(
-                    Color("AddButtonBlue")
-                        .clipped()
-                        .cornerRadius(8)
-                )
+                Section {
+                    TextField("newitem-name-placeholder", text: $itemTitle)
+                }
+
+                Section {
+                    Button(action: {
+                        saveNewItem()
+                    }, label: {
+                        Text("newitem-save-button-text")
+                            .frame(maxWidth: .infinity)
+                    })
+                    .listRowBackground(
+                        Color("ButtonBlue")
+                            .clipped()
+                            .cornerRadius(8)
+                    )
+                }
             }
         }
     }

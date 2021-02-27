@@ -53,7 +53,7 @@ struct WatchHomeView: View {
                     }
                 })
                 .listRowBackground(
-                    Color("AddButtonBlue")
+                    Color("ButtonBlue")
                         .clipped()
                         .cornerRadius(8)
                 )
