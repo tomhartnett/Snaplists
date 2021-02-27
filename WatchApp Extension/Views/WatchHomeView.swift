@@ -71,7 +71,8 @@ struct WatchHomeView: View {
                 .onDelete(perform: delete)
 
                 #if DEBUG
-                NavigationLink(destination: WatchDebugView(isAuthenticated: $isAuthenticated)) {
+                NavigationLink(destination:
+                                WatchDebugView(isAuthenticated: $isAuthenticated).environmentObject(storage)) {
                     Text("Debug View")
                 }
                 #endif
@@ -127,6 +128,7 @@ struct WatchHomeView: View {
     }
 
     private func checkAccountStatus() {
+        // TODO: change this Bool to an enum to allow forcing unauthenticated state on real device.
         if UserDefaults.simplistsAppDebug.isFakeAuthenticationEnabled {
             isAuthenticated = true
             return

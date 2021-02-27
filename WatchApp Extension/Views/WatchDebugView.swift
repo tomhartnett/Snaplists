@@ -9,6 +9,7 @@ import SimplistsWatchKit
 import SwiftUI
 
 struct WatchDebugView: View {
+    @EnvironmentObject var storage: SMPStorage
     @Binding var isAuthenticated: Bool
     @State private var isHack = false
 
@@ -26,6 +27,12 @@ struct WatchDebugView: View {
                                 toggleFakeAuthentication()
                                 isHack.toggle()
                               })
+
+            Button(action: {
+                storage.createScreenshotSampleData()
+            }) {
+                Text("Create sample data")
+            }
 
             if isHack {
                 EmptyView()
@@ -49,7 +56,7 @@ struct WatchDebugView: View {
 
 struct WatchDebugView_Previews: PreviewProvider {
     static var previews: some View {
-        WatchDebugView(isAuthenticated: .constant(false))
-        WatchDebugView(isAuthenticated: .constant(true))
+        WatchDebugView(isAuthenticated: .constant(false)).environmentObject(SMPStorage.previewStorage)
+        WatchDebugView(isAuthenticated: .constant(true)).environmentObject(SMPStorage.previewStorage)
     }
 }
