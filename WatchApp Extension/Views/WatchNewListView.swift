@@ -13,17 +13,51 @@ struct WatchNewListView: View {
     @EnvironmentObject var storage: SMPStorage
     @State private var listTitle = ""
 
+    let suggestions: [String] = [
+        "Grocery",
+        "TODOs",
+        "Shopping",
+        "Lowe's"
+    ]
+
+    let listTopId = UUID()
+
     var body: some View {
-        VStack {
-            TextField("newlist-name-placeholder", text: $listTitle)
-            Button(action: {
-                saveNewList()
-            }, label: {
-                Text("newlist-save-button-text")
-            })
-            .padding(.top, 4)
+        ScrollViewReader { proxy in
+            VStack(alignment: .leading) {
+
+                List {
+                    Section {
+                        TextField("newlist-name-placeholder", text: $listTitle)
+                            .id(listTopId)
+
+                        Button(action: {
+                            saveNewList()
+                        }, label: {
+                            Text("newlist-save-button-text")
+                                .frame(maxWidth: .infinity)
+                        })
+                        .listRowBackground(
+                            Color("AddButtonBlue")
+                                .clipped()
+                                .cornerRadius(8)
+                        )
+                    }
+
+                    Section(header: Text("newlist-suggestions-header-text"), content: {
+                        ForEach(suggestions, id: \.self) { suggestion in
+                            Text(suggestion)
+                                .onTapGesture {
+                                    withAnimation {
+                                        listTitle = suggestion
+                                        proxy.scrollTo(listTopId, anchor: .top)
+                                    }
+                                }
+                        }
+                    }).textCase(nil)
+                }
+            }
         }
-        .padding(.horizontal, 8)
     }
 
     private func saveNewList() {

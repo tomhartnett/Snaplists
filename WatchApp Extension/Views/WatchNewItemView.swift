@@ -17,15 +17,22 @@ struct WatchNewItemView: View {
 
     var body: some View {
         VStack {
-            TextField("newitem-name-placeholder", text: $itemTitle)
-            Button(action: {
-                saveNewItem()
-            }, label: {
-                Text("newitem-save-button-text")
-            })
-            .padding(.top, 4)
+            List {
+                TextField("newitem-name-placeholder", text: $itemTitle)
+                
+                Button(action: {
+                    saveNewItem()
+                }, label: {
+                    Text("newitem-save-button-text")
+                        .frame(maxWidth: .infinity)
+                })
+                .listRowBackground(
+                    Color("AddButtonBlue")
+                        .clipped()
+                        .cornerRadius(8)
+                )
+            }
         }
-        .padding(.horizontal, 8)
     }
 
     private func saveNewItem() {
