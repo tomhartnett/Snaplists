@@ -52,6 +52,14 @@ struct DebugView: View {
         }
     }
 
+    var isPremiumIAPItemPresent: String {
+        if storage.hasPremiumIAPItem {
+            return "Yes"
+        } else {
+            return "No"
+        }
+    }
+
     var body: some View {
         Form {
             Section(header: Text("IAP Status")) {
@@ -63,6 +71,13 @@ struct DebugView: View {
                     }, label: {
                         Text("Reset")
                     })
+                }
+            }
+
+            Section(header: Text("Has IAP Item")) {
+                HStack {
+                    Text(isPremiumIAPItemPresent)
+                    Spacer()
                 }
             }
 
@@ -146,7 +161,7 @@ struct DebugView: View {
 struct DebugView_Previews: PreviewProvider {
     static var previews: some View {
         let client = StoreClient()
-        let dataSource = StoreDataSource(service: client)
+        let dataSource = StoreDataSource(service: client, storage: SMPStorage.previewStorage)
         DebugView().environmentObject(dataSource)
     }
 }

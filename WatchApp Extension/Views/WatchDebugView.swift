@@ -15,18 +15,22 @@ struct WatchDebugView: View {
 
     var body: some View {
         List {
-            WatchListItemView(item: SMPListItem(title: "IAP Purchased",
-                                                isComplete: UserDefaults.simplistsApp.isPremiumIAPPurchased),
-                              tapAction: {
-                                togglePremiumIAPPurchased()
-                                isHack.toggle()
-                              })
             WatchListItemView(item: SMPListItem(title: "Authenticated",
                                                 isComplete: UserDefaults.simplistsAppDebug.isFakeAuthenticationEnabled),
                               tapAction: {
                                 toggleFakeAuthentication()
                                 isHack.toggle()
                               })
+
+            WatchListItemView(item: SMPListItem(title: "IAP Purchased (Fake)",
+                                                isComplete: UserDefaults.simplistsApp.isPremiumIAPPurchased),
+                              tapAction: {
+                                togglePremiumIAPPurchased()
+                                isHack.toggle()
+                              })
+
+            WatchListItemView(item: SMPListItem(title: "IAP Purchased (DB)",
+                                                isComplete: storage.hasPremiumIAPItem), tapAction: {})
 
             Button(action: {
                 storage.createScreenshotSampleData()

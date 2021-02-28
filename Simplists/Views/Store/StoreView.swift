@@ -5,6 +5,7 @@
 //  Created by Tom Hartnett on 12/20/20.
 //
 
+import SimplistsKit
 import SwiftUI
 
 struct StoreView: View {
@@ -123,7 +124,7 @@ struct StoreView: View {
 struct StoreView_Previews: PreviewProvider {
     static var previews: some View {
         let client = StoreClient()
-        let dataSource = StoreDataSource(service: client)
+        let dataSource = StoreDataSource(service: client, storage: SMPStorage.previewStorage)
         let message = "You've reached the maximum number of lists in the free version of the app."
         StoreView(freeLimitMessage: message).environmentObject(dataSource)
     }

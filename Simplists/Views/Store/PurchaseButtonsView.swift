@@ -5,6 +5,7 @@
 //  Created by Tom Hartnett on 2/6/21.
 //
 
+import SimplistsKit
 import SwiftUI
 
 struct PurchaseButtonsView: View {
@@ -44,7 +45,7 @@ struct PurchaseButtonsView: View {
 struct PurchaseButtonsView_Previews: PreviewProvider {
     static var previews: some View {
         let client = StoreClient()
-        let dataSource = StoreDataSource(service: client)
+        let dataSource = StoreDataSource(service: client, storage: SMPStorage.previewStorage)
         PurchaseButtonsView().environmentObject(dataSource)
     }
 }

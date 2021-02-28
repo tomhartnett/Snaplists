@@ -25,6 +25,14 @@ struct WatchHomeView: View {
     @State private var activeSheet: WatchHomeActiveSheet?
     @State private var isAuthenticated: Bool = false
 
+    var isPremiumIAPPurchased: Bool {
+        if UserDefaults.simplistsApp.isPremiumIAPPurchased {
+            return true
+        } else {
+            return storage.hasPremiumIAPItem
+        }
+    }
+
     var body: some View {
         VStack {
             List {
@@ -101,7 +109,7 @@ struct WatchHomeView: View {
     }
 
     private func addNewList() {
-        if lists.count >= FreeLimits.numberOfLists.limit && !UserDefaults.simplistsApp.isPremiumIAPPurchased {
+        if lists.count >= FreeLimits.numberOfLists.limit && !isPremiumIAPPurchased {
             activeSheet = .freeLimitView
         } else {
             activeSheet = .newListView

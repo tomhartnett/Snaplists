@@ -6,6 +6,7 @@
 //
 
 import Combine
+import SimplistsKit
 import StoreKit
 import SwiftUI
 
@@ -16,7 +17,6 @@ struct PremiumIAP {
 }
 
 final class StoreDataSource: ObservableObject {
-
     let objectWillChange = PassthroughSubject<(), Never>()
 
     var isAuthorizedForPayments: Bool {
@@ -50,11 +50,14 @@ final class StoreDataSource: ObservableObject {
 
     private let premiumProductIdentifier = "com.sleekible.simplists.iap.premium"
     private var premiumProduct: SKProduct?
-    private let service: StoreService
     private var subscriptions = Set<AnyCancellable>()
 
-    init(service: StoreService) {
+    private let service: StoreService
+    private let storage: SMPStorage
+
+    init(service: StoreService, storage: SMPStorage) {
         self.service = service
+        self.storage = storage
         setupPipelines()
     }
 
@@ -117,6 +120,7 @@ private extension StoreDataSource {
                     // https://www.raywenderlich.com/9257-in-app-purchases-receipt-validation-tutorial
                     if UserDefaults.simplistsApp.isPremiumIAPPurchased {
                         self?.premiumIAPPurchaseStatus = .purchased(productIdentifier: premiumProductIdentifier)
+                        self?.storage.savePremiumIAPItem()
                     }
                 }
             })
@@ -130,6 +134,7 @@ private extension StoreDataSource {
 
                 if case .purchased(let productIdentifier) = status, productIdentifier == premiumProductIdentifier {
                     UserDefaults.simplistsApp.setIsPremiumIAPPurchased(true)
+                    self?.storage.savePremiumIAPItem()
                 }
                 self?.premiumIAPPurchaseStatus = status
             })
@@ -143,5 +148,6 @@ extension StoreDataSource {
     func resetIAP() {
         UserDefaults.simplistsApp.setIsPremiumIAPPurchased(false)
         premiumIAPPurchaseStatus = .initial
+        storage.deletePremiumIAPItem()
     }
 }

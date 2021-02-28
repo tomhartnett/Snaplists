@@ -23,8 +23,15 @@ struct WatchListView: View {
     @State var list: SMPList
     @State private var activeSheet: WatchListActiveSheet?
 
-    var body: some View {
+    var isPremiumIAPPurchased: Bool {
+        if UserDefaults.simplistsApp.isPremiumIAPPurchased {
+            return true
+        } else {
+            return storage.hasPremiumIAPItem
+        }
+    }
 
+    var body: some View {
         VStack {
             List {
                 Section(header:
@@ -69,7 +76,7 @@ struct WatchListView: View {
     }
 
     private func addNewItem() {
-        if list.items.count >= FreeLimits.numberOfItems.limit && !UserDefaults.simplistsApp.isPremiumIAPPurchased {
+        if list.items.count >= FreeLimits.numberOfItems.limit && !isPremiumIAPPurchased {
             activeSheet = .freeLimitView
         } else {
             activeSheet = .newItemView

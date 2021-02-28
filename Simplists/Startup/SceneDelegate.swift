@@ -26,8 +26,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let client = StoreClient()
         SKPaymentQueue.default().add(client)
 
-        let storeDataSource = StoreDataSource(service: client)
+        let storeDataSource = StoreDataSource(service: client, storage: storage)
         storeDataSource.getProducts()
+
+        if storeDataSource.hasPurchasedIAP && !storage.hasPremiumIAPItem {
+            storage.savePremiumIAPItem()
+        }
 
         // Create the SwiftUI view that provides the window contents.
         let listsView = HomeView(lists: [])

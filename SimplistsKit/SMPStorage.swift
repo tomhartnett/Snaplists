@@ -10,6 +10,8 @@ import CoreData
 
 public final class SMPStorage: ObservableObject {
 
+    // MARK: - General public methods
+
     public let objectWillChange = PassthroughSubject<(), Never>()
 
     private let context: NSManagedObjectContext
@@ -274,52 +276,7 @@ public final class SMPStorage: ObservableObject {
     }
 }
 
-private extension SMPStorage {
-    func getListEntity(with identifier: UUID) -> ListEntity? {
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "List")
-        request.predicate = NSPredicate(format: "identifier = %@", identifier.uuidString)
-
-        do {
-            if let results = try context.fetch(request) as? [ListEntity], results.count > 0 {
-                return results[0]
-            }
-        } catch {
-            print("\(#function) - error: \(error.localizedDescription)")
-        }
-
-        return nil
-    }
-
-    func getItemEntity(with identifier: UUID) -> ItemEntity? {
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Item")
-        request.predicate = NSPredicate(format: "identifier = %@", identifier.uuidString)
-
-        do {
-            if let results = try context.fetch(request) as? [ItemEntity], results.count > 0 {
-                return results[0]
-            }
-        } catch {
-            print("\(#function) - error: \(error.localizedDescription)")
-        }
-
-        return nil
-    }
-
-    func saveChanges() {
-        do {
-            try context.save()
-        } catch {
-            print("\(#function) - error: \(error.localizedDescription)")
-        }
-    }
-
-    @objc
-    func notifyRemoteChange() {
-        DispatchQueue.main.async { [weak self] in
-            self?.objectWillChange.send()
-        }
-    }
-}
+// MARK: - Preview support
 
 public extension SMPStorage {
     static var previewStorage: SMPStorage {
@@ -327,6 +284,8 @@ public extension SMPStorage {
         return SMPStorage(context: container.viewContext)
     }
 }
+
+// MARK: - Sample data
 
 public extension SMPStorage {
     func createScreenshotSampleData() {
@@ -372,5 +331,88 @@ public extension SMPStorage {
             SMPListItem(title: "Pick out clothes for donation", isComplete: true)
         ])
         addList(list3)
+    }
+}
+
+// MARK: - IAP Hack Stuff
+
+public extension SMPStorage {
+
+    private var premiumIAPIdentifier: UUID {
+        return UUID(uuidString: "00000000-0000-0000-0000-000000000001")!
+    }
+
+    var hasPremiumIAPItem: Bool {
+        if getItemEntity(with: premiumIAPIdentifier) != nil {
+            return true
+        } else {
+            return false
+        }
+    }
+
+    func deletePremiumIAPItem() {
+        guard let entity = getItemEntity(with: premiumIAPIdentifier) else { return }
+        context.delete(entity)
+        saveChanges()
+    }
+
+    func savePremiumIAPItem() {
+        if hasPremiumIAPItem { return }
+
+        let itemEntity = ItemEntity(context: context)
+        itemEntity.identifier = premiumIAPIdentifier
+        itemEntity.isComplete = true
+        itemEntity.title = "Snaplists Premium"
+
+        saveChanges()
+    }
+}
+
+// MARK: - Private methods
+
+private extension SMPStorage {
+    func getListEntity(with identifier: UUID) -> ListEntity? {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "List")
+        request.predicate = NSPredicate(format: "identifier = %@", identifier.uuidString)
+
+        do {
+            if let results = try context.fetch(request) as? [ListEntity], results.count > 0 {
+                return results[0]
+            }
+        } catch {
+            print("\(#function) - error: \(error.localizedDescription)")
+        }
+
+        return nil
+    }
+
+    func getItemEntity(with identifier: UUID) -> ItemEntity? {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Item")
+        request.predicate = NSPredicate(format: "identifier = %@", identifier.uuidString)
+
+        do {
+            if let results = try context.fetch(request) as? [ItemEntity], results.count > 0 {
+                return results[0]
+            }
+        } catch {
+            print("\(#function) - error: \(error.localizedDescription)")
+        }
+
+        return nil
+    }
+
+    func saveChanges() {
+        do {
+            try context.save()
+        } catch {
+            print("\(#function) - error: \(error.localizedDescription)")
+        }
+    }
+
+    @objc
+    func notifyRemoteChange() {
+        DispatchQueue.main.async { [weak self] in
+            self?.objectWillChange.send()
+        }
     }
 }
