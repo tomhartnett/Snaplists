@@ -103,7 +103,7 @@ struct WatchHomeView: View {
             case .newListView:
                 WatchNewListView()
             case .freeLimitView:
-                WatchFreeLimitView(freeLimitMessage: FreeLimits.numberOfLists.message)
+                WatchStoreView(freeLimitMessage: FreeLimits.numberOfLists.message)
             }
         }
     }
@@ -177,24 +177,14 @@ struct WatchHomeView_Previews: PreviewProvider {
             ])
         ]
 
-//        WatchHomeView(lists: lists)
-//            .environmentObject(SMPStorage.previewStorage)
-//            .previewDevice(PreviewDevice(rawValue: "Apple Watch Series 6 - 44mm"))
-//            .previewDisplayName("Series 6 44mm")
+        // Apple Watch Series 6 - 44mm
+        // Apple Watch Series 6 - 40mm
+        // Apple Watch Series 3 - 42mm
+        // Apple Watch Series 3 - 38mm
 
         WatchHomeView(lists: lists)
             .environmentObject(SMPStorage.previewStorage)
             .previewDevice(PreviewDevice(rawValue: "Apple Watch Series 6 - 40mm"))
             .previewDisplayName("Series 6 40mm")
-
-//        WatchHomeView(lists: lists)
-//            .environmentObject(SMPStorage.previewStorage)
-//            .previewDevice(PreviewDevice(rawValue: "Apple Watch Series 3 - 42mm"))
-//            .previewDisplayName("Series 3 42mm")
-
-        WatchHomeView(lists: lists)
-            .environmentObject(SMPStorage.previewStorage)
-            .previewDevice(PreviewDevice(rawValue: "Apple Watch Series 3 - 38mm"))
-            .previewDisplayName("Series 3 38mm")
     }
 }

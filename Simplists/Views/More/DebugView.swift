@@ -68,6 +68,7 @@ struct DebugView: View {
                     Spacer()
                     Button(action: {
                         storeDataSource.resetIAP()
+                        storage.deletePremiumIAPItem()
                     }, label: {
                         Text("Reset")
                     })
@@ -161,7 +162,7 @@ struct DebugView: View {
 struct DebugView_Previews: PreviewProvider {
     static var previews: some View {
         let client = StoreClient()
-        let dataSource = StoreDataSource(service: client, storage: SMPStorage.previewStorage)
+        let dataSource = StoreDataSource(service: client)
         DebugView().environmentObject(dataSource)
     }
 }

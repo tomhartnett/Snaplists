@@ -232,7 +232,7 @@ struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
 
         let client = StoreClient()
-        let dataSource = StoreDataSource(service: client, storage: SMPStorage.previewStorage)
+        let dataSource = StoreDataSource(service: client)
 
         HomeView(lists: [
             SMPList(title: "List 1",

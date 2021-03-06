@@ -9,6 +9,7 @@ import Foundation
 
 extension UserDefaults {
     private enum Key {
+        static let isAuthorizedForPayments = "Debug-isAuthorizedForPayments"
         static let isFakeAuthenticationEnabled = "Debug-isFakeAuthenticationEnabled"
         static let isPremiumIAPPurchased = "com.sleekible.simplists.iap.premium.purchased"
     }
@@ -30,8 +31,16 @@ extension UserDefaults {
 
 extension UserDefaults {
     struct SimplistsAppDebug {
+        var isAuthorizedForPayments: Bool {
+            return UserDefaults.standard.bool(forKey: Key.isAuthorizedForPayments)
+        }
+
         var isFakeAuthenticationEnabled: Bool {
             return UserDefaults.standard.bool(forKey: Key.isFakeAuthenticationEnabled)
+        }
+
+        func setIsAuthorizedForPayments(_ value: Bool) {
+            UserDefaults.standard.setValue(value, forKey: Key.isAuthorizedForPayments)
         }
 
         func setIsFakeAuthenticationEnabled(_ value: Bool) {

@@ -6,7 +6,6 @@
 //
 
 import Combine
-import SimplistsKit
 import StoreKit
 import SwiftUI
 
@@ -53,11 +52,9 @@ final class StoreDataSource: ObservableObject {
     private var subscriptions = Set<AnyCancellable>()
 
     private let service: StoreService
-    private let storage: SMPStorage
 
-    init(service: StoreService, storage: SMPStorage) {
+    init(service: StoreService) {
         self.service = service
-        self.storage = storage
         setupPipelines()
     }
 
@@ -117,10 +114,8 @@ private extension StoreDataSource {
                 if status == .initial {
                     // Super-secure IAP validation here 🙃
                     // TODO: implement complicated actual receipt validation
-                    // https://www.raywenderlich.com/9257-in-app-purchases-receipt-validation-tutorial
                     if UserDefaults.simplistsApp.isPremiumIAPPurchased {
                         self?.premiumIAPPurchaseStatus = .purchased(productIdentifier: premiumProductIdentifier)
-                        self?.storage.savePremiumIAPItem()
                     }
                 }
             })
@@ -134,7 +129,6 @@ private extension StoreDataSource {
 
                 if case .purchased(let productIdentifier) = status, productIdentifier == premiumProductIdentifier {
                     UserDefaults.simplistsApp.setIsPremiumIAPPurchased(true)
-                    self?.storage.savePremiumIAPItem()
                 }
                 self?.premiumIAPPurchaseStatus = status
             })
@@ -148,6 +142,5 @@ extension StoreDataSource {
     func resetIAP() {
         UserDefaults.simplistsApp.setIsPremiumIAPPurchased(false)
         premiumIAPPurchaseStatus = .initial
-        storage.deletePremiumIAPItem()
     }
 }

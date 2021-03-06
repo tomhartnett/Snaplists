@@ -100,7 +100,6 @@ struct StoreView: View {
     func displayPurchaseStatus() {
         switch storeDataSource.premiumIAPPurchaseStatus {
         case .purchased:
-            guard storeDataSource.hasPurchasedIAP else { return }
             withAnimation(Animation.easeIn.delay(0.5)) {
                 showPurchasedView.toggle()
             }
@@ -124,7 +123,7 @@ struct StoreView: View {
 struct StoreView_Previews: PreviewProvider {
     static var previews: some View {
         let client = StoreClient()
-        let dataSource = StoreDataSource(service: client, storage: SMPStorage.previewStorage)
+        let dataSource = StoreDataSource(service: client)
         let message = "You've reached the maximum number of lists in the free version of the app."
         StoreView(freeLimitMessage: message).environmentObject(dataSource)
     }

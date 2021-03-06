@@ -22,6 +22,13 @@ struct WatchDebugView: View {
                                 isHack.toggle()
                               })
 
+            WatchListItemView(item: SMPListItem(title: "Auth for Pmts",
+                                                isComplete: UserDefaults.simplistsAppDebug.isAuthorizedForPayments),
+                              tapAction: {
+                                toggleAuthorizedForPayments()
+                                isHack.toggle()
+                              })
+
             WatchListItemView(item: SMPListItem(title: "IAP Purchased (Fake)",
                                                 isComplete: UserDefaults.simplistsApp.isPremiumIAPPurchased),
                               tapAction: {
@@ -55,6 +62,11 @@ struct WatchDebugView: View {
         let currentValue = UserDefaults.simplistsAppDebug.isFakeAuthenticationEnabled
         UserDefaults.simplistsAppDebug.setIsFakeAuthenticationEnabled(!currentValue)
         isAuthenticated = currentValue == true
+    }
+
+    func toggleAuthorizedForPayments() {
+        let currentValue = UserDefaults.simplistsAppDebug.isAuthorizedForPayments
+        UserDefaults.simplistsAppDebug.setIsAuthorizedForPayments(!currentValue)
     }
 }
 

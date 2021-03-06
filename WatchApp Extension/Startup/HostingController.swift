@@ -7,6 +7,7 @@
 
 import CoreData
 import Foundation
+import StoreKit
 import SwiftUI
 import WatchKit
 import SimplistsWatchKit
@@ -14,7 +15,16 @@ import SimplistsWatchKit
 class HostingController: WKHostingController<AnyView> {
     override var body: AnyView {
         let storage = createStorage()
-        return AnyView(WatchHomeView(lists: []).environmentObject(storage))
+
+        let client = StoreClient()
+        SKPaymentQueue.default().add(client)
+
+        let storeDataSource = StoreDataSource(service: client)
+        storeDataSource.getProducts()
+
+        return AnyView(WatchHomeView(lists: [])
+                        .environmentObject(storage)
+                        .environmentObject(storeDataSource))
     }
 
     private func createStorage() -> SMPStorage {

@@ -5,6 +5,7 @@
 //  Created by Tom Hartnett on 8/8/20.
 //
 
+import Combine
 import CoreData
 import SimplistsKit
 import StoreKit
@@ -14,6 +15,8 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+
+    var subscriptions = Set<AnyCancellable>()
 
     func scene(_ scene: UIScene,
                willConnectTo session: UISceneSession,
@@ -26,12 +29,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let client = StoreClient()
         SKPaymentQueue.default().add(client)
 
-        let storeDataSource = StoreDataSource(service: client, storage: storage)
+        let storeDataSource = StoreDataSource(service: client)
         storeDataSource.getProducts()
 
         if storeDataSource.hasPurchasedIAP && !storage.hasPremiumIAPItem {
             storage.savePremiumIAPItem()
         }
+
+        storeDataSource.objectWillChange
+            .sink(receiveValue: { [storage, storeDataSource] in
+                if storeDataSource.hasPurchasedIAP {
+                    storage.savePremiumIAPItem()
+                }
+            })
+            .store(in: &subscriptions)
 
         // Create the SwiftUI view that provides the window contents.
         let listsView = HomeView(lists: [])

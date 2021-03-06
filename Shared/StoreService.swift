@@ -28,6 +28,8 @@ class StoreClient: NSObject {
     private let productsResponseSubject = PassthroughSubject<SKProductsResponse, Error>()
     private let purchaseStatusSubject: CurrentValueSubject<PurchaseStatus, Never>
 
+    private var productsRequest: SKProductsRequest?
+
     override init() {
         purchaseStatusSubject = CurrentValueSubject<PurchaseStatus, Never>(.initial)
         super.init()
@@ -44,9 +46,9 @@ extension StoreClient: StoreService {
     }
 
     func getProducts(productIdentifiers: Set<String>) {
-        let request = SKProductsRequest(productIdentifiers: productIdentifiers)
-        request.delegate = self
-        request.start()
+        productsRequest = SKProductsRequest(productIdentifiers: productIdentifiers)
+        productsRequest?.delegate = self
+        productsRequest?.start()
     }
 
     func purchaseProduct(_ product: SKProduct) {

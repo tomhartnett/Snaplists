@@ -45,7 +45,7 @@ struct PurchaseButtonsView: View {
 struct PurchaseButtonsView_Previews: PreviewProvider {
     static var previews: some View {
         let client = StoreClient()
-        let dataSource = StoreDataSource(service: client, storage: SMPStorage.previewStorage)
+        let dataSource = StoreDataSource(service: client)
         PurchaseButtonsView().environmentObject(dataSource)
     }
 }

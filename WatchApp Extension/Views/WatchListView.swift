@@ -68,7 +68,7 @@ struct WatchListView: View {
         .sheet(item: $activeSheet) { item in
             switch item {
             case .freeLimitView:
-                WatchFreeLimitView(freeLimitMessage: FreeLimits.numberOfItems.message)
+                WatchStoreView(freeLimitMessage: FreeLimits.numberOfItems.message)
             case .newItemView:
                 WatchNewItemView(list: $list)
             }

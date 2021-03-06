@@ -25,4 +25,5 @@
 "store-limits-number-of-items" = "Max number of items";
 
 "store-header-text" = "Snaplists Premium";
-"store-body-text" = "Remove all limits with a one-time purchase on your iPhone or iPad";
+"store-body-text" = "Remove all limits with a one-time purchase.";
+"store-purchase-button-format-string" = "Purchase %@";
