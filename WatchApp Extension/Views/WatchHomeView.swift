@@ -86,9 +86,15 @@ struct WatchHomeView: View {
                                 WatchDebugView(isAuthenticated: $isAuthenticated).environmentObject(storage)) {
                     Text("Debug View")
                 }
+                #else
+                if storage.hasShowDebugView {
+                    NavigationLink(destination:
+                                    WatchDebugView(isAuthenticated: $isAuthenticated).environmentObject(storage)) {
+                        Text("Debug View")
+                    }
+                }
                 #endif
             }
-//            .padding(.top, 6) // TODO: why does this padding cause a crash?
         }
         .animation(.default)
         .navigationBarTitle("Snaplists")

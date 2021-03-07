@@ -342,8 +342,20 @@ public extension SMPStorage {
         return UUID(uuidString: "00000000-0000-0000-0000-000000000001")!
     }
 
+    private var showDebugViewIdentifier: UUID {
+        return UUID(uuidString: "00000000-0000-0000-0000-000000000002")!
+    }
+
     var hasPremiumIAPItem: Bool {
         if getItemEntity(with: premiumIAPIdentifier) != nil {
+            return true
+        } else {
+            return false
+        }
+    }
+
+    var hasShowDebugView: Bool {
+        if getItemEntity(with: showDebugViewIdentifier) != nil {
             return true
         } else {
             return false

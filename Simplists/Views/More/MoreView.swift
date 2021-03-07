@@ -6,6 +6,7 @@
 //
 
 import MessageUI
+import SimplistsKit
 import SwiftUI
 
 enum MoreViewActionSheet: Identifiable {
@@ -18,6 +19,7 @@ enum MoreViewActionSheet: Identifiable {
 }
 
 struct MoreView: View {
+    @EnvironmentObject var storage: SMPStorage
     @State private var errorMessage: String?
     @State private var actionSheet: MoreViewActionSheet?
 
@@ -79,6 +81,19 @@ struct MoreView: View {
                                 .frame(width: 25, height: 25)
                                 .foregroundColor(Color("TextSecondary"))
                             Text("Debug")
+                        }
+                    }
+                }
+                #else
+                if storage.hasShowDebugView {
+                    Section {
+                        NavigationLink(destination: DebugView()) {
+                            HStack {
+                                Image(systemName: "gearshape.2")
+                                    .frame(width: 25, height: 25)
+                                    .foregroundColor(Color("TextSecondary"))
+                                Text("Debug")
+                            }
                         }
                     }
                 }
