@@ -20,6 +20,7 @@ enum WatchListActiveSheet: Identifiable {
 struct WatchListView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var storage: SMPStorage
+    @EnvironmentObject var storeDataSource: StoreDataSource
     @State var list: SMPList
     @State private var activeSheet: WatchListActiveSheet?
 
@@ -69,6 +70,7 @@ struct WatchListView: View {
             switch item {
             case .freeLimitView:
                 WatchStoreView(freeLimitMessage: FreeLimits.numberOfItems.message)
+                    .environmentObject(storeDataSource)
             case .newItemView:
                 WatchNewItemView(list: $list)
             }

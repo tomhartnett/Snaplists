@@ -21,6 +21,7 @@ enum WatchHomeActiveSheet: Identifiable {
 
 struct WatchHomeView: View {
     @EnvironmentObject var storage: SMPStorage
+    @EnvironmentObject var storeDataSource: StoreDataSource
     @State var lists: [SMPList]
     @State private var activeSheet: WatchHomeActiveSheet?
     @State private var isAuthenticated: Bool = false
@@ -67,7 +68,9 @@ struct WatchHomeView: View {
                 )
 
                 ForEach(lists) { list in
-                    NavigationLink(destination: WatchListView(list: list).environmentObject(storage)) {
+                    NavigationLink(destination: WatchListView(list: list)
+                                    .environmentObject(storage)
+                                    .environmentObject(storeDataSource)) {
                         HStack {
                             Text(list.title)
                             Spacer()
@@ -104,6 +107,7 @@ struct WatchHomeView: View {
                 WatchNewListView()
             case .freeLimitView:
                 WatchStoreView(freeLimitMessage: FreeLimits.numberOfLists.message)
+                    .environmentObject(storeDataSource)
             }
         }
     }
