@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AboutView: View {
+    @State private var isPresentingDebug = false
 
     var versionString: String {
         let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "?"
@@ -29,6 +30,8 @@ struct AboutView: View {
         }
     }
 
+    var lastTapDate = Date()
+
     var body: some View {
         VStack(spacing: 8) {
             Text("about-header-text")
@@ -42,6 +45,9 @@ struct AboutView: View {
                 .resizable().aspectRatio(contentMode: .fit)
                 .frame(width: 200, height: 200)
                 .padding([.top, .bottom], 48)
+                .onTapGesture {
+                    showDebugView()
+                }
 
             Text(copyrightString)
                 .foregroundColor(Color("TextSecondary"))
@@ -59,6 +65,16 @@ struct AboutView: View {
             })
 
             Spacer()
+        }
+        .sheet(isPresented: $isPresentingDebug) {
+            DebugView()
+        }
+    }
+
+    func showDebugView() {
+        let elapsed = Date().timeIntervalSince(lastTapDate)
+        if elapsed > 5 && elapsed < 8 {
+            isPresentingDebug.toggle()
         }
     }
 }
