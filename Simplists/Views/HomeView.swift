@@ -121,7 +121,7 @@ struct HomeView: View {
 
                             FocusableTextField("home-add-list-placeholder".localize(),
                                                text: $newListTitle,
-                                               isFirstResponder: false,
+                                               keepFocusUnlessEmpty: false,
                                                onCommit: addNewList)
                                 .padding([.top, .bottom])
                         }

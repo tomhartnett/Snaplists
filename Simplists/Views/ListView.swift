@@ -113,7 +113,7 @@ struct ListView: View {
 
                                         FocusableTextField("list-new-item-placeholder".localize(),
                                                            text: $newItem,
-                                                           isFirstResponder: false,
+                                                           keepFocusUnlessEmpty: true,
                                                            onCommit: addNewItem)
                                             .padding([.top, .bottom])
                                     }
