@@ -19,6 +19,7 @@ struct WatchStoreView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var storeDataSource: StoreDataSource
     @State private var storeStatus: StoreStatus = .initial
+    @State private var isPresentingPrivacyPolicy = false
 
     var freeLimitMessage: String
 
@@ -68,7 +69,7 @@ struct WatchStoreView: View {
                         .padding(.bottom, 4)
 
                         Button(action: {
-
+                            isPresentingPrivacyPolicy.toggle()
                         }) {
                             Text("Privacy Policy")
                         }
@@ -98,6 +99,9 @@ struct WatchStoreView: View {
                 case .deferred:
                     storeStatus = .deferred
                 }
+            }
+            .sheet(isPresented: $isPresentingPrivacyPolicy) {
+                WatchPrivacyPolicyView()
             }
         }
     }
