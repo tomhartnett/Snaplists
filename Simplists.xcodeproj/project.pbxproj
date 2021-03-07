@@ -69,6 +69,7 @@
 		E27CDF5D24ECAB4D004B6A32 /* Simplists.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E27CDF5A24ECA7BC004B6A32 /* Simplists.xcdatamodeld */; };
 		E281EBD9259A2C7400DF1CEB /* FeatureBulletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E281EBD8259A2C7400DF1CEB /* FeatureBulletView.swift */; };
 		E281EBE4259A3CD800DF1CEB /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E281EBE3259A3CD800DF1CEB /* StoreKit.framework */; };
+		E282850725F52A7700EE8997 /* WatchStoreErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E282850625F52A7700EE8997 /* WatchStoreErrorView.swift */; };
 		E28E917925587E8D003E9F21 /* MoveItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28E917825587E8D003E9F21 /* MoveItemsView.swift */; };
 		E2A0302825B4CE81003BD447 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A0302725B4CE80003BD447 /* EmptyStateView.swift */; };
 		E2A320FE250D704700A022B8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E2A32100250D704700A022B8 /* Localizable.strings */; };
@@ -244,6 +245,7 @@
 		E27CDF5B24ECA7BC004B6A32 /* Simplists.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Simplists.xcdatamodel; sourceTree = "<group>"; };
 		E281EBD8259A2C7400DF1CEB /* FeatureBulletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureBulletView.swift; sourceTree = "<group>"; };
 		E281EBE3259A3CD800DF1CEB /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		E282850625F52A7700EE8997 /* WatchStoreErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchStoreErrorView.swift; sourceTree = "<group>"; };
 		E28E917825587E8D003E9F21 /* MoveItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveItemsView.swift; sourceTree = "<group>"; };
 		E2A0302725B4CE80003BD447 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 		E2A320FF250D704700A022B8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -339,6 +341,7 @@
 		E22E152624E0698B002A140E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E282850525F52A4500EE8997 /* Store */,
 				E24FACA3251CEC7C002B0B97 /* WatchAuthenticationErrorView.swift */,
 				E26D345425E3E88900EE3C3E /* WatchDebugView.swift */,
 				E22E152924E0769E002A140E /* WatchHomeView.swift */,
@@ -347,7 +350,6 @@
 				E2BB0B6425DEA9FD004A1AB6 /* WatchListHeaderView.swift */,
 				E235D7F924E04C3F007D95BE /* WatchListItemView.swift */,
 				E235D7BB24DF5B89007D95BE /* WatchListView.swift */,
-				E2B62B9925E2C01A00898B21 /* WatchStoreView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -509,6 +511,15 @@
 				E2A376B325D1B4E2001D1615 /* UserDefaults+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E282850525F52A4500EE8997 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				E2B62B9925E2C01A00898B21 /* WatchStoreView.swift */,
+				E282850625F52A7700EE8997 /* WatchStoreErrorView.swift */,
+			);
+			path = Store;
 			sourceTree = "<group>";
 		};
 		E2A32107250E8AC600A022B8 /* More */ = {
@@ -944,6 +955,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2BB0B6525DEA9FD004A1AB6 /* WatchListHeaderView.swift in Sources */,
+				E282850725F52A7700EE8997 /* WatchStoreErrorView.swift in Sources */,
 				E235D7BC24DF5B89007D95BE /* WatchListView.swift in Sources */,
 				E235D7FA24E04C3F007D95BE /* WatchListItemView.swift in Sources */,
 				E2A60FFA25E1C9AD000F492C /* WatchNewListView.swift in Sources */,

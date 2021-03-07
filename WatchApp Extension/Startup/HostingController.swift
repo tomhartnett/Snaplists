@@ -5,6 +5,7 @@
 //  Created by Tom Hartnett on 8/8/20.
 //
 
+import Combine
 import CoreData
 import Foundation
 import StoreKit
@@ -13,6 +14,8 @@ import WatchKit
 import SimplistsWatchKit
 
 class HostingController: WKHostingController<AnyView> {
+    private var subscriptions = Set<AnyCancellable>()
+
     override var body: AnyView {
         let storage = createStorage()
 
@@ -21,6 +24,14 @@ class HostingController: WKHostingController<AnyView> {
 
         let storeDataSource = StoreDataSource(service: client)
         storeDataSource.getProducts()
+
+        storeDataSource.objectWillChange
+            .sink(receiveValue: { [storage, storeDataSource] in
+                if storeDataSource.hasPurchasedIAP {
+                    storage.savePremiumIAPItem()
+                }
+            })
+            .store(in: &subscriptions)
 
         return AnyView(WatchHomeView(lists: [])
                         .environmentObject(storage)

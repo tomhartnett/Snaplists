@@ -37,7 +37,11 @@ struct WatchDebugView: View {
                               })
 
             WatchListItemView(item: SMPListItem(title: "IAP Purchased (DB)",
-                                                isComplete: storage.hasPremiumIAPItem), tapAction: {})
+                                                isComplete: storage.hasPremiumIAPItem),
+                              tapAction: {
+                                storage.deletePremiumIAPItem()
+                                isHack.toggle()
+                              })
 
             Button(action: {
                 storage.createScreenshotSampleData()
