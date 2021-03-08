@@ -6,12 +6,34 @@
 //
 
 import SimplistsWatchKit
+import StoreKit
 import SwiftUI
 
 struct WatchDebugView: View {
     @EnvironmentObject var storage: SMPStorage
+    @EnvironmentObject var storeDataSource: StoreDataSource
     @Binding var isAuthenticated: Bool
     @State private var isHack = false
+
+    var premiumIAPStatus: String {
+        switch storeDataSource.premiumIAPPurchaseStatus {
+        case .initial:
+            return "initial"
+        case .purchasing:
+            return "purchasing"
+        case .purchased:
+            return "purchased"
+        case .failed:
+            return "failed"
+        case .deferred:
+            return "deferred"
+        }
+    }
+
+    var transactionCount: String {
+        let count = SKPaymentQueue.default().transactions.count
+        return "\(count)"
+    }
 
     var body: some View {
         List {
@@ -29,14 +51,14 @@ struct WatchDebugView: View {
                                 isHack.toggle()
                               })
 
-            WatchListItemView(item: SMPListItem(title: "IAP Purchased (Fake)",
+            WatchListItemView(item: SMPListItem(title: "IAP UserDefaults",
                                                 isComplete: UserDefaults.simplistsApp.isPremiumIAPPurchased),
                               tapAction: {
                                 togglePremiumIAPPurchased()
                                 isHack.toggle()
                               })
 
-            WatchListItemView(item: SMPListItem(title: "IAP Purchased (DB)",
+            WatchListItemView(item: SMPListItem(title: "IAP Has Item",
                                                 isComplete: storage.hasPremiumIAPItem),
                               tapAction: {
                                 storage.deletePremiumIAPItem()
@@ -44,9 +66,23 @@ struct WatchDebugView: View {
                               })
 
             Button(action: {
+                storeDataSource.resetIAP()
+                isHack.toggle()
+            }) {
+                Text(premiumIAPStatus)
+            }
+
+            Button(action: {
                 storage.createScreenshotSampleData()
             }) {
                 Text("Create sample data")
+            }
+
+            Button(action: {
+                purgeTransactionQueue()
+                isHack.toggle()
+            }) {
+                Text("Transactions: \(transactionCount)")
             }
 
             if isHack {
@@ -71,6 +107,15 @@ struct WatchDebugView: View {
     func toggleAuthorizedForPayments() {
         let currentValue = UserDefaults.simplistsAppDebug.isAuthorizedForPayments
         UserDefaults.simplistsAppDebug.setIsAuthorizedForPayments(!currentValue)
+    }
+
+    func purgeTransactionQueue() {
+        let queue = SKPaymentQueue.default()
+        let transactions = queue.transactions
+
+        for t in transactions {
+            queue.finishTransaction(t)
+        }
     }
 }
 

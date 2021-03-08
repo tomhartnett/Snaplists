@@ -44,7 +44,7 @@ struct WatchStoreView: View {
 
                 ZStack {
                     VStack {
-
+                        // TODO: localize error messages below and test.
                         switch storeStatus {
                         case .deferred:
                             WatchStoreErrorView(errorMessage: "Purchase is pending approval.")
@@ -58,20 +58,20 @@ struct WatchStoreView: View {
                         }) {
                             Text(purchaseButtonText)
                         }
-                        .disabled(storeDataSource.hasPurchasedIAP || !storeDataSource.isAuthorizedForPayments)
+                        .disabled(!storeDataSource.isAuthorizedForPayments)
                         .padding(.bottom, 4)
 
                         Button(action: {
                             storeDataSource.restoreIAP()
                         }) {
-                            Text("Restore Purchases")
+                            Text("store-restore-button-text")
                         }
                         .padding(.bottom, 4)
 
                         Button(action: {
                             isPresentingPrivacyPolicy.toggle()
                         }) {
-                            Text("Privacy Policy")
+                            Text("store-privacy-button-text")
                         }
                         .padding(.bottom, 4)
                     }
@@ -82,9 +82,6 @@ struct WatchStoreView: View {
                             .opacity(0.5)
                     }
                 }
-            }
-            .onAppear {
-                storeDataSource.getProducts()
             }
             .onReceive(storeDataSource.objectWillChange.eraseToAnyPublisher()) {
                 switch storeDataSource.premiumIAPPurchaseStatus {

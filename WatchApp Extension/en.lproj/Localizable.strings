@@ -27,6 +27,8 @@
 "store-header-text" = "Snaplists Premium";
 "store-body-text" = "Remove all limits with a one-time purchase.";
 "store-purchase-button-format-string" = "Purchase %@";
+"store-restore-button-text" = "Restore Purchases";
+"store-privacy-button-text" = "Privacy Policy";
 
 "privacy-commitment-header-text" = "Our Commitment to Privacy";
 "privacy-commitment-body-text" = "Your privacy is important to us. To protect that privacy, we provide this notice to explain our information collection practices.";

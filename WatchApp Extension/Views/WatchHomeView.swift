@@ -83,13 +83,17 @@ struct WatchHomeView: View {
 
                 #if DEBUG
                 NavigationLink(destination:
-                                WatchDebugView(isAuthenticated: $isAuthenticated).environmentObject(storage)) {
+                                WatchDebugView(isAuthenticated: $isAuthenticated)
+                                .environmentObject(storage)
+                                .environmentObject(storeDataSource)) {
                     Text("Debug View")
                 }
                 #else
                 if storage.hasShowDebugView {
                     NavigationLink(destination:
-                                    WatchDebugView(isAuthenticated: $isAuthenticated).environmentObject(storage)) {
+                                    WatchDebugView(isAuthenticated: $isAuthenticated)
+                                    .environmentObject(storage)
+                                    .environmentObject(storeDataSource)) {
                         Text("Debug View")
                     }
                 }
