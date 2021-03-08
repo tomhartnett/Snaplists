@@ -28,8 +28,6 @@ extension UserDefaults {
             return FileManager.default.ubiquityIdentityToken != nil
         }
 
-        private let iCloudKeyValueStore = NSUbiquitousKeyValueStore()
-
         func setIsPremiumIAPPurchased(_ value: Bool) {
             setValue(value, forKey: Key.isPremiumIAPPurchased)
         }
@@ -38,9 +36,16 @@ extension UserDefaults {
             setValue(value, forKey: Key.isSampleListCreated)
         }
 
+        func synchronizeFromRemote() {
+            [Key.isPremiumIAPPurchased, Key.isSampleListCreated].forEach {
+                let value = NSUbiquitousKeyValueStore.default.bool(forKey: $0)
+                setValue(value, forKey: $0)
+            }
+        }
+
         private func getValue(for key: String) -> Bool {
             if isSignedIn {
-                let iCloudValue = iCloudKeyValueStore.bool(forKey: key)
+                let iCloudValue = NSUbiquitousKeyValueStore.default.bool(forKey: key)
                 return iCloudValue
             } else {
                 let localValue = UserDefaults.standard.bool(forKey: key)
@@ -50,8 +55,8 @@ extension UserDefaults {
 
         private func setValue(_ value: Bool, forKey: String) {
             if isSignedIn {
-                iCloudKeyValueStore.set(value, forKey: forKey)
-                iCloudKeyValueStore.synchronize()
+                NSUbiquitousKeyValueStore.default.set(value, forKey: forKey)
+                NSUbiquitousKeyValueStore.default.synchronize()
             }
 
             UserDefaults.standard.set(value, forKey: forKey)

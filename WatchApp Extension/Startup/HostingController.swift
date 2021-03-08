@@ -5,17 +5,37 @@
 //  Created by Tom Hartnett on 8/8/20.
 //
 
+import Combine
 import CoreData
 import Foundation
+import StoreKit
 import SwiftUI
 import WatchKit
 import SimplistsWatchKit
 
 class HostingController: WKHostingController<AnyView> {
+    private var subscriptions = Set<AnyCancellable>()
+
     override var body: AnyView {
         let storage = createStorage()
-        createScreenshotSampleData(storage: storage)
-        return AnyView(WatchHomeView(lists: []).environmentObject(storage))
+
+        let client = StoreClient()
+        SKPaymentQueue.default().add(client)
+
+        let storeDataSource = StoreDataSource(service: client)
+        storeDataSource.getProducts()
+
+        storeDataSource.objectWillChange
+            .sink(receiveValue: { [storage, storeDataSource] in
+                if storeDataSource.hasPurchasedIAP {
+                    storage.savePremiumIAPItem()
+                }
+            })
+            .store(in: &subscriptions)
+
+        return AnyView(WatchHomeView(lists: [])
+                        .environmentObject(storage)
+                        .environmentObject(storeDataSource))
     }
 
     private func createStorage() -> SMPStorage {
@@ -43,13 +63,5 @@ class HostingController: WKHostingController<AnyView> {
         container.viewContext.automaticallyMergesChangesFromParent = true
 
         return SMPStorage(context: container.viewContext)
-    }
-
-    private func createScreenshotSampleData(storage: SMPStorage) {
-        #if DEBUG
-        if ProcessInfo.processInfo.environment["CREATE_SCREENSHOT_SAMPLE_DATA"] == "1" {
-            storage.createScreenshotSampleData()
-        }
-        #endif
     }
 }

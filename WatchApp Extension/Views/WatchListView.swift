@@ -8,35 +8,90 @@
 import SwiftUI
 import SimplistsWatchKit
 
+enum WatchListActiveSheet: Identifiable {
+    case freeLimitView
+    case newItemView
+
+    var id: Int {
+        hashValue
+    }
+}
+
 struct WatchListView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var storage: SMPStorage
+    @EnvironmentObject var storeDataSource: StoreDataSource
     @State var list: SMPList
+    @State private var activeSheet: WatchListActiveSheet?
+
+    var isPremiumIAPPurchased: Bool {
+        if UserDefaults.simplistsApp.isPremiumIAPPurchased {
+            return true
+        } else {
+            return storage.hasPremiumIAPItem
+        }
+    }
 
     var body: some View {
         VStack {
-            if list.items.isEmpty {
-                Text("list-no-items-message")
-                    .foregroundColor(.secondary)
-            } else {
-                List {
-                    Section(header:
-                                WatchListHeaderView(itemCount: list.items.count),
-                            content: {
-                                ForEach(list.items) { item in
-                                    WatchListItemView(item: item, tapAction: {
-                                        updateItem(id: item.id, title: item.title, isComplete: !item.isComplete)
-                                    })
+            List {
+                Section(header:
+                            WatchListHeaderView(itemCount: list.items.count),
+                        content: {
+                            Button(action: {
+                                addNewItem()
+                            }, label: {
+                                HStack {
+                                    Image(systemName: "plus")
+                                    Text("list-new-item-button-text")
                                 }
-                            }).textCase(nil)
-                }
-                .padding(.top, 10)
+                            })
+                            .listRowBackground(
+                                Color("ButtonBlue")
+                                    .clipped()
+                                    .cornerRadius(8)
+                            )
+
+                            ForEach(list.items) { item in
+                                WatchListItemView(item: item, tapAction: {
+                                    updateItem(id: item.id, title: item.title, isComplete: !item.isComplete)
+                                })
+                            }
+                            .onDelete(perform: delete)
+                        }).textCase(nil)
             }
+            .padding(.top, 6)
         }
         .navigationBarTitle(list.title)
         .onReceive(storage.objectWillChange, perform: { _ in
             reload()
         })
+        .sheet(item: $activeSheet) { item in
+            switch item {
+            case .freeLimitView:
+                WatchStoreView(freeLimitMessage: FreeLimits.numberOfItems.message)
+                    .environmentObject(storeDataSource)
+            case .newItemView:
+                WatchNewItemView(list: $list)
+            }
+        }
+    }
+
+    private func addNewItem() {
+        if list.items.count >= FreeLimits.numberOfItems.limit && !isPremiumIAPPurchased {
+            activeSheet = .freeLimitView
+        } else {
+            activeSheet = .newItemView
+        }
+    }
+
+    private func delete(at offsets: IndexSet) {
+        offsets.forEach {
+            storage.deleteItem(list.items[$0], list: list)
+        }
+        withAnimation {
+            list.items.remove(atOffsets: offsets)
+        }
     }
 
     private func reload() {

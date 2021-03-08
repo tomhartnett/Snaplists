@@ -52,6 +52,14 @@ struct DebugView: View {
         }
     }
 
+    var isPremiumIAPItemPresent: String {
+        if storage.hasPremiumIAPItem {
+            return "Yes"
+        } else {
+            return "No"
+        }
+    }
+
     var body: some View {
         Form {
             Section(header: Text("IAP Status")) {
@@ -60,20 +68,22 @@ struct DebugView: View {
                     Spacer()
                     Button(action: {
                         storeDataSource.resetIAP()
+                        isHack.toggle()
                     }, label: {
                         Text("Reset")
                     })
                 }
             }
 
-            Section(header: Text("Authorized for Payments")) {
+            Section(header: Text("Has IAP Item")) {
                 HStack {
-                    Text(isAuthorizedForPayments)
+                    Text(isPremiumIAPItemPresent)
                     Spacer()
                     Button(action: {
-                        toggleIsAuthorizedForPayments()
+                        storage.deletePremiumIAPItem()
+                        isHack.toggle()
                     }, label: {
-                        Text("Toggle Is Authorized")
+                        Text("Delete")
                     })
                 }
             }
@@ -102,7 +112,7 @@ struct DebugView: View {
                 }
             }
 
-            Section(header: Text("Fake authentication")) {
+            Section(header: Text("Simulator: Fake authentication")) {
                 HStack {
                     Text(isFakeAuthenticationEnabled)
                     Spacer()
@@ -110,6 +120,18 @@ struct DebugView: View {
                         toggleIsFakeAuthenticationEnabled()
                     }, label: {
                         Text("Toggle")
+                    })
+                }
+            }
+
+            Section(header: Text("Simulator: Authorized for Payments")) {
+                HStack {
+                    Text(isAuthorizedForPayments)
+                    Spacer()
+                    Button(action: {
+                        toggleIsAuthorizedForPayments()
+                    }, label: {
+                        Text("Toggle Is Authorized")
                     })
                 }
             }

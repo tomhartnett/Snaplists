@@ -36,7 +36,7 @@ struct ListItemView: View {
                 tapAction?()
             }
 
-            FocusableTextField("", text: $title, isFirstResponder: false, onCommit: {
+            FocusableTextField("", text: $title, keepFocusUnlessEmpty: false, onCommit: {
                 editAction?(title)
             })
         }

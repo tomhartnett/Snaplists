@@ -20,7 +20,7 @@ struct RenameListView: View {
             Form {
                 FocusableTextField("rename-name-placeholder".localize(),
                                    text: $title,
-                                   isFirstResponder: false,
+                                   keepFocusUnlessEmpty: false,
                                    onCommit: {
                                        saveChanges()
                                    },

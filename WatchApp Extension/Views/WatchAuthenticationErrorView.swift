@@ -1,5 +1,5 @@
 //
-//  AuthenticationErrorView.swift
+//  WatchAuthenticationErrorView.swift
 //  WatchApp Extension
 //
 //  Created by Tom Hartnett on 9/24/20.
@@ -7,21 +7,21 @@
 
 import SwiftUI
 
-struct AuthenticationErrorView: View {
+struct WatchAuthenticationErrorView: View {
     var body: some View {
         VStack {
-            Text("icloud-error-title")
+            Text("icloud-warning-title")
                 .font(.headline)
                 .padding()
-            Text("icloud-error-message")
+            Text("icloud-warning-message")
                 .font(.caption)
         }
         .foregroundColor(.secondary)
     }
 }
 
-struct AuthenticationErrorView_Previews: PreviewProvider {
+struct WatchAuthenticationErrorView_Previews: PreviewProvider {
     static var previews: some View {
-        AuthenticationErrorView()
+        WatchAuthenticationErrorView()
     }
 }

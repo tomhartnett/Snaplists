@@ -6,9 +6,46 @@
   
 */
 
-"icloud-error-title" = "Not signed in";
-"icloud-error-message" = "Sign in to iCloud on your iPhone to use this app";
+"icloud-warning-banner-text" = "Not signed in";
+"icloud-warning-title" = "Not signed in to iCloud";
+"icloud-warning-message" = "You can still use the app, but your lists will not sync across your devices.";
 
-"home-no-items-message" = "No lists. Create a list in the app on your iPhone or iPad.";
+"home-new-list-button-text" = "Add new list";
 
-"list-no-items-message" = "No items. Add items to this list in the app on your iPhone or iPad.";
+"list-new-item-button-text" = "Add new item";
+
+"newitem-name-placeholder" = "Item name...";
+"newitem-save-button-text" = "Save";
+
+"newlist-name-placeholder" = "List name...";
+"newlist-save-button-text" = "Save";
+"newlist-suggestions-header-text" = "Suggestions";
+
+"store-limits-number-of-lists" = "Max number of lists";
+"store-limits-number-of-items" = "Max number of items";
+
+"store-header-text" = "Snaplists Premium";
+"store-body-text" = "Remove all limits with a one-time purchase.";
+"store-purchase-button-format-string" = "Purchase %@";
+"store-restore-button-text" = "Restore Purchases";
+"store-privacy-button-text" = "Privacy Policy";
+
+"privacy-commitment-header-text" = "Our Commitment to Privacy";
+"privacy-commitment-body-text" = "Your privacy is important to us. To protect that privacy, we provide this notice to explain our information collection practices.";
+
+"privacy-data-header-text" = "Your Data is Private";
+"privacy-data-body-text" = "The Snaplists app does not collect any user information. There is no sign-up, sign-in, or opportunity in the app to give us your personal information.  The app uses Apple’s iCloud service to sync your lists across your devices.  We cannot see your data:  your lists, the list title, the items on the list, even the number of lists you create in the app.  We cannot view any of this data.";
+
+"privacy-feedback-header-text" = "In-App Feedback";
+"privacy-feedback-body-text" = "The app does provide a feedback feature to allow you to provide us feedback about the app. This feature opens a simple email to us. Be aware that by sending the email, you are giving us your email address. We do not use this email address for anything other than responding to your feedback, via email.  If you prefer, you can tweet us at @snaplistsapp.";
+
+"privacy-external-services-header-text" = "No External Services";
+"privacy-external-services-body-text" = "The Snapslists app does not use any 3rd party/external services.  There are no analytics gathering, behavior tracking, etc.  This app uses only Apple-provided APIs and frameworks.";
+
+"privacy-contact-us-header-text" = "How to Contact Us";
+"privacy-contact-us-body-text" = "Should you have other questions or concerns about this privacy policy, please email snaplists@sleekible.com. At this time, we only have the ability to receive and send English-language communications.";
+
+"privacy-changes-header-text" = "Changes to This Policy";
+"privacy-changes-body-text" = "We reserve the right to change this policy at any time. Please check this page periodically for changes.";
+
+"privacy-effective-date-text" = "Effective Date: February 7, 2021";

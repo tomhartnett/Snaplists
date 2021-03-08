@@ -16,7 +16,6 @@ struct PremiumIAP {
 }
 
 final class StoreDataSource: ObservableObject {
-
     let objectWillChange = PassthroughSubject<(), Never>()
 
     var isAuthorizedForPayments: Bool {
@@ -50,8 +49,9 @@ final class StoreDataSource: ObservableObject {
 
     private let premiumProductIdentifier = "com.sleekible.simplists.iap.premium"
     private var premiumProduct: SKProduct?
-    private let service: StoreService
     private var subscriptions = Set<AnyCancellable>()
+
+    private let service: StoreService
 
     init(service: StoreService) {
         self.service = service
@@ -114,7 +114,6 @@ private extension StoreDataSource {
                 if status == .initial {
                     // Super-secure IAP validation here 🙃
                     // TODO: implement complicated actual receipt validation
-                    // https://www.raywenderlich.com/9257-in-app-purchases-receipt-validation-tutorial
                     if UserDefaults.simplistsApp.isPremiumIAPPurchased {
                         self?.premiumIAPPurchaseStatus = .purchased(productIdentifier: premiumProductIdentifier)
                     }

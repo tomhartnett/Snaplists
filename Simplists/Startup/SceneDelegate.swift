@@ -5,6 +5,7 @@
 //  Created by Tom Hartnett on 8/8/20.
 //
 
+import Combine
 import CoreData
 import SimplistsKit
 import StoreKit
@@ -15,19 +16,36 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
+    private var subscriptions = Set<AnyCancellable>()
+    private var storage: SMPStorage?
+
     func scene(_ scene: UIScene,
                willConnectTo session: UISceneSession,
                options connectionOptions: UIScene.ConnectionOptions) {
 
-        let storage = createStorage()
+        NotificationCenter.default.addObserver(self, selector: #selector(ubiquitousStoreDidChange(_:)),
+                                               name: NSUbiquitousKeyValueStore.didChangeExternallyNotification,
+                                               object: nil)
 
-        createSampleList(storage: storage)
+        let storage = createStorage()
 
         let client = StoreClient()
         SKPaymentQueue.default().add(client)
 
         let storeDataSource = StoreDataSource(service: client)
         storeDataSource.getProducts()
+
+        if storeDataSource.hasPurchasedIAP && !storage.hasPremiumIAPItem {
+            storage.savePremiumIAPItem()
+        }
+
+        storeDataSource.objectWillChange
+            .sink(receiveValue: { [storage, storeDataSource] in
+                if storeDataSource.hasPurchasedIAP {
+                    storage.savePremiumIAPItem()
+                }
+            })
+            .store(in: &subscriptions)
 
         // Create the SwiftUI view that provides the window contents.
         let listsView = HomeView(lists: [])
@@ -42,6 +60,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
             self.window = window
             window.makeKeyAndVisible()
+        }
+
+        self.storage = storage
+    }
+
+    func sceneDidBecomeActive(_ scene: UIScene) {
+
+        NSUbiquitousKeyValueStore.default.synchronize()
+
+        if let storage = self.storage {
+            createSampleList(storage: storage)
         }
     }
 
@@ -92,5 +121,48 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                                 ]))
 
         UserDefaults.simplistsApp.setIsSampleListCreated(true)
+    }
+
+    private func synchronizeLocalSettings() {
+        UserDefaults.simplistsApp.synchronizeFromRemote()
+    }
+
+    @objc
+    private func ubiquitousStoreDidChange(_ notification: Notification) {
+        if let userInfo = notification.userInfo,
+           let reason = userInfo[NSUbiquitousKeyValueStoreChangeReasonKey] as? NSNumber {
+
+            print("\(#function) - reason: \(reason.intValue.ubiquitousChangeReasonDescription)")
+
+            switch reason.intValue {
+            case NSUbiquitousKeyValueStoreServerChange,
+                 NSUbiquitousKeyValueStoreInitialSyncChange,
+                 NSUbiquitousKeyValueStoreAccountChange:
+                synchronizeLocalSettings()
+
+            case NSUbiquitousKeyValueStoreQuotaViolationChange:
+                break
+
+            default:
+                break
+            }
+        }
+    }
+}
+
+private extension Int {
+    var ubiquitousChangeReasonDescription: String {
+        switch self {
+        case NSUbiquitousKeyValueStoreServerChange:
+            return "NSUbiquitousKeyValueStoreServerChange"
+        case NSUbiquitousKeyValueStoreInitialSyncChange:
+            return "NSUbiquitousKeyValueStoreInitialSyncChange"
+        case NSUbiquitousKeyValueStoreQuotaViolationChange:
+            return "NSUbiquitousKeyValueStoreQuotaViolationChange"
+        case NSUbiquitousKeyValueStoreAccountChange:
+            return "NSUbiquitousKeyValueStoreAccountChange"
+        default:
+            return "Not an NSUbiquitousKeyValueStoreChangeReasonKey"
+        }
     }
 }

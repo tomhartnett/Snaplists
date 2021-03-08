@@ -20,7 +20,7 @@ struct NewListNameView: View {
                 Section {
                     FocusableTextField("new-list-name-placeholder".localize(),
                                        text: $title,
-                                       isFirstResponder: false,
+                                       keepFocusUnlessEmpty: false,
                                        onCommit: {
                                         saveChanges()
                                        },

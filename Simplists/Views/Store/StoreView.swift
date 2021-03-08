@@ -5,6 +5,7 @@
 //  Created by Tom Hartnett on 12/20/20.
 //
 
+import SimplistsKit
 import SwiftUI
 
 struct StoreView: View {
@@ -99,7 +100,6 @@ struct StoreView: View {
     func displayPurchaseStatus() {
         switch storeDataSource.premiumIAPPurchaseStatus {
         case .purchased:
-            guard storeDataSource.hasPurchasedIAP else { return }
             withAnimation(Animation.easeIn.delay(0.5)) {
                 showPurchasedView.toggle()
             }

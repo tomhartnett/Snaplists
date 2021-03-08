@@ -27,36 +27,43 @@ struct FocusableTextField: UIViewRepresentable {
         func textField(_ textField: UITextField,
                        shouldChangeCharactersIn range: NSRange,
                        replacementString string: String) -> Bool {
+
             if string == "\n" {
-                textField.resignFirstResponder()
+                resignFirstResponderIfNeeded(textField)
                 parent.onCommit?()
                 return false
             } else {
                 let currentText = textField.text ?? ""
                 guard let stringRange = Range(range, in: currentText) else { return false }
                 let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
-
                 parent.onTextChanged?(updatedText)
             }
 
             return true
         }
+
+        func resignFirstResponderIfNeeded(_ textField: UITextField) {
+            let currentText = (textField.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
+            if currentText.isEmpty || !parent.keepFocusUnlessEmpty {
+                textField.resignFirstResponder()
+            }
+        }
     }
 
     @Binding var text: String
-    var isFirstResponder: Bool = false
+    var keepFocusUnlessEmpty: Bool = false
     var placeholder = ""
     var onCommit: (() -> Void)?
     var onTextChanged: ((String) -> Void)?
 
     init(_ placeholder: String = "",
          text: Binding<String>,
-         isFirstResponder: Bool,
+         keepFocusUnlessEmpty: Bool,
          onCommit: (() -> Void)? = nil,
          onTextChanged: ((String) -> Void)? = nil) {
         self.placeholder = placeholder
         _text = text
-        self.isFirstResponder = isFirstResponder
+        self.keepFocusUnlessEmpty = keepFocusUnlessEmpty
         self.onCommit = onCommit
         self.onTextChanged = onTextChanged
     }
@@ -76,10 +83,5 @@ struct FocusableTextField: UIViewRepresentable {
 
     func updateUIView(_ uiView: UITextField, context: Context) {
         uiView.text = text
-        if isFirstResponder {
-            DispatchQueue.main.async {
-                uiView.becomeFirstResponder()
-            }
-        }
     }
 }
