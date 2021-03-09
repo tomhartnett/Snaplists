@@ -19,7 +19,7 @@ struct WatchNewListView: View {
         "Shopping"
     ]
 
-    let listTopId = UUID()
+    let listTopID = UUID()
 
     var body: some View {
         ScrollViewReader { proxy in
@@ -28,7 +28,7 @@ struct WatchNewListView: View {
                 List {
                     Section {
                         TextField("newlist-name-placeholder", text: $listTitle)
-                            .id(listTopId)
+                            .id(listTopID)
                     }
 
                     Section {
@@ -50,7 +50,7 @@ struct WatchNewListView: View {
                             Button(action: {
                                 withAnimation {
                                     listTitle = suggestion
-                                    proxy.scrollTo(listTopId, anchor: .top)
+                                    proxy.scrollTo(listTopID, anchor: .top)
                                 }
                             }, label: {
                                 Text(suggestion)
