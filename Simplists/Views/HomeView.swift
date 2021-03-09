@@ -178,7 +178,9 @@ struct HomeView: View {
     }
 
     private func addNewList() {
-        if newListTitle.isEmpty {
+        let title = newListTitle.trimmingCharacters(in: .whitespacesAndNewlines)
+        if title.isEmpty {
+            newListTitle = ""
             return
         }
 
@@ -188,7 +190,7 @@ struct HomeView: View {
             return
         }
 
-        let list = SMPList(title: newListTitle)
+        let list = SMPList(title: title)
         lists.append(list)
         newListTitle = ""
 

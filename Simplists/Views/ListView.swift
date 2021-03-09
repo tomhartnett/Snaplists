@@ -24,7 +24,7 @@ struct ListView: View {
     @EnvironmentObject var storeDataSource: StoreDataSource
     @State var list: SMPList
     @State private var activeSheet: ListViewActiveSheet?
-    @State private var newItem = ""
+    @State private var newItemTitle = ""
     @State private var renameListID = ""
     @State private var renameListTitle = ""
 
@@ -115,7 +115,7 @@ struct ListView: View {
                                             }
 
                                             FocusableTextField("list-new-item-placeholder".localize(),
-                                                               text: $newItem,
+                                                               text: $newItemTitle,
                                                                keepFocusUnlessEmpty: true,
                                                                onCommit: {
                                                                 addNewItem(completion: {
@@ -197,7 +197,9 @@ struct ListView: View {
     }
 
     private func addNewItem(completion: (() -> Void)?) {
-        if newItem.isEmpty {
+        let title = newItemTitle.trimmingCharacters(in: .whitespacesAndNewlines)
+        if newItemTitle.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            newItemTitle = ""
             return
         }
 
@@ -207,13 +209,13 @@ struct ListView: View {
             return
         }
 
-        let item = SMPListItem(title: newItem, isComplete: false)
+        let item = SMPListItem(title: title, isComplete: false)
         let index = list.items.firstIndex(where: { $0.isComplete }) ?? list.items.count
         withAnimation {
             list.items.insert(item, at: index)
             completion?()
         }
-        newItem = ""
+        newItemTitle = ""
 
         storage.addItem(item, to: list, at: index)
     }
