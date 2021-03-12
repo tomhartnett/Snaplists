@@ -79,7 +79,7 @@ struct WatchHomeView: View {
                         }
                     }
                 }
-                .onDelete(perform: delete)
+                .onDelete(perform: archive)
 
                 #if DEBUG
                 NavigationLink(destination:
@@ -130,12 +130,11 @@ struct WatchHomeView: View {
         }
     }
 
-    private func delete(at offsets: IndexSet) {
+    private func archive(at offsets: IndexSet) {
         offsets.forEach {
-            storage.deleteList(lists[$0])
-        }
-        withAnimation {
-            lists.remove(atOffsets: offsets)
+            var listToUpdate = lists[$0]
+            listToUpdate.isArchived = true
+            storage.updateList(listToUpdate)
         }
     }
 
