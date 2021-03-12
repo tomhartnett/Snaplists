@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E2029FFA25FB9E3300490043 /* ReviewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2029FF925FB9E3300490043 /* ReviewHelper.swift */; };
 		E21123DB2504420700B3D76D /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21123DA2504420700B3D76D /* PrivacyPolicyView.swift */; };
 		E21123DD2504441900B3D76D /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21123DC2504441900B3D76D /* AboutView.swift */; };
 		E21823042560467F00CAA92C /* NewListNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21823032560467F00CAA92C /* NewListNameView.swift */; };
@@ -185,6 +186,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E2029FF925FB9E3300490043 /* ReviewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewHelper.swift; sourceTree = "<group>"; };
 		E21123DA2504420700B3D76D /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyView.swift; sourceTree = "<group>"; };
 		E21123DC2504441900B3D76D /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		E21823032560467F00CAA92C /* NewListNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewListNameView.swift; sourceTree = "<group>"; };
@@ -313,6 +315,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E2029FF825FA4D7600490043 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				E26D01DD257E71D3009049F3 /* Extensions */,
+				E22E152524E06976002A140E /* Startup */,
+				E22E152424E06963002A140E /* Views */,
+				E2029FF925FB9E3300490043 /* ReviewHelper.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
 		E22E152424E06963002A140E /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -404,9 +417,7 @@
 		E235D79124DF5B59007D95BE /* Simplists */ = {
 			isa = PBXGroup;
 			children = (
-				E26D01DD257E71D3009049F3 /* Extensions */,
-				E22E152524E06976002A140E /* Startup */,
-				E22E152424E06963002A140E /* Views */,
+				E2029FF825FA4D7600490043 /* Sources */,
 				E235D7D724E036F6007D95BE /* Simplists.entitlements */,
 				E235D79824DF5B5A007D95BE /* Assets.xcassets */,
 				E235D79D24DF5B5A007D95BE /* LaunchScreen.storyboard */,
@@ -931,6 +942,7 @@
 				E26EBDA125C83ADB000D031D /* FreeLimits.swift in Sources */,
 				E22E152324E060C2002A140E /* HomeView.swift in Sources */,
 				E2B9C3A325CED96F0024B9F6 /* DebugView.swift in Sources */,
+				E2029FFA25FB9E3300490043 /* ReviewHelper.swift in Sources */,
 				E281EBD9259A2C7400DF1CEB /* FeatureBulletView.swift in Sources */,
 				E2C6670725CF17010063D7E8 /* ErrorMessageView.swift in Sources */,
 				E279EACF25D04D9D00A38ED6 /* WidgetView.swift in Sources */,

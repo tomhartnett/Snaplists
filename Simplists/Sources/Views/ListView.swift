@@ -28,7 +28,7 @@ struct ListView: View {
     @State private var renameListID = ""
     @State private var renameListTitle = ""
 
-    private let newItemID = UUID()
+    private let addItemFieldID = UUID()
 
     private var itemCountText: String {
         let formatString = "list item count".localize()
@@ -119,12 +119,13 @@ struct ListView: View {
                                                                keepFocusUnlessEmpty: true,
                                                                onCommit: {
                                                                 addNewItem(completion: {
-                                                                    proxy.scrollTo(newItemID, anchor: .bottom)
+                                                                    proxy.scrollTo(addItemFieldID, anchor: .bottom)
+                                                                    ReviewHelper.requestReview(event: .itemAdded)
                                                                 })
                                                                })
                                                 .padding([.top, .bottom])
                                         }
-                                        .id(newItemID)
+                                        .id(addItemFieldID)
                                     }).textCase(nil) // Don't upper-case section header text.
                         }
                         .listStyle(InsetGroupedListStyle())
@@ -264,6 +265,10 @@ struct ListView: View {
         }
 
         storage.updateList(list)
+
+        if isComplete {
+            ReviewHelper.requestReview(event: .itemMarkedComplete)
+        }
     }
 
     private func markAllItems(isComplete: Bool) {
