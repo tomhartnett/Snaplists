@@ -19,7 +19,7 @@ struct WatchNewListView: View {
         "Shopping"
     ]
 
-    let listTopID = UUID()
+    let listTopID = "ListTopID"
 
     var body: some View {
         ScrollViewReader { proxy in

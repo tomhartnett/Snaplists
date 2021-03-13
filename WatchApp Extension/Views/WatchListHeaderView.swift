@@ -17,12 +17,8 @@ struct WatchListHeaderView: View {
     }
 
     var body: some View {
-        if itemCount > 1 {
-            Text(itemCountText)
-                .foregroundColor(.secondary)
-        } else {
-            EmptyView()
-        }
+        Text(itemCountText)
+            .foregroundColor(.secondary)
     }
 }
 
