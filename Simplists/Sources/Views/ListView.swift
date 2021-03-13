@@ -28,7 +28,7 @@ struct ListView: View {
     @State private var renameListID = ""
     @State private var renameListTitle = ""
 
-    private let addItemFieldID = UUID()
+    private let addItemFieldID = "AddItemFieldID"
 
     private var itemCountText: String {
         let formatString = "list item count".localize()
@@ -61,121 +61,118 @@ struct ListView: View {
 
     var body: some View {
         GeometryReader { geometry in
-            VStack {
-                VStack(alignment: .leading) {
-                    Button(action: {
-                        renameListID = list.id.uuidString
-                        renameListTitle = list.title
-                        activeSheet = .renameListView
-                    }) {
-                        Text("list-rename-button-text")
-                            .font(.system(size: 13))
-                    }
-                    .padding(.leading, 20)
-                    .padding(.top, -6)
+            VStack(alignment: .leading) {
+                Button(action: {
+                    renameListID = list.id.uuidString
+                    renameListTitle = list.title
+                    activeSheet = .renameListView
+                }) {
+                    Text("list-rename-button-text")
+                        .font(.system(size: 13))
+                }
+                .padding(.leading)
+                .padding(.top, -6)
 
-                    ScrollViewReader { proxy in
-                        List {
-                            Section(header:
-                                        HStack {
-                                            Text(itemCountText)
-                                            Spacer()
-                                            Text(lastUpdatedText)
-                                        },
-                                    content: {
-                                        ForEach(list.items) { item in
-                                            ListItemView(title: item.title,
-                                                         isComplete: item.isComplete,
-                                                         tapAction: {
+                ScrollViewReader { proxy in
+                    List {
+                        Section(header:
+                                    HStack {
+                                        Text(itemCountText)
+                                        Spacer()
+                                        Text(lastUpdatedText)
+                                    },
+                                content: {
+                                    ForEach(list.items) { item in
+                                        ListItemView(title: item.title,
+                                                     isComplete: item.isComplete,
+                                                     tapAction: {
+                                                        updateItem(id: item.id,
+                                                                   title: item.title,
+                                                                   isComplete: !item.isComplete)
+                                                     }, editAction: { title in
+                                                        if title.isEmpty {
+                                                            storage.deleteItem(item, list: list)
+                                                        } else {
                                                             updateItem(id: item.id,
-                                                                       title: item.title,
-                                                                       isComplete: !item.isComplete)
-                                                         }, editAction: { title in
-                                                            if title.isEmpty {
-                                                                storage.deleteItem(item, list: list)
-                                                            } else {
-                                                                updateItem(id: item.id,
-                                                                           title: title,
-                                                                           isComplete: item.isComplete)
-                                                            }
-                                                         })
-                                        }
-                                        .onDelete(perform: delete)
-                                        .onMove(perform: move)
-
-                                        HStack {
-                                            ZStack {
-                                                Circle()
-                                                    .stroke(Color.clear)
-                                                    .foregroundColor(.clear)
-                                                    .frame(width: 25, height: 25)
-
-                                                Image(systemName: "plus.circle")
-                                                    .foregroundColor(.secondary)
-                                            }
-
-                                            FocusableTextField("list-new-item-placeholder".localize(),
-                                                               text: $newItemTitle,
-                                                               keepFocusUnlessEmpty: true,
-                                                               onCommit: {
-                                                                addNewItem(completion: {
-                                                                    proxy.scrollTo(addItemFieldID, anchor: .bottom)
-                                                                    ReviewHelper.requestReview(event: .itemAdded)
-                                                                })
-                                                               })
-                                                .padding([.top, .bottom])
-                                        }
-                                        .id(addItemFieldID)
-                                    }).textCase(nil) // Don't upper-case section header text.
-                        }
-                        .listStyle(InsetGroupedListStyle())
-                        .onReceive(storage.objectWillChange, perform: { _ in
-                            reload()
-                        })
-                        .toolbar {
-                            ToolbarItem(placement: .bottomBar) {
-                                HStack {
-                                    Button(action: {
-                                        list.isArchived = true
-                                        storage.updateList(list)
-                                        presentationMode.wrappedValue.dismiss()
-                                    }) {
-                                        Image(systemName: "trash")
+                                                                       title: title,
+                                                                       isComplete: item.isComplete)
+                                                        }
+                                                     })
                                     }
-                                    .frame(maxWidth: .infinity)
+                                    .onDelete(perform: delete)
+                                    .onMove(perform: move)
 
-                                    Menu {
-                                        Button(action: {
-                                            markAllItems(isComplete: false)
-                                        }) {
-                                            Text("toolbar-markincomplete-button-text")
-                                            Image(systemName: "circle")
+                                    HStack {
+                                        ZStack {
+                                            Circle()
+                                                .stroke(Color.clear)
+                                                .foregroundColor(.clear)
+                                                .frame(width: 25, height: 25)
+
+                                            Image(systemName: "plus.circle")
+                                                .foregroundColor(.secondary)
                                         }
 
-                                        Button(action: {
-                                            markAllItems(isComplete: true)
-                                        }) {
-                                            Text("toolbar-markcomplete-button-text")
-                                            Image(systemName: "checkmark.circle")
-                                        }
-                                    } label: {
+                                        FocusableTextField("list-new-item-placeholder".localize(),
+                                                           text: $newItemTitle,
+                                                           keepFocusUnlessEmpty: true,
+                                                           onCommit: {
+                                                            addNewItem(completion: {
+                                                                proxy.scrollTo(addItemFieldID, anchor: .bottom)
+                                                            })
+                                                           })
+                                            .padding([.top, .bottom])
+                                    }
+                                    .id(addItemFieldID)
+                                }).textCase(nil) // Don't upper-case section header text.
+                    }
+                    .listStyle(InsetGroupedListStyle())
+                    .onReceive(storage.objectWillChange, perform: { _ in
+                        reload()
+                    })
+                    .toolbar {
+                        ToolbarItem(placement: .bottomBar) {
+                            HStack {
+                                Button(action: {
+                                    list.isArchived = true
+                                    storage.updateList(list)
+                                    presentationMode.wrappedValue.dismiss()
+                                }) {
+                                    Image(systemName: "trash")
+                                }
+                                .frame(maxWidth: .infinity)
+
+                                Menu {
+                                    Button(action: {
+                                        markAllItems(isComplete: false)
+                                    }) {
+                                        Text("toolbar-markincomplete-button-text")
+                                        Image(systemName: "circle")
+                                    }
+
+                                    Button(action: {
+                                        markAllItems(isComplete: true)
+                                    }) {
+                                        Text("toolbar-markcomplete-button-text")
                                         Image(systemName: "checkmark.circle")
                                     }
-                                    .frame(maxWidth: .infinity)
-
-                                    Button(action: {
-                                        activeSheet = .moveItemsView
-                                    }) {
-                                        Image(systemName: "folder")
-                                    }
-                                    .frame(maxWidth: .infinity)
+                                } label: {
+                                    Image(systemName: "checkmark.circle")
                                 }
-                                .frame(width: geometry.size.width)
+                                .frame(maxWidth: .infinity)
+
+                                Button(action: {
+                                    activeSheet = .moveItemsView
+                                }) {
+                                    Image(systemName: "folder")
+                                }
+                                .frame(maxWidth: .infinity)
                             }
+                            .frame(width: geometry.size.width)
                         }
                     }
-
                 }
+
             }
             .navigationBarItems(trailing: NavBarItemsView(showEditButton: !list.items.isEmpty))
             .navigationBarTitle(list.title)

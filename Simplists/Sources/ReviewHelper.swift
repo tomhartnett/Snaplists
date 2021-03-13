@@ -30,13 +30,10 @@ class ReviewHelper {
 
 extension ReviewHelper {
     enum ReviewEvent {
-        case itemAdded
         case itemMarkedComplete
 
         var userDefaultsKey: String {
             switch self {
-            case .itemAdded:
-                return "ReviewEvent-ItemAdded"
             case .itemMarkedComplete:
                 return "ReviewEvent-ItemMarkedComplete"
             }
@@ -44,8 +41,6 @@ extension ReviewHelper {
 
         var promptThreshold: Int {
             switch self {
-            case .itemAdded:
-                return 10
             case .itemMarkedComplete:
                 return 10
             }
