@@ -7,6 +7,7 @@
 
 import SimplistsKit
 import SwiftUI
+import StoreKit
 
 enum ListViewActiveSheet: Identifiable {
     case moveItemsView
@@ -19,6 +20,7 @@ enum ListViewActiveSheet: Identifiable {
 }
 
 struct ListView: View {
+    @Environment(\.editMode) var editMode: Binding<EditMode>?
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var storage: SMPStorage
     @EnvironmentObject var storeDataSource: StoreDataSource
@@ -27,6 +29,9 @@ struct ListView: View {
     @State private var newItemTitle = ""
     @State private var renameListID = ""
     @State private var renameListTitle = ""
+    @State private var selectedIDs = Set<UUID>()
+    @Binding var selectedListID: UUID?
+    @Binding var lists: [SMPList]
 
     private let addItemFieldID = "AddItemFieldID"
 
@@ -60,7 +65,10 @@ struct ListView: View {
     }
 
     var body: some View {
-        GeometryReader { geometry in
+        if selectedListID == nil {
+            EmptyStateView(emptyStateType: lists.isEmpty ? .noLists : .noSelection)
+                .navigationBarTitle("")
+        } else {
             VStack(alignment: .leading) {
                 Button(action: {
                     renameListID = list.id.uuidString
@@ -74,7 +82,7 @@ struct ListView: View {
                 .padding(.top, -6)
 
                 ScrollViewReader { proxy in
-                    List {
+                    List(selection: $selectedIDs) {
                         Section(header:
                                     HStack {
                                         Text(itemCountText)
@@ -83,21 +91,10 @@ struct ListView: View {
                                     },
                                 content: {
                                     ForEach(list.items) { item in
-                                        ListItemView(title: item.title,
-                                                     isComplete: item.isComplete,
-                                                     tapAction: {
-                                                        updateItem(id: item.id,
-                                                                   title: item.title,
-                                                                   isComplete: !item.isComplete)
-                                                     }, editAction: { title in
-                                                        if title.isEmpty {
-                                                            storage.deleteItem(item, list: list)
-                                                        } else {
-                                                            updateItem(id: item.id,
-                                                                       title: title,
-                                                                       isComplete: item.isComplete)
-                                                        }
-                                                     })
+                                        ItemView(title: item.title,
+                                                 isComplete: item.isComplete) { title, isComplete in
+                                            updateItem(id: item.id, title: title, isComplete: isComplete)
+                                        }
                                     }
                                     .onDelete(perform: delete)
                                     .onMove(perform: move)
@@ -113,62 +110,77 @@ struct ListView: View {
                                                 .foregroundColor(.secondary)
                                         }
 
-                                        FocusableTextField("list-new-item-placeholder".localize(),
-                                                           text: $newItemTitle,
-                                                           keepFocusUnlessEmpty: true,
-                                                           onCommit: {
-                                                            addNewItem(completion: {
-                                                                proxy.scrollTo(addItemFieldID, anchor: .bottom)
-                                                            })
-                                                           })
+                                        TextField("list-new-item-placeholder".localize(),
+                                                  text: $newItemTitle,
+                                                  onCommit: {
+                                            addNewItem {
+                                                proxy.scrollTo(addItemFieldID, anchor: .bottom)
+                                            }
+                                        })
                                             .padding([.top, .bottom])
+
                                     }
                                     .id(addItemFieldID)
                                 }).textCase(nil) // Don't upper-case section header text.
                     }
-                    .listStyle(InsetGroupedListStyle())
+                    .listStyle(PlainListStyle())
                     .onReceive(storage.objectWillChange, perform: { _ in
                         reload()
                     })
                     .toolbar {
                         ToolbarItem(placement: .bottomBar) {
                             HStack {
-                                Button(action: {
-                                    list.isArchived = true
-                                    storage.updateList(list)
-                                    presentationMode.wrappedValue.dismiss()
-                                }) {
-                                    Image(systemName: "trash")
-                                }
-                                .frame(maxWidth: .infinity)
+                                if editMode?.wrappedValue == .active {
 
-                                Menu {
-                                    Button(action: {
-                                        markAllItems(isComplete: false)
-                                    }) {
-                                        Text("toolbar-markincomplete-button-text")
-                                        Image(systemName: "circle")
+                                    HStack {
+                                        Menu("Mark") {
+                                            Button(action: {
+                                                markSelectedItems(isComplete: false)
+                                            }) {
+                                                Text("toolbar-markincomplete-button-text")
+                                                Image(systemName: "circle")
+                                            }
+
+                                            Button(action: {
+                                                markSelectedItems(isComplete: true)
+                                            }) {
+                                                Text("toolbar-markcomplete-button-text")
+                                                Image(systemName: "checkmark.circle")
+                                            }
+
+                                            Text("\(selectedIDs.count) items")
+                                        }
+
+                                        Spacer()
+
+                                        Button(action: {
+                                            moveSelectedItems()
+                                        }) {
+                                            Text("Move")
+                                        }
+
+                                        Spacer()
+
+                                        Button(action: {
+                                            deleteSelectedItems()
+                                        }) {
+                                            Text("Trash")
+                                        }
                                     }
+                                    .disabled(selectedIDs.isEmpty)
 
-                                    Button(action: {
-                                        markAllItems(isComplete: true)
-                                    }) {
-                                        Text("toolbar-markcomplete-button-text")
-                                        Image(systemName: "checkmark.circle")
+                                } else {
+                                    HStack {
+                                        Button(action: {
+                                            list.isArchived = true
+                                            storage.updateList(list)
+                                            selectedListID = nil
+                                        }) {
+                                            Text("Delete List")
+                                        }
                                     }
-                                } label: {
-                                    Image(systemName: "checkmark.circle")
                                 }
-                                .frame(maxWidth: .infinity)
-
-                                Button(action: {
-                                    activeSheet = .moveItemsView
-                                }) {
-                                    Image(systemName: "folder")
-                                }
-                                .frame(maxWidth: .infinity)
                             }
-                            .frame(width: geometry.size.width)
                         }
                     }
                 }
@@ -179,7 +191,10 @@ struct ListView: View {
             .sheet(item: $activeSheet) { item in
                 switch item {
                 case .moveItemsView:
-                    MoveItemsView(list: list)
+                    let itemIDs = selectedIDs.map { $0 }
+                    MoveToListView(itemIDs: itemIDs, fromList: list) {
+                        editMode?.wrappedValue = .inactive
+                    }
                 case .renameListView:
                     RenameListView(id: $renameListID, title: $renameListTitle) { _, newTitle in
                         list.title = newTitle
@@ -233,8 +248,6 @@ struct ListView: View {
     private func reload() {
         if let newList = storage.getList(with: list.id) {
             list = newList
-        } else {
-            presentationMode.wrappedValue.dismiss()
         }
     }
 
@@ -242,37 +255,50 @@ struct ListView: View {
                             title: String,
                             isComplete: Bool) {
 
-        guard let itemIndex = list.items.firstIndex(where: { $0.id == id }),
-              let currentCheckedStatus = list.items.first(where: { $0.id == id })?.isComplete else { return }
+        guard let itemIndex = list.items.firstIndex(where: { $0.id == id }) else { return }
 
-        let lastUncheckedItem = isComplete &&
-            list.items.filter({ $0.isComplete == true }).count == list.items.count - 1
-        let lastCheckedItem = !isComplete &&
-            list.items.filter({ $0.isComplete == false }).count == list.items.count - 1
-
-        let firstCheckedItemOrEnd = list.items.firstIndex(where: { $0.isComplete }) ?? list.items.endIndex
-
-        list.items[itemIndex].title = title
-        list.items[itemIndex].isComplete = isComplete
-
-        if currentCheckedStatus != isComplete && !lastCheckedItem && !lastUncheckedItem {
-            withAnimation {
-                list.items.move(fromOffsets: IndexSet(integer: itemIndex), toOffset: firstCheckedItemOrEnd)
-            }
-        }
+        list.items.remove(at: itemIndex)
+        list.items.insert(SMPListItem(id: id, title: title, isComplete: isComplete),
+                          at: itemIndex)
 
         storage.updateList(list)
-
-        if isComplete {
-            ReviewHelper.requestReview(event: .itemMarkedComplete)
-        }
     }
 
-    private func markAllItems(isComplete: Bool) {
-        for index in 0..<list.items.count {
-            list.items[index].isComplete = isComplete
-        }
+    private func deleteSelectedItems() {
+        guard !selectedIDs.isEmpty else { return }
+
+        let itemIDs = selectedIDs.map { $0 }
+        storage.deleteItems(itemIDs, listID: list.id)
+
+        editMode?.wrappedValue = .inactive
+        selectedIDs.removeAll()
+
         storage.updateList(list)
+    }
+
+    private func markSelectedItems(isComplete: Bool) {
+        guard !selectedIDs.isEmpty else { return }
+
+        for id in selectedIDs {
+            guard let index = list.items.firstIndex(where: { $0.id == id }) else { continue }
+            let item = list.items[index]
+            list.items.remove(at: index)
+            list.items.insert(SMPListItem(id: item.id,
+                                          title: item.title,
+                                          isComplete: isComplete),
+                              at: index)
+        }
+
+        editMode?.wrappedValue = .inactive
+        selectedIDs.removeAll()
+
+        storage.updateList(list)
+    }
+
+    private func moveSelectedItems() {
+        guard !selectedIDs.isEmpty else { return }
+
+        activeSheet = .moveItemsView
     }
 }
 
@@ -288,7 +314,10 @@ struct ListView_Previews: PreviewProvider {
                     SMPListItem(title: "Item 4", isComplete: true)
                 ])
 
-            ListView(list: list).environmentObject(SMPStorage.previewStorage)
+            ListView(list: list,
+                     selectedListID: .constant(UUID()),
+                     lists: .constant([]))
+                .environmentObject(SMPStorage.previewStorage)
         }
     }
 }

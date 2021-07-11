@@ -24,3 +24,16 @@ public struct SMPList: Identifiable {
         self.items = items
     }
 }
+
+extension SMPList: Equatable {
+    public static func == (lhs: SMPList, rhs: SMPList) -> Bool {
+        let lhsIDs = lhs.items.map { $0.id.uuidString }
+        let rhsIDs = rhs.items.map { $0.id.uuidString }
+
+        return lhs.id == rhs.id &&
+            lhs.title == rhs.title &&
+            lhs.isArchived == rhs.isArchived &&
+            lhs.lastModified == rhs.lastModified &&
+            lhsIDs == rhsIDs
+    }
+}

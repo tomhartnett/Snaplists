@@ -11,22 +11,13 @@ struct RenameListView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @Binding var id: String
     @Binding var title: String
-    @State private var isDoneEnabled = false
 
     var doneAction: ((String, String) -> Void)?
 
     var body: some View {
         NavigationView {
             Form {
-                FocusableTextField("rename-name-placeholder".localize(),
-                                   text: $title,
-                                   keepFocusUnlessEmpty: false,
-                                   onCommit: {
-                                       saveChanges()
-                                   },
-                                   onTextChanged: { text in
-                                       isDoneEnabled = !text.isEmpty
-                                   })
+                TextField("rename-name-placeholder".localize(), text: $title, onCommit: saveChanges)
             }
             .navigationBarItems(
                 leading: Button(action: {
@@ -41,7 +32,7 @@ struct RenameListView: View {
                     Text("rename-done-button-text")
                         .fontWeight(.semibold)
                 })
-                .disabled(!isDoneEnabled)
+                .disabled(title.isEmpty)
             )
             .navigationBarTitle("rename-navigation-bar-title", displayMode: .inline)
         }

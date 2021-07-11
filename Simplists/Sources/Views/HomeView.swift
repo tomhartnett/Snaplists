@@ -62,7 +62,9 @@ struct HomeView: View {
                     Section {
                         // List of lists
                         ForEach(lists) { list in
-                            NavigationLink(destination: ListView(list: list),
+                            NavigationLink(destination: ListView(list: list,
+                                                                 selectedListID: $selectedListID,
+                                                                 lists: $lists),
                                            tag: list.id,
                                            selection: $selectedListID) {
                                 HStack {
@@ -119,10 +121,9 @@ struct HomeView: View {
                                 .frame(width: 25, height: 25)
                                 .foregroundColor(.secondary)
 
-                            FocusableTextField("home-add-list-placeholder".localize(),
-                                               text: $newListTitle,
-                                               keepFocusUnlessEmpty: false,
-                                               onCommit: addNewList)
+                            TextField("home-add-list-placeholder".localize(),
+                                      text: $newListTitle,
+                                      onCommit: addNewList)
                                 .padding([.top, .bottom])
                         }
                     }
@@ -151,14 +152,10 @@ struct HomeView: View {
                     }
                 }
                 .navigationBarTitle("home-navigation-bar-title")
-                .listStyle(InsetGroupedListStyle())
+                .listStyle(PlainListStyle())
             }
             VStack {
-                if lists.isEmpty {
-                    EmptyStateView(emptyStateType: .noLists)
-                } else {
-                    EmptyStateView(emptyStateType: .noSelection)
-                }
+                EmptyStateView(emptyStateType: lists.isEmpty ? .noLists : .noSelection)
             }
         }
         .onAppear {
