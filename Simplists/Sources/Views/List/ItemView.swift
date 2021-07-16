@@ -39,16 +39,16 @@ struct ItemView: View {
     }
 }
 
-//struct ListItemView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        List {
-//            ItemView(title: .constant("Beer"), isComplete: .constant(false))
-//            ItemView(title: .constant("Bananas"), isComplete: .constant(true))
-//            ItemView(title: .constant("Bread"), isComplete: .constant(true))
-//            ItemView(title: .constant("Bacon"), isComplete: .constant(true))
-//            ItemView(title: .constant("Blackberries"), isComplete: .constant(true))
-//            ItemView(title: .constant("Batteries"), isComplete: .constant(true))
-//        }
-//        .listStyle(PlainListStyle())
-//    }
-//}
+struct ListItemView_Previews: PreviewProvider {
+    static var previews: some View {
+        List {
+            ItemView(title: "Beer", isComplete: false)
+            ItemView(title: "Bananas", isComplete: true)
+            ItemView(title: "Bread", isComplete: true)
+            ItemView(title: "Bacon", isComplete: true)
+            ItemView(title: "Blackberries", isComplete: true)
+            ItemView(title: "Batteries", isComplete: true)
+        }
+        .listStyle(PlainListStyle())
+    }
+}

@@ -13,12 +13,6 @@ struct ArchivedListsView: View {
     @State private var lists: [SMPList] = []
     @State private var isPresentingAlert = false
 
-    private var listCountText: String {
-        let formatString = "list count".localize()
-        let result = String.localizedStringWithFormat(formatString, lists.count)
-        return result
-    }
-
     var body: some View {
         VStack {
             if lists.isEmpty {
@@ -26,10 +20,12 @@ struct ArchivedListsView: View {
                     .font(.title)
                     .foregroundColor(.secondary)
             } else {
-                List {
-                    Section(header:
-                        Text(listCountText),
-                    content: {
+                VStack(alignment: .leading) {
+                    Text("Long-press on a list for options")
+                        .foregroundColor(.secondary)
+                        .padding([.horizontal])
+
+                    List {
                         ForEach(lists) { list in
                             HStack {
                                 Text(list.title)
@@ -57,9 +53,9 @@ struct ArchivedListsView: View {
                             }
                         }
                         .onDelete(perform: delete)
-                    }).textCase(nil) // Don't upper-case section header text.
+                    }
+                    .listStyle(PlainListStyle())
                 }
-                .listStyle(InsetGroupedListStyle())
                 .toolbar {
                     ToolbarItem(placement: .bottomBar) {
                         Button(action: {
