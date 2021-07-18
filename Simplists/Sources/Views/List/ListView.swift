@@ -31,13 +31,21 @@ struct ListView: View {
     @State private var renameListTitle = ""
     @State private var selectedIDs = Set<UUID>()
     @State private var isShowingMoveToList = false
+    @State private var isPresentingDelete = false
     @Binding var selectedListID: UUID?
     @Binding var lists: [SMPList]
 
     private let addItemFieldID = "AddItemFieldID"
 
+    private var deleteItemsText: String {
+        let formatString = "item count".localize()
+        let result = String.localizedStringWithFormat(formatString, selectedIDs.count)
+        // TODO: localize properly.
+        return "Delete \(result)?"
+    }
+
     private var itemCountText: String {
-        let formatString = "list item count".localize()
+        let formatString = "item count".localize()
         let result = String.localizedStringWithFormat(formatString, list.items.count)
         return result
     }
@@ -169,7 +177,7 @@ struct ListView: View {
                                         Spacer()
 
                                         Button(action: {
-                                            deleteSelectedItems()
+                                            isPresentingDelete = true
                                         }) {
                                             Text("Trash")
                                         }
@@ -192,6 +200,17 @@ struct ListView: View {
                     }
                 }
 
+            }
+            .actionSheet(isPresented: $isPresentingDelete) {
+                // TODO: localize properly.
+                let deleteButton = ActionSheet.Button.destructive(Text("Delete")) {
+                    deleteSelectedItems()
+                }
+                let cancelButton = ActionSheet.Button.cancel(Text("Cancel"))
+
+                return ActionSheet(title: Text(deleteItemsText).fontWeight(.bold),
+                                   message: nil,
+                                   buttons: [deleteButton, cancelButton])
             }
             .navigationBarItems(trailing: NavBarItemsView(showEditButton: !list.items.isEmpty))
             .navigationBarTitle(list.title)
