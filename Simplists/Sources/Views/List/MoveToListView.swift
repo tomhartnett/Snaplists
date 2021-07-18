@@ -11,6 +11,9 @@ import SwiftUI
 struct MoveToListView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var storage: SMPStorage
+    @State private var isPresentingAlert = false
+    @State private var selectedListID: UUID?
+
     @State var lists: [SMPList] = []
 
     var itemIDs: [UUID]
@@ -19,6 +22,14 @@ struct MoveToListView: View {
 
     var completion: (() -> Void)?
 
+    var selectedListTitle: String {
+        if let list = lists.first(where: { $0.id == selectedListID }) {
+            return list.title
+        } else {
+            return ""
+        }
+    }
+
     var body: some View {
         VStack {
             List {
@@ -26,13 +37,25 @@ struct MoveToListView: View {
                     if list.id != fromList.id {
                         ListRowView(title: list.title, itemCount: list.items.count)
                             .onTapGesture {
-                                moveItems(to: list)
+                                selectedListID = list.id
+                                isPresentingAlert = true
                             }
                     } else {
                         EmptyView()
                     }
                 }
             }
+        }
+        .actionSheet(isPresented: $isPresentingAlert) {
+            let moveButton = ActionSheet.Button.default(Text("move-move-button-text")) {
+                moveItems(to: selectedListID)
+            }
+            let cancelButton = ActionSheet.Button.cancel(Text("move-cancel-button-text"))
+
+            // TODO: localize properly.
+            return ActionSheet(title: Text("Move \(itemIDs.count) items to \(selectedListTitle)?").fontWeight(.bold),
+                               message: nil,
+                               buttons: [moveButton, cancelButton])
         }
         .navigationBarItems(trailing: Button(action: { cancel() }) { Text("Cancel") })
         .navigationBarTitle(Text("Move \(itemIDs.count) items"))
@@ -46,8 +69,9 @@ struct MoveToListView: View {
         presentationMode.wrappedValue.dismiss()
     }
 
-    func moveItems(to list: SMPList) {
-        storage.moveItems(itemIDs, fromListID: fromList.id, toListID: list.id)
+    func moveItems(to listID: UUID?) {
+        guard let listID = listID else { return }
+        storage.moveItems(itemIDs, fromListID: fromList.id, toListID: listID)
         presentationMode.wrappedValue.dismiss()
         completion?()
     }
