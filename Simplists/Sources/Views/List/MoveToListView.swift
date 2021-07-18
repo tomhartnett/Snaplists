@@ -21,25 +21,29 @@ struct MoveToListView: View {
 
     var body: some View {
         VStack {
-            Text("\(itemIDs.count) items")
-                .font(.caption)
-                .foregroundColor(.secondary)
-
             List {
                 ForEach(lists) { list in
-                    Text(list.title)
-                        .font(.body)
-                        .foregroundColor(list.id == fromList.id ? Color.secondary : Color.primary)
-                        .disabled(list.id == fromList.id)
-                        .onTapGesture {
-                            moveItems(to: list)
-                        }
+                    if list.id != fromList.id {
+                        ListRowView(title: list.title, itemCount: list.items.count)
+                            .onTapGesture {
+                                moveItems(to: list)
+                            }
+                    } else {
+                        EmptyView()
+                    }
                 }
             }
         }
+        .navigationBarItems(trailing: Button(action: { cancel() }) { Text("Cancel") })
+        .navigationBarTitle(Text("Move \(itemIDs.count) items"))
+        .navigationBarTitleDisplayMode(.inline)
         .onAppear {
             lists = storage.getLists()
         }
+    }
+
+    func cancel() {
+        presentationMode.wrappedValue.dismiss()
     }
 
     func moveItems(to list: SMPList) {
@@ -51,8 +55,10 @@ struct MoveToListView: View {
 
 struct MoveToListView_Previews: PreviewProvider {
     static var previews: some View {
-        MoveToListView(itemIDs: [UUID(), UUID()],
-                       fromList: SMPList(title: "Old List"))
-            .environmentObject(SMPStorage.previewStorage)
+        NavigationView {
+            MoveToListView(itemIDs: [UUID(), UUID()],
+                           fromList: SMPList(title: "Old List"))
+                .environmentObject(SMPStorage.previewStorage)
+        }
     }
 }

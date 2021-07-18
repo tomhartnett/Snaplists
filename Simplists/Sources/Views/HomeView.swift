@@ -67,50 +67,46 @@ struct HomeView: View {
                                                                  lists: $lists),
                                            tag: list.id,
                                            selection: $selectedListID) {
-                                HStack {
-                                    Text(list.title)
-                                    Spacer()
-                                    Text("\(list.items.count)")
-                                        .foregroundColor(.secondary)
-                                }
-                                .contextMenu {
-                                    Button(action: {
-                                        if lists.count >= FreeLimits.numberOfLists.limit &&
-                                            !storeDataSource.hasPurchasedIAP {
-                                            activeSheet = .storeViewHitLimit
-                                        } else {
-                                            storage.duplicateList(list)
-                                        }
-                                    }, label: {
-                                        Text("Duplicate")
-                                        Image(systemName: "plus.square.on.square")
-                                    })
-                                    Button(action: {
-                                        renameListID = list.id.uuidString
-                                        renameListTitle = list.title
-                                        isPresentingRename.toggle()
-                                    }, label: {
-                                        Text("home-rename-button-text")
-                                        Image(systemName: "pencil")
-                                    })
 
-                                    Button(action: {
-                                        archive(list: list)
-                                    }, label: {
-                                        Text("home-delete-button-text")
-                                        Image(systemName: "trash")
-                                    })
-                                }
-                                .sheet(isPresented: $isPresentingRename) {
-                                    RenameListView(id: $renameListID, title: $renameListTitle) { id, newTitle in
-                                        if var list = lists.first(where: { $0.id.uuidString == id }) {
-                                            list.title = newTitle
-                                            storage.updateList(list)
-                                            renameListID = ""
-                                            renameListTitle = ""
+                                ListRowView(title: list.title, itemCount: list.items.count)
+                                    .contextMenu {
+                                        Button(action: {
+                                            if lists.count >= FreeLimits.numberOfLists.limit &&
+                                                !storeDataSource.hasPurchasedIAP {
+                                                activeSheet = .storeViewHitLimit
+                                            } else {
+                                                storage.duplicateList(list)
+                                            }
+                                        }, label: {
+                                            Text("Duplicate")
+                                            Image(systemName: "plus.square.on.square")
+                                        })
+                                        Button(action: {
+                                            renameListID = list.id.uuidString
+                                            renameListTitle = list.title
+                                            isPresentingRename.toggle()
+                                        }, label: {
+                                            Text("home-rename-button-text")
+                                            Image(systemName: "pencil")
+                                        })
+
+                                        Button(action: {
+                                            archive(list: list)
+                                        }, label: {
+                                            Text("home-delete-button-text")
+                                            Image(systemName: "trash")
+                                        })
+                                    }
+                                    .sheet(isPresented: $isPresentingRename) {
+                                        RenameListView(id: $renameListID, title: $renameListTitle) { id, newTitle in
+                                            if var list = lists.first(where: { $0.id.uuidString == id }) {
+                                                list.title = newTitle
+                                                storage.updateList(list)
+                                                renameListID = ""
+                                                renameListTitle = ""
+                                            }
                                         }
                                     }
-                                }
                             }
                         }
                         .onDelete(perform: archive)

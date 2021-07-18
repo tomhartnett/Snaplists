@@ -50,6 +50,7 @@
 		E235D81324E050CD007D95BE /* SimplistsWatchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E235D80B24E050CD007D95BE /* SimplistsWatchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E235D81724E050DC007D95BE /* SMPStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D7F324E046D7007D95BE /* SMPStorage.swift */; };
 		E235D81824E050DF007D95BE /* SMPListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D7FB24E04CC1007D95BE /* SMPListItem.swift */; };
+		E23925B726A460BE00C59053 /* ListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23925B626A460BE00C59053 /* ListRowView.swift */; };
 		E241A046258FBA7D000277BE /* StoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E241A045258FBA7D000277BE /* StoreView.swift */; };
 		E24FACA4251CEC7C002B0B97 /* WatchAuthenticationErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24FACA3251CEC7C002B0B97 /* WatchAuthenticationErrorView.swift */; };
 		E250E1B0269B2B6C00860DEC /* RenameListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E250E1AC269B2B6C00860DEC /* RenameListView.swift */; };
@@ -227,6 +228,7 @@
 		E235D80B24E050CD007D95BE /* SimplistsWatchKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SimplistsWatchKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E235D80D24E050CD007D95BE /* SimplistsWatchKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimplistsWatchKit.h; sourceTree = "<group>"; };
 		E235D80E24E050CD007D95BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E23925B626A460BE00C59053 /* ListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowView.swift; sourceTree = "<group>"; };
 		E241A045258FBA7D000277BE /* StoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreView.swift; sourceTree = "<group>"; };
 		E24FACA3251CEC7C002B0B97 /* WatchAuthenticationErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchAuthenticationErrorView.swift; sourceTree = "<group>"; };
 		E250E1AC269B2B6C00860DEC /* RenameListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenameListView.swift; sourceTree = "<group>"; };
@@ -503,6 +505,7 @@
 			isa = PBXGroup;
 			children = (
 				E250E1AF269B2B6C00860DEC /* ItemView.swift */,
+				E23925B626A460BE00C59053 /* ListRowView.swift */,
 				E250E1AD269B2B6C00860DEC /* ListView.swift */,
 				E250E1AE269B2B6C00860DEC /* MoveToListView.swift */,
 				E250E1AC269B2B6C00860DEC /* RenameListView.swift */,
@@ -941,6 +944,7 @@
 				E26D01E225810AED009049F3 /* StoreDataSource.swift in Sources */,
 				E2A0302825B4CE81003BD447 /* EmptyStateView.swift in Sources */,
 				E21123DB2504420700B3D76D /* PrivacyPolicyView.swift in Sources */,
+				E23925B726A460BE00C59053 /* ListRowView.swift in Sources */,
 				E26DD859250BA13E00FCC495 /* AuthenticationErrorView.swift in Sources */,
 				E218230C25605F0200CAA92C /* String+Extensions.swift in Sources */,
 				E22C615D255432710004B561 /* ArchivedListsView.swift in Sources */,

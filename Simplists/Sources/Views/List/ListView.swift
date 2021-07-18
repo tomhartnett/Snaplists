@@ -30,6 +30,7 @@ struct ListView: View {
     @State private var renameListID = ""
     @State private var renameListTitle = ""
     @State private var selectedIDs = Set<UUID>()
+    @State private var isShowingMoveToList = false
     @Binding var selectedListID: UUID?
     @Binding var lists: [SMPList]
 
@@ -70,6 +71,12 @@ struct ListView: View {
                 .navigationBarTitle("")
         } else {
             VStack(alignment: .leading) {
+
+                NavigationLink(destination: MoveToListView(itemIDs: selectedIDs.map { $0 },
+                                                           fromList: list,
+                                                           completion: { editMode?.wrappedValue = .inactive }),
+                               isActive: $isShowingMoveToList) { EmptyView() }
+
                 Button(action: {
                     renameListID = list.id.uuidString
                     renameListTitle = list.title
@@ -154,7 +161,7 @@ struct ListView: View {
                                         Spacer()
 
                                         Button(action: {
-                                            moveSelectedItems()
+                                            isShowingMoveToList = true
                                         }) {
                                             Text("Move")
                                         }
@@ -293,12 +300,6 @@ struct ListView: View {
         selectedIDs.removeAll()
 
         storage.updateList(list)
-    }
-
-    private func moveSelectedItems() {
-        guard !selectedIDs.isEmpty else { return }
-
-        activeSheet = .moveItemsView
     }
 }
 
