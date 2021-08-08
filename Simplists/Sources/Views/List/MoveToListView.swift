@@ -11,8 +11,6 @@ import SwiftUI
 struct MoveToListView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var storage: SMPStorage
-    @State private var isPresentingAlert = false
-    @State private var selectedListID: UUID?
 
     @State var lists: [SMPList] = []
 
@@ -22,14 +20,6 @@ struct MoveToListView: View {
 
     var completion: (() -> Void)?
 
-    var selectedListTitle: String {
-        if let list = lists.first(where: { $0.id == selectedListID }) {
-            return list.title
-        } else {
-            return ""
-        }
-    }
-
     var body: some View {
         VStack {
             List {
@@ -37,25 +27,13 @@ struct MoveToListView: View {
                     if list.id != fromList.id {
                         ListRowView(title: list.title, itemCount: list.items.count)
                             .onTapGesture {
-                                selectedListID = list.id
-                                isPresentingAlert = true
+                                moveItems(to: list.id)
                             }
                     } else {
                         EmptyView()
                     }
                 }
             }
-        }
-        .actionSheet(isPresented: $isPresentingAlert) {
-            let moveButton = ActionSheet.Button.default(Text("move-move-button-text")) {
-                moveItems(to: selectedListID)
-            }
-            let cancelButton = ActionSheet.Button.cancel(Text("move-cancel-button-text"))
-
-            // TODO: localize properly.
-            return ActionSheet(title: Text("Move \(itemIDs.count) items to \(selectedListTitle)?").fontWeight(.bold),
-                               message: nil,
-                               buttons: [moveButton, cancelButton])
         }
         .navigationBarItems(trailing: Button(action: { cancel() }) { Text("Cancel") })
         .navigationBarTitle(Text("Move \(itemIDs.count) items"))

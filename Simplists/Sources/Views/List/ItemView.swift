@@ -20,13 +20,17 @@ struct ItemView: View {
     var body: some View {
         HStack(spacing: 16) {
             ZStack {
-                Rectangle()
-                    .stroke(Color.secondary, lineWidth: 2)
-                    .frame(width: 22, height: 22)
+                Circle()
+                    .stroke(Color.primary, lineWidth: 2)
+                    .frame(width: 25, height: 25)
+
+                Circle()
+                    .frame(width: 20, height: 20)
+                    .foregroundColor(isComplete ? .primary : .clear)
 
                 Image(systemName: "checkmark")
-                    .font(.system(size: 17, weight: .bold))
-                    .foregroundColor(isComplete ? Color.red : .clear)
+                    .font(.system(size: 15, weight: .bold))
+                    .foregroundColor(isComplete ? Color(.systemBackground) : .clear)
             }
             .onTapGesture {
                 saveAction?(title, !isComplete)
@@ -49,6 +53,6 @@ struct ListItemView_Previews: PreviewProvider {
             ItemView(title: "Blackberries", isComplete: true)
             ItemView(title: "Batteries", isComplete: true)
         }
-        .listStyle(PlainListStyle())
+        .listStyle(InsetGroupedListStyle())
     }
 }

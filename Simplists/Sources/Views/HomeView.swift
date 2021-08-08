@@ -148,7 +148,7 @@ struct HomeView: View {
                     }
                 }
                 .navigationBarTitle("home-navigation-bar-title")
-                .listStyle(PlainListStyle())
+                .listStyle(InsetGroupedListStyle())
             }
             VStack {
                 EmptyStateView(emptyStateType: lists.isEmpty ? .noLists : .noSelection)

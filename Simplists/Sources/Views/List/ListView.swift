@@ -132,7 +132,7 @@ struct ListView: View {
                                     .id(addItemFieldID)
                                 }).textCase(nil) // Don't upper-case section header text.
                     }
-                    .listStyle(PlainListStyle())
+                    .listStyle(InsetGroupedListStyle())
                     .onReceive(storage.objectWillChange, perform: { _ in
                         reload()
                     })

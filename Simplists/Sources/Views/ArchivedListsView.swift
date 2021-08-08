@@ -54,7 +54,7 @@ struct ArchivedListsView: View {
                         }
                         .onDelete(perform: delete)
                     }
-                    .listStyle(PlainListStyle())
+                    .listStyle(InsetGroupedListStyle())
                 }
                 .toolbar {
                     ToolbarItem(placement: .bottomBar) {
