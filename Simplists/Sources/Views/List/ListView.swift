@@ -10,9 +10,9 @@ import SwiftUI
 import StoreKit
 
 enum ListViewActiveSheet: Identifiable {
-    case moveItemsView
-    case renameListView
-    case storeView
+    case moveItems
+    case renameList
+    case purchaseRequired
 
     var id: Int {
         hashValue
@@ -30,7 +30,6 @@ struct ListView: View {
     @State private var renameListID = ""
     @State private var renameListTitle = ""
     @State private var selectedIDs = Set<UUID>()
-    @State private var isShowingMoveToList = false
     @State private var isPresentingDelete = false
     @Binding var selectedListID: UUID?
     @Binding var lists: [SMPList]
@@ -80,15 +79,10 @@ struct ListView: View {
         } else {
             VStack(alignment: .leading) {
 
-                NavigationLink(destination: MoveToListView(itemIDs: selectedIDs.map { $0 },
-                                                           fromList: list,
-                                                           completion: { editMode?.wrappedValue = .inactive }),
-                               isActive: $isShowingMoveToList) { EmptyView() }
-
                 Button(action: {
                     renameListID = list.id.uuidString
                     renameListTitle = list.title
-                    activeSheet = .renameListView
+                    activeSheet = .renameList
                 }) {
                     Text("list-rename-button-text")
                         .font(.system(size: 13))
@@ -169,7 +163,7 @@ struct ListView: View {
                                         Spacer()
 
                                         Button(action: {
-                                            isShowingMoveToList = true
+                                            activeSheet = .moveItems
                                         }) {
                                             Text("Move")
                                         }
@@ -180,6 +174,17 @@ struct ListView: View {
                                             isPresentingDelete = true
                                         }) {
                                             Text("Trash")
+                                        }
+                                        .actionSheet(isPresented: $isPresentingDelete) {
+                                            // TODO: localize properly.
+                                            let deleteButton = ActionSheet.Button.destructive(Text("Delete")) {
+                                                deleteSelectedItems()
+                                            }
+                                            let cancelButton = ActionSheet.Button.cancel(Text("Cancel"))
+
+                                            return ActionSheet(title: Text(deleteItemsText).fontWeight(.bold),
+                                                               message: nil,
+                                                               buttons: [deleteButton, cancelButton])
                                         }
                                     }
                                     .disabled(selectedIDs.isEmpty)
@@ -201,34 +206,23 @@ struct ListView: View {
                 }
 
             }
-            .actionSheet(isPresented: $isPresentingDelete) {
-                // TODO: localize properly.
-                let deleteButton = ActionSheet.Button.destructive(Text("Delete")) {
-                    deleteSelectedItems()
-                }
-                let cancelButton = ActionSheet.Button.cancel(Text("Cancel"))
-
-                return ActionSheet(title: Text(deleteItemsText).fontWeight(.bold),
-                                   message: nil,
-                                   buttons: [deleteButton, cancelButton])
-            }
             .navigationBarItems(trailing: NavBarItemsView(showEditButton: !list.items.isEmpty))
             .navigationBarTitle(list.title)
             .sheet(item: $activeSheet) { item in
                 switch item {
-                case .moveItemsView:
+                case .moveItems:
                     let itemIDs = selectedIDs.map { $0 }
                     MoveToListView(itemIDs: itemIDs, fromList: list) {
                         editMode?.wrappedValue = .inactive
                     }
-                case .renameListView:
+                case .renameList:
                     RenameListView(id: $renameListID, title: $renameListTitle) { _, newTitle in
                         list.title = newTitle
                         storage.updateList(list)
                         renameListID = ""
                         renameListTitle = ""
                     }
-                case .storeView:
+                case .purchaseRequired:
                     StoreView(freeLimitMessage: FreeLimits.numberOfItems.message)
                 }
             }
@@ -244,7 +238,7 @@ struct ListView: View {
 
         if list.items.count >= FreeLimits.numberOfItems.limit &&
             !storeDataSource.hasPurchasedIAP {
-            activeSheet = .storeView
+            activeSheet = .purchaseRequired
             return
         }
 
