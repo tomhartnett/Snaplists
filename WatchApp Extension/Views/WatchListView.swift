@@ -54,7 +54,9 @@ struct WatchListView: View {
 
                             ForEach(list.items) { item in
                                 WatchListItemView(item: item, tapAction: {
-                                    updateItem(id: item.id, title: item.title, isComplete: !item.isComplete)
+                                    withAnimation {
+                                        updateItem(id: item.id, title: item.title, isComplete: !item.isComplete)
+                                    }
                                 })
                             }
                             .onDelete(perform: delete)
@@ -109,10 +111,10 @@ struct WatchListView: View {
         guard let index = list.items.firstIndex(where: { $0.id == id }) else { return }
 
         list.items.remove(at: index)
-        list.items.insert(SMPListItem(id: id,
-                                      title: title,
-                                      isComplete: isComplete),
+        list.items.insert(SMPListItem(id: id, title: title, isComplete: isComplete),
                           at: index)
+
+        list.items.sort(by: { !$0.isComplete && $1.isComplete })
 
         storage.updateList(list)
     }
