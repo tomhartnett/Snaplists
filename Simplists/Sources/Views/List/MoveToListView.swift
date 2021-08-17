@@ -21,25 +21,30 @@ struct MoveToListView: View {
     var completion: (() -> Void)?
 
     var body: some View {
-        VStack {
-            List {
-                ForEach(lists) { list in
-                    if list.id != fromList.id {
-                        ListRowView(title: list.title, itemCount: list.items.count)
-                            .onTapGesture {
-                                moveItems(to: list.id)
+        NavigationView {
+            VStack {
+                List {
+                    Section(header: Text("Destination list")) {
+                        ForEach(lists) { list in
+                            if list.id != fromList.id {
+                                ListRowView(title: list.title, itemCount: list.items.count)
+                                    .onTapGesture {
+                                        moveItems(to: list.id)
+                                    }
+                            } else {
+                                EmptyView()
                             }
-                    } else {
-                        EmptyView()
+                        }
                     }
+                    .textCase(nil)
                 }
             }
-        }
-        .navigationBarItems(trailing: Button(action: { cancel() }) { Text("Cancel") })
-        .navigationBarTitle(Text("Move \(itemIDs.count) items"))
-        .navigationBarTitleDisplayMode(.inline)
-        .onAppear {
-            lists = storage.getLists()
+            .navigationBarItems(trailing: Button(action: { cancel() }) { Text("Cancel") })
+            .navigationBarTitle(Text("Move \(itemIDs.count) items"))
+            .navigationBarTitleDisplayMode(.inline)
+            .onAppear {
+                lists = storage.getLists()
+            }
         }
     }
 

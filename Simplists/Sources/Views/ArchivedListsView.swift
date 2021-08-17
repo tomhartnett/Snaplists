@@ -21,38 +21,37 @@ struct ArchivedListsView: View {
                     .foregroundColor(.secondary)
             } else {
                 VStack(alignment: .leading) {
-                    Text("Long-press on a list for options")
-                        .foregroundColor(.secondary)
-                        .padding([.horizontal])
-
                     List {
-                        ForEach(lists) { list in
-                            HStack {
-                                Text(list.title)
-                                Spacer()
-                                Text("\(list.items.count)")
-                                    .foregroundColor(.secondary)
-                            }
-                            .contextMenu {
+                        Section(header: Text("Long-press on a list for options")) {
+                            ForEach(lists) { list in
+                                HStack {
+                                    Text(list.title)
+                                    Spacer()
+                                    Text("\(list.items.count)")
+                                        .foregroundColor(.secondary)
+                                }
+                                .contextMenu {
 
-                                Button(action: {
-                                    var listToUpdate = list
-                                    listToUpdate.isArchived = false
-                                    storage.updateList(listToUpdate)
-                                }, label: {
-                                    Text("archived-restore-button-text")
-                                    Image(systemName: "trash.slash")
-                                })
+                                    Button(action: {
+                                        var listToUpdate = list
+                                        listToUpdate.isArchived = false
+                                        storage.updateList(listToUpdate)
+                                    }, label: {
+                                        Text("archived-restore-button-text")
+                                        Image(systemName: "trash.slash")
+                                    })
 
-                                Button(action: {
-                                    storage.deleteList(list)
-                                }, label: {
-                                    Text("archived-delete-button-text")
-                                    Image(systemName: "trash")
-                                })
+                                    Button(action: {
+                                        storage.deleteList(list)
+                                    }, label: {
+                                        Text("archived-delete-button-text")
+                                        Image(systemName: "trash")
+                                    })
+                                }
                             }
+                            .onDelete(perform: delete)
                         }
-                        .onDelete(perform: delete)
+                        .textCase(nil)
                     }
                     .listStyle(InsetGroupedListStyle())
                 }
