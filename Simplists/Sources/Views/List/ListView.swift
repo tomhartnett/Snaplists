@@ -30,22 +30,20 @@ struct ListView: View {
     @State private var renameListID = ""
     @State private var renameListTitle = ""
     @State private var selectedIDs = Set<UUID>()
-    @State private var isPresentingDelete = false
     @Binding var selectedListID: UUID?
     @Binding var lists: [SMPList]
 
     private let addItemFieldID = "AddItemFieldID"
 
-    private var deleteItemsText: String {
-        let formatString = "item count".localize()
-        let result = String.localizedStringWithFormat(formatString, selectedIDs.count)
-        // TODO: localize properly.
-        return "Delete \(result)?"
-    }
-
     private var itemCountText: String {
         let formatString = "item count".localize()
         let result = String.localizedStringWithFormat(formatString, list.items.count)
+        return result
+    }
+
+    private var selectedItemsCountText: String {
+        let formatString = "item count".localize()
+        let result = String.localizedStringWithFormat(formatString, selectedIDs.count)
         return result
     }
 
@@ -78,18 +76,6 @@ struct ListView: View {
                 .navigationBarTitle("")
         } else {
             VStack(alignment: .leading) {
-
-                Button(action: {
-                    renameListID = list.id.uuidString
-                    renameListTitle = list.title
-                    activeSheet = .renameList
-                }) {
-                    Text("list-rename-button-text")
-                        .font(.system(size: 13))
-                }
-                .padding(.leading)
-                .padding(.top, -6)
-
                 ScrollViewReader { proxy in
                     List(selection: $selectedIDs) {
                         Section(header:
@@ -102,7 +88,9 @@ struct ListView: View {
                                     ForEach(list.items) { item in
                                         ItemView(title: item.title,
                                                  isComplete: item.isComplete) { title, isComplete in
-                                            updateItem(id: item.id, title: title, isComplete: isComplete)
+                                            withAnimation {
+                                                updateItem(id: item.id, title: title, isComplete: isComplete)
+                                            }
                                         }
                                     }
                                     .onDelete(perform: delete)
@@ -142,22 +130,22 @@ struct ListView: View {
                                 if editMode?.wrappedValue == .active {
 
                                     HStack {
-                                        Menu("Mark") {
+                                        Menu("list-mark-button-text") {
                                             Button(action: {
                                                 markSelectedItems(isComplete: false)
                                             }) {
-                                                Text("toolbar-markincomplete-button-text")
+                                                Text("list-markincomplete-button-text")
                                                 Image(systemName: "circle")
                                             }
 
                                             Button(action: {
                                                 markSelectedItems(isComplete: true)
                                             }) {
-                                                Text("toolbar-markcomplete-button-text")
+                                                Text("list-markcomplete-button-text")
                                                 Image(systemName: "checkmark.circle")
                                             }
 
-                                            Text("\(selectedIDs.count) items")
+                                            Text(selectedItemsCountText)
                                         }
 
                                         Spacer()
@@ -165,39 +153,47 @@ struct ListView: View {
                                         Button(action: {
                                             activeSheet = .moveItems
                                         }) {
-                                            Text("Move")
+                                            Text("list-move-button-text")
                                         }
 
                                         Spacer()
 
-                                        Button(action: {
-                                            isPresentingDelete = true
-                                        }) {
-                                            Text("Trash")
-                                        }
-                                        .actionSheet(isPresented: $isPresentingDelete) {
-                                            // TODO: localize properly.
-                                            let deleteButton = ActionSheet.Button.destructive(Text("Delete")) {
+                                        Menu("list-menu-delete-button-text") {
+                                            Button(action: {
                                                 deleteSelectedItems()
+                                            }) {
+                                                Text("list-menu-delete-button-text")
+                                                Image(systemName: "trash")
                                             }
-                                            let cancelButton = ActionSheet.Button.cancel(Text("Cancel"))
 
-                                            return ActionSheet(title: Text(deleteItemsText).fontWeight(.bold),
-                                                               message: nil,
-                                                               buttons: [deleteButton, cancelButton])
+                                            Text(selectedItemsCountText)
                                         }
                                     }
                                     .disabled(selectedIDs.isEmpty)
 
                                 } else {
                                     HStack {
+                                        Spacer()
+
+                                        Button(action: {
+                                            renameListID = list.id.uuidString
+                                            renameListTitle = list.title
+                                            activeSheet = .renameList
+                                        }) {
+                                            Text("list-rename-button-text")
+                                        }
+
+                                        Spacer()
+
                                         Button(action: {
                                             list.isArchived = true
                                             storage.updateList(list)
                                             selectedListID = nil
                                         }) {
-                                            Text("Delete List")
+                                            Text("list-delete-button-text")
                                         }
+
+                                        Spacer()
                                     }
                                 }
                             }
@@ -275,11 +271,13 @@ struct ListView: View {
                             title: String,
                             isComplete: Bool) {
 
-        guard let itemIndex = list.items.firstIndex(where: { $0.id == id }) else { return }
+        guard let index = list.items.firstIndex(where: { $0.id == id }) else { return }
 
-        list.items.remove(at: itemIndex)
+        list.items.remove(at: index)
         list.items.insert(SMPListItem(id: id, title: title, isComplete: isComplete),
-                          at: itemIndex)
+                          at: index)
+
+        list.items.sort(by: { !$0.isComplete && $1.isComplete })
 
         storage.updateList(list)
     }

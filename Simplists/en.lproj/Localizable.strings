@@ -31,16 +31,18 @@
 "move-move-button-text" = "Move";
 "move-cancel-button-text" = "Cancel";
 
-"list-rename-button-text" = "Change list name";
+/* ListView */
+"list-rename-button-text" = "Rename List";
+"list-delete-button-text" = "Delete List";
 "list-modified-format-string" = "updated: %@";
 "list-modified-just-now-text" = "just now";
 "list-empty-no-items-text" = "No Items";
 "list-new-item-placeholder" = "Add new item...";
-
-"toolbar-markincomplete-button-text" = "Mark all incomplete";
-"toolbar-markcomplete-button-text" = "Mark all complete";
-"toolbar-delete-button-text" = "Delete list";
-"toolbar-rename-list-button-text" = "Rename list";
+"list-mark-button-text" = "Mark";
+"list-markincomplete-button-text" = "Mark incomplete";
+"list-markcomplete-button-text" = "Mark complete";
+"list-move-button-text" = "Move";
+"list-menu-delete-button-text" = "Delete";
 
 "archived-navigation-bar-title" = "Deleted Lists";
 "archived-restore-button-text" = "Restore";
