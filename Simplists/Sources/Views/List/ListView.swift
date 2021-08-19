@@ -185,11 +185,14 @@ struct ListView: View {
 
                                         Spacer()
 
-                                        Button(action: {
-                                            list.isArchived = true
-                                            storage.updateList(list)
-                                            selectedListID = nil
-                                        }) {
+                                        Menu("list-delete-button-text") {
+                                            Button(action: {
+                                                deleteList()
+                                            }) {
+                                                Text("list-menu-delete-button-text")
+                                                Image(systemName: "trash")
+                                            }
+
                                             Text("list-delete-button-text")
                                         }
 
@@ -267,9 +270,7 @@ struct ListView: View {
         }
     }
 
-    private func updateItem(id: UUID,
-                            title: String,
-                            isComplete: Bool) {
+    private func updateItem(id: UUID, title: String, isComplete: Bool) {
 
         guard let index = list.items.firstIndex(where: { $0.id == id }) else { return }
 
@@ -311,6 +312,12 @@ struct ListView: View {
         selectedIDs.removeAll()
 
         storage.updateList(list)
+    }
+
+    private func deleteList() {
+        list.isArchived = true
+        storage.updateList(list)
+        selectedListID = nil
     }
 }
 
