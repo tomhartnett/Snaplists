@@ -173,30 +173,31 @@ struct ListView: View {
 
                                 } else {
                                     HStack {
-                                        Spacer()
+                                        Menu("Actions") {
 
-                                        Button(action: {
-                                            renameListID = list.id.uuidString
-                                            renameListTitle = list.title
-                                            activeSheet = .renameList
-                                        }) {
-                                            Text("list-rename-button-text")
-                                        }
-
-                                        Spacer()
-
-                                        Menu("list-delete-button-text") {
                                             Button(action: {
                                                 deleteList()
                                             }) {
-                                                Text("list-menu-delete-button-text")
+                                                Text("Delete list")
                                                 Image(systemName: "trash")
                                             }
 
-                                            Text("list-delete-button-text")
-                                        }
+                                            Button(action: {
+                                                renameList()
+                                            }) {
+                                                Text("Rename list")
+                                                Image(systemName: "pencil")
+                                            }
 
-                                        Spacer()
+                                            Button(action: {
+                                                duplicateList()
+                                            }) {
+                                                Text("Duplicate list")
+                                                Image(systemName: "plus.square.on.square")
+                                            }
+
+                                            Text("Actions")
+                                        }
                                     }
                                 }
                             }
@@ -205,7 +206,12 @@ struct ListView: View {
                 }
 
             }
-            .navigationBarItems(trailing: NavBarItemsView(showEditButton: !list.items.isEmpty))
+            .navigationBarBackButtonHidden(editMode?.wrappedValue == .active)
+            .navigationBarItems(
+                leading: SelectAllView(selectedIDs: selectedIDs,
+                                       itemCount: list.items.count,
+                                       tapAction: selectOrDeselectAll),
+                trailing: NavBarItemsView(showEditButton: !list.items.isEmpty))
             .navigationBarTitle(list.title)
             .sheet(item: $activeSheet) { item in
                 switch item {
@@ -318,6 +324,29 @@ struct ListView: View {
         list.isArchived = true
         storage.updateList(list)
         selectedListID = nil
+    }
+
+    private func duplicateList() {
+        if lists.count >= FreeLimits.numberOfLists.limit &&
+            !storeDataSource.hasPurchasedIAP {
+            activeSheet = .purchaseRequired
+        } else if let newList = storage.duplicateList(list) {
+            list = newList
+        }
+    }
+
+    private func renameList() {
+        renameListID = list.id.uuidString
+        renameListTitle = list.title
+        activeSheet = .renameList
+    }
+
+    private func selectOrDeselectAll() {
+        if selectedIDs.count < list.items.count {
+            selectedIDs = Set(list.items.map({ $0.id }))
+        } else {
+            selectedIDs.removeAll()
+        }
     }
 }
 

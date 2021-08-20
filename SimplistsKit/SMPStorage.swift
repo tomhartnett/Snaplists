@@ -119,9 +119,11 @@ public final class SMPStorage: ObservableObject {
         saveChanges()
     }
 
-    public func duplicateList(_ list: SMPList) {
+    @discardableResult
+    public func duplicateList(_ list: SMPList) -> SMPList? {
+        let newListID = UUID()
         let listEntity = ListEntity(context: context)
-        listEntity.identifier = UUID()
+        listEntity.identifier = newListID
         listEntity.title = "\(list.title) copy"
         listEntity.isArchived = false
 
@@ -138,6 +140,8 @@ public final class SMPStorage: ObservableObject {
         listEntity.modified = Date()
 
         saveChanges()
+
+        return getList(with: newListID)
     }
 
     public func purgeDeletedLists() {
