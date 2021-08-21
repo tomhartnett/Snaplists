@@ -183,6 +183,20 @@ struct ListView: View {
                                             }
 
                                             Button(action: {
+                                                deleteAllItems()
+                                            }) {
+                                                Text("Delete all items")
+                                                Image(systemName: "circle.dashed")
+                                            }
+
+                                            Button(action: {
+                                                deleteCompletedItems()
+                                            }) {
+                                                Text("Delete completed items")
+                                                Image(systemName: "checkmark.circle")
+                                            }
+
+                                            Button(action: {
                                                 renameList()
                                             }) {
                                                 Text("Rename list")
@@ -299,6 +313,16 @@ struct ListView: View {
         selectedIDs.removeAll()
 
         storage.updateList(list)
+    }
+
+    private func deleteAllItems() {
+        let itemIDs = list.items.map { $0.id }
+        storage.deleteItems(itemIDs, listID: list.id)
+    }
+
+    private func deleteCompletedItems() {
+        let itemIDs = list.items.filter({ $0.isComplete }).map { $0.id }
+        storage.deleteItems(itemIDs, listID: list.id)
     }
 
     private func markSelectedItems(isComplete: Bool) {

@@ -13,9 +13,12 @@
 "Add new list..." = "Add new list...";
 "Cancel" = "Cancel";
 "Created by" = "Created by";
-"Delete all?" = "Delete all?";
-"Delete all" = "Delete all";
 "Delete" = "Delete";
+"Delete all" = "Delete all";
+"Delete all?" = "Delete all?";
+"Delete all items" = "Delete all items";
+"Delete completed items" = "Delete completed items";
+"Delete list" = "Delete list";
 "Deleted Lists" = "Deleted Lists";
 "Done" = "Done";
 "Email can't be sent from this device." = "Email can't be sent from this device.";
