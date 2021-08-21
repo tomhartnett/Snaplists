@@ -101,7 +101,8 @@ struct WatchHomeView: View {
             }
         }
         .animation(.default)
-        .navigationBarTitle("Snaplists")
+        .navigationTitle("Snaplists")
+        .inlineNavBarTitleDisplayMode()
         .onAppear {
             reload()
             checkAccountStatus()

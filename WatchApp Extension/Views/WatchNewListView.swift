@@ -27,7 +27,7 @@ struct WatchNewListView: View {
 
                 List {
                     Section {
-                        TextField("newlist-name-placeholder", text: $listTitle)
+                        TextField("newlist-name-placeholder".localize(), text: $listTitle)
                             .id(listTopID)
                     }
 

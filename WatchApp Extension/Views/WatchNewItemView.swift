@@ -19,7 +19,7 @@ struct WatchNewItemView: View {
         VStack {
             List {
                 Section {
-                    TextField("newitem-name-placeholder", text: $itemTitle)
+                    TextField("newitem-name-placeholder".localize(), text: $itemTitle)
                 }
 
                 Section {
