@@ -18,9 +18,9 @@ struct EmptyStateView: View {
     var message: String {
         switch emptyStateType {
         case .noLists:
-            return "home-empty-no-lists-text".localize()
+            return "No Lists".localize()
         case .noSelection:
-            return "home-empty-no-selection-text".localize()
+            return "No Selection".localize()
         }
     }
 

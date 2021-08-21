@@ -16,7 +16,7 @@ struct ArchivedListsView: View {
     var body: some View {
         VStack {
             if lists.isEmpty {
-                Text("archived-empty-state-text")
+                Text("No deleted lists")
                     .font(.title)
                     .foregroundColor(.secondary)
             } else {
@@ -37,14 +37,14 @@ struct ArchivedListsView: View {
                                         listToUpdate.isArchived = false
                                         storage.updateList(listToUpdate)
                                     }, label: {
-                                        Text("archived-restore-button-text")
+                                        Text("Restore")
                                         Image(systemName: "trash.slash")
                                     })
 
                                     Button(action: {
                                         storage.deleteList(list)
                                     }, label: {
-                                        Text("archived-delete-button-text")
+                                        Text("Delete")
                                         Image(systemName: "trash")
                                     })
                                 }
@@ -60,24 +60,24 @@ struct ArchivedListsView: View {
                         Button(action: {
                             isPresentingAlert.toggle()
                         }) {
-                            Text("archived-delete-all-button-text")
+                            Text("Delete all")
                         }
                     }
                 }
             }
         }
         .alert(isPresented: $isPresentingAlert) {
-            let deleteButton = Alert.Button.destructive(Text("archived-alert-delete-button-text")) {
+            let deleteButton = Alert.Button.destructive(Text("Delete")) {
                 storage.purgeDeletedLists()
                 getArchivedLists()
             }
-            let cancelButton = Alert.Button.cancel(Text("archived-alert-cancel-button-text"))
+            let cancelButton = Alert.Button.cancel(Text("Cancel"))
 
-            return Alert(title: Text("archived-alert-title"),
+            return Alert(title: Text("Delete all?"),
                          primaryButton: deleteButton,
                          secondaryButton: cancelButton)
         }
-        .navigationBarTitle("archived-navigation-bar-title")
+        .navigationBarTitle("Deleted Lists")
         .navigationBarItems(trailing: NavBarItemsView(showEditButton: !lists.isEmpty))
         .onAppear {
             getArchivedLists()

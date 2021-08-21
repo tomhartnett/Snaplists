@@ -30,23 +30,23 @@ struct MoreView: View {
             }
 
             List {
-                Section(header: Text("more-section-purchases")) {
+                Section(header: Text("Optional In-App Purchases")) {
                     PreviewModeWidget()
                         .onTapGesture {
                             actionSheet = .storeView
                         }
                 }
 
-                Section(header: Text("more-section-feedback-header")) {
-                    WidgetView(systemImageName: "star", lableText: "more-rate-app-text".localize())
+                Section(header: Text("Feedback")) {
+                    WidgetView(systemImageName: "star", lableText: "Please Rate this App".localize())
                         .onTapGesture {
                             guard let url = URL(string: "itms-apps://itunes.apple.com/app/id1527429580") else { return }
                             UIApplication.shared.open(url)
                         }
-                    WidgetView(systemImageName: "envelope", lableText: "more-email-feedback-text".localize())
+                    WidgetView(systemImageName: "envelope", lableText: "Send Feedback via Email".localize())
                         .onTapGesture {
                             guard MFMailComposeViewController.canSendMail() else {
-                                errorMessage = "more-email-send-error-text".localize()
+                                errorMessage = "Email can't be sent from this device.".localize()
                                 return
                             }
 
@@ -54,13 +54,13 @@ struct MoreView: View {
                         }
                 }
 
-                Section(header: Text("more-section-about-header")) {
+                Section(header: Text("About the App")) {
                     NavigationLink(destination: PrivacyPolicyView()) {
                         HStack {
                             Image(systemName: "lock")
                                 .frame(width: 25, height: 25)
                                 .foregroundColor(Color("TextSecondary"))
-                            Text("more-privacy-policy-text")
+                            Text("Privacy Policy")
                         }
                     }
                     NavigationLink(destination: AboutView()) {
@@ -68,7 +68,7 @@ struct MoreView: View {
                             Image(systemName: "info.circle")
                                 .frame(width: 25, height: 25)
                                 .foregroundColor(Color("TextSecondary"))
-                            Text("more-about-text")
+                            Text("About")
                         }
                     }
                 }
@@ -99,7 +99,7 @@ struct MoreView: View {
                 }
                 #endif
             }
-            .navigationBarTitle("more-navigation-bar-title")
+            .navigationBarTitle("More")
             .listStyle(InsetGroupedListStyle())
         }
         .sheet(item: $actionSheet) { item in

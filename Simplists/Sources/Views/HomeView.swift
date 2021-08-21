@@ -86,14 +86,14 @@ struct HomeView: View {
                                             renameListTitle = list.title
                                             isPresentingRename.toggle()
                                         }, label: {
-                                            Text("home-rename-button-text")
+                                            Text("Rename")
                                             Image(systemName: "pencil")
                                         })
 
                                         Button(action: {
                                             archive(list: list)
                                         }, label: {
-                                            Text("home-delete-button-text")
+                                            Text("Delete")
                                             Image(systemName: "trash")
                                         })
                                     }
@@ -117,7 +117,7 @@ struct HomeView: View {
                                 .frame(width: 25, height: 25)
                                 .foregroundColor(.secondary)
 
-                            TextField("home-add-list-placeholder".localize(),
+                            TextField("Add new list...".localize(),
                                       text: $newListTitle,
                                       onCommit: addNewList)
                                 .padding([.top, .bottom])
@@ -130,7 +130,7 @@ struct HomeView: View {
                                 Image(systemName: "trash")
                                     .frame(width: 25, height: 25)
                                     .foregroundColor(Color("TextSecondary"))
-                                Text("home-archived-title")
+                                Text("Deleted Lists")
                                 Spacer()
                                 Text("\(archivedListCount)")
                                     .foregroundColor(.secondary)
@@ -143,11 +143,11 @@ struct HomeView: View {
                             Image(systemName: "ellipsis.circle")
                                 .frame(width: 25, height: 25)
                                 .foregroundColor(Color("TextSecondary"))
-                            Text("home-more-title")
+                            Text("More")
                         }
                     }
                 }
-                .navigationBarTitle("home-navigation-bar-title")
+                .navigationBarTitle("Snaplists")
                 .listStyle(InsetGroupedListStyle())
             }
             VStack {

@@ -17,24 +17,24 @@ struct RenameListView: View {
     var body: some View {
         NavigationView {
             Form {
-                TextField("rename-name-placeholder".localize(), text: $title, onCommit: saveChanges)
+                TextField("Enter name...".localize(), text: $title, onCommit: saveChanges)
             }
             .navigationBarItems(
                 leading: Button(action: {
                     dismiss()
                 }, label: {
-                    Text("rename-cancel-button-text")
+                    Text("Cancel")
                         .fontWeight(.regular)
                 }),
                 trailing: Button(action: {
                     saveChanges()
                 }, label: {
-                    Text("rename-done-button-text")
+                    Text("Done")
                         .fontWeight(.semibold)
                 })
                 .disabled(title.isEmpty)
             )
-            .navigationBarTitle("rename-navigation-bar-title", displayMode: .inline)
+            .navigationBarTitle("Rename List", displayMode: .inline)
         }
     }
 

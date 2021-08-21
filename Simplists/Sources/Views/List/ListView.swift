@@ -60,7 +60,7 @@ struct ListView: View {
 
             return String(format: format, dateString)
         } else if elapsedTime < 60 {
-            return String(format: format, "list-modified-just-now-text".localize())
+            return String(format: format, "just now".localize())
         } else {
             let formatter = RelativeDateTimeFormatter()
             formatter.unitsStyle = .full
@@ -107,7 +107,7 @@ struct ListView: View {
                                                 .foregroundColor(.secondary)
                                         }
 
-                                        TextField("list-new-item-placeholder".localize(),
+                                        TextField("Add new item...".localize(),
                                                   text: $newItemTitle,
                                                   onCommit: {
                                             addNewItem {
@@ -130,18 +130,18 @@ struct ListView: View {
                                 if editMode?.wrappedValue == .active {
 
                                     HStack {
-                                        Menu("list-mark-button-text") {
+                                        Menu("Mark") {
                                             Button(action: {
                                                 markSelectedItems(isComplete: false)
                                             }) {
-                                                Text("list-markincomplete-button-text")
+                                                Text("Mark incomplete")
                                                 Image(systemName: "circle")
                                             }
 
                                             Button(action: {
                                                 markSelectedItems(isComplete: true)
                                             }) {
-                                                Text("list-markcomplete-button-text")
+                                                Text("Mark complete")
                                                 Image(systemName: "checkmark.circle")
                                             }
 
@@ -153,16 +153,16 @@ struct ListView: View {
                                         Button(action: {
                                             activeSheet = .moveItems
                                         }) {
-                                            Text("list-move-button-text")
+                                            Text("Move")
                                         }
 
                                         Spacer()
 
-                                        Menu("list-menu-delete-button-text") {
+                                        Menu("Delete") {
                                             Button(action: {
                                                 deleteSelectedItems()
                                             }) {
-                                                Text("list-menu-delete-button-text")
+                                                Text("Delete")
                                                 Image(systemName: "trash")
                                             }
 

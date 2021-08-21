@@ -10,10 +10,10 @@ import SwiftUI
 struct CannotPurchaseView: View {
     var body: some View {
         VStack {
-            Text("cannotpurchase-header-text")
+            Text("Sorry!")
                 .font(.title)
                 .padding(.top, 10)
-            Text("cannotpurchase-body-text")
+            Text("You can't make purchases on this device.")
                 .foregroundColor(.primary)
                 .padding([.bottom, .leading, .trailing], 10)
         }
