@@ -10,6 +10,13 @@
 		E2029FFA25FB9E3300490043 /* ReviewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2029FF925FB9E3300490043 /* ReviewHelper.swift */; };
 		E20BD7792754057200671478 /* ConditionalHiddenModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20BD7782754057200671478 /* ConditionalHiddenModifier.swift */; };
 		E20F8A7926D18CF10016E2C7 /* InlineNavBarTitleDisplayMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20F8A7826D18CF10016E2C7 /* InlineNavBarTitleDisplayMode.swift */; };
+		E20F8A8026D19C510016E2C7 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E20F8A7F26D19C510016E2C7 /* WidgetKit.framework */; };
+		E20F8A8226D19C510016E2C7 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E20F8A8126D19C510016E2C7 /* SwiftUI.framework */; };
+		E20F8A8526D19C510016E2C7 /* SimplistsWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20F8A8426D19C510016E2C7 /* SimplistsWidget.swift */; };
+		E20F8A8826D19C540016E2C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E20F8A8726D19C540016E2C7 /* Assets.xcassets */; };
+		E20F8A8A26D19C540016E2C7 /* SimplistsWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = E20F8A8626D19C510016E2C7 /* SimplistsWidget.intentdefinition */; };
+		E20F8A8B26D19C540016E2C7 /* SimplistsWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = E20F8A8626D19C510016E2C7 /* SimplistsWidget.intentdefinition */; };
+		E20F8A8E26D19C540016E2C7 /* SimplistsWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E20F8A7E26D19C510016E2C7 /* SimplistsWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E21123DB2504420700B3D76D /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21123DA2504420700B3D76D /* PrivacyPolicyView.swift */; };
 		E21123DD2504441900B3D76D /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21123DC2504441900B3D76D /* AboutView.swift */; };
 		E218230C25605F0200CAA92C /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E218230B25605F0200CAA92C /* String+Extensions.swift */; };
@@ -74,6 +81,9 @@
 		E280799E26ECF539004A4559 /* ConditionalPaddingModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E280799D26ECF539004A4559 /* ConditionalPaddingModifier.swift */; };
 		E281EBD9259A2C7400DF1CEB /* FeatureBulletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E281EBD8259A2C7400DF1CEB /* FeatureBulletView.swift */; };
 		E281EBE4259A3CD800DF1CEB /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E281EBE3259A3CD800DF1CEB /* StoreKit.framework */; };
+		E281FE0826E3C62400370D2D /* MediumWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E281FE0726E3C62400370D2D /* MediumWidgetView.swift */; };
+		E281FE0A26E3C63500370D2D /* LargeWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E281FE0926E3C63500370D2D /* LargeWidgetView.swift */; };
+		E281FE0B26E3C63F00370D2D /* SmallWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E281FE0526E3C60E00370D2D /* SmallWidgetView.swift */; };
 		E282850725F52A7700EE8997 /* WatchStoreErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E282850625F52A7700EE8997 /* WatchStoreErrorView.swift */; };
 		E282850F25F52E0B00EE8997 /* WatchPrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E282850E25F52E0B00EE8997 /* WatchPrivacyPolicyView.swift */; };
 		E282851425F52E2F00EE8997 /* WatchParagraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E282851325F52E2F00EE8997 /* WatchParagraphView.swift */; };
@@ -111,6 +121,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		E20F8A8C26D19C540016E2C7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E235D78724DF5B58007D95BE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E20F8A7D26D19C510016E2C7;
+			remoteInfo = SimplistsWidgetExtension;
+		};
 		E235D7B624DF5B89007D95BE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E235D78724DF5B58007D95BE /* Project object */;
@@ -142,6 +159,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		E20F8A9326D19C540016E2C7 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				E20F8A8E26D19C540016E2C7 /* SimplistsWidgetExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E235D7D224DF5B89007D95BE /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -192,6 +220,14 @@
 		E2029FF925FB9E3300490043 /* ReviewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewHelper.swift; sourceTree = "<group>"; };
 		E20BD7782754057200671478 /* ConditionalHiddenModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionalHiddenModifier.swift; sourceTree = "<group>"; };
 		E20F8A7826D18CF10016E2C7 /* InlineNavBarTitleDisplayMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineNavBarTitleDisplayMode.swift; sourceTree = "<group>"; };
+		E20F8A7E26D19C510016E2C7 /* SimplistsWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SimplistsWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		E20F8A7F26D19C510016E2C7 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		E20F8A8126D19C510016E2C7 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		E20F8A8426D19C510016E2C7 /* SimplistsWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimplistsWidget.swift; sourceTree = "<group>"; };
+		E20F8A8626D19C510016E2C7 /* SimplistsWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = SimplistsWidget.intentdefinition; sourceTree = "<group>"; };
+		E20F8A8726D19C540016E2C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E20F8A8926D19C540016E2C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E20F8A8F26D19C540016E2C7 /* SimplistsWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SimplistsWidgetExtension.entitlements; sourceTree = "<group>"; };
 		E21123DA2504420700B3D76D /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyView.swift; sourceTree = "<group>"; };
 		E21123DC2504441900B3D76D /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		E218230B25605F0200CAA92C /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
@@ -256,6 +292,9 @@
 		E280799D26ECF539004A4559 /* ConditionalPaddingModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionalPaddingModifier.swift; sourceTree = "<group>"; };
 		E281EBD8259A2C7400DF1CEB /* FeatureBulletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureBulletView.swift; sourceTree = "<group>"; };
 		E281EBE3259A3CD800DF1CEB /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		E281FE0526E3C60E00370D2D /* SmallWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallWidgetView.swift; sourceTree = "<group>"; };
+		E281FE0726E3C62400370D2D /* MediumWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumWidgetView.swift; sourceTree = "<group>"; };
+		E281FE0926E3C63500370D2D /* LargeWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeWidgetView.swift; sourceTree = "<group>"; };
 		E282850625F52A7700EE8997 /* WatchStoreErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchStoreErrorView.swift; sourceTree = "<group>"; };
 		E282850E25F52E0B00EE8997 /* WatchPrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchPrivacyPolicyView.swift; sourceTree = "<group>"; };
 		E282851325F52E2F00EE8997 /* WatchParagraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchParagraphView.swift; sourceTree = "<group>"; };
@@ -285,6 +324,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		E20F8A7B26D19C510016E2C7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E20F8A8226D19C510016E2C7 /* SwiftUI.framework in Frameworks */,
+				E20F8A8026D19C510016E2C7 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E235D78C24DF5B59007D95BE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -330,6 +378,18 @@
 				E2029FF925FB9E3300490043 /* ReviewHelper.swift */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		E20F8A8326D19C510016E2C7 /* SimplistsWidget */ = {
+			isa = PBXGroup;
+			children = (
+				E281FE0C26E3CA0100370D2D /* Views */,
+				E20F8A8426D19C510016E2C7 /* SimplistsWidget.swift */,
+				E20F8A8626D19C510016E2C7 /* SimplistsWidget.intentdefinition */,
+				E20F8A8726D19C540016E2C7 /* Assets.xcassets */,
+				E20F8A8926D19C540016E2C7 /* Info.plist */,
+			);
+			path = SimplistsWidget;
 			sourceTree = "<group>";
 		};
 		E22E152424E06963002A140E /* Views */ = {
@@ -395,12 +455,14 @@
 		E235D78624DF5B58007D95BE = {
 			isa = PBXGroup;
 			children = (
+				E20F8A8F26D19C540016E2C7 /* SimplistsWidgetExtension.entitlements */,
 				E2B62BAE25E2C67900898B21 /* Shared */,
 				E235D79124DF5B59007D95BE /* Simplists */,
 				E235D7A924DF5B88007D95BE /* WatchApp */,
 				E235D7B824DF5B89007D95BE /* WatchApp Extension */,
 				E235D7E424E037B9007D95BE /* SimplistsKit */,
 				E235D80C24E050CD007D95BE /* SimplistsWatchKit */,
+				E20F8A8326D19C510016E2C7 /* SimplistsWidget */,
 				E235D79024DF5B59007D95BE /* Products */,
 				E235D7D824E0372D007D95BE /* Frameworks */,
 			);
@@ -414,6 +476,7 @@
 				E235D7B424DF5B89007D95BE /* WatchApp Extension.appex */,
 				E235D7E324E037B9007D95BE /* SimplistsKit.framework */,
 				E235D80B24E050CD007D95BE /* SimplistsWatchKit.framework */,
+				E20F8A7E26D19C510016E2C7 /* SimplistsWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -482,6 +545,8 @@
 				E281EBE3259A3CD800DF1CEB /* StoreKit.framework */,
 				E235D7DC24E0374D007D95BE /* CloudKit.framework */,
 				E235D7D924E0372D007D95BE /* CloudKit.framework */,
+				E20F8A7F26D19C510016E2C7 /* WidgetKit.framework */,
+				E20F8A8126D19C510016E2C7 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -535,6 +600,16 @@
 				E2A376B325D1B4E2001D1615 /* UserDefaults+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E281FE0C26E3CA0100370D2D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E281FE0526E3C60E00370D2D /* SmallWidgetView.swift */,
+				E281FE0726E3C62400370D2D /* MediumWidgetView.swift */,
+				E281FE0926E3C63500370D2D /* LargeWidgetView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		E282850525F52A4500EE8997 /* Store */ = {
@@ -618,6 +693,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		E20F8A7D26D19C510016E2C7 /* SimplistsWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E20F8A9026D19C540016E2C7 /* Build configuration list for PBXNativeTarget "SimplistsWidgetExtension" */;
+			buildPhases = (
+				E20F8A7A26D19C510016E2C7 /* Sources */,
+				E20F8A7B26D19C510016E2C7 /* Frameworks */,
+				E20F8A7C26D19C510016E2C7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SimplistsWidgetExtension;
+			productName = SimplistsWidgetExtension;
+			productReference = E20F8A7E26D19C510016E2C7 /* SimplistsWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		E235D78E24DF5B59007D95BE /* Simplists */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E235D7A324DF5B5A007D95BE /* Build configuration list for PBXNativeTarget "Simplists" */;
@@ -629,12 +721,14 @@
 				E235D7D624DF5B89007D95BE /* Embed Watch Content */,
 				E235D7EF24E037B9007D95BE /* Embed Frameworks */,
 				E26DD857250905A500FCC495 /* SwiftLint */,
+				E20F8A9326D19C540016E2C7 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				E235D7CD24DF5B89007D95BE /* PBXTargetDependency */,
 				E235D7E924E037B9007D95BE /* PBXTargetDependency */,
+				E20F8A8D26D19C540016E2C7 /* PBXTargetDependency */,
 			);
 			name = Simplists;
 			packageProductDependencies = (
@@ -725,9 +819,12 @@
 		E235D78724DF5B58007D95BE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1200;
+				LastSwiftUpdateCheck = 1300;
 				LastUpgradeCheck = 1200;
 				TargetAttributes = {
+					E20F8A7D26D19C510016E2C7 = {
+						CreatedOnToolsVersion = 13.0;
+					};
 					E235D78E24DF5B59007D95BE = {
 						CreatedOnToolsVersion = 12.0;
 					};
@@ -766,11 +863,20 @@
 				E235D7B324DF5B89007D95BE /* WatchApp Extension */,
 				E235D7E224E037B9007D95BE /* SimplistsKit */,
 				E235D80A24E050CD007D95BE /* SimplistsWatchKit */,
+				E20F8A7D26D19C510016E2C7 /* SimplistsWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		E20F8A7C26D19C510016E2C7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E20F8A8826D19C540016E2C7 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E235D78D24DF5B59007D95BE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -933,6 +1039,18 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		E20F8A7A26D19C510016E2C7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E281FE0826E3C62400370D2D /* MediumWidgetView.swift in Sources */,
+				E20F8A8A26D19C540016E2C7 /* SimplistsWidget.intentdefinition in Sources */,
+				E281FE0A26E3C63500370D2D /* LargeWidgetView.swift in Sources */,
+				E281FE0B26E3C63F00370D2D /* SmallWidgetView.swift in Sources */,
+				E20F8A8526D19C510016E2C7 /* SimplistsWidget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E235D78B24DF5B59007D95BE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -969,6 +1087,7 @@
 				E280799E26ECF539004A4559 /* ConditionalPaddingModifier.swift in Sources */,
 				E2C6671925CF277D0063D7E8 /* PurchasedView.swift in Sources */,
 				E235D79524DF5B59007D95BE /* SceneDelegate.swift in Sources */,
+				E20F8A8B26D19C540016E2C7 /* SimplistsWidget.intentdefinition in Sources */,
 				E2C6670C25CF1BD80063D7E8 /* PurchaseButtonsView.swift in Sources */,
 				E2C6671125CF1F3B0063D7E8 /* FeaturesView.swift in Sources */,
 				E241A046258FBA7D000277BE /* StoreView.swift in Sources */,
@@ -1041,6 +1160,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		E20F8A8D26D19C540016E2C7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E20F8A7D26D19C510016E2C7 /* SimplistsWidgetExtension */;
+			targetProxy = E20F8A8C26D19C540016E2C7 /* PBXContainerItemProxy */;
+		};
 		E235D7B724DF5B89007D95BE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E235D7B324DF5B89007D95BE /* WatchApp Extension */;
@@ -1116,6 +1240,66 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		E20F8A9126D19C540016E2C7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_ENTITLEMENTS = SimplistsWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 71401262;
+				DEVELOPMENT_TEAM = 25V97QMNV5;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SimplistsWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SimplistsWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 2021.4;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sleekible.Simplists.debug.SimplistsWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E20F8A9226D19C540016E2C7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_ENTITLEMENTS = SimplistsWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 71401262;
+				DEVELOPMENT_TEAM = 25V97QMNV5;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SimplistsWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SimplistsWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 2021.4;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sleekible.Simplists.SimplistsWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		E235D7A124DF5B5A007D95BE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1174,6 +1358,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
 			};
 			name = Debug;
 		};
@@ -1229,6 +1414,7 @@
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
 			};
 			name = Release;
 		};
@@ -1246,7 +1432,6 @@
 				DEVELOPMENT_TEAM = 25V97QMNV5;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Simplists/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1274,7 +1459,6 @@
 				DEVELOPMENT_TEAM = 25V97QMNV5;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Simplists/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1311,7 +1495,6 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 7.0;
 				WATCH_APP_BUNDLE_ID = com.sleekible.Simplists.debug.watchkitapp;
 			};
 			name = Debug;
@@ -1339,7 +1522,6 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 7.0;
 				WATCH_APP_BUNDLE_ID = com.sleekible.Simplists.watchkitapp;
 			};
 			name = Release;
@@ -1364,7 +1546,6 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 7.0;
 			};
 			name = Debug;
 		};
@@ -1388,7 +1569,6 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 7.0;
 			};
 			name = Release;
 		};
@@ -1406,7 +1586,6 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = SimplistsKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1438,7 +1617,6 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = SimplistsKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1482,7 +1660,6 @@
 				TARGETED_DEVICE_FAMILY = 4;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
-				WATCHOS_DEPLOYMENT_TARGET = 7.0;
 			};
 			name = Debug;
 		};
@@ -1513,13 +1690,21 @@
 				TARGETED_DEVICE_FAMILY = 4;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
-				WATCHOS_DEPLOYMENT_TARGET = 7.0;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		E20F8A9026D19C540016E2C7 /* Build configuration list for PBXNativeTarget "SimplistsWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E20F8A9126D19C540016E2C7 /* Debug */,
+				E20F8A9226D19C540016E2C7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		E235D78A24DF5B58007D95BE /* Build configuration list for PBXProject "Simplists" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
