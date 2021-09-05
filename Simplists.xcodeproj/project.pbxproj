@@ -69,6 +69,7 @@
 		E279EACF25D04D9D00A38ED6 /* WidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E279EACE25D04D9D00A38ED6 /* WidgetView.swift */; };
 		E27CDF5C24ECA7BC004B6A32 /* Simplists.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E27CDF5A24ECA7BC004B6A32 /* Simplists.xcdatamodeld */; };
 		E27CDF5D24ECAB4D004B6A32 /* Simplists.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E27CDF5A24ECA7BC004B6A32 /* Simplists.xcdatamodeld */; };
+		E280799C26ECEB0D004A4559 /* ConditionalWidthModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E280799B26ECEB0D004A4559 /* ConditionalWidthModifier.swift */; };
 		E281EBD9259A2C7400DF1CEB /* FeatureBulletView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E281EBD8259A2C7400DF1CEB /* FeatureBulletView.swift */; };
 		E281EBE4259A3CD800DF1CEB /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E281EBE3259A3CD800DF1CEB /* StoreKit.framework */; };
 		E282850725F52A7700EE8997 /* WatchStoreErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E282850625F52A7700EE8997 /* WatchStoreErrorView.swift */; };
@@ -248,6 +249,7 @@
 		E279EAC925D0480D00A38ED6 /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
 		E279EACE25D04D9D00A38ED6 /* WidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetView.swift; sourceTree = "<group>"; };
 		E27CDF5B24ECA7BC004B6A32 /* Simplists.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Simplists.xcdatamodel; sourceTree = "<group>"; };
+		E280799B26ECEB0D004A4559 /* ConditionalWidthModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConditionalWidthModifier.swift; sourceTree = "<group>"; };
 		E281EBD8259A2C7400DF1CEB /* FeatureBulletView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureBulletView.swift; sourceTree = "<group>"; };
 		E281EBE3259A3CD800DF1CEB /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		E282850625F52A7700EE8997 /* WatchStoreErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchStoreErrorView.swift; sourceTree = "<group>"; };
@@ -509,6 +511,7 @@
 		E250E1AB269B2B1500860DEC /* List */ = {
 			isa = PBXGroup;
 			children = (
+				E280799B26ECEB0D004A4559 /* ConditionalWidthModifier.swift */,
 				E250E1AF269B2B6C00860DEC /* ItemView.swift */,
 				E23925B626A460BE00C59053 /* ListRowView.swift */,
 				E250E1AD269B2B6C00860DEC /* ListView.swift */,
@@ -939,6 +942,7 @@
 				E250E1B2269B2B6C00860DEC /* MoveToListView.swift in Sources */,
 				E250E1B1269B2B6C00860DEC /* ListView.swift in Sources */,
 				E218242B26D0325D00425947 /* SelectAllView.swift in Sources */,
+				E280799C26ECEB0D004A4559 /* ConditionalWidthModifier.swift in Sources */,
 				E2A32102250E628200A022B8 /* MoreView.swift in Sources */,
 				E2A376B425D1B4E2001D1615 /* UserDefaults+Extensions.swift in Sources */,
 				E26EBDA125C83ADB000D031D /* FreeLimits.swift in Sources */,

@@ -147,6 +147,7 @@ struct ListView: View {
 
                                             Text(selectedItemsCountText)
                                         }
+                                        .conditionalWidth(100)
 
                                         Spacer()
 
@@ -155,6 +156,7 @@ struct ListView: View {
                                         }) {
                                             Text("Move")
                                         }
+                                        .conditionalWidth(100)
 
                                         Spacer()
 
@@ -168,6 +170,7 @@ struct ListView: View {
 
                                             Text(selectedItemsCountText)
                                         }
+                                        .conditionalWidth(100)
                                     }
                                     .disabled(selectedIDs.isEmpty)
 
