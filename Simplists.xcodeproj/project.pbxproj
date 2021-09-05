@@ -84,6 +84,7 @@
 		E281FE0826E3C62400370D2D /* MediumWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E281FE0726E3C62400370D2D /* MediumWidgetView.swift */; };
 		E281FE0A26E3C63500370D2D /* LargeWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E281FE0926E3C63500370D2D /* LargeWidgetView.swift */; };
 		E281FE0B26E3C63F00370D2D /* SmallWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E281FE0526E3C60E00370D2D /* SmallWidgetView.swift */; };
+		E281FE0E26E50C0300370D2D /* ConditionalWidthModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E281FE0D26E50C0300370D2D /* ConditionalWidthModifier.swift */; };
 		E282850725F52A7700EE8997 /* WatchStoreErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E282850625F52A7700EE8997 /* WatchStoreErrorView.swift */; };
 		E282850F25F52E0B00EE8997 /* WatchPrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E282850E25F52E0B00EE8997 /* WatchPrivacyPolicyView.swift */; };
 		E282851425F52E2F00EE8997 /* WatchParagraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E282851325F52E2F00EE8997 /* WatchParagraphView.swift */; };
@@ -295,6 +296,7 @@
 		E281FE0526E3C60E00370D2D /* SmallWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallWidgetView.swift; sourceTree = "<group>"; };
 		E281FE0726E3C62400370D2D /* MediumWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumWidgetView.swift; sourceTree = "<group>"; };
 		E281FE0926E3C63500370D2D /* LargeWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeWidgetView.swift; sourceTree = "<group>"; };
+		E281FE0D26E50C0300370D2D /* ConditionalWidthModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionalWidthModifier.swift; sourceTree = "<group>"; };
 		E282850625F52A7700EE8997 /* WatchStoreErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchStoreErrorView.swift; sourceTree = "<group>"; };
 		E282850E25F52E0B00EE8997 /* WatchPrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchPrivacyPolicyView.swift; sourceTree = "<group>"; };
 		E282851325F52E2F00EE8997 /* WatchParagraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchParagraphView.swift; sourceTree = "<group>"; };
