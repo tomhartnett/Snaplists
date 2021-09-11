@@ -7,9 +7,7 @@
 
 import SwiftUI
 
-/// Workaround for spacing on toolbar items on iOS 14. The items appear close together in the center of the toolbar.
-/// This modifier gives some explicit spacing, but only if iOS version is less than 15. On iOS 15, the Spacer() view
-/// spreads the items out as expected.
+/// Workaround for toolbar width/padding on iOS 14.
 struct ConditionalWidthModifier: ViewModifier {
     var width: CGFloat
 
