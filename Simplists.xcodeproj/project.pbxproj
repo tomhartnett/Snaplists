@@ -110,6 +110,7 @@
 		E2C6671125CF1F3B0063D7E8 /* FeaturesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C6671025CF1F3B0063D7E8 /* FeaturesView.swift */; };
 		E2C6671925CF277D0063D7E8 /* PurchasedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C6671825CF277D0063D7E8 /* PurchasedView.swift */; };
 		E2C6671E25CF2FF20063D7E8 /* CannotPurchaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C6671D25CF2FF20063D7E8 /* CannotPurchaseView.swift */; };
+		E2CE179626E69ADD00664BF3 /* WidgetItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CE179526E69ADD00664BF3 /* WidgetItemView.swift */; };
 		E2D2D6F525E7E18D00C305DA /* UserDefaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D2D6F425E7E18D00C305DA /* UserDefaults+Extensions.swift */; };
 		E2D2D6FC25EC42AD00C305DA /* StoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F3818825C04D47002740F3 /* StoreService.swift */; };
 		E2D2D6FD25EC42AD00C305DA /* StoreDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26D01E125810AED009049F3 /* StoreDataSource.swift */; };
@@ -318,6 +319,7 @@
 		E2C6671025CF1F3B0063D7E8 /* FeaturesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturesView.swift; sourceTree = "<group>"; };
 		E2C6671825CF277D0063D7E8 /* PurchasedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasedView.swift; sourceTree = "<group>"; };
 		E2C6671D25CF2FF20063D7E8 /* CannotPurchaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CannotPurchaseView.swift; sourceTree = "<group>"; };
+		E2CE179526E69ADD00664BF3 /* WidgetItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetItemView.swift; sourceTree = "<group>"; };
 		E2D2D6F425E7E18D00C305DA /* UserDefaults+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extensions.swift"; sourceTree = "<group>"; };
 		E2ECD76024F74B560046AEC9 /* NavBarItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarItemsView.swift; sourceTree = "<group>"; };
 		E2F3818825C04D47002740F3 /* StoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreService.swift; sourceTree = "<group>"; };
@@ -610,6 +612,7 @@
 				E281FE0526E3C60E00370D2D /* SmallWidgetView.swift */,
 				E281FE0726E3C62400370D2D /* MediumWidgetView.swift */,
 				E281FE0926E3C63500370D2D /* LargeWidgetView.swift */,
+				E2CE179526E69ADD00664BF3 /* WidgetItemView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -702,6 +705,7 @@
 				E20F8A7A26D19C510016E2C7 /* Sources */,
 				E20F8A7B26D19C510016E2C7 /* Frameworks */,
 				E20F8A7C26D19C510016E2C7 /* Resources */,
+				E2CE179026E696EB00664BF3 /* Set Build Number */,
 			);
 			buildRules = (
 			);
@@ -1038,6 +1042,24 @@
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
+		E2CE179026E696EB00664BF3 /* Set Build Number */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Set Build Number";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ $ENABLE_PREVIEWS == \"NO\" ]\nthen\n    hexBuildNumber=$(git rev-parse --short HEAD | tr \"[:lower:]\" \"[:upper:]\")\n    decBuildNumber=$(echo \"ibase=16; $hexBuildNumber\" | bc)\n    /usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $decBuildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\nfi\n\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1046,6 +1068,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E281FE0826E3C62400370D2D /* MediumWidgetView.swift in Sources */,
+				E2CE179626E69ADD00664BF3 /* WidgetItemView.swift in Sources */,
 				E20F8A8A26D19C540016E2C7 /* SimplistsWidget.intentdefinition in Sources */,
 				E281FE0A26E3C63500370D2D /* LargeWidgetView.swift in Sources */,
 				E281FE0B26E3C63F00370D2D /* SmallWidgetView.swift in Sources */,

@@ -12,7 +12,30 @@ struct SmallWidgetView: View {
     var entry: Provider.Entry
 
     var body: some View {
-        Text("Small widget")
+        HStack {
+            VStack(alignment: .leading) {
+                Text("Grocery")
+                    .font(.title)
+
+                VStack(alignment: .leading) {
+                    WidgetItemView(title: "Milk", isComplete: false)
+                    WidgetItemView(title: "Bread", isComplete: true)
+                    WidgetItemView(title: "Beer", isComplete: true)
+                }
+
+                Spacer()
+
+                HStack {
+                    Spacer()
+                    Text("3 other lists")
+                        .font(.system(size: 10))
+                }
+                .padding(.bottom, 10)
+            }
+            .padding([.leading, .top], 10)
+
+            Spacer()
+        }
     }
 }
 
