@@ -48,6 +48,11 @@ struct FocusableTextField: UIViewRepresentable {
                 textField.resignFirstResponder()
             }
         }
+
+        @objc
+        func didTapDone() {
+            self.parent.textField.resignFirstResponder()
+        }
     }
 
     @Binding var text: String
@@ -55,6 +60,8 @@ struct FocusableTextField: UIViewRepresentable {
     var placeholder = ""
     var onCommit: (() -> Void)?
     var onTextChanged: ((String) -> Void)?
+
+    let textField = UITextField(frame: .zero)
 
     init(_ placeholder: String = "",
          text: Binding<String>,
@@ -69,7 +76,6 @@ struct FocusableTextField: UIViewRepresentable {
     }
 
     func makeUIView(context: Context) -> UITextField {
-        let textField = UITextField(frame: .zero)
         textField.placeholder = placeholder
         textField.returnKeyType = .done
         textField.clearButtonMode = .whileEditing
@@ -78,7 +84,26 @@ struct FocusableTextField: UIViewRepresentable {
     }
 
     func makeCoordinator() -> Coordinator {
-        return Coordinator(self)
+        let coordinator = Coordinator(self)
+
+        // inputAccessoryView solution
+        // https://stackoverflow.com/questions/59114647/swiftui-inputaccesoryview-implementation
+
+        let toolbar = UIToolbar()
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace,
+                                            target: nil,
+                                            action: nil)
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done,
+                                         target: coordinator,
+                                         action: #selector(coordinator.didTapDone))
+
+        toolbar.items = [flexibleSpace, doneButton]
+        toolbar.barStyle = UIBarStyle.default
+        toolbar.sizeToFit()
+
+        textField.inputAccessoryView = toolbar
+
+        return coordinator
     }
 
     func updateUIView(_ uiView: UITextField, context: Context) {
