@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-struct InlineNavBarTitleDisplayMode: ViewModifier {
+/// Workaround for changing nav bar title display mode on watchOS 8. Behaves as desired on watchOS 7.
+struct InlineNavBarTitleDisplayModeModifier: ViewModifier {
     func body(content: Content) -> some View {
         if #available(watchOS 8, *) {
             content
@@ -20,6 +21,6 @@ struct InlineNavBarTitleDisplayMode: ViewModifier {
 
 extension View {
     func inlineNavBarTitleDisplayMode() -> some View {
-        self.modifier(InlineNavBarTitleDisplayMode())
+        self.modifier(InlineNavBarTitleDisplayModeModifier())
     }
 }
