@@ -37,7 +37,10 @@ struct ItemView: View {
             }
             .allowsHitTesting(editMode?.wrappedValue != .active)
 
-            TextField("", text: $title, onCommit: { saveAction?(title, isComplete) })
+            FocusableTextField("",
+                               text: $title,
+                               keepFocusUnlessEmpty: false,
+                               onCommit: { saveAction?(title, isComplete) })
                 .disabled(editMode?.wrappedValue == .active)
         }
     }

@@ -17,7 +17,10 @@ struct RenameListView: View {
     var body: some View {
         NavigationView {
             Form {
-                TextField("Enter name...".localize(), text: $title, onCommit: saveChanges)
+                FocusableTextField("Enter name...".localize(),
+                                   text: $title,
+                                   keepFocusUnlessEmpty: false,
+                                   onCommit: saveChanges)
             }
             .navigationBarItems(
                 leading: Button(action: {

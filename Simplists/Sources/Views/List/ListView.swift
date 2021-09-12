@@ -108,9 +108,10 @@ struct ListView: View {
                                                     .foregroundColor(.secondary)
                                             }
 
-                                            TextField("Add new item...".localize(),
-                                                      text: $newItemTitle,
-                                                      onCommit: {
+                                            FocusableTextField("Add new item...".localize(),
+                                                               text: $newItemTitle,
+                                                               keepFocusUnlessEmpty:
+                                                                true, onCommit: {
                                                 addNewItem {
                                                     proxy.scrollTo(addItemFieldID, anchor: .bottom)
                                                 }

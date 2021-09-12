@@ -117,9 +117,10 @@ struct HomeView: View {
                                 .frame(width: 25, height: 25)
                                 .foregroundColor(.secondary)
 
-                            TextField("Add new list...".localize(),
-                                      text: $newListTitle,
-                                      onCommit: addNewList)
+                            FocusableTextField("Add new list...",
+                                               text: $newListTitle,
+                                               keepFocusUnlessEmpty: false,
+                                               onCommit: addNewList)
                                 .padding([.top, .bottom])
                         }
                     }
