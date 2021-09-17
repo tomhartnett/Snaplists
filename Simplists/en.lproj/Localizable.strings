@@ -6,124 +6,76 @@
   
 */
 
-"icloud-warning-banner-text" = "Warning: not signed in to iCloud";
-"icloud-warning-alert-title" = "Not signed in to iCloud";
-"icloud-warning-alert-message" = "You can still use the app, but your lists will not sync across your devices.";
-"icloud-warning-alert-button-text" = "OK";
-
-"home-navigation-bar-title" = "Snaplists";
-"home-rename-button-text" = "Rename";
-"home-archive-button-text" = "Archive";
-"home-delete-button-text" = "Delete";
-"home-add-list-placeholder" = "Add new list...";
-"home-archived-title" = "Deleted Lists";
-"home-more-title" = "More";
-"home-empty-no-lists-text" = "No Lists";
-"home-empty-no-selection-text" = "No Selection";
-
-/* RenameView */
-"rename-navigation-bar-title" = "Rename List";
-"rename-name-placeholder" = "Enter name...";
-"rename-cancel-button-text" = "Cancel";
-"rename-done-button-text" = "Done";
-
-/* NewListNameView (very similar to RenameView */
-"new-list-navigation-bar-title" = "New List";
-"new-list-name-placeholder" = "Enter new list name...";
-"new-list-cancel-button-text" = "Cancel";
-"new-list-done-button-text" = "Done";
-
-/* MoveItemsView */
-"move-items-new-list-text" = "New list";
-"move-items-move-to-text" = "MOVE TO:";
-"move-items-navigation-bar-title" = "Move Items";
-"move-items-cancel-button-text" = "Cancel";
-"move-items-save-button-text" = "Save";
-
-/* MoveListsView */
-"move-lists-choose-list-text" = "Choose list";
-"move-lists-create-new-list-text" = "Create New List";
-"move-lists-move-items-text" = "Move Items";
-
-"list-rename-button-text" = "Change list name";
-"list-modified-format-string" = "updated: %@";
-"list-modified-just-now-text" = "just now";
-"list-empty-no-items-text" = "No Items";
-"list-new-item-placeholder" = "Add new item...";
-
-"toolbar-markincomplete-button-text" = "Mark all incomplete";
-"toolbar-markcomplete-button-text" = "Mark all complete";
-"toolbar-delete-button-text" = "Delete list";
-"toolbar-rename-list-button-text" = "Rename list";
-
-"archived-navigation-bar-title" = "Deleted Lists";
-"archived-restore-button-text" = "Restore";
-"archived-delete-button-text" = "Delete";
-"archived-empty-state-text" = "No deleted lists";
-"archived-delete-all-button-text" = "Delete all";
-"archived-alert-delete-button-text" = "Delete";
-"archived-alert-cancel-button-text" = "Cancel";
-"archived-alert-title" = "Delete all?";
-
-"more-navigation-bar-title" = "More";
-"more-section-purchases" = "Optional In-App Purchases";
-"more-section-feedback-header" = "Feedback";
-"more-rate-app-text" = "Please Rate this App";
-"more-email-feedback-text" = "Send Feedback via Email";
-"more-email-send-error-text" = "Email can't be sent from this device.";
-"more-section-about-header" = "About the App";
-"more-privacy-policy-text" = "Privacy Policy";
-"more-about-text" = "About";
-
-"about-header-text" = "Snaplists";
-"about-created-by-text" = "Created by";
+"About the App" = "About the App";
 "about-version-format-string" = "Version %@ (%@)";
-
-"store-not-authorized-error-message" = "Not authorized to make purchases.";
-"store-limits-number-of-lists" = "You've reached the maximum number of lists in the free version of the app.";
-"store-limits-number-of-items" = "You've reached the maximum number of items in the free version of the app.";
-"store-title-text" = "Snaplists Premium";
-"store-header-text" = "Premium mode is an optional in-app purchase that unlocks additional app features.";
-
-"store-features-header-text" = "Premium features";
-"store-feature-unlimited-list" = "Unlimited number of lists";
-"store-feature-unlimited-item" = "Unlimited number of items";
-
-"store-freelimits-header-text" = "Free limits";
-
-"store-purchase-button-format-string" = "Purchase %@";
-"store-restore-button-text" = "Restore Purchase";
-"store-support-the-app-text" = "Your purchase supports development of the app 💙";
-
-"purchased-header-text" = "Purchased";
-"purchased-body-text" = "Thank you!";
-
-"cannotpurchase-header-text" = "Sorry!";
-"cannotpurchase-body-text" = "You can't make purchases on this device.";
-
-"deferred-purchase-status-text" = "Purchase is pending approval.";
-
-"error-failed-transaction-text" = "An error has occurred and the purchase could not be completed.";
+"About" = "About";
+"Add new item..." = "Add new item...";
+"Add new list..." = "Add new list...";
+"Cancel" = "Cancel";
+"Created by" = "Created by";
+"Delete" = "Delete";
+"Delete all" = "Delete all";
+"Delete all?" = "Delete all?";
+"Delete all items" = "Delete all items";
+"Delete completed items" = "Delete completed items";
+"Delete list" = "Delete list";
+"Deleted Lists" = "Deleted Lists";
+"Done" = "Done";
+"Email can't be sent from this device." = "Email can't be sent from this device.";
+"Enter name..." = "Enter name...";
 "error-failed-restore-text" = "An error has occurred and the restore could not be completed.";
-
-"premium-widget-text" = "Premium Mode";
-
-"privacy-commitment-header-text" = "Our Commitment to Privacy";
-"privacy-commitment-body-text" = "Your privacy is important to us. To protect that privacy, we provide this notice to explain our information collection practices.";
-
-"privacy-data-header-text" = "Your Data is Private";
-"privacy-data-body-text" = "The Snaplists app does not collect any user information. There is no sign-up, sign-in, or opportunity in the app to give us your personal information.  The app uses Apple’s iCloud service to sync your lists across your devices.  We cannot see your data:  your lists, the list title, the items on the list, even the number of lists you create in the app.  We cannot view any of this data.";
-
-"privacy-feedback-header-text" = "In-App Feedback";
-"privacy-feedback-body-text" = "The app does provide a feedback feature to allow you to provide us feedback about the app. This feature opens a simple email to us. Be aware that by sending the email, you are giving us your email address. We do not use this email address for anything other than responding to your feedback, via email.  If you prefer, you can tweet us at @snaplistsapp.";
-
-"privacy-external-services-header-text" = "No External Services";
-"privacy-external-services-body-text" = "The Snapslists app does not use any 3rd party/external services.  There are no analytics gathering, behavior tracking, etc.  This app uses only Apple-provided APIs and frameworks.";
-
-"privacy-contact-us-header-text" = "How to Contact Us";
-"privacy-contact-us-body-text" = "Should you have other questions or concerns about this privacy policy, please email snaplists@sleekible.com. At this time, we only have the ability to receive and send English-language communications.";
-
-"privacy-changes-header-text" = "Changes to This Policy";
+"error-failed-transaction-text" = "An error has occurred and the purchase could not be completed.";
+"Feedback" = "Feedback";
+"Free limits" = "Free limits";
+"icloud-warning-alert-button-text" = "OK";
+"icloud-warning-alert-message" = "You can still use the app, but your lists will not sync across your devices.";
+"icloud-warning-alert-title" = "Not signed in to iCloud";
+"icloud-warning-banner-text" = "Warning: not signed in to iCloud";
+"just now" = "just now";
+"list-modified-format-string" = "updated: %@";
+"Mark complete" = "Mark complete";
+"Mark incomplete" = "Mark incomplete";
+"Mark" = "Mark";
+"More" = "More";
+"Move" = "Move";
+"No deleted lists" = "No deleted lists";
+"No Lists" = "No Lists";
+"No Selection" = "No Selection";
+"Not authorized to make purchases." = "Not authorized to make purchases.";
+"Optional In-App Purchases" = "Optional In-App Purchases";
+"Please Rate this App" = "Please Rate this App";
+"Premium features" = "Premium features";
+"Premium Mode" = "Premium Mode";
+"Privacy Policy" = "Privacy Policy";
 "privacy-changes-body-text" = "We reserve the right to change this policy at any time. Please check this page periodically for changes.";
-
+"privacy-changes-header-text" = "Changes to This Policy";
+"privacy-commitment-body-text" = "Your privacy is important to us. To protect that privacy, we provide this notice to explain our information collection practices.";
+"privacy-commitment-header-text" = "Our Commitment to Privacy";
+"privacy-contact-us-body-text" = "Should you have other questions or concerns about this privacy policy, please email snaplists@sleekible.com. At this time, we only have the ability to receive and send English-language communications.";
+"privacy-contact-us-header-text" = "How to Contact Us";
+"privacy-data-body-text" = "The Snaplists app does not collect any user information. There is no sign-up, sign-in, or opportunity in the app to give us your personal information.  The app uses Apple’s iCloud service to sync your lists across your devices.  We cannot see your data:  your lists, the list title, the items on the list, even the number of lists you create in the app.  We cannot view any of this data.";
+"privacy-data-header-text" = "Your Data is Private";
 "privacy-effective-date-text" = "Effective Date: February 7, 2021";
+"privacy-external-services-body-text" = "The Snapslists app does not use any 3rd party/external services.  There are no analytics gathering, behavior tracking, etc.  This app uses only Apple-provided APIs and frameworks.";
+"privacy-external-services-header-text" = "No External Services";
+"privacy-feedback-body-text" = "The app does provide a feedback feature to allow you to provide us feedback about the app. This feature opens a simple email to us. Be aware that by sending the email, you are giving us your email address. We do not use this email address for anything other than responding to your feedback, via email.  If you prefer, you can tweet us at @snaplistsapp.";
+"privacy-feedback-header-text" = "In-App Feedback";
+"Purchase is pending approval." = "Purchase is pending approval.";
+"Purchased" = "Purchased";
+"Rename List" = "Rename List";
+"Rename" = "Rename";
+"Restore Purchase" = "Restore Purchase";
+"Restore" = "Restore";
+"Send Feedback via Email" = "Send Feedback via Email";
+"Snaplists Premium" = "Snaplists Premium";
+"Snaplists" = "Snaplists";
+"Sorry!" = "Sorry!";
+"store-header-text" = "Premium mode is an optional in-app purchase that unlocks additional app features.";
+"store-limits-number-of-items" = "You've reached the maximum number of items in the free version of the app.";
+"store-limits-number-of-lists" = "You've reached the maximum number of lists in the free version of the app.";
+"store-purchase-button-format-string" = "Purchase %@";
+"store-support-the-app-text" = "Your purchase supports development of the app 💙";
+"Thank you!" = "Thank you!";
+"Unlimited number of items" = "Unlimited number of items";
+"Unlimited number of lists" = "Unlimited number of lists";
+"You can't make purchases on this device." = "You can't make purchases on this device.";

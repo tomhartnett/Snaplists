@@ -11,39 +11,33 @@ struct RenameListView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @Binding var id: String
     @Binding var title: String
-    @State private var isDoneEnabled = false
 
     var doneAction: ((String, String) -> Void)?
 
     var body: some View {
         NavigationView {
             Form {
-                FocusableTextField("rename-name-placeholder".localize(),
+                FocusableTextField("Enter name...".localize(),
                                    text: $title,
                                    keepFocusUnlessEmpty: false,
-                                   onCommit: {
-                                       saveChanges()
-                                   },
-                                   onTextChanged: { text in
-                                       isDoneEnabled = !text.isEmpty
-                                   })
+                                   onCommit: saveChanges)
             }
             .navigationBarItems(
                 leading: Button(action: {
                     dismiss()
                 }, label: {
-                    Text("rename-cancel-button-text")
+                    Text("Cancel")
                         .fontWeight(.regular)
                 }),
                 trailing: Button(action: {
                     saveChanges()
                 }, label: {
-                    Text("rename-done-button-text")
+                    Text("Done")
                         .fontWeight(.semibold)
                 })
-                .disabled(!isDoneEnabled)
+                .disabled(title.isEmpty)
             )
-            .navigationBarTitle("rename-navigation-bar-title", displayMode: .inline)
+            .navigationBarTitle("Rename List", displayMode: .inline)
         }
     }
 

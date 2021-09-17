@@ -21,7 +21,7 @@ struct StoreView: View {
         ScrollView {
             VStack(alignment: .leading) {
                 HStack {
-                    Text("store-title-text")
+                    Text("Snaplists Premium")
                         .font(.system(size: 24, weight: .semibold))
 
                     Spacer()
@@ -40,7 +40,7 @@ struct StoreView: View {
                 }
 
                 if !storeDataSource.isAuthorizedForPayments {
-                    ErrorMessageView(message: "store-not-authorized-error-message".localize())
+                    ErrorMessageView(message: "Not authorized to make purchases.".localize())
                 }
 
                 if let message = purchaseStatusMessage {
@@ -67,14 +67,14 @@ struct StoreView: View {
                     .frame(maxWidth: .infinity)
                 }
 
-                FeaturesView(headerText: "store-features-header-text".localize(),
+                FeaturesView(headerText: "Premium features".localize(),
                              bulletPoints: [
-                                "store-feature-unlimited-list".localize(),
-                                "store-feature-unlimited-item".localize()
+                                "Unlimited number of lists".localize(),
+                                "Unlimited number of items".localize()
                              ])
                     .padding(.bottom, 15)
 
-                FeaturesView(headerText: "store-freelimits-header-text".localize(),
+                FeaturesView(headerText: "Free limits".localize(),
                              bulletPoints: [
                                 String.localizedStringWithFormat(
                                     "free limit list count".localize(), FreeLimits.numberOfLists.limit),
@@ -107,7 +107,7 @@ struct StoreView: View {
         case .failed(errorMessage: let errorMessage):
             purchaseStatusMessage = errorMessage
         case .deferred:
-            purchaseStatusMessage = "deferred-purchase-status-text".localize()
+            purchaseStatusMessage = "Purchase is pending approval.".localize()
         default:
             purchaseStatusMessage = nil
         }

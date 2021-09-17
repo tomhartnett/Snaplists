@@ -5,3 +5,4 @@ disabled_rules:
 - function_body_length
 - multiple_closures_with_trailing_closure
 - file_length
+- type_body_length

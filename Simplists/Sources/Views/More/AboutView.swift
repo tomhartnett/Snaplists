@@ -31,7 +31,7 @@ struct AboutView: View {
 
     var body: some View {
         VStack(spacing: 8) {
-            Text("about-header-text")
+            Text("Snaplists")
                 .font(.system(size: 48))
                 .fontWeight(.semibold)
 
@@ -46,7 +46,7 @@ struct AboutView: View {
             Text(copyrightString)
                 .foregroundColor(Color("TextSecondary"))
 
-            Text("about-created-by-text")
+            Text("Created by")
                 .foregroundColor(Color("TextSecondary"))
 
             Button(action: {

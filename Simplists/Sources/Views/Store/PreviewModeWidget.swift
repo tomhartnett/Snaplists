@@ -13,7 +13,7 @@ struct PreviewModeWidget: View {
             Image(systemName: "dollarsign.circle")
                 .frame(width: 25, height: 25)
                 .foregroundColor(Color("TextSecondary"))
-            Text("premium-widget-text")
+            Text("Premium Mode")
             Spacer()
         }
         .frame(maxWidth: .infinity)

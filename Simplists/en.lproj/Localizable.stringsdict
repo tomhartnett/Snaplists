@@ -34,7 +34,7 @@
 			<string>%d lists</string>
 		</dict>
 	</dict>
-	<key>list item count</key>
+	<key>item count</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
 		<string>%#@items@</string>

@@ -13,76 +13,71 @@ struct ArchivedListsView: View {
     @State private var lists: [SMPList] = []
     @State private var isPresentingAlert = false
 
-    private var listCountText: String {
-        let formatString = "list count".localize()
-        let result = String.localizedStringWithFormat(formatString, lists.count)
-        return result
-    }
-
     var body: some View {
         VStack {
             if lists.isEmpty {
-                Text("archived-empty-state-text")
+                Text("No deleted lists")
                     .font(.title)
                     .foregroundColor(.secondary)
             } else {
-                List {
-                    Section(header:
-                        Text(listCountText),
-                    content: {
-                        ForEach(lists) { list in
-                            HStack {
-                                Text(list.title)
-                                Spacer()
-                                Text("\(list.items.count)")
-                                    .foregroundColor(.secondary)
-                            }
-                            .contextMenu {
+                VStack(alignment: .leading) {
+                    List {
+                        Section(header: Text("Long-press on a list for options")) {
+                            ForEach(lists) { list in
+                                HStack {
+                                    Text(list.title)
+                                    Spacer()
+                                    Text("\(list.items.count)")
+                                        .foregroundColor(.secondary)
+                                }
+                                .contextMenu {
 
-                                Button(action: {
-                                    var listToUpdate = list
-                                    listToUpdate.isArchived = false
-                                    storage.updateList(listToUpdate)
-                                }, label: {
-                                    Text("archived-restore-button-text")
-                                    Image(systemName: "trash.slash")
-                                })
+                                    Button(action: {
+                                        var listToUpdate = list
+                                        listToUpdate.isArchived = false
+                                        storage.updateList(listToUpdate)
+                                    }, label: {
+                                        Text("Restore")
+                                        Image(systemName: "trash.slash")
+                                    })
 
-                                Button(action: {
-                                    storage.deleteList(list)
-                                }, label: {
-                                    Text("archived-delete-button-text")
-                                    Image(systemName: "trash")
-                                })
+                                    Button(action: {
+                                        storage.deleteList(list)
+                                    }, label: {
+                                        Text("Delete")
+                                        Image(systemName: "trash")
+                                    })
+                                }
                             }
+                            .onDelete(perform: delete)
                         }
-                        .onDelete(perform: delete)
-                    }).textCase(nil) // Don't upper-case section header text.
+                        .textCase(nil)
+                    }
+                    .listStyle(InsetGroupedListStyle())
                 }
-                .listStyle(InsetGroupedListStyle())
                 .toolbar {
                     ToolbarItem(placement: .bottomBar) {
                         Button(action: {
                             isPresentingAlert.toggle()
                         }) {
-                            Text("archived-delete-all-button-text")
+                            Text("Delete all")
                         }
                     }
                 }
             }
         }
         .alert(isPresented: $isPresentingAlert) {
-            let deleteButton = Alert.Button.destructive(Text("archived-alert-delete-button-text")) {
+            let deleteButton = Alert.Button.destructive(Text("Delete")) {
                 storage.purgeDeletedLists()
                 getArchivedLists()
             }
-            let cancelButton = Alert.Button.cancel(Text("archived-alert-cancel-button-text"))
+            let cancelButton = Alert.Button.cancel(Text("Cancel"))
 
-            return Alert(title: Text("archived-alert-title"),
+            return Alert(title: Text("Delete all?"),
                          primaryButton: deleteButton,
                          secondaryButton: cancelButton)
         }
-        .navigationBarTitle("archived-navigation-bar-title")
+        .navigationBarTitle("Deleted Lists")
         .navigationBarItems(trailing: NavBarItemsView(showEditButton: !lists.isEmpty))
         .onAppear {
             getArchivedLists()

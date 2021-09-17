@@ -27,6 +27,6 @@ struct WidgetView: View {
 
 struct WidgetView_Previews: PreviewProvider {
     static var previews: some View {
-        WidgetView(systemImageName: "envelope", lableText: "more-email-feedback-text".localize())
+        WidgetView(systemImageName: "envelope", lableText: "Send Feedback via Email".localize())
     }
 }

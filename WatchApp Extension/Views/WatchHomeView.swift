@@ -34,6 +34,14 @@ struct WatchHomeView: View {
         }
     }
 
+    var versionString: String {
+        let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "?"
+        let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "?"
+        let versionFormatString = "about-version-format-string".localize()
+
+        return String(format: versionFormatString, version, build)
+    }
+
     var body: some View {
         VStack {
             List {
@@ -98,10 +106,17 @@ struct WatchHomeView: View {
                     }
                 }
                 #endif
+
+                Text(versionString)
+                    .font(.system(size: 10))
+                    .listRowBackground(Color.clear)
+                    .foregroundColor(.secondary)
+                    .ignoresSafeArea()
             }
         }
         .animation(.default)
-        .navigationBarTitle("Snaplists")
+        .navigationTitle("Snaplists")
+        .inlineNavBarTitleDisplayMode()
         .onAppear {
             reload()
             checkAccountStatus()

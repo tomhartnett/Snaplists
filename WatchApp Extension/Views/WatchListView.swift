@@ -54,7 +54,9 @@ struct WatchListView: View {
 
                             ForEach(list.items) { item in
                                 WatchListItemView(item: item, tapAction: {
-                                    updateItem(id: item.id, title: item.title, isComplete: !item.isComplete)
+                                    withAnimation {
+                                        updateItem(id: item.id, title: item.title, isComplete: !item.isComplete)
+                                    }
                                 })
                             }
                             .onDelete(perform: delete)
@@ -106,24 +108,13 @@ struct WatchListView: View {
                             title: String,
                             isComplete: Bool) {
 
-        guard let itemIndex = list.items.firstIndex(where: { $0.id == id }),
-              let currentCheckedStatus = list.items.first(where: { $0.id == id })?.isComplete else { return }
+        guard let index = list.items.firstIndex(where: { $0.id == id }) else { return }
 
-        let lastUncheckedItem = isComplete &&
-            list.items.filter({ $0.isComplete == true }).count == list.items.count - 1
-        let lastCheckedItem = !isComplete &&
-            list.items.filter({ $0.isComplete == false }).count == list.items.count - 1
+        list.items.remove(at: index)
+        list.items.insert(SMPListItem(id: id, title: title, isComplete: isComplete),
+                          at: index)
 
-        let firstCheckedItemOrEnd = list.items.firstIndex(where: { $0.isComplete }) ?? list.items.endIndex
-
-        list.items[itemIndex].title = title
-        list.items[itemIndex].isComplete = isComplete
-
-        if currentCheckedStatus != isComplete && !lastCheckedItem && !lastUncheckedItem {
-            withAnimation {
-                list.items.move(fromOffsets: IndexSet(integer: itemIndex), toOffset: firstCheckedItemOrEnd)
-            }
-        }
+        list.items.sort(by: { !$0.isComplete && $1.isComplete })
 
         storage.updateList(list)
     }

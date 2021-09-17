@@ -27,10 +27,10 @@ struct FeaturesView: View {
 
 struct FeaturesView_Previews: PreviewProvider {
     static var previews: some View {
-        FeaturesView(headerText: "store-features-header-text".localize(),
+        FeaturesView(headerText: "Premium features".localize(),
                      bulletPoints: [
-                        "store-feature-unlimited-list".localize(),
-                        "store-feature-unlimited-item".localize()
+                        "Unlimited number of lists".localize(),
+                        "Unlimited number of items".localize()
         ])
     }
 }

@@ -9,21 +9,16 @@
 "icloud-warning-banner-text" = "Not signed in";
 "icloud-warning-title" = "Not signed in to iCloud";
 "icloud-warning-message" = "You can still use the app, but your lists will not sync across your devices.";
-
 "home-new-list-button-text" = "Add new list";
-
+"about-version-format-string" = "Version %@ (%@)";
 "list-new-item-button-text" = "Add new item";
-
 "newitem-name-placeholder" = "Item name...";
 "newitem-save-button-text" = "Save";
-
 "newlist-name-placeholder" = "List name...";
 "newlist-save-button-text" = "Save";
 "newlist-suggestions-header-text" = "Suggestions";
-
 "store-limits-number-of-lists" = "Max number of lists";
 "store-limits-number-of-items" = "Max number of items";
-
 "store-header-text" = "Snaplists Premium";
 "store-body-text" = "Remove all limits with a one-time purchase.";
 "store-purchase-button-format-string" = "Purchase %@";

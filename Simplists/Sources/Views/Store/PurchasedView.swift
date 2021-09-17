@@ -10,10 +10,10 @@ import SwiftUI
 struct PurchasedView: View {
     var body: some View {
         VStack {
-            Text("purchased-header-text")
+            Text("Purchased")
                 .font(.title)
                 .padding(.top, 10)
-            Text("purchased-body-text")
+            Text("Thank you!")
                 .foregroundColor(.primary)
                 .padding([.bottom, .leading, .trailing], 10)
         }

@@ -119,9 +119,11 @@ public final class SMPStorage: ObservableObject {
         saveChanges()
     }
 
-    public func duplicateList(_ list: SMPList) {
+    @discardableResult
+    public func duplicateList(_ list: SMPList) -> SMPList? {
+        let newListID = UUID()
         let listEntity = ListEntity(context: context)
-        listEntity.identifier = UUID()
+        listEntity.identifier = newListID
         listEntity.title = "\(list.title) copy"
         listEntity.isArchived = false
 
@@ -138,6 +140,8 @@ public final class SMPStorage: ObservableObject {
         listEntity.modified = Date()
 
         saveChanges()
+
+        return getList(with: newListID)
     }
 
     public func purgeDeletedLists() {
@@ -200,79 +204,63 @@ public final class SMPStorage: ObservableObject {
         saveChanges()
     }
 
-    public func updateItem(id: UUID, title: String, isComplete: Bool, list: SMPList? = nil) {
+    public func deleteItems(_ itemIDs: [UUID], listID: UUID) {
+        guard let listEntity = getListEntity(with: listID) else { return }
+
+        for id in itemIDs {
+            guard let itemEntity = getItemEntity(with: id) else { continue }
+            context.delete(itemEntity)
+        }
+
+        var listSortOrderIDs = listEntity.sortOrder?.compactMap { UUID(uuidString: $0) } ?? []
+        itemIDs.forEach {
+            guard let index = listSortOrderIDs.firstIndex(of: $0) else { return }
+            listSortOrderIDs.remove(at: index)
+        }
+
+        listEntity.modified = Date()
+        listEntity.sortOrder = listSortOrderIDs.map { $0.uuidString }
+
+        saveChanges()
+    }
+
+    public func updateItem(id: UUID, title: String, isComplete: Bool) {
         guard let itemEntity = getItemEntity(with: id) else { return }
 
         itemEntity.title = title
         itemEntity.isComplete = isComplete
 
-        if let list = list, let listEntity = getListEntity(with: list.id) {
-            listEntity.modified = Date()
-            listEntity.sortOrder = list.items.map { $0.id.uuidString }
-        }
-
         saveChanges()
     }
 
-    public func moveItems(_ items: [SMPListItem], from fromList: SMPList, to toList: SMPList) {
-        guard let fromListEntity = getListEntity(with: fromList.id) else {
-            return
+    public func moveItems(_ itemIDs: [UUID], fromListID: UUID, toListID: UUID) {
+        guard let fromList = getListEntity(with: fromListID),
+              let toList = getListEntity(with: toListID) else { return }
+
+        guard let fromItems = fromList.items.toMutableSet(),
+              let toItems = toList.items.toMutableSet() else { return }
+
+        let movingItems = itemIDs.compactMap { getItemEntity(with: $0) }
+
+        for item in movingItems {
+            fromItems.remove(item)
+            toItems.add(item)
         }
 
-        let toListEntity: ListEntity
-        if let tempList = getListEntity(with: toList.id) {
-            toListEntity = tempList
-        } else {
-            toListEntity = ListEntity(context: context)
-            toListEntity.identifier = toList.id
-            toListEntity.title = toList.title
-            toListEntity.isArchived = toList.isArchived
-            toListEntity.modified = Date()
-        }
+        fromList.items = fromItems
+        toList.items = toItems
 
-        guard let fromSet = fromListEntity.items, let toSet = toListEntity.items else {
-            return
-        }
-
-        let movingItemsArray = fromSet.filter { x in
-            if let item = x as? ItemEntity,
-               let identifier = item.identifier,
-               items.contains(where: { $0.id == identifier }) {
-                return true
-            } else {
-                return false
-            }
-        }
-
-        let remainingItemsArray = fromSet.filter { x in
-            if let item = x as? ItemEntity,
-               let identifier = item.identifier,
-               !items.contains(where: { $0.id == identifier }) {
-                return true
-            } else {
-                return false
-            }
-        }
-
-        let combinedItemSet = toSet.addingObjects(from: movingItemsArray)
-
-        fromListEntity.items = NSSet(array: remainingItemsArray)
-        let fromSortOrder = fromListEntity.sortOrder ?? []
-        fromListEntity.sortOrder = fromSortOrder.filter({ item -> Bool in
-            if items.first(where: { $0.id.uuidString == item }) != nil {
-                return false
-            } else {
-                return true
-            }
-        })
-
-        toListEntity.items = NSSet(set: combinedItemSet)
-        var toSortOrder = toListEntity.sortOrder ?? []
-        let appendIDs = items.map { $0.id.uuidString }
-        toSortOrder.append(contentsOf: appendIDs)
-        toListEntity.sortOrder = toSortOrder
+        fromList.sortOrder = fromList.sortOrder?.filter({ !itemIDs.contains(UUID(uuidString: $0)!) }) ?? []
+        toList.sortOrder = toList.sortOrder! + itemIDs.map { $0.uuidString }
 
         saveChanges()
+    }
+}
+
+private extension Optional where Wrapped: NSSet {
+    func toMutableSet() -> NSMutableSet? {
+        guard let self = self else { return nil }
+        return NSMutableSet(set: self)
     }
 }
 

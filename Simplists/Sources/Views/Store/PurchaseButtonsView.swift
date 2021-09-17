@@ -33,7 +33,7 @@ struct PurchaseButtonsView: View {
             Button(action: {
                 storeDataSource.restoreIAP()
             }, label: {
-                Text("store-restore-button-text")
+                Text("Restore Purchase")
                     .foregroundColor(.primary)
                     .underline()
             })
