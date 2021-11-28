@@ -50,7 +50,7 @@ struct FocusableTextField: UIViewRepresentable {
         }
 
         @objc
-        func didTapDone() {
+        func didTapCancel() {
             self.parent.textField.resignFirstResponder()
         }
     }
@@ -93,11 +93,11 @@ struct FocusableTextField: UIViewRepresentable {
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace,
                                             target: nil,
                                             action: nil)
-        let doneButton = UIBarButtonItem(barButtonSystemItem: .done,
+        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel,
                                          target: coordinator,
-                                         action: #selector(coordinator.didTapDone))
+                                         action: #selector(coordinator.didTapCancel))
 
-        toolbar.items = [flexibleSpace, doneButton]
+        toolbar.items = [flexibleSpace, cancelButton]
         toolbar.barStyle = UIBarStyle.default
         toolbar.sizeToFit()
 
