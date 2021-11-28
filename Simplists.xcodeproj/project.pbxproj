@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E2029FFA25FB9E3300490043 /* ReviewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2029FF925FB9E3300490043 /* ReviewHelper.swift */; };
+		E20BD7792754057200671478 /* ConditionalHiddenModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20BD7782754057200671478 /* ConditionalHiddenModifier.swift */; };
 		E20F8A7926D18CF10016E2C7 /* InlineNavBarTitleDisplayMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20F8A7826D18CF10016E2C7 /* InlineNavBarTitleDisplayMode.swift */; };
 		E21123DB2504420700B3D76D /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21123DA2504420700B3D76D /* PrivacyPolicyView.swift */; };
 		E21123DD2504441900B3D76D /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21123DC2504441900B3D76D /* AboutView.swift */; };
@@ -189,6 +190,7 @@
 
 /* Begin PBXFileReference section */
 		E2029FF925FB9E3300490043 /* ReviewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewHelper.swift; sourceTree = "<group>"; };
+		E20BD7782754057200671478 /* ConditionalHiddenModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionalHiddenModifier.swift; sourceTree = "<group>"; };
 		E20F8A7826D18CF10016E2C7 /* InlineNavBarTitleDisplayMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineNavBarTitleDisplayMode.swift; sourceTree = "<group>"; };
 		E21123DA2504420700B3D76D /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyView.swift; sourceTree = "<group>"; };
 		E21123DC2504441900B3D76D /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
@@ -513,6 +515,7 @@
 		E250E1AB269B2B1500860DEC /* List */ = {
 			isa = PBXGroup;
 			children = (
+				E20BD7782754057200671478 /* ConditionalHiddenModifier.swift */,
 				E280799D26ECF539004A4559 /* ConditionalPaddingModifier.swift */,
 				E280799B26ECEB0D004A4559 /* ConditionalWidthModifier.swift */,
 				E250E1AF269B2B6C00860DEC /* ItemView.swift */,
@@ -937,6 +940,7 @@
 				E235D79324DF5B59007D95BE /* AppDelegate.swift in Sources */,
 				E2F3818925C04D47002740F3 /* StoreService.swift in Sources */,
 				E256DD6924F2E98600649855 /* FocusableTextField.swift in Sources */,
+				E20BD7792754057200671478 /* ConditionalHiddenModifier.swift in Sources */,
 				E250E1B3269B2B6C00860DEC /* ItemView.swift in Sources */,
 				E250E1B0269B2B6C00860DEC /* RenameListView.swift in Sources */,
 				E21123DD2504441900B3D76D /* AboutView.swift in Sources */,
@@ -1247,7 +1251,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2021.4;
+				MARKETING_VERSION = 2021.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sleekible.Simplists.debug;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
@@ -1275,7 +1279,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2021.4;
+				MARKETING_VERSION = 2021.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sleekible.Simplists;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
@@ -1300,7 +1304,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2021.4;
+				MARKETING_VERSION = 2021.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sleekible.Simplists.debug.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -1328,7 +1332,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2021.4;
+				MARKETING_VERSION = 2021.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sleekible.Simplists.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -1353,7 +1357,7 @@
 				DEVELOPMENT_TEAM = 25V97QMNV5;
 				IBSC_MODULE = WatchApp_Extension;
 				INFOPLIST_FILE = WatchApp/Info.plist;
-				MARKETING_VERSION = 2021.4;
+				MARKETING_VERSION = 2021.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sleekible.Simplists.debug.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1377,7 +1381,7 @@
 				DEVELOPMENT_TEAM = 25V97QMNV5;
 				IBSC_MODULE = WatchApp_Extension;
 				INFOPLIST_FILE = WatchApp/Info.plist;
-				MARKETING_VERSION = 2021.4;
+				MARKETING_VERSION = 2021.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sleekible.Simplists.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1408,7 +1412,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 2021.4;
+				MARKETING_VERSION = 2021.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sleekible.SimplistsKit.debug;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -1440,7 +1444,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 2021.4;
+				MARKETING_VERSION = 2021.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sleekible.SimplistsKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -1469,7 +1473,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 2021.4;
+				MARKETING_VERSION = 2021.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sleekible.SimplistsWatchKit.debug;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = watchos;
@@ -1500,7 +1504,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 2021.4;
+				MARKETING_VERSION = 2021.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sleekible.SimplistsWatchKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = watchos;
