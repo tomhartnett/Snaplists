@@ -79,6 +79,7 @@ struct FocusableTextField: UIViewRepresentable {
     }
 
     func makeUIView(context: Context) -> UITextField {
+        textField.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         textField.placeholder = placeholder
         textField.returnKeyType = .done
         textField.clearButtonMode = .whileEditing
