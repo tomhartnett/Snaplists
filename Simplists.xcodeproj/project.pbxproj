@@ -622,12 +622,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E235D7A324DF5B5A007D95BE /* Build configuration list for PBXNativeTarget "Simplists" */;
 			buildPhases = (
+				E26642DD24E4D5EE008F6778 /* Set Build Number */,
 				E235D78B24DF5B59007D95BE /* Sources */,
 				E235D78C24DF5B59007D95BE /* Frameworks */,
 				E235D78D24DF5B59007D95BE /* Resources */,
 				E235D7D624DF5B89007D95BE /* Embed Watch Content */,
 				E235D7EF24E037B9007D95BE /* Embed Frameworks */,
-				E26642DD24E4D5EE008F6778 /* Set Build Number */,
 				E26DD857250905A500FCC495 /* SwiftLint */,
 			);
 			buildRules = (
@@ -647,9 +647,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E235D7D324DF5B89007D95BE /* Build configuration list for PBXNativeTarget "WatchApp" */;
 			buildPhases = (
+				E26642DE24E4D69F008F6778 /* Set Build Number */,
 				E235D7A624DF5B88007D95BE /* Resources */,
 				E235D7D224DF5B89007D95BE /* Embed App Extensions */,
-				E26642DE24E4D69F008F6778 /* Set Build Number */,
 			);
 			buildRules = (
 			);
@@ -665,11 +665,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E235D7CF24DF5B89007D95BE /* Build configuration list for PBXNativeTarget "WatchApp Extension" */;
 			buildPhases = (
+				E26642DF24E4D6B5008F6778 /* Set Build Number */,
 				E235D7B024DF5B89007D95BE /* Sources */,
 				E235D7B124DF5B89007D95BE /* Frameworks */,
 				E235D7B224DF5B89007D95BE /* Resources */,
 				E235D80524E04E3E007D95BE /* Embed Frameworks */,
-				E26642DF24E4D6B5008F6778 /* Set Build Number */,
 			);
 			buildRules = (
 			);
@@ -685,11 +685,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E235D7EC24E037B9007D95BE /* Build configuration list for PBXNativeTarget "SimplistsKit" */;
 			buildPhases = (
+				E26642E024E4D6C5008F6778 /* Set Build Number */,
 				E235D7DE24E037B9007D95BE /* Headers */,
 				E235D7DF24E037B9007D95BE /* Sources */,
 				E235D7E024E037B9007D95BE /* Frameworks */,
 				E235D7E124E037B9007D95BE /* Resources */,
-				E26642E024E4D6C5008F6778 /* Set Build Number */,
 			);
 			buildRules = (
 			);
@@ -704,11 +704,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E235D81424E050CD007D95BE /* Build configuration list for PBXNativeTarget "SimplistsWatchKit" */;
 			buildPhases = (
+				E26642E124E4D6D4008F6778 /* Set Build Number */,
 				E235D80624E050CD007D95BE /* Headers */,
 				E235D80724E050CD007D95BE /* Sources */,
 				E235D80824E050CD007D95BE /* Frameworks */,
 				E235D80924E050CD007D95BE /* Resources */,
-				E26642E124E4D6D4008F6778 /* Set Build Number */,
 			);
 			buildRules = (
 			);
