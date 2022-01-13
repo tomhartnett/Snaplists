@@ -29,7 +29,13 @@ struct WatchListItemView: View {
                     .foregroundColor(item.isComplete ? .black : .clear)
             }
 
-            Text(item.title)
+            if item.isComplete {
+                Text(item.title)
+                    .strikethrough()
+                    .foregroundColor(.secondary)
+            } else {
+                Text(item.title)
+            }
         }
         .onTapGesture {
             tapAction()
