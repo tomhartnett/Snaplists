@@ -111,18 +111,11 @@ struct HomeView: View {
                         }
                         .onDelete(perform: archive)
 
-                        // Add New Item
-                        HStack {
-                            Image(systemName: "plus.circle")
-                                .frame(width: 25, height: 25)
-                                .foregroundColor(.secondary)
-
-                            FocusableTextField("Add new list...",
-                                               text: $newListTitle,
-                                               keepFocusUnlessEmpty: false,
-                                               onCommit: addNewList)
-                                .padding([.top, .bottom])
-                        }
+                        FocusableTextField("Add new list...",
+                                           text: $newListTitle,
+                                           keepFocusUnlessEmpty: false,
+                                           onCommit: addNewList)
+                            .padding([.top, .bottom])
                     }
 
                     Section {
