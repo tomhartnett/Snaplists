@@ -58,6 +58,7 @@ struct FocusableTextField: UIViewRepresentable {
     @Binding var text: String
     var keepFocusUnlessEmpty: Bool = false
     var placeholder = ""
+    var textAttributes: [NSAttributedString.Key: Any]?
     var onCommit: (() -> Void)?
     var onTextChanged: ((String) -> Void)?
 
@@ -66,11 +67,13 @@ struct FocusableTextField: UIViewRepresentable {
     init(_ placeholder: String = "",
          text: Binding<String>,
          keepFocusUnlessEmpty: Bool,
+         textAttributes: [NSAttributedString.Key: Any]? = nil,
          onCommit: (() -> Void)? = nil,
          onTextChanged: ((String) -> Void)? = nil) {
         self.placeholder = placeholder
         _text = text
         self.keepFocusUnlessEmpty = keepFocusUnlessEmpty
+        self.textAttributes = textAttributes
         self.onCommit = onCommit
         self.onTextChanged = onTextChanged
     }
@@ -107,6 +110,6 @@ struct FocusableTextField: UIViewRepresentable {
     }
 
     func updateUIView(_ uiView: UITextField, context: Context) {
-        uiView.text = text
+        uiView.attributedText = NSAttributedString(string: text, attributes: textAttributes)
     }
 }
