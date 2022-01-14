@@ -81,46 +81,33 @@ struct ListView: View {
                         List(selection: $selectedIDs) {
                             Section(header:
                                         HStack {
-                                            Text(itemCountText)
-                                            Spacer()
-                                            Text(lastUpdatedText)
-                                        },
-                                    content: {
-                                        ForEach(list.items) { item in
-                                            ItemView(title: item.title,
-                                                     isComplete: item.isComplete) { title, isComplete in
-                                                withAnimation {
-                                                    updateItem(id: item.id, title: title, isComplete: isComplete)
-                                                }
-                                            }
+                                Text(itemCountText)
+                                Spacer()
+                                Text(lastUpdatedText)
+                            }, content: {
+                                ForEach(list.items) { item in
+                                    ItemView(title: item.title,
+                                             isComplete: item.isComplete) { title, isComplete in
+                                        withAnimation {
+                                            updateItem(id: item.id, title: title, isComplete: isComplete)
                                         }
-                                        .onDelete(perform: delete)
-                                        .onMove(perform: move)
+                                    }
+                                }
+                                .onDelete(perform: delete)
+                                .onMove(perform: move)
 
-                                        HStack {
-                                            ZStack {
-                                                Circle()
-                                                    .stroke(Color.clear)
-                                                    .foregroundColor(.clear)
-                                                    .frame(width: 25, height: 25)
+                                FocusableTextField("Add new item...".localize(),
+                                                   text: $newItemTitle,
+                                                   keepFocusUnlessEmpty:
+                                                    true, onCommit: {
+                                    addNewItem {
+                                        proxy.scrollTo(addItemFieldID, anchor: .bottom)
+                                    }
+                                })
+                                    .padding([.top, .bottom])
+                                    .id(addItemFieldID)
 
-                                                Image(systemName: "plus.circle")
-                                                    .foregroundColor(.secondary)
-                                            }
-
-                                            FocusableTextField("Add new item...".localize(),
-                                                               text: $newItemTitle,
-                                                               keepFocusUnlessEmpty:
-                                                                true, onCommit: {
-                                                addNewItem {
-                                                    proxy.scrollTo(addItemFieldID, anchor: .bottom)
-                                                }
-                                            })
-                                                .padding([.top, .bottom])
-
-                                        }
-                                        .id(addItemFieldID)
-                                    }).textCase(nil) // Don't upper-case section header text.
+                            }).textCase(nil) // Don't upper-case section header text.
                         }
                         .listStyle(InsetGroupedListStyle())
                         .onReceive(storage.objectWillChange, perform: { _ in

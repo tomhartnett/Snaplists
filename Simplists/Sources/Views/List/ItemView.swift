@@ -17,6 +17,13 @@ struct ItemView: View {
 
     var saveAction: ((String, Bool) -> Void)?
 
+    private var completedItemTextAttributes: [NSAttributedString.Key: Any] {
+        [
+            NSAttributedString.Key.strikethroughStyle: NSUnderlineStyle.single.rawValue,
+            NSAttributedString.Key.foregroundColor: UIColor.secondaryLabel
+        ]
+    }
+
     var body: some View {
         HStack(spacing: 16) {
             ZStack {
@@ -40,6 +47,7 @@ struct ItemView: View {
             FocusableTextField("",
                                text: $title,
                                keepFocusUnlessEmpty: false,
+                               textAttributes: isComplete ? completedItemTextAttributes : nil,
                                onCommit: { saveAction?(title, isComplete) })
                 .disabled(editMode?.wrappedValue == .active)
         }
