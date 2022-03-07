@@ -14,8 +14,6 @@
 		E20F8A8226D19C510016E2C7 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E20F8A8126D19C510016E2C7 /* SwiftUI.framework */; };
 		E20F8A8526D19C510016E2C7 /* SimplistsWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20F8A8426D19C510016E2C7 /* SimplistsWidget.swift */; };
 		E20F8A8826D19C540016E2C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E20F8A8726D19C540016E2C7 /* Assets.xcassets */; };
-		E20F8A8A26D19C540016E2C7 /* SimplistsWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = E20F8A8626D19C510016E2C7 /* SimplistsWidget.intentdefinition */; };
-		E20F8A8B26D19C540016E2C7 /* SimplistsWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = E20F8A8626D19C510016E2C7 /* SimplistsWidget.intentdefinition */; };
 		E20F8A8E26D19C540016E2C7 /* SimplistsWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E20F8A7E26D19C510016E2C7 /* SimplistsWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E21123DB2504420700B3D76D /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21123DA2504420700B3D76D /* PrivacyPolicyView.swift */; };
 		E21123DD2504441900B3D76D /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21123DC2504441900B3D76D /* AboutView.swift */; };
@@ -67,8 +65,14 @@
 		E250E1B1269B2B6C00860DEC /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E250E1AD269B2B6C00860DEC /* ListView.swift */; };
 		E250E1B2269B2B6C00860DEC /* MoveToListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E250E1AE269B2B6C00860DEC /* MoveToListView.swift */; };
 		E250E1B3269B2B6C00860DEC /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E250E1AF269B2B6C00860DEC /* ItemView.swift */; };
+		E252C78227D53BEE00B29F6A /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E252C78127D53BEE00B29F6A /* Intents.framework */; };
+		E252C78527D53BEE00B29F6A /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E252C78427D53BEE00B29F6A /* IntentHandler.swift */; };
+		E252C78927D53BEE00B29F6A /* SimplistsIntentHandler.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E252C78027D53BEE00B29F6A /* SimplistsIntentHandler.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E252C78E27D53D4F00B29F6A /* ListSelection.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = E257B09627D51E990077E35F /* ListSelection.intentdefinition */; };
 		E256DD6924F2E98600649855 /* FocusableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E256DD6824F2E98600649855 /* FocusableTextField.swift */; };
 		E2578B8125D033A600BCC948 /* PreviewModeWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2578B8025D033A600BCC948 /* PreviewModeWidget.swift */; };
+		E257B09827D51EAD0077E35F /* ListSelection.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = E257B09627D51E990077E35F /* ListSelection.intentdefinition */; };
+		E267533927D6417A00512CAC /* EmptySmallWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E267533827D6417A00512CAC /* EmptySmallWidgetView.swift */; };
 		E26D01E225810AED009049F3 /* StoreDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26D01E125810AED009049F3 /* StoreDataSource.swift */; };
 		E26D345525E3E88900EE3C3E /* WatchDebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26D345425E3E88900EE3C3E /* WatchDebugView.swift */; };
 		E26DD859250BA13E00FCC495 /* AuthenticationErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26DD858250BA13E00FCC495 /* AuthenticationErrorView.swift */; };
@@ -84,7 +88,6 @@
 		E281FE0826E3C62400370D2D /* MediumWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E281FE0726E3C62400370D2D /* MediumWidgetView.swift */; };
 		E281FE0A26E3C63500370D2D /* LargeWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E281FE0926E3C63500370D2D /* LargeWidgetView.swift */; };
 		E281FE0B26E3C63F00370D2D /* SmallWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E281FE0526E3C60E00370D2D /* SmallWidgetView.swift */; };
-		E281FE0E26E50C0300370D2D /* ConditionalWidthModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E281FE0D26E50C0300370D2D /* ConditionalWidthModifier.swift */; };
 		E282850725F52A7700EE8997 /* WatchStoreErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E282850625F52A7700EE8997 /* WatchStoreErrorView.swift */; };
 		E282850F25F52E0B00EE8997 /* WatchPrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E282850E25F52E0B00EE8997 /* WatchPrivacyPolicyView.swift */; };
 		E282851425F52E2F00EE8997 /* WatchParagraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E282851325F52E2F00EE8997 /* WatchParagraphView.swift */; };
@@ -158,6 +161,27 @@
 			remoteGlobalIDString = E235D80A24E050CD007D95BE;
 			remoteInfo = SimplistsWatchKit;
 		};
+		E252C78727D53BEE00B29F6A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E235D78724DF5B58007D95BE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E252C77F27D53BEE00B29F6A;
+			remoteInfo = SimplistsIntentHandler;
+		};
+		E252C78F27D542D800B29F6A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E235D78724DF5B58007D95BE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E235D7E224E037B9007D95BE;
+			remoteInfo = SimplistsKit;
+		};
+		E2D711E727D54F8700861956 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E235D78724DF5B58007D95BE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E235D7E224E037B9007D95BE;
+			remoteInfo = SimplistsKit;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -167,6 +191,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				E252C78927D53BEE00B29F6A /* SimplistsIntentHandler.appex in Embed App Extensions */,
 				E20F8A8E26D19C540016E2C7 /* SimplistsWidgetExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
@@ -226,7 +251,6 @@
 		E20F8A7F26D19C510016E2C7 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		E20F8A8126D19C510016E2C7 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		E20F8A8426D19C510016E2C7 /* SimplistsWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimplistsWidget.swift; sourceTree = "<group>"; };
-		E20F8A8626D19C510016E2C7 /* SimplistsWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = SimplistsWidget.intentdefinition; sourceTree = "<group>"; };
 		E20F8A8726D19C540016E2C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E20F8A8926D19C540016E2C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E20F8A8F26D19C540016E2C7 /* SimplistsWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SimplistsWidgetExtension.entitlements; sourceTree = "<group>"; };
@@ -281,8 +305,15 @@
 		E250E1AD269B2B6C00860DEC /* ListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		E250E1AE269B2B6C00860DEC /* MoveToListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoveToListView.swift; sourceTree = "<group>"; };
 		E250E1AF269B2B6C00860DEC /* ItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
+		E252C78027D53BEE00B29F6A /* SimplistsIntentHandler.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SimplistsIntentHandler.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		E252C78127D53BEE00B29F6A /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
+		E252C78427D53BEE00B29F6A /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
+		E252C78627D53BEE00B29F6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E252C78A27D53BEE00B29F6A /* SimplistsIntentHandler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SimplistsIntentHandler.entitlements; sourceTree = "<group>"; };
 		E256DD6824F2E98600649855 /* FocusableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusableTextField.swift; sourceTree = "<group>"; };
 		E2578B8025D033A600BCC948 /* PreviewModeWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewModeWidget.swift; sourceTree = "<group>"; };
+		E257B09627D51E990077E35F /* ListSelection.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = ListSelection.intentdefinition; sourceTree = "<group>"; };
+		E267533827D6417A00512CAC /* EmptySmallWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySmallWidgetView.swift; sourceTree = "<group>"; };
 		E26D01E125810AED009049F3 /* StoreDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDataSource.swift; sourceTree = "<group>"; };
 		E26D345425E3E88900EE3C3E /* WatchDebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchDebugView.swift; sourceTree = "<group>"; };
 		E26DD858250BA13E00FCC495 /* AuthenticationErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationErrorView.swift; sourceTree = "<group>"; };
@@ -297,7 +328,6 @@
 		E281FE0526E3C60E00370D2D /* SmallWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallWidgetView.swift; sourceTree = "<group>"; };
 		E281FE0726E3C62400370D2D /* MediumWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumWidgetView.swift; sourceTree = "<group>"; };
 		E281FE0926E3C63500370D2D /* LargeWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeWidgetView.swift; sourceTree = "<group>"; };
-		E281FE0D26E50C0300370D2D /* ConditionalWidthModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionalWidthModifier.swift; sourceTree = "<group>"; };
 		E282850625F52A7700EE8997 /* WatchStoreErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchStoreErrorView.swift; sourceTree = "<group>"; };
 		E282850E25F52E0B00EE8997 /* WatchPrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchPrivacyPolicyView.swift; sourceTree = "<group>"; };
 		E282851325F52E2F00EE8997 /* WatchParagraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchParagraphView.swift; sourceTree = "<group>"; };
@@ -370,6 +400,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E252C77D27D53BEE00B29F6A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E252C78227D53BEE00B29F6A /* Intents.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -389,7 +427,7 @@
 			children = (
 				E281FE0C26E3CA0100370D2D /* Views */,
 				E20F8A8426D19C510016E2C7 /* SimplistsWidget.swift */,
-				E20F8A8626D19C510016E2C7 /* SimplistsWidget.intentdefinition */,
+				E257B09627D51E990077E35F /* ListSelection.intentdefinition */,
 				E20F8A8726D19C540016E2C7 /* Assets.xcassets */,
 				E20F8A8926D19C540016E2C7 /* Info.plist */,
 			);
@@ -467,6 +505,7 @@
 				E235D7E424E037B9007D95BE /* SimplistsKit */,
 				E235D80C24E050CD007D95BE /* SimplistsWatchKit */,
 				E20F8A8326D19C510016E2C7 /* SimplistsWidget */,
+				E252C78327D53BEE00B29F6A /* SimplistsIntentHandler */,
 				E235D79024DF5B59007D95BE /* Products */,
 				E235D7D824E0372D007D95BE /* Frameworks */,
 			);
@@ -481,6 +520,7 @@
 				E235D7E324E037B9007D95BE /* SimplistsKit.framework */,
 				E235D80B24E050CD007D95BE /* SimplistsWatchKit.framework */,
 				E20F8A7E26D19C510016E2C7 /* SimplistsWidgetExtension.appex */,
+				E252C78027D53BEE00B29F6A /* SimplistsIntentHandler.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -551,6 +591,7 @@
 				E235D7D924E0372D007D95BE /* CloudKit.framework */,
 				E20F8A7F26D19C510016E2C7 /* WidgetKit.framework */,
 				E20F8A8126D19C510016E2C7 /* SwiftUI.framework */,
+				E252C78127D53BEE00B29F6A /* Intents.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -597,6 +638,16 @@
 			path = List;
 			sourceTree = "<group>";
 		};
+		E252C78327D53BEE00B29F6A /* SimplistsIntentHandler */ = {
+			isa = PBXGroup;
+			children = (
+				E252C78A27D53BEE00B29F6A /* SimplistsIntentHandler.entitlements */,
+				E252C78427D53BEE00B29F6A /* IntentHandler.swift */,
+				E252C78627D53BEE00B29F6A /* Info.plist */,
+			);
+			path = SimplistsIntentHandler;
+			sourceTree = "<group>";
+		};
 		E26D01DD257E71D3009049F3 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -609,6 +660,7 @@
 		E281FE0C26E3CA0100370D2D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E267533827D6417A00512CAC /* EmptySmallWidgetView.swift */,
 				E281FE0526E3C60E00370D2D /* SmallWidgetView.swift */,
 				E281FE0726E3C62400370D2D /* MediumWidgetView.swift */,
 				E281FE0926E3C63500370D2D /* LargeWidgetView.swift */,
@@ -710,6 +762,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				E2D711E827D54F8700861956 /* PBXTargetDependency */,
 			);
 			name = SimplistsWidgetExtension;
 			productName = SimplistsWidgetExtension;
@@ -735,6 +788,7 @@
 				E235D7CD24DF5B89007D95BE /* PBXTargetDependency */,
 				E235D7E924E037B9007D95BE /* PBXTargetDependency */,
 				E20F8A8D26D19C540016E2C7 /* PBXTargetDependency */,
+				E252C78827D53BEE00B29F6A /* PBXTargetDependency */,
 			);
 			name = Simplists;
 			packageProductDependencies = (
@@ -819,13 +873,32 @@
 			productReference = E235D80B24E050CD007D95BE /* SimplistsWatchKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		E252C77F27D53BEE00B29F6A /* SimplistsIntentHandler */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E252C78D27D53BEE00B29F6A /* Build configuration list for PBXNativeTarget "SimplistsIntentHandler" */;
+			buildPhases = (
+				E252C79627D5470800B29F6A /* Set Build Number */,
+				E252C77C27D53BEE00B29F6A /* Sources */,
+				E252C77D27D53BEE00B29F6A /* Frameworks */,
+				E252C77E27D53BEE00B29F6A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E252C79027D542D800B29F6A /* PBXTargetDependency */,
+			);
+			name = SimplistsIntentHandler;
+			productName = SimplistsIntentHandler;
+			productReference = E252C78027D53BEE00B29F6A /* SimplistsIntentHandler.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		E235D78724DF5B58007D95BE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1300;
+				LastSwiftUpdateCheck = 1330;
 				LastUpgradeCheck = 1200;
 				TargetAttributes = {
 					E20F8A7D26D19C510016E2C7 = {
@@ -846,6 +919,9 @@
 					};
 					E235D80A24E050CD007D95BE = {
 						CreatedOnToolsVersion = 12.0;
+					};
+					E252C77F27D53BEE00B29F6A = {
+						CreatedOnToolsVersion = 13.3;
 					};
 				};
 			};
@@ -870,6 +946,7 @@
 				E235D7E224E037B9007D95BE /* SimplistsKit */,
 				E235D80A24E050CD007D95BE /* SimplistsWatchKit */,
 				E20F8A7D26D19C510016E2C7 /* SimplistsWidgetExtension */,
+				E252C77F27D53BEE00B29F6A /* SimplistsIntentHandler */,
 			);
 		};
 /* End PBXProject section */
@@ -931,9 +1008,34 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E252C77E27D53BEE00B29F6A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		E252C79627D5470800B29F6A /* Set Build Number */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Set Build Number";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ $ENABLE_PREVIEWS == \"NO\" ]\nthen\n    hexBuildNumber=$(git rev-parse --short HEAD | tr \"[:lower:]\" \"[:upper:]\")\n    decBuildNumber=$(echo \"ibase=16; $hexBuildNumber\" | bc)\n    /usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $decBuildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\nfi\n\n";
+		};
 		E26642DD24E4D5EE008F6778 /* Set Build Number */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 12;
@@ -1068,8 +1170,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E281FE0826E3C62400370D2D /* MediumWidgetView.swift in Sources */,
+				E267533927D6417A00512CAC /* EmptySmallWidgetView.swift in Sources */,
 				E2CE179626E69ADD00664BF3 /* WidgetItemView.swift in Sources */,
-				E20F8A8A26D19C540016E2C7 /* SimplistsWidget.intentdefinition in Sources */,
+				E257B09827D51EAD0077E35F /* ListSelection.intentdefinition in Sources */,
 				E281FE0A26E3C63500370D2D /* LargeWidgetView.swift in Sources */,
 				E281FE0B26E3C63F00370D2D /* SmallWidgetView.swift in Sources */,
 				E20F8A8526D19C510016E2C7 /* SimplistsWidget.swift in Sources */,
@@ -1112,7 +1215,6 @@
 				E280799E26ECF539004A4559 /* ConditionalPaddingModifier.swift in Sources */,
 				E2C6671925CF277D0063D7E8 /* PurchasedView.swift in Sources */,
 				E235D79524DF5B59007D95BE /* SceneDelegate.swift in Sources */,
-				E20F8A8B26D19C540016E2C7 /* SimplistsWidget.intentdefinition in Sources */,
 				E2C6670C25CF1BD80063D7E8 /* PurchaseButtonsView.swift in Sources */,
 				E2C6671125CF1F3B0063D7E8 /* FeaturesView.swift in Sources */,
 				E241A046258FBA7D000277BE /* StoreView.swift in Sources */,
@@ -1182,6 +1284,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E252C77C27D53BEE00B29F6A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E252C78527D53BEE00B29F6A /* IntentHandler.swift in Sources */,
+				E252C78E27D53D4F00B29F6A /* ListSelection.intentdefinition in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1210,6 +1321,21 @@
 			isa = PBXTargetDependency;
 			target = E235D80A24E050CD007D95BE /* SimplistsWatchKit */;
 			targetProxy = E235D81024E050CD007D95BE /* PBXContainerItemProxy */;
+		};
+		E252C78827D53BEE00B29F6A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E252C77F27D53BEE00B29F6A /* SimplistsIntentHandler */;
+			targetProxy = E252C78727D53BEE00B29F6A /* PBXContainerItemProxy */;
+		};
+		E252C79027D542D800B29F6A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E235D7E224E037B9007D95BE /* SimplistsKit */;
+			targetProxy = E252C78F27D542D800B29F6A /* PBXContainerItemProxy */;
+		};
+		E2D711E827D54F8700861956 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E235D7E224E037B9007D95BE /* SimplistsKit */;
+			targetProxy = E2D711E727D54F8700861956 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1718,6 +1844,64 @@
 			};
 			name = Release;
 		};
+		E252C78B27D53BEE00B29F6A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_ENTITLEMENTS = SimplistsIntentHandler/SimplistsIntentHandler.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 25V97QMNV5;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SimplistsIntentHandler/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SimplistsIntentHandler;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sleekible.Simplists.debug.SimplistsIntentHandler;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E252C78C27D53BEE00B29F6A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_ENTITLEMENTS = SimplistsIntentHandler/SimplistsIntentHandler.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 25V97QMNV5;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SimplistsIntentHandler/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SimplistsIntentHandler;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sleekible.Simplists.SimplistsIntentHandler;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1780,6 +1964,15 @@
 			buildConfigurations = (
 				E235D81524E050CD007D95BE /* Debug */,
 				E235D81624E050CD007D95BE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E252C78D27D53BEE00B29F6A /* Build configuration list for PBXNativeTarget "SimplistsIntentHandler" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E252C78B27D53BEE00B29F6A /* Debug */,
+				E252C78C27D53BEE00B29F6A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

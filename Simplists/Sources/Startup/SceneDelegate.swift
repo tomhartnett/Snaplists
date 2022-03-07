@@ -11,6 +11,7 @@ import SimplistsKit
 import StoreKit
 import SwiftUI
 import UIKit
+import WidgetKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -72,6 +73,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let storage = self.storage {
             createSampleList(storage: storage)
         }
+    }
+
+    func sceneDidEnterBackground(_ scene: UIScene) {
+        WidgetCenter.shared.reloadTimelines(ofKind: "SimplistsWidget")
     }
 
     private func createStorage() -> SMPStorage {

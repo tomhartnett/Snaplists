@@ -5,30 +5,44 @@
 //  Created by Tom Hartnett on 9/4/21.
 //
 
+import SimplistsKit
 import SwiftUI
 import WidgetKit
 
 struct SmallWidgetView: View {
-    var entry: Provider.Entry
+    var list: SMPList
+    var totalListCount: Int
+
+    var otherListCountText: String? {
+        if totalListCount <= 1 {
+            return nil
+        } else if totalListCount == 2 {
+            return "1 other list"
+        } else {
+            return "\(totalListCount - 1) other lists"
+        }
+    }
 
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
-                Text("Grocery")
-                    .font(.title)
+                Text(list.title)
+                    .font(.headline)
 
                 VStack(alignment: .leading) {
-                    WidgetItemView(title: "Milk", isComplete: false)
-                    WidgetItemView(title: "Bread", isComplete: true)
-                    WidgetItemView(title: "Beer", isComplete: true)
+                    ForEach(list.items.prefix(3)) { item in
+                        WidgetItemView(title: item.title, isComplete: item.isComplete)
+                    }
                 }
 
                 Spacer()
 
                 HStack {
                     Spacer()
-                    Text("3 other lists")
-                        .font(.system(size: 10))
+                    if let text = otherListCountText {
+                        Text(text)
+                            .font(.system(size: 10))
+                    }
                 }
                 .padding(.bottom, 10)
             }
@@ -41,7 +55,16 @@ struct SmallWidgetView: View {
 
 struct SmallWidgetView_Previews: PreviewProvider {
     static var previews: some View {
-        SmallWidgetView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
+        SmallWidgetView(list: SMPList(title: "Preview List",
+                                      isArchived: false,
+                                      lastModified: Date().addingTimeInterval(-60),
+                                      items: [
+                                        SMPListItem(title: "Item 1", isComplete: false),
+                                        SMPListItem(title: "Item 2", isComplete: true),
+                                        SMPListItem(title: "Item 3", isComplete: true),
+                                        SMPListItem(title: "Item 4", isComplete: false)
+                                      ]),
+                        totalListCount: 10)
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }

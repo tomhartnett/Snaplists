@@ -47,9 +47,9 @@ struct MediumWidgetView: View {
     }
 }
 
-struct MediumWidgetView_Previews: PreviewProvider {
-    static var previews: some View {
-        MediumWidgetView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
-            .previewContext(WidgetPreviewContext(family: .systemMedium))
-    }
-}
+//struct MediumWidgetView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MediumWidgetView(entry: SimpleEntry(date: Date(), configuration: SelectListIntent()))
+//            .previewContext(WidgetPreviewContext(family: .systemMedium))
+//    }
+//}

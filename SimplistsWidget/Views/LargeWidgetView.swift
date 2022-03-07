@@ -16,9 +16,9 @@ struct LargeWidgetView: View {
     }
 }
 
-struct LargeWidgetView_Previews: PreviewProvider {
-    static var previews: some View {
-        LargeWidgetView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
-            .previewContext(WidgetPreviewContext(family: .systemLarge))
-    }
-}
+//struct LargeWidgetView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        LargeWidgetView(entry: SimpleEntry(date: Date(), configuration: SelectListIntent()))
+//            .previewContext(WidgetPreviewContext(family: .systemLarge))
+//    }
+//}
