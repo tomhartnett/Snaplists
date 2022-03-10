@@ -123,6 +123,7 @@
 		E2F3818925C04D47002740F3 /* StoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F3818825C04D47002740F3 /* StoreService.swift */; };
 		E2F3819125C58E11002740F3 /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = E2F3819025C58E10002740F3 /* Configuration.storekit */; };
 		E2F3819625C58F23002740F3 /* SKProduct+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F3819525C58F23002740F3 /* SKProduct+Extensions.swift */; };
+		E2F559B427D97E3C007DA24A /* OpenURLState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F559B327D97E3C007DA24A /* OpenURLState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -355,6 +356,7 @@
 		E2F3818825C04D47002740F3 /* StoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreService.swift; sourceTree = "<group>"; };
 		E2F3819025C58E10002740F3 /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
 		E2F3819525C58F23002740F3 /* SKProduct+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKProduct+Extensions.swift"; sourceTree = "<group>"; };
+		E2F559B327D97E3C007DA24A /* OpenURLState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenURLState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -418,6 +420,7 @@
 				E22E152524E06976002A140E /* Startup */,
 				E22E152424E06963002A140E /* Views */,
 				E2029FF925FB9E3300490043 /* ReviewHelper.swift */,
+				E2F559B327D97E3C007DA24A /* OpenURLState.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -754,10 +757,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E20F8A9026D19C540016E2C7 /* Build configuration list for PBXNativeTarget "SimplistsWidgetExtension" */;
 			buildPhases = (
+				E2CE179026E696EB00664BF3 /* Set Build Number */,
 				E20F8A7A26D19C510016E2C7 /* Sources */,
 				E20F8A7B26D19C510016E2C7 /* Frameworks */,
 				E20F8A7C26D19C510016E2C7 /* Resources */,
-				E2CE179026E696EB00664BF3 /* Set Build Number */,
 			);
 			buildRules = (
 			);
@@ -1205,6 +1208,7 @@
 				E281EBD9259A2C7400DF1CEB /* FeatureBulletView.swift in Sources */,
 				E2C6670725CF17010063D7E8 /* ErrorMessageView.swift in Sources */,
 				E279EACF25D04D9D00A38ED6 /* WidgetView.swift in Sources */,
+				E2F559B427D97E3C007DA24A /* OpenURLState.swift in Sources */,
 				E26D01E225810AED009049F3 /* StoreDataSource.swift in Sources */,
 				E2A0302825B4CE81003BD447 /* EmptyStateView.swift in Sources */,
 				E21123DB2504420700B3D76D /* PrivacyPolicyView.swift in Sources */,
@@ -1399,7 +1403,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_ENTITLEMENTS = SimplistsWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 71401262;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 25V97QMNV5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SimplistsWidget/Info.plist;
@@ -1429,7 +1433,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_ENTITLEMENTS = SimplistsWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 71401262;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 25V97QMNV5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SimplistsWidget/Info.plist;

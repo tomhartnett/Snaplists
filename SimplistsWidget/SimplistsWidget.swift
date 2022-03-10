@@ -102,6 +102,7 @@ struct SimplistsWidgetEntryView: View {
         case .systemSmall:
             if let list = entry.list {
                 SmallWidgetView(list: list, totalListCount: entry.totalListCount)
+                    .widgetURL(list.url)
             } else {
                 EmptySmallWidgetView()
             }

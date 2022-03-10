@@ -17,7 +17,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
+    private let openURLState = OpenURLState()
+
     private var subscriptions = Set<AnyCancellable>()
+
     private var storage: SMPStorage?
 
     func scene(_ scene: UIScene,
@@ -52,6 +55,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let listsView = HomeView(lists: [])
             .environmentObject(storage)
             .environmentObject(storeDataSource)
+            .environmentObject(openURLState)
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
@@ -64,6 +68,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
 
         self.storage = storage
+
+        // Handle URL on launch, if present.
+        openURL(scene, urlContext: connectionOptions.urlContexts.first)
+    }
+
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        openURL(scene, urlContext: URLContexts.first)
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {
@@ -77,6 +88,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func sceneDidEnterBackground(_ scene: UIScene) {
         WidgetCenter.shared.reloadTimelines(ofKind: "SimplistsWidget")
+    }
+
+    private func openURL(_ scene: UIScene, urlContext: UIOpenURLContext?) {
+        guard let context = urlContext else { return }
+
+        if context.url.host == "lists",
+            let last = context.url.pathComponents.last,
+            let id = UUID(uuidString: last) {
+
+            openURLState.selectedListID = id
+        }
     }
 
     private func createStorage() -> SMPStorage {
