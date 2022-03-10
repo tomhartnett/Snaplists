@@ -17,7 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-    private let openURLState = OpenURLState()
+    private let openURLContext = OpenURLContext()
 
     private var subscriptions = Set<AnyCancellable>()
 
@@ -55,7 +55,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let listsView = HomeView(lists: [])
             .environmentObject(storage)
             .environmentObject(storeDataSource)
-            .environmentObject(openURLState)
+            .environmentObject(openURLContext)
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
@@ -97,7 +97,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let last = context.url.pathComponents.last,
             let id = UUID(uuidString: last) {
 
-            openURLState.selectedListID = id
+            openURLContext.selectedListID = id
         }
     }
 

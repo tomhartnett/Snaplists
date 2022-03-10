@@ -10,24 +10,12 @@ import Intents
 import SimplistsKit
 
 class IntentHandler: INExtension, SelectListIntentHandling {
+    private lazy var storage: SMPStorage = {
+        createStorage()
+    }()
+
     func provideListOptionsCollection(for intent: SelectListIntent,
                                       with completion: @escaping (INObjectCollection<List>?, Error?) -> Void) {
-
-//        if previewData {
-//            let items = [
-//                List(identifier: UUID().uuidString, display: "Grocery"),
-//                List(identifier: UUID().uuidString, display: "Shopping"),
-//                List(identifier: UUID().uuidString, display: "TODOs")
-//            ]
-//
-//            let collection = INObjectCollection(items: items)
-//
-//            completion(collection, nil)
-
-//            return
-//        }
-//
-        let storage = createStorage()
 
         let lists = storage.getLists()
 
@@ -38,6 +26,14 @@ class IntentHandler: INExtension, SelectListIntentHandling {
         let collection = INObjectCollection(items: items)
 
         completion(collection, nil)
+    }
+
+    func defaultList(for intent: SelectListIntent) -> List? {
+        if let list = storage.getLists().first {
+            return List(identifier: list.id.uuidString, display: list.title)
+        } else {
+            return nil
+        }
     }
 }
 

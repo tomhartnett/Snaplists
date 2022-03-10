@@ -20,7 +20,7 @@ enum HomeViewActiveSheet: Identifiable {
 struct HomeView: View {
     @EnvironmentObject var storage: SMPStorage
     @EnvironmentObject var storeDataSource: StoreDataSource
-    @EnvironmentObject var openURLState: OpenURLState
+    @EnvironmentObject var openURLState: OpenURLContext
     @State var lists: [SMPList]
     @State private var newListTitle = ""
     @State private var isPresentingRename = false
