@@ -36,15 +36,11 @@ struct ListView: View {
     private let addItemFieldID = "AddItemFieldID"
 
     private var itemCountText: String {
-        let formatString = "item count".localize()
-        let result = String.localizedStringWithFormat(formatString, list.items.count)
-        return result
+        "item-count".localize(list.items.count)
     }
 
     private var selectedItemsCountText: String {
-        let formatString = "item count".localize()
-        let result = String.localizedStringWithFormat(formatString, selectedIDs.count)
-        return result
+        "item-count".localize(selectedIDs.count)
     }
 
     private var lastUpdatedText: String {

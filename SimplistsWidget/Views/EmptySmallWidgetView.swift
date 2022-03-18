@@ -11,6 +11,7 @@ import WidgetKit
 struct EmptySmallWidgetView: View {
     var body: some View {
         Text("No Lists")
+            .foregroundColor(.secondary)
     }
 }
 

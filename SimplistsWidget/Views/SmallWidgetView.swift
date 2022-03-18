@@ -16,10 +16,8 @@ struct SmallWidgetView: View {
     var otherListCountText: String? {
         if totalListCount <= 1 {
             return nil
-        } else if totalListCount == 2 {
-            return "1 other list"
         } else {
-            return "\(totalListCount - 1) other lists"
+            return "other-list-count".localize(totalListCount - 1)
         }
     }
 
@@ -30,8 +28,14 @@ struct SmallWidgetView: View {
                     .font(.headline)
 
                 VStack(alignment: .leading) {
-                    ForEach(list.items.prefix(3)) { item in
-                        WidgetItemView(title: item.title, isComplete: item.isComplete)
+                    if !list.items.isEmpty {
+                        ForEach(list.items.prefix(3)) { item in
+                            WidgetItemView(title: item.title, isComplete: item.isComplete)
+                        }
+                    } else {
+                        Text("No items")
+                            .foregroundColor(.secondary)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
                     }
                 }
 

@@ -11,9 +11,7 @@ struct WatchListHeaderView: View {
     var itemCount: Int
 
     private var itemCountText: String {
-        let formatString = "list item count".localize()
-        let result = String.localizedStringWithFormat(formatString, itemCount)
-        return result
+        "list-item-count".localize(itemCount)
     }
 
     var body: some View {
