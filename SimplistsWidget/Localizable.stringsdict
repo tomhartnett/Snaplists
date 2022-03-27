@@ -9,7 +9,7 @@
 		<key>items</key>
 		<dict>
 			<key>one</key>
-			<string>+%d other item</string>
+			<string>+%d more</string>
 			<key>zero</key>
 			<string></string>
 			<key>NSStringFormatValueTypeKey</key>
@@ -17,7 +17,25 @@
 			<key>NSStringFormatSpecTypeKey</key>
 			<string>NSStringPluralRuleType</string>
 			<key>other</key>
-			<string>+%d other items</string>
+			<string>+%d more</string>
+		</dict>
+	</dict>
+	<key>other-list-count</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@lists@</string>
+		<key>lists</key>
+		<dict>
+			<key>one</key>
+			<string>+%d more</string>
+			<key>zero</key>
+			<string></string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>other</key>
+			<string>+%d more</string>
 		</dict>
 	</dict>
 </dict>

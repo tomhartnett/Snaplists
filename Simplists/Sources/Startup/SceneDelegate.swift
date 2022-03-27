@@ -87,7 +87,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
-        WidgetCenter.shared.reloadTimelines(ofKind: "SimplistsWidget")
+        WidgetCenter.shared.reloadAllTimelines()
     }
 
     private func openURL(_ scene: UIScene, urlContext: UIOpenURLContext?) {

@@ -10,7 +10,6 @@ import Intents
 import SimplistsKit
 import SwiftUI
 import WidgetKit
-import CryptoKit
 
 struct Provider: IntentTimelineProvider {
 
@@ -82,7 +81,7 @@ struct Provider: IntentTimelineProvider {
             entry = SimpleEntry(date: Date(), list: nil, totalListCount: 0)
         }
 
-        let timeline = Timeline(entries: [entry], policy: .atEnd)
+        let timeline = Timeline(entries: [entry], policy: .after(Date().addingTimeInterval(15 * 60)))
         completion(timeline)
     }
 }
@@ -119,7 +118,6 @@ struct SimplistsWidgetEntryView: View {
     }
 }
 
-@main
 struct SimplistsWidget: Widget {
     let kind: String = "SimplistsWidget"
 
@@ -127,8 +125,8 @@ struct SimplistsWidget: Widget {
         IntentConfiguration(kind: kind, intent: SelectListIntent.self, provider: Provider()) { entry in
             SimplistsWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("Lists")
-        .description("Get quick access to your lists.")
+        .configurationDisplayName("Specific List")
+        .description("Choose a list for quick access.")
         .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
     }
 }

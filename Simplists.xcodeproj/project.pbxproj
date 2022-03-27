@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		E2029FFA25FB9E3300490043 /* ReviewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2029FF925FB9E3300490043 /* ReviewHelper.swift */; };
 		E203CBBE27F090C400651CEC /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E203CBBD27F090C400651CEC /* ListView.swift */; };
+		E203CBC027F0A8BA00651CEC /* ListsWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = E203CBBF27F0A8BA00651CEC /* ListsWidget.swift */; };
+		E203CBC327F0B4AF00651CEC /* SmallListsWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E203CBC227F0B4AF00651CEC /* SmallListsWidgetView.swift */; };
+		E203CBC527F0B4C100651CEC /* MediumListsWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E203CBC427F0B4C100651CEC /* MediumListsWidgetView.swift */; };
+		E203CBC727F0B4CF00651CEC /* LargeListsWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E203CBC627F0B4CF00651CEC /* LargeListsWidgetView.swift */; };
+		E203CBC927F0B4DE00651CEC /* ListsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E203CBC827F0B4DE00651CEC /* ListsView.swift */; };
+		E203CBCC27F0B8C800651CEC /* SimplistsWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E203CBCB27F0B8C800651CEC /* SimplistsWidgetBundle.swift */; };
 		E20BD7792754057200671478 /* ConditionalHiddenModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20BD7782754057200671478 /* ConditionalHiddenModifier.swift */; };
 		E20F8A7926D18CF10016E2C7 /* InlineNavBarTitleDisplayMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20F8A7826D18CF10016E2C7 /* InlineNavBarTitleDisplayMode.swift */; };
 		E20F8A8026D19C510016E2C7 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E20F8A7F26D19C510016E2C7 /* WidgetKit.framework */; };
@@ -241,6 +247,12 @@
 /* Begin PBXFileReference section */
 		E2029FF925FB9E3300490043 /* ReviewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewHelper.swift; sourceTree = "<group>"; };
 		E203CBBD27F090C400651CEC /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
+		E203CBBF27F0A8BA00651CEC /* ListsWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsWidget.swift; sourceTree = "<group>"; };
+		E203CBC227F0B4AF00651CEC /* SmallListsWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallListsWidgetView.swift; sourceTree = "<group>"; };
+		E203CBC427F0B4C100651CEC /* MediumListsWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumListsWidgetView.swift; sourceTree = "<group>"; };
+		E203CBC627F0B4CF00651CEC /* LargeListsWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeListsWidgetView.swift; sourceTree = "<group>"; };
+		E203CBC827F0B4DE00651CEC /* ListsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsView.swift; sourceTree = "<group>"; };
+		E203CBCB27F0B8C800651CEC /* SimplistsWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimplistsWidgetBundle.swift; sourceTree = "<group>"; };
 		E20BD7782754057200671478 /* ConditionalHiddenModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionalHiddenModifier.swift; sourceTree = "<group>"; };
 		E20F8A7826D18CF10016E2C7 /* InlineNavBarTitleDisplayMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineNavBarTitleDisplayMode.swift; sourceTree = "<group>"; };
 		E20F8A7E26D19C510016E2C7 /* SimplistsWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SimplistsWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -411,15 +423,40 @@
 			path = Sources;
 			sourceTree = "<group>";
 		};
+		E203CBC127F0B48B00651CEC /* ListsWidget */ = {
+			isa = PBXGroup;
+			children = (
+				E203CBC227F0B4AF00651CEC /* SmallListsWidgetView.swift */,
+				E203CBC427F0B4C100651CEC /* MediumListsWidgetView.swift */,
+				E203CBC627F0B4CF00651CEC /* LargeListsWidgetView.swift */,
+				E203CBC827F0B4DE00651CEC /* ListsView.swift */,
+			);
+			path = ListsWidget;
+			sourceTree = "<group>";
+		};
+		E203CBCA27F0B89D00651CEC /* SingleListWidget */ = {
+			isa = PBXGroup;
+			children = (
+				E281FE0726E3C62400370D2D /* MediumWidgetView.swift */,
+				E281FE0926E3C63500370D2D /* LargeWidgetView.swift */,
+				E203CBBD27F090C400651CEC /* ListView.swift */,
+				E281FE0526E3C60E00370D2D /* SmallWidgetView.swift */,
+				E2CE179526E69ADD00664BF3 /* WidgetItemView.swift */,
+			);
+			path = SingleListWidget;
+			sourceTree = "<group>";
+		};
 		E20F8A8326D19C510016E2C7 /* SimplistsWidget */ = {
 			isa = PBXGroup;
 			children = (
 				E281FE0C26E3CA0100370D2D /* Views */,
+				E203CBBF27F0A8BA00651CEC /* ListsWidget.swift */,
 				E20F8A8426D19C510016E2C7 /* SimplistsWidget.swift */,
 				E257B09627D51E990077E35F /* ListSelection.intentdefinition */,
 				E20F8A8726D19C540016E2C7 /* Assets.xcassets */,
 				E20F8A8926D19C540016E2C7 /* Info.plist */,
 				E21B627827E4B3A500A427CC /* Localizable.stringsdict */,
+				E203CBCB27F0B8C800651CEC /* SimplistsWidgetBundle.swift */,
 			);
 			path = SimplistsWidget;
 			sourceTree = "<group>";
@@ -639,11 +676,8 @@
 			isa = PBXGroup;
 			children = (
 				E267533827D6417A00512CAC /* EmptyWidgetView.swift */,
-				E281FE0726E3C62400370D2D /* MediumWidgetView.swift */,
-				E281FE0926E3C63500370D2D /* LargeWidgetView.swift */,
-				E203CBBD27F090C400651CEC /* ListView.swift */,
-				E281FE0526E3C60E00370D2D /* SmallWidgetView.swift */,
-				E2CE179526E69ADD00664BF3 /* WidgetItemView.swift */,
+				E203CBCA27F0B89D00651CEC /* SingleListWidget */,
+				E203CBC127F0B48B00651CEC /* ListsWidget */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -981,12 +1015,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				E281FE0826E3C62400370D2D /* MediumWidgetView.swift in Sources */,
+				E203CBC527F0B4C100651CEC /* MediumListsWidgetView.swift in Sources */,
+				E203CBC327F0B4AF00651CEC /* SmallListsWidgetView.swift in Sources */,
+				E203CBC727F0B4CF00651CEC /* LargeListsWidgetView.swift in Sources */,
+				E203CBC027F0A8BA00651CEC /* ListsWidget.swift in Sources */,
 				E267533927D6417A00512CAC /* EmptyWidgetView.swift in Sources */,
 				E2CE179626E69ADD00664BF3 /* WidgetItemView.swift in Sources */,
 				E257B09827D51EAD0077E35F /* ListSelection.intentdefinition in Sources */,
+				E203CBC927F0B4DE00651CEC /* ListsView.swift in Sources */,
 				E21B627A27E4B4D000A427CC /* String+Extensions.swift in Sources */,
 				E281FE0A26E3C63500370D2D /* LargeWidgetView.swift in Sources */,
 				E281FE0B26E3C63F00370D2D /* SmallWidgetView.swift in Sources */,
+				E203CBCC27F0B8C800651CEC /* SimplistsWidgetBundle.swift in Sources */,
 				E20F8A8526D19C510016E2C7 /* SimplistsWidget.swift in Sources */,
 				E203CBBE27F090C400651CEC /* ListView.swift in Sources */,
 			);

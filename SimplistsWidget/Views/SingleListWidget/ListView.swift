@@ -40,8 +40,9 @@ struct ListView: View {
                         }
                     } else {
                         Text("No items")
+                            .font(.title)
                             .foregroundColor(.secondary)
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                            .frame(width: .infinity, height: .infinity)
                     }
                 }
 
