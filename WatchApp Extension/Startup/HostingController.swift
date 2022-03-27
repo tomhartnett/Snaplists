@@ -8,10 +8,10 @@
 import Combine
 import CoreData
 import Foundation
+import SimplistsKit
 import StoreKit
 import SwiftUI
 import WatchKit
-import SimplistsWatchKit
 
 class HostingController: WKHostingController<AnyView> {
     private var subscriptions = Set<AnyCancellable>()
