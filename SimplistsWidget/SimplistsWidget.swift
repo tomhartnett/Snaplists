@@ -73,7 +73,8 @@ struct Provider: IntentTimelineProvider {
         let entry: SimpleEntry
         if let uuidString = configuration.list?.identifier,
            let id = UUID(uuidString: uuidString),
-           let list = storage.getList(with: id) {
+           let list = storage.getList(with: id),
+           !list.isArchived {
             entry = SimpleEntry(date: Date(), list: list, totalListCount: storage.getLists().count)
         } else if let firstList = storage.getLists().first {
             entry = SimpleEntry(date: Date(), list: firstList, totalListCount: storage.getLists().count)
