@@ -24,6 +24,17 @@ struct ListView: View {
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
+                Image("WidgetAppIcon")
+                    .resizable()
+                    .frame(width: 40, height: 40)
+
+                Spacer()
+
+                Text("\(list.items.count)")
+                Text("item-count".localize(list.items.count))
+            }
+
+            VStack(alignment: .leading) {
                 Text(list.title)
                     .font(.headline)
 
@@ -48,10 +59,11 @@ struct ListView: View {
 
                 Spacer()
             }
-            .padding([.leading, .top], 15)
+            .padding(.leading, 15)
 
             Spacer()
         }
+        .padding(.all, 15)
     }
 
 }

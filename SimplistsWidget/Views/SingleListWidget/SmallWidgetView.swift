@@ -10,10 +10,49 @@ import SwiftUI
 import WidgetKit
 
 struct SmallWidgetView: View {
+    private let maxVisibleItemCount = 3
+
     var list: SMPList
 
+    var otherItemsCountText: String? {
+        if list.items.count > maxVisibleItemCount {
+            return "other-item-count".localize(list.items.count - maxVisibleItemCount)
+        } else {
+            return nil
+        }
+    }
+
     var body: some View {
-        ListView(list: list, maxVisibleItemCount: 3)
+        HStack {
+            VStack(alignment: .leading) {
+                Text(list.title)
+                    .font(.headline)
+
+                VStack(alignment: .leading) {
+                    if !list.items.isEmpty {
+                        ForEach(list.items.prefix(maxVisibleItemCount)) { item in
+                            WidgetItemView(title: item.title, isComplete: item.isComplete)
+                        }
+                        if let text = otherItemsCountText {
+                            Text(text)
+                                .font(.system(size: 13))
+                                .foregroundColor(.secondary)
+                                .padding(.top, 2)
+                        }
+                    } else {
+                        Text("No items")
+                            .font(.title)
+                            .foregroundColor(.secondary)
+                            .frame(width: .infinity, height: .infinity)
+                    }
+                }
+
+                Spacer()
+            }
+            .padding([.leading, .top], 15)
+
+            Spacer()
+        }
     }
 }
 

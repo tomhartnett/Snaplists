@@ -67,6 +67,6 @@ struct ListsView: View {
                 Spacer()
             }
         }
-        .padding([.all], 15)
+        .padding(.all, 15)
     }
 }

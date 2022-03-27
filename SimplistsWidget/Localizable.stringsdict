@@ -56,5 +56,23 @@
             <string>Lists</string>
         </dict>
     </dict>
+    <key>item-count</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@items@</string>
+        <key>items</key>
+        <dict>
+            <key>one</key>
+            <string>Item</string>
+            <key>zero</key>
+            <string>Items</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>other</key>
+            <string>Items</string>
+        </dict>
+    </dict>
 </dict>
 </plist>

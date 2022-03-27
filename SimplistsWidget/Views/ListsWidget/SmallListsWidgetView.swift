@@ -9,6 +9,8 @@ import SwiftUI
 import WidgetKit
 
 struct SmallListsWidgetView: View {
+    private let maxVisibleListCount = 3
+
     var lists: [ListDetail]
 
     var otherListsCountText: String? {
@@ -18,8 +20,6 @@ struct SmallListsWidgetView: View {
             return nil
         }
     }
-
-    private let maxVisibleListCount = 3
 
     var body: some View {
         VStack {
