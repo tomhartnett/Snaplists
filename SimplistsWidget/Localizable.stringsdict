@@ -38,5 +38,23 @@
 			<string>+%d more</string>
 		</dict>
 	</dict>
+    <key>list-count</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@lists@</string>
+        <key>lists</key>
+        <dict>
+            <key>one</key>
+            <string>List</string>
+            <key>zero</key>
+            <string>Lists</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>other</key>
+            <string>Lists</string>
+        </dict>
+    </dict>
 </dict>
 </plist>

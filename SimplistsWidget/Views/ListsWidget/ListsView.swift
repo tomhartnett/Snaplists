@@ -30,7 +30,7 @@ struct ListsView: View {
                     Spacer()
 
                     Text("\(lists.count)")
-                    Text("Lists")
+                    Text("list-count".localize(lists.count))
                 }
 
                 VStack(alignment: .leading) {
