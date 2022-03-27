@@ -98,20 +98,22 @@ struct SimplistsWidgetEntryView: View {
     var entry: Provider.Entry
 
     var body: some View {
-        switch family {
-        case .systemSmall:
-            if let list = entry.list {
-                SmallWidgetView(list: list, totalListCount: entry.totalListCount)
+        if let list = entry.list {
+            switch family {
+            case .systemSmall:
+                SmallWidgetView(list: list)
                     .widgetURL(list.url)
-            } else {
-                EmptySmallWidgetView()
+            case .systemMedium:
+                MediumWidgetView(list: list)
+                    .widgetURL(list.url)
+            case .systemLarge:
+                LargeWidgetView(list: list)
+                    .widgetURL(list.url)
+            default:
+                Text("This widget size is not supported")
             }
-        case .systemMedium:
-            MediumWidgetView(entry: entry)
-        case .systemLarge:
-            LargeWidgetView(entry: entry)
-        default:
-            Text("This widget size is not supported")
+        } else {
+            EmptyWidgetView()
         }
     }
 }

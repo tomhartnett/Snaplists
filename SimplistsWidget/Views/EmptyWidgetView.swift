@@ -1,5 +1,5 @@
 //
-//  EmptySmallWidgetView.swift
+//  EmptyWidgetView.swift
 //  SimplistsWidgetExtension
 //
 //  Created by Tom Hartnett on 3/7/22.
@@ -8,7 +8,7 @@
 import SwiftUI
 import WidgetKit
 
-struct EmptySmallWidgetView: View {
+struct EmptyWidgetView: View {
     var body: some View {
         Text("No Lists")
             .foregroundColor(.secondary)
@@ -17,7 +17,7 @@ struct EmptySmallWidgetView: View {
 
 struct EmptySmallWidgetView_Previews: PreviewProvider {
     static var previews: some View {
-        EmptySmallWidgetView()
+        EmptyWidgetView()
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }

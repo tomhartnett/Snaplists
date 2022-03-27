@@ -16,12 +16,12 @@ struct WidgetItemView: View {
         HStack {
             ZStack {
                 Circle()
-                    .stroke(Color.primary, lineWidth: 2)
+                    .stroke(Color.secondary, lineWidth: 2)
                     .frame(width: 15, height: 15)
 
                 Circle()
                     .frame(width: 15, height: 15)
-                    .foregroundColor(isComplete ? .primary : .clear)
+                    .foregroundColor(isComplete ? .secondary : .clear)
 
                 Image(systemName: "checkmark")
                     .font(.system(size: 10, weight: .bold))
@@ -29,7 +29,7 @@ struct WidgetItemView: View {
             }
 
             Text(title)
-                .font(.caption)
+                .font(.system(size: 13))
         }
     }
 }
