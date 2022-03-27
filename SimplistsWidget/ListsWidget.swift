@@ -11,8 +11,6 @@ import SwiftUI
 import WidgetKit
 
 struct ListsProvider: TimelineProvider {
-    typealias Entry = ListsEntry
-
     private var sampleLists: [ListDetail] {
         [
             ListDetail(id: UUID(uuidString: "c5d6af5a-f4c0-4962-8783-ff81c33e4afe")!,
@@ -57,11 +55,11 @@ struct ListsProvider: TimelineProvider {
     }
 
     func placeholder(in context: Context) -> ListsEntry {
-        Entry(date: Date(), lists: sampleLists)
+        ListsEntry(date: Date(), lists: sampleLists)
     }
 
     func getSnapshot(in context: Context, completion: @escaping (ListsEntry) -> Void) {
-        let entry = Entry(date: Date(), lists: sampleLists)
+        let entry = ListsEntry(date: Date(), lists: sampleLists)
 
         completion(entry)
     }
@@ -89,7 +87,7 @@ struct ListDetail: Identifiable {
 struct ListsWidgetEntryView: View {
     @Environment(\.widgetFamily) var family
 
-    var entry: ListsProvider.Entry
+    var entry: ListsEntry
 
     var body: some View {
         if !entry.lists.isEmpty {

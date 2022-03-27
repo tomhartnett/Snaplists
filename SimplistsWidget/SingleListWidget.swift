@@ -1,6 +1,6 @@
 //
-//  SimplistsWidget.swift
-//  SimplistsWidget
+//  SingleListWidget.swift
+//  SingleListWidget
 //
 //  Created by Tom Hartnett on 8/21/21.
 //
@@ -11,8 +11,7 @@ import SimplistsKit
 import SwiftUI
 import WidgetKit
 
-struct Provider: IntentTimelineProvider {
-
+struct SingleListProvider: IntentTimelineProvider {
     private var sampleList: SMPList {
         SMPList(title: "Grocery",
                 isArchived: false,
@@ -53,32 +52,32 @@ struct Provider: IntentTimelineProvider {
         self.storage = SMPStorage(context: container.viewContext)
     }
 
-    func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), list: sampleList, totalListCount: 3)
+    func placeholder(in context: Context) -> SingleListEntry {
+        SingleListEntry(date: Date(), list: sampleList, totalListCount: 3)
     }
 
     func getSnapshot(for configuration: SelectListIntent,
                      in context: Context,
-                     completion: @escaping (SimpleEntry) -> Void) {
-        let entry = SimpleEntry(date: Date(), list: sampleList, totalListCount: 3)
+                     completion: @escaping (SingleListEntry) -> Void) {
+        let entry = SingleListEntry(date: Date(), list: sampleList, totalListCount: 3)
 
         completion(entry)
     }
 
     func getTimeline(for configuration: SelectListIntent,
                      in context: Context,
-                     completion: @escaping (Timeline<SimpleEntry>) -> Void) {
+                     completion: @escaping (Timeline<SingleListEntry>) -> Void) {
 
-        let entry: SimpleEntry
+        let entry: SingleListEntry
         if let uuidString = configuration.list?.identifier,
            let id = UUID(uuidString: uuidString),
            let list = storage.getList(with: id),
            !list.isArchived {
-            entry = SimpleEntry(date: Date(), list: list, totalListCount: storage.getLists().count)
+            entry = SingleListEntry(date: Date(), list: list, totalListCount: storage.getLists().count)
         } else if let firstList = storage.getLists().first {
-            entry = SimpleEntry(date: Date(), list: firstList, totalListCount: storage.getLists().count)
+            entry = SingleListEntry(date: Date(), list: firstList, totalListCount: storage.getLists().count)
         } else {
-            entry = SimpleEntry(date: Date(), list: nil, totalListCount: 0)
+            entry = SingleListEntry(date: Date(), list: nil, totalListCount: 0)
         }
 
         let timeline = Timeline(entries: [entry], policy: .after(Date().addingTimeInterval(15 * 60)))
@@ -86,16 +85,16 @@ struct Provider: IntentTimelineProvider {
     }
 }
 
-struct SimpleEntry: TimelineEntry {
+struct SingleListEntry: TimelineEntry {
     let date: Date
     let list: SMPList?
     let totalListCount: Int
 }
 
-struct SimplistsWidgetEntryView: View {
+struct SingleListWidgetEntryView: View {
     @Environment(\.widgetFamily) var family
 
-    var entry: Provider.Entry
+    var entry: SingleListEntry
 
     var body: some View {
         if let list = entry.list {
@@ -118,12 +117,12 @@ struct SimplistsWidgetEntryView: View {
     }
 }
 
-struct SimplistsWidget: Widget {
-    let kind: String = "SimplistsWidget"
+struct SingleListWidget: Widget {
+    let kind: String = "SingleListWidget"
 
     var body: some WidgetConfiguration {
-        IntentConfiguration(kind: kind, intent: SelectListIntent.self, provider: Provider()) { entry in
-            SimplistsWidgetEntryView(entry: entry)
+        IntentConfiguration(kind: kind, intent: SelectListIntent.self, provider: SingleListProvider()) { entry in
+            SingleListWidgetEntryView(entry: entry)
         }
         .configurationDisplayName("Specific List")
         .description("Choose a list for quick access.")
@@ -131,18 +130,18 @@ struct SimplistsWidget: Widget {
     }
 }
 
-struct SimplistsWidget_Previews: PreviewProvider {
+struct SingleListWidget_Previews: PreviewProvider {
     static var previews: some View {
-        SimplistsWidgetEntryView(entry: SimpleEntry(date: Date(),
-                                                    list: SMPList(title: "Grocery",
-                                                                  isArchived: false,
-                                                                  lastModified: Date(),
-                                                                  items: [
-                                                                    SMPListItem(title: "Milk", isComplete: false),
-                                                                    SMPListItem(title: "Bread", isComplete: true),
-                                                                    SMPListItem(title: "Beer", isComplete: true)
-                                                                  ]),
-                                                    totalListCount: 3))
+        SingleListWidgetEntryView(entry: SingleListEntry(date: Date(),
+                                                         list: SMPList(title: "Grocery",
+                                                                       isArchived: false,
+                                                                       lastModified: Date(),
+                                                                       items: [
+                                                                        SMPListItem(title: "Milk", isComplete: false),
+                                                                        SMPListItem(title: "Bread", isComplete: true),
+                                                                        SMPListItem(title: "Beer", isComplete: true)
+                                                                       ]),
+                                                         totalListCount: 3))
         .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }

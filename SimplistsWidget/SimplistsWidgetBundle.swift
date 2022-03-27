@@ -12,6 +12,6 @@ struct SimplistsWidgetBundle: WidgetBundle {
     @WidgetBundleBuilder
     var body: some Widget {
         ListsWidget()
-        SimplistsWidget()
+        SingleListWidget()
     }
 }
