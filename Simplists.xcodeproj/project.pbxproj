@@ -106,6 +106,7 @@
 		E2BB0B5325DEA6A0004A1AB6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E2BB0B5525DEA6A0004A1AB6 /* Localizable.strings */; };
 		E2BB0B5E25DEA6DE004A1AB6 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = E2BB0B6025DEA6DE004A1AB6 /* Localizable.stringsdict */; };
 		E2BB0B6525DEA9FD004A1AB6 /* WatchListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BB0B6425DEA9FD004A1AB6 /* WatchListHeaderView.swift */; };
+		E2C6332327F2932300CC2255 /* ConditionalHiddenModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20BD7782754057200671478 /* ConditionalHiddenModifier.swift */; };
 		E2C6670725CF17010063D7E8 /* ErrorMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C6670625CF17010063D7E8 /* ErrorMessageView.swift */; };
 		E2C6670C25CF1BD80063D7E8 /* PurchaseButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C6670B25CF1BD80063D7E8 /* PurchaseButtonsView.swift */; };
 		E2C6671125CF1F3B0063D7E8 /* FeaturesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C6671025CF1F3B0063D7E8 /* FeaturesView.swift */; };
@@ -641,7 +642,6 @@
 		E250E1AB269B2B1500860DEC /* List */ = {
 			isa = PBXGroup;
 			children = (
-				E20BD7782754057200671478 /* ConditionalHiddenModifier.swift */,
 				E280799D26ECF539004A4559 /* ConditionalPaddingModifier.swift */,
 				E280799B26ECEB0D004A4559 /* ConditionalWidthModifier.swift */,
 				E250E1AF269B2B6C00860DEC /* ItemView.swift */,
@@ -711,6 +711,7 @@
 			isa = PBXGroup;
 			children = (
 				E2F3819025C58E10002740F3 /* Configuration.storekit */,
+				E20BD7782754057200671478 /* ConditionalHiddenModifier.swift */,
 				E26EBDA025C83ADB000D031D /* FreeLimits.swift */,
 				E2F3819525C58F23002740F3 /* SKProduct+Extensions.swift */,
 				E26D01E125810AED009049F3 /* StoreDataSource.swift */,
@@ -1023,6 +1024,7 @@
 				E2CE179626E69ADD00664BF3 /* WidgetItemView.swift in Sources */,
 				E257B09827D51EAD0077E35F /* ListSelection.intentdefinition in Sources */,
 				E203CBC927F0B4DE00651CEC /* ListsView.swift in Sources */,
+				E2C6332327F2932300CC2255 /* ConditionalHiddenModifier.swift in Sources */,
 				E21B627A27E4B4D000A427CC /* String+Extensions.swift in Sources */,
 				E281FE0A26E3C63500370D2D /* LargeWidgetView.swift in Sources */,
 				E281FE0B26E3C63F00370D2D /* SmallWidgetView.swift in Sources */,

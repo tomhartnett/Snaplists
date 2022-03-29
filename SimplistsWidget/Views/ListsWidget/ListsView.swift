@@ -59,7 +59,7 @@ struct ListsView: View {
                         Text("No lists")
                             .font(.title)
                             .foregroundColor(.secondary)
-                            .frame(width: .infinity, height: .infinity)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
                     }
                 }
                 .padding(.leading, 15)
@@ -68,5 +68,6 @@ struct ListsView: View {
             }
         }
         .padding(.all, 15)
+        .background(Color("WidgetBackground"))
     }
 }

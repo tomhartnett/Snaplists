@@ -51,9 +51,8 @@ struct ListView: View {
                         }
                     } else {
                         Text("No items")
-                            .font(.title)
                             .foregroundColor(.secondary)
-                            .frame(width: .infinity, height: .infinity)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
                     }
                 }
 
@@ -64,6 +63,7 @@ struct ListView: View {
             Spacer()
         }
         .padding(.all, 15)
+        .background(Color("WidgetBackground"))
     }
 
 }

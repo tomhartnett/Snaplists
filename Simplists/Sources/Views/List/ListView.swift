@@ -175,7 +175,7 @@ struct ListView: View {
                                                     Text("Delete all items")
                                                     Image(systemName: "circle.dashed")
                                                 }
-                                                .conditionalHidden(list.items.isEmpty)
+                                                .hideIf(list.items.isEmpty)
 
                                                 Button(action: {
                                                     deleteCompletedItems()
@@ -183,7 +183,7 @@ struct ListView: View {
                                                     Text("Delete completed items")
                                                     Image(systemName: "checkmark.circle")
                                                 }
-                                                .conditionalHidden(list.items.filter({ $0.isComplete }).isEmpty)
+                                                .hideIf(list.items.filter({ $0.isComplete }).isEmpty)
 
                                                 Button(action: {
                                                     renameList()

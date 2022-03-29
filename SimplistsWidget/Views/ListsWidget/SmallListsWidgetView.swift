@@ -55,7 +55,7 @@ struct SmallListsWidgetView: View {
                         Text("No lists")
                             .font(.title)
                             .foregroundColor(.secondary)
-                            .frame(width: .infinity, height: .infinity)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
                     }
                 }
 
@@ -63,6 +63,7 @@ struct SmallListsWidgetView: View {
             }
         }
         .padding([.all], 15)
+        .background(Color("WidgetBackground"))
     }
 }
 

@@ -41,9 +41,8 @@ struct SmallWidgetView: View {
                         }
                     } else {
                         Text("No items")
-                            .font(.title)
                             .foregroundColor(.secondary)
-                            .frame(width: .infinity, height: .infinity)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
                     }
                 }
 
@@ -53,6 +52,7 @@ struct SmallWidgetView: View {
 
             Spacer()
         }
+        .background(Color("WidgetBackground"))
     }
 }
 

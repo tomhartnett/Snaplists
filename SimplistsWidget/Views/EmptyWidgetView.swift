@@ -10,8 +10,17 @@ import WidgetKit
 
 struct EmptyWidgetView: View {
     var body: some View {
-        Text("No Lists")
-            .foregroundColor(.secondary)
+        VStack {
+            Image("WidgetAppIcon")
+                .resizable()
+                .frame(width: 40, height: 40)
+
+            Text("No Lists")
+                .foregroundColor(.secondary)
+                .frame(maxWidth: .infinity)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color("WidgetBackground"))
     }
 }
 
