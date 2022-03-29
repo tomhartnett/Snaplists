@@ -31,6 +31,7 @@ struct ListsView: View {
 
                     Text("\(lists.count)")
                     Text("list-count".localize(lists.count))
+                        .foregroundColor(.secondary)
                 }
 
                 VStack(alignment: .leading) {
