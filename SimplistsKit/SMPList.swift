@@ -14,10 +14,6 @@ public struct SMPList: Identifiable {
     public var lastModified: Date
     public var items: [SMPListItem]
 
-    public var url: URL {
-        return URL(string: "widget://lists/\(id.uuidString)")!
-    }
-
     public init(title: String,
                 isArchived: Bool = false,
                 lastModified: Date = Date(),

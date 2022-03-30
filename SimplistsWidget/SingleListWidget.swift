@@ -145,3 +145,9 @@ struct SingleListWidget_Previews: PreviewProvider {
         .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }
+
+private extension SMPList {
+    var url: URL {
+        URL(string: "widget://lists/\(id.uuidString)")!
+    }
+}

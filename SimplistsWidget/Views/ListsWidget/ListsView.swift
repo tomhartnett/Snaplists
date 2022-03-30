@@ -37,14 +37,15 @@ struct ListsView: View {
                 VStack(alignment: .leading) {
                     if !lists.isEmpty {
                         ForEach(lists.prefix(maxVisibleListCount)) { list in
-                            HStack {
-                                Text(list.title)
-                                Spacer()
-                                Text("\(list.itemCount)")
-                                    .foregroundColor(.secondary)
-
+                            Link(destination: list.url) {
+                                HStack {
+                                    Text(list.title)
+                                    Spacer()
+                                    Text("\(list.itemCount)")
+                                        .foregroundColor(.secondary)
+                                }
+                                .font(.system(size: 13))
                             }
-                            .font(.system(size: 13))
 
                             Divider()
                         }

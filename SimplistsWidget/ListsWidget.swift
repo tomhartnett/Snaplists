@@ -82,6 +82,10 @@ struct ListDetail: Identifiable {
     var id: UUID
     var title: String
     var itemCount: Int
+
+    var url: URL {
+        URL(string: "widget://lists/\(id.uuidString)")!
+    }
 }
 
 struct ListsWidgetEntryView: View {
