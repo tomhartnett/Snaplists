@@ -307,18 +307,32 @@ public extension SMPStorage {
             SMPListItem(title: "Milk", isComplete: false),
             SMPListItem(title: "Lunch meat", isComplete: false),
             SMPListItem(title: "Cheese slices", isComplete: false),
+            SMPListItem(title: "Mustard", isComplete: true),
             SMPListItem(title: "Bread", isComplete: true),
-            SMPListItem(title: "Bananas", isComplete: true)
+            SMPListItem(title: "Bananas", isComplete: true),
+            SMPListItem(title: "Juice", isComplete: true),
+            SMPListItem(title: "Cereal", isComplete: true),
+            SMPListItem(title: "BBQ potato chips", isComplete: true)
         ])
         addList(list2)
 
         let list3 = SMPList(title: "TODOs", isArchived: false, lastModified: Date(), items: [
-            SMPListItem(title: "Mow lawn", isComplete: false),
-            SMPListItem(title: "Clean up garage", isComplete: false),
-            SMPListItem(title: "Vacuum & dust", isComplete: true),
+            SMPListItem(title: "Vacuum & dust", isComplete: false),
+            SMPListItem(title: "Mow lawn", isComplete: true),
+            SMPListItem(title: "Clean up garage", isComplete: true),
             SMPListItem(title: "Pick out clothes for donation", isComplete: true)
         ])
         addList(list3)
+
+        let list4 = SMPList(title: "Shopping", isArchived: false, lastModified: Date(), items: [
+            SMPListItem(title: "#10 envelopes", isComplete: false),
+            SMPListItem(title: "Yellow legal pads", isComplete: false),
+            SMPListItem(title: "Address labels 30 per sheet", isComplete: false),
+            SMPListItem(title: "Printer paper", isComplete: false),
+            SMPListItem(title: "Furniture polish", isComplete: false),
+            SMPListItem(title: "Detergent", isComplete: false)
+        ])
+        addList(list4)
     }
 }
 

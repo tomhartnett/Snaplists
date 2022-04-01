@@ -36,15 +36,11 @@ struct ListView: View {
     private let addItemFieldID = "AddItemFieldID"
 
     private var itemCountText: String {
-        let formatString = "item count".localize()
-        let result = String.localizedStringWithFormat(formatString, list.items.count)
-        return result
+        "item-count".localize(list.items.count)
     }
 
     private var selectedItemsCountText: String {
-        let formatString = "item count".localize()
-        let result = String.localizedStringWithFormat(formatString, selectedIDs.count)
-        return result
+        "item-count".localize(selectedIDs.count)
     }
 
     private var lastUpdatedText: String {
@@ -179,7 +175,7 @@ struct ListView: View {
                                                     Text("Delete all items")
                                                     Image(systemName: "circle.dashed")
                                                 }
-                                                .conditionalHidden(list.items.isEmpty)
+                                                .hideIf(list.items.isEmpty)
 
                                                 Button(action: {
                                                     deleteCompletedItems()
@@ -187,7 +183,7 @@ struct ListView: View {
                                                     Text("Delete completed items")
                                                     Image(systemName: "checkmark.circle")
                                                 }
-                                                .conditionalHidden(list.items.filter({ $0.isComplete }).isEmpty)
+                                                .hideIf(list.items.filter({ $0.isComplete }).isEmpty)
 
                                                 Button(action: {
                                                     renameList()

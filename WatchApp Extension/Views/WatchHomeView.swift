@@ -6,7 +6,7 @@
 //
 
 import CloudKit
-import SimplistsWatchKit
+import SimplistsKit
 import SwiftUI
 
 enum WatchHomeActiveSheet: Identifiable {

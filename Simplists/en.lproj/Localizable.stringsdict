@@ -2,7 +2,7 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>free limit item count</key>
+	<key>free-limit-item-count</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
 		<string>%#@items@</string>
@@ -18,7 +18,7 @@
 			<string>%d items per list</string>
 		</dict>
 	</dict>
-	<key>free limit list count</key>
+	<key>free-limit-list-count</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
 		<string>%#@lists@</string>
@@ -34,7 +34,7 @@
 			<string>%d lists</string>
 		</dict>
 	</dict>
-	<key>item count</key>
+	<key>item-count</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
 		<string>%#@items@</string>
@@ -48,22 +48,6 @@
 			<string>%d item</string>
 			<key>other</key>
 			<string>%d items</string>
-		</dict>
-	</dict>
-	<key>list count</key>
-	<dict>
-		<key>NSStringLocalizedFormatKey</key>
-		<string>%#@lists@</string>
-		<key>lists</key>
-		<dict>
-			<key>NSStringFormatSpecTypeKey</key>
-			<string>NSStringPluralRuleType</string>
-			<key>NSStringFormatValueTypeKey</key>
-			<string>d</string>
-			<key>one</key>
-			<string>%d list</string>
-			<key>other</key>
-			<string>%d lists</string>
 		</dict>
 	</dict>
 </dict>

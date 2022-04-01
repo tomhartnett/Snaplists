@@ -1,44 +1,44 @@
 //
-//  HostingController.swift
-//  WatchApp Extension
+//  IntentHandler.swift
+//  SimplistsIntentHandler
 //
-//  Created by Tom Hartnett on 8/8/20.
+//  Created by Tom Hartnett on 3/6/22.
 //
 
-import Combine
 import CoreData
-import Foundation
+import Intents
 import SimplistsKit
-import StoreKit
-import SwiftUI
-import WatchKit
 
-class HostingController: WKHostingController<AnyView> {
-    private var subscriptions = Set<AnyCancellable>()
+class IntentHandler: INExtension, SelectListIntentHandling {
+    private lazy var storage: SMPStorage = {
+        createStorage()
+    }()
 
-    override var body: AnyView {
-        let storage = createStorage()
+    func provideListOptionsCollection(for intent: SelectListIntent,
+                                      with completion: @escaping (INObjectCollection<List>?, Error?) -> Void) {
 
-        let client = StoreClient()
-        SKPaymentQueue.default().add(client)
+        let lists = storage.getLists()
 
-        let storeDataSource = StoreDataSource(service: client)
-        storeDataSource.getProducts()
+        let items = lists.map {
+            List(identifier: $0.id.uuidString, display: $0.title)
+        }
 
-        storeDataSource.objectWillChange
-            .sink(receiveValue: { [storage, storeDataSource] in
-                if storeDataSource.hasPurchasedIAP {
-                    storage.savePremiumIAPItem()
-                }
-            })
-            .store(in: &subscriptions)
+        let collection = INObjectCollection(items: items)
 
-        return AnyView(WatchHomeView(lists: [])
-                        .environmentObject(storage)
-                        .environmentObject(storeDataSource))
+        completion(collection, nil)
     }
 
-    private func createStorage() -> SMPStorage {
+    func defaultList(for intent: SelectListIntent) -> List? {
+        if let list = storage.getLists().first {
+            return List(identifier: list.id.uuidString, display: list.title)
+        } else {
+            return nil
+        }
+    }
+}
+
+private extension IntentHandler {
+    func createStorage() -> SMPStorage {
         let container = SMPPersistentContainer(name: "Simplists")
 
         guard let description = container.persistentStoreDescriptions.first else {

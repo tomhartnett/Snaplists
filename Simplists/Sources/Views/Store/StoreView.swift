@@ -76,10 +76,8 @@ struct StoreView: View {
 
                 FeaturesView(headerText: "Free limits".localize(),
                              bulletPoints: [
-                                String.localizedStringWithFormat(
-                                    "free limit list count".localize(), FreeLimits.numberOfLists.limit),
-                                String.localizedStringWithFormat(
-                                    "free limit item count".localize(), FreeLimits.numberOfItems.limit)
+                                "free-limit-list-count".localize(FreeLimits.numberOfLists.limit),
+                                "free-limit-item-count".localize(FreeLimits.numberOfItems.limit)
                              ])
                     .padding(.bottom, 15)
 

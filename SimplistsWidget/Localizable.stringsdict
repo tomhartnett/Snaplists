@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>other-item-count</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@items@</string>
+		<key>items</key>
+		<dict>
+			<key>one</key>
+			<string>+%d more</string>
+			<key>zero</key>
+			<string></string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>other</key>
+			<string>+%d more</string>
+		</dict>
+	</dict>
+	<key>other-list-count</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@lists@</string>
+		<key>lists</key>
+		<dict>
+			<key>one</key>
+			<string>+%d more</string>
+			<key>zero</key>
+			<string></string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>other</key>
+			<string>+%d more</string>
+		</dict>
+	</dict>
+    <key>list-count</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@lists@</string>
+        <key>lists</key>
+        <dict>
+            <key>one</key>
+            <string>List</string>
+            <key>zero</key>
+            <string>Lists</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>other</key>
+            <string>Lists</string>
+        </dict>
+    </dict>
+    <key>item-count</key>
+    <dict>
+        <key>NSStringLocalizedFormatKey</key>
+        <string>%#@items@</string>
+        <key>items</key>
+        <dict>
+            <key>one</key>
+            <string>Item</string>
+            <key>zero</key>
+            <string>Items</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>other</key>
+            <string>Items</string>
+        </dict>
+    </dict>
+</dict>
+</plist>

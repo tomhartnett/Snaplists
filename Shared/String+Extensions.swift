@@ -11,4 +11,9 @@ extension String {
     func localize() -> String {
         return Bundle.main.localizedString(forKey: self, value: nil, table: nil)
     }
+
+    func localize(_ count: Int) -> String {
+        let format = Bundle.main.localizedString(forKey: self, value: nil, table: nil)
+        return String(format: format, count)
+    }
 }

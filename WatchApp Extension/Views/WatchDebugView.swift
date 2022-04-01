@@ -5,7 +5,7 @@
 //  Created by Tom Hartnett on 2/22/21.
 //
 
-import SimplistsWatchKit
+import SimplistsKit
 import StoreKit
 import SwiftUI
 

@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import SimplistsWatchKit
+import SimplistsKit
 
 enum WatchListActiveSheet: Identifiable {
     case freeLimitView

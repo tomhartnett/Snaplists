@@ -5,7 +5,7 @@
 //  Created by Tom Hartnett on 2/20/21.
 //
 
-import SimplistsWatchKit
+import SimplistsKit
 import SwiftUI
 
 struct WatchNewListView: View {

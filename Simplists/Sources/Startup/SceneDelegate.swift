@@ -11,12 +11,16 @@ import SimplistsKit
 import StoreKit
 import SwiftUI
 import UIKit
+import WidgetKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
+    private let openURLContext = OpenURLContext()
+
     private var subscriptions = Set<AnyCancellable>()
+
     private var storage: SMPStorage?
 
     func scene(_ scene: UIScene,
@@ -51,6 +55,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let listsView = HomeView(lists: [])
             .environmentObject(storage)
             .environmentObject(storeDataSource)
+            .environmentObject(openURLContext)
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
@@ -63,6 +68,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
 
         self.storage = storage
+
+        // Handle URL on launch, if present.
+        openURL(scene, urlContext: connectionOptions.urlContexts.first)
+    }
+
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        openURL(scene, urlContext: URLContexts.first)
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {
@@ -71,6 +83,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         if let storage = self.storage {
             createSampleList(storage: storage)
+        }
+    }
+
+    func sceneDidEnterBackground(_ scene: UIScene) {
+        WidgetCenter.shared.reloadAllTimelines()
+    }
+
+    private func openURL(_ scene: UIScene, urlContext: UIOpenURLContext?) {
+        guard let context = urlContext else { return }
+
+        if context.url.host == "lists",
+            let last = context.url.pathComponents.last,
+            let id = UUID(uuidString: last) {
+
+            openURLContext.selectedListID = id
         }
     }
 

@@ -20,6 +20,7 @@ enum HomeViewActiveSheet: Identifiable {
 struct HomeView: View {
     @EnvironmentObject var storage: SMPStorage
     @EnvironmentObject var storeDataSource: StoreDataSource
+    @EnvironmentObject var openURLState: OpenURLContext
     @State var lists: [SMPList]
     @State private var newListTitle = ""
     @State private var isPresentingRename = false
@@ -153,6 +154,9 @@ struct HomeView: View {
         }
         .onReceive(storage.objectWillChange, perform: { _ in
             reload()
+        })
+        .onReceive(openURLState.$selectedListID, perform: { id in
+            selectedListID = id
         })
         .sheet(item: $activeSheet) { item in
             switch item {
