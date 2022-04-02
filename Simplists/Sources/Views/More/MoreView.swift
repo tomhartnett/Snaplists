@@ -77,7 +77,7 @@ struct MoreView: View {
                             Image(systemName: "list.bullet.rectangle.portrait")
                                 .frame(width: 25, height: 25)
                                 .foregroundColor(Color("TextSecondary"))
-                            Text("Release Notes")
+                            Text("What’s New")
                         }
                     }
                 }
