@@ -14,6 +14,21 @@ enum PurchaseStatus: Equatable {
     case purchased(productIdentifier: String)
     case failed(errorMessage: String)
     case deferred
+
+    var title: String {
+        switch self {
+        case .initial:
+            return "initial"
+        case .purchasing:
+            return "purchasing"
+        case .purchased:
+            return "purchased"
+        case .failed:
+            return "failed"
+        case .deferred:
+            return "deferred"
+        }
+    }
 }
 
 protocol StoreService {
