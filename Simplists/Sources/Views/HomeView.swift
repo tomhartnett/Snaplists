@@ -9,6 +9,7 @@ import SimplistsKit
 import SwiftUI
 
 enum HomeViewActiveSheet: Identifiable {
+    case releaseNotes
     case storeView
     case storeViewHitLimit
 
@@ -151,6 +152,9 @@ struct HomeView: View {
         }
         .onAppear {
             reload()
+            if !UserDefaults.simplistsApp.hasSeenReleaseNotes {
+                activeSheet = .releaseNotes
+            }
         }
         .onReceive(storage.objectWillChange, perform: { _ in
             reload()
@@ -160,6 +164,8 @@ struct HomeView: View {
         })
         .sheet(item: $activeSheet) { item in
             switch item {
+            case .releaseNotes:
+                ReleaseNotesView(isModal: .constant(true))
             case .storeViewHitLimit:
                 StoreView(freeLimitMessage: FreeLimits.numberOfLists.message)
             case .storeView:

@@ -13,58 +13,11 @@ struct DebugView: View {
     @EnvironmentObject var storeDataSource: StoreDataSource
     @State private var isHack = false
 
-    var premiumIAPStatus: String {
-        switch storeDataSource.premiumIAPPurchaseStatus {
-        case .initial:
-            return "initial"
-        case .purchasing:
-            return "purchasing"
-        case .purchased:
-            return "purchased"
-        case .failed:
-            return "failed"
-        case .deferred:
-            return "deferred"
-        }
-    }
-
-    var isAuthorizedForPayments: String {
-        if UserDefaults.simplistsAppDebug.isAuthorizedForPayments {
-            return "Yes"
-        } else {
-            return "No"
-        }
-    }
-
-    var isWelcomeListCreated: String {
-        if UserDefaults.simplistsApp.isSampleListCreated {
-            return "Yes"
-        } else {
-            return "No"
-        }
-    }
-
-    var isFakeAuthenticationEnabled: String {
-        if UserDefaults.simplistsAppDebug.isFakeAuthenticationEnabled {
-            return "Yes"
-        } else {
-            return "No"
-        }
-    }
-
-    var isPremiumIAPItemPresent: String {
-        if storage.hasPremiumIAPItem {
-            return "Yes"
-        } else {
-            return "No"
-        }
-    }
-
     var body: some View {
         Form {
             Section(header: Text("IAP Status")) {
                 HStack {
-                    Text(premiumIAPStatus)
+                    Text(storeDataSource.premiumIAPPurchaseStatus.title)
                     Spacer()
                     Button(action: {
                         storeDataSource.resetIAP()
@@ -77,7 +30,7 @@ struct DebugView: View {
 
             Section(header: Text("Has IAP Item")) {
                 HStack {
-                    Text(isPremiumIAPItemPresent)
+                    Text(storage.hasPremiumIAPItem.yesOrNoString)
                     Spacer()
                     Button(action: {
                         storage.deletePremiumIAPItem()
@@ -90,7 +43,7 @@ struct DebugView: View {
 
             Section(header: Text("Welcome list")) {
                 HStack {
-                    Text(isWelcomeListCreated)
+                    Text(UserDefaults.simplistsApp.isSampleListCreated.yesOrNoString)
                     Spacer()
                     Button(action: {
                         toggleIsWelcomeListCreated()
@@ -114,7 +67,7 @@ struct DebugView: View {
 
             Section(header: Text("Simulator: Fake authentication")) {
                 HStack {
-                    Text(isFakeAuthenticationEnabled)
+                    Text(UserDefaults.simplistsAppDebug.isFakeAuthenticationEnabled.yesOrNoString)
                     Spacer()
                     Button(action: {
                         toggleIsFakeAuthenticationEnabled()
@@ -126,12 +79,24 @@ struct DebugView: View {
 
             Section(header: Text("Simulator: Authorized for Payments")) {
                 HStack {
-                    Text(isAuthorizedForPayments)
+                    Text(UserDefaults.simplistsAppDebug.isAuthorizedForPayments.yesOrNoString)
                     Spacer()
                     Button(action: {
                         toggleIsAuthorizedForPayments()
                     }, label: {
                         Text("Toggle Is Authorized")
+                    })
+                }
+            }
+
+            Section(header: Text("Has Seen Release Notes")) {
+                HStack {
+                    Text(UserDefaults.simplistsApp.hasSeenReleaseNotes.yesOrNoString)
+                    Spacer()
+                    Button(action: {
+                        toggleHasSeenReleaseNotes()
+                    }, label: {
+                        Text("Toggle")
                     })
                 }
             }
@@ -142,15 +107,19 @@ struct DebugView: View {
         }
     }
 
-    func toggleIsAuthorizedForPayments() {
-        let isAuthorized = UserDefaults.simplistsAppDebug.isAuthorizedForPayments
-        UserDefaults.simplistsAppDebug.setIsAuthorizedForPayments(!isAuthorized)
+    func createScreenshotSampleData() {
+        storage.createScreenshotSampleData()
+    }
+
+    func toggleHasSeenReleaseNotes() {
+        let hasSeen = UserDefaults.simplistsApp.hasSeenReleaseNotes
+        UserDefaults.simplistsApp.setHasSeenReleaseNotes(!hasSeen)
         isHack.toggle()
     }
 
-    func toggleIsWelcomeListCreated() {
-        let isCreated = UserDefaults.simplistsApp.isSampleListCreated
-        UserDefaults.simplistsApp.setIsSampleListCreated(!isCreated)
+    func toggleIsAuthorizedForPayments() {
+        let isAuthorized = UserDefaults.simplistsAppDebug.isAuthorizedForPayments
+        UserDefaults.simplistsAppDebug.setIsAuthorizedForPayments(!isAuthorized)
         isHack.toggle()
     }
 
@@ -160,8 +129,10 @@ struct DebugView: View {
         isHack.toggle()
     }
 
-    func createScreenshotSampleData() {
-        storage.createScreenshotSampleData()
+    func toggleIsWelcomeListCreated() {
+        let isCreated = UserDefaults.simplistsApp.isSampleListCreated
+        UserDefaults.simplistsApp.setIsSampleListCreated(!isCreated)
+        isHack.toggle()
     }
 }
 

@@ -13,6 +13,7 @@ extension UserDefaults {
         static let isFakeAuthenticationEnabled = "Debug-isFakeAuthenticationEnabled"
         static let isPremiumIAPPurchased = "com.sleekible.simplists.iap.premium.purchased"
         static let isSampleListCreated = "Debug-isSampleListCreated"
+        static let hasSeenReleaseNotes = "com.sleekible.simplists.releasenotes.2022.3"
     }
 
     struct SimplistsApp {
@@ -22,6 +23,10 @@ extension UserDefaults {
 
         var isSampleListCreated: Bool {
             return getValue(for: Key.isSampleListCreated)
+        }
+
+        var hasSeenReleaseNotes: Bool {
+            return getValue(for: Key.hasSeenReleaseNotes)
         }
 
         private var isSignedIn: Bool {
@@ -34,6 +39,10 @@ extension UserDefaults {
 
         func setIsSampleListCreated(_ value: Bool) {
             setValue(value, forKey: Key.isSampleListCreated)
+        }
+
+        func setHasSeenReleaseNotes(_ value: Bool) {
+            setValue(value, forKey: Key.hasSeenReleaseNotes)
         }
 
         func synchronizeFromRemote() {
