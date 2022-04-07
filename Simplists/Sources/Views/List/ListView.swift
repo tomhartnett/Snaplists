@@ -292,6 +292,10 @@ struct ListView: View {
         list.items.sort(by: { !$0.isComplete && $1.isComplete })
 
         storage.updateList(list)
+
+        if isComplete {
+            ReviewHelper.requestReview(event: .itemMarkedComplete)
+        }
     }
 
     private func deleteSelectedItems() {
