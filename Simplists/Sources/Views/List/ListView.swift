@@ -175,6 +175,7 @@ struct ListView: View {
                                                     Text("Delete all items")
                                                     Image(systemName: "circle.dashed")
                                                 }
+                                                .foregroundColor(Color.red)
                                                 .hideIf(list.items.isEmpty)
 
                                                 Button(action: {
@@ -183,7 +184,26 @@ struct ListView: View {
                                                     Text("Delete completed items")
                                                     Image(systemName: "checkmark.circle")
                                                 }
+                                                .foregroundColor(Color.red)
                                                 .hideIf(list.items.filter({ $0.isComplete }).isEmpty)
+
+                                                Divider()
+
+                                                Button(action: {
+                                                    markAllItems(isComplete: false)
+                                                }) {
+                                                    Text("Deselect all items")
+                                                }
+                                                .hideIf(list.items.filter({ $0.isComplete }).isEmpty)
+
+                                                Button(action: {
+                                                    markAllItems(isComplete: true)
+                                                }) {
+                                                    Text("Select all items")
+                                                }
+                                                .hideIf(list.items.filter({ !$0.isComplete }).isEmpty)
+
+                                                Divider()
 
                                                 Button(action: {
                                                     renameList()
@@ -335,6 +355,22 @@ struct ListView: View {
 
         editMode?.wrappedValue = .inactive
         selectedIDs.removeAll()
+
+        storage.updateList(list)
+    }
+
+    private func markAllItems(isComplete: Bool) {
+        let allIDS: [UUID] = list.items.map { $0.id }
+
+        for id in allIDS {
+            guard let index = list.items.firstIndex(where: { $0.id == id }) else { continue }
+            let item = list.items[index]
+            list.items.remove(at: index)
+            list.items.insert(SMPListItem(id: item.id,
+                                          title: item.title,
+                                          isComplete: isComplete),
+                              at: index)
+        }
 
         storage.updateList(list)
     }
