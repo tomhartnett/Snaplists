@@ -1,4 +1,8 @@
 {
+  "identifier" : "177A4D27",
+  "nonRenewingSubscriptions" : [
+
+  ],
   "products" : [
     {
       "displayPrice" : "2.99",
@@ -27,6 +31,6 @@
   ],
   "version" : {
     "major" : 1,
-    "minor" : 0
+    "minor" : 2
   }
 }
