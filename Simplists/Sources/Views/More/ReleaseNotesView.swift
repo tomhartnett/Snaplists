@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+#warning("Review and possibly revise release notes.")
 struct ReleaseNotesView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @Binding var isModal: Bool

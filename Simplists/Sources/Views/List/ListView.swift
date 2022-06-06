@@ -175,7 +175,6 @@ struct ListView: View {
                                                     Text("Delete all items")
                                                     Image(systemName: "circle.dashed")
                                                 }
-                                                .foregroundColor(Color.red)
                                                 .hideIf(list.items.isEmpty)
 
                                                 Button(action: {
@@ -184,7 +183,6 @@ struct ListView: View {
                                                     Text("Delete completed items")
                                                     Image(systemName: "checkmark.circle")
                                                 }
-                                                .foregroundColor(Color.red)
                                                 .hideIf(list.items.filter({ $0.isComplete }).isEmpty)
 
                                                 Divider()
