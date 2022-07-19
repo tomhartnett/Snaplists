@@ -111,6 +111,8 @@ struct FocusableTextField: UIViewRepresentable {
     }
 
     func updateUIView(_ uiView: UITextField, context: Context) {
+        let selectedRange = uiView.selectedTextRange
         uiView.attributedText = NSAttributedString(string: text, attributes: textAttributes)
+        uiView.selectedTextRange = selectedRange
     }
 }
