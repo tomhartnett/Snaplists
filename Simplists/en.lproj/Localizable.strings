@@ -51,14 +51,14 @@
 "privacy-changes-header-text" = "Changes to This Policy";
 "privacy-commitment-body-text" = "Your privacy is important to us. To protect that privacy, we provide this notice to explain our information collection practices.";
 "privacy-commitment-header-text" = "Our Commitment to Privacy";
-"privacy-contact-us-body-text" = "Should you have other questions or concerns about this privacy policy, please email snaplists@sleekible.com. At this time, we only have the ability to receive and send English-language communications.";
+"privacy-contact-us-body-text" = "Should you have questions or concerns about this privacy policy, please email snaplists@sleekible.com. At this time, we only have the ability to receive and send English-language communications.";
 "privacy-contact-us-header-text" = "How to Contact Us";
 "privacy-data-body-text" = "The Snaplists app does not collect any user information. There is no sign-up, sign-in, or opportunity in the app to give us your personal information.  The app uses Apple’s iCloud service to sync your lists across your devices.  We cannot see your data:  your lists, the list title, the items on the list, even the number of lists you create in the app.  We cannot view any of this data.";
 "privacy-data-header-text" = "Your Data is Private";
 "privacy-effective-date-text" = "Effective Date: February 7, 2021";
 "privacy-external-services-body-text" = "The Snapslists app does not use any 3rd party/external services.  There are no analytics gathering, behavior tracking, etc.  This app uses only Apple-provided APIs and frameworks.";
 "privacy-external-services-header-text" = "No External Services";
-"privacy-feedback-body-text" = "The app does provide a feedback feature to allow you to provide us feedback about the app. This feature opens a simple email to us. Be aware that by sending the email, you are giving us your email address. We do not use this email address for anything other than responding to your feedback, via email.  If you prefer, you can tweet us at @snaplistsapp.";
+"privacy-feedback-body-text" = "The app does provide a feedback feature to allow you to provide us feedback about the app. This feature opens a simple email to us. Be aware that by sending the email, you are giving us your email address. We do not use this email address for anything other than responding to your feedback, via email.";
 "privacy-feedback-header-text" = "In-App Feedback";
 "Purchase is pending approval." = "Purchase is pending approval.";
 "Purchased" = "Purchased";
