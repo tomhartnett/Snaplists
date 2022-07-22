@@ -12,7 +12,7 @@ struct LargeListsWidgetView: View {
     var lists: [ListDetail]
 
     var body: some View {
-        ListsView(lists: lists, maxVisibleListCount: 10)
+        ListsView(lists: lists, maxVisibleListCount: 8)
     }
 }
 
