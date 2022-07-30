@@ -79,25 +79,25 @@ struct HomeView: View {
                                             } else {
                                                 storage.duplicateList(list)
                                             }
-                                        }, label: {
+                                        }) {
                                             Text("Duplicate")
                                             Image(systemName: "plus.square.on.square")
-                                        })
+                                        }
+
                                         Button(action: {
                                             renameListID = list.id.uuidString
                                             renameListTitle = list.title
                                             isPresentingRename.toggle()
-                                        }, label: {
+                                        }) {
                                             Text("Rename")
                                             Image(systemName: "pencil")
-                                        })
+                                        }
 
-                                        Button(action: {
-                                            archive(list: list)
-                                        }, label: {
+                                        Button(role: .destructive,
+                                               action: { archive(list: list) }) {
                                             Text("Delete")
                                             Image(systemName: "trash")
-                                        })
+                                        }
                                     }
                                     .sheet(isPresented: $isPresentingRename) {
                                         RenameListView(id: $renameListID, title: $renameListTitle) { id, newTitle in

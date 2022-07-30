@@ -159,28 +159,27 @@ struct ListView: View {
                                     HStack {
                                         Menu("Actions") {
 
-                                            Button(action: {
-                                                deleteList()
-                                            }) {
-                                                Text("Delete list")
-                                                Image(systemName: "trash")
-                                            }
+                                            Menu("Delete") {
+                                                Button(role: .destructive,
+                                                       action: { deleteList() }) {
+                                                    Text("Delete list")
+                                                    Image(systemName: "trash")
+                                                }
 
-                                            Button(action: {
-                                                deleteAllItems()
-                                            }) {
-                                                Text("Delete all items")
-                                                Image(systemName: "circle.dashed")
-                                            }
-                                            .hideIf(list.items.isEmpty)
+                                                Button(role: .destructive,
+                                                       action: { deleteAllItems() }) {
+                                                    Text("Delete all items")
+                                                    Image(systemName: "circle.dashed")
+                                                }
+                                                .hideIf(list.items.isEmpty)
 
-                                            Button(action: {
-                                                deleteCompletedItems()
-                                            }) {
-                                                Text("Delete completed items")
-                                                Image(systemName: "checkmark.circle")
+                                                Button(role: .destructive,
+                                                       action: { deleteCompletedItems() }) {
+                                                    Text("Delete completed items")
+                                                    Image(systemName: "checkmark.circle")
+                                                }
+                                                .hideIf(list.items.filter({ $0.isComplete }).isEmpty)
                                             }
-                                            .hideIf(list.items.filter({ $0.isComplete }).isEmpty)
 
                                             Divider()
 
