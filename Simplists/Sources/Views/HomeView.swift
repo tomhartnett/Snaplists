@@ -24,10 +24,11 @@ struct HomeView: View {
     @EnvironmentObject var openURLState: OpenURLContext
     @State var lists: [SMPList]
     @State private var newListTitle = ""
-    @State private var isPresentingRename = false
     @State private var renameListID = ""
     @State private var renameListTitle = ""
     @State private var isPresentingAuthError = false
+    @State private var isPresentingDeleteList = false
+    @State private var isPresentingRename = false
     @State private var activeSheet: HomeViewActiveSheet?
     @State private var selectedListID: UUID?
 
@@ -42,7 +43,7 @@ struct HomeView: View {
                 AuthenticationErrorView()
                     .padding()
                     .onTapGesture {
-                        isPresentingAuthError.toggle()
+                        isPresentingAuthError = true
                     }
                     .alert(isPresented: $isPresentingAuthError) {
                         Alert(title: Text("icloud-warning-alert-title"),
@@ -87,18 +88,38 @@ struct HomeView: View {
                                         Button(action: {
                                             renameListID = list.id.uuidString
                                             renameListTitle = list.title
-                                            isPresentingRename.toggle()
+                                            isPresentingRename = true
                                         }) {
                                             Text("Rename")
                                             Image(systemName: "pencil")
                                         }
 
-                                        Button(role: .destructive,
-                                               action: { archive(list: list) }) {
+                                        Button(
+                                            role: .destructive,
+                                            action: {
+                                                isPresentingDeleteList = true
+                                            }
+                                        ) {
                                             Text("Delete")
                                             Image(systemName: "trash")
                                         }
                                     }
+                                    .alert(isPresented: $isPresentingDeleteList) {
+                                        Alert(title: Text("Delete \(list.title)?"),
+                                              primaryButton: .cancel(),
+                                              secondaryButton: .destructive(
+                                                Text("Delete"),
+                                                action: { archive(list: list) })
+                                        )
+                                    }
+                                    .confirmationDialog(
+                                        "Delete \(list.title)?",
+                                        isPresented: $isPresentingDeleteList,
+                                        titleVisibility: .visible) {
+                                            Button("Delete", role: .destructive) {
+                                                archive(list: list)
+                                            }
+                                        }
                                     .sheet(isPresented: $isPresentingRename) {
                                         RenameListView(id: $renameListID, title: $renameListTitle) { id, newTitle in
                                             if var list = lists.first(where: { $0.id.uuidString == id }) {

@@ -9,7 +9,24 @@ import SimplistsKit
 import SwiftUI
 import StoreKit
 
-enum ListViewActiveSheet: Identifiable {
+private enum DeleteAction {
+    case deleteList
+    case deleteAllItems
+    case deleteCompletedItems
+
+    var title: String {
+        switch self {
+        case .deleteList:
+            return "Delete this list?"
+        case .deleteAllItems:
+            return "Delete all items?"
+        case .deleteCompletedItems:
+            return "Delete completed items?"
+        }
+    }
+}
+
+private enum ListViewActiveSheet: Identifiable {
     case moveItems
     case renameList
     case purchaseRequired
@@ -26,6 +43,8 @@ struct ListView: View {
     @EnvironmentObject var storeDataSource: StoreDataSource
     @State var list: SMPList
     @State private var activeSheet: ListViewActiveSheet?
+    @State private var deleteAction: DeleteAction?
+    @State private var isPresentingConfirmDelete = false
     @State private var newItemTitle = ""
     @State private var renameListID = ""
     @State private var renameListTitle = ""
@@ -143,12 +162,14 @@ struct ListView: View {
                                         Spacer()
 
                                         Menu("Delete") {
-                                            Button(action: {
-                                                deleteSelectedItems()
-                                            }) {
-                                                Text("Delete")
-                                                Image(systemName: "trash")
-                                            }
+                                            Button(
+                                                role: .destructive,
+                                                action: {
+                                                    deleteSelectedItems()
+                                                }) {
+                                                    Text("Delete")
+                                                    Image(systemName: "trash")
+                                                }
 
                                             Text(selectedItemsCountText)
                                         }
@@ -159,27 +180,40 @@ struct ListView: View {
                                     HStack {
                                         Menu("Actions") {
 
-                                            Menu("Delete") {
-                                                Button(role: .destructive,
-                                                       action: { deleteList() }) {
-                                                    Text("Delete list")
-                                                    Image(systemName: "trash")
+                                            Button(
+                                                role: .destructive,
+                                                action: {
+                                                    deleteAction = .deleteList
+                                                    isPresentingConfirmDelete = true
                                                 }
-
-                                                Button(role: .destructive,
-                                                       action: { deleteAllItems() }) {
-                                                    Text("Delete all items")
-                                                    Image(systemName: "circle.dashed")
-                                                }
-                                                .hideIf(list.items.isEmpty)
-
-                                                Button(role: .destructive,
-                                                       action: { deleteCompletedItems() }) {
-                                                    Text("Delete completed items")
-                                                    Image(systemName: "checkmark.circle")
-                                                }
-                                                .hideIf(list.items.filter({ $0.isComplete }).isEmpty)
+                                            ) {
+                                                Text("Delete list")
+                                                Image(systemName: "trash")
                                             }
+
+                                            Button(
+                                                role: .destructive,
+                                                action: {
+                                                    deleteAction = .deleteAllItems
+                                                    isPresentingConfirmDelete = true
+                                                }
+                                            ) {
+                                                Text("Delete all items")
+                                                Image(systemName: "circle.dashed")
+                                            }
+                                            .hideIf(list.items.isEmpty)
+
+                                            Button(
+                                                role: .destructive,
+                                                action: {
+                                                    deleteAction = .deleteCompletedItems
+                                                    isPresentingConfirmDelete = true
+                                                }
+                                            ) {
+                                                Text("Delete completed items")
+                                                Image(systemName: "checkmark.circle")
+                                            }
+                                            .hideIf(list.items.filter({ $0.isComplete }).isEmpty)
 
                                             Divider()
 
@@ -214,6 +248,30 @@ struct ListView: View {
                                             }
 
                                             Text("Actions")
+                                        }
+                                    }
+                                    .confirmationDialog(deleteAction?.title ?? "",
+                                                        isPresented: $isPresentingConfirmDelete,
+                                                        titleVisibility: .visible
+                                    ) {
+                                        Button("Delete", role: .destructive) {
+                                            guard let action = deleteAction else { return }
+                                            switch action {
+                                            case .deleteList:
+                                                deleteList()
+                                            case .deleteAllItems:
+                                                deleteAllItems()
+                                            case .deleteCompletedItems:
+                                                deleteCompletedItems()
+                                            }
+                                            deleteAction = nil
+                                        }
+                                    } message: {
+                                        switch deleteAction {
+                                        case .deleteAllItems, .deleteCompletedItems:
+                                            Text("This action cannot be undone")
+                                        default:
+                                            EmptyView()
                                         }
                                     }
                                 }
