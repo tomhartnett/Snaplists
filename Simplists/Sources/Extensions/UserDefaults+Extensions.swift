@@ -26,7 +26,10 @@ extension UserDefaults {
         }
 
         var hasSeenReleaseNotes: Bool {
-            return getValue(for: Key.hasSeenReleaseNotes)
+            // To restore automatic display of release notes on first launch:
+            // change the below line to read `Key.hasSeenReleaseNotes` instead.
+            // Customize the key value as needed.
+            return true
         }
 
         private var isSignedIn: Bool {
