@@ -165,6 +165,7 @@ struct HomeView: View {
                     }
                 }
                 .navigationBarTitle("Snaplists")
+                .navigationBarTitleDisplayMode(.inline)
                 .listStyle(InsetGroupedListStyle())
             }
             VStack {

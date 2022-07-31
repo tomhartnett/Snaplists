@@ -32,21 +32,26 @@ struct ArchivedListsView: View {
                                 }
                                 .contextMenu {
 
-                                    Button(action: {
-                                        var listToUpdate = list
-                                        listToUpdate.isArchived = false
-                                        storage.updateList(listToUpdate)
-                                    }, label: {
-                                        Text("Restore")
-                                        Image(systemName: "trash.slash")
-                                    })
+                                    Button(
+                                        action: {
+                                            var listToUpdate = list
+                                            listToUpdate.isArchived = false
+                                            storage.updateList(listToUpdate)
+                                        }, label: {
+                                            Text("Restore")
+                                            Image(systemName: "trash.slash")
+                                        }
+                                    )
 
-                                    Button(action: {
-                                        storage.deleteList(list)
-                                    }, label: {
-                                        Text("Delete")
-                                        Image(systemName: "trash")
-                                    })
+                                    Button(
+                                        role: .destructive,
+                                        action: {
+                                            storage.deleteList(list)
+                                        }, label: {
+                                            Text("Delete")
+                                            Image(systemName: "trash")
+                                        }
+                                    )
                                 }
                             }
                             .onDelete(perform: delete)

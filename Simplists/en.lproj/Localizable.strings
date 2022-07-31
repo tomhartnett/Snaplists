@@ -9,18 +9,23 @@
 "About the App" = "About the App";
 "about-version-format-string" = "Version %@ (%@)";
 "About" = "About";
+"Actions" = "Actions";
 "Add new item..." = "Add new item...";
 "Add new list..." = "Add new list...";
 "Cancel" = "Cancel";
 "Created by" = "Created by";
 "Delete" = "Delete";
 "Delete all" = "Delete all";
-"Delete all?" = "Delete all?";
 "Delete all items" = "Delete all items";
+"Delete all items?" = "Delete all items?";
 "Delete completed items" = "Delete completed items";
+"Delete completed items?" = "Delete completed items?";
 "Delete list" = "Delete list";
 "Deleted Lists" = "Deleted Lists";
+"Delete this list?" = "Delete this list?";
+"Deselect all items" = "Deselect all items";
 "Done" = "Done";
+"Duplicate list" = "Duplicate list";
 "Email can't be sent from this device." = "Email can't be sent from this device.";
 "Enter name..." = "Enter name...";
 "error-failed-restore-text" = "An error has occurred and the restore could not be completed.";
@@ -33,6 +38,7 @@
 "icloud-warning-banner-text" = "Warning: not signed in to iCloud";
 "just now" = "just now";
 "list-modified-format-string" = "updated: %@";
+"Long-press on a list for options" = "Long-press on a list for options";
 "Mark complete" = "Mark complete";
 "Mark incomplete" = "Mark incomplete";
 "Mark" = "Mark";
@@ -43,6 +49,7 @@
 "No Selection" = "No Selection";
 "Not authorized to make purchases." = "Not authorized to make purchases.";
 "Optional In-App Purchases" = "Optional In-App Purchases";
+"Permanently delete all?" = "Permanently delete all?";
 "Please Rate this App" = "Please Rate this App";
 "Premium features" = "Premium features";
 "Premium Mode" = "Premium Mode";
@@ -66,6 +73,7 @@
 "Rename" = "Rename";
 "Restore Purchase" = "Restore Purchase";
 "Restore" = "Restore";
+"Select all items" = "Select all items";
 "Send Feedback via Email" = "Send Feedback via Email";
 "Snaplists Premium" = "Snaplists Premium";
 "Snaplists" = "Snaplists";
@@ -76,6 +84,7 @@
 "store-purchase-button-format-string" = "Purchase %@";
 "store-support-the-app-text" = "Your purchase supports development of the app 💙";
 "Thank you!" = "Thank you!";
+"This action cannot be undone" = "This action cannot be undone";
 "Unlimited number of items" = "Unlimited number of items";
 "Unlimited number of lists" = "Unlimited number of lists";
 "You can't make purchases on this device." = "You can't make purchases on this device.";
