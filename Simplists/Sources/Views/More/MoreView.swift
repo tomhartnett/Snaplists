@@ -72,6 +72,8 @@ struct MoreView: View {
                         }
                     }
 
+                    // Uncomment this NavigationLink to restore release notes option.
+                    /*
                     NavigationLink(destination: ReleaseNotesView(isModal: .constant(false))) {
                         HStack {
                             Image(systemName: "list.bullet.rectangle.portrait")
@@ -80,6 +82,7 @@ struct MoreView: View {
                             Text("What’s New")
                         }
                     }
+                    */
                 }
 
                 #if DEBUG

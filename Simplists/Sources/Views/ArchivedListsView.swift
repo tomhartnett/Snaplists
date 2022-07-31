@@ -11,7 +11,7 @@ import SwiftUI
 struct ArchivedListsView: View {
     @EnvironmentObject var storage: SMPStorage
     @State private var lists: [SMPList] = []
-    @State private var isPresentingAlert = false
+    @State private var isPresentingDelete = false
 
     var body: some View {
         VStack {
@@ -32,21 +32,26 @@ struct ArchivedListsView: View {
                                 }
                                 .contextMenu {
 
-                                    Button(action: {
-                                        var listToUpdate = list
-                                        listToUpdate.isArchived = false
-                                        storage.updateList(listToUpdate)
-                                    }, label: {
-                                        Text("Restore")
-                                        Image(systemName: "trash.slash")
-                                    })
+                                    Button(
+                                        action: {
+                                            var listToUpdate = list
+                                            listToUpdate.isArchived = false
+                                            storage.updateList(listToUpdate)
+                                        }, label: {
+                                            Text("Restore")
+                                            Image(systemName: "trash.slash")
+                                        }
+                                    )
 
-                                    Button(action: {
-                                        storage.deleteList(list)
-                                    }, label: {
-                                        Text("Delete")
-                                        Image(systemName: "trash")
-                                    })
+                                    Button(
+                                        role: .destructive,
+                                        action: {
+                                            storage.deleteList(list)
+                                        }, label: {
+                                            Text("Delete")
+                                            Image(systemName: "trash")
+                                        }
+                                    )
                                 }
                             }
                             .onDelete(perform: delete)
@@ -58,24 +63,24 @@ struct ArchivedListsView: View {
                 .toolbar {
                     ToolbarItem(placement: .bottomBar) {
                         Button(action: {
-                            isPresentingAlert.toggle()
+                            isPresentingDelete.toggle()
                         }) {
                             Text("Delete all")
+                        }
+                        .confirmationDialog("Permanently delete all?",
+                                            isPresented: $isPresentingDelete,
+                                            titleVisibility: .visible
+                        ) {
+                            Button("Delete", role: .destructive) {
+                                storage.purgeDeletedLists()
+                                getArchivedLists()
+                            }
+                        } message: {
+                            Text("This action cannot be undone")
                         }
                     }
                 }
             }
-        }
-        .alert(isPresented: $isPresentingAlert) {
-            let deleteButton = Alert.Button.destructive(Text("Delete")) {
-                storage.purgeDeletedLists()
-                getArchivedLists()
-            }
-            let cancelButton = Alert.Button.cancel(Text("Cancel"))
-
-            return Alert(title: Text("Delete all?"),
-                         primaryButton: deleteButton,
-                         secondaryButton: cancelButton)
         }
         .navigationBarTitle("Deleted Lists")
         .navigationBarItems(trailing: NavBarItemsView(showEditButton: !lists.isEmpty))

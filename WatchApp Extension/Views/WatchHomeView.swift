@@ -114,9 +114,8 @@ struct WatchHomeView: View {
                     .ignoresSafeArea()
             }
         }
-        .animation(.default)
         .navigationTitle("Snaplists")
-        .inlineNavBarTitleDisplayMode()
+        .navigationBarTitleDisplayMode(.inline)
         .onAppear {
             reload()
             checkAccountStatus()

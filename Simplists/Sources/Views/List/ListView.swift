@@ -9,7 +9,24 @@ import SimplistsKit
 import SwiftUI
 import StoreKit
 
-enum ListViewActiveSheet: Identifiable {
+private enum DeleteAction {
+    case deleteList
+    case deleteAllItems
+    case deleteCompletedItems
+
+    var title: String {
+        switch self {
+        case .deleteList:
+            return "Delete this list?"
+        case .deleteAllItems:
+            return "Delete all items?"
+        case .deleteCompletedItems:
+            return "Delete completed items?"
+        }
+    }
+}
+
+private enum ListViewActiveSheet: Identifiable {
     case moveItems
     case renameList
     case purchaseRequired
@@ -26,6 +43,8 @@ struct ListView: View {
     @EnvironmentObject var storeDataSource: StoreDataSource
     @State var list: SMPList
     @State private var activeSheet: ListViewActiveSheet?
+    @State private var deleteAction: DeleteAction?
+    @State private var isPresentingConfirmDelete = false
     @State private var newItemTitle = ""
     @State private var renameListID = ""
     @State private var renameListTitle = ""
@@ -71,187 +90,220 @@ struct ListView: View {
             EmptyStateView(emptyStateType: lists.isEmpty ? .noLists : .noSelection)
                 .navigationBarTitle("")
         } else {
-            GeometryReader { geometry in
-                VStack(alignment: .leading) {
-                    ScrollViewReader { proxy in
-                        List(selection: $selectedIDs) {
-                            Section(header:
-                                        HStack {
-                                Text(itemCountText)
-                                Spacer()
-                                Text(lastUpdatedText)
-                            }, content: {
-                                ForEach(list.items) { item in
-                                    ItemView(title: item.title,
-                                             isComplete: item.isComplete) { title, isComplete in
-                                        withAnimation {
-                                            updateItem(id: item.id, title: title, isComplete: isComplete)
-                                        }
+            VStack(alignment: .leading) {
+                ScrollViewReader { proxy in
+                    List(selection: $selectedIDs) {
+                        Section(header:
+                                    HStack {
+                            Text(itemCountText)
+                            Spacer()
+                            Text(lastUpdatedText)
+                        }, content: {
+                            ForEach(list.items) { item in
+                                ItemView(title: item.title,
+                                         isComplete: item.isComplete) { title, isComplete in
+                                    withAnimation {
+                                        updateItem(id: item.id, title: title, isComplete: isComplete)
                                     }
                                 }
-                                .onDelete(perform: delete)
-                                .onMove(perform: move)
+                            }
+                            .onDelete(perform: delete)
+                            .onMove(perform: move)
 
-                                FocusableTextField("Add new item...".localize(),
-                                                   text: $newItemTitle,
-                                                   keepFocusUnlessEmpty:
-                                                    true, onCommit: {
-                                    addNewItem {
-                                        proxy.scrollTo(addItemFieldID, anchor: .bottom)
-                                    }
-                                })
-                                    .padding([.top, .bottom])
-                                    .id(addItemFieldID)
+                            FocusableTextField("Add new item...".localize(),
+                                               text: $newItemTitle,
+                                               keepFocusUnlessEmpty:
+                                                true, onCommit: {
+                                addNewItem {
+                                    proxy.scrollTo(addItemFieldID, anchor: .bottom)
+                                }
+                            })
+                                .padding([.top, .bottom])
+                                .id(addItemFieldID)
 
-                            }).textCase(nil) // Don't upper-case section header text.
-                        }
-                        .listStyle(InsetGroupedListStyle())
-                        .onReceive(storage.objectWillChange, perform: { _ in
-                            reload()
-                        })
-                        .toolbar {
-                            ToolbarItem(placement: .bottomBar) {
-                                HStack {
-                                    if editMode?.wrappedValue == .active {
+                        }).textCase(nil) // Don't upper-case section header text.
+                    }
+                    .listStyle(InsetGroupedListStyle())
+                    .onReceive(storage.objectWillChange, perform: { _ in
+                        reload()
+                    })
+                    .toolbar {
+                        ToolbarItem(placement: .bottomBar) {
+                            HStack {
+                                if editMode?.wrappedValue == .active {
 
-                                        HStack {
-                                            Menu("Mark") {
-                                                Button(action: {
-                                                    markSelectedItems(isComplete: false)
-                                                }) {
-                                                    Text("Mark incomplete")
-                                                    Image(systemName: "circle")
-                                                }
-
-                                                Button(action: {
-                                                    markSelectedItems(isComplete: true)
-                                                }) {
-                                                    Text("Mark complete")
-                                                    Image(systemName: "checkmark.circle")
-                                                }
-
-                                                Text(selectedItemsCountText)
+                                    HStack {
+                                        Menu("Mark") {
+                                            Button(action: {
+                                                markSelectedItems(isComplete: false)
+                                            }) {
+                                                Text("Mark incomplete")
+                                                Image(systemName: "circle")
                                             }
-                                            .conditionalPadding(.leading, 25)
-
-                                            Spacer()
 
                                             Button(action: {
-                                                activeSheet = .moveItems
+                                                markSelectedItems(isComplete: true)
                                             }) {
-                                                Text("Move")
+                                                Text("Mark complete")
+                                                Image(systemName: "checkmark.circle")
                                             }
 
-                                            Spacer()
+                                            Text(selectedItemsCountText)
+                                        }
 
-                                            Menu("Delete") {
-                                                Button(action: {
+                                        Spacer()
+
+                                        Button(action: {
+                                            activeSheet = .moveItems
+                                        }) {
+                                            Text("Move")
+                                        }
+
+                                        Spacer()
+
+                                        Menu("Delete") {
+                                            Button(
+                                                role: .destructive,
+                                                action: {
                                                     deleteSelectedItems()
                                                 }) {
                                                     Text("Delete")
                                                     Image(systemName: "trash")
                                                 }
 
-                                                Text(selectedItemsCountText)
-                                            }
-                                            .conditionalPadding(.trailing, 25)
+                                            Text(selectedItemsCountText)
                                         }
-                                        .disabled(selectedIDs.isEmpty)
+                                    }
+                                    .disabled(selectedIDs.isEmpty)
 
-                                    } else {
-                                        HStack {
-                                            Menu("Actions") {
+                                } else {
+                                    HStack {
+                                        Menu("Actions") {
 
-                                                Button(action: {
-                                                    deleteList()
-                                                }) {
-                                                    Text("Delete list")
-                                                    Image(systemName: "trash")
+                                            Button(
+                                                role: .destructive,
+                                                action: {
+                                                    deleteAction = .deleteList
+                                                    isPresentingConfirmDelete = true
                                                 }
-
-                                                Button(action: {
-                                                    deleteAllItems()
-                                                }) {
-                                                    Text("Delete all items")
-                                                    Image(systemName: "circle.dashed")
-                                                }
-                                                .hideIf(list.items.isEmpty)
-
-                                                Button(action: {
-                                                    deleteCompletedItems()
-                                                }) {
-                                                    Text("Delete completed items")
-                                                    Image(systemName: "checkmark.circle")
-                                                }
-                                                .hideIf(list.items.filter({ $0.isComplete }).isEmpty)
-
-                                                Divider()
-
-                                                Button(action: {
-                                                    markAllItems(isComplete: false)
-                                                }) {
-                                                    Text("Deselect all items")
-                                                }
-                                                .hideIf(list.items.filter({ $0.isComplete }).isEmpty)
-
-                                                Button(action: {
-                                                    markAllItems(isComplete: true)
-                                                }) {
-                                                    Text("Select all items")
-                                                }
-                                                .hideIf(list.items.filter({ !$0.isComplete }).isEmpty)
-
-                                                Divider()
-
-                                                Button(action: {
-                                                    renameList()
-                                                }) {
-                                                    Text("Rename list")
-                                                    Image(systemName: "pencil")
-                                                }
-
-                                                Button(action: {
-                                                    duplicateList()
-                                                }) {
-                                                    Text("Duplicate list")
-                                                    Image(systemName: "plus.square.on.square")
-                                                }
-
-                                                Text("Actions")
+                                            ) {
+                                                Text("Delete list")
+                                                Image(systemName: "trash")
                                             }
+
+                                            Button(
+                                                role: .destructive,
+                                                action: {
+                                                    deleteAction = .deleteAllItems
+                                                    isPresentingConfirmDelete = true
+                                                }
+                                            ) {
+                                                Text("Delete all items")
+                                                Image(systemName: "circle.dashed")
+                                            }
+                                            .hideIf(list.items.isEmpty)
+
+                                            Button(
+                                                role: .destructive,
+                                                action: {
+                                                    deleteAction = .deleteCompletedItems
+                                                    isPresentingConfirmDelete = true
+                                                }
+                                            ) {
+                                                Text("Delete completed items")
+                                                Image(systemName: "checkmark.circle")
+                                            }
+                                            .hideIf(list.items.filter({ $0.isComplete }).isEmpty)
+
+                                            Divider()
+
+                                            Button(action: {
+                                                markAllItems(isComplete: false)
+                                            }) {
+                                                Text("Deselect all items")
+                                            }
+                                            .hideIf(list.items.filter({ $0.isComplete }).isEmpty)
+
+                                            Button(action: {
+                                                markAllItems(isComplete: true)
+                                            }) {
+                                                Text("Select all items")
+                                            }
+                                            .hideIf(list.items.filter({ !$0.isComplete }).isEmpty)
+
+                                            Divider()
+
+                                            Button(action: {
+                                                renameList()
+                                            }) {
+                                                Text("Rename list")
+                                                Image(systemName: "pencil")
+                                            }
+
+                                            Button(action: {
+                                                duplicateList()
+                                            }) {
+                                                Text("Duplicate list")
+                                                Image(systemName: "plus.square.on.square")
+                                            }
+
+                                            Text("Actions")
+                                        }
+                                    }
+                                    .confirmationDialog(deleteAction?.title ?? "",
+                                                        isPresented: $isPresentingConfirmDelete,
+                                                        titleVisibility: .visible
+                                    ) {
+                                        Button("Delete", role: .destructive) {
+                                            guard let action = deleteAction else { return }
+                                            switch action {
+                                            case .deleteList:
+                                                deleteList()
+                                            case .deleteAllItems:
+                                                deleteAllItems()
+                                            case .deleteCompletedItems:
+                                                deleteCompletedItems()
+                                            }
+                                            deleteAction = nil
+                                        }
+                                    } message: {
+                                        switch deleteAction {
+                                        case .deleteAllItems, .deleteCompletedItems:
+                                            Text("This action cannot be undone")
+                                        default:
+                                            EmptyView()
                                         }
                                     }
                                 }
-                                .conditionalWidth(geometry.size.width)
                             }
                         }
                     }
-
                 }
-                .navigationBarBackButtonHidden(editMode?.wrappedValue == .active)
-                .navigationBarItems(
-                    leading: SelectAllView(selectedIDs: selectedIDs,
-                                           itemCount: list.items.count,
-                                           tapAction: selectOrDeselectAll),
-                    trailing: NavBarItemsView(showEditButton: !list.items.isEmpty))
-                .navigationBarTitle(list.title)
-                .sheet(item: $activeSheet) { item in
-                    switch item {
-                    case .moveItems:
-                        let itemIDs = selectedIDs.map { $0 }
-                        MoveToListView(itemIDs: itemIDs, fromList: list) {
-                            editMode?.wrappedValue = .inactive
-                        }
-                    case .renameList:
-                        RenameListView(id: $renameListID, title: $renameListTitle) { _, newTitle in
-                            list.title = newTitle
-                            storage.updateList(list)
-                            renameListID = ""
-                            renameListTitle = ""
-                        }
-                    case .purchaseRequired:
-                        StoreView(freeLimitMessage: FreeLimits.numberOfItems.message)
+
+            }
+            .navigationBarBackButtonHidden(editMode?.wrappedValue == .active)
+            .navigationBarItems(
+                leading: SelectAllView(selectedIDs: selectedIDs,
+                                       itemCount: list.items.count,
+                                       tapAction: selectOrDeselectAll),
+                trailing: NavBarItemsView(showEditButton: !list.items.isEmpty))
+            .navigationBarTitle(list.title)
+            .sheet(item: $activeSheet) { item in
+                switch item {
+                case .moveItems:
+                    let itemIDs = selectedIDs.map { $0 }
+                    MoveToListView(itemIDs: itemIDs, fromList: list) {
+                        editMode?.wrappedValue = .inactive
                     }
+                case .renameList:
+                    RenameListView(id: $renameListID, title: $renameListTitle) { _, newTitle in
+                        list.title = newTitle
+                        storage.updateList(list)
+                        renameListID = ""
+                        renameListTitle = ""
+                    }
+                case .purchaseRequired:
+                    StoreView(freeLimitMessage: FreeLimits.numberOfItems.message)
                 }
             }
         }
