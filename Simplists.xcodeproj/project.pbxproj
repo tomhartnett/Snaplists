@@ -105,6 +105,7 @@
 		E2BB0B5325DEA6A0004A1AB6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E2BB0B5525DEA6A0004A1AB6 /* Localizable.strings */; };
 		E2BB0B5E25DEA6DE004A1AB6 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = E2BB0B6025DEA6DE004A1AB6 /* Localizable.stringsdict */; };
 		E2BB0B6525DEA9FD004A1AB6 /* WatchListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BB0B6425DEA9FD004A1AB6 /* WatchListHeaderView.swift */; };
+		E2C4B26D28B1349F0046A1BA /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E235D7D924E0372D007D95BE /* CloudKit.framework */; };
 		E2C6332327F2932300CC2255 /* ConditionalHiddenModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20BD7782754057200671478 /* ConditionalHiddenModifier.swift */; };
 		E2C6670725CF17010063D7E8 /* ErrorMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C6670625CF17010063D7E8 /* ErrorMessageView.swift */; };
 		E2C6670C25CF1BD80063D7E8 /* PurchaseButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C6670B25CF1BD80063D7E8 /* PurchaseButtonsView.swift */; };
@@ -368,6 +369,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2C4B26D28B1349F0046A1BA /* CloudKit.framework in Frameworks */,
 				E20F8A8226D19C510016E2C7 /* SwiftUI.framework in Frameworks */,
 				E20F8A8026D19C510016E2C7 /* WidgetKit.framework in Frameworks */,
 			);
