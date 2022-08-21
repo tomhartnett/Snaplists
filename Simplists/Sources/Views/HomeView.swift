@@ -112,14 +112,6 @@ struct HomeView: View {
                                                 action: { archive(list: list) })
                                         )
                                     }
-                                    .confirmationDialog(
-                                        "Delete \(list.title)?",
-                                        isPresented: $isPresentingDeleteList,
-                                        titleVisibility: .visible) {
-                                            Button("Delete", role: .destructive) {
-                                                archive(list: list)
-                                            }
-                                        }
                                     .sheet(isPresented: $isPresentingRename) {
                                         RenameListView(id: $renameListID, title: $renameListTitle) { id, newTitle in
                                             if var list = lists.first(where: { $0.id.uuidString == id }) {
