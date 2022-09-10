@@ -17,6 +17,7 @@ struct ArchivedListsView: View {
         VStack {
             if lists.isEmpty {
                 Text("No deleted lists")
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .font(.title)
                     .foregroundColor(.secondary)
             } else {
@@ -60,28 +61,28 @@ struct ArchivedListsView: View {
                     }
                     .listStyle(InsetGroupedListStyle())
                 }
-                .toolbar {
-                    ToolbarItem(placement: .bottomBar) {
-                        Button(action: {
-                            isPresentingDelete.toggle()
-                        }) {
-                            Text("Delete all")
+                HStack {
+                    Button(action: {
+                        isPresentingDelete.toggle()
+                    }) {
+                        Text("Delete all")
+                    }
+                    .confirmationDialog("Permanently delete all?",
+                                        isPresented: $isPresentingDelete,
+                                        titleVisibility: .visible
+                    ) {
+                        Button("Delete", role: .destructive) {
+                            storage.purgeDeletedLists()
+                            getArchivedLists()
                         }
-                        .confirmationDialog("Permanently delete all?",
-                                            isPresented: $isPresentingDelete,
-                                            titleVisibility: .visible
-                        ) {
-                            Button("Delete", role: .destructive) {
-                                storage.purgeDeletedLists()
-                                getArchivedLists()
-                            }
-                        } message: {
-                            Text("This action cannot be undone")
-                        }
+                    } message: {
+                        Text("This action cannot be undone")
                     }
                 }
+                .frame(height: 50)
             }
         }
+        .background(Color(UIColor.secondarySystemBackground))
         .navigationBarTitle("Deleted Lists")
         .navigationBarItems(trailing: NavBarItemsView(showEditButton: !lists.isEmpty))
         .onAppear {
@@ -107,5 +108,6 @@ struct ArchivedListsView: View {
 struct ArchivedListsView_Previews: PreviewProvider {
     static var previews: some View {
         ArchivedListsView()
+            .environmentObject(SMPStorage.previewStorage)
     }
 }
