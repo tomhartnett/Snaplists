@@ -23,7 +23,6 @@
 "Delete list" = "Delete list";
 "Deleted Lists" = "Deleted Lists";
 "Delete this list?" = "Delete this list?";
-"Deselect all items" = "Deselect all items";
 "Done" = "Done";
 "Duplicate list" = "Duplicate list";
 "Email can't be sent from this device." = "Email can't be sent from this device.";
@@ -39,6 +38,8 @@
 "just now" = "just now";
 "list-modified-format-string" = "updated: %@";
 "Long-press on a list for options" = "Long-press on a list for options";
+"Mark all complete" = "Mark all complete";
+"Mark all incomplete" = "Mark all incomplete";
 "Mark complete" = "Mark complete";
 "Mark incomplete" = "Mark incomplete";
 "Mark" = "Mark";
@@ -73,7 +74,6 @@
 "Rename" = "Rename";
 "Restore Purchase" = "Restore Purchase";
 "Restore" = "Restore";
-"Select all items" = "Select all items";
 "Send Feedback via Email" = "Send Feedback via Email";
 "Snaplists Premium" = "Snaplists Premium";
 "Snaplists" = "Snaplists";
