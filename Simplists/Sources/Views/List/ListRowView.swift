@@ -8,12 +8,16 @@
 import SwiftUI
 
 struct ListRowView: View {
+    var color: Color
+
     var title: String
 
     var itemCount: Int
 
     var body: some View {
         HStack {
+            Image(systemName: "app.fill")
+                .foregroundColor(color)
             Text(title)
             Spacer()
             Text("\(itemCount)")
@@ -25,6 +29,8 @@ struct ListRowView: View {
 
 struct ListRowView_Previews: PreviewProvider {
     static var previews: some View {
-        ListRowView(title: "TODOs", itemCount: 5)
+        ListRowView(color: .blue,
+                    title: "TODOs",
+                    itemCount: 5)
     }
 }

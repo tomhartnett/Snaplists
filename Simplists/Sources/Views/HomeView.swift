@@ -71,7 +71,9 @@ struct HomeView: View {
                                            tag: list.id,
                                            selection: $selectedListID) {
 
-                                ListRowView(title: list.title, itemCount: list.items.count)
+                                ListRowView(color: list.color.swiftUIColor,
+                                            title: list.title,
+                                            itemCount: list.items.count)
                                     .contextMenu {
                                         Button(action: {
                                             if lists.count >= FreeLimits.numberOfLists.limit &&
@@ -261,5 +263,6 @@ struct HomeView_Previews: PreviewProvider {
         ])
         .environmentObject(SMPStorage.previewStorage)
         .environmentObject(dataSource)
+        .environmentObject(OpenURLContext())
     }
 }

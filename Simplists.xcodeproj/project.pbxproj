@@ -59,6 +59,7 @@
 		E235D7FA24E04C3F007D95BE /* WatchListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D7F924E04C3F007D95BE /* WatchListItemView.swift */; };
 		E235D7FC24E04CC1007D95BE /* SMPListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D7FB24E04CC1007D95BE /* SMPListItem.swift */; };
 		E23925B726A460BE00C59053 /* ListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23925B626A460BE00C59053 /* ListRowView.swift */; };
+		E2402FEE28D752D70024CA70 /* SMPList+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2402FED28D752D70024CA70 /* SMPList+Extensions.swift */; };
 		E241A046258FBA7D000277BE /* StoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E241A045258FBA7D000277BE /* StoreView.swift */; };
 		E24FACA4251CEC7C002B0B97 /* WatchAuthenticationErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24FACA3251CEC7C002B0B97 /* WatchAuthenticationErrorView.swift */; };
 		E250E1B0269B2B6C00860DEC /* RenameListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E250E1AC269B2B6C00860DEC /* RenameListView.swift */; };
@@ -305,6 +306,7 @@
 		E235D7F924E04C3F007D95BE /* WatchListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListItemView.swift; sourceTree = "<group>"; };
 		E235D7FB24E04CC1007D95BE /* SMPListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMPListItem.swift; sourceTree = "<group>"; };
 		E23925B626A460BE00C59053 /* ListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowView.swift; sourceTree = "<group>"; };
+		E2402FED28D752D70024CA70 /* SMPList+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SMPList+Extensions.swift"; sourceTree = "<group>"; };
 		E241A045258FBA7D000277BE /* StoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreView.swift; sourceTree = "<group>"; };
 		E24FACA3251CEC7C002B0B97 /* WatchAuthenticationErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchAuthenticationErrorView.swift; sourceTree = "<group>"; };
 		E250E1AC269B2B6C00860DEC /* RenameListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenameListView.swift; sourceTree = "<group>"; };
@@ -666,6 +668,7 @@
 			children = (
 				E29AB80F27F8D86900868DA1 /* Bool+Extensions.swift */,
 				E2A376B325D1B4E2001D1615 /* UserDefaults+Extensions.swift */,
+				E2402FED28D752D70024CA70 /* SMPList+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1055,6 +1058,7 @@
 				E2A376B425D1B4E2001D1615 /* UserDefaults+Extensions.swift in Sources */,
 				E26EBDA125C83ADB000D031D /* FreeLimits.swift in Sources */,
 				E22E152324E060C2002A140E /* HomeView.swift in Sources */,
+				E2402FEE28D752D70024CA70 /* SMPList+Extensions.swift in Sources */,
 				E2B9C3A325CED96F0024B9F6 /* DebugView.swift in Sources */,
 				E2029FFA25FB9E3300490043 /* ReviewHelper.swift in Sources */,
 				E281EBD9259A2C7400DF1CEB /* FeatureBulletView.swift in Sources */,
