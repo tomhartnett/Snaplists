@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ListRowView: View {
-    var color: Color
+    var color: Color?
 
     var title: String
 
@@ -16,10 +16,18 @@ struct ListRowView: View {
 
     var body: some View {
         HStack {
-            Image(systemName: "app.fill")
-                .foregroundColor(color)
+
+            if let color = color {
+                Image(systemName: "app.fill")
+                    .foregroundColor(color)
+            } else {
+                EmptyView()
+            }
+
             Text(title)
+
             Spacer()
+
             Text("\(itemCount)")
                 .foregroundColor(.secondary)
         }
@@ -29,8 +37,14 @@ struct ListRowView: View {
 
 struct ListRowView_Previews: PreviewProvider {
     static var previews: some View {
-        ListRowView(color: .blue,
-                    title: "TODOs",
-                    itemCount: 5)
+        List {
+            ListRowView(color: .blue,
+                        title: "TODOs",
+                        itemCount: 5)
+
+            ListRowView(color: nil,
+                        title: "TODOs",
+                        itemCount: 5)
+        }
     }
 }

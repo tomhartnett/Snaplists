@@ -27,8 +27,8 @@ private enum DeleteAction {
 }
 
 private enum ListViewActiveSheet: Identifiable {
+    case editList
     case moveItems
-    case renameList
     case purchaseRequired
 
     var id: Int {
@@ -46,8 +46,8 @@ struct ListView: View {
     @State private var deleteAction: DeleteAction?
     @State private var isPresentingConfirmDelete = false
     @State private var newItemTitle = ""
-    @State private var renameListID = ""
-    @State private var renameListTitle = ""
+    @State private var editListID = ""
+    @State private var editListTitle = ""
     @State private var selectedIDs = Set<UUID>()
     @Binding var selectedListID: UUID?
     @Binding var lists: [SMPList]
@@ -91,6 +91,15 @@ struct ListView: View {
                 .navigationBarTitle("")
         } else {
             VStack(alignment: .leading) {
+                HStack {
+                    Image(systemName: "app.fill")
+
+                    Text(list.title)
+                }
+                .foregroundColor(list.color?.swiftUIColor)
+                .font(.largeTitle)
+                .padding([.horizontal, .top])
+
                 ScrollViewReader { proxy in
                     List(selection: $selectedIDs) {
                         Section(header:
@@ -233,9 +242,9 @@ struct ListView: View {
                                 Divider()
 
                                 Button(action: {
-                                    renameList()
+                                    editList()
                                 }) {
-                                    Text("Rename list")
+                                    Text("Edit")
                                     Image(systemName: "pencil")
                                 }
 
@@ -284,21 +293,22 @@ struct ListView: View {
                                        itemCount: list.items.count,
                                        tapAction: selectOrDeselectAll),
                 trailing: NavBarItemsView(showEditButton: !list.items.isEmpty))
-            .navigationBarTitle(list.title)
             .sheet(item: $activeSheet) { item in
                 switch item {
+                case .editList:
+                    EditListView(id: $editListID, title: $editListTitle) { _, newTitle in
+                        list.title = newTitle
+                        storage.updateList(list)
+                        editListID = ""
+                        editListTitle = ""
+                    }
+
                 case .moveItems:
                     let itemIDs = selectedIDs.map { $0 }
                     MoveToListView(itemIDs: itemIDs, fromList: list) {
                         editMode?.wrappedValue = .inactive
                     }
-                case .renameList:
-                    RenameListView(id: $renameListID, title: $renameListTitle) { _, newTitle in
-                        list.title = newTitle
-                        storage.updateList(list)
-                        renameListID = ""
-                        renameListTitle = ""
-                    }
+
                 case .purchaseRequired:
                     StoreView(freeLimitMessage: FreeLimits.numberOfItems.message)
                 }
@@ -437,10 +447,10 @@ struct ListView: View {
         }
     }
 
-    private func renameList() {
-        renameListID = list.id.uuidString
-        renameListTitle = list.title
-        activeSheet = .renameList
+    private func editList() {
+        editListID = list.id.uuidString
+        editListTitle = list.title
+        activeSheet = .editList
     }
 
     private func selectOrDeselectAll() {
@@ -468,6 +478,7 @@ struct ListView_Previews: PreviewProvider {
                      selectedListID: .constant(UUID()),
                      lists: .constant([]))
                 .environmentObject(SMPStorage.previewStorage)
+                .navigationBarTitleDisplayMode(.inline)
         }
     }
 }

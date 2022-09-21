@@ -24,11 +24,11 @@ struct HomeView: View {
     @EnvironmentObject var openURLState: OpenURLContext
     @State var lists: [SMPList]
     @State private var newListTitle = ""
-    @State private var renameListID = ""
-    @State private var renameListTitle = ""
+    @State private var editListID = ""
+    @State private var editListTitle = ""
     @State private var isPresentingAuthError = false
     @State private var isPresentingDeleteList = false
-    @State private var isPresentingRename = false
+    @State private var isPresentingEditList = false
     @State private var activeSheet: HomeViewActiveSheet?
     @State private var selectedListID: UUID?
 
@@ -71,7 +71,7 @@ struct HomeView: View {
                                            tag: list.id,
                                            selection: $selectedListID) {
 
-                                ListRowView(color: list.color.swiftUIColor,
+                                ListRowView(color: list.color?.swiftUIColor,
                                             title: list.title,
                                             itemCount: list.items.count)
                                     .contextMenu {
@@ -88,11 +88,11 @@ struct HomeView: View {
                                         }
 
                                         Button(action: {
-                                            renameListID = list.id.uuidString
-                                            renameListTitle = list.title
-                                            isPresentingRename = true
+                                            editListID = list.id.uuidString
+                                            editListTitle = list.title
+                                            isPresentingEditList = true
                                         }) {
-                                            Text("Rename")
+                                            Text("Edit")
                                             Image(systemName: "pencil")
                                         }
 
@@ -114,13 +114,13 @@ struct HomeView: View {
                                                 action: { archive(list: list) })
                                         )
                                     }
-                                    .sheet(isPresented: $isPresentingRename) {
-                                        RenameListView(id: $renameListID, title: $renameListTitle) { id, newTitle in
+                                    .sheet(isPresented: $isPresentingEditList) {
+                                        EditListView(id: $editListID, title: $editListTitle) { id, newTitle in
                                             if var list = lists.first(where: { $0.id.uuidString == id }) {
                                                 list.title = newTitle
                                                 storage.updateList(list)
-                                                renameListID = ""
-                                                renameListTitle = ""
+                                                editListID = ""
+                                                editListTitle = ""
                                             }
                                         }
                                     }

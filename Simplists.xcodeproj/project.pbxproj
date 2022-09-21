@@ -62,7 +62,7 @@
 		E2402FEE28D752D70024CA70 /* SMPList+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2402FED28D752D70024CA70 /* SMPList+Extensions.swift */; };
 		E241A046258FBA7D000277BE /* StoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E241A045258FBA7D000277BE /* StoreView.swift */; };
 		E24FACA4251CEC7C002B0B97 /* WatchAuthenticationErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24FACA3251CEC7C002B0B97 /* WatchAuthenticationErrorView.swift */; };
-		E250E1B0269B2B6C00860DEC /* RenameListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E250E1AC269B2B6C00860DEC /* RenameListView.swift */; };
+		E250E1B0269B2B6C00860DEC /* EditListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E250E1AC269B2B6C00860DEC /* EditListView.swift */; };
 		E250E1B1269B2B6C00860DEC /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E250E1AD269B2B6C00860DEC /* ListView.swift */; };
 		E250E1B2269B2B6C00860DEC /* MoveToListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E250E1AE269B2B6C00860DEC /* MoveToListView.swift */; };
 		E250E1B3269B2B6C00860DEC /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E250E1AF269B2B6C00860DEC /* ItemView.swift */; };
@@ -73,6 +73,7 @@
 		E256DD6924F2E98600649855 /* FocusableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E256DD6824F2E98600649855 /* FocusableTextField.swift */; };
 		E2578B8125D033A600BCC948 /* PreviewModeWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2578B8025D033A600BCC948 /* PreviewModeWidget.swift */; };
 		E257B09827D51EAD0077E35F /* ListSelection.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = E257B09627D51E990077E35F /* ListSelection.intentdefinition */; };
+		E260C6CA28D93A7E00EC2612 /* ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E260C6C928D93A7E00EC2612 /* ViewModifiers.swift */; };
 		E267533927D6417A00512CAC /* EmptyWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E267533827D6417A00512CAC /* EmptyWidgetView.swift */; };
 		E26D01E225810AED009049F3 /* StoreDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26D01E125810AED009049F3 /* StoreDataSource.swift */; };
 		E26D345525E3E88900EE3C3E /* WatchDebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26D345425E3E88900EE3C3E /* WatchDebugView.swift */; };
@@ -309,7 +310,7 @@
 		E2402FED28D752D70024CA70 /* SMPList+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SMPList+Extensions.swift"; sourceTree = "<group>"; };
 		E241A045258FBA7D000277BE /* StoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreView.swift; sourceTree = "<group>"; };
 		E24FACA3251CEC7C002B0B97 /* WatchAuthenticationErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchAuthenticationErrorView.swift; sourceTree = "<group>"; };
-		E250E1AC269B2B6C00860DEC /* RenameListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenameListView.swift; sourceTree = "<group>"; };
+		E250E1AC269B2B6C00860DEC /* EditListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditListView.swift; sourceTree = "<group>"; };
 		E250E1AD269B2B6C00860DEC /* ListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		E250E1AE269B2B6C00860DEC /* MoveToListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoveToListView.swift; sourceTree = "<group>"; };
 		E250E1AF269B2B6C00860DEC /* ItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
@@ -321,6 +322,7 @@
 		E256DD6824F2E98600649855 /* FocusableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusableTextField.swift; sourceTree = "<group>"; };
 		E2578B8025D033A600BCC948 /* PreviewModeWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewModeWidget.swift; sourceTree = "<group>"; };
 		E257B09627D51E990077E35F /* ListSelection.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = ListSelection.intentdefinition; sourceTree = "<group>"; };
+		E260C6C928D93A7E00EC2612 /* ViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifiers.swift; sourceTree = "<group>"; };
 		E267533827D6417A00512CAC /* EmptyWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyWidgetView.swift; sourceTree = "<group>"; };
 		E26D01E125810AED009049F3 /* StoreDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDataSource.swift; sourceTree = "<group>"; };
 		E26D345425E3E88900EE3C3E /* WatchDebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchDebugView.swift; sourceTree = "<group>"; };
@@ -477,6 +479,7 @@
 				E256DD6824F2E98600649855 /* FocusableTextField.swift */,
 				E22E152224E060C2002A140E /* HomeView.swift */,
 				E2ECD76024F74B560046AEC9 /* NavBarItemsView.swift */,
+				E260C6C928D93A7E00EC2612 /* ViewModifiers.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -647,7 +650,7 @@
 				E23925B626A460BE00C59053 /* ListRowView.swift */,
 				E250E1AD269B2B6C00860DEC /* ListView.swift */,
 				E250E1AE269B2B6C00860DEC /* MoveToListView.swift */,
-				E250E1AC269B2B6C00860DEC /* RenameListView.swift */,
+				E250E1AC269B2B6C00860DEC /* EditListView.swift */,
 				E218242A26D0325D00425947 /* SelectAllView.swift */,
 			);
 			path = List;
@@ -1045,9 +1048,10 @@
 				E2F3818925C04D47002740F3 /* StoreService.swift in Sources */,
 				E256DD6924F2E98600649855 /* FocusableTextField.swift in Sources */,
 				E20BD7792754057200671478 /* ConditionalHiddenModifier.swift in Sources */,
+				E260C6CA28D93A7E00EC2612 /* ViewModifiers.swift in Sources */,
 				E29AB80E27F8D32E00868DA1 /* ReleaseNotesView.swift in Sources */,
 				E250E1B3269B2B6C00860DEC /* ItemView.swift in Sources */,
-				E250E1B0269B2B6C00860DEC /* RenameListView.swift in Sources */,
+				E250E1B0269B2B6C00860DEC /* EditListView.swift in Sources */,
 				E21123DD2504441900B3D76D /* AboutView.swift in Sources */,
 				E279EACA25D0480D00A38ED6 /* MailView.swift in Sources */,
 				E228228825D09CAA009F4877 /* PrivacyPolicyParagraphView.swift in Sources */,

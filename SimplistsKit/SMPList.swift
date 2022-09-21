@@ -7,34 +7,34 @@
 
 import Foundation
 
-public enum SMPListColor: Int64 {
-    case red = 0
-    case orange = 1
-    case yellow = 2
-    case green = 3
-    case blue = 4
-    case purple = 5
-    case gray = 6
+public enum SMPListColor: Int64, CaseIterable, Hashable {
+    case gray = 0
+    case red = 1
+    case orange = 2
+    case yellow = 3
+    case green = 4
+    case blue = 5
+    case purple = 6
 }
 
 public struct SMPList: Identifiable {
     public var id = UUID()
-    public var color: SMPListColor
     public var title: String
     public var isArchived: Bool
     public var lastModified: Date
     public var items: [SMPListItem]
+    public var color: SMPListColor?
 
     public init(title: String,
-                icon: SMPListColor = .red,
                 isArchived: Bool = false,
                 lastModified: Date = Date(),
-                items: [SMPListItem] = []) {
+                items: [SMPListItem] = [],
+                color: SMPListColor? = nil) {
         self.title = title
-        self.color = icon
         self.isArchived = isArchived
         self.lastModified = lastModified
         self.items = items
+        self.color = color
     }
 }
 
