@@ -8,14 +8,14 @@
 import SimplistsKit
 import SwiftUI
 
-enum HomeViewActiveSheet: Identifiable {
+enum HomeViewActiveSheet: Identifiable, Hashable {
+    case editList(id: UUID)
+    case newList
     case releaseNotes
     case storeView
     case storeViewHitLimit
 
-    var id: Int {
-        hashValue
-    }
+    var id: Self { self }
 }
 
 struct HomeView: View {
@@ -23,12 +23,8 @@ struct HomeView: View {
     @EnvironmentObject var storeDataSource: StoreDataSource
     @EnvironmentObject var openURLState: OpenURLContext
     @State var lists: [SMPList]
-    @State private var newListTitle = ""
-    @State private var editListID = ""
-    @State private var editListTitle = ""
     @State private var isPresentingAuthError = false
     @State private var isPresentingDeleteList = false
-    @State private var isPresentingEditList = false
     @State private var activeSheet: HomeViewActiveSheet?
     @State private var selectedListID: UUID?
 
@@ -88,9 +84,7 @@ struct HomeView: View {
                                         }
 
                                         Button(action: {
-                                            editListID = list.id.uuidString
-                                            editListTitle = list.title
-                                            isPresentingEditList = true
+                                            activeSheet = .editList(id: list.id)
                                         }) {
                                             Text("Edit")
                                             Image(systemName: "pencil")
@@ -114,25 +108,9 @@ struct HomeView: View {
                                                 action: { archive(list: list) })
                                         )
                                     }
-                                    .sheet(isPresented: $isPresentingEditList) {
-                                        EditListView(id: $editListID, title: $editListTitle) { id, newTitle in
-                                            if var list = lists.first(where: { $0.id.uuidString == id }) {
-                                                list.title = newTitle
-                                                storage.updateList(list)
-                                                editListID = ""
-                                                editListTitle = ""
-                                            }
-                                        }
-                                    }
                             }
                         }
                         .onDelete(perform: archive)
-
-                        FocusableTextField("Add new list...",
-                                           text: $newListTitle,
-                                           keepFocusUnlessEmpty: false,
-                                           onCommit: addNewList)
-                            .padding([.top, .bottom])
                     }
 
                     Section {
@@ -161,6 +139,19 @@ struct HomeView: View {
                 .navigationBarTitle("Snaplists")
                 .navigationBarTitleDisplayMode(.inline)
                 .listStyle(InsetGroupedListStyle())
+
+                Button(action: {
+                    activeSheet = .newList
+                }) {
+                    HStack {
+                        Spacer()
+
+                        Text("Add New List")
+
+                        Spacer()
+                    }
+                }
+                .padding(.top)
             }
             VStack {
                 EmptyStateView(emptyStateType: lists.isEmpty ? .noLists : .noSelection)
@@ -180,20 +171,39 @@ struct HomeView: View {
         })
         .sheet(item: $activeSheet) { item in
             switch item {
+            case .editList(let id):
+                var list = lists.first(where: { $0.id == id }) ?? SMPList(title: "")
+
+                EditListView(
+                    model: .init(listID: id, title: list.title, color: ListColor(list.color))
+                ) { editedModel in
+                    list.title = editedModel.title
+                    list.color = SMPListColor(editedModel.color)
+                    storage.updateList(list)
+                }
+
+            case .newList:
+                EditListView(
+                    model: .empty
+                ) { editedModel in
+                    addNewList(with: editedModel)
+                }
+
             case .releaseNotes:
                 ReleaseNotesView(isModal: .constant(true))
+
             case .storeViewHitLimit:
                 StoreView(freeLimitMessage: FreeLimits.numberOfLists.message)
+
             case .storeView:
                 StoreView()
             }
         }
     }
 
-    private func addNewList() {
-        let title = newListTitle.trimmingCharacters(in: .whitespacesAndNewlines)
+    private func addNewList(with model: EditListView.Model) {
+        let title = model.title.trimmingCharacters(in: .whitespacesAndNewlines)
         if title.isEmpty {
-            newListTitle = ""
             return
         }
 
@@ -203,9 +213,8 @@ struct HomeView: View {
             return
         }
 
-        let list = SMPList(title: title)
+        let list = SMPList(title: title, color: .init(model.color))
         lists.append(list)
-        newListTitle = ""
 
         storage.addList(list)
     }

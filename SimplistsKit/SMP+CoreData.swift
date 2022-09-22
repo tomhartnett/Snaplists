@@ -17,7 +17,7 @@ extension SMPList {
         self.items = entity.sortedItems.compactMap { SMPListItem(entity: $0) }
 
         // TODO: add color to data model
-        self.color = .blue
+
     }
 }
 

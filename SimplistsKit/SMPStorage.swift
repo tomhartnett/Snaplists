@@ -85,6 +85,8 @@ public final class SMPStorage: ObservableObject {
         listEntity.items = NSSet(array: items)
         listEntity.sortOrder = list.items.map { $0.id.uuidString }
 
+        // TODO: add color to data model
+
         saveChanges()
     }
 

@@ -46,8 +46,6 @@ struct ListView: View {
     @State private var deleteAction: DeleteAction?
     @State private var isPresentingConfirmDelete = false
     @State private var newItemTitle = ""
-    @State private var editListID = ""
-    @State private var editListTitle = ""
     @State private var selectedIDs = Set<UUID>()
     @Binding var selectedListID: UUID?
     @Binding var lists: [SMPList]
@@ -242,7 +240,7 @@ struct ListView: View {
                                 Divider()
 
                                 Button(action: {
-                                    editList()
+                                    activeSheet = .editList
                                 }) {
                                     Text("Edit")
                                     Image(systemName: "pencil")
@@ -296,11 +294,12 @@ struct ListView: View {
             .sheet(item: $activeSheet) { item in
                 switch item {
                 case .editList:
-                    EditListView(id: $editListID, title: $editListTitle) { _, newTitle in
-                        list.title = newTitle
+                    EditListView(
+                        model: .init(listID: list.id, title: list.title, color: ListColor(list.color))
+                    ) { editedModel in
+                        list.title = editedModel.title
+                        list.color = SMPListColor(editedModel.color)
                         storage.updateList(list)
-                        editListID = ""
-                        editListTitle = ""
                     }
 
                 case .moveItems:
@@ -445,12 +444,6 @@ struct ListView: View {
         } else if let newList = storage.duplicateList(list) {
             list = newList
         }
-    }
-
-    private func editList() {
-        editListID = list.id.uuidString
-        editListTitle = list.title
-        activeSheet = .editList
     }
 
     private func selectOrDeselectAll() {

@@ -5,37 +5,50 @@
 //  Created by Tom Hartnett on 9/5/20.
 //
 
+import SimplistsKit
 import SwiftUI
 
-struct EditListView: View {
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @Binding var id: String
-    @Binding var title: String
-    @State private var selectedColor: ListColor = .none
+extension EditListView {
+    struct Model {
+        var listID: UUID?
+        var title: String
+        var color: ListColor
 
-    var doneAction: ((String, String) -> Void)?
+        static var empty: Model {
+            Model(title: "", color: .none)
+        }
+    }
+}
+
+struct EditListView: View {
+    @Environment(\.dismiss) private var dismiss
+    @State private var editedModel: Model = .empty
+
+    var model: Model
+
+    var doneAction: ((Model) -> Void)
 
     var body: some View {
         NavigationView {
             Form {
                 Section {
                     FocusableTextField("Enter name...".localize(),
-                                       text: $title,
+                                       text: $editedModel.title,
                                        keepFocusUnlessEmpty: false,
                                        onCommit: saveChanges)
                 }
 
                 Section {
-                    ForEach(ListColor.allCases, id: \.self) { color in
+                    ForEach(ListColor.allCases, id: \.self) { caseColor in
                         HStack(spacing: 20) {
                             Image(systemName: "app.fill")
-                                .foregroundColor(color.swiftUIColor)
+                                .foregroundColor(caseColor.swiftUIColor)
 
-                            Text(color.title)
+                            Text(caseColor.title)
 
                             Spacer()
 
-                            if selectedColor == color {
+                            if editedModel.color == caseColor {
                                 Image(systemName: "checkmark")
                             } else {
                                 EmptyView()
@@ -43,7 +56,7 @@ struct EditListView: View {
                         }
                         .contentShape(Rectangle())
                         .onTapGesture {
-                            selectedColor = color
+                            editedModel.color = caseColor
                         }
                     }
                 }
@@ -61,81 +74,30 @@ struct EditListView: View {
                     Text("Done")
                         .fontWeight(.semibold)
                 })
-                .disabled(title.isEmpty)
+                .disabled(!editedModel.title.isNotEmpty)
             )
-            .navigationBarTitle("Edit List", displayMode: .inline)
+            .navigationBarTitle(model.listID != nil ? "Edit List" : "New List", displayMode: .inline)
+            .onAppear {
+                editedModel = model
+            }
         }
     }
 
-    private func dismiss() {
-        presentationMode.wrappedValue.dismiss()
-    }
-
     private func saveChanges() {
-        guard !title.isEmpty else { return }
+        guard !editedModel.title.isEmpty else { return }
 
-        doneAction?(id, title)
-        presentationMode.wrappedValue.dismiss()
+        doneAction(editedModel)
+
+        dismiss()
     }
 }
 
 struct EditListView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            EditListView(id: .constant("12345"), title: .constant("Weekend TODOs"))
-        }
-    }
-}
-
-enum ListColor: CaseIterable, Hashable {
-    case none
-    case red
-    case orange
-    case yellow
-    case green
-    case blue
-    case purple
-    case gray
-
-    var swiftUIColor: Color {
-        switch self {
-        case .none:
-            return .clear
-        case .gray:
-            return .gray
-        case .red:
-            return .red
-        case .orange:
-            return .orange
-        case .yellow:
-            return .yellow
-        case .green:
-            return .green
-        case .blue:
-            return .blue
-        case .purple:
-            return .purple
-        }
-    }
-
-    var title: String {
-        switch self {
-        case .none:
-            return "None"
-        case .gray:
-            return "Gray"
-        case .red:
-            return "Red"
-        case .orange:
-            return "Orange"
-        case .yellow:
-            return "Yellow"
-        case .green:
-            return "Green"
-        case .blue:
-            return "Blue"
-        case .purple:
-            return "Purple"
+            EditListView(
+                model: .init(title: "New List", color: .green)
+            ) { _ in }
         }
     }
 }

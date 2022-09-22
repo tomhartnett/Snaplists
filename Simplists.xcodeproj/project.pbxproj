@@ -59,7 +59,6 @@
 		E235D7FA24E04C3F007D95BE /* WatchListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D7F924E04C3F007D95BE /* WatchListItemView.swift */; };
 		E235D7FC24E04CC1007D95BE /* SMPListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D7FB24E04CC1007D95BE /* SMPListItem.swift */; };
 		E23925B726A460BE00C59053 /* ListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23925B626A460BE00C59053 /* ListRowView.swift */; };
-		E2402FEE28D752D70024CA70 /* SMPList+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2402FED28D752D70024CA70 /* SMPList+Extensions.swift */; };
 		E241A046258FBA7D000277BE /* StoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E241A045258FBA7D000277BE /* StoreView.swift */; };
 		E24FACA4251CEC7C002B0B97 /* WatchAuthenticationErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24FACA3251CEC7C002B0B97 /* WatchAuthenticationErrorView.swift */; };
 		E250E1B0269B2B6C00860DEC /* EditListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E250E1AC269B2B6C00860DEC /* EditListView.swift */; };
@@ -90,6 +89,7 @@
 		E282850725F52A7700EE8997 /* WatchStoreErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E282850625F52A7700EE8997 /* WatchStoreErrorView.swift */; };
 		E282850F25F52E0B00EE8997 /* WatchPrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E282850E25F52E0B00EE8997 /* WatchPrivacyPolicyView.swift */; };
 		E282851425F52E2F00EE8997 /* WatchParagraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E282851325F52E2F00EE8997 /* WatchParagraphView.swift */; };
+		E297905128DB315900C7D6FB /* ListColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E297905028DB315900C7D6FB /* ListColor.swift */; };
 		E29AB80E27F8D32E00868DA1 /* ReleaseNotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29AB80D27F8D32E00868DA1 /* ReleaseNotesView.swift */; };
 		E29AB81027F8D86900868DA1 /* Bool+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29AB80F27F8D86900868DA1 /* Bool+Extensions.swift */; };
 		E2A0302825B4CE81003BD447 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A0302725B4CE80003BD447 /* EmptyStateView.swift */; };
@@ -307,7 +307,6 @@
 		E235D7F924E04C3F007D95BE /* WatchListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListItemView.swift; sourceTree = "<group>"; };
 		E235D7FB24E04CC1007D95BE /* SMPListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMPListItem.swift; sourceTree = "<group>"; };
 		E23925B626A460BE00C59053 /* ListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowView.swift; sourceTree = "<group>"; };
-		E2402FED28D752D70024CA70 /* SMPList+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SMPList+Extensions.swift"; sourceTree = "<group>"; };
 		E241A045258FBA7D000277BE /* StoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreView.swift; sourceTree = "<group>"; };
 		E24FACA3251CEC7C002B0B97 /* WatchAuthenticationErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchAuthenticationErrorView.swift; sourceTree = "<group>"; };
 		E250E1AC269B2B6C00860DEC /* EditListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditListView.swift; sourceTree = "<group>"; };
@@ -339,6 +338,7 @@
 		E282850625F52A7700EE8997 /* WatchStoreErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchStoreErrorView.swift; sourceTree = "<group>"; };
 		E282850E25F52E0B00EE8997 /* WatchPrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchPrivacyPolicyView.swift; sourceTree = "<group>"; };
 		E282851325F52E2F00EE8997 /* WatchParagraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchParagraphView.swift; sourceTree = "<group>"; };
+		E297905028DB315900C7D6FB /* ListColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListColor.swift; sourceTree = "<group>"; };
 		E29AB80D27F8D32E00868DA1 /* ReleaseNotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseNotesView.swift; sourceTree = "<group>"; };
 		E29AB80F27F8D86900868DA1 /* Bool+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bool+Extensions.swift"; sourceTree = "<group>"; };
 		E2A0302725B4CE80003BD447 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
@@ -647,6 +647,7 @@
 			isa = PBXGroup;
 			children = (
 				E250E1AF269B2B6C00860DEC /* ItemView.swift */,
+				E297905028DB315900C7D6FB /* ListColor.swift */,
 				E23925B626A460BE00C59053 /* ListRowView.swift */,
 				E250E1AD269B2B6C00860DEC /* ListView.swift */,
 				E250E1AE269B2B6C00860DEC /* MoveToListView.swift */,
@@ -671,7 +672,6 @@
 			children = (
 				E29AB80F27F8D86900868DA1 /* Bool+Extensions.swift */,
 				E2A376B325D1B4E2001D1615 /* UserDefaults+Extensions.swift */,
-				E2402FED28D752D70024CA70 /* SMPList+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1055,6 +1055,7 @@
 				E21123DD2504441900B3D76D /* AboutView.swift in Sources */,
 				E279EACA25D0480D00A38ED6 /* MailView.swift in Sources */,
 				E228228825D09CAA009F4877 /* PrivacyPolicyParagraphView.swift in Sources */,
+				E297905128DB315900C7D6FB /* ListColor.swift in Sources */,
 				E250E1B2269B2B6C00860DEC /* MoveToListView.swift in Sources */,
 				E250E1B1269B2B6C00860DEC /* ListView.swift in Sources */,
 				E218242B26D0325D00425947 /* SelectAllView.swift in Sources */,
@@ -1062,7 +1063,6 @@
 				E2A376B425D1B4E2001D1615 /* UserDefaults+Extensions.swift in Sources */,
 				E26EBDA125C83ADB000D031D /* FreeLimits.swift in Sources */,
 				E22E152324E060C2002A140E /* HomeView.swift in Sources */,
-				E2402FEE28D752D70024CA70 /* SMPList+Extensions.swift in Sources */,
 				E2B9C3A325CED96F0024B9F6 /* DebugView.swift in Sources */,
 				E2029FFA25FB9E3300490043 /* ReviewHelper.swift in Sources */,
 				E281EBD9259A2C7400DF1CEB /* FeatureBulletView.swift in Sources */,
