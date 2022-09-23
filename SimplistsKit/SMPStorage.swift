@@ -73,6 +73,7 @@ public final class SMPStorage: ObservableObject {
         listEntity.title = list.title
         listEntity.isArchived = list.isArchived
         listEntity.modified = Date()
+        listEntity.color = list.color.rawValue
 
         let items: [ItemEntity] = list.items.map {
             let itemEntity = ItemEntity(context: context)
@@ -85,8 +86,6 @@ public final class SMPStorage: ObservableObject {
         listEntity.items = NSSet(array: items)
         listEntity.sortOrder = list.items.map { $0.id.uuidString }
 
-        // TODO: add color to data model
-
         saveChanges()
     }
 
@@ -97,6 +96,7 @@ public final class SMPStorage: ObservableObject {
         listEntity.sortOrder = list.items.map { $0.id.uuidString }
         listEntity.isArchived = list.isArchived
         listEntity.modified = Date()
+        listEntity.color = list.color.rawValue
 
         list.items.forEach {
             if let itemEntity = getItemEntity(with: $0.id) {
@@ -128,6 +128,7 @@ public final class SMPStorage: ObservableObject {
         listEntity.identifier = newListID
         listEntity.title = "\(list.title) copy"
         listEntity.isArchived = false
+        listEntity.color = list.color.rawValue
 
         var items = [ItemEntity]()
         list.items.forEach {

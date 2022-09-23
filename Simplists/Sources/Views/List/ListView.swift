@@ -90,11 +90,15 @@ struct ListView: View {
         } else {
             VStack(alignment: .leading) {
                 HStack {
-                    Image(systemName: "app.fill")
+                    if list.color != .none {
+                        Image(systemName: "app.fill")
+                            .foregroundColor(list.color.swiftUIColor)
+                    } else {
+                        EmptyView()
+                    }
 
                     Text(list.title)
                 }
-                .foregroundColor(list.color?.swiftUIColor)
                 .font(.largeTitle)
                 .padding([.horizontal, .top])
 
@@ -295,10 +299,10 @@ struct ListView: View {
                 switch item {
                 case .editList:
                     EditListView(
-                        model: .init(listID: list.id, title: list.title, color: ListColor(list.color))
+                        model: .init(listID: list.id, title: list.title, color: list.color)
                     ) { editedModel in
                         list.title = editedModel.title
-                        list.color = SMPListColor(editedModel.color)
+                        list.color = editedModel.color
                         storage.updateList(list)
                     }
 
@@ -465,7 +469,7 @@ struct ListView_Previews: PreviewProvider {
                     SMPListItem(title: "Item 2", isComplete: false),
                     SMPListItem(title: "Item 3", isComplete: true),
                     SMPListItem(title: "Item 4", isComplete: true)
-                ])
+                ], color: .red)
 
             ListView(list: list,
                      selectedListID: .constant(UUID()),

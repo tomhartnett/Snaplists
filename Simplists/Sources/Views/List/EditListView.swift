@@ -12,7 +12,7 @@ extension EditListView {
     struct Model {
         var listID: UUID?
         var title: String
-        var color: ListColor
+        var color: SMPListColor
 
         static var empty: Model {
             Model(title: "", color: .none)
@@ -39,7 +39,7 @@ struct EditListView: View {
                 }
 
                 Section {
-                    ForEach(ListColor.allCases, id: \.self) { caseColor in
+                    ForEach(SMPListColor.allCases, id: \.self) { caseColor in
                         HStack(spacing: 20) {
                             Image(systemName: "app.fill")
                                 .foregroundColor(caseColor.swiftUIColor)

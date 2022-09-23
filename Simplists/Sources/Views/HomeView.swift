@@ -67,7 +67,7 @@ struct HomeView: View {
                                            tag: list.id,
                                            selection: $selectedListID) {
 
-                                ListRowView(color: list.color?.swiftUIColor,
+                                ListRowView(color: list.color.swiftUIColor,
                                             title: list.title,
                                             itemCount: list.items.count)
                                     .contextMenu {
@@ -175,10 +175,10 @@ struct HomeView: View {
                 var list = lists.first(where: { $0.id == id }) ?? SMPList(title: "")
 
                 EditListView(
-                    model: .init(listID: id, title: list.title, color: ListColor(list.color))
+                    model: .init(listID: id, title: list.title, color: list.color)
                 ) { editedModel in
                     list.title = editedModel.title
-                    list.color = SMPListColor(editedModel.color)
+                    list.color = editedModel.color
                     storage.updateList(list)
                 }
 
@@ -213,7 +213,7 @@ struct HomeView: View {
             return
         }
 
-        let list = SMPList(title: title, color: .init(model.color))
+        let list = SMPList(title: title, color: model.color)
         lists.append(list)
 
         storage.addList(list)

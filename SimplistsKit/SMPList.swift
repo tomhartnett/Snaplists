@@ -8,13 +8,35 @@
 import Foundation
 
 public enum SMPListColor: Int64, CaseIterable, Hashable {
-    case gray = 0
-    case red = 1
-    case orange = 2
-    case yellow = 3
-    case green = 4
-    case blue = 5
-    case purple = 6
+    case none = 0
+    case gray = 1
+    case red = 2
+    case orange = 3
+    case yellow = 4
+    case green = 5
+    case blue = 6
+    case purple = 7
+
+    public var title: String {
+        switch self {
+        case .none:
+            return "None"
+        case .gray:
+            return "Gray"
+        case .red:
+            return "Red"
+        case .orange:
+            return "Orange"
+        case .yellow:
+            return "Yellow"
+        case .green:
+            return "Green"
+        case .blue:
+            return "Blue"
+        case .purple:
+            return "Purple"
+        }
+    }
 }
 
 public struct SMPList: Identifiable {
@@ -23,13 +45,13 @@ public struct SMPList: Identifiable {
     public var isArchived: Bool
     public var lastModified: Date
     public var items: [SMPListItem]
-    public var color: SMPListColor?
+    public var color: SMPListColor
 
     public init(title: String,
                 isArchived: Bool = false,
                 lastModified: Date = Date(),
                 items: [SMPListItem] = [],
-                color: SMPListColor? = nil) {
+                color: SMPListColor = .none) {
         self.title = title
         self.isArchived = isArchived
         self.lastModified = lastModified
