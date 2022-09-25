@@ -121,7 +121,7 @@ struct WatchDebugView: View {
 
 struct WatchDebugView_Previews: PreviewProvider {
     static var previews: some View {
-        WatchDebugView(isAuthenticated: .constant(false)).environmentObject(SMPStorage.previewStorage)
-        WatchDebugView(isAuthenticated: .constant(true)).environmentObject(SMPStorage.previewStorage)
+        WatchDebugView(isAuthenticated: .constant(false)).environmentObject(SMPStorage())
+        WatchDebugView(isAuthenticated: .constant(true)).environmentObject(SMPStorage())
     }
 }

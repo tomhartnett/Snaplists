@@ -36,7 +36,5 @@
 	<array>
 		<string>remote-notification</string>
 	</array>
-	<key>WKExtensionDelegateClassName</key>
-	<string>$(PRODUCT_MODULE_NAME).ExtensionDelegate</string>
 </dict>
 </plist>

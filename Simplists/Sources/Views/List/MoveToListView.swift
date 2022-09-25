@@ -67,7 +67,7 @@ struct MoveToListView_Previews: PreviewProvider {
         NavigationView {
             MoveToListView(itemIDs: [UUID(), UUID()],
                            fromList: SMPList(title: "Old List"))
-                .environmentObject(SMPStorage.previewStorage)
+                .environmentObject(SMPStorage())
         }
     }
 }

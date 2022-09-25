@@ -16,13 +16,38 @@ public final class SMPStorage: ObservableObject {
 
     private let context: NSManagedObjectContext
 
-    public init(context: NSManagedObjectContext) {
-        self.context = context
+    public init() {
+        let container = SMPPersistentContainer(name: "Simplists")
 
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(notifyRemoteChange),
-                                               name: Notification.Name.NSPersistentStoreRemoteChange,
-                                               object: context.persistentStoreCoordinator)
+        guard let description = container.persistentStoreDescriptions.first else {
+            fatalError("\(#function) - No persistent store descriptions found.")
+        }
+
+        // Not sure this line is really needed; iOS app works without it.
+        description.cloudKitContainerOptions = NSPersistentCloudKitContainerOptions(
+            containerIdentifier: "iCloud.com.sleekible.simplists")
+
+        // https://developer.apple.com/documentation/coredata/consuming_relevant_store_changes
+        description.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
+        description.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
+
+        container.loadPersistentStores(completionHandler: { _, error in
+            if let error = error {
+                fatalError("\(#function) - Error loading persistent stores: \(error.localizedDescription)")
+            }
+        })
+
+        container.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
+        container.viewContext.automaticallyMergesChangesFromParent = true
+
+        self.context = container.viewContext
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(notifyRemoteChange),
+            name: Notification.Name.NSPersistentStoreRemoteChange,
+            object: context.persistentStoreCoordinator
+        )
     }
 
     public func getListsCount(isArchived: Bool? = nil) -> Int {
@@ -267,15 +292,6 @@ private extension Optional where Wrapped: NSSet {
     }
 }
 
-// MARK: - Preview support
-
-public extension SMPStorage {
-    static var previewStorage: SMPStorage {
-        let container = NSPersistentContainer(name: "Whatever")
-        return SMPStorage(context: container.viewContext)
-    }
-}
-
 // MARK: - Sample data
 
 public extension SMPStorage {
@@ -427,7 +443,7 @@ private extension SMPStorage {
     }
 
     @objc
-    func notifyRemoteChange() {
+    func notifyRemoteChange(_ notification: Notification) {
         DispatchQueue.main.async { [weak self] in
             self?.objectWillChange.send()
         }

@@ -474,7 +474,7 @@ struct ListView_Previews: PreviewProvider {
             ListView(list: list,
                      selectedListID: .constant(UUID()),
                      lists: .constant([]))
-                .environmentObject(SMPStorage.previewStorage)
+                .environmentObject(SMPStorage())
                 .navigationBarTitleDisplayMode(.inline)
         }
     }

@@ -40,12 +40,9 @@
 		E235D79924DF5B5A007D95BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E235D79824DF5B5A007D95BE /* Assets.xcassets */; };
 		E235D79C24DF5B5A007D95BE /* PreviewAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E235D79B24DF5B5A007D95BE /* PreviewAssets.xcassets */; };
 		E235D79F24DF5B5A007D95BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E235D79D24DF5B5A007D95BE /* LaunchScreen.storyboard */; };
-		E235D7AC24DF5B88007D95BE /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E235D7AA24DF5B88007D95BE /* Interface.storyboard */; };
 		E235D7AE24DF5B89007D95BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E235D7AD24DF5B89007D95BE /* Assets.xcassets */; };
 		E235D7B524DF5B89007D95BE /* WatchApp Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E235D7B424DF5B89007D95BE /* WatchApp Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		E235D7BA24DF5B89007D95BE /* HostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D7B924DF5B89007D95BE /* HostingController.swift */; };
 		E235D7BC24DF5B89007D95BE /* WatchListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D7BB24DF5B89007D95BE /* WatchListView.swift */; };
-		E235D7BE24DF5B89007D95BE /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D7BD24DF5B89007D95BE /* ExtensionDelegate.swift */; };
 		E235D7C424DF5B89007D95BE /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D7C324DF5B89007D95BE /* ComplicationController.swift */; };
 		E235D7C624DF5B89007D95BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E235D7C524DF5B89007D95BE /* Assets.xcassets */; };
 		E235D7C924DF5B89007D95BE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E235D7C824DF5B89007D95BE /* Preview Assets.xcassets */; };
@@ -127,6 +124,7 @@
 		E2F3819125C58E11002740F3 /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = E2F3819025C58E10002740F3 /* Configuration.storekit */; };
 		E2F3819625C58F23002740F3 /* SKProduct+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F3819525C58F23002740F3 /* SKProduct+Extensions.swift */; };
 		E2F559B427D97E3C007DA24A /* OpenURLContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F559B327D97E3C007DA24A /* OpenURLContext.swift */; };
+		E2FB8EA128CA0F63005609F1 /* SimplistsWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FB8EA028CA0F63005609F1 /* SimplistsWatchApp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -285,13 +283,10 @@
 		E235D79E24DF5B5A007D95BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E235D7A024DF5B5A007D95BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E235D7A824DF5B88007D95BE /* WatchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E235D7AB24DF5B88007D95BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		E235D7AD24DF5B89007D95BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E235D7AF24DF5B89007D95BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E235D7B424DF5B89007D95BE /* WatchApp Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "WatchApp Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E235D7B924DF5B89007D95BE /* HostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingController.swift; sourceTree = "<group>"; };
 		E235D7BB24DF5B89007D95BE /* WatchListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListView.swift; sourceTree = "<group>"; };
-		E235D7BD24DF5B89007D95BE /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		E235D7C324DF5B89007D95BE /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
 		E235D7C524DF5B89007D95BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E235D7C824DF5B89007D95BE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -366,6 +361,7 @@
 		E2F3819025C58E10002740F3 /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
 		E2F3819525C58F23002740F3 /* SKProduct+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKProduct+Extensions.swift"; sourceTree = "<group>"; };
 		E2F559B327D97E3C007DA24A /* OpenURLContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenURLContext.swift; sourceTree = "<group>"; };
+		E2FB8EA028CA0F63005609F1 /* SimplistsWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimplistsWatchApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -512,8 +508,7 @@
 		E22E152724E06A4F002A140E /* Startup */ = {
 			isa = PBXGroup;
 			children = (
-				E235D7B924DF5B89007D95BE /* HostingController.swift */,
-				E235D7BD24DF5B89007D95BE /* ExtensionDelegate.swift */,
+				E2FB8EA028CA0F63005609F1 /* SimplistsWatchApp.swift */,
 			);
 			path = Startup;
 			sourceTree = "<group>";
@@ -581,7 +576,6 @@
 		E235D7A924DF5B88007D95BE /* WatchApp */ = {
 			isa = PBXGroup;
 			children = (
-				E235D7AA24DF5B88007D95BE /* Interface.storyboard */,
 				E235D7AD24DF5B89007D95BE /* Assets.xcassets */,
 				E235D7AF24DF5B89007D95BE /* Info.plist */,
 			);
@@ -962,7 +956,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E235D7AE24DF5B89007D95BE /* Assets.xcassets in Resources */,
-				E235D7AC24DF5B88007D95BE /* Interface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1099,10 +1092,9 @@
 				E282850F25F52E0B00EE8997 /* WatchPrivacyPolicyView.swift in Sources */,
 				E235D7FA24E04C3F007D95BE /* WatchListItemView.swift in Sources */,
 				E2A60FFA25E1C9AD000F492C /* WatchNewListView.swift in Sources */,
-				E235D7BA24DF5B89007D95BE /* HostingController.swift in Sources */,
 				E2D2D70125EC455C00C305DA /* SKProduct+Extensions.swift in Sources */,
-				E235D7BE24DF5B89007D95BE /* ExtensionDelegate.swift in Sources */,
 				E2B62B9A25E2C01A00898B21 /* WatchStoreView.swift in Sources */,
+				E2FB8EA128CA0F63005609F1 /* SimplistsWatchApp.swift in Sources */,
 				E2BB0B4F25DEA327004A1AB6 /* String+Extensions.swift in Sources */,
 				E26D345525E3E88900EE3C3E /* WatchDebugView.swift in Sources */,
 				E2D2D6FD25EC42AD00C305DA /* StoreDataSource.swift in Sources */,
@@ -1202,14 +1194,6 @@
 				E235D79E24DF5B5A007D95BE /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		E235D7AA24DF5B88007D95BE /* Interface.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E235D7AB24DF5B88007D95BE /* Base */,
-			);
-			name = Interface.storyboard;
 			sourceTree = "<group>";
 		};
 		E2A32100250D704700A022B8 /* Localizable.strings */ = {

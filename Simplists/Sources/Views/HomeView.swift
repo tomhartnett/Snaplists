@@ -270,7 +270,7 @@ struct HomeView_Previews: PreviewProvider {
                         SMPListItem(title: "Item 1", isComplete: false)
                     ])
         ])
-        .environmentObject(SMPStorage.previewStorage)
+        .environmentObject(SMPStorage())
         .environmentObject(dataSource)
         .environmentObject(OpenURLContext())
     }

@@ -129,11 +129,11 @@ struct ListView_Previews: PreviewProvider {
                             SMPListItem(title: "Item 2", isComplete: true),
                             SMPListItem(title: "Item 3", isComplete: true),
                             SMPListItem(title: "Item 4", isComplete: true)
-                        ])).environmentObject(SMPStorage.previewStorage)
+                        ])).environmentObject(SMPStorage())
 
         WatchListView(list: SMPList(
                         title: "Grocery",
                         items: [
-                        ])).environmentObject(SMPStorage.previewStorage)
+                        ])).environmentObject(SMPStorage())
     }
 }

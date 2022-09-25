@@ -123,6 +123,11 @@ struct WatchHomeView: View {
         .onReceive(storage.objectWillChange, perform: { _ in
             reload()
         })
+        .onReceive(storeDataSource.objectWillChange) { _ in
+            if storeDataSource.hasPurchasedIAP {
+                storage.savePremiumIAPItem()
+            }
+        }
         .sheet(item: $activeSheet) { item in
             switch item {
             case .authErrorView:
@@ -210,7 +215,7 @@ struct WatchHomeView_Previews: PreviewProvider {
         // Apple Watch Series 3 - 38mm
 
         WatchHomeView(lists: lists)
-            .environmentObject(SMPStorage.previewStorage)
+            .environmentObject(SMPStorage())
             .previewDevice(PreviewDevice(rawValue: "Apple Watch Series 6 - 40mm"))
             .previewDisplayName("Series 6 40mm")
     }

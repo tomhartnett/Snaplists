@@ -108,6 +108,6 @@ struct ArchivedListsView: View {
 struct ArchivedListsView_Previews: PreviewProvider {
     static var previews: some View {
         ArchivedListsView()
-            .environmentObject(SMPStorage.previewStorage)
+            .environmentObject(SMPStorage())
     }
 }
