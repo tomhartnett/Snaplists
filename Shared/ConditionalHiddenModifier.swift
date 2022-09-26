@@ -12,8 +12,7 @@ struct ConditionalHiddenModifier: ViewModifier {
 
     func body(content: Content) -> some View {
         if isHidden {
-            content
-                .hidden()
+            EmptyView()
         } else {
             content
         }
