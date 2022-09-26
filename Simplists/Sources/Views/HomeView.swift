@@ -141,6 +141,12 @@ struct HomeView: View {
                 .listStyle(InsetGroupedListStyle())
 
                 Button(action: {
+                    if lists.count >= FreeLimits.numberOfLists.limit &&
+                        !storeDataSource.hasPurchasedIAP {
+                        activeSheet = .storeViewHitLimit
+                        return
+                    }
+
                     activeSheet = .newList
                 }) {
                     HStack {
@@ -204,12 +210,6 @@ struct HomeView: View {
     private func addNewList(with model: EditListView.Model) {
         let title = model.title.trimmingCharacters(in: .whitespacesAndNewlines)
         if title.isEmpty {
-            return
-        }
-
-        if lists.count >= FreeLimits.numberOfLists.limit &&
-            !storeDataSource.hasPurchasedIAP {
-            activeSheet = .storeViewHitLimit
             return
         }
 
