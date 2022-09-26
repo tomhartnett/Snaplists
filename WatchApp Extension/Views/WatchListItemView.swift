@@ -11,18 +11,20 @@ import SimplistsKit
 struct WatchListItemView: View {
     var item: SMPListItem
 
+    var accentColor: Color
+
     var tapAction: () -> Void
 
     var body: some View {
         HStack(spacing: 16) {
             ZStack {
                 Circle()
-                    .stroke(Color.white, lineWidth: 2)
+                    .stroke(accentColor, lineWidth: 2)
                     .frame(width: 25, height: 25)
 
                 Circle()
                     .frame(width: 20, height: 20)
-                    .foregroundColor(item.isComplete ? .white : .clear)
+                    .foregroundColor(item.isComplete ? accentColor : .clear)
 
                 Image(systemName: "checkmark")
                     .font(.system(size: 15, weight: .bold))
@@ -45,9 +47,20 @@ struct WatchListItemView: View {
 
 struct ListItemView_Previews: PreviewProvider {
     static var previews: some View {
-        VStack(alignment: .leading) {
-            WatchListItemView(item: SMPListItem(title: "Beer", isComplete: false), tapAction: {})
-            WatchListItemView(item: SMPListItem(title: "Bananas", isComplete: true), tapAction: {})
+        List {
+            WatchListItemView(
+                item: SMPListItem(
+                    title: "Beer",
+                    isComplete: false),
+                accentColor: SMPListColor.green.swiftUIColor,
+                tapAction: {})
+
+            WatchListItemView(
+                item: SMPListItem(
+                    title: "Bananas",
+                    isComplete: false),
+                accentColor: Color.white,
+                tapAction: {})
         }
     }
 }

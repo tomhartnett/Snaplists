@@ -37,33 +37,45 @@ struct WatchDebugView: View {
 
     var body: some View {
         List {
-            WatchListItemView(item: SMPListItem(title: "Authenticated",
-                                                isComplete: UserDefaults.simplistsAppDebug.isFakeAuthenticationEnabled),
-                              tapAction: {
-                                toggleFakeAuthentication()
-                                isHack.toggle()
-                              })
+            WatchListItemView(
+                item: SMPListItem(title: "Authenticated",
+                                  isComplete: UserDefaults.simplistsAppDebug.isFakeAuthenticationEnabled),
+                accentColor: .white,
+                tapAction: {
+                    toggleFakeAuthentication()
+                    isHack.toggle()
+                }
+            )
 
-            WatchListItemView(item: SMPListItem(title: "Auth for Pmts",
-                                                isComplete: UserDefaults.simplistsAppDebug.isAuthorizedForPayments),
-                              tapAction: {
-                                toggleAuthorizedForPayments()
-                                isHack.toggle()
-                              })
+            WatchListItemView(
+                item: SMPListItem(title: "Auth for Pmts",
+                                  isComplete: UserDefaults.simplistsAppDebug.isAuthorizedForPayments),
+                accentColor: .white,
+                tapAction: {
+                    toggleAuthorizedForPayments()
+                    isHack.toggle()
+                }
+            )
 
-            WatchListItemView(item: SMPListItem(title: "IAP UserDefaults",
-                                                isComplete: UserDefaults.simplistsApp.isPremiumIAPPurchased),
-                              tapAction: {
-                                togglePremiumIAPPurchased()
-                                isHack.toggle()
-                              })
+            WatchListItemView(
+                item: SMPListItem(title: "IAP UserDefaults",
+                                  isComplete: UserDefaults.simplistsApp.isPremiumIAPPurchased),
+                accentColor: .white,
+                tapAction: {
+                    togglePremiumIAPPurchased()
+                    isHack.toggle()
+                }
+            )
 
-            WatchListItemView(item: SMPListItem(title: "IAP Has Item",
-                                                isComplete: storage.hasPremiumIAPItem),
-                              tapAction: {
-                                storage.deletePremiumIAPItem()
-                                isHack.toggle()
-                              })
+            WatchListItemView(
+                item: SMPListItem(title: "IAP Has Item",
+                                  isComplete: storage.hasPremiumIAPItem),
+                accentColor: .white,
+                tapAction: {
+                    storage.deletePremiumIAPItem()
+                    isHack.toggle()
+                }
+            )
 
             Button(action: {
                 storeDataSource.resetIAP()

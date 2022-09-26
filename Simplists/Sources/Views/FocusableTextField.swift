@@ -97,7 +97,7 @@ struct FocusableTextField: UIViewRepresentable {
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace,
                                             target: nil,
                                             action: nil)
-        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel,
+        let cancelButton = UIBarButtonItem(barButtonSystemItem: .done,
                                          target: coordinator,
                                          action: #selector(coordinator.didTapCancel))
 

@@ -68,6 +68,7 @@ struct WatchHomeView: View {
                         Image(systemName: "plus")
                         Text("home-new-list-button-text")
                     }
+                    .font(.headline)
                 })
                 .listRowBackground(
                     Color("ButtonBlue")
@@ -80,8 +81,17 @@ struct WatchHomeView: View {
                                     .environmentObject(storage)
                                     .environmentObject(storeDataSource)) {
                         HStack {
+                            if list.color != .none {
+                                Image(systemName: "app.fill")
+                                    .foregroundColor(list.color.swiftUIColor)
+                            } else {
+                                EmptyView()
+                            }
+
                             Text(list.title)
+
                             Spacer()
+
                             Text("\(list.items.count)")
                                 .foregroundColor(.secondary)
                         }
@@ -192,16 +202,16 @@ struct WatchHomeView_Previews: PreviewProvider {
         let lists: [SMPList] = [
             SMPList(title: "List 1", items: [
                 SMPListItem(title: "Item 1", isComplete: false)
-            ]),
+            ], color: .none),
             SMPList(title: "List 2", items: [
                 SMPListItem(title: "Item 1", isComplete: false),
                 SMPListItem(title: "Item 2", isComplete: false)
-            ]),
+            ], color: .yellow),
             SMPList(title: "List 3", items: [
                 SMPListItem(title: "Item 1", isComplete: false),
                 SMPListItem(title: "Item 2", isComplete: false),
                 SMPListItem(title: "Item 3", isComplete: false)
-            ]),
+            ], color: .green),
             SMPList(title: "List 4", items: [
                 SMPListItem(title: "Item 1", isComplete: false),
                 SMPListItem(title: "Item 2", isComplete: false),
@@ -216,7 +226,7 @@ struct WatchHomeView_Previews: PreviewProvider {
 
         WatchHomeView(lists: lists)
             .environmentObject(SMPStorage())
+            .environmentObject(StoreDataSource(service: StoreClient()))
             .previewDevice(PreviewDevice(rawValue: "Apple Watch Series 6 - 40mm"))
-            .previewDisplayName("Series 6 40mm")
     }
 }

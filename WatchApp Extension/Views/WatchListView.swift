@@ -32,6 +32,23 @@ struct WatchListView: View {
         }
     }
 
+    var buttonForegroundColor: Color {
+        switch list.color {
+        case .none, .gray, .red, .orange, .blue, .purple:
+            return Color.white
+        case .yellow, .green:
+            return Color.black
+        }
+    }
+
+    var buttonBackgroundColor: Color {
+        if list.color == .none {
+            return Color("ButtonBlue")
+        } else {
+            return list.color.swiftUIColor
+        }
+    }
+
     var body: some View {
         VStack {
             List {
@@ -45,19 +62,25 @@ struct WatchListView: View {
                                     Image(systemName: "plus")
                                     Text("list-new-item-button-text")
                                 }
+                                .font(.headline)
+                                .foregroundColor(buttonForegroundColor)
                             })
                             .listRowBackground(
-                                Color("ButtonBlue")
+                                buttonBackgroundColor
                                     .clipped()
                                     .cornerRadius(8)
                             )
 
                             ForEach(list.items) { item in
-                                WatchListItemView(item: item, tapAction: {
-                                    withAnimation {
-                                        updateItem(id: item.id, title: item.title, isComplete: !item.isComplete)
+                                WatchListItemView(
+                                    item: item,
+                                    accentColor: list.color == .none ? Color.white : list.color.swiftUIColor,
+                                    tapAction: {
+                                        withAnimation {
+                                            updateItem(id: item.id, title: item.title, isComplete: !item.isComplete)
+                                        }
                                     }
-                                })
+                                )
                             }
                             .onDelete(perform: delete)
                         }).textCase(nil)
@@ -122,18 +145,25 @@ struct WatchListView: View {
 
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {
-        WatchListView(list: SMPList(
-                        title: "Grocery",
-                        items: [
-                            SMPListItem(title: "Item 1", isComplete: false),
-                            SMPListItem(title: "Item 2", isComplete: true),
-                            SMPListItem(title: "Item 3", isComplete: true),
-                            SMPListItem(title: "Item 4", isComplete: true)
-                        ])).environmentObject(SMPStorage())
+        NavigationView {
+            WatchListView(
+                list: SMPList(
+                    title: "Grocery",
+                    items: [
+                        SMPListItem(title: "Item 1", isComplete: false),
+                        SMPListItem(title: "Item 2", isComplete: true),
+                        SMPListItem(title: "Item 3", isComplete: true),
+                        SMPListItem(title: "Item 4", isComplete: true)
+                    ],
+                    color: .orange)
+            )
+            .environmentObject(SMPStorage())
+        }
 
-        WatchListView(list: SMPList(
-                        title: "Grocery",
-                        items: [
-                        ])).environmentObject(SMPStorage())
+        WatchListView(
+            list: SMPList(title: "Grocery",
+                          items: [])
+        )
+        .environmentObject(SMPStorage())
     }
 }

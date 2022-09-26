@@ -313,44 +313,65 @@ public extension SMPStorage {
         let list0 = SMPList(title: "Trashed list", isArchived: true, lastModified: Date(), items: [])
         addList(list0)
 
-        let list1 = SMPList(title: "Workout routine", isArchived: false, lastModified: Date(), items: [
-            SMPListItem(title: "5 min warmup", isComplete: false),
-            SMPListItem(title: "20 push ups", isComplete: false),
-            SMPListItem(title: "10 burpees", isComplete: false),
-            SMPListItem(title: "20 crunches", isComplete: false),
-            SMPListItem(title: "5 min cool down", isComplete: false)
-        ])
+        let list1 = SMPList(
+            title: "Workout routine",
+            isArchived: false,
+            lastModified: Date(),
+            items: [
+                SMPListItem(title: "5 min warmup", isComplete: false),
+                SMPListItem(title: "20 push ups", isComplete: false),
+                SMPListItem(title: "10 burpees", isComplete: false),
+                SMPListItem(title: "20 crunches", isComplete: false),
+                SMPListItem(title: "5 min cool down", isComplete: false)
+            ]
+        )
         addList(list1)
 
-        let list2 = SMPList(title: "Grocery", isArchived: false, lastModified: Date(), items: [
-            SMPListItem(title: "Milk", isComplete: false),
-            SMPListItem(title: "Lunch meat", isComplete: false),
-            SMPListItem(title: "Cheese slices", isComplete: false),
-            SMPListItem(title: "Mustard", isComplete: true),
-            SMPListItem(title: "Bread", isComplete: true),
-            SMPListItem(title: "Bananas", isComplete: true),
-            SMPListItem(title: "Juice", isComplete: true),
-            SMPListItem(title: "Cereal", isComplete: true),
-            SMPListItem(title: "BBQ potato chips", isComplete: true)
-        ])
+        let list2 = SMPList(
+            title: "Grocery",
+            isArchived: false,
+            lastModified: Date(),
+            items: [
+                SMPListItem(title: "Milk", isComplete: false),
+                SMPListItem(title: "Lunch meat", isComplete: false),
+                SMPListItem(title: "Cheese slices", isComplete: false),
+                SMPListItem(title: "Mustard", isComplete: true),
+                SMPListItem(title: "Bread", isComplete: true),
+                SMPListItem(title: "Bananas", isComplete: true),
+                SMPListItem(title: "Juice", isComplete: true),
+                SMPListItem(title: "Cereal", isComplete: true),
+                SMPListItem(title: "BBQ potato chips", isComplete: true)
+            ],
+            color: .green
+        )
         addList(list2)
 
-        let list3 = SMPList(title: "TODOs", isArchived: false, lastModified: Date(), items: [
-            SMPListItem(title: "Vacuum & dust", isComplete: false),
-            SMPListItem(title: "Mow lawn", isComplete: true),
-            SMPListItem(title: "Clean up garage", isComplete: true),
-            SMPListItem(title: "Pick out clothes for donation", isComplete: true)
-        ])
+        let list3 = SMPList(
+            title: "TODOs",
+            isArchived: false, lastModified: Date(), items: [
+                SMPListItem(title: "Vacuum & dust", isComplete: false),
+                SMPListItem(title: "Mow lawn", isComplete: true),
+                SMPListItem(title: "Clean up garage", isComplete: true),
+                SMPListItem(title: "Pick out clothes for donation", isComplete: true)
+            ],
+            color: .red
+        )
         addList(list3)
 
-        let list4 = SMPList(title: "Shopping", isArchived: false, lastModified: Date(), items: [
-            SMPListItem(title: "#10 envelopes", isComplete: false),
-            SMPListItem(title: "Yellow legal pads", isComplete: false),
-            SMPListItem(title: "Address labels 30 per sheet", isComplete: false),
-            SMPListItem(title: "Printer paper", isComplete: false),
-            SMPListItem(title: "Furniture polish", isComplete: false),
-            SMPListItem(title: "Detergent", isComplete: false)
-        ])
+        let list4 = SMPList(
+            title: "Shopping",
+            isArchived: false,
+            lastModified: Date(),
+            items: [
+                SMPListItem(title: "#10 envelopes", isComplete: false),
+                SMPListItem(title: "Yellow legal pads", isComplete: false),
+                SMPListItem(title: "Address labels 30 per sheet", isComplete: false),
+                SMPListItem(title: "Printer paper", isComplete: false),
+                SMPListItem(title: "Furniture polish", isComplete: false),
+                SMPListItem(title: "Detergent", isComplete: false)
+            ],
+            color: .yellow
+        )
         addList(list4)
     }
 }

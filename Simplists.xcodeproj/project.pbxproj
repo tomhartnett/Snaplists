@@ -97,6 +97,7 @@
 		E2A6100525E2A67F000F492C /* WatchNewItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A6100425E2A67F000F492C /* WatchNewItemView.swift */; };
 		E2AFBDBC24F16348008D9E3F /* ListEntity+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AFBDBB24F16348008D9E3F /* ListEntity+Extensions.swift */; };
 		E2AFBDBF24F194CC008D9E3F /* SMPListSortOrderTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AFBDBE24F194CC008D9E3F /* SMPListSortOrderTransformer.swift */; };
+		E2B21E1528DFEC4500DC0E47 /* SMPListColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E297905028DB315900C7D6FB /* SMPListColor+Extensions.swift */; };
 		E2B62B9A25E2C01A00898B21 /* WatchStoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B62B9925E2C01A00898B21 /* WatchStoreView.swift */; };
 		E2B62BAF25E2C68E00898B21 /* FreeLimits.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26EBDA025C83ADB000D031D /* FreeLimits.swift */; };
 		E2B9C3A325CED96F0024B9F6 /* DebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B9C3A225CED96F0024B9F6 /* DebugView.swift */; };
@@ -665,7 +666,6 @@
 			children = (
 				E29AB80F27F8D86900868DA1 /* Bool+Extensions.swift */,
 				E2A376B325D1B4E2001D1615 /* UserDefaults+Extensions.swift */,
-				E297905028DB315900C7D6FB /* SMPListColor+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -713,6 +713,7 @@
 				E20BD7782754057200671478 /* ConditionalHiddenModifier.swift */,
 				E26EBDA025C83ADB000D031D /* FreeLimits.swift */,
 				E2F3819525C58F23002740F3 /* SKProduct+Extensions.swift */,
+				E297905028DB315900C7D6FB /* SMPListColor+Extensions.swift */,
 				E26D01E125810AED009049F3 /* StoreDataSource.swift */,
 				E2F3818825C04D47002740F3 /* StoreService.swift */,
 				E218230B25605F0200CAA92C /* String+Extensions.swift */,
@@ -1102,6 +1103,7 @@
 				E282851425F52E2F00EE8997 /* WatchParagraphView.swift in Sources */,
 				E2B62BAF25E2C68E00898B21 /* FreeLimits.swift in Sources */,
 				E2D2D6FC25EC42AD00C305DA /* StoreService.swift in Sources */,
+				E2B21E1528DFEC4500DC0E47 /* SMPListColor+Extensions.swift in Sources */,
 				E24FACA4251CEC7C002B0B97 /* WatchAuthenticationErrorView.swift in Sources */,
 				E235D7C424DF5B89007D95BE /* ComplicationController.swift in Sources */,
 				E2D2D6F525E7E18D00C305DA /* UserDefaults+Extensions.swift in Sources */,
