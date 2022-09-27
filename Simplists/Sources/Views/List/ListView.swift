@@ -147,8 +147,9 @@ struct ListView: View {
                 .frame(height: 30)
                 .hideIf(editMode?.wrappedValue != .active)
             }
-            .background(Color(UIColor.secondarySystemBackground))
+            .background(Color("SecondaryBackground"))
             .navigationBarBackButtonHidden(editMode?.wrappedValue == .active)
+            .navigationTitle("")
             .navigationBarItems(
                 leading: SelectAllView(selectedIDs: selectedIDs,
                                        itemCount: list.items.count,
