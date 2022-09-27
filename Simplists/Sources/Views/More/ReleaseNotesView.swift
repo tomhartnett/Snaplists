@@ -41,9 +41,39 @@ struct ReleaseNotesView: View {
                 .font(.subheadline)
                 .foregroundColor(.secondary)
                 .padding(.bottom, 30)
-            FeatureBulletView("Now you can add widgets to your iPhone and iPad Home Screen!")
-            FeatureBulletView("Quickly view your lists without opening the app.")
-            FeatureBulletView("Multiple sizes and types of widgets available.")
+            FeatureBulletView("Now you can add a color to each list!")
+
+            FeatureBulletView("Open List options to choose color.")
+
+            HStack {
+                Image(systemName: "ellipsis.circle")
+                    .foregroundColor(.blue)
+                Image(systemName: "arrow.right")
+                Text("List options")
+                Image(systemName: "gearshape")
+            }
+            .padding()
+
+            VStack {
+                ListRowView(
+                    color: .red,
+                    title: "TODOs",
+                    itemCount: 5
+                )
+
+                ListRowView(
+                    color: .green,
+                    title: "Grocery",
+                    itemCount: 10
+                )
+
+                ListRowView(
+                    color: .yellow,
+                    title: "Shopping",
+                    itemCount: 3
+                )
+            }
+            .padding(.horizontal)
 
             Spacer()
         }

@@ -113,7 +113,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                                     SMPListItem(title: "Swipe to delete an item", isComplete: false),
                                     SMPListItem(title: "Swipe to delete a list", isComplete: false),
                                     SMPListItem(title: "View this sample list", isComplete: true)
-                                ]))
+                                ],
+                                color: .purple))
 
         UserDefaults.simplistsApp.setIsSampleListCreated(true)
     }
