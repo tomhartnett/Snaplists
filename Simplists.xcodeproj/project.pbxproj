@@ -20,7 +20,7 @@
 		E20F8A8226D19C510016E2C7 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E20F8A8126D19C510016E2C7 /* SwiftUI.framework */; };
 		E20F8A8526D19C510016E2C7 /* SingleListWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20F8A8426D19C510016E2C7 /* SingleListWidget.swift */; };
 		E20F8A8826D19C540016E2C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E20F8A8726D19C540016E2C7 /* Assets.xcassets */; };
-		E20F8A8E26D19C540016E2C7 /* SimplistsWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E20F8A7E26D19C510016E2C7 /* SimplistsWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E20F8A8E26D19C540016E2C7 /* SimplistsWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = E20F8A7E26D19C510016E2C7 /* SimplistsWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E21123DB2504420700B3D76D /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21123DA2504420700B3D76D /* PrivacyPolicyView.swift */; };
 		E21123DD2504441900B3D76D /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21123DC2504441900B3D76D /* AboutView.swift */; };
 		E218230C25605F0200CAA92C /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E218230B25605F0200CAA92C /* String+Extensions.swift */; };
@@ -41,7 +41,7 @@
 		E235D79C24DF5B5A007D95BE /* PreviewAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E235D79B24DF5B5A007D95BE /* PreviewAssets.xcassets */; };
 		E235D79F24DF5B5A007D95BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E235D79D24DF5B5A007D95BE /* LaunchScreen.storyboard */; };
 		E235D7AE24DF5B89007D95BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E235D7AD24DF5B89007D95BE /* Assets.xcassets */; };
-		E235D7B524DF5B89007D95BE /* WatchApp Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E235D7B424DF5B89007D95BE /* WatchApp Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E235D7B524DF5B89007D95BE /* WatchApp Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = E235D7B424DF5B89007D95BE /* WatchApp Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E235D7BC24DF5B89007D95BE /* WatchListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D7BB24DF5B89007D95BE /* WatchListView.swift */; };
 		E235D7C424DF5B89007D95BE /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D7C324DF5B89007D95BE /* ComplicationController.swift */; };
 		E235D7C624DF5B89007D95BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E235D7C524DF5B89007D95BE /* Assets.xcassets */; };
@@ -64,7 +64,7 @@
 		E250E1B3269B2B6C00860DEC /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E250E1AF269B2B6C00860DEC /* ItemView.swift */; };
 		E252C78227D53BEE00B29F6A /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E252C78127D53BEE00B29F6A /* Intents.framework */; };
 		E252C78527D53BEE00B29F6A /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E252C78427D53BEE00B29F6A /* IntentHandler.swift */; };
-		E252C78927D53BEE00B29F6A /* SimplistsIntentHandler.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E252C78027D53BEE00B29F6A /* SimplistsIntentHandler.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E252C78927D53BEE00B29F6A /* SimplistsIntentHandler.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = E252C78027D53BEE00B29F6A /* SimplistsIntentHandler.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E252C78E27D53D4F00B29F6A /* ListSelection.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = E257B09627D51E990077E35F /* ListSelection.intentdefinition */; };
 		E256DD6924F2E98600649855 /* FocusableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E256DD6824F2E98600649855 /* FocusableTextField.swift */; };
 		E2578B8125D033A600BCC948 /* PreviewModeWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2578B8025D033A600BCC948 /* PreviewModeWidget.swift */; };
@@ -188,27 +188,27 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		E20F8A9326D19C540016E2C7 /* Embed App Extensions */ = {
+		E20F8A9326D19C540016E2C7 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				E252C78927D53BEE00B29F6A /* SimplistsIntentHandler.appex in Embed App Extensions */,
-				E20F8A8E26D19C540016E2C7 /* SimplistsWidgetExtension.appex in Embed App Extensions */,
+				E252C78927D53BEE00B29F6A /* SimplistsIntentHandler.appex in Embed Foundation Extensions */,
+				E20F8A8E26D19C540016E2C7 /* SimplistsWidgetExtension.appex in Embed Foundation Extensions */,
 			);
-			name = "Embed App Extensions";
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E235D7D224DF5B89007D95BE /* Embed App Extensions */ = {
+		E235D7D224DF5B89007D95BE /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				E235D7B524DF5B89007D95BE /* WatchApp Extension.appex in Embed App Extensions */,
+				E235D7B524DF5B89007D95BE /* WatchApp Extension.appex in Embed Foundation Extensions */,
 			);
-			name = "Embed App Extensions";
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		E235D7D624DF5B89007D95BE /* Embed Watch Content */ = {
@@ -785,7 +785,7 @@
 				E235D7D624DF5B89007D95BE /* Embed Watch Content */,
 				E235D7EF24E037B9007D95BE /* Embed Frameworks */,
 				E26DD857250905A500FCC495 /* SwiftLint */,
-				E20F8A9326D19C540016E2C7 /* Embed App Extensions */,
+				E20F8A9326D19C540016E2C7 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
@@ -807,7 +807,7 @@
 			buildConfigurationList = E235D7D324DF5B89007D95BE /* Build configuration list for PBXNativeTarget "WatchApp" */;
 			buildPhases = (
 				E235D7A624DF5B88007D95BE /* Resources */,
-				E235D7D224DF5B89007D95BE /* Embed App Extensions */,
+				E235D7D224DF5B89007D95BE /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
@@ -881,7 +881,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1330;
-				LastUpgradeCheck = 1200;
+				LastUpgradeCheck = 1400;
 				TargetAttributes = {
 					E20F8A7D26D19C510016E2C7 = {
 						CreatedOnToolsVersion = 13.0;
