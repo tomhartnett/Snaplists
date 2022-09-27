@@ -25,8 +25,6 @@ struct ListsProvider: TimelineProvider {
         ]
     }
 
-    private let storage = SMPStorage()
-
     func placeholder(in context: Context) -> ListsEntry {
         ListsEntry(date: Date(), lists: sampleLists)
     }
@@ -38,6 +36,7 @@ struct ListsProvider: TimelineProvider {
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<ListsEntry>) -> Void) {
+        let storage = SMPStorage()
         let lists = storage.getLists()
         let listDetails = lists.map { ListDetail(id: $0.id, title: $0.title, itemCount: $0.items.count) }
         let entry = Entry(date: Date(), lists: listDetails)

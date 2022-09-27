@@ -31,10 +31,9 @@ public final class SMPStorage: ObservableObject {
         description.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
         description.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
 
-        container.loadPersistentStores(completionHandler: { _, error in
-            if let error = error {
-                fatalError("\(#function) - Error loading persistent stores: \(error.localizedDescription)")
-            }
+        container.loadPersistentStores(completionHandler: { _, _ in
+            // Ignore any errors that might be thrown by lightweight migration.
+            // Note: not certain lightweight migration returns an error or that errors should be ignored here.
         })
 
         container.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump

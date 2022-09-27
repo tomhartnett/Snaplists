@@ -23,8 +23,6 @@ struct SingleListProvider: IntentTimelineProvider {
                 ])
     }
 
-    private let storage = SMPStorage()
-
     func placeholder(in context: Context) -> SingleListEntry {
         SingleListEntry(date: Date(), list: sampleList, totalListCount: 3)
     }
@@ -40,6 +38,8 @@ struct SingleListProvider: IntentTimelineProvider {
     func getTimeline(for configuration: SelectListIntent,
                      in context: Context,
                      completion: @escaping (Timeline<SingleListEntry>) -> Void) {
+
+        let storage = SMPStorage()
 
         let entry: SingleListEntry
         if let uuidString = configuration.list?.identifier,
