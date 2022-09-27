@@ -30,7 +30,7 @@ struct EditListView: View {
 
     var body: some View {
         NavigationView {
-            Form {
+            List {
                 Section {
                     FocusableTextField("Enter name...".localize(),
                                        text: $editedModel.title,
@@ -40,9 +40,16 @@ struct EditListView: View {
 
                 Section {
                     ForEach(SMPListColor.allCases, id: \.self) { caseColor in
-                        HStack(spacing: 20) {
-                            Image(systemName: "app.fill")
-                                .foregroundColor(caseColor.swiftUIColor)
+                        HStack {
+                            if caseColor == .none {
+                                Image(systemName: "app")
+                                    .frame(width: 25, height: 25)
+                                    .foregroundColor(Color("TextSecondary"))
+                            } else {
+                                Image(systemName: "app.fill")
+                                    .frame(width: 25, height: 25)
+                                    .foregroundColor(caseColor.swiftUIColor)
+                            }
 
                             Text(caseColor.title)
 

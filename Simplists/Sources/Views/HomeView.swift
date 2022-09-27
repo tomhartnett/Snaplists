@@ -24,7 +24,6 @@ struct HomeView: View {
     @EnvironmentObject var openURLState: OpenURLContext
     @State var lists: [SMPList]
     @State private var isPresentingAuthError = false
-    @State private var isPresentingDeleteList = false
     @State private var activeSheet: HomeViewActiveSheet?
     @State private var selectedListID: UUID?
 
@@ -72,6 +71,13 @@ struct HomeView: View {
                                             itemCount: list.items.count)
                                     .contextMenu {
                                         Button(action: {
+                                            activeSheet = .editList(id: list.id)
+                                        }) {
+                                            Text("List options")
+                                            Image(systemName: "gearshape")
+                                        }
+
+                                        Button(action: {
                                             if lists.count >= FreeLimits.numberOfLists.limit &&
                                                 !storeDataSource.hasPurchasedIAP {
                                                 activeSheet = .storeViewHitLimit
@@ -83,34 +89,38 @@ struct HomeView: View {
                                             Image(systemName: "plus.square.on.square")
                                         }
 
-                                        Button(action: {
-                                            activeSheet = .editList(id: list.id)
-                                        }) {
-                                            Text("Edit")
-                                            Image(systemName: "pencil")
-                                        }
-
                                         Button(
                                             role: .destructive,
                                             action: {
-                                                isPresentingDeleteList = true
+                                                #warning("No delete confirmation here")
+                                                archive(list: list)
                                             }
                                         ) {
                                             Text("Delete")
                                             Image(systemName: "trash")
                                         }
                                     }
-                                    .alert(isPresented: $isPresentingDeleteList) {
-                                        Alert(title: Text("Delete \(list.title)?"),
-                                              primaryButton: .cancel(),
-                                              secondaryButton: .destructive(
-                                                Text("Delete"),
-                                                action: { archive(list: list) })
-                                        )
-                                    }
                             }
                         }
                         .onDelete(perform: archive)
+
+                        Button(action: {
+                            if lists.count >= FreeLimits.numberOfLists.limit &&
+                                !storeDataSource.hasPurchasedIAP {
+                                activeSheet = .storeViewHitLimit
+                                return
+                            }
+
+                            activeSheet = .newList
+                        }) {
+                            HStack {
+                                Image(systemName: "plus.app")
+                                    .frame(width: 25, height: 25)
+                                    .foregroundColor(Color("TextSecondary"))
+                                Text("Add new list")
+                                    .foregroundColor(.primary)
+                            }
+                        }
                     }
 
                     Section {
@@ -139,25 +149,6 @@ struct HomeView: View {
                 .navigationBarTitle("Snaplists")
                 .navigationBarTitleDisplayMode(.inline)
                 .listStyle(InsetGroupedListStyle())
-
-                Button(action: {
-                    if lists.count >= FreeLimits.numberOfLists.limit &&
-                        !storeDataSource.hasPurchasedIAP {
-                        activeSheet = .storeViewHitLimit
-                        return
-                    }
-
-                    activeSheet = .newList
-                }) {
-                    HStack {
-                        Spacer()
-
-                        Text("Add New List")
-
-                        Spacer()
-                    }
-                }
-                .padding(.top)
             }
             VStack {
                 EmptyStateView(emptyStateType: lists.isEmpty ? .noLists : .noSelection)
@@ -230,6 +221,7 @@ struct HomeView: View {
     }
 
     private func archive(at offsets: IndexSet) {
+        #warning("No delete confirmation here")
         offsets.forEach {
             var listToUpdate = lists[$0]
             listToUpdate.isArchived = true

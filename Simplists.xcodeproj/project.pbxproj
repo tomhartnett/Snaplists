@@ -641,11 +641,11 @@
 		E250E1AB269B2B1500860DEC /* List */ = {
 			isa = PBXGroup;
 			children = (
+				E250E1AC269B2B6C00860DEC /* EditListView.swift */,
 				E250E1AF269B2B6C00860DEC /* ItemView.swift */,
 				E23925B626A460BE00C59053 /* ListRowView.swift */,
 				E250E1AD269B2B6C00860DEC /* ListView.swift */,
 				E250E1AE269B2B6C00860DEC /* MoveToListView.swift */,
-				E250E1AC269B2B6C00860DEC /* EditListView.swift */,
 				E218242A26D0325D00425947 /* SelectAllView.swift */,
 			);
 			path = List;

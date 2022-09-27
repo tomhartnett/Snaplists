@@ -36,6 +36,10 @@ private enum ListViewActiveSheet: Identifiable {
     }
 }
 
+private enum Field: Hashable {
+    case addItemField
+}
+
 struct ListView: View {
     @Environment(\.editMode) var editMode: Binding<EditMode>?
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
@@ -47,6 +51,7 @@ struct ListView: View {
     @State private var isPresentingConfirmDelete = false
     @State private var newItemTitle = ""
     @State private var selectedIDs = Set<UUID>()
+    @FocusState private var focusedField: Field?
     @Binding var selectedListID: UUID?
     @Binding var lists: [SMPList]
 
@@ -107,13 +112,6 @@ struct ListView: View {
                         Spacer()
                         Text(lastUpdatedText)
                     }, content: {
-                        FocusableTextField("Add new item...".localize(),
-                                           text: $newItemTitle,
-                                           keepFocusUnlessEmpty:
-                                            true, onCommit: {
-                            addNewItem()
-                        })
-
                         ForEach(list.items) { item in
                             ItemView(title: item.title,
                                      isComplete: item.isComplete) { title, isComplete in
@@ -124,6 +122,13 @@ struct ListView: View {
                         }
                         .onDelete(perform: delete)
                         .onMove(perform: move)
+
+                        TextField("Add new item...", text: $newItemTitle)
+                            .focused($focusedField, equals: .addItemField)
+                            .onSubmit {
+                                addNewItem()
+                            }
+                            .submitLabel(.done)
 
                     }).textCase(nil) // Don't upper-case section header text.
                 }
@@ -152,6 +157,13 @@ struct ListView: View {
                     HStack {
                         EditButton()
                             .hideIf(editMode?.wrappedValue != .active)
+
+                        Button(action: {
+                            focusedField = nil
+                        }) {
+                            Text("Cancel")
+                        }
+                        .hideIf(focusedField == nil)
 
                         listActionsMenu
                             .hideIf(editMode?.wrappedValue == .active)
@@ -197,6 +209,7 @@ struct ListView: View {
                 Text("Select items...")
                 Image(systemName: "checklist")
             }
+            .hideIf(list.items.isEmpty)
 
             Button(action: {
                 duplicateList()
@@ -336,9 +349,11 @@ struct ListView: View {
 
     private func addNewItem() {
         let title = newItemTitle.trimmingCharacters(in: .whitespacesAndNewlines)
-        if newItemTitle.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            newItemTitle = ""
+        if title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            focusedField = nil
             return
+        } else {
+            focusedField = .addItemField
         }
 
         if list.items.count >= FreeLimits.numberOfItems.limit &&
@@ -352,6 +367,7 @@ struct ListView: View {
         withAnimation {
             list.items.insert(item, at: index)
         }
+
         newItemTitle = ""
 
         storage.addItem(item, to: list, at: index)

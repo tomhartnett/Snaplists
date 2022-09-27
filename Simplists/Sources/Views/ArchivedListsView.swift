@@ -25,12 +25,9 @@ struct ArchivedListsView: View {
                     List {
                         Section(header: Text("Long-press on a list for options")) {
                             ForEach(lists) { list in
-                                HStack {
-                                    Text(list.title)
-                                    Spacer()
-                                    Text("\(list.items.count)")
-                                        .foregroundColor(.secondary)
-                                }
+                                ListRowView(color: list.color.swiftUIColor,
+                                            title: list.title,
+                                            itemCount: list.items.count)
                                 .contextMenu {
 
                                     Button(
