@@ -85,7 +85,8 @@ struct WatchHomeView: View {
                                 Image(systemName: "app.fill")
                                     .foregroundColor(list.color.swiftUIColor)
                             } else {
-                                EmptyView()
+                                Image(systemName: "app")
+                                    .foregroundColor(.white)
                             }
 
                             Text(list.title)
