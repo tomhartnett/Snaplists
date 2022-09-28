@@ -16,13 +16,37 @@ public final class SMPStorage: ObservableObject {
 
     private let context: NSManagedObjectContext
 
-    public init(context: NSManagedObjectContext) {
-        self.context = context
+    public init() {
+        let container = SMPPersistentContainer(name: "Simplists")
 
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(notifyRemoteChange),
-                                               name: Notification.Name.NSPersistentStoreRemoteChange,
-                                               object: context.persistentStoreCoordinator)
+        guard let description = container.persistentStoreDescriptions.first else {
+            fatalError("\(#function) - No persistent store descriptions found.")
+        }
+
+        // Not sure this line is really needed; iOS app works without it.
+        description.cloudKitContainerOptions = NSPersistentCloudKitContainerOptions(
+            containerIdentifier: "iCloud.com.sleekible.simplists")
+
+        // https://developer.apple.com/documentation/coredata/consuming_relevant_store_changes
+        description.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
+        description.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
+
+        container.loadPersistentStores(completionHandler: { _, _ in
+            // Ignore any errors that might be thrown by lightweight migration.
+            // Note: not certain lightweight migration returns an error or that errors should be ignored here.
+        })
+
+        container.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
+        container.viewContext.automaticallyMergesChangesFromParent = true
+
+        self.context = container.viewContext
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(notifyRemoteChange),
+            name: Notification.Name.NSPersistentStoreRemoteChange,
+            object: context.persistentStoreCoordinator
+        )
     }
 
     public func getListsCount(isArchived: Bool? = nil) -> Int {
@@ -73,6 +97,7 @@ public final class SMPStorage: ObservableObject {
         listEntity.title = list.title
         listEntity.isArchived = list.isArchived
         listEntity.modified = Date()
+        listEntity.color = list.color.rawValue
 
         let items: [ItemEntity] = list.items.map {
             let itemEntity = ItemEntity(context: context)
@@ -95,6 +120,7 @@ public final class SMPStorage: ObservableObject {
         listEntity.sortOrder = list.items.map { $0.id.uuidString }
         listEntity.isArchived = list.isArchived
         listEntity.modified = Date()
+        listEntity.color = list.color.rawValue
 
         list.items.forEach {
             if let itemEntity = getItemEntity(with: $0.id) {
@@ -126,6 +152,7 @@ public final class SMPStorage: ObservableObject {
         listEntity.identifier = newListID
         listEntity.title = "\(list.title) copy"
         listEntity.isArchived = false
+        listEntity.color = list.color.rawValue
 
         var items = [ItemEntity]()
         list.items.forEach {
@@ -264,15 +291,6 @@ private extension Optional where Wrapped: NSSet {
     }
 }
 
-// MARK: - Preview support
-
-public extension SMPStorage {
-    static var previewStorage: SMPStorage {
-        let container = NSPersistentContainer(name: "Whatever")
-        return SMPStorage(context: container.viewContext)
-    }
-}
-
 // MARK: - Sample data
 
 public extension SMPStorage {
@@ -294,44 +312,65 @@ public extension SMPStorage {
         let list0 = SMPList(title: "Trashed list", isArchived: true, lastModified: Date(), items: [])
         addList(list0)
 
-        let list1 = SMPList(title: "Workout routine", isArchived: false, lastModified: Date(), items: [
-            SMPListItem(title: "5 min warmup", isComplete: false),
-            SMPListItem(title: "20 push ups", isComplete: false),
-            SMPListItem(title: "10 burpees", isComplete: false),
-            SMPListItem(title: "20 crunches", isComplete: false),
-            SMPListItem(title: "5 min cool down", isComplete: false)
-        ])
+        let list1 = SMPList(
+            title: "Workout routine",
+            isArchived: false,
+            lastModified: Date(),
+            items: [
+                SMPListItem(title: "5 min warmup", isComplete: false),
+                SMPListItem(title: "20 push ups", isComplete: false),
+                SMPListItem(title: "10 burpees", isComplete: false),
+                SMPListItem(title: "20 crunches", isComplete: false),
+                SMPListItem(title: "5 min cool down", isComplete: false)
+            ]
+        )
         addList(list1)
 
-        let list2 = SMPList(title: "Grocery", isArchived: false, lastModified: Date(), items: [
-            SMPListItem(title: "Milk", isComplete: false),
-            SMPListItem(title: "Lunch meat", isComplete: false),
-            SMPListItem(title: "Cheese slices", isComplete: false),
-            SMPListItem(title: "Mustard", isComplete: true),
-            SMPListItem(title: "Bread", isComplete: true),
-            SMPListItem(title: "Bananas", isComplete: true),
-            SMPListItem(title: "Juice", isComplete: true),
-            SMPListItem(title: "Cereal", isComplete: true),
-            SMPListItem(title: "BBQ potato chips", isComplete: true)
-        ])
+        let list2 = SMPList(
+            title: "Grocery",
+            isArchived: false,
+            lastModified: Date(),
+            items: [
+                SMPListItem(title: "Milk", isComplete: false),
+                SMPListItem(title: "Lunch meat", isComplete: false),
+                SMPListItem(title: "Cheese slices", isComplete: false),
+                SMPListItem(title: "Mustard", isComplete: true),
+                SMPListItem(title: "Bread", isComplete: true),
+                SMPListItem(title: "Bananas", isComplete: true),
+                SMPListItem(title: "Juice", isComplete: true),
+                SMPListItem(title: "Cereal", isComplete: true),
+                SMPListItem(title: "BBQ potato chips", isComplete: true)
+            ],
+            color: .green
+        )
         addList(list2)
 
-        let list3 = SMPList(title: "TODOs", isArchived: false, lastModified: Date(), items: [
-            SMPListItem(title: "Vacuum & dust", isComplete: false),
-            SMPListItem(title: "Mow lawn", isComplete: true),
-            SMPListItem(title: "Clean up garage", isComplete: true),
-            SMPListItem(title: "Pick out clothes for donation", isComplete: true)
-        ])
+        let list3 = SMPList(
+            title: "TODOs",
+            isArchived: false, lastModified: Date(), items: [
+                SMPListItem(title: "Vacuum & dust", isComplete: false),
+                SMPListItem(title: "Mow lawn", isComplete: true),
+                SMPListItem(title: "Clean up garage", isComplete: true),
+                SMPListItem(title: "Pick out clothes for donation", isComplete: true)
+            ],
+            color: .red
+        )
         addList(list3)
 
-        let list4 = SMPList(title: "Shopping", isArchived: false, lastModified: Date(), items: [
-            SMPListItem(title: "#10 envelopes", isComplete: false),
-            SMPListItem(title: "Yellow legal pads", isComplete: false),
-            SMPListItem(title: "Address labels 30 per sheet", isComplete: false),
-            SMPListItem(title: "Printer paper", isComplete: false),
-            SMPListItem(title: "Furniture polish", isComplete: false),
-            SMPListItem(title: "Detergent", isComplete: false)
-        ])
+        let list4 = SMPList(
+            title: "Shopping",
+            isArchived: false,
+            lastModified: Date(),
+            items: [
+                SMPListItem(title: "#10 envelopes", isComplete: false),
+                SMPListItem(title: "Yellow legal pads", isComplete: false),
+                SMPListItem(title: "Address labels 30 per sheet", isComplete: false),
+                SMPListItem(title: "Printer paper", isComplete: false),
+                SMPListItem(title: "Furniture polish", isComplete: false),
+                SMPListItem(title: "Detergent", isComplete: false)
+            ],
+            color: .yellow
+        )
         addList(list4)
     }
 }
@@ -424,7 +463,7 @@ private extension SMPStorage {
     }
 
     @objc
-    func notifyRemoteChange() {
+    func notifyRemoteChange(_ notification: Notification) {
         DispatchQueue.main.async { [weak self] in
             self?.objectWillChange.send()
         }

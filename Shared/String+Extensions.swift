@@ -8,6 +8,10 @@
 import Foundation
 
 extension String {
+    var isNotEmpty: Bool {
+        return !self.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+    }
+
     func localize() -> String {
         return Bundle.main.localizedString(forKey: self, value: nil, table: nil)
     }

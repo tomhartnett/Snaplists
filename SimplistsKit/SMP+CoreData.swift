@@ -15,6 +15,7 @@ extension SMPList {
         self.isArchived = entity.isArchived
         self.lastModified = entity.modified ?? Date()
         self.items = entity.sortedItems.compactMap { SMPListItem(entity: $0) }
+        self.color = SMPListColor(rawValue: entity.color) ?? .none
     }
 }
 

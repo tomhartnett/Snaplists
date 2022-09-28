@@ -27,7 +27,9 @@ struct MoveToListView: View {
                     Section(header: Text("Destination list")) {
                         ForEach(lists) { list in
                             if list.id != fromList.id {
-                                ListRowView(title: list.title, itemCount: list.items.count)
+                                ListRowView(color: list.color.swiftUIColor,
+                                            title: list.title,
+                                            itemCount: list.items.count)
                                     .onTapGesture {
                                         moveItems(to: list.id)
                                     }
@@ -65,7 +67,7 @@ struct MoveToListView_Previews: PreviewProvider {
         NavigationView {
             MoveToListView(itemIDs: [UUID(), UUID()],
                            fromList: SMPList(title: "Old List"))
-                .environmentObject(SMPStorage.previewStorage)
+                .environmentObject(SMPStorage())
         }
     }
 }

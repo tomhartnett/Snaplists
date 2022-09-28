@@ -8,14 +8,14 @@
 import SimplistsKit
 import SwiftUI
 
-enum HomeViewActiveSheet: Identifiable {
+enum HomeViewActiveSheet: Identifiable, Hashable {
+    case editList(id: UUID)
+    case newList
     case releaseNotes
     case storeView
     case storeViewHitLimit
 
-    var id: Int {
-        hashValue
-    }
+    var id: Self { self }
 }
 
 struct HomeView: View {
@@ -23,12 +23,7 @@ struct HomeView: View {
     @EnvironmentObject var storeDataSource: StoreDataSource
     @EnvironmentObject var openURLState: OpenURLContext
     @State var lists: [SMPList]
-    @State private var newListTitle = ""
-    @State private var renameListID = ""
-    @State private var renameListTitle = ""
     @State private var isPresentingAuthError = false
-    @State private var isPresentingDeleteList = false
-    @State private var isPresentingRename = false
     @State private var activeSheet: HomeViewActiveSheet?
     @State private var selectedListID: UUID?
 
@@ -71,8 +66,17 @@ struct HomeView: View {
                                            tag: list.id,
                                            selection: $selectedListID) {
 
-                                ListRowView(title: list.title, itemCount: list.items.count)
+                                ListRowView(color: list.color.swiftUIColor,
+                                            title: list.title,
+                                            itemCount: list.items.count)
                                     .contextMenu {
+                                        Button(action: {
+                                            activeSheet = .editList(id: list.id)
+                                        }) {
+                                            Text("List options")
+                                            Image(systemName: "gearshape")
+                                        }
+
                                         Button(action: {
                                             if lists.count >= FreeLimits.numberOfLists.limit &&
                                                 !storeDataSource.hasPurchasedIAP {
@@ -85,52 +89,38 @@ struct HomeView: View {
                                             Image(systemName: "plus.square.on.square")
                                         }
 
-                                        Button(action: {
-                                            renameListID = list.id.uuidString
-                                            renameListTitle = list.title
-                                            isPresentingRename = true
-                                        }) {
-                                            Text("Rename")
-                                            Image(systemName: "pencil")
-                                        }
-
                                         Button(
                                             role: .destructive,
                                             action: {
-                                                isPresentingDeleteList = true
+                                                #warning("No delete confirmation here")
+                                                archive(list: list)
                                             }
                                         ) {
                                             Text("Delete")
                                             Image(systemName: "trash")
                                         }
                                     }
-                                    .alert(isPresented: $isPresentingDeleteList) {
-                                        Alert(title: Text("Delete \(list.title)?"),
-                                              primaryButton: .cancel(),
-                                              secondaryButton: .destructive(
-                                                Text("Delete"),
-                                                action: { archive(list: list) })
-                                        )
-                                    }
-                                    .sheet(isPresented: $isPresentingRename) {
-                                        RenameListView(id: $renameListID, title: $renameListTitle) { id, newTitle in
-                                            if var list = lists.first(where: { $0.id.uuidString == id }) {
-                                                list.title = newTitle
-                                                storage.updateList(list)
-                                                renameListID = ""
-                                                renameListTitle = ""
-                                            }
-                                        }
-                                    }
                             }
                         }
                         .onDelete(perform: archive)
 
-                        FocusableTextField("Add new list...",
-                                           text: $newListTitle,
-                                           keepFocusUnlessEmpty: false,
-                                           onCommit: addNewList)
-                            .padding([.top, .bottom])
+                        Button(action: {
+                            if lists.count >= FreeLimits.numberOfLists.limit &&
+                                !storeDataSource.hasPurchasedIAP {
+                                activeSheet = .storeViewHitLimit
+                                return
+                            }
+
+                            activeSheet = .newList
+                        }) {
+                            HStack {
+                                Image(systemName: "plus.app")
+                                    .frame(width: 25, height: 25)
+                                    .foregroundColor(Color("TextSecondary"))
+                                Text("Add new list")
+                                    .foregroundColor(.primary)
+                            }
+                        }
                     }
 
                     Section {
@@ -178,32 +168,44 @@ struct HomeView: View {
         })
         .sheet(item: $activeSheet) { item in
             switch item {
+            case .editList(let id):
+                var list = lists.first(where: { $0.id == id }) ?? SMPList(title: "")
+
+                EditListView(
+                    model: .init(listID: id, title: list.title, color: list.color)
+                ) { editedModel in
+                    list.title = editedModel.title
+                    list.color = editedModel.color
+                    storage.updateList(list)
+                }
+
+            case .newList:
+                EditListView(
+                    model: .empty
+                ) { editedModel in
+                    addNewList(with: editedModel)
+                }
+
             case .releaseNotes:
                 ReleaseNotesView(isModal: .constant(true))
+
             case .storeViewHitLimit:
                 StoreView(freeLimitMessage: FreeLimits.numberOfLists.message)
+
             case .storeView:
                 StoreView()
             }
         }
     }
 
-    private func addNewList() {
-        let title = newListTitle.trimmingCharacters(in: .whitespacesAndNewlines)
+    private func addNewList(with model: EditListView.Model) {
+        let title = model.title.trimmingCharacters(in: .whitespacesAndNewlines)
         if title.isEmpty {
-            newListTitle = ""
             return
         }
 
-        if lists.count >= FreeLimits.numberOfLists.limit &&
-            !storeDataSource.hasPurchasedIAP {
-            activeSheet = .storeViewHitLimit
-            return
-        }
-
-        let list = SMPList(title: title)
+        let list = SMPList(title: title, color: model.color)
         lists.append(list)
-        newListTitle = ""
 
         storage.addList(list)
     }
@@ -219,6 +221,7 @@ struct HomeView: View {
     }
 
     private func archive(at offsets: IndexSet) {
+        #warning("No delete confirmation here")
         offsets.forEach {
             var listToUpdate = lists[$0]
             listToUpdate.isArchived = true
@@ -259,7 +262,8 @@ struct HomeView_Previews: PreviewProvider {
                         SMPListItem(title: "Item 1", isComplete: false)
                     ])
         ])
-        .environmentObject(SMPStorage.previewStorage)
+        .environmentObject(SMPStorage())
         .environmentObject(dataSource)
+        .environmentObject(OpenURLContext())
     }
 }

@@ -27,13 +27,17 @@ private enum DeleteAction {
 }
 
 private enum ListViewActiveSheet: Identifiable {
+    case editList
     case moveItems
-    case renameList
     case purchaseRequired
 
     var id: Int {
         hashValue
     }
+}
+
+private enum Field: Hashable {
+    case addItemField
 }
 
 struct ListView: View {
@@ -46,13 +50,10 @@ struct ListView: View {
     @State private var deleteAction: DeleteAction?
     @State private var isPresentingConfirmDelete = false
     @State private var newItemTitle = ""
-    @State private var renameListID = ""
-    @State private var renameListTitle = ""
     @State private var selectedIDs = Set<UUID>()
+    @FocusState private var focusedField: Field?
     @Binding var selectedListID: UUID?
     @Binding var lists: [SMPList]
-
-    private let addItemFieldID = "AddItemFieldID"
 
     private var itemCountText: String {
         "item-count".localize(list.items.count)
@@ -91,214 +92,101 @@ struct ListView: View {
                 .navigationBarTitle("")
         } else {
             VStack(alignment: .leading) {
-                ScrollViewReader { proxy in
-                    List(selection: $selectedIDs) {
-                        Section(header:
-                                    HStack {
-                            Text(itemCountText)
-                            Spacer()
-                            Text(lastUpdatedText)
-                        }, content: {
-                            ForEach(list.items) { item in
-                                ItemView(title: item.title,
-                                         isComplete: item.isComplete) { title, isComplete in
-                                    withAnimation {
-                                        updateItem(id: item.id, title: title, isComplete: isComplete)
-                                    }
-                                }
-                            }
-                            .onDelete(perform: delete)
-                            .onMove(perform: move)
-
-                            FocusableTextField("Add new item...".localize(),
-                                               text: $newItemTitle,
-                                               keepFocusUnlessEmpty:
-                                                true, onCommit: {
-                                addNewItem {
-                                    proxy.scrollTo(addItemFieldID, anchor: .bottom)
-                                }
-                            })
-                                .padding([.top, .bottom])
-                                .id(addItemFieldID)
-
-                        }).textCase(nil) // Don't upper-case section header text.
-                    }
-                    .listStyle(InsetGroupedListStyle())
-                    .onReceive(storage.objectWillChange, perform: { _ in
-                        reload()
-                    })
-
-                    if editMode?.wrappedValue == .active {
-                        HStack {
-                            Menu("Mark") {
-                                Button(action: {
-                                    markSelectedItems(isComplete: false)
-                                }) {
-                                    Text("Mark incomplete")
-                                    Image(systemName: "circle")
-                                }
-
-                                Button(action: {
-                                    markSelectedItems(isComplete: true)
-                                }) {
-                                    Text("Mark complete")
-                                    Image(systemName: "checkmark.circle")
-                                }
-
-                                Text(selectedItemsCountText)
-                            }
-                            .padding(.horizontal)
-
-                            Spacer()
-
-                            Button(action: {
-                                activeSheet = .moveItems
-                            }) {
-                                Text("Move")
-                            }
-
-                            Spacer()
-
-                            Menu("Delete") {
-                                Button(
-                                    role: .destructive,
-                                    action: {
-                                        deleteSelectedItems()
-                                    }) {
-                                        Text("Delete")
-                                        Image(systemName: "trash")
-                                    }
-
-                                Text(selectedItemsCountText)
-                            }
-                            .padding(.horizontal)
-                        }
-                        .frame(height: 50)
-                        .disabled(selectedIDs.isEmpty)
+                HStack {
+                    if list.color != .none {
+                        Image(systemName: "app.fill")
+                            .foregroundColor(list.color.swiftUIColor)
                     } else {
+                        EmptyView()
+                    }
 
-                            Menu("Actions") {
+                    Text(list.title)
+                }
+                .font(.largeTitle)
+                .padding(.horizontal)
 
-                                Button(
-                                    role: .destructive,
-                                    action: {
-                                        deleteAction = .deleteList
-                                        isPresentingConfirmDelete = true
-                                    }
-                                ) {
-                                    Text("Delete list")
-                                    Image(systemName: "trash")
+                List(selection: $selectedIDs) {
+                    Section(header:
+                                HStack {
+                        Text(itemCountText)
+                        Spacer()
+                        Text(lastUpdatedText)
+                    }, content: {
+                        ForEach(list.items) { item in
+                            ItemView(title: item.title,
+                                     isComplete: item.isComplete) { title, isComplete in
+                                withAnimation {
+                                    updateItem(id: item.id, title: title, isComplete: isComplete)
                                 }
-
-                                Button(
-                                    role: .destructive,
-                                    action: {
-                                        deleteAction = .deleteAllItems
-                                        isPresentingConfirmDelete = true
-                                    }
-                                ) {
-                                    Text("Delete all items")
-                                    Image(systemName: "circle.dashed")
-                                }
-                                .hideIf(list.items.isEmpty)
-
-                                Button(
-                                    role: .destructive,
-                                    action: {
-                                        deleteAction = .deleteCompletedItems
-                                        isPresentingConfirmDelete = true
-                                    }
-                                ) {
-                                    Text("Delete completed items")
-                                    Image(systemName: "checkmark.circle")
-                                }
-                                .hideIf(list.items.filter({ $0.isComplete }).isEmpty)
-
-                                Divider()
-
-                                Button(action: {
-                                    markAllItems(isComplete: false)
-                                }) {
-                                    Text("Mark all incomplete")
-                                }
-                                .hideIf(list.items.filter({ $0.isComplete }).isEmpty)
-
-                                Button(action: {
-                                    markAllItems(isComplete: true)
-                                }) {
-                                    Text("Mark all complete")
-                                }
-                                .hideIf(list.items.filter({ !$0.isComplete }).isEmpty)
-
-                                Divider()
-
-                                Button(action: {
-                                    renameList()
-                                }) {
-                                    Text("Rename list")
-                                    Image(systemName: "pencil")
-                                }
-
-                                Button(action: {
-                                    duplicateList()
-                                }) {
-                                    Text("Duplicate list")
-                                    Image(systemName: "plus.square.on.square")
-                                }
-
-                                Text("Actions")
-                            }
-
-                        .frame(height: 50)
-                        .confirmationDialog(deleteAction?.title ?? "",
-                                            isPresented: $isPresentingConfirmDelete,
-                                            titleVisibility: .visible
-                        ) {
-                            Button("Delete", role: .destructive) {
-                                guard let action = deleteAction else { return }
-                                switch action {
-                                case .deleteList:
-                                    deleteList()
-                                case .deleteAllItems:
-                                    deleteAllItems()
-                                case .deleteCompletedItems:
-                                    deleteCompletedItems()
-                                }
-                                deleteAction = nil
-                            }
-                        } message: {
-                            switch deleteAction {
-                            case .deleteAllItems, .deleteCompletedItems:
-                                Text("This action cannot be undone")
-                            default:
-                                EmptyView()
                             }
                         }
-                    }
+                        .onDelete(perform: delete)
+                        .onMove(perform: move)
+
+                        TextField("Add new item...", text: $newItemTitle)
+                            .focused($focusedField, equals: .addItemField)
+                            .onSubmit {
+                                addNewItem()
+                            }
+                            .submitLabel(.done)
+
+                    }).textCase(nil) // Don't upper-case section header text.
                 }
+                .padding(.top, -25)
+                .listStyle(InsetGroupedListStyle())
+                .onReceive(storage.objectWillChange, perform: { _ in
+                    reload()
+                })
+
+                HStack {
+                    Spacer()
+                    listEditMenu
+                        .disabled(selectedIDs.isEmpty)
+                    Spacer()
+                }
+                .frame(height: 30)
+                .hideIf(editMode?.wrappedValue != .active)
             }
-            .background(Color(UIColor.secondarySystemBackground))
+            .background(Color("SecondaryBackground"))
             .navigationBarBackButtonHidden(editMode?.wrappedValue == .active)
+            .navigationTitle("")
             .navigationBarItems(
                 leading: SelectAllView(selectedIDs: selectedIDs,
                                        itemCount: list.items.count,
                                        tapAction: selectOrDeselectAll),
-                trailing: NavBarItemsView(showEditButton: !list.items.isEmpty))
-            .navigationBarTitle(list.title)
+                trailing:
+                    HStack {
+                        EditButton()
+                            .hideIf(editMode?.wrappedValue != .active)
+
+                        Button(action: {
+                            focusedField = nil
+                        }) {
+                            Text("Cancel")
+                        }
+                        .hideIf(focusedField == nil)
+
+                        listActionsMenu
+                            .hideIf(editMode?.wrappedValue == .active)
+                    }
+            )
             .sheet(item: $activeSheet) { item in
                 switch item {
+                case .editList:
+                    EditListView(
+                        model: .init(listID: list.id, title: list.title, color: list.color)
+                    ) { editedModel in
+                        list.title = editedModel.title
+                        list.color = editedModel.color
+                        storage.updateList(list)
+                    }
+
                 case .moveItems:
                     let itemIDs = selectedIDs.map { $0 }
                     MoveToListView(itemIDs: itemIDs, fromList: list) {
                         editMode?.wrappedValue = .inactive
                     }
-                case .renameList:
-                    RenameListView(id: $renameListID, title: $renameListTitle) { _, newTitle in
-                        list.title = newTitle
-                        storage.updateList(list)
-                        renameListID = ""
-                        renameListTitle = ""
-                    }
+
                 case .purchaseRequired:
                     StoreView(freeLimitMessage: FreeLimits.numberOfItems.message)
                 }
@@ -306,11 +194,167 @@ struct ListView: View {
         }
     }
 
-    private func addNewItem(completion: (() -> Void)?) {
+    var listActionsMenu: some View {
+        Menu(content: {
+
+            Button(action: {
+                activeSheet = .editList
+            }) {
+                Text("List options")
+                Image(systemName: "gearshape")
+            }
+
+            Button(action: {
+                editMode?.wrappedValue = .active
+            }) {
+                Text("Select items...")
+                Image(systemName: "checklist")
+            }
+            .hideIf(list.items.isEmpty)
+
+            Button(action: {
+                duplicateList()
+            }) {
+                Text("Duplicate list")
+                Image(systemName: "plus.square.on.square")
+            }
+
+            Divider()
+
+            Button(action: {
+                markAllItems(isComplete: true)
+            }) {
+                Text("Mark all complete")
+            }
+            .hideIf(list.items.filter({ !$0.isComplete }).isEmpty)
+
+            Button(action: {
+                markAllItems(isComplete: false)
+            }) {
+                Text("Mark all incomplete")
+            }
+            .hideIf(list.items.filter({ $0.isComplete }).isEmpty)
+
+            Divider()
+
+            Button(
+                role: .destructive,
+                action: {
+                    deleteAction = .deleteCompletedItems
+                    isPresentingConfirmDelete = true
+                }
+            ) {
+                Text("Delete completed items")
+                Image(systemName: "checkmark.circle")
+            }
+            .hideIf(list.items.filter({ $0.isComplete }).isEmpty)
+
+            Button(
+                role: .destructive,
+                action: {
+                    deleteAction = .deleteAllItems
+                    isPresentingConfirmDelete = true
+                }
+            ) {
+                Text("Delete all items")
+                Image(systemName: "circle.dashed")
+            }
+            .hideIf(list.items.isEmpty)
+
+            Button(
+                role: .destructive,
+                action: {
+                    deleteAction = .deleteList
+                    isPresentingConfirmDelete = true
+                }
+            ) {
+                Text("Delete list")
+                Image(systemName: "trash")
+            }
+        },
+             label: {
+            Image(systemName: "ellipsis.circle")
+        })
+        .confirmationDialog(deleteAction?.title ?? "",
+                            isPresented: $isPresentingConfirmDelete,
+                            titleVisibility: .visible
+        ) {
+            Button("Delete", role: .destructive) {
+                guard let action = deleteAction else { return }
+                switch action {
+                case .deleteList:
+                    deleteList()
+                case .deleteAllItems:
+                    deleteAllItems()
+                case .deleteCompletedItems:
+                    deleteCompletedItems()
+                }
+                deleteAction = nil
+            }
+        } message: {
+            switch deleteAction {
+            case .deleteAllItems, .deleteCompletedItems:
+                Text("This action cannot be undone")
+            default:
+                EmptyView()
+            }
+        }
+    }
+
+    var listEditMenu: some View {
+        HStack {
+            Menu("Mark") {
+                Button(action: {
+                    markSelectedItems(isComplete: false)
+                }) {
+                    Text("Mark incomplete")
+                    Image(systemName: "circle")
+                }
+
+                Button(action: {
+                    markSelectedItems(isComplete: true)
+                }) {
+                    Text("Mark complete")
+                    Image(systemName: "checkmark.circle")
+                }
+
+                Text(selectedItemsCountText)
+            }
+            .padding(.horizontal)
+
+            Spacer()
+
+            Button(action: {
+                activeSheet = .moveItems
+            }) {
+                Text("Move")
+            }
+
+            Spacer()
+
+            Menu("Delete") {
+                Button(
+                    role: .destructive,
+                    action: {
+                        deleteSelectedItems()
+                    }) {
+                        Text("Delete")
+                        Image(systemName: "trash")
+                    }
+
+                Text(selectedItemsCountText)
+            }
+            .padding(.horizontal)
+        }
+    }
+
+    private func addNewItem() {
         let title = newItemTitle.trimmingCharacters(in: .whitespacesAndNewlines)
-        if newItemTitle.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            newItemTitle = ""
+        if title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            focusedField = nil
             return
+        } else {
+            focusedField = .addItemField
         }
 
         if list.items.count >= FreeLimits.numberOfItems.limit &&
@@ -323,8 +367,8 @@ struct ListView: View {
         let index = list.items.firstIndex(where: { $0.isComplete }) ?? list.items.count
         withAnimation {
             list.items.insert(item, at: index)
-            completion?()
         }
+
         newItemTitle = ""
 
         storage.addItem(item, to: list, at: index)
@@ -437,12 +481,6 @@ struct ListView: View {
         }
     }
 
-    private func renameList() {
-        renameListID = list.id.uuidString
-        renameListTitle = list.title
-        activeSheet = .renameList
-    }
-
     private func selectOrDeselectAll() {
         if selectedIDs.count < list.items.count {
             selectedIDs = Set(list.items.map({ $0.id }))
@@ -462,12 +500,13 @@ struct ListView_Previews: PreviewProvider {
                     SMPListItem(title: "Item 2", isComplete: false),
                     SMPListItem(title: "Item 3", isComplete: true),
                     SMPListItem(title: "Item 4", isComplete: true)
-                ])
+                ], color: .red)
 
             ListView(list: list,
                      selectedListID: .constant(UUID()),
                      lists: .constant([]))
-                .environmentObject(SMPStorage.previewStorage)
+                .environmentObject(SMPStorage())
+                .navigationBarTitleDisplayMode(.inline)
         }
     }
 }
