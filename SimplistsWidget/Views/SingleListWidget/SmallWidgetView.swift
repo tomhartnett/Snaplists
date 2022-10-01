@@ -25,8 +25,12 @@ struct SmallWidgetView: View {
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
-                Text(list.title)
-                    .font(.headline)
+                HStack {
+                    list.makeColorIcon()
+
+                    Text(list.title)
+                        .font(.headline)
+                }
 
                 VStack(alignment: .leading) {
                     if !list.items.isEmpty {
@@ -67,7 +71,8 @@ struct SmallWidgetView_Previews: PreviewProvider {
         return SmallWidgetView(list: SMPList(title: "Small List",
                                              isArchived: false,
                                              lastModified: Date().addingTimeInterval(-60),
-                                             items: items))
+                                             items: items,
+                                             color: .orange))
         .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }

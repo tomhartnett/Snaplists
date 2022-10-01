@@ -21,13 +21,16 @@ struct LargeListsWidgetView_Previews: PreviewProvider {
         LargeListsWidgetView(lists: [
             ListDetail(id: UUID(uuidString: "c5d6af5a-f4c0-4962-8783-ff81c33e4afe")!,
                        title: "TODOs",
-                       itemCount: 4),
+                       itemCount: 4,
+                       color: .blue),
             ListDetail(id: UUID(uuidString: "e22e3849-13d4-4537-a099-f98f404f3567")!,
                        title: "Grocery",
-                       itemCount: 20),
+                       itemCount: 20,
+                       color: .green),
             ListDetail(id: UUID(uuidString: "9db191c5-f147-4439-ae02-206982dca20f")!,
                        title: "Shopping",
-                       itemCount: 5)])
+                       itemCount: 5,
+                       color: .gray)])
             .previewContext(WidgetPreviewContext(family: .systemLarge))
     }
 }

@@ -14,12 +14,10 @@ struct WidgetItemView: View {
 
     var body: some View {
         HStack {
-            ZStack {
+            ZStack(alignment: .center) {
                 Circle()
-                    .stroke(Color.primary, lineWidth: 2)
-                    .foregroundColor(.clear)
-                    .frame(width: 15, height: 15)
-                    .hideIf(isComplete)
+                    .stroke(.primary, lineWidth: 2)
+                    .frame(width: 17, height: 17)
 
                 Circle()
                     .frame(width: 17, height: 17)

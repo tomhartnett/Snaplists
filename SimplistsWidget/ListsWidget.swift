@@ -15,13 +15,16 @@ struct ListsProvider: TimelineProvider {
         [
             ListDetail(id: UUID(uuidString: "c5d6af5a-f4c0-4962-8783-ff81c33e4afe")!,
                        title: "TODOs",
-                       itemCount: 4),
+                       itemCount: 4,
+                       color: .purple),
             ListDetail(id: UUID(uuidString: "e22e3849-13d4-4537-a099-f98f404f3567")!,
                        title: "Grocery",
-                       itemCount: 20),
+                       itemCount: 20,
+                       color: .blue),
             ListDetail(id: UUID(uuidString: "9db191c5-f147-4439-ae02-206982dca20f")!,
                        title: "Shopping",
-                       itemCount: 5)
+                       itemCount: 5,
+                       color: .green)
         ]
     }
 
@@ -38,7 +41,7 @@ struct ListsProvider: TimelineProvider {
     func getTimeline(in context: Context, completion: @escaping (Timeline<ListsEntry>) -> Void) {
         let storage = SMPStorage()
         let lists = storage.getLists()
-        let listDetails = lists.map { ListDetail(id: $0.id, title: $0.title, itemCount: $0.items.count) }
+        let listDetails = lists.map { ListDetail($0) }
         let entry = Entry(date: Date(), lists: listDetails)
         let timeline = Timeline(entries: [entry], policy: .after(Date().addingTimeInterval(15 * 60)))
         completion(timeline)
@@ -48,16 +51,6 @@ struct ListsProvider: TimelineProvider {
 struct ListsEntry: TimelineEntry {
     var date: Date
     var lists: [ListDetail]
-}
-
-struct ListDetail: Identifiable {
-    var id: UUID
-    var title: String
-    var itemCount: Int
-
-    var url: URL {
-        URL(string: "widget://lists/\(id.uuidString)")!
-    }
 }
 
 struct ListsWidgetEntryView: View {
@@ -93,5 +86,11 @@ struct ListsWidget: Widget {
         .configurationDisplayName("Lists")
         .description("Get quick access to your lists.")
         .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
+    }
+}
+
+extension ListDetail {
+    init(_ list: SMPList) {
+        self = .init(id: list.id, title: list.title, itemCount: list.items.count, color: list.color.swiftUIColor)
     }
 }

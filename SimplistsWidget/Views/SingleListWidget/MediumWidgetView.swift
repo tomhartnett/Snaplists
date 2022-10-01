@@ -26,9 +26,10 @@ struct MediumWidgetView_Previews: PreviewProvider {
         }
 
         return MediumWidgetView(list: SMPList(title: "Medium List",
-                                             isArchived: false,
-                                             lastModified: Date().addingTimeInterval(-60),
-                                             items: items))
+                                              isArchived: false,
+                                              lastModified: Date().addingTimeInterval(-60),
+                                              items: items,
+                                              color: .purple))
         .previewContext(WidgetPreviewContext(family: .systemMedium))
     }
 }

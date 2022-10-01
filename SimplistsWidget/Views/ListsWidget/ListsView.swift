@@ -39,6 +39,8 @@ struct ListsView: View {
                         ForEach(lists.prefix(maxVisibleListCount)) { list in
                             Link(destination: list.url) {
                                 HStack {
+                                    list.makeColorIcon()
+
                                     Text(list.title)
                                     Spacer()
                                     Text("\(list.itemCount)")
@@ -71,5 +73,32 @@ struct ListsView: View {
         }
         .padding(.all, 15)
         .background(Color("WidgetBackground"))
+    }
+}
+
+struct ListDetail: Identifiable {
+    var id: UUID
+    var title: String
+    var itemCount: Int
+    var color: Color
+
+    var url: URL {
+        URL(string: "widget://lists/\(id.uuidString)")!
+    }
+}
+
+extension ListDetail {
+    @ViewBuilder
+    func makeColorIcon() -> some View {
+        switch color {
+        case .gray, .red, .orange, .yellow, .green, .blue, .purple:
+            Image(systemName: "app.fill")
+                .frame(width: 17, height: 17)
+                .foregroundColor(color)
+        default:
+            Image(systemName: "app")
+                .frame(width: 17, height: 17)
+                .foregroundColor(Color("TextSecondary"))
+        }
     }
 }

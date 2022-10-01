@@ -28,7 +28,8 @@ struct LargeWidgetView_Previews: PreviewProvider {
         return LargeWidgetView(list: SMPList(title: "Large List",
                                              isArchived: false,
                                              lastModified: Date().addingTimeInterval(-60),
-                                             items: items))
+                                             items: items,
+                                             color: .purple))
         .previewContext(WidgetPreviewContext(family: .systemLarge))
     }
 }
