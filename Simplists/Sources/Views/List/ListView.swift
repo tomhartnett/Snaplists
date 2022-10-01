@@ -167,7 +167,7 @@ struct ListView: View {
                         .hideIf(focusedField == nil)
 
                         listActionsMenu
-                            .hideIf(editMode?.wrappedValue == .active)
+                            .hideIf(editMode?.wrappedValue == .active || focusedField != nil)
                     }
             )
             .sheet(item: $activeSheet) { item in
