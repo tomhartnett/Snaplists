@@ -1262,7 +1262,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2022.9;
+				MARKETING_VERSION = 2022.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sleekible.Simplists.debug.SimplistsWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1291,7 +1291,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2022.9;
+				MARKETING_VERSION = 2022.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sleekible.Simplists.SimplistsWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1439,7 +1439,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2022.9;
+				MARKETING_VERSION = 2022.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sleekible.Simplists.debug;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
@@ -1465,7 +1465,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2022.9;
+				MARKETING_VERSION = 2022.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sleekible.Simplists;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
@@ -1489,7 +1489,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2022.9;
+				MARKETING_VERSION = 2022.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sleekible.Simplists.debug.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -1515,7 +1515,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2022.9;
+				MARKETING_VERSION = 2022.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sleekible.Simplists.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -1538,7 +1538,7 @@
 				DEVELOPMENT_TEAM = 25V97QMNV5;
 				IBSC_MODULE = WatchApp_Extension;
 				INFOPLIST_FILE = WatchApp/Info.plist;
-				MARKETING_VERSION = 2022.9;
+				MARKETING_VERSION = 2022.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sleekible.Simplists.debug.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1560,7 +1560,7 @@
 				DEVELOPMENT_TEAM = 25V97QMNV5;
 				IBSC_MODULE = WatchApp_Extension;
 				INFOPLIST_FILE = WatchApp/Info.plist;
-				MARKETING_VERSION = 2022.9;
+				MARKETING_VERSION = 2022.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sleekible.Simplists.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1647,7 +1647,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2022.9;
+				MARKETING_VERSION = 2022.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sleekible.Simplists.debug.SimplistsIntentHandler;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1674,7 +1674,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2022.9;
+				MARKETING_VERSION = 2022.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sleekible.Simplists.SimplistsIntentHandler;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
