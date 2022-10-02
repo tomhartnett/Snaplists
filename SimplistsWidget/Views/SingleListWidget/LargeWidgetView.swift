@@ -13,7 +13,11 @@ struct LargeWidgetView: View {
     var list: SMPList
 
     var body: some View {
-        ListView(list: list, maxVisibleItemCount: 10)
+        if list.items.isEmpty {
+            EmptyListView(list: list)
+        } else {
+            ListView(list: list, maxVisibleItemCount: 10)
+        }
     }
 }
 

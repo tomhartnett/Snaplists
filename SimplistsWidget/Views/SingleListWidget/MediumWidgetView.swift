@@ -13,7 +13,11 @@ struct MediumWidgetView: View {
     var list: SMPList
 
     var body: some View {
-        ListView(list: list, maxVisibleItemCount: 3)
+        if list.items.isEmpty {
+            EmptyListView(list: list)
+        } else {
+            ListView(list: list, maxVisibleItemCount: 3)
+        }
     }
 }
 
