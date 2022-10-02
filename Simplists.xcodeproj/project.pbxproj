@@ -68,7 +68,6 @@
 		E252C78927D53BEE00B29F6A /* SimplistsIntentHandler.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = E252C78027D53BEE00B29F6A /* SimplistsIntentHandler.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E252C78E27D53D4F00B29F6A /* ListSelection.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = E257B09627D51E990077E35F /* ListSelection.intentdefinition */; };
 		E2558E6A28E87B1F0069C8CF /* SMPList+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2558E6828E879FA0069C8CF /* SMPList+Extensions.swift */; };
-		E256DD6924F2E98600649855 /* FocusableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E256DD6824F2E98600649855 /* FocusableTextField.swift */; };
 		E2578B8125D033A600BCC948 /* PreviewModeWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2578B8025D033A600BCC948 /* PreviewModeWidget.swift */; };
 		E257B09827D51EAD0077E35F /* ListSelection.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = E257B09627D51E990077E35F /* ListSelection.intentdefinition */; };
 		E260C6CA28D93A7E00EC2612 /* ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E260C6C928D93A7E00EC2612 /* ViewModifiers.swift */; };
@@ -318,7 +317,6 @@
 		E252C78627D53BEE00B29F6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E252C78A27D53BEE00B29F6A /* SimplistsIntentHandler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SimplistsIntentHandler.entitlements; sourceTree = "<group>"; };
 		E2558E6828E879FA0069C8CF /* SMPList+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SMPList+Extensions.swift"; sourceTree = "<group>"; };
-		E256DD6824F2E98600649855 /* FocusableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusableTextField.swift; sourceTree = "<group>"; };
 		E2578B8025D033A600BCC948 /* PreviewModeWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewModeWidget.swift; sourceTree = "<group>"; };
 		E257B09627D51E990077E35F /* ListSelection.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = ListSelection.intentdefinition; sourceTree = "<group>"; };
 		E260C6C928D93A7E00EC2612 /* ViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifiers.swift; sourceTree = "<group>"; };
@@ -479,7 +477,6 @@
 				E26DD858250BA13E00FCC495 /* AuthenticationErrorView.swift */,
 				E2A0302725B4CE80003BD447 /* EmptyStateView.swift */,
 				E2C6670625CF17010063D7E8 /* ErrorMessageView.swift */,
-				E256DD6824F2E98600649855 /* FocusableTextField.swift */,
 				E22E152224E060C2002A140E /* HomeView.swift */,
 				E2ECD76024F74B560046AEC9 /* NavBarItemsView.swift */,
 				E260C6C928D93A7E00EC2612 /* ViewModifiers.swift */,
@@ -1058,7 +1055,6 @@
 				E235D79324DF5B59007D95BE /* AppDelegate.swift in Sources */,
 				E2F3818925C04D47002740F3 /* StoreService.swift in Sources */,
 				E2DAC6FB28E9C59900C1D503 /* ConditionalStrikethroughModifier.swift in Sources */,
-				E256DD6924F2E98600649855 /* FocusableTextField.swift in Sources */,
 				E20BD7792754057200671478 /* ConditionalHiddenModifier.swift in Sources */,
 				E260C6CA28D93A7E00EC2612 /* ViewModifiers.swift in Sources */,
 				E29AB80E27F8D32E00868DA1 /* ReleaseNotesView.swift in Sources */,
