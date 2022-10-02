@@ -369,7 +369,7 @@ public extension SMPStorage {
                 SMPListItem(title: "Furniture polish", isComplete: false),
                 SMPListItem(title: "Detergent", isComplete: false)
             ],
-            color: .yellow
+            color: .purple
         )
         addList(list4)
     }
