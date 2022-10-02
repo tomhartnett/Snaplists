@@ -52,6 +52,7 @@ struct ListView: View {
     @State private var newItemTitle = ""
     @State private var selectedIDs = Set<UUID>()
     @FocusState private var focusedField: Field?
+    @FocusState private var focusedItemField: UUID?
     @Binding var selectedListID: UUID?
     @Binding var lists: [SMPList]
 
@@ -114,7 +115,8 @@ struct ListView: View {
                     }, content: {
                         ForEach(list.items) { item in
                             ItemView(title: item.title,
-                                     isComplete: item.isComplete) { title, isComplete in
+                                     isComplete: item.isComplete,
+                                     focusedItemField: _focusedItemField) { title, isComplete in
                                 withAnimation {
                                     updateItem(id: item.id, title: title, isComplete: isComplete)
                                 }
@@ -161,13 +163,14 @@ struct ListView: View {
 
                         Button(action: {
                             focusedField = nil
+                            focusedItemField = nil
                         }) {
                             Text("Cancel")
                         }
-                        .hideIf(focusedField == nil)
+                        .hideIf(focusedField == nil && focusedItemField == nil)
 
                         listActionsMenu
-                            .hideIf(editMode?.wrappedValue == .active || focusedField != nil)
+                            .hideIf(editMode?.wrappedValue == .active || focusedField != nil || focusedItemField != nil)
                     }
             )
             .sheet(item: $activeSheet) { item in

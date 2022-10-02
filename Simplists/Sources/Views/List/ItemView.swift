@@ -11,9 +11,13 @@ import SimplistsKit
 struct ItemView: View {
     @Environment(\.editMode) var editMode: Binding<EditMode>?
 
+    @State private var textFieldID = UUID()
+
     @State var title: String
 
     var isComplete: Bool
+
+    @FocusState var focusedItemField: UUID?
 
     var saveAction: ((String, Bool) -> Void)?
 
@@ -44,22 +48,25 @@ struct ItemView: View {
             }
             .allowsHitTesting(editMode?.wrappedValue != .active)
 
-            FocusableTextField("",
-                               text: $title,
-                               keepFocusUnlessEmpty: false,
-                               textAttributes: isComplete ? completedItemTextAttributes : nil,
-                               onCommit: { saveAction?(title, isComplete) })
+            TextField("", text: $title)
                 .disabled(editMode?.wrappedValue == .active)
+                .strikeThroughIf(isComplete)
+                .focused($focusedItemField, equals: textFieldID)
+                .onSubmit {
+                    saveAction?(title, isComplete)
+                }
+                .submitLabel(.done)
         }
     }
 }
 
 struct ListItemView_Previews: PreviewProvider {
+
     static var previews: some View {
         List {
             ItemView(title: "Beer", isComplete: false)
-            ItemView(title: "Bananas", isComplete: true)
-            ItemView(title: "Bread", isComplete: true)
+            ItemView(title: "Bananas", isComplete: false)
+            ItemView(title: "Bread", isComplete: false)
             ItemView(title: "Bacon", isComplete: true)
             ItemView(title: "Blackberries", isComplete: true)
             ItemView(title: "Batteries", isComplete: true)

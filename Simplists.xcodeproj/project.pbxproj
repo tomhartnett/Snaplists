@@ -122,6 +122,7 @@
 		E2D2D6FD25EC42AD00C305DA /* StoreDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26D01E125810AED009049F3 /* StoreDataSource.swift */; };
 		E2D2D70125EC455C00C305DA /* SKProduct+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F3819525C58F23002740F3 /* SKProduct+Extensions.swift */; };
 		E2D2D70525EC456100C305DA /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = E2F3819025C58E10002740F3 /* Configuration.storekit */; };
+		E2DAC6FB28E9C59900C1D503 /* ConditionalStrikethroughModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DAC6FA28E9C59900C1D503 /* ConditionalStrikethroughModifier.swift */; };
 		E2ECD76124F74B560046AEC9 /* NavBarItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2ECD76024F74B560046AEC9 /* NavBarItemsView.swift */; };
 		E2F3818925C04D47002740F3 /* StoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F3818825C04D47002740F3 /* StoreService.swift */; };
 		E2F3819125C58E11002740F3 /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = E2F3819025C58E10002740F3 /* Configuration.storekit */; };
@@ -360,6 +361,7 @@
 		E2C6671D25CF2FF20063D7E8 /* CannotPurchaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CannotPurchaseView.swift; sourceTree = "<group>"; };
 		E2CE179526E69ADD00664BF3 /* WidgetItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetItemView.swift; sourceTree = "<group>"; };
 		E2D2D6F425E7E18D00C305DA /* UserDefaults+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extensions.swift"; sourceTree = "<group>"; };
+		E2DAC6FA28E9C59900C1D503 /* ConditionalStrikethroughModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionalStrikethroughModifier.swift; sourceTree = "<group>"; };
 		E2ECD76024F74B560046AEC9 /* NavBarItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarItemsView.swift; sourceTree = "<group>"; };
 		E2F3818825C04D47002740F3 /* StoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreService.swift; sourceTree = "<group>"; };
 		E2F3819025C58E10002740F3 /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
@@ -715,6 +717,7 @@
 			children = (
 				E2F3819025C58E10002740F3 /* Configuration.storekit */,
 				E20BD7782754057200671478 /* ConditionalHiddenModifier.swift */,
+				E2DAC6FA28E9C59900C1D503 /* ConditionalStrikethroughModifier.swift */,
 				E26EBDA025C83ADB000D031D /* FreeLimits.swift */,
 				E2F3819525C58F23002740F3 /* SKProduct+Extensions.swift */,
 				E297905028DB315900C7D6FB /* SMPListColor+Extensions.swift */,
@@ -1054,6 +1057,7 @@
 			files = (
 				E235D79324DF5B59007D95BE /* AppDelegate.swift in Sources */,
 				E2F3818925C04D47002740F3 /* StoreService.swift in Sources */,
+				E2DAC6FB28E9C59900C1D503 /* ConditionalStrikethroughModifier.swift in Sources */,
 				E256DD6924F2E98600649855 /* FocusableTextField.swift in Sources */,
 				E20BD7792754057200671478 /* ConditionalHiddenModifier.swift in Sources */,
 				E260C6CA28D93A7E00EC2612 /* ViewModifiers.swift in Sources */,
