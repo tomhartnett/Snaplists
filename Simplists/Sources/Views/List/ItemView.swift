@@ -57,6 +57,9 @@ struct ItemView: View {
                 }
                 .submitLabel(.done)
         }
+        .onTapGesture {
+            focusedItemField = textFieldID
+        }
     }
 }
 
