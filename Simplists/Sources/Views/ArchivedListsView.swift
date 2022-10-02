@@ -51,37 +51,69 @@ struct ArchivedListsView: View {
                                         }
                                     )
                                 }
+                                .swipeActions {
+                                    Button(action: {
+                                        storage.deleteList(list)
+                                        getArchivedLists()
+                                    }, label: {
+                                        Text("Delete")
+                                    })
+                                    .tint(.red)
+
+                                    Button(action: {
+                                        restoreList(list.id)
+                                        getArchivedLists()
+                                    }, label: {
+                                        Text("Restore")
+                                    })
+                                    .tint(.green)
+                                }
                             }
-                            .onDelete(perform: delete)
                         }
                         .textCase(nil)
                     }
                     .listStyle(InsetGroupedListStyle())
                 }
-                HStack {
-                    Button(action: {
-                        isPresentingDelete.toggle()
-                    }) {
-                        Text("Delete all")
+                .confirmationDialog("Permanently delete all?",
+                                    isPresented: $isPresentingDelete,
+                                    titleVisibility: .visible
+                ) {
+                    Button("Delete", role: .destructive) {
+                        storage.purgeDeletedLists()
+                        getArchivedLists()
                     }
-                    .confirmationDialog("Permanently delete all?",
-                                        isPresented: $isPresentingDelete,
-                                        titleVisibility: .visible
-                    ) {
-                        Button("Delete", role: .destructive) {
-                            storage.purgeDeletedLists()
-                            getArchivedLists()
-                        }
-                    } message: {
-                        Text("This action cannot be undone")
-                    }
+                } message: {
+                    Text("This action cannot be undone")
                 }
-                .frame(height: 50)
             }
         }
         .background(Color(UIColor.secondarySystemBackground))
         .navigationBarTitle("Deleted Lists")
-        .navigationBarItems(trailing: NavBarItemsView(showEditButton: !lists.isEmpty))
+        .navigationBarItems(
+            trailing:
+                Menu(
+                    content: {
+                        Button(action: {
+                            restoreAllLists()
+                            getArchivedLists()
+                        }, label: {
+                            Text("Restore all")
+                            Image(systemName: "trash.slash")
+                        })
+
+                        Button(
+                            role: .destructive,
+                            action: {
+                                isPresentingDelete.toggle()
+                            }) {
+                                Text("Delete all")
+                                Image(systemName: "trash")
+                            }
+                    }, label: {
+                        Image(systemName: "ellipsis.circle")
+                    })
+                .hideIf(lists.isEmpty)
+        )
         .onAppear {
             getArchivedLists()
         }
@@ -94,11 +126,22 @@ struct ArchivedListsView: View {
         lists = storage.getLists(isArchived: true)
     }
 
-    private func delete(at offsets: IndexSet) {
-        offsets.forEach {
-            storage.deleteList(lists[$0])
+    private func restoreList(_ id: UUID) {
+        guard let list = lists.first(where: { $0.id == id }) else { return }
+
+        var restoredList = list
+        restoredList.isArchived = false
+        storage.updateList(restoredList)
+    }
+
+    private func restoreAllLists() {
+
+        for index in 0..<lists.count {
+            guard index < lists.count else { continue }
+
+            lists[index].isArchived = false
+            storage.updateList(lists[index])
         }
-        lists.remove(atOffsets: offsets)
     }
 }
 
