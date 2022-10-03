@@ -32,10 +32,8 @@ struct EditListView: View {
         NavigationView {
             List {
                 Section {
-                    FocusableTextField("Enter name...".localize(),
-                                       text: $editedModel.title,
-                                       keepFocusUnlessEmpty: false,
-                                       onCommit: saveChanges)
+                    TextField("Enter name...".localize(), text: $editedModel.title)
+                        .submitLabel(.done)
                 }
 
                 Section {

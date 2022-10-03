@@ -36,8 +36,12 @@ struct ListView: View {
             }
 
             VStack(alignment: .leading) {
-                Text(list.title)
-                    .font(.headline)
+                HStack {
+                    list.makeColorIcon()
+
+                    Text(list.title)
+                        .font(.headline)
+                }
 
                 VStack(alignment: .leading) {
                     if !list.items.isEmpty {

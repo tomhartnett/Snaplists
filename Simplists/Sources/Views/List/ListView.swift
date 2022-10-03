@@ -45,6 +45,7 @@ struct ListView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var storage: SMPStorage
     @EnvironmentObject var storeDataSource: StoreDataSource
+    @EnvironmentObject var cancelItemEditingSource: CancelItemEditingSource
     @State var list: SMPList
     @State private var activeSheet: ListViewActiveSheet?
     @State private var deleteAction: DeleteAction?
@@ -52,6 +53,7 @@ struct ListView: View {
     @State private var newItemTitle = ""
     @State private var selectedIDs = Set<UUID>()
     @FocusState private var focusedField: Field?
+    @FocusState private var focusedItemField: UUID?
     @Binding var selectedListID: UUID?
     @Binding var lists: [SMPList]
 
@@ -114,7 +116,8 @@ struct ListView: View {
                     }, content: {
                         ForEach(list.items) { item in
                             ItemView(title: item.title,
-                                     isComplete: item.isComplete) { title, isComplete in
+                                     isComplete: item.isComplete,
+                                     focusedItemField: _focusedItemField) { title, isComplete in
                                 withAnimation {
                                     updateItem(id: item.id, title: title, isComplete: isComplete)
                                 }
@@ -160,14 +163,19 @@ struct ListView: View {
                             .hideIf(editMode?.wrappedValue != .active)
 
                         Button(action: {
+                            if let id = focusedItemField {
+                                cancelItemEditingSource.itemID = id
+                            }
+                            newItemTitle = ""
                             focusedField = nil
+                            focusedItemField = nil
                         }) {
                             Text("Cancel")
                         }
-                        .hideIf(focusedField == nil)
+                        .hideIf(focusedField == nil && focusedItemField == nil)
 
                         listActionsMenu
-                            .hideIf(editMode?.wrappedValue == .active)
+                            .hideIf(editMode?.wrappedValue == .active || focusedField != nil || focusedItemField != nil)
                     }
             )
             .sheet(item: $activeSheet) { item in
@@ -506,6 +514,8 @@ struct ListView_Previews: PreviewProvider {
                      selectedListID: .constant(UUID()),
                      lists: .constant([]))
                 .environmentObject(SMPStorage())
+                .environmentObject(StoreDataSource(service: StoreClient()))
+                .environmentObject(CancelItemEditingSource())
                 .navigationBarTitleDisplayMode(.inline)
         }
     }

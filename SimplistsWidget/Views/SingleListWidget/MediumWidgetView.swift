@@ -13,7 +13,11 @@ struct MediumWidgetView: View {
     var list: SMPList
 
     var body: some View {
-        ListView(list: list, maxVisibleItemCount: 3)
+        if list.items.isEmpty {
+            EmptyListView(list: list)
+        } else {
+            ListView(list: list, maxVisibleItemCount: 3)
+        }
     }
 }
 
@@ -26,9 +30,10 @@ struct MediumWidgetView_Previews: PreviewProvider {
         }
 
         return MediumWidgetView(list: SMPList(title: "Medium List",
-                                             isArchived: false,
-                                             lastModified: Date().addingTimeInterval(-60),
-                                             items: items))
+                                              isArchived: false,
+                                              lastModified: Date().addingTimeInterval(-60),
+                                              items: items,
+                                              color: .purple))
         .previewContext(WidgetPreviewContext(family: .systemMedium))
     }
 }

@@ -13,7 +13,11 @@ struct LargeWidgetView: View {
     var list: SMPList
 
     var body: some View {
-        ListView(list: list, maxVisibleItemCount: 10)
+        if list.items.isEmpty {
+            EmptyListView(list: list)
+        } else {
+            ListView(list: list, maxVisibleItemCount: 10)
+        }
     }
 }
 
@@ -28,7 +32,8 @@ struct LargeWidgetView_Previews: PreviewProvider {
         return LargeWidgetView(list: SMPList(title: "Large List",
                                              isArchived: false,
                                              lastModified: Date().addingTimeInterval(-60),
-                                             items: items))
+                                             items: items,
+                                             color: .purple))
         .previewContext(WidgetPreviewContext(family: .systemLarge))
     }
 }

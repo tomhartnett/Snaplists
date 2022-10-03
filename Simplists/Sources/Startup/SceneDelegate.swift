@@ -19,6 +19,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     private let openURLContext = OpenURLContext()
 
+    private let cancelItemEditingSource = CancelItemEditingSource()
+
     private var subscriptions = Set<AnyCancellable>()
 
     private var storage: SMPStorage?
@@ -52,6 +54,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             .environmentObject(storage)
             .environmentObject(storeDataSource)
             .environmentObject(openURLContext)
+            .environmentObject(cancelItemEditingSource)
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
@@ -144,6 +147,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             }
         }
     }
+}
+
+// Used to notified ItemViews to revert text editing changes.
+class CancelItemEditingSource: ObservableObject {
+    @Published var itemID: UUID?
 }
 
 private extension Int {
