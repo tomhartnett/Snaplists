@@ -45,6 +45,7 @@ struct ListView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var storage: SMPStorage
     @EnvironmentObject var storeDataSource: StoreDataSource
+    @EnvironmentObject var cancelItemEditingSource: CancelItemEditingSource
     @State var list: SMPList
     @State private var activeSheet: ListViewActiveSheet?
     @State private var deleteAction: DeleteAction?
@@ -162,6 +163,10 @@ struct ListView: View {
                             .hideIf(editMode?.wrappedValue != .active)
 
                         Button(action: {
+                            if let id = focusedItemField {
+                                cancelItemEditingSource.itemID = id
+                            }
+                            newItemTitle = ""
                             focusedField = nil
                             focusedItemField = nil
                         }) {
@@ -509,6 +514,8 @@ struct ListView_Previews: PreviewProvider {
                      selectedListID: .constant(UUID()),
                      lists: .constant([]))
                 .environmentObject(SMPStorage())
+                .environmentObject(StoreDataSource(service: StoreClient()))
+                .environmentObject(CancelItemEditingSource())
                 .navigationBarTitleDisplayMode(.inline)
         }
     }
