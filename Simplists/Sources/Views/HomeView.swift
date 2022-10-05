@@ -100,6 +100,10 @@ struct HomeView: View {
                                             Image(systemName: "trash")
                                         }
                                     }
+                                    .accessibilityRepresentation {
+                                        Rectangle()
+                                            .accessibilityLabel(list.accessibilityLabel)
+                                    }
                             }
                         }
                         .onDelete(perform: archive)
@@ -241,6 +245,13 @@ struct HomeView: View {
         #endif
 
         lists = storage.getLists()
+    }
+}
+
+private extension SMPList {
+    var accessibilityLabel: String {
+        let itemCountText = "item-count".localize(items.count)
+        return "\(title) list, \(itemCountText)"
     }
 }
 

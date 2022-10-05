@@ -58,6 +58,7 @@
 		E235D7FC24E04CC1007D95BE /* SMPListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D7FB24E04CC1007D95BE /* SMPListItem.swift */; };
 		E23925B726A460BE00C59053 /* ListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23925B626A460BE00C59053 /* ListRowView.swift */; };
 		E241A046258FBA7D000277BE /* StoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E241A045258FBA7D000277BE /* StoreView.swift */; };
+		E2484C1428EBB65000AD3E0E /* SimplistsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2484C1328EBB65000AD3E0E /* SimplistsUITests.swift */; };
 		E24FACA4251CEC7C002B0B97 /* WatchAuthenticationErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24FACA3251CEC7C002B0B97 /* WatchAuthenticationErrorView.swift */; };
 		E250E1B0269B2B6C00860DEC /* EditListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E250E1AC269B2B6C00860DEC /* EditListView.swift */; };
 		E250E1B1269B2B6C00860DEC /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E250E1AD269B2B6C00860DEC /* ListView.swift */; };
@@ -159,6 +160,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = E235D7E224E037B9007D95BE;
 			remoteInfo = SimplistsKit;
+		};
+		E2484C1728EBB65000AD3E0E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E235D78724DF5B58007D95BE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E235D78E24DF5B59007D95BE;
+			remoteInfo = Simplists;
 		};
 		E252C78727D53BEE00B29F6A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -307,6 +315,8 @@
 		E235D7FB24E04CC1007D95BE /* SMPListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMPListItem.swift; sourceTree = "<group>"; };
 		E23925B626A460BE00C59053 /* ListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowView.swift; sourceTree = "<group>"; };
 		E241A045258FBA7D000277BE /* StoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreView.swift; sourceTree = "<group>"; };
+		E2484C1128EBB65000AD3E0E /* SimplistsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimplistsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2484C1328EBB65000AD3E0E /* SimplistsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimplistsUITests.swift; sourceTree = "<group>"; };
 		E24FACA3251CEC7C002B0B97 /* WatchAuthenticationErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchAuthenticationErrorView.swift; sourceTree = "<group>"; };
 		E250E1AC269B2B6C00860DEC /* EditListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditListView.swift; sourceTree = "<group>"; };
 		E250E1AD269B2B6C00860DEC /* ListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
@@ -401,6 +411,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		E235D7E024E037B9007D95BE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E2484C0E28EBB65000AD3E0E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -539,6 +556,7 @@
 				E235D7E424E037B9007D95BE /* SimplistsKit */,
 				E20F8A8326D19C510016E2C7 /* SimplistsWidget */,
 				E252C78327D53BEE00B29F6A /* SimplistsIntentHandler */,
+				E2484C1228EBB65000AD3E0E /* SimplistsUITests */,
 				E235D79024DF5B59007D95BE /* Products */,
 				E235D7D824E0372D007D95BE /* Frameworks */,
 			);
@@ -553,6 +571,7 @@
 				E235D7E324E037B9007D95BE /* SimplistsKit.framework */,
 				E20F8A7E26D19C510016E2C7 /* SimplistsWidgetExtension.appex */,
 				E252C78027D53BEE00B29F6A /* SimplistsIntentHandler.appex */,
+				E2484C1128EBB65000AD3E0E /* SimplistsUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -642,6 +661,14 @@
 				E2AFBDBE24F194CC008D9E3F /* SMPListSortOrderTransformer.swift */,
 			);
 			path = SimplistsKit;
+			sourceTree = "<group>";
+		};
+		E2484C1228EBB65000AD3E0E /* SimplistsUITests */ = {
+			isa = PBXGroup;
+			children = (
+				E2484C1328EBB65000AD3E0E /* SimplistsUITests.swift */,
+			);
+			path = SimplistsUITests;
 			sourceTree = "<group>";
 		};
 		E250E1AB269B2B1500860DEC /* List */ = {
@@ -871,6 +898,24 @@
 			productReference = E235D7E324E037B9007D95BE /* SimplistsKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		E2484C1028EBB65000AD3E0E /* SimplistsUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E2484C1B28EBB65000AD3E0E /* Build configuration list for PBXNativeTarget "SimplistsUITests" */;
+			buildPhases = (
+				E2484C0D28EBB65000AD3E0E /* Sources */,
+				E2484C0E28EBB65000AD3E0E /* Frameworks */,
+				E2484C0F28EBB65000AD3E0E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E2484C1828EBB65000AD3E0E /* PBXTargetDependency */,
+			);
+			name = SimplistsUITests;
+			productName = SimplistsUITests;
+			productReference = E2484C1128EBB65000AD3E0E /* SimplistsUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		E252C77F27D53BEE00B29F6A /* SimplistsIntentHandler */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E252C78D27D53BEE00B29F6A /* Build configuration list for PBXNativeTarget "SimplistsIntentHandler" */;
@@ -895,7 +940,7 @@
 		E235D78724DF5B58007D95BE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1330;
+				LastSwiftUpdateCheck = 1400;
 				LastUpgradeCheck = 1400;
 				TargetAttributes = {
 					E20F8A7D26D19C510016E2C7 = {
@@ -913,6 +958,10 @@
 					E235D7E224E037B9007D95BE = {
 						CreatedOnToolsVersion = 12.0;
 						LastSwiftMigration = 1200;
+					};
+					E2484C1028EBB65000AD3E0E = {
+						CreatedOnToolsVersion = 14.0.1;
+						TestTargetID = E235D78E24DF5B59007D95BE;
 					};
 					E252C77F27D53BEE00B29F6A = {
 						CreatedOnToolsVersion = 13.3;
@@ -940,6 +989,7 @@
 				E235D7E224E037B9007D95BE /* SimplistsKit */,
 				E20F8A7D26D19C510016E2C7 /* SimplistsWidgetExtension */,
 				E252C77F27D53BEE00B29F6A /* SimplistsIntentHandler */,
+				E2484C1028EBB65000AD3E0E /* SimplistsUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -988,6 +1038,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		E235D7E124E037B9007D95BE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E2484C0F28EBB65000AD3E0E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1144,6 +1201,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E2484C0D28EBB65000AD3E0E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E2484C1428EBB65000AD3E0E /* SimplistsUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E252C77C27D53BEE00B29F6A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1176,6 +1241,11 @@
 			isa = PBXTargetDependency;
 			target = E235D7E224E037B9007D95BE /* SimplistsKit */;
 			targetProxy = E235D7E824E037B9007D95BE /* PBXContainerItemProxy */;
+		};
+		E2484C1828EBB65000AD3E0E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E235D78E24DF5B59007D95BE /* Simplists */;
+			targetProxy = E2484C1728EBB65000AD3E0E /* PBXContainerItemProxy */;
 		};
 		E252C78827D53BEE00B29F6A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1631,6 +1701,44 @@
 			};
 			name = Release;
 		};
+		E2484C1928EBB65000AD3E0E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 25V97QMNV5;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sleekible.SimplistsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Simplists;
+			};
+			name = Debug;
+		};
+		E2484C1A28EBB65000AD3E0E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 25V97QMNV5;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sleekible.SimplistsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Simplists;
+			};
+			name = Release;
+		};
 		E252C78B27D53BEE00B29F6A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1738,6 +1846,15 @@
 			buildConfigurations = (
 				E235D7ED24E037B9007D95BE /* Debug */,
 				E235D7EE24E037B9007D95BE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E2484C1B28EBB65000AD3E0E /* Build configuration list for PBXNativeTarget "SimplistsUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E2484C1928EBB65000AD3E0E /* Debug */,
+				E2484C1A28EBB65000AD3E0E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
