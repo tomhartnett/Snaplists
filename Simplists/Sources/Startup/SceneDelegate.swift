@@ -80,9 +80,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         NSUbiquitousKeyValueStore.default.synchronize()
 
-        if let storage = self.storage {
-            createSampleList(storage: storage)
-        }
+        createWelcomeList()
+
+        createTestData()
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
@@ -100,13 +100,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
     }
 
-    private func createSampleList(storage: SMPStorage) {
+    private func createWelcomeList() {
 
         if UserDefaults.simplistsApp.isSampleListCreated {
             return
         }
 
-        storage.addList(SMPList(title: "Welcome 👋",
+        storage?.addList(SMPList(title: "Welcome 👋",
                                 isArchived: false,
                                 lastModified: Date().addingTimeInterval(-86400),
                                 items: [
@@ -120,6 +120,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                                 color: .purple))
 
         UserDefaults.simplistsApp.setIsSampleListCreated(true)
+    }
+
+    private func createTestData() {
+        guard CommandLine.arguments.contains("-create-test-data") else { return }
+
+        storage?.createScreenshotSampleData()
     }
 
     private func synchronizeLocalSettings() {

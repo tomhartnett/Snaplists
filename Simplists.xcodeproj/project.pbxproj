@@ -58,7 +58,7 @@
 		E235D7FC24E04CC1007D95BE /* SMPListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D7FB24E04CC1007D95BE /* SMPListItem.swift */; };
 		E23925B726A460BE00C59053 /* ListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23925B626A460BE00C59053 /* ListRowView.swift */; };
 		E241A046258FBA7D000277BE /* StoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E241A045258FBA7D000277BE /* StoreView.swift */; };
-		E2484C1428EBB65000AD3E0E /* SimplistsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2484C1328EBB65000AD3E0E /* SimplistsUITests.swift */; };
+		E2484C1428EBB65000AD3E0E /* HomeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2484C1328EBB65000AD3E0E /* HomeUITests.swift */; };
 		E24FACA4251CEC7C002B0B97 /* WatchAuthenticationErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24FACA3251CEC7C002B0B97 /* WatchAuthenticationErrorView.swift */; };
 		E250E1B0269B2B6C00860DEC /* EditListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E250E1AC269B2B6C00860DEC /* EditListView.swift */; };
 		E250E1B1269B2B6C00860DEC /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E250E1AD269B2B6C00860DEC /* ListView.swift */; };
@@ -316,7 +316,7 @@
 		E23925B626A460BE00C59053 /* ListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowView.swift; sourceTree = "<group>"; };
 		E241A045258FBA7D000277BE /* StoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreView.swift; sourceTree = "<group>"; };
 		E2484C1128EBB65000AD3E0E /* SimplistsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimplistsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E2484C1328EBB65000AD3E0E /* SimplistsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimplistsUITests.swift; sourceTree = "<group>"; };
+		E2484C1328EBB65000AD3E0E /* HomeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUITests.swift; sourceTree = "<group>"; };
 		E24FACA3251CEC7C002B0B97 /* WatchAuthenticationErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchAuthenticationErrorView.swift; sourceTree = "<group>"; };
 		E250E1AC269B2B6C00860DEC /* EditListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditListView.swift; sourceTree = "<group>"; };
 		E250E1AD269B2B6C00860DEC /* ListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
@@ -666,7 +666,7 @@
 		E2484C1228EBB65000AD3E0E /* SimplistsUITests */ = {
 			isa = PBXGroup;
 			children = (
-				E2484C1328EBB65000AD3E0E /* SimplistsUITests.swift */,
+				E2484C1328EBB65000AD3E0E /* HomeUITests.swift */,
 			);
 			path = SimplistsUITests;
 			sourceTree = "<group>";
@@ -1205,7 +1205,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E2484C1428EBB65000AD3E0E /* SimplistsUITests.swift in Sources */,
+				E2484C1428EBB65000AD3E0E /* HomeUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

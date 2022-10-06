@@ -69,41 +69,41 @@ struct HomeView: View {
                                 ListRowView(color: list.color.swiftUIColor,
                                             title: list.title,
                                             itemCount: list.items.count)
-                                    .contextMenu {
-                                        Button(action: {
-                                            activeSheet = .editList(id: list.id)
-                                        }) {
-                                            Text("List options")
-                                            Image(systemName: "gearshape")
-                                        }
-
-                                        Button(action: {
-                                            if lists.count >= FreeLimits.numberOfLists.limit &&
-                                                !storeDataSource.hasPurchasedIAP {
-                                                activeSheet = .storeViewHitLimit
-                                            } else {
-                                                storage.duplicateList(list)
-                                            }
-                                        }) {
-                                            Text("Duplicate")
-                                            Image(systemName: "plus.square.on.square")
-                                        }
-
-                                        Button(
-                                            role: .destructive,
-                                            action: {
-                                                #warning("No delete confirmation here")
-                                                archive(list: list)
-                                            }
-                                        ) {
-                                            Text("Delete")
-                                            Image(systemName: "trash")
-                                        }
+                                .accessibilityRepresentation {
+                                    Rectangle()
+                                        .accessibilityLabel(list.accessibilityLabel)
+                                }
+                                .contextMenu {
+                                    Button(action: {
+                                        activeSheet = .editList(id: list.id)
+                                    }) {
+                                        Text("List options")
+                                        Image(systemName: "gearshape")
                                     }
-                                    .accessibilityRepresentation {
-                                        Rectangle()
-                                            .accessibilityLabel(list.accessibilityLabel)
+
+                                    Button(action: {
+                                        if lists.count >= FreeLimits.numberOfLists.limit &&
+                                            !storeDataSource.hasPurchasedIAP {
+                                            activeSheet = .storeViewHitLimit
+                                        } else {
+                                            storage.duplicateList(list)
+                                        }
+                                    }) {
+                                        Text("Duplicate")
+                                        Image(systemName: "plus.square.on.square")
                                     }
+
+                                    Button(
+                                        role: .destructive,
+                                        action: {
+#warning("No delete confirmation here")
+                                            archive(list: list)
+                                        }
+                                    ) {
+                                        Text("Delete")
+                                        Image(systemName: "trash")
+                                    }
+                                }
                             }
                         }
                         .onDelete(perform: archive)
@@ -160,6 +160,11 @@ struct HomeView: View {
         }
         .onAppear {
             reload()
+
+            if ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1" {
+                return
+            }
+
             if !UserDefaults.simplistsApp.hasSeenReleaseNotes {
                 activeSheet = .releaseNotes
             }
