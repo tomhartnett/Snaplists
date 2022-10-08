@@ -117,6 +117,7 @@
 		E2C6671E25CF2FF20063D7E8 /* CannotPurchaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C6671D25CF2FF20063D7E8 /* CannotPurchaseView.swift */; };
 		E2C9648827DE8A6900EA6704 /* SimplistsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E235D7E324E037B9007D95BE /* SimplistsKit.framework */; };
 		E2C9648927DE8A6900EA6704 /* SimplistsKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E235D7E324E037B9007D95BE /* SimplistsKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E2CC70ED28EF10F100E7B131 /* ListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CC70EC28EF10F100E7B131 /* ListUITests.swift */; };
 		E2CE179626E69ADD00664BF3 /* WidgetItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CE179526E69ADD00664BF3 /* WidgetItemView.swift */; };
 		E2D2D6F525E7E18D00C305DA /* UserDefaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D2D6F425E7E18D00C305DA /* UserDefaults+Extensions.swift */; };
 		E2D2D6FC25EC42AD00C305DA /* StoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F3818825C04D47002740F3 /* StoreService.swift */; };
@@ -337,6 +338,7 @@
 		E26D345425E3E88900EE3C3E /* WatchDebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchDebugView.swift; sourceTree = "<group>"; };
 		E26DD858250BA13E00FCC495 /* AuthenticationErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationErrorView.swift; sourceTree = "<group>"; };
 		E26EBDA025C83ADB000D031D /* FreeLimits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeLimits.swift; sourceTree = "<group>"; };
+		E271D2FD28F1E03E00AA5ECC /* iOS App.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "iOS App.xctestplan"; sourceTree = "<group>"; };
 		E279EAC925D0480D00A38ED6 /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
 		E279EACE25D04D9D00A38ED6 /* WidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetView.swift; sourceTree = "<group>"; };
 		E27CDF5B24ECA7BC004B6A32 /* Simplists.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Simplists.xcdatamodel; sourceTree = "<group>"; };
@@ -369,6 +371,7 @@
 		E2C6671025CF1F3B0063D7E8 /* FeaturesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturesView.swift; sourceTree = "<group>"; };
 		E2C6671825CF277D0063D7E8 /* PurchasedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasedView.swift; sourceTree = "<group>"; };
 		E2C6671D25CF2FF20063D7E8 /* CannotPurchaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CannotPurchaseView.swift; sourceTree = "<group>"; };
+		E2CC70EC28EF10F100E7B131 /* ListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUITests.swift; sourceTree = "<group>"; };
 		E2CE179526E69ADD00664BF3 /* WidgetItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetItemView.swift; sourceTree = "<group>"; };
 		E2D2D6F425E7E18D00C305DA /* UserDefaults+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extensions.swift"; sourceTree = "<group>"; };
 		E2DAC6FA28E9C59900C1D503 /* ConditionalStrikethroughModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionalStrikethroughModifier.swift; sourceTree = "<group>"; };
@@ -548,6 +551,7 @@
 		E235D78624DF5B58007D95BE = {
 			isa = PBXGroup;
 			children = (
+				E271D2FC28F1E01800AA5ECC /* Test Plans */,
 				E20F8A8F26D19C540016E2C7 /* SimplistsWidgetExtension.entitlements */,
 				E2B62BAE25E2C67900898B21 /* Shared */,
 				E235D79124DF5B59007D95BE /* Simplists */,
@@ -667,6 +671,7 @@
 			isa = PBXGroup;
 			children = (
 				E2484C1328EBB65000AD3E0E /* HomeUITests.swift */,
+				E2CC70EC28EF10F100E7B131 /* ListUITests.swift */,
 			);
 			path = SimplistsUITests;
 			sourceTree = "<group>";
@@ -701,6 +706,14 @@
 				E2A376B325D1B4E2001D1615 /* UserDefaults+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E271D2FC28F1E01800AA5ECC /* Test Plans */ = {
+			isa = PBXGroup;
+			children = (
+				E271D2FD28F1E03E00AA5ECC /* iOS App.xctestplan */,
+			);
+			path = "Test Plans";
 			sourceTree = "<group>";
 		};
 		E281FE0C26E3CA0100370D2D /* Views */ = {
@@ -1206,6 +1219,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2484C1428EBB65000AD3E0E /* HomeUITests.swift in Sources */,
+				E2CC70ED28EF10F100E7B131 /* ListUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

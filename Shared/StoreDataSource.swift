@@ -143,4 +143,9 @@ extension StoreDataSource {
         UserDefaults.simplistsApp.setIsPremiumIAPPurchased(false)
         premiumIAPPurchaseStatus = .initial
     }
+
+    func purchaseIAPForTesting() {
+        UserDefaults.simplistsApp.setIsPremiumIAPPurchased(true)
+        premiumIAPPurchaseStatus = .purchased(productIdentifier: premiumProductIdentifier)
+    }
 }

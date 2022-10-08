@@ -88,6 +88,14 @@ struct ListView: View {
         }
     }
 
+    private var titleAccessibilityLabel: String {
+        if list.color == .none {
+            return "\(list.title) list, \("item-count".localize(list.items.count))"
+        } else {
+            return "\(list.title) list, \("item-count".localize(list.items.count)), \(list.color.title) accent color"
+        }
+    }
+
     var body: some View {
         if selectedListID == nil {
             EmptyStateView(emptyStateType: lists.isEmpty ? .noLists : .noSelection)
@@ -106,14 +114,18 @@ struct ListView: View {
                 }
                 .font(.largeTitle)
                 .padding(.horizontal)
+                .accessibilityElement(children: .combine)
+                .accessibilityLabel(titleAccessibilityLabel)
+                .accessibilityAddTraits(.isHeader)
 
                 List(selection: $selectedIDs) {
-                    Section(header:
-                                HStack {
+                    Section(header: HStack {
                         Text(itemCountText)
+                            .accessibilityHidden(true)
                         Spacer()
                         Text(lastUpdatedText)
-                    }, content: {
+                    },
+                            content: {
                         ForEach(list.items) { item in
                             ItemView(title: item.title,
                                      isComplete: item.isComplete,

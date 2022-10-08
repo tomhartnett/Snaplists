@@ -44,6 +44,11 @@ struct ItemView: View {
                 saveAction?(title, !isComplete)
             }
             .allowsHitTesting(editMode?.wrappedValue != .active)
+            .accessibilityRepresentation {
+                Button(isComplete ? "checked \(title)" : "unchecked \(title)") {
+                    saveAction?(title, !isComplete)
+                }
+            }
 
             TextField("", text: $editedTitle)
                 .disabled(editMode?.wrappedValue == .active)
@@ -54,6 +59,7 @@ struct ItemView: View {
                 }
                 .submitLabel(.done)
         }
+
         .onReceive(cancelItemEditingSource.$itemID) { itemID in
             if itemID == textFieldID {
                 editedTitle = title

@@ -25,6 +25,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     private var storage: SMPStorage?
 
+    private var storeDataSource: StoreDataSource?
+
     func scene(_ scene: UIScene,
                willConnectTo session: UISceneSession,
                options connectionOptions: UIScene.ConnectionOptions) {
@@ -67,6 +69,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
 
         self.storage = storage
+        self.storeDataSource = storeDataSource
 
         // Handle URL on launch, if present.
         openURL(scene, urlContext: connectionOptions.urlContexts.first)
@@ -82,7 +85,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         createWelcomeList()
 
-        createTestData()
+        prepareForUITests()
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
@@ -122,10 +125,30 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         UserDefaults.simplistsApp.setIsSampleListCreated(true)
     }
 
+    private func prepareForUITests() {
+        createTestData()
+
+        unlockInAppPurchase()
+
+        suppressReleaseNotes()
+    }
+
     private func createTestData() {
         guard CommandLine.arguments.contains("-create-test-data") else { return }
 
         storage?.createScreenshotSampleData()
+    }
+
+    private func unlockInAppPurchase() {
+        guard CommandLine.arguments.contains("-unlock-iap") else { return }
+
+        storeDataSource?.purchaseIAPForTesting()
+    }
+
+    private func suppressReleaseNotes() {
+        guard CommandLine.arguments.contains("-suppress-release-notes") else { return }
+
+        UserDefaults.simplistsApp.setHasSeenReleaseNotes(true)
     }
 
     private func synchronizeLocalSettings() {
