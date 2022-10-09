@@ -78,6 +78,7 @@
 		E26D345525E3E88900EE3C3E /* WatchDebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26D345425E3E88900EE3C3E /* WatchDebugView.swift */; };
 		E26DD859250BA13E00FCC495 /* AuthenticationErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26DD858250BA13E00FCC495 /* AuthenticationErrorView.swift */; };
 		E26EBDA125C83ADB000D031D /* FreeLimits.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26EBDA025C83ADB000D031D /* FreeLimits.swift */; };
+		E2752DEB28F30821009B5AA1 /* InAppPurchaseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2752DEA28F30821009B5AA1 /* InAppPurchaseUITests.swift */; };
 		E279EACA25D0480D00A38ED6 /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E279EAC925D0480D00A38ED6 /* MailView.swift */; };
 		E279EACF25D04D9D00A38ED6 /* WidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E279EACE25D04D9D00A38ED6 /* WidgetView.swift */; };
 		E27CDF5C24ECA7BC004B6A32 /* Simplists.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E27CDF5A24ECA7BC004B6A32 /* Simplists.xcdatamodeld */; };
@@ -339,6 +340,7 @@
 		E26DD858250BA13E00FCC495 /* AuthenticationErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationErrorView.swift; sourceTree = "<group>"; };
 		E26EBDA025C83ADB000D031D /* FreeLimits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeLimits.swift; sourceTree = "<group>"; };
 		E271D2FD28F1E03E00AA5ECC /* iOS App.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "iOS App.xctestplan"; sourceTree = "<group>"; };
+		E2752DEA28F30821009B5AA1 /* InAppPurchaseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchaseUITests.swift; sourceTree = "<group>"; };
 		E279EAC925D0480D00A38ED6 /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
 		E279EACE25D04D9D00A38ED6 /* WidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetView.swift; sourceTree = "<group>"; };
 		E27CDF5B24ECA7BC004B6A32 /* Simplists.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Simplists.xcdatamodel; sourceTree = "<group>"; };
@@ -672,6 +674,7 @@
 			children = (
 				E2484C1328EBB65000AD3E0E /* HomeUITests.swift */,
 				E2CC70EC28EF10F100E7B131 /* ListUITests.swift */,
+				E2752DEA28F30821009B5AA1 /* InAppPurchaseUITests.swift */,
 			);
 			path = SimplistsUITests;
 			sourceTree = "<group>";
@@ -1220,6 +1223,7 @@
 			files = (
 				E2484C1428EBB65000AD3E0E /* HomeUITests.swift in Sources */,
 				E2CC70ED28EF10F100E7B131 /* ListUITests.swift in Sources */,
+				E2752DEB28F30821009B5AA1 /* InAppPurchaseUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

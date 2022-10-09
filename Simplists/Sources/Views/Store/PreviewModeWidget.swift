@@ -16,6 +16,10 @@ struct PreviewModeWidget: View {
             Text("Premium Mode")
             Spacer()
         }
+        .accessibilityElement(children: .ignore)
+        .accessibilityRepresentation {
+            Button("Premium Mode", action: {})
+        }
         .frame(maxWidth: .infinity)
         .contentShape(Rectangle())
     }

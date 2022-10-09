@@ -126,11 +126,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     private func prepareForUITests() {
+        UserDefaults.simplistsAppDebug.setIsAuthorizedForPayments(true)
+
         createTestData()
 
         unlockInAppPurchase()
 
         suppressReleaseNotes()
+
+        resetInAppPurchase()
     }
 
     private func createTestData() {
@@ -149,6 +153,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard CommandLine.arguments.contains("-suppress-release-notes") else { return }
 
         UserDefaults.simplistsApp.setHasSeenReleaseNotes(true)
+    }
+
+    private func resetInAppPurchase() {
+        guard CommandLine.arguments.contains("-reset-iap") else { return }
+
+        storeDataSource?.resetIAP()
     }
 
     private func synchronizeLocalSettings() {
