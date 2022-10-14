@@ -25,6 +25,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     private var storage: SMPStorage?
 
+    private var storeDataSource: StoreDataSource?
+
     func scene(_ scene: UIScene,
                willConnectTo session: UISceneSession,
                options connectionOptions: UIScene.ConnectionOptions) {
@@ -67,6 +69,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
 
         self.storage = storage
+        self.storeDataSource = storeDataSource
 
         // Handle URL on launch, if present.
         openURL(scene, urlContext: connectionOptions.urlContexts.first)
@@ -80,9 +83,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         NSUbiquitousKeyValueStore.default.synchronize()
 
-        if let storage = self.storage {
-            createSampleList(storage: storage)
-        }
+        createWelcomeList()
+
+        prepareForUITests()
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
@@ -100,13 +103,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
     }
 
-    private func createSampleList(storage: SMPStorage) {
+    private func createWelcomeList() {
 
         if UserDefaults.simplistsApp.isSampleListCreated {
             return
         }
 
-        storage.addList(SMPList(title: "Welcome 👋",
+        storage?.addList(SMPList(title: "Welcome 👋",
                                 isArchived: false,
                                 lastModified: Date().addingTimeInterval(-86400),
                                 items: [
@@ -120,6 +123,42 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                                 color: .purple))
 
         UserDefaults.simplistsApp.setIsSampleListCreated(true)
+    }
+
+    private func prepareForUITests() {
+        UserDefaults.simplistsAppDebug.setIsAuthorizedForPayments(true)
+
+        createTestData()
+
+        unlockInAppPurchase()
+
+        suppressReleaseNotes()
+
+        resetInAppPurchase()
+    }
+
+    private func createTestData() {
+        guard CommandLine.arguments.contains("-create-test-data") else { return }
+
+        storage?.createScreenshotSampleData()
+    }
+
+    private func unlockInAppPurchase() {
+        guard CommandLine.arguments.contains("-unlock-iap") else { return }
+
+        storeDataSource?.purchaseIAPForTesting()
+    }
+
+    private func suppressReleaseNotes() {
+        guard CommandLine.arguments.contains("-suppress-release-notes") else { return }
+
+        UserDefaults.simplistsApp.setHasSeenReleaseNotes(true)
+    }
+
+    private func resetInAppPurchase() {
+        guard CommandLine.arguments.contains("-reset-iap") else { return }
+
+        storeDataSource?.resetIAP()
     }
 
     private func synchronizeLocalSettings() {

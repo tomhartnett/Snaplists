@@ -59,6 +59,10 @@ struct EditListView: View {
                                 EmptyView()
                             }
                         }
+                        .accessibilityRepresentation {
+                            Rectangle()
+                                .accessibilityLabel(caseColor.accessibilityLabel)
+                        }
                         .contentShape(Rectangle())
                         .onTapGesture {
                             editedModel.color = caseColor
@@ -94,6 +98,17 @@ struct EditListView: View {
         doneAction(editedModel)
 
         dismiss()
+    }
+}
+
+private extension SMPListColor {
+    var accessibilityLabel: String {
+        switch self {
+        case .none:
+            return "No color"
+        default:
+            return title
+        }
     }
 }
 

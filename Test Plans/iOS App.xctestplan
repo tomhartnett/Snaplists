@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "5DDA5EF3-09CE-45F5-9BA7-138CB8A7C08D",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:Simplists.xcodeproj",
+        "identifier" : "E2484C1028EBB65000AD3E0E",
+        "name" : "SimplistsUITests"
+      }
+    }
+  ],
+  "version" : 1
+}
