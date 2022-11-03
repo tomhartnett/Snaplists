@@ -13,6 +13,7 @@ extension EditListView {
         var listID: UUID?
         var title: String
         var color: SMPListColor
+        var isAutoSortEnabled = true
 
         static var empty: Model {
             Model(title: "", color: .none)
@@ -34,6 +35,12 @@ struct EditListView: View {
                 Section {
                     TextField("Enter name...".localize(), text: $editedModel.title)
                         .submitLabel(.done)
+                }
+
+                Section {
+                    Toggle(isOn: $editedModel.isAutoSortEnabled) {
+                        Text("Automatically sort items")
+                    }
                 }
 
                 Section {

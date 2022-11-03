@@ -58,7 +58,14 @@ struct HomeView: View {
                     }
 
                     Section {
-                        // List of lists
+                        HStack {
+                            addListButton
+
+                            Spacer()
+
+                            sortActionsMenu
+                        }
+
                         ForEach(lists) { list in
                             NavigationLink(destination: ListView(list: list,
                                                                  selectedListID: $selectedListID,
@@ -107,24 +114,6 @@ struct HomeView: View {
                             }
                         }
                         .onDelete(perform: archive)
-
-                        Button(action: {
-                            if lists.count >= FreeLimits.numberOfLists.limit &&
-                                !storeDataSource.hasPurchasedIAP {
-                                activeSheet = .storeViewHitLimit
-                                return
-                            }
-
-                            activeSheet = .newList
-                        }) {
-                            HStack {
-                                Image(systemName: "plus.app")
-                                    .frame(width: 25, height: 25)
-                                    .foregroundColor(Color("TextSecondary"))
-                                Text("Add new list")
-                                    .foregroundColor(.primary)
-                            }
-                        }
                     }
 
                     Section {
@@ -204,6 +193,62 @@ struct HomeView: View {
             case .storeView:
                 StoreView()
             }
+        }
+    }
+
+    var addListButton: some View {
+        Button(action: {
+            if lists.count >= FreeLimits.numberOfLists.limit &&
+                !storeDataSource.hasPurchasedIAP {
+                activeSheet = .storeViewHitLimit
+                return
+            }
+
+            activeSheet = .newList
+        }) {
+            HStack {
+                Image(systemName: "plus.app")
+                    .frame(width: 25, height: 25)
+                    .foregroundColor(Color("TextSecondary"))
+                Text("Add new list")
+                    .foregroundColor(.primary)
+            }
+        }
+    }
+
+    var sortActionsMenu: some View {
+        Menu(content: {
+            Button(action: {
+
+            }) {
+                Label(title: {
+                    Text("Sort by last modified")
+                }) {
+                    Image(systemName: "checkmark")
+                }
+            }
+
+            Button(action: {
+
+            }) {
+                Label(title: {
+                    Text("Sort by name")
+                }) {
+                    Image(systemName: "checkmark")
+                }
+            }
+
+            Button(action: {
+
+            }) {
+                Label(title: {
+                    Text("Custom sort")
+                }) {
+                    Image(systemName: "checkmark")
+                }
+            }
+        }) {
+            Image(systemName: "line.3.horizontal.decrease.circle")
         }
     }
 
