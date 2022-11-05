@@ -42,7 +42,6 @@
 		E235D79C24DF5B5A007D95BE /* PreviewAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E235D79B24DF5B5A007D95BE /* PreviewAssets.xcassets */; };
 		E235D79F24DF5B5A007D95BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E235D79D24DF5B5A007D95BE /* LaunchScreen.storyboard */; };
 		E235D7AE24DF5B89007D95BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E235D7AD24DF5B89007D95BE /* Assets.xcassets */; };
-		E235D7B524DF5B89007D95BE /* WatchApp Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = E235D7B424DF5B89007D95BE /* WatchApp Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E235D7BC24DF5B89007D95BE /* WatchListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D7BB24DF5B89007D95BE /* WatchListView.swift */; };
 		E235D7C424DF5B89007D95BE /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D7C324DF5B89007D95BE /* ComplicationController.swift */; };
 		E235D7C624DF5B89007D95BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E235D7C524DF5B89007D95BE /* Assets.xcassets */; };
@@ -141,13 +140,6 @@
 			remoteGlobalIDString = E20F8A7D26D19C510016E2C7;
 			remoteInfo = SimplistsWidgetExtension;
 		};
-		E235D7B624DF5B89007D95BE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E235D78724DF5B58007D95BE /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E235D7B324DF5B89007D95BE;
-			remoteInfo = "WatchApp Extension";
-		};
 		E235D7CC24DF5B89007D95BE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E235D78724DF5B58007D95BE /* Project object */;
@@ -183,7 +175,7 @@
 			remoteGlobalIDString = E235D7E224E037B9007D95BE;
 			remoteInfo = SimplistsKit;
 		};
-		E2C9648A27DE8A6900EA6704 /* PBXContainerItemProxy */ = {
+		E2A0A8872917013400298EEB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E235D78724DF5B58007D95BE /* Project object */;
 			proxyType = 1;
@@ -208,17 +200,6 @@
 			files = (
 				E252C78927D53BEE00B29F6A /* SimplistsIntentHandler.appex in Embed Foundation Extensions */,
 				E20F8A8E26D19C540016E2C7 /* SimplistsWidgetExtension.appex in Embed Foundation Extensions */,
-			);
-			name = "Embed Foundation Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E235D7D224DF5B89007D95BE /* Embed Foundation Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				E235D7B524DF5B89007D95BE /* WatchApp Extension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -298,7 +279,6 @@
 		E235D7A824DF5B88007D95BE /* WatchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E235D7AD24DF5B89007D95BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E235D7AF24DF5B89007D95BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E235D7B424DF5B89007D95BE /* WatchApp Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "WatchApp Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E235D7BB24DF5B89007D95BE /* WatchListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListView.swift; sourceTree = "<group>"; };
 		E235D7C324DF5B89007D95BE /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
 		E235D7C524DF5B89007D95BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -571,7 +551,6 @@
 			children = (
 				E235D78F24DF5B59007D95BE /* Simplists.app */,
 				E235D7A824DF5B88007D95BE /* WatchApp.app */,
-				E235D7B424DF5B89007D95BE /* WatchApp Extension.appex */,
 				E235D7E324E037B9007D95BE /* SimplistsKit.framework */,
 				E20F8A7E26D19C510016E2C7 /* SimplistsWidgetExtension.appex */,
 				E252C78027D53BEE00B29F6A /* SimplistsIntentHandler.appex */,
@@ -862,36 +841,19 @@
 			buildConfigurationList = E235D7D324DF5B89007D95BE /* Build configuration list for PBXNativeTarget "WatchApp" */;
 			buildPhases = (
 				E235D7A624DF5B88007D95BE /* Resources */,
-				E235D7D224DF5B89007D95BE /* Embed Foundation Extensions */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				E235D7B724DF5B89007D95BE /* PBXTargetDependency */,
-			);
-			name = WatchApp;
-			productName = WatchApp;
-			productReference = E235D7A824DF5B88007D95BE /* WatchApp.app */;
-			productType = "com.apple.product-type.application.watchapp2";
-		};
-		E235D7B324DF5B89007D95BE /* WatchApp Extension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E235D7CF24DF5B89007D95BE /* Build configuration list for PBXNativeTarget "WatchApp Extension" */;
-			buildPhases = (
 				E235D7B024DF5B89007D95BE /* Sources */,
 				E235D7B124DF5B89007D95BE /* Frameworks */,
-				E235D7B224DF5B89007D95BE /* Resources */,
 				E235D80524E04E3E007D95BE /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				E2C9648B27DE8A6900EA6704 /* PBXTargetDependency */,
+				E2A0A8882917013400298EEB /* PBXTargetDependency */,
 			);
-			name = "WatchApp Extension";
-			productName = "WatchApp Extension";
-			productReference = E235D7B424DF5B89007D95BE /* WatchApp Extension.appex */;
-			productType = "com.apple.product-type.watchkit2-extension";
+			name = WatchApp;
+			productName = WatchApp;
+			productReference = E235D7A824DF5B88007D95BE /* WatchApp.app */;
+			productType = "com.apple.product-type.application";
 		};
 		E235D7E224E037B9007D95BE /* SimplistsKit */ = {
 			isa = PBXNativeTarget;
@@ -954,7 +916,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1400;
-				LastUpgradeCheck = 1400;
+				LastUpgradeCheck = 1410;
 				TargetAttributes = {
 					E20F8A7D26D19C510016E2C7 = {
 						CreatedOnToolsVersion = 13.0;
@@ -963,9 +925,6 @@
 						CreatedOnToolsVersion = 12.0;
 					};
 					E235D7A724DF5B88007D95BE = {
-						CreatedOnToolsVersion = 12.0;
-					};
-					E235D7B324DF5B89007D95BE = {
 						CreatedOnToolsVersion = 12.0;
 					};
 					E235D7E224E037B9007D95BE = {
@@ -998,7 +957,6 @@
 			targets = (
 				E235D78E24DF5B59007D95BE /* Simplists */,
 				E235D7A724DF5B88007D95BE /* WatchApp */,
-				E235D7B324DF5B89007D95BE /* WatchApp Extension */,
 				E235D7E224E037B9007D95BE /* SimplistsKit */,
 				E20F8A7D26D19C510016E2C7 /* SimplistsWidgetExtension */,
 				E252C77F27D53BEE00B29F6A /* SimplistsIntentHandler */,
@@ -1034,19 +992,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E235D7AE24DF5B89007D95BE /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E235D7B224DF5B89007D95BE /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E235D7C924DF5B89007D95BE /* Preview Assets.xcassets in Resources */,
-				E2D2D70525EC456100C305DA /* Configuration.storekit in Resources */,
-				E2BB0B5E25DEA6DE004A1AB6 /* Localizable.stringsdict in Resources */,
 				E2BB0B5325DEA6A0004A1AB6 /* Localizable.strings in Resources */,
+				E235D7C924DF5B89007D95BE /* Preview Assets.xcassets in Resources */,
+				E2BB0B5E25DEA6DE004A1AB6 /* Localizable.stringsdict in Resources */,
+				E2D2D70525EC456100C305DA /* Configuration.storekit in Resources */,
 				E235D7C624DF5B89007D95BE /* Assets.xcassets in Resources */,
+				E235D7AE24DF5B89007D95BE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1240,11 +1191,6 @@
 			target = E20F8A7D26D19C510016E2C7 /* SimplistsWidgetExtension */;
 			targetProxy = E20F8A8C26D19C540016E2C7 /* PBXContainerItemProxy */;
 		};
-		E235D7B724DF5B89007D95BE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E235D7B324DF5B89007D95BE /* WatchApp Extension */;
-			targetProxy = E235D7B624DF5B89007D95BE /* PBXContainerItemProxy */;
-		};
 		E235D7CD24DF5B89007D95BE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			platformFilter = ios;
@@ -1271,10 +1217,10 @@
 			target = E235D7E224E037B9007D95BE /* SimplistsKit */;
 			targetProxy = E252C78F27D542D800B29F6A /* PBXContainerItemProxy */;
 		};
-		E2C9648B27DE8A6900EA6704 /* PBXTargetDependency */ = {
+		E2A0A8882917013400298EEB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E235D7E224E037B9007D95BE /* SimplistsKit */;
-			targetProxy = E2C9648A27DE8A6900EA6704 /* PBXContainerItemProxy */;
+			targetProxy = E2A0A8872917013400298EEB /* PBXContainerItemProxy */;
 		};
 		E2D711E827D54F8700861956 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1558,70 +1504,23 @@
 			};
 			name = Release;
 		};
-		E235D7D024DF5B89007D95BE /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				CODE_SIGN_ENTITLEMENTS = "WatchApp Extension/WatchApp Extension.entitlements";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"WatchApp Extension/Preview Content\"";
-				DEVELOPMENT_TEAM = 25V97QMNV5;
-				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "WatchApp Extension/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 2022.10;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sleekible.Simplists.debug.watchkitapp.watchkitextension;
-				PRODUCT_NAME = "${TARGET_NAME}";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCH_APP_BUNDLE_ID = com.sleekible.Simplists.debug.watchkitapp;
-			};
-			name = Debug;
-		};
-		E235D7D124DF5B89007D95BE /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				CODE_SIGN_ENTITLEMENTS = "WatchApp Extension/WatchApp Extension.entitlements";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"WatchApp Extension/Preview Content\"";
-				DEVELOPMENT_TEAM = 25V97QMNV5;
-				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "WatchApp Extension/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 2022.10;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sleekible.Simplists.watchkitapp.watchkitextension;
-				PRODUCT_NAME = "${TARGET_NAME}";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCH_APP_BUNDLE_ID = com.sleekible.Simplists.watchkitapp;
-			};
-			name = Release;
-		};
 		E235D7D424DF5B89007D95BE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Debug";
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				BUNDLE_DISPLAY_NAME = "Snaplists Debug";
+				CODE_SIGN_ENTITLEMENTS = "WatchApp Extension/WatchApp Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMPANION_APP_BUNDLE_ID = com.sleekible.Simplists.debug;
 				DEVELOPMENT_TEAM = 25V97QMNV5;
-				IBSC_MODULE = WatchApp_Extension;
 				INFOPLIST_FILE = WatchApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
 				MARKETING_VERSION = 2022.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sleekible.Simplists.debug.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1637,13 +1536,18 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				BUNDLE_DISPLAY_NAME = Snaplists;
+				CODE_SIGN_ENTITLEMENTS = "WatchApp Extension/WatchApp Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMPANION_APP_BUNDLE_ID = com.sleekible.Simplists;
 				DEVELOPMENT_TEAM = 25V97QMNV5;
-				IBSC_MODULE = WatchApp_Extension;
 				INFOPLIST_FILE = WatchApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
 				MARKETING_VERSION = 2022.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sleekible.Simplists.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1833,15 +1737,6 @@
 			buildConfigurations = (
 				E235D7A424DF5B5A007D95BE /* Debug */,
 				E235D7A524DF5B5A007D95BE /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E235D7CF24DF5B89007D95BE /* Build configuration list for PBXNativeTarget "WatchApp Extension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E235D7D024DF5B89007D95BE /* Debug */,
-				E235D7D124DF5B89007D95BE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
