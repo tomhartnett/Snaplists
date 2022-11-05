@@ -100,7 +100,6 @@
 		E2A60FFA25E1C9AD000F492C /* WatchNewListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A60FF925E1C9AD000F492C /* WatchNewListView.swift */; };
 		E2A6100525E2A67F000F492C /* WatchNewItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A6100425E2A67F000F492C /* WatchNewItemView.swift */; };
 		E2AFBDBC24F16348008D9E3F /* ListEntity+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AFBDBB24F16348008D9E3F /* ListEntity+Extensions.swift */; };
-		E2AFBDBF24F194CC008D9E3F /* SMPListSortOrderTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AFBDBE24F194CC008D9E3F /* SMPListSortOrderTransformer.swift */; };
 		E2B21E1528DFEC4500DC0E47 /* SMPListColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E297905028DB315900C7D6FB /* SMPListColor+Extensions.swift */; };
 		E2B62B9A25E2C01A00898B21 /* WatchStoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B62B9925E2C01A00898B21 /* WatchStoreView.swift */; };
 		E2B62BAF25E2C68E00898B21 /* FreeLimits.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26EBDA025C83ADB000D031D /* FreeLimits.swift */; };
@@ -362,7 +361,6 @@
 		E2A60FF925E1C9AD000F492C /* WatchNewListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchNewListView.swift; sourceTree = "<group>"; };
 		E2A6100425E2A67F000F492C /* WatchNewItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchNewItemView.swift; sourceTree = "<group>"; };
 		E2AFBDBB24F16348008D9E3F /* ListEntity+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListEntity+Extensions.swift"; sourceTree = "<group>"; };
-		E2AFBDBE24F194CC008D9E3F /* SMPListSortOrderTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMPListSortOrderTransformer.swift; sourceTree = "<group>"; };
 		E2B62B9925E2C01A00898B21 /* WatchStoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchStoreView.swift; sourceTree = "<group>"; };
 		E2B9C3A225CED96F0024B9F6 /* DebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugView.swift; sourceTree = "<group>"; };
 		E2BB0B5425DEA6A0004A1AB6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -664,7 +662,6 @@
 				E22E152B24E0809F002A140E /* SMP+CoreData.swift */,
 				E22E152F24E0871D002A140E /* SMPPersistentContainer.swift */,
 				E2AFBDBB24F16348008D9E3F /* ListEntity+Extensions.swift */,
-				E2AFBDBE24F194CC008D9E3F /* SMPListSortOrderTransformer.swift */,
 			);
 			path = SimplistsKit;
 			sourceTree = "<group>";
@@ -1211,7 +1208,6 @@
 				E22E152C24E0809F002A140E /* SMP+CoreData.swift in Sources */,
 				E22E152024E05BBC002A140E /* SMPList.swift in Sources */,
 				E235D7FC24E04CC1007D95BE /* SMPListItem.swift in Sources */,
-				E2AFBDBF24F194CC008D9E3F /* SMPListSortOrderTransformer.swift in Sources */,
 				E2AFBDBC24F16348008D9E3F /* ListEntity+Extensions.swift in Sources */,
 				E22E153024E0871D002A140E /* SMPPersistentContainer.swift in Sources */,
 			);
