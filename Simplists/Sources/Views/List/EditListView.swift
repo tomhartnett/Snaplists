@@ -13,10 +13,10 @@ extension EditListView {
         var listID: UUID?
         var title: String
         var color: SMPListColor
-        var isAutoSortEnabled = true
+        var isAutoSortEnabled: Bool
 
         static var empty: Model {
-            Model(title: "", color: .none)
+            Model(title: "", color: .none, isAutoSortEnabled: true)
         }
     }
 }
@@ -123,7 +123,7 @@ struct EditListView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             EditListView(
-                model: .init(title: "New List", color: .green)
+                model: .init(title: "New List", color: .green, isAutoSortEnabled: true)
             ) { _ in }
         }
     }

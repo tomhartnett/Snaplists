@@ -170,10 +170,18 @@ struct HomeView: View {
                 var list = lists.first(where: { $0.id == id }) ?? SMPList(title: "")
 
                 EditListView(
-                    model: .init(listID: id, title: list.title, color: list.color)
+                    model: .init(listID: id,
+                                 title: list.title,
+                                 color: list.color,
+                                 isAutoSortEnabled: list.isAutoSortEnabled)
                 ) { editedModel in
+                    if editedModel.isAutoSortEnabled {
+                        list.items.sort(by: { !$0.isComplete && $1.isComplete })
+                    }
+
                     list.title = editedModel.title
                     list.color = editedModel.color
+                    list.isAutoSortEnabled = editedModel.isAutoSortEnabled
                     storage.updateList(list)
                 }
 

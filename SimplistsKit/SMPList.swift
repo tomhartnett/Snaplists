@@ -46,17 +46,20 @@ public struct SMPList: Identifiable {
     public var lastModified: Date
     public var items: [SMPListItem]
     public var color: SMPListColor
+    public var isAutoSortEnabled: Bool
 
     public init(title: String,
                 isArchived: Bool = false,
                 lastModified: Date = Date(),
                 items: [SMPListItem] = [],
-                color: SMPListColor = .none) {
+                color: SMPListColor = .none,
+                isAutoSortEnabled: Bool = true) {
         self.title = title
         self.isArchived = isArchived
         self.lastModified = lastModified
         self.items = items
         self.color = color
+        self.isAutoSortEnabled = isAutoSortEnabled
     }
 }
 

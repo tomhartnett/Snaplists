@@ -101,6 +101,7 @@ public final class SMPStorage: ObservableObject {
         listEntity.isArchived = list.isArchived
         listEntity.modified = Date()
         listEntity.color = list.color.rawValue
+        listEntity.isAutoSortEnabled = list.isAutoSortEnabled
 
         let items: [ItemEntity] = list.items.map {
             let itemEntity = ItemEntity(context: context)
@@ -124,6 +125,7 @@ public final class SMPStorage: ObservableObject {
         listEntity.isArchived = list.isArchived
         listEntity.modified = Date()
         listEntity.color = list.color.rawValue
+        listEntity.isAutoSortEnabled = list.isAutoSortEnabled
 
         list.items.forEach {
             if let itemEntity = getItemEntity(with: $0.id) {
