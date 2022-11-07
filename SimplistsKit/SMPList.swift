@@ -76,3 +76,18 @@ extension SMPList: Equatable {
         lhsIDs == rhsIDs
     }
 }
+
+extension SMPList {
+    init?(entity: ListEntity) {
+        guard let id = entity.identifier,
+              let title = entity.title else { return nil }
+
+        self.id = id
+        self.title = title
+        self.isArchived = entity.isArchived
+        self.lastModified = entity.modified ?? Date()
+        self.items = entity.sortedItems.compactMap { SMPListItem(entity: $0) }
+        self.color = SMPListColor(rawValue: entity.color) ?? .none
+        self.isAutoSortEnabled = entity.isAutoSortEnabled
+    }
+}

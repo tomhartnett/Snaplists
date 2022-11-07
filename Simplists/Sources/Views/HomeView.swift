@@ -22,10 +22,11 @@ struct HomeView: View {
     @EnvironmentObject var storage: SMPStorage
     @EnvironmentObject var storeDataSource: StoreDataSource
     @EnvironmentObject var openURLState: OpenURLContext
-    @State var lists: [SMPList]
+    @State private var lists: [SMPList] = []
     @State private var isPresentingAuthError = false
     @State private var activeSheet: HomeViewActiveSheet?
     @State private var selectedListID: UUID?
+    @State private var listsSortType: SMPListsSortType = .lastModifiedDescending
 
     private var archivedListCount: Int {
         return storage.getListsCount(isArchived: true)
@@ -103,7 +104,7 @@ struct HomeView: View {
                                     Button(
                                         role: .destructive,
                                         action: {
-#warning("No delete confirmation here")
+                                            // TODO: add delete confirmation.
                                             archive(list: list)
                                         }
                                     ) {
@@ -227,32 +228,40 @@ struct HomeView: View {
     var sortActionsMenu: some View {
         Menu(content: {
             Button(action: {
-
+                storage.updateListsSortType(.lastModifiedDescending)
             }) {
                 Label(title: {
                     Text("Sort by last modified")
                 }) {
-                    Image(systemName: "checkmark")
+                    if listsSortType == .lastModifiedDescending {
+                        Image(systemName: "checkmark")
+                    } else {
+                        EmptyView()
+                    }
                 }
             }
 
             Button(action: {
-
+                storage.updateListsSortType(.nameAscending)
             }) {
                 Label(title: {
                     Text("Sort by name")
                 }) {
-                    Image(systemName: "checkmark")
+                    if listsSortType == .nameAscending {
+                        Image(systemName: "checkmark")
+                    } else {
+                        EmptyView()
+                    }
                 }
             }
 
             Button(action: {
-
+                // TODO: implement drag & drop to custom sort
             }) {
                 Label(title: {
                     Text("Custom sort")
                 }) {
-                    Image(systemName: "checkmark")
+                    EmptyView()
                 }
             }
         }) {
@@ -283,7 +292,9 @@ struct HomeView: View {
     }
 
     private func archive(at offsets: IndexSet) {
-        #warning("No delete confirmation here")
+
+        // TODO: add delete confirmation.
+
         offsets.forEach {
             var listToUpdate = lists[$0]
             listToUpdate.isArchived = true
@@ -302,14 +313,22 @@ struct HomeView: View {
         }
         #endif
 
+        listsSortType = storage.getListsSortType()
+
         lists = storage.getLists()
     }
 }
 
-private extension SMPList {
+fileprivate extension SMPList {
     var accessibilityLabel: String {
         let itemCountText = "item-count".localize(items.count)
         return "\(title) list, \(itemCountText)"
+    }
+}
+
+fileprivate extension HomeView {
+    init(_ lists: [SMPList]) {
+        self._lists = State(initialValue: lists)
     }
 }
 
@@ -319,18 +338,22 @@ struct HomeView_Previews: PreviewProvider {
         let client = StoreClient()
         let dataSource = StoreDataSource(service: client)
 
-        HomeView(lists: [
+        let lists = [
             SMPList(title: "List 1",
                     isArchived: false,
                     items: [
                         SMPListItem(title: "Item 1", isComplete: false)
-                    ]),
+                    ],
+                    color: .purple),
             SMPList(title: "List 2",
                     isArchived: false,
                     items: [
                         SMPListItem(title: "Item 1", isComplete: false)
-                    ])
-        ])
+                    ],
+                    color: .orange)
+        ]
+
+        HomeView(lists)
         .environmentObject(SMPStorage())
         .environmentObject(dataSource)
         .environmentObject(OpenURLContext())

@@ -34,7 +34,6 @@
 		E22E152024E05BBC002A140E /* SMPList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E151F24E05BBC002A140E /* SMPList.swift */; };
 		E22E152324E060C2002A140E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E152224E060C2002A140E /* HomeView.swift */; };
 		E22E152A24E0769E002A140E /* WatchHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E152924E0769E002A140E /* WatchHomeView.swift */; };
-		E22E152C24E0809F002A140E /* SMP+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E152B24E0809F002A140E /* SMP+CoreData.swift */; };
 		E22E153024E0871D002A140E /* SMPPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E152F24E0871D002A140E /* SMPPersistentContainer.swift */; };
 		E235D79324DF5B59007D95BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D79224DF5B59007D95BE /* AppDelegate.swift */; };
 		E235D79524DF5B59007D95BE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D79424DF5B59007D95BE /* SceneDelegate.swift */; };
@@ -92,6 +91,7 @@
 		E297905128DB315900C7D6FB /* SMPListColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E297905028DB315900C7D6FB /* SMPListColor+Extensions.swift */; };
 		E29AB80E27F8D32E00868DA1 /* ReleaseNotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29AB80D27F8D32E00868DA1 /* ReleaseNotesView.swift */; };
 		E29AB81027F8D86900868DA1 /* Bool+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29AB80F27F8D86900868DA1 /* Bool+Extensions.swift */; };
+		E2A00B3F2917FBAF002279AE /* SMPAppSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A00B3E2917FBAF002279AE /* SMPAppSetting.swift */; };
 		E2A0302825B4CE81003BD447 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A0302725B4CE80003BD447 /* EmptyStateView.swift */; };
 		E2A320FE250D704700A022B8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E2A32100250D704700A022B8 /* Localizable.strings */; };
 		E2A32102250E628200A022B8 /* MoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A32101250E628200A022B8 /* MoreView.swift */; };
@@ -267,7 +267,6 @@
 		E22E151F24E05BBC002A140E /* SMPList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMPList.swift; sourceTree = "<group>"; };
 		E22E152224E060C2002A140E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		E22E152924E0769E002A140E /* WatchHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchHomeView.swift; sourceTree = "<group>"; };
-		E22E152B24E0809F002A140E /* SMP+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SMP+CoreData.swift"; sourceTree = "<group>"; };
 		E22E152F24E0871D002A140E /* SMPPersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMPPersistentContainer.swift; sourceTree = "<group>"; };
 		E235D78F24DF5B59007D95BE /* Simplists.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Simplists.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E235D79224DF5B59007D95BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -334,6 +333,7 @@
 		E297905028DB315900C7D6FB /* SMPListColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SMPListColor+Extensions.swift"; sourceTree = "<group>"; };
 		E29AB80D27F8D32E00868DA1 /* ReleaseNotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseNotesView.swift; sourceTree = "<group>"; };
 		E29AB80F27F8D86900868DA1 /* Bool+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bool+Extensions.swift"; sourceTree = "<group>"; };
+		E2A00B3E2917FBAF002279AE /* SMPAppSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMPAppSetting.swift; sourceTree = "<group>"; };
 		E2A0302725B4CE80003BD447 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 		E2A320FF250D704700A022B8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E2A32101250E628200A022B8 /* MoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreView.swift; sourceTree = "<group>"; };
@@ -638,9 +638,9 @@
 				E235D7F324E046D7007D95BE /* SMPStorage.swift */,
 				E235D7FB24E04CC1007D95BE /* SMPListItem.swift */,
 				E22E151F24E05BBC002A140E /* SMPList.swift */,
-				E22E152B24E0809F002A140E /* SMP+CoreData.swift */,
 				E22E152F24E0871D002A140E /* SMPPersistentContainer.swift */,
 				E2AFBDBB24F16348008D9E3F /* ListEntity+Extensions.swift */,
+				E2A00B3E2917FBAF002279AE /* SMPAppSetting.swift */,
 			);
 			path = SimplistsKit;
 			sourceTree = "<group>";
@@ -1156,9 +1156,9 @@
 			files = (
 				E235D7F424E046D7007D95BE /* SMPStorage.swift in Sources */,
 				E27CDF5C24ECA7BC004B6A32 /* Simplists.xcdatamodeld in Sources */,
-				E22E152C24E0809F002A140E /* SMP+CoreData.swift in Sources */,
 				E22E152024E05BBC002A140E /* SMPList.swift in Sources */,
 				E235D7FC24E04CC1007D95BE /* SMPListItem.swift in Sources */,
+				E2A00B3F2917FBAF002279AE /* SMPAppSetting.swift in Sources */,
 				E2AFBDBC24F16348008D9E3F /* ListEntity+Extensions.swift in Sources */,
 				E22E153024E0871D002A140E /* SMPPersistentContainer.swift in Sources */,
 			);

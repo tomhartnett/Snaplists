@@ -73,9 +73,20 @@ public final class SMPStorage: ObservableObject {
 
         var lists: [SMPList] = []
 
+        let sortType = getListsSortType()
+
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "List")
-        request.sortDescriptors = [NSSortDescriptor(key: "modified", ascending: false)]
         request.predicate = NSPredicate(format: "isArchived == %@", NSNumber(value: isArchived))
+
+        switch sortType {
+        case .lastModifiedDescending:
+            request.sortDescriptors = [NSSortDescriptor(key: "modified", ascending: false)]
+        case .nameAscending:
+            request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+        case .none:
+            // no op
+            break
+        }
 
         do {
             if let results = try context.fetch(request) as? [ListEntity] {
@@ -287,6 +298,30 @@ public final class SMPStorage: ObservableObject {
 
         saveChanges()
     }
+
+    public func getListsSortType() -> SMPListsSortType {
+        if let entity = getAppSettingEntity(with: SMPListsSortType.id),
+           let sortType = SMPListsSortType(rawValue: entity.intValue) {
+            return sortType
+        }
+
+        return SMPListsSortType.lastModifiedDescending
+    }
+
+    public func updateListsSortType(_ sortType: SMPListsSortType) {
+        let entity: AppSettingEntity
+        if let existingEntity = getAppSettingEntity(with: SMPListsSortType.id) {
+            entity = existingEntity
+        } else {
+            entity = AppSettingEntity(context: context)
+        }
+
+        entity.intValue = sortType.rawValue
+        entity.identifier = SMPListsSortType.id
+        entity.title = SMPListsSortType.title
+
+        saveChanges()
+    }
 }
 
 private extension Optional where Wrapped: NSSet {
@@ -434,8 +469,8 @@ private extension SMPStorage {
         request.predicate = NSPredicate(format: "identifier = %@", identifier.uuidString)
 
         do {
-            if let results = try context.fetch(request) as? [ListEntity], results.count > 0 {
-                return results[0]
+            if let results = try context.fetch(request) as? [ListEntity], let result = results.first {
+                return result
             }
         } catch {
             print("\(#function) - error: \(error.localizedDescription)")
@@ -449,8 +484,23 @@ private extension SMPStorage {
         request.predicate = NSPredicate(format: "identifier = %@", identifier.uuidString)
 
         do {
-            if let results = try context.fetch(request) as? [ItemEntity], results.count > 0 {
-                return results[0]
+            if let results = try context.fetch(request) as? [ItemEntity], let result = results.first {
+                return result
+            }
+        } catch {
+            print("\(#function) - error: \(error.localizedDescription)")
+        }
+
+        return nil
+    }
+
+    func getAppSettingEntity(with identifier: UUID) -> AppSettingEntity? {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "AppSetting")
+        request.predicate = NSPredicate(format: "identifier = %@", identifier.uuidString)
+
+        do {
+            if let results = try context.fetch(request) as? [AppSettingEntity], let result = results.first {
+                return result
             }
         } catch {
             print("\(#function) - error: \(error.localizedDescription)")

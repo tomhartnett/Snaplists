@@ -52,7 +52,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             .store(in: &subscriptions)
 
         // Create the SwiftUI view that provides the window contents.
-        let listsView = HomeView(lists: [])
+        let listsView = HomeView()
             .environmentObject(storage)
             .environmentObject(storeDataSource)
             .environmentObject(openURLContext)
