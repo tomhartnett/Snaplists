@@ -84,8 +84,7 @@ public final class SMPStorage: ObservableObject {
         case .nameAscending:
             request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
         case .none:
-            // no op
-            break
+            request.sortDescriptors = [NSSortDescriptor(key: "sortKey", ascending: true)]
         }
 
         do {
@@ -129,23 +128,30 @@ public final class SMPStorage: ObservableObject {
     }
 
     public func updateList(_ list: SMPList) {
-        guard let listEntity = getListEntity(with: list.id) else { return }
+        updateLists([list])
+    }
 
-        listEntity.title = list.title
-        listEntity.sortOrder = list.items.map { $0.id.uuidString }
-        listEntity.isArchived = list.isArchived
-        listEntity.modified = Date()
-        listEntity.color = list.color.rawValue
-        listEntity.isAutoSortEnabled = list.isAutoSortEnabled
+    public func updateLists(_ lists: [SMPList]) {
+        for list in lists {
+            guard let listEntity = getListEntity(with: list.id) else { continue }
 
-        list.items.forEach {
-            if let itemEntity = getItemEntity(with: $0.id) {
-                if itemEntity.title != $0.title {
-                    itemEntity.title = $0.title
-                }
+            listEntity.title = list.title
+            listEntity.sortOrder = list.items.map { $0.id.uuidString }
+            listEntity.isArchived = list.isArchived
+            listEntity.modified = Date()
+            listEntity.color = list.color.rawValue
+            listEntity.isAutoSortEnabled = list.isAutoSortEnabled
+            listEntity.sortKey = list.sortKey
 
-                if itemEntity.isComplete != $0.isComplete {
-                    itemEntity.isComplete = $0.isComplete
+            list.items.forEach {
+                if let itemEntity = getItemEntity(with: $0.id) {
+                    if itemEntity.title != $0.title {
+                        itemEntity.title = $0.title
+                    }
+
+                    if itemEntity.isComplete != $0.isComplete {
+                        itemEntity.isComplete = $0.isComplete
+                    }
                 }
             }
         }

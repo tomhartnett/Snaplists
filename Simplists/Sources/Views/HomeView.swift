@@ -115,6 +115,7 @@ struct HomeView: View {
                             }
                         }
                         .onDelete(perform: archive)
+                        .onMove(perform: moveList)
                     }
 
                     Section {
@@ -256,12 +257,16 @@ struct HomeView: View {
             }
 
             Button(action: {
-                // TODO: implement drag & drop to custom sort
+                storage.updateListsSortType(.none)
             }) {
                 Label(title: {
                     Text("Custom sort")
                 }) {
-                    EmptyView()
+                    if listsSortType == .none {
+                        Image(systemName: "checkmark")
+                    } else {
+                        EmptyView()
+                    }
                 }
             }
         }) {
@@ -304,6 +309,18 @@ struct HomeView: View {
                 selectedListID = nil
             }
         }
+    }
+
+    private func moveList(at offsets: IndexSet, to destination: Int) {
+        lists.move(fromOffsets: offsets, toOffset: destination)
+
+        var sortKey: Int64 = 0
+        for index in 0..<lists.count {
+            lists[index].sortKey = sortKey
+            sortKey += 1
+        }
+
+        storage.updateLists(lists)
     }
 
     private func reload() {
