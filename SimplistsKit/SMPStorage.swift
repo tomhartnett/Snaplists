@@ -83,7 +83,7 @@ public final class SMPStorage: ObservableObject {
             request.sortDescriptors = [NSSortDescriptor(key: "modified", ascending: false)]
         case .nameAscending:
             request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
-        case .none:
+        case .manual:
             request.sortDescriptors = [NSSortDescriptor(key: "sortKey", ascending: true)]
         }
 

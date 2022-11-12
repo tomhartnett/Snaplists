@@ -27,6 +27,7 @@ struct HomeView: View {
     @State private var activeSheet: HomeViewActiveSheet?
     @State private var selectedListID: UUID?
     @State private var listsSortType: SMPListsSortType = .lastModifiedDescending
+    @State private var editMode: EditMode = .inactive
 
     private var archivedListCount: Int {
         return storage.getListsCount(isArchived: true)
@@ -59,14 +60,6 @@ struct HomeView: View {
                     }
 
                     Section {
-                        HStack {
-                            addListButton
-
-                            Spacer()
-
-                            sortActionsMenu
-                        }
-
                         ForEach(lists) { list in
                             NavigationLink(destination: ListView(list: list,
                                                                  selectedListID: $selectedListID,
@@ -116,6 +109,8 @@ struct HomeView: View {
                         }
                         .onDelete(perform: archive)
                         .onMove(perform: moveList)
+
+                        addListButton
                     }
 
                     Section {
@@ -141,10 +136,22 @@ struct HomeView: View {
                         }
                     }
                 }
-                .navigationBarTitle("Snaplists")
-                .navigationBarTitleDisplayMode(.inline)
-                .listStyle(InsetGroupedListStyle())
             }
+            .navigationBarTitle("Snaplists")
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarItems(
+                trailing:
+                    HStack {
+                        EditButton()
+                            .hideIf(editMode != .active)
+
+                        sortActionsMenu
+                            .hideIf(editMode != .inactive)
+                    }
+            )
+            .listStyle(InsetGroupedListStyle())
+            .environment(\.editMode, $editMode)
+
             VStack {
                 EmptyStateView(emptyStateType: lists.isEmpty ? .noLists : .noSelection)
             }
@@ -229,48 +236,76 @@ struct HomeView: View {
     var sortActionsMenu: some View {
         Menu(content: {
             Button(action: {
-                storage.updateListsSortType(.lastModifiedDescending)
-            }) {
-                Label(title: {
-                    Text("Sort by last modified")
-                }) {
-                    if listsSortType == .lastModifiedDescending {
-                        Image(systemName: "checkmark")
-                    } else {
-                        EmptyView()
-                    }
+                if lists.count >= FreeLimits.numberOfLists.limit &&
+                    !storeDataSource.hasPurchasedIAP {
+                    activeSheet = .storeViewHitLimit
+                    return
                 }
+
+                activeSheet = .newList
+            }) {
+                Text("Add new list...")
+                Image(systemName: "plus.app")
             }
 
             Button(action: {
-                storage.updateListsSortType(.nameAscending)
+                editMode = .active
             }) {
-                Label(title: {
-                    Text("Sort by name")
-                }) {
-                    if listsSortType == .nameAscending {
-                        Image(systemName: "checkmark")
-                    } else {
-                        EmptyView()
-                    }
-                }
+                Text("Select lists...")
+                Image(systemName: "checklist")
             }
+            .hideIf(lists.isEmpty)
 
-            Button(action: {
-                storage.updateListsSortType(.none)
-            }) {
-                Label(title: {
-                    Text("Custom sort")
+            Menu(content: {
+                Button(action: {
+                    storage.updateListsSortType(.lastModifiedDescending)
                 }) {
-                    if listsSortType == .none {
-                        Image(systemName: "checkmark")
-                    } else {
-                        EmptyView()
+                    Label(title: {
+                        Text("Last modified")
+                    }) {
+                        if listsSortType == .lastModifiedDescending {
+                            Image(systemName: "checkmark")
+                        } else {
+                            EmptyView()
+                        }
                     }
                 }
-            }
+
+                Button(action: {
+                    storage.updateListsSortType(.nameAscending)
+                }) {
+                    Label(title: {
+                        Text("Name")
+                    }) {
+                        if listsSortType == .nameAscending {
+                            Image(systemName: "checkmark")
+                        } else {
+                            EmptyView()
+                        }
+                    }
+                }
+
+                Button(action: {
+                    storage.updateListsSortType(.manual)
+                }) {
+                    Label(title: {
+                        Text("Manual")
+                    }) {
+                        if listsSortType == .manual {
+                            Image(systemName: "checkmark")
+                        } else {
+                            EmptyView()
+                        }
+                    }
+                }
+
+            }, label: {
+                Label("Sort by", systemImage: "arrow.up.arrow.down")
+            })
+            .hideIf(lists.isEmpty)
+
         }) {
-            Image(systemName: "line.3.horizontal.decrease.circle")
+            Image(systemName: "ellipsis.circle")
         }
     }
 
@@ -320,6 +355,7 @@ struct HomeView: View {
             sortKey += 1
         }
 
+        storage.updateListsSortType(.manual)
         storage.updateLists(lists)
     }
 

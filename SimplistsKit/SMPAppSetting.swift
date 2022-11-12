@@ -10,7 +10,7 @@ import Foundation
 public enum SMPListsSortType: Int64 {
     case lastModifiedDescending = 0
     case nameAscending = 1
-    case none = 2
+    case manual = 2
 }
 
 extension SMPListsSortType {
