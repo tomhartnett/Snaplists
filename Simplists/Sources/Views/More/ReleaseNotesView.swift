@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ReleaseNotesView: View {
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @Environment(\.dismiss) private var dismiss
     @Binding var isModal: Bool
 
     var versionString: String {
@@ -22,13 +22,11 @@ struct ReleaseNotesView: View {
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                Text("What’s New")
-                    .font(.title)
 
                 Spacer()
 
                 Button(action: {
-                    presentationMode.wrappedValue.dismiss()
+                    dismiss()
                 }) {
                     Image(systemName: "xmark")
                         .font(.system(size: 24))
@@ -37,48 +35,41 @@ struct ReleaseNotesView: View {
                 }
                 .hideIf(!isModal)
             }
+
+            Text("What’s New")
+                .padding(.top)
+                .font(.title)
+
             Text(versionString)
                 .font(.subheadline)
                 .foregroundColor(.secondary)
                 .padding(.bottom, 30)
-            FeatureBulletView("Now you can add a color to each list!")
 
-            FeatureBulletView("Open List options to choose color.")
+            FeatureBulletView("New sorting options for lists. Choose sort order of lists on main screen.")
 
-            HStack {
-                Image(systemName: "ellipsis.circle")
-                    .foregroundColor(.blue)
-                Image(systemName: "arrow.right")
-                Text("List options")
-                Image(systemName: "gearshape")
-            }
-            .padding()
-
-            VStack {
-                ListRowView(
-                    color: .red,
-                    title: "TODOs",
-                    itemCount: 5
-                )
-
-                ListRowView(
-                    color: .green,
-                    title: "Grocery",
-                    itemCount: 10
-                )
-
-                ListRowView(
-                    color: .yellow,
-                    title: "Shopping",
-                    itemCount: 3
-                )
-            }
-            .padding(.horizontal)
+            // swiftlint:disable:next line_length
+            FeatureBulletView("New sorting options for items on a list. Toggle automatic sorting of checked items on/off in list options.")
 
             Spacer()
+
+            VStack(alignment: .center) {
+                Button(action: {
+                    dismiss()
+                }) {
+                    Text("Continue")
+                }
+                .frame(maxWidth: .infinity)
+                .padding()
+                .background(.blue)
+                .foregroundColor(.white)
+                .clipShape(RoundedRectangle(cornerSize: CGSize(width: 8, height: 8)))
+            }
+            .frame(maxWidth: .infinity)
+            .hideIf(!isModal)
+
         }
         .navigationBarTitleDisplayMode(.inline)
-        .padding()
+        .padding(30)
         .onDisappear {
             UserDefaults.simplistsApp.setHasSeenReleaseNotes(true)
         }
