@@ -11,9 +11,10 @@ struct FeatureBulletView: View {
     var featureText: String
 
     var body: some View {
-        HStack {
+        HStack(alignment: .top) {
             Circle()
                 .frame(width: 8, height: 8)
+                .padding(.top, 6)
             Text(featureText)
             Spacer()
         }
@@ -26,6 +27,8 @@ struct FeatureBulletView: View {
 
 struct FeatureBullet_Previews: PreviewProvider {
     static var previews: some View {
-        FeatureBulletView("iCloud Sync and Backup")
+        // swiftlint:disable:next line_length
+        FeatureBulletView("iCloud Sync and Backup. iCloud Sync and Backup. iCloud Sync and Backup. iCloud Sync and Backup. iCloud Sync and Backup.")
+            .padding()
     }
 }
