@@ -32,8 +32,6 @@ public final class SMPStorage: ObservableObject {
         description.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
 
         container.loadPersistentStores(completionHandler: { _, error in
-            // Ignore any errors that might be thrown by lightweight migration.
-            // Note: not certain lightweight migration returns an error or that errors should be ignored here.
             if let error = error {
                 fatalError("\(#function) - Error loading persistent stores: \(error.localizedDescription)")
             }
