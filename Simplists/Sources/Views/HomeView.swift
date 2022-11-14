@@ -251,7 +251,7 @@ struct HomeView: View {
             Button(action: {
                 editMode = .active
             }) {
-                Text("Select lists...")
+                Text("Edit lists...")
                 Image(systemName: "checklist")
             }
             .hideIf(lists.isEmpty)

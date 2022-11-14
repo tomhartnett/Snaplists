@@ -239,7 +239,7 @@ struct ListView: View {
             Button(action: {
                 editMode?.wrappedValue = .active
             }) {
-                Text("Select items...")
+                Text("Edit items...")
                 Image(systemName: "checklist")
             }
             .hideIf(list.items.isEmpty)

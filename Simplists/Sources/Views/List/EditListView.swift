@@ -37,13 +37,15 @@ struct EditListView: View {
                         .submitLabel(.done)
                 }
 
-                Section {
+                Section(content: {
                     Toggle(isOn: $editedModel.isAutoSortEnabled) {
                         Text("Automatically sort items")
                     }
-                }
+                }, header: {
+                    Text("The list sorts itself as items are marked complete")
+                }).textCase(nil)
 
-                Section {
+                Section(content: {
                     ForEach(SMPListColor.allCases, id: \.self) { caseColor in
                         HStack {
                             if caseColor == .none {
@@ -75,7 +77,9 @@ struct EditListView: View {
                             editedModel.color = caseColor
                         }
                     }
-                }
+                }, header: {
+                    Text("The color icon is displayed next to the list name")
+                }).textCase(nil)
             }
             .navigationBarItems(
                 leading: Button(action: {
