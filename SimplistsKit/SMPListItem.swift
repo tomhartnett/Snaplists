@@ -23,3 +23,14 @@ public struct SMPListItem: Identifiable, Equatable {
         self.isComplete = isComplete
     }
 }
+
+extension SMPListItem {
+    init?(entity: ItemEntity) {
+        guard let id = entity.identifier,
+              let title = entity.title else { return nil }
+
+        self.id = id
+        self.isComplete = entity.isComplete
+        self.title = title
+    }
+}

@@ -194,11 +194,23 @@ struct ListView: View {
                 switch item {
                 case .editList:
                     EditListView(
-                        model: .init(listID: list.id, title: list.title, color: list.color)
+                        model: .init(listID: list.id,
+                                     title: list.title,
+                                     color: list.color,
+                                     isAutoSortEnabled: list.isAutoSortEnabled)
                     ) { editedModel in
-                        list.title = editedModel.title
-                        list.color = editedModel.color
-                        storage.updateList(list)
+
+                        if editedModel.isAutoSortEnabled {
+                            withAnimation {
+                                list.items.sort(by: { !$0.isComplete && $1.isComplete })
+                            }
+                        }
+
+                        var updatedList = list
+                        updatedList.title = editedModel.title
+                        updatedList.color = editedModel.color
+                        updatedList.isAutoSortEnabled = editedModel.isAutoSortEnabled
+                        storage.updateList(updatedList)
                     }
 
                 case .moveItems:
@@ -227,7 +239,7 @@ struct ListView: View {
             Button(action: {
                 editMode?.wrappedValue = .active
             }) {
-                Text("Select items...")
+                Text("Edit items...")
                 Image(systemName: "checklist")
             }
             .hideIf(list.items.isEmpty)
@@ -384,7 +396,14 @@ struct ListView: View {
         }
 
         let item = SMPListItem(title: title, isComplete: false)
-        let index = list.items.firstIndex(where: { $0.isComplete }) ?? list.items.count
+
+        let index: Int
+        if list.isAutoSortEnabled {
+            index = list.items.firstIndex(where: { $0.isComplete }) ?? list.items.count
+        } else {
+            index = list.items.count
+        }
+
         withAnimation {
             list.items.insert(item, at: index)
         }
@@ -420,7 +439,9 @@ struct ListView: View {
         list.items.insert(SMPListItem(id: id, title: title, isComplete: isComplete),
                           at: index)
 
-        list.items.sort(by: { !$0.isComplete && $1.isComplete })
+        if list.isAutoSortEnabled {
+            list.items.sort(by: { !$0.isComplete && $1.isComplete })
+        }
 
         storage.updateList(list)
 
