@@ -9,14 +9,14 @@ The app is available in the **App Store** as a free download. There is an in-app
 
 Apple Watch:
 
-![watch screenshot](watch.PNG)
+![watch screenshot](watch-2022.11.png)
 
 
 iPhone:
 
-![iPhone screenshot](iPhone.PNG)
+![iPhone screenshot](iPhone-2022.11.png)
 
 
 iPad:
 
-![iPad screenshot](iPad.PNG)
+![iPad screenshot](iPad-2022.11.png)
