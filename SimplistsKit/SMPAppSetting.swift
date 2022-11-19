@@ -22,19 +22,3 @@ extension SMPListsSortType {
         UUID(uuidString: "00000000-0000-0000-0000-000000000003")!
     }
 }
-
-struct SMPAppSetting {
-    var identifier: UUID
-    var title: String
-    var intValue: Int64
-}
-
-extension SMPAppSetting {
-    init?(entity: AppSettingEntity) {
-        guard let id = entity.identifier, let title = entity.title else { return nil }
-
-        self.init(identifier: id,
-                  title: title,
-                  intValue: entity.intValue)
-    }
-}
