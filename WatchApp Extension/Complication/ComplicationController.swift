@@ -16,14 +16,17 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         let descriptors = [
             CLKComplicationDescriptor(identifier: "complication",
                                       displayName: "Snaplists",
-                                      supportedFamilies: [.circularSmall,
-                                                          .extraLarge,
-                                                          .modularSmall,
-                                                          .utilitarianSmall,
-                                                          .utilitarianLarge,
-                                                          .graphicCorner,
-                                                          .graphicCircular,
-                                                          .graphicBezel])
+                                      supportedFamilies: [
+                                        .circularSmall,
+                                        .extraLarge,
+                                        .modularSmall,
+                                        .utilitarianSmall,
+                                        .utilitarianLarge,
+                                        .graphicCorner,
+                                        .graphicCircular,
+                                        .graphicBezel,
+                                        .graphicExtraLarge
+                                      ])
         ]
 
         // Call the handler with the currently supported complication descriptors
@@ -116,8 +119,10 @@ private extension ComplicationController {
 
         case .graphicRectangular:
             break
+
         case .graphicExtraLarge:
-            break
+            template = CLKComplicationTemplateGraphicExtraLargeCircularView(GraphicExtraLargeComplication())
+
         @unknown default:
             break
         }

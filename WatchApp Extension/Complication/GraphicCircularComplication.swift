@@ -17,8 +17,7 @@ struct GraphicCircularComplication: View {
                 Color("GraphicComplicationBackground")
             }
 
-            Image("GraphicCircularTemplate")
-                .complicationForeground()
+            Image("Complication/Graphic Circular")
         }
     }
 }

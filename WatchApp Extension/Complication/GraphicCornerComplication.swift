@@ -17,7 +17,7 @@ struct GraphicCornerComplication: View {
                 Color("GraphicComplicationBackground")
             }
 
-            Image("GraphicCornerTemplate")
+            Image("Graphic Corner")
                 .complicationForeground()
         }
     }
