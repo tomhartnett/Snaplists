@@ -57,6 +57,9 @@
 		E23925B726A460BE00C59053 /* ListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23925B626A460BE00C59053 /* ListRowView.swift */; };
 		E241A046258FBA7D000277BE /* StoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E241A045258FBA7D000277BE /* StoreView.swift */; };
 		E2484C1428EBB65000AD3E0E /* HomeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2484C1328EBB65000AD3E0E /* HomeUITests.swift */; };
+		E249295029436A1E00976683 /* GraphicCircularComplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = E249294F29436A1E00976683 /* GraphicCircularComplication.swift */; };
+		E2492952294377BC00976683 /* GraphicCornerComplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2492951294377BC00976683 /* GraphicCornerComplication.swift */; };
+		E24929542944E57D00976683 /* GraphicExtraLargeComplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24929532944E57D00976683 /* GraphicExtraLargeComplication.swift */; };
 		E24FACA4251CEC7C002B0B97 /* WatchAuthenticationErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24FACA3251CEC7C002B0B97 /* WatchAuthenticationErrorView.swift */; };
 		E250E1B0269B2B6C00860DEC /* EditListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E250E1AC269B2B6C00860DEC /* EditListView.swift */; };
 		E250E1B1269B2B6C00860DEC /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E250E1AD269B2B6C00860DEC /* ListView.swift */; };
@@ -297,6 +300,9 @@
 		E241A045258FBA7D000277BE /* StoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreView.swift; sourceTree = "<group>"; };
 		E2484C1128EBB65000AD3E0E /* SimplistsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimplistsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2484C1328EBB65000AD3E0E /* HomeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUITests.swift; sourceTree = "<group>"; };
+		E249294F29436A1E00976683 /* GraphicCircularComplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicCircularComplication.swift; sourceTree = "<group>"; };
+		E2492951294377BC00976683 /* GraphicCornerComplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicCornerComplication.swift; sourceTree = "<group>"; };
+		E24929532944E57D00976683 /* GraphicExtraLargeComplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicExtraLargeComplication.swift; sourceTree = "<group>"; };
 		E24FACA3251CEC7C002B0B97 /* WatchAuthenticationErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchAuthenticationErrorView.swift; sourceTree = "<group>"; };
 		E250E1AC269B2B6C00860DEC /* EditListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditListView.swift; sourceTree = "<group>"; };
 		E250E1AD269B2B6C00860DEC /* ListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
@@ -522,6 +528,9 @@
 			isa = PBXGroup;
 			children = (
 				E235D7C324DF5B89007D95BE /* ComplicationController.swift */,
+				E249294F29436A1E00976683 /* GraphicCircularComplication.swift */,
+				E2492951294377BC00976683 /* GraphicCornerComplication.swift */,
+				E24929532944E57D00976683 /* GraphicExtraLargeComplication.swift */,
 			);
 			path = Complication;
 			sourceTree = "<group>";
@@ -1147,12 +1156,15 @@
 				E22E152A24E0769E002A140E /* WatchHomeView.swift in Sources */,
 				E282851425F52E2F00EE8997 /* WatchParagraphView.swift in Sources */,
 				E2B62BAF25E2C68E00898B21 /* FreeLimits.swift in Sources */,
+				E2492952294377BC00976683 /* GraphicCornerComplication.swift in Sources */,
 				E2D2D6FC25EC42AD00C305DA /* StoreService.swift in Sources */,
 				E2B21E1528DFEC4500DC0E47 /* SMPListColor+Extensions.swift in Sources */,
 				E24FACA4251CEC7C002B0B97 /* WatchAuthenticationErrorView.swift in Sources */,
 				E235D7C424DF5B89007D95BE /* ComplicationController.swift in Sources */,
 				E2D2D6F525E7E18D00C305DA /* UserDefaults+Extensions.swift in Sources */,
+				E24929542944E57D00976683 /* GraphicExtraLargeComplication.swift in Sources */,
 				E2A6100525E2A67F000F492C /* WatchNewItemView.swift in Sources */,
+				E249295029436A1E00976683 /* GraphicCircularComplication.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
