@@ -6,6 +6,7 @@
 //
 
 import ClockKit
+import SwiftUI
 
 class ComplicationController: NSObject, CLKComplicationDataSource {
 
@@ -103,43 +104,16 @@ private extension ComplicationController {
             imageProvider.tintColor = .white
             template = CLKComplicationTemplateExtraLargeSimpleImage(imageProvider: imageProvider)
         case .graphicBezel:
-            let tintBackground = UIImage(named: "GraphicCircularTemplate")!
-            let tintForeground = UIImage(named: "GraphicCircularTransparent")!
-            let fullColorImage = UIImage(named: "GraphicCircularFullColor")!
-            let tintedImageProvider = CLKImageProvider(onePieceImage: tintBackground,
-                                                       twoPieceImageBackground: tintBackground,
-                                                       twoPieceImageForeground: tintForeground)
-            let fullColorImageProvider = CLKFullColorImageProvider(fullColorImage: fullColorImage,
-                                                                   tintedImageProvider: tintedImageProvider)
-            let circularTemplate = CLKComplicationTemplateGraphicCircularImage(imageProvider: fullColorImageProvider)
+            let circularTemplate = CLKComplicationTemplateGraphicCircularView(GraphicCircularComplication())
             let textProvider = CLKSimpleTextProvider(text: "Snaplists")
             template = CLKComplicationTemplateGraphicBezelCircularText(circularTemplate: circularTemplate,
                                                                        textProvider: textProvider)
         case .graphicCorner:
-            let tintBackground = UIImage(named: "GraphicCornerTemplate")!
-            let tintForeground = UIImage(named: "GraphicCornerTransparent")!
-            let fullColorImage = UIImage(named: "GraphicCornerFullColor")!
-            let tintedImageProvider = CLKImageProvider(onePieceImage: tintBackground,
-                                                       twoPieceImageBackground: tintBackground,
-                                                       twoPieceImageForeground: tintForeground)
-            let fullColorImageProvider = CLKFullColorImageProvider(fullColorImage: fullColorImage,
-                                                                   tintedImageProvider: tintedImageProvider)
-            template = CLKComplicationTemplateGraphicCornerCircularImage(imageProvider: fullColorImageProvider)
+            template = CLKComplicationTemplateGraphicCornerCircularView(GraphicCornerComplication())
+
         case .graphicCircular:
-            // tintBackground & tintForeground are swapped to make the "template" image the "background".
-            // This keeps it white instead of giving it the tint color, which I thought looks odd.
-            // Probably not necessary, but did the same with .graphicCorner above. That complication didn't
-            // use the tint color; it was white, but decided to future-proof with same "swapping".
-            // Definitely also necessary for .graphicBezel above. It's basically just .graphicCircular with text.
-            let tintBackground = UIImage(named: "GraphicCircularTemplate")!
-            let tintForeground = UIImage(named: "GraphicCircularTransparent")!
-            let fullColorImage = UIImage(named: "GraphicCircularFullColor")!
-            let tintedImageProvider = CLKImageProvider(onePieceImage: tintBackground,
-                                                       twoPieceImageBackground: tintBackground,
-                                                       twoPieceImageForeground: tintForeground)
-            let fullColorImageProvider = CLKFullColorImageProvider(fullColorImage: fullColorImage,
-                                                                   tintedImageProvider: tintedImageProvider)
-            template = CLKComplicationTemplateGraphicCircularImage(imageProvider: fullColorImageProvider)
+            template = CLKComplicationTemplateGraphicCircularView(GraphicCircularComplication())
+
         case .graphicRectangular:
             break
         case .graphicExtraLarge:
