@@ -45,10 +45,10 @@ struct ReleaseNotesView: View {
                 .foregroundColor(.secondary)
                 .padding(.bottom, 30)
 
-            FeatureBulletView("New sorting options for lists. Choose sort order of lists on main screen.")
+            FeatureBulletView("New sorting options for lists. Sort lists by name, date, or custom sort order.")
 
             // swiftlint:disable:next line_length
-            FeatureBulletView("New sorting options for items on a list. Toggle automatic sorting of checked items on/off in list options.")
+            FeatureBulletView("New sorting options for items on a list. Toggle automatic sorting of checked items on/off.")
 
             Spacer()
 
