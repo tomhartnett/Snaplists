@@ -33,6 +33,7 @@ struct SmallWidgetView: View {
 
                         Text(list.title)
                             .font(.headline)
+                            .lineLimit(1)
                     }
 
                     VStack(alignment: .leading) {
