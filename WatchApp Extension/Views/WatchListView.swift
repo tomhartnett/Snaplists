@@ -11,6 +11,7 @@ import SimplistsKit
 enum WatchListActiveSheet: Identifiable {
     case freeLimitView
     case newItemView
+    case listMenu
 
     var id: Int {
         hashValue
@@ -51,41 +52,38 @@ struct WatchListView: View {
 
     var body: some View {
         VStack {
-            List {
-                Section(header:
-                            WatchListHeaderView(itemCount: list.items.count),
-                        content: {
-                            Button(action: {
-                                addNewItem()
-                            }, label: {
-                                HStack {
-                                    Image(systemName: "plus")
-                                    Text("list-new-item-button-text")
-                                }
-                                .font(.headline)
-                                .foregroundColor(buttonForegroundColor)
-                            })
-                            .listRowBackground(
-                                buttonBackgroundColor
-                                    .clipped()
-                                    .cornerRadius(8)
-                            )
+            ScrollView {
+                HStack {
+                    Button(action: {
+                        addNewItem()
+                    }, label: {
+                        Label("Add", systemImage: "plus")
+                    })
 
-                            ForEach(list.items) { item in
-                                WatchListItemView(
-                                    item: item,
-                                    accentColor: list.color == .none ? Color.white : list.color.swiftUIColor,
-                                    tapAction: {
-                                        withAnimation {
-                                            updateItem(id: item.id, title: item.title, isComplete: !item.isComplete)
-                                        }
-                                    }
-                                )
+                    Button(action: {
+                        activeSheet = .listMenu
+                    }, label: {
+                        Image(systemName: "ellipsis")
+                    })
+                }
+                .font(.title3)
+                .foregroundColor(buttonForegroundColor)
+
+                ForEach(list.items) { item in
+                    WatchListItemView(
+                        item: item,
+                        accentColor: list.color == .none ? Color.white : list.color.swiftUIColor,
+                        tapAction: {
+                            withAnimation {
+                                updateItem(id: item.id, title: item.title, isComplete: !item.isComplete)
                             }
-                            .onDelete(perform: delete)
-                        }).textCase(nil)
+                        }
+                    )
+
+                    Divider()
+                }
+                .onDelete(perform: delete)
             }
-            .padding(.top, 6)
         }
         .navigationBarTitle(list.title)
         .onReceive(storage.objectWillChange, perform: { _ in
@@ -96,8 +94,12 @@ struct WatchListView: View {
             case .freeLimitView:
                 WatchStoreView(freeLimitMessage: FreeLimits.numberOfItems.message)
                     .environmentObject(storeDataSource)
+
             case .newItemView:
                 WatchNewItemView(list: $list)
+
+            case .listMenu:
+                WatchListMenuView()
             }
         }
     }
@@ -159,11 +161,5 @@ struct ListView_Previews: PreviewProvider {
             )
             .environmentObject(SMPStorage())
         }
-
-        WatchListView(
-            list: SMPList(title: "Grocery",
-                          items: [])
-        )
-        .environmentObject(SMPStorage())
     }
 }
