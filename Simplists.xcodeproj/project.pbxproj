@@ -285,7 +285,6 @@
 		E235D7C324DF5B89007D95BE /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
 		E235D7C524DF5B89007D95BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E235D7C824DF5B89007D95BE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		E235D7CA24DF5B89007D95BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E235D7D724E036F6007D95BE /* Simplists.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Simplists.entitlements; sourceTree = "<group>"; };
 		E235D7D924E0372D007D95BE /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		E235D7DB24E0374A007D95BE /* WatchApp Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "WatchApp Extension.entitlements"; sourceTree = "<group>"; };
@@ -616,7 +615,6 @@
 				E22E152624E0698B002A140E /* Views */,
 				E235D7DB24E0374A007D95BE /* WatchApp Extension.entitlements */,
 				E235D7C524DF5B89007D95BE /* Assets.xcassets */,
-				E235D7CA24DF5B89007D95BE /* Info.plist */,
 				E2BB0B5525DEA6A0004A1AB6 /* Localizable.strings */,
 				E2BB0B6025DEA6DE004A1AB6 /* Localizable.stringsdict */,
 				E235D7C724DF5B89007D95BE /* Preview Content */,
