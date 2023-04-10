@@ -285,7 +285,7 @@
 		E235D7C524DF5B89007D95BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E235D7D724E036F6007D95BE /* Simplists.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Simplists.entitlements; sourceTree = "<group>"; };
 		E235D7D924E0372D007D95BE /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
-		E235D7DB24E0374A007D95BE /* WatchApp Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "WatchApp Extension.entitlements"; sourceTree = "<group>"; };
+		E235D7DB24E0374A007D95BE /* WatchApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WatchApp.entitlements; sourceTree = "<group>"; };
 		E235D7DC24E0374D007D95BE /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS7.0.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		E235D7E324E037B9007D95BE /* SimplistsKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SimplistsKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E235D7E524E037B9007D95BE /* SimplistsKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimplistsKit.h; sourceTree = "<group>"; };
@@ -549,8 +549,7 @@
 				E20F8A8F26D19C540016E2C7 /* SimplistsWidgetExtension.entitlements */,
 				E2B62BAE25E2C67900898B21 /* Shared */,
 				E235D79124DF5B59007D95BE /* Simplists */,
-				E235D7A924DF5B88007D95BE /* WatchApp */,
-				E235D7B824DF5B89007D95BE /* WatchApp Extension */,
+				E235D7B824DF5B89007D95BE /* WatchApp */,
 				E235D7E424E037B9007D95BE /* SimplistsKit */,
 				E20F8A8326D19C510016E2C7 /* SimplistsWidget */,
 				E252C78327D53BEE00B29F6A /* SimplistsIntentHandler */,
@@ -596,27 +595,20 @@
 			path = PreviewContent;
 			sourceTree = "<group>";
 		};
-		E235D7A924DF5B88007D95BE /* WatchApp */ = {
-			isa = PBXGroup;
-			children = (
-				E235D7AF24DF5B89007D95BE /* Info.plist */,
-			);
-			path = WatchApp;
-			sourceTree = "<group>";
-		};
-		E235D7B824DF5B89007D95BE /* WatchApp Extension */ = {
+		E235D7B824DF5B89007D95BE /* WatchApp */ = {
 			isa = PBXGroup;
 			children = (
 				E2D2D6F325E7E17B00C305DA /* Extensions */,
 				E22E152824E06A6E002A140E /* Complication */,
 				E22E152724E06A4F002A140E /* Startup */,
 				E22E152624E0698B002A140E /* Views */,
-				E235D7DB24E0374A007D95BE /* WatchApp Extension.entitlements */,
+				E235D7AF24DF5B89007D95BE /* Info.plist */,
+				E235D7DB24E0374A007D95BE /* WatchApp.entitlements */,
 				E235D7C524DF5B89007D95BE /* Assets.xcassets */,
 				E2BB0B5525DEA6A0004A1AB6 /* Localizable.strings */,
 				E2BB0B6025DEA6DE004A1AB6 /* Localizable.stringsdict */,
 			);
-			path = "WatchApp Extension";
+			path = WatchApp;
 			sourceTree = "<group>";
 		};
 		E235D7D824E0372D007D95BE /* Frameworks */ = {
@@ -1518,7 +1510,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				BUNDLE_DISPLAY_NAME = "Snaplists Debug";
-				CODE_SIGN_ENTITLEMENTS = "WatchApp Extension/WatchApp Extension.entitlements";
+				CODE_SIGN_ENTITLEMENTS = WatchApp/WatchApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMPANION_APP_BUNDLE_ID = com.sleekible.Simplists.debug;
 				DEVELOPMENT_TEAM = 25V97QMNV5;
@@ -1545,7 +1537,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				BUNDLE_DISPLAY_NAME = Snaplists;
-				CODE_SIGN_ENTITLEMENTS = "WatchApp Extension/WatchApp Extension.entitlements";
+				CODE_SIGN_ENTITLEMENTS = WatchApp/WatchApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMPANION_APP_BUNDLE_ID = com.sleekible.Simplists;
 				DEVELOPMENT_TEAM = 25V97QMNV5;
