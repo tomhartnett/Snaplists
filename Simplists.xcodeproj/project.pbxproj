@@ -36,6 +36,7 @@
 		E22E152324E060C2002A140E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E152224E060C2002A140E /* HomeView.swift */; };
 		E22E152A24E0769E002A140E /* WatchHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E152924E0769E002A140E /* WatchHomeView.swift */; };
 		E22E153024E0871D002A140E /* SMPPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E152F24E0871D002A140E /* SMPPersistentContainer.swift */; };
+		E2342D5529E43C78005B3164 /* WatchListOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2342D5429E43C78005B3164 /* WatchListOptionsView.swift */; };
 		E235D79324DF5B59007D95BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D79224DF5B59007D95BE /* AppDelegate.swift */; };
 		E235D79524DF5B59007D95BE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D79424DF5B59007D95BE /* SceneDelegate.swift */; };
 		E235D79924DF5B5A007D95BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E235D79824DF5B5A007D95BE /* Assets.xcassets */; };
@@ -271,6 +272,7 @@
 		E22E152924E0769E002A140E /* WatchHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchHomeView.swift; sourceTree = "<group>"; };
 		E22E152F24E0871D002A140E /* SMPPersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMPPersistentContainer.swift; sourceTree = "<group>"; };
 		E231A10929212F0800EBC1BE /* Project.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
+		E2342D5429E43C78005B3164 /* WatchListOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListOptionsView.swift; sourceTree = "<group>"; };
 		E235D78F24DF5B59007D95BE /* Simplists.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Simplists.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E235D79224DF5B59007D95BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E235D79424DF5B59007D95BE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -509,6 +511,7 @@
 				E2BB0B6425DEA9FD004A1AB6 /* WatchListHeaderView.swift */,
 				E235D7F924E04C3F007D95BE /* WatchListItemView.swift */,
 				E22B91C129E1C31800947040 /* WatchListMenuView.swift */,
+				E2342D5429E43C78005B3164 /* WatchListOptionsView.swift */,
 				E235D7BB24DF5B89007D95BE /* WatchListView.swift */,
 			);
 			path = Views;
@@ -1136,6 +1139,7 @@
 				E2B62BAF25E2C68E00898B21 /* FreeLimits.swift in Sources */,
 				E2492952294377BC00976683 /* GraphicCornerComplication.swift in Sources */,
 				E2D2D6FC25EC42AD00C305DA /* StoreService.swift in Sources */,
+				E2342D5529E43C78005B3164 /* WatchListOptionsView.swift in Sources */,
 				E2B21E1528DFEC4500DC0E47 /* SMPListColor+Extensions.swift in Sources */,
 				E24FACA4251CEC7C002B0B97 /* WatchAuthenticationErrorView.swift in Sources */,
 				E235D7C424DF5B89007D95BE /* ComplicationController.swift in Sources */,
