@@ -51,24 +51,40 @@ struct WatchListView: View {
     }
 
     var body: some View {
-        VStack {
-            ScrollView {
+        List {
+            HStack {
+                Button(action: {
+                    addNewItem()
+                }, label: {
+                    Label("Add", systemImage: "plus")
+                })
+                .padding()
+                .buttonStyle(PlainButtonStyle())
+
+                Spacer()
+
+                Button(action: {
+                    activeSheet = .listMenu
+                }, label: {
+                    Image(systemName: "ellipsis.circle")
+                })
+                .padding()
+                .buttonStyle(BorderlessButtonStyle())
+            }
+            .listRowBackground(EmptyView())
+            .font(.title3)
+            .foregroundColor(buttonForegroundColor)
+
+            if list.items.isEmpty {
                 HStack {
-                    Button(action: {
-                        addNewItem()
-                    }, label: {
-                        Label("Add", systemImage: "plus")
-                    })
-
-                    Button(action: {
-                        activeSheet = .listMenu
-                    }, label: {
-                        Image(systemName: "ellipsis")
-                    })
+                    Spacer()
+                    Text("No items")
+                        .foregroundColor(.secondary)
+                    Spacer()
                 }
-                .font(.title3)
-                .foregroundColor(buttonForegroundColor)
-
+                .padding(.top, 20)
+                .listRowBackground(EmptyView())
+            } else {
                 ForEach(list.items) { item in
                     WatchListItemView(
                         item: item,
@@ -79,8 +95,6 @@ struct WatchListView: View {
                             }
                         }
                     )
-
-                    Divider()
                 }
                 .onDelete(perform: delete)
             }
