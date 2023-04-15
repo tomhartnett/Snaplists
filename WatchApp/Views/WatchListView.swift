@@ -33,23 +33,6 @@ struct WatchListView: View {
         }
     }
 
-    var buttonForegroundColor: Color {
-        switch list.color {
-        case .none, .gray, .red, .orange, .blue, .purple:
-            return Color.white
-        case .yellow, .green:
-            return Color.black
-        }
-    }
-
-    var buttonBackgroundColor: Color {
-        if list.color == .none {
-            return Color("ButtonBlue")
-        } else {
-            return list.color.swiftUIColor
-        }
-    }
-
     var body: some View {
         List {
             HStack {
@@ -59,7 +42,6 @@ struct WatchListView: View {
                     Label("Add", systemImage: "plus")
                 })
                 .padding()
-                .buttonStyle(PlainButtonStyle())
 
                 Spacer()
 
@@ -69,11 +51,11 @@ struct WatchListView: View {
                     Image(systemName: "ellipsis.circle")
                 })
                 .padding()
-                .buttonStyle(BorderlessButtonStyle())
             }
+            .buttonStyle(BorderlessButtonStyle())
+            .foregroundColor(.primary)
             .listRowBackground(EmptyView())
             .font(.title3)
-            .foregroundColor(buttonForegroundColor)
 
             if list.items.isEmpty {
                 HStack {
@@ -113,7 +95,9 @@ struct WatchListView: View {
                 WatchNewItemView(list: $list)
 
             case .listMenu:
-                WatchListMenuView()
+                WatchListMenuView(model: list) { updatedList in
+                    storage.updateList(updatedList)
+                }
             }
         }
     }
@@ -153,7 +137,9 @@ struct WatchListView: View {
         list.items.insert(SMPListItem(id: id, title: title, isComplete: isComplete),
                           at: index)
 
-        list.items.sort(by: { !$0.isComplete && $1.isComplete })
+        if list.isAutoSortEnabled {
+            list.items.sort(by: { !$0.isComplete && $1.isComplete })
+        }
 
         storage.updateList(list)
     }

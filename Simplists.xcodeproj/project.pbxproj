@@ -15,6 +15,7 @@
 		E203CBC727F0B4CF00651CEC /* LargeListsWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E203CBC627F0B4CF00651CEC /* LargeListsWidgetView.swift */; };
 		E203CBC927F0B4DE00651CEC /* ListsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E203CBC827F0B4DE00651CEC /* ListsView.swift */; };
 		E203CBCC27F0B8C800651CEC /* SimplistsWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E203CBCB27F0B8C800651CEC /* SimplistsWidgetBundle.swift */; };
+		E205E2BD29E8D205001EB7A6 /* ConditionalHiddenModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20BD7782754057200671478 /* ConditionalHiddenModifier.swift */; };
 		E20BD7792754057200671478 /* ConditionalHiddenModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20BD7782754057200671478 /* ConditionalHiddenModifier.swift */; };
 		E20F8A8026D19C510016E2C7 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E20F8A7F26D19C510016E2C7 /* WidgetKit.framework */; };
 		E20F8A8226D19C510016E2C7 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E20F8A8126D19C510016E2C7 /* SwiftUI.framework */; };
@@ -1140,6 +1141,7 @@
 				E2492952294377BC00976683 /* GraphicCornerComplication.swift in Sources */,
 				E2D2D6FC25EC42AD00C305DA /* StoreService.swift in Sources */,
 				E2342D5529E43C78005B3164 /* WatchListOptionsView.swift in Sources */,
+				E205E2BD29E8D205001EB7A6 /* ConditionalHiddenModifier.swift in Sources */,
 				E2B21E1528DFEC4500DC0E47 /* SMPListColor+Extensions.swift in Sources */,
 				E24FACA4251CEC7C002B0B97 /* WatchAuthenticationErrorView.swift in Sources */,
 				E235D7C424DF5B89007D95BE /* ComplicationController.swift in Sources */,

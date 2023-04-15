@@ -176,7 +176,7 @@ struct HomeView: View {
         .sheet(item: $activeSheet) { item in
             switch item {
             case .editList(let id):
-                var list = lists.first(where: { $0.id == id }) ?? SMPList(title: "")
+                var list = lists.first(where: { $0.id == id }) ?? SMPList()
 
                 EditListView(
                     model: .init(listID: id,

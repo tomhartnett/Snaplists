@@ -9,17 +9,21 @@ import SimplistsKit
 import SwiftUI
 
 struct WatchListOptionsView: View {
-    @State private var title = ""
-    @State private var autoSort = true
+    @State private var editedModel = SMPList()
+
+    var model: SMPList
+
+    var onDismiss: ((SMPList) -> Void)
 
     var body: some View {
         ScrollView {
-            TextField("List name", text: $title)
+            TextField("List name", text: $editedModel.title)
 
             Divider()
                 .padding(.vertical)
 
-            Toggle("Automatically sort items", isOn: $autoSort)
+            Toggle("Automatically sort items",
+                   isOn: $editedModel.isAutoSortEnabled)
 
             Divider()
                 .padding(.vertical)
@@ -39,7 +43,24 @@ struct WatchListOptionsView: View {
                     Text(caseColor.title)
 
                     Spacer()
+
+                    if editedModel.color == caseColor {
+                        Image(systemName: "checkmark")
+                    } else {
+                        EmptyView()
+                    }
                 }
+                .onTapGesture {
+                    editedModel.color = caseColor
+                }
+            }
+        }
+        .onAppear {
+            editedModel = model
+        }
+        .onDisappear {
+            if model != editedModel {
+                onDismiss(editedModel)
             }
         }
     }
@@ -47,6 +68,6 @@ struct WatchListOptionsView: View {
 
 struct WatchListOptionsView_Previews: PreviewProvider {
     static var previews: some View {
-        WatchListOptionsView()
+        WatchListOptionsView(model: SMPList(title: "TODOs"), onDismiss: { _ in })
     }
 }
