@@ -146,6 +146,7 @@ struct HomeView: View {
                             .hideIf(editMode != .active)
 
                         sortActionsMenu
+                            .accessibilityIdentifier("MoreMenu")
                             .hideIf(editMode != .inactive)
                     }
             )

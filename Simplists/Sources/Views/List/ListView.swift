@@ -187,6 +187,7 @@ struct ListView: View {
                         .hideIf(focusedField == nil && focusedItemField == nil)
 
                         listActionsMenu
+                            .accessibilityIdentifier("MoreMenu")
                             .hideIf(editMode?.wrappedValue == .active || focusedField != nil || focusedItemField != nil)
                     }
             )
@@ -228,7 +229,6 @@ struct ListView: View {
 
     var listActionsMenu: some View {
         Menu(content: {
-
             Button(action: {
                 activeSheet = .editList
             }) {

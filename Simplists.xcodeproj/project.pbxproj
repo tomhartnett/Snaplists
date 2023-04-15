@@ -16,6 +16,9 @@
 		E203CBC927F0B4DE00651CEC /* ListsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E203CBC827F0B4DE00651CEC /* ListsView.swift */; };
 		E203CBCC27F0B8C800651CEC /* SimplistsWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E203CBCB27F0B8C800651CEC /* SimplistsWidgetBundle.swift */; };
 		E205E2BD29E8D205001EB7A6 /* ConditionalHiddenModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20BD7782754057200671478 /* ConditionalHiddenModifier.swift */; };
+		E205E2C629EAE807001EB7A6 /* SimplistsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E235D7E324E037B9007D95BE /* SimplistsKit.framework */; };
+		E205E2CD29EAE81A001EB7A6 /* SMPStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E205E2CC29EAE81A001EB7A6 /* SMPStorageTests.swift */; };
+		E205E2CF29EAE865001EB7A6 /* TestContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E205E2CE29EAE865001EB7A6 /* TestContainer.swift */; };
 		E20BD7792754057200671478 /* ConditionalHiddenModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20BD7782754057200671478 /* ConditionalHiddenModifier.swift */; };
 		E20F8A8026D19C510016E2C7 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E20F8A7F26D19C510016E2C7 /* WidgetKit.framework */; };
 		E20F8A8226D19C510016E2C7 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E20F8A8126D19C510016E2C7 /* SwiftUI.framework */; };
@@ -136,6 +139,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		E205E2C729EAE807001EB7A6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E235D78724DF5B58007D95BE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E235D7E224E037B9007D95BE;
+			remoteInfo = SimplistsKit;
+		};
 		E20F8A8C26D19C540016E2C7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E235D78724DF5B58007D95BE /* Project object */;
@@ -251,6 +261,9 @@
 		E203CBC627F0B4CF00651CEC /* LargeListsWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeListsWidgetView.swift; sourceTree = "<group>"; };
 		E203CBC827F0B4DE00651CEC /* ListsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsView.swift; sourceTree = "<group>"; };
 		E203CBCB27F0B8C800651CEC /* SimplistsWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimplistsWidgetBundle.swift; sourceTree = "<group>"; };
+		E205E2C229EAE807001EB7A6 /* SimplistsKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimplistsKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E205E2CC29EAE81A001EB7A6 /* SMPStorageTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMPStorageTests.swift; sourceTree = "<group>"; };
+		E205E2CE29EAE865001EB7A6 /* TestContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestContainer.swift; sourceTree = "<group>"; };
 		E20BD7782754057200671478 /* ConditionalHiddenModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionalHiddenModifier.swift; sourceTree = "<group>"; };
 		E20F8A7E26D19C510016E2C7 /* SimplistsWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SimplistsWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		E20F8A7F26D19C510016E2C7 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -369,6 +382,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		E205E2BF29EAE807001EB7A6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E205E2C629EAE807001EB7A6 /* SimplistsKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E20F8A7B26D19C510016E2C7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -457,6 +478,14 @@
 				E2CE179526E69ADD00664BF3 /* WidgetItemView.swift */,
 			);
 			path = SingleListWidget;
+			sourceTree = "<group>";
+		};
+		E205E2C329EAE807001EB7A6 /* SimplistsKitTests */ = {
+			isa = PBXGroup;
+			children = (
+				E205E2CC29EAE81A001EB7A6 /* SMPStorageTests.swift */,
+			);
+			path = SimplistsKitTests;
 			sourceTree = "<group>";
 		};
 		E20F8A8326D19C510016E2C7 /* SimplistsWidget */ = {
@@ -558,6 +587,7 @@
 				E20F8A8326D19C510016E2C7 /* SimplistsWidget */,
 				E252C78327D53BEE00B29F6A /* SimplistsIntentHandler */,
 				E2484C1228EBB65000AD3E0E /* SimplistsUITests */,
+				E205E2C329EAE807001EB7A6 /* SimplistsKitTests */,
 				E235D79024DF5B59007D95BE /* Products */,
 				E235D7D824E0372D007D95BE /* Frameworks */,
 			);
@@ -572,6 +602,7 @@
 				E20F8A7E26D19C510016E2C7 /* SimplistsWidgetExtension.appex */,
 				E252C78027D53BEE00B29F6A /* SimplistsIntentHandler.appex */,
 				E2484C1128EBB65000AD3E0E /* SimplistsUITests.xctest */,
+				E205E2C229EAE807001EB7A6 /* SimplistsKitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -640,6 +671,7 @@
 				E22E152F24E0871D002A140E /* SMPPersistentContainer.swift */,
 				E2AFBDBB24F16348008D9E3F /* ListEntity+Extensions.swift */,
 				E2A00B3E2917FBAF002279AE /* SMPAppSetting.swift */,
+				E205E2CE29EAE865001EB7A6 /* TestContainer.swift */,
 			);
 			path = SimplistsKit;
 			sourceTree = "<group>";
@@ -790,6 +822,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		E205E2C129EAE807001EB7A6 /* SimplistsKitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E205E2C929EAE807001EB7A6 /* Build configuration list for PBXNativeTarget "SimplistsKitTests" */;
+			buildPhases = (
+				E205E2BE29EAE807001EB7A6 /* Sources */,
+				E205E2BF29EAE807001EB7A6 /* Frameworks */,
+				E205E2C029EAE807001EB7A6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E205E2C829EAE807001EB7A6 /* PBXTargetDependency */,
+			);
+			name = SimplistsKitTests;
+			productName = SimplistsKitTests;
+			productReference = E205E2C229EAE807001EB7A6 /* SimplistsKitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		E20F8A7D26D19C510016E2C7 /* SimplistsWidgetExtension */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E20F8A9026D19C540016E2C7 /* Build configuration list for PBXNativeTarget "SimplistsWidgetExtension" */;
@@ -915,9 +965,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastSwiftUpdateCheck = 1400;
+				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					E205E2C129EAE807001EB7A6 = {
+						CreatedOnToolsVersion = 14.3;
+					};
 					E20F8A7D26D19C510016E2C7 = {
 						CreatedOnToolsVersion = 13.0;
 					};
@@ -961,11 +1014,19 @@
 				E20F8A7D26D19C510016E2C7 /* SimplistsWidgetExtension */,
 				E252C77F27D53BEE00B29F6A /* SimplistsIntentHandler */,
 				E2484C1028EBB65000AD3E0E /* SimplistsUITests */,
+				E205E2C129EAE807001EB7A6 /* SimplistsKitTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		E205E2C029EAE807001EB7A6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E20F8A7C26D19C510016E2C7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1045,6 +1106,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		E205E2BE29EAE807001EB7A6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E205E2CD29EAE81A001EB7A6 /* SMPStorageTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E20F8A7A26D19C510016E2C7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1158,6 +1227,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E235D7F424E046D7007D95BE /* SMPStorage.swift in Sources */,
+				E205E2CF29EAE865001EB7A6 /* TestContainer.swift in Sources */,
 				E27CDF5C24ECA7BC004B6A32 /* Simplists.xcdatamodeld in Sources */,
 				E22E152024E05BBC002A140E /* SMPList.swift in Sources */,
 				E235D7FC24E04CC1007D95BE /* SMPListItem.swift in Sources */,
@@ -1189,6 +1259,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		E205E2C829EAE807001EB7A6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E235D7E224E037B9007D95BE /* SimplistsKit */;
+			targetProxy = E205E2C729EAE807001EB7A6 /* PBXContainerItemProxy */;
+		};
 		E20F8A8D26D19C540016E2C7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E20F8A7D26D19C510016E2C7 /* SimplistsWidgetExtension */;
@@ -1276,6 +1351,42 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		E205E2CA29EAE807001EB7A6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 25V97QMNV5;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sleekible.SimplistsKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E205E2CB29EAE807001EB7A6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 25V97QMNV5;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sleekible.SimplistsKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		E20F8A9126D19C540016E2C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E231A10929212F0800EBC1BE /* Project.xcconfig */;
@@ -1727,6 +1838,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		E205E2C929EAE807001EB7A6 /* Build configuration list for PBXNativeTarget "SimplistsKitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E205E2CA29EAE807001EB7A6 /* Debug */,
+				E205E2CB29EAE807001EB7A6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		E20F8A9026D19C540016E2C7 /* Build configuration list for PBXNativeTarget "SimplistsWidgetExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

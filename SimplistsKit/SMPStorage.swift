@@ -16,7 +16,20 @@ public final class SMPStorage: ObservableObject {
 
     private let context: NSManagedObjectContext
 
-    public init() {
+    private var lastToken: NSPersistentHistoryToken?
+
+    public init(context: NSManagedObjectContext) {
+        self.context = context
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(notifyRemoteChange),
+            name: Notification.Name.NSPersistentStoreRemoteChange,
+            object: context.persistentStoreCoordinator
+        )
+    }
+
+    public convenience init() {
         let container = SMPPersistentContainer(name: "Simplists")
 
         guard let description = container.persistentStoreDescriptions.first else {
@@ -40,14 +53,7 @@ public final class SMPStorage: ObservableObject {
         container.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
         container.viewContext.automaticallyMergesChangesFromParent = true
 
-        self.context = container.viewContext
-
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(notifyRemoteChange),
-            name: Notification.Name.NSPersistentStoreRemoteChange,
-            object: context.persistentStoreCoordinator
-        )
+        self.init(context: container.viewContext)
     }
 
     public func getListsCount(isArchived: Bool? = nil) -> Int {
@@ -141,6 +147,7 @@ public final class SMPStorage: ObservableObject {
             listEntity.isAutoSortEnabled = list.isAutoSortEnabled
             listEntity.sortKey = list.sortKey
 
+            // TODO: should add new items passed in on updated list
             list.items.forEach {
                 if let itemEntity = getItemEntity(with: $0.id) {
                     if itemEntity.title != $0.title {
@@ -193,7 +200,6 @@ public final class SMPStorage: ObservableObject {
 
     public func purgeDeletedLists() {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "List")
-        request.sortDescriptors = [NSSortDescriptor(key: "modified", ascending: false)]
         request.predicate = NSPredicate(format: "isArchived == %@", NSNumber(value: true))
 
         do {
@@ -216,6 +222,7 @@ public final class SMPStorage: ObservableObject {
     }
 
     public func addItem(_ item: SMPListItem, to list: SMPList, at index: Int? = nil) {
+        // TODO: create list entity if not found
         guard let listEntity = getListEntity(with: list.id) else { return }
 
         let itemEntity = ItemEntity(context: context)
@@ -514,6 +521,8 @@ private extension SMPStorage {
     }
 
     func saveChanges() {
+        guard context.hasChanges else { return }
+
         do {
             try context.save()
         } catch {
@@ -523,8 +532,20 @@ private extension SMPStorage {
 
     @objc
     func notifyRemoteChange(_ notification: Notification) {
+        // These notifications fire frequently.
+        // Check that something actually changed before notifying.
+        guard let incomingToken = notification.userInfo?["historyToken"] as? NSPersistentHistoryToken else {
+            return
+        }
+
+        if lastToken == incomingToken {
+            return
+        }
+
         DispatchQueue.main.async { [weak self] in
             self?.objectWillChange.send()
         }
+
+        self.lastToken = incomingToken
     }
 }

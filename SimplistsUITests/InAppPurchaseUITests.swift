@@ -44,7 +44,7 @@ final class InAppPurchaseUITests: XCTestCase {
     func test_list_duplicate_list() {
         XCTAssertTrue(app.buttons["Premium Mode"].exists)
         app.buttons["TODOs list, 4 items"].tap()
-        app.buttons["More"].firstMatch.tap()
+        app.otherElements.matching(identifier: "MoreMenu").firstMatch.tap()
         app.buttons["Duplicate list"].tap()
         validateInAppPurchaseShown()
     }
