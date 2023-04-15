@@ -77,6 +77,7 @@
 		E2578B8125D033A600BCC948 /* PreviewModeWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2578B8025D033A600BCC948 /* PreviewModeWidget.swift */; };
 		E257B09827D51EAD0077E35F /* ListSelection.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = E257B09627D51E990077E35F /* ListSelection.intentdefinition */; };
 		E258E4E428E9DC5B00CFDDB2 /* EmptyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E258E4E328E9DC5B00CFDDB2 /* EmptyListView.swift */; };
+		E25BFA6029EB19D600E01E11 /* ScreenshotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25BFA5F29EB19D600E01E11 /* ScreenshotUITests.swift */; };
 		E260C6CA28D93A7E00EC2612 /* ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E260C6C928D93A7E00EC2612 /* ViewModifiers.swift */; };
 		E267533927D6417A00512CAC /* EmptyWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E267533827D6417A00512CAC /* EmptyWidgetView.swift */; };
 		E26D01E225810AED009049F3 /* StoreDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26D01E125810AED009049F3 /* StoreDataSource.swift */; };
@@ -330,13 +331,14 @@
 		E2578B8025D033A600BCC948 /* PreviewModeWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewModeWidget.swift; sourceTree = "<group>"; };
 		E257B09627D51E990077E35F /* ListSelection.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = ListSelection.intentdefinition; sourceTree = "<group>"; };
 		E258E4E328E9DC5B00CFDDB2 /* EmptyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListView.swift; sourceTree = "<group>"; };
+		E25BFA5F29EB19D600E01E11 /* ScreenshotUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotUITests.swift; sourceTree = "<group>"; };
+		E25BFA6129EB247E00E01E11 /* Simplists.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = Simplists.xctestplan; path = "Test Plans/Simplists.xctestplan"; sourceTree = "<group>"; };
 		E260C6C928D93A7E00EC2612 /* ViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifiers.swift; sourceTree = "<group>"; };
 		E267533827D6417A00512CAC /* EmptyWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyWidgetView.swift; sourceTree = "<group>"; };
 		E26D01E125810AED009049F3 /* StoreDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDataSource.swift; sourceTree = "<group>"; };
 		E26D345425E3E88900EE3C3E /* WatchDebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchDebugView.swift; sourceTree = "<group>"; };
 		E26DD858250BA13E00FCC495 /* AuthenticationErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationErrorView.swift; sourceTree = "<group>"; };
 		E26EBDA025C83ADB000D031D /* FreeLimits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeLimits.swift; sourceTree = "<group>"; };
-		E271D2FD28F1E03E00AA5ECC /* iOS App.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "iOS App.xctestplan"; sourceTree = "<group>"; };
 		E2752DEA28F30821009B5AA1 /* InAppPurchaseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchaseUITests.swift; sourceTree = "<group>"; };
 		E279EAC925D0480D00A38ED6 /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
 		E279EACE25D04D9D00A38ED6 /* WidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetView.swift; sourceTree = "<group>"; };
@@ -577,6 +579,7 @@
 		E235D78624DF5B58007D95BE = {
 			isa = PBXGroup;
 			children = (
+				E25BFA6129EB247E00E01E11 /* Simplists.xctestplan */,
 				E231A10829212EE400EBC1BE /* Configuration */,
 				E271D2FC28F1E01800AA5ECC /* Test Plans */,
 				E20F8A8F26D19C540016E2C7 /* SimplistsWidgetExtension.entitlements */,
@@ -682,6 +685,7 @@
 				E2484C1328EBB65000AD3E0E /* HomeUITests.swift */,
 				E2CC70EC28EF10F100E7B131 /* ListUITests.swift */,
 				E2752DEA28F30821009B5AA1 /* InAppPurchaseUITests.swift */,
+				E25BFA5F29EB19D600E01E11 /* ScreenshotUITests.swift */,
 			);
 			path = SimplistsUITests;
 			sourceTree = "<group>";
@@ -721,7 +725,6 @@
 		E271D2FC28F1E01800AA5ECC /* Test Plans */ = {
 			isa = PBXGroup;
 			children = (
-				E271D2FD28F1E03E00AA5ECC /* iOS App.xctestplan */,
 			);
 			path = "Test Plans";
 			sourceTree = "<group>";
@@ -1242,6 +1245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2484C1428EBB65000AD3E0E /* HomeUITests.swift in Sources */,
+				E25BFA6029EB19D600E01E11 /* ScreenshotUITests.swift in Sources */,
 				E2CC70ED28EF10F100E7B131 /* ListUITests.swift in Sources */,
 				E2752DEB28F30821009B5AA1 /* InAppPurchaseUITests.swift in Sources */,
 			);

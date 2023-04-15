@@ -71,6 +71,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.storage = storage
         self.storeDataSource = storeDataSource
 
+        #if DEBUG
+        prepareForUITests()
+        #endif
+
         // Handle URL on launch, if present.
         openURL(scene, urlContext: connectionOptions.urlContexts.first)
     }
@@ -84,8 +88,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         NSUbiquitousKeyValueStore.default.synchronize()
 
         createWelcomeList()
-
-        prepareForUITests()
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
@@ -135,6 +137,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         suppressReleaseNotes()
 
         resetInAppPurchase()
+
+        toggleFakeAuthentication()
     }
 
     private func createTestData() {
@@ -159,6 +163,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard CommandLine.arguments.contains("-reset-iap") else { return }
 
         storeDataSource?.resetIAP()
+    }
+
+    private func toggleFakeAuthentication() {
+        guard CommandLine.arguments.contains("-simulate-auth") else { return }
+
+        UserDefaults.simplistsAppDebug.setIsFakeAuthenticationEnabled(true)
     }
 
     private func synchronizeLocalSettings() {
