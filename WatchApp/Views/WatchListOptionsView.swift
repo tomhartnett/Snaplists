@@ -24,6 +24,7 @@ struct WatchListOptionsView: View {
 
             Toggle("Automatically sort items",
                    isOn: $editedModel.isAutoSortEnabled)
+            .padding(.trailing)
 
             Divider()
                 .padding(.vertical)
@@ -46,10 +47,13 @@ struct WatchListOptionsView: View {
 
                     if editedModel.color == caseColor {
                         Image(systemName: "checkmark")
+                            .padding(.trailing)
                     } else {
                         EmptyView()
                     }
                 }
+                .frame(height: 35)
+                .contentShape(Rectangle())
                 .onTapGesture {
                     editedModel.color = caseColor
                 }
