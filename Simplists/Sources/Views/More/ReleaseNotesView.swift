@@ -45,10 +45,12 @@ struct ReleaseNotesView: View {
                 .foregroundColor(.secondary)
                 .padding(.bottom, 30)
 
-            FeatureBulletView("New sorting options for lists. Sort lists by name, date, or custom sort order.")
+            FeatureBulletView("This update brings new features to the Snaplists app for Apple Watch.")
+
+            FeatureBulletView("Improved list editing actions are now available in the watchOS app.")
 
             // swiftlint:disable:next line_length
-            FeatureBulletView("New sorting options for items on a list. Toggle automatic sorting of checked items on/off.")
+            FeatureBulletView("Now you can mark all items complete, delete completed items, and more with a single tap!")
 
             Spacer()
 
@@ -66,7 +68,6 @@ struct ReleaseNotesView: View {
             }
             .frame(maxWidth: .infinity)
             .hideIf(!isModal)
-
         }
         .navigationBarTitleDisplayMode(.inline)
         .padding(30)
