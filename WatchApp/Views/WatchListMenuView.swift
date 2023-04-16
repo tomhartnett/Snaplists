@@ -8,10 +8,28 @@
 import SimplistsKit
 import SwiftUI
 
+private enum DeleteAction {
+    case deleteAllItems
+    case deleteCompletedItems
+
+    var title: String {
+        switch self {
+        case .deleteAllItems:
+            return "Delete all items?"
+        case .deleteCompletedItems:
+            return "Delete completed items?"
+        }
+    }
+}
+
 struct WatchListMenuView: View {
     @Environment(\.dismiss) private var dismiss
 
     @State private var editedModel = SMPList()
+
+    @State private var deleteAction: DeleteAction?
+
+    @State private var isPresentingConfirmDelete = false
 
     var model: SMPList
 
@@ -62,8 +80,8 @@ struct WatchListMenuView: View {
                     .hideIf(model.items.isEmpty)
 
                 Button(role: .destructive, action: {
-                    editedModel.items.removeAll(where: { $0.isComplete })
-                    saveAndDismiss()
+                    deleteAction = .deleteCompletedItems
+                    isPresentingConfirmDelete = true
                 }, label: {
                     Label("Delete completed items",
                           systemImage: "checkmark.circle")
@@ -73,8 +91,8 @@ struct WatchListMenuView: View {
                 .hideIf(!model.hasCompletedItems)
 
                 Button(role: .destructive, action: {
-                    editedModel.items.removeAll()
-                    saveAndDismiss()
+                    deleteAction = .deleteAllItems
+                    isPresentingConfirmDelete = true
                 }, label: {
                     Label("Delete all items",
                           systemImage: "circle.dashed")
@@ -83,6 +101,26 @@ struct WatchListMenuView: View {
                 })
                 .hideIf(model.items.isEmpty)
             }
+        }
+        .confirmationDialog(
+            deleteAction?.title ?? "Delete items?",
+            isPresented: $isPresentingConfirmDelete,
+            titleVisibility: .visible
+        ) {
+            Button("Delete", role: .destructive) {
+                switch deleteAction {
+                case .deleteAllItems:
+                    editedModel.items.removeAll()
+                case .deleteCompletedItems:
+                    editedModel.items.removeAll(where: { $0.isComplete })
+                default:
+                    break
+                }
+
+                saveAndDismiss()
+            }
+        } message: {
+            Text("This action cannot be undone")
         }
         .onAppear {
             editedModel = model
