@@ -15,6 +15,10 @@
 		E203CBC727F0B4CF00651CEC /* LargeListsWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E203CBC627F0B4CF00651CEC /* LargeListsWidgetView.swift */; };
 		E203CBC927F0B4DE00651CEC /* ListsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E203CBC827F0B4DE00651CEC /* ListsView.swift */; };
 		E203CBCC27F0B8C800651CEC /* SimplistsWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E203CBCB27F0B8C800651CEC /* SimplistsWidgetBundle.swift */; };
+		E205E2BD29E8D205001EB7A6 /* ConditionalHiddenModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20BD7782754057200671478 /* ConditionalHiddenModifier.swift */; };
+		E205E2C629EAE807001EB7A6 /* SimplistsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E235D7E324E037B9007D95BE /* SimplistsKit.framework */; };
+		E205E2CD29EAE81A001EB7A6 /* SMPStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E205E2CC29EAE81A001EB7A6 /* SMPStorageTests.swift */; };
+		E205E2CF29EAE865001EB7A6 /* TestContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E205E2CE29EAE865001EB7A6 /* TestContainer.swift */; };
 		E20BD7792754057200671478 /* ConditionalHiddenModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20BD7782754057200671478 /* ConditionalHiddenModifier.swift */; };
 		E20F8A8026D19C510016E2C7 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E20F8A7F26D19C510016E2C7 /* WidgetKit.framework */; };
 		E20F8A8226D19C510016E2C7 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E20F8A8126D19C510016E2C7 /* SwiftUI.framework */; };
@@ -30,21 +34,21 @@
 		E21B627A27E4B4D000A427CC /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E218230B25605F0200CAA92C /* String+Extensions.swift */; };
 		E22077C725AB941800866341 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = E22077C925AB941800866341 /* Localizable.stringsdict */; };
 		E228228825D09CAA009F4877 /* PrivacyPolicyParagraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E228228725D09CAA009F4877 /* PrivacyPolicyParagraphView.swift */; };
+		E22B91C229E1C31800947040 /* WatchListMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22B91C129E1C31800947040 /* WatchListMenuView.swift */; };
 		E22C615D255432710004B561 /* ArchivedListsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22C615C255432710004B561 /* ArchivedListsView.swift */; };
 		E22E152024E05BBC002A140E /* SMPList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E151F24E05BBC002A140E /* SMPList.swift */; };
 		E22E152324E060C2002A140E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E152224E060C2002A140E /* HomeView.swift */; };
 		E22E152A24E0769E002A140E /* WatchHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E152924E0769E002A140E /* WatchHomeView.swift */; };
 		E22E153024E0871D002A140E /* SMPPersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E152F24E0871D002A140E /* SMPPersistentContainer.swift */; };
+		E2342D5529E43C78005B3164 /* WatchListOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2342D5429E43C78005B3164 /* WatchListOptionsView.swift */; };
 		E235D79324DF5B59007D95BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D79224DF5B59007D95BE /* AppDelegate.swift */; };
 		E235D79524DF5B59007D95BE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D79424DF5B59007D95BE /* SceneDelegate.swift */; };
 		E235D79924DF5B5A007D95BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E235D79824DF5B5A007D95BE /* Assets.xcassets */; };
 		E235D79C24DF5B5A007D95BE /* PreviewAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E235D79B24DF5B5A007D95BE /* PreviewAssets.xcassets */; };
 		E235D79F24DF5B5A007D95BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E235D79D24DF5B5A007D95BE /* LaunchScreen.storyboard */; };
-		E235D7AE24DF5B89007D95BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E235D7AD24DF5B89007D95BE /* Assets.xcassets */; };
 		E235D7BC24DF5B89007D95BE /* WatchListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D7BB24DF5B89007D95BE /* WatchListView.swift */; };
 		E235D7C424DF5B89007D95BE /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D7C324DF5B89007D95BE /* ComplicationController.swift */; };
 		E235D7C624DF5B89007D95BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E235D7C524DF5B89007D95BE /* Assets.xcassets */; };
-		E235D7C924DF5B89007D95BE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E235D7C824DF5B89007D95BE /* Preview Assets.xcassets */; };
 		E235D7CE24DF5B89007D95BE /* WatchApp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = E235D7A824DF5B88007D95BE /* WatchApp.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E235D7DA24E0372D007D95BE /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E235D7D924E0372D007D95BE /* CloudKit.framework */; };
 		E235D7DD24E0374D007D95BE /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E235D7DC24E0374D007D95BE /* CloudKit.framework */; };
@@ -73,6 +77,7 @@
 		E2578B8125D033A600BCC948 /* PreviewModeWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2578B8025D033A600BCC948 /* PreviewModeWidget.swift */; };
 		E257B09827D51EAD0077E35F /* ListSelection.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = E257B09627D51E990077E35F /* ListSelection.intentdefinition */; };
 		E258E4E428E9DC5B00CFDDB2 /* EmptyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E258E4E328E9DC5B00CFDDB2 /* EmptyListView.swift */; };
+		E25BFA6029EB19D600E01E11 /* ScreenshotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25BFA5F29EB19D600E01E11 /* ScreenshotUITests.swift */; };
 		E260C6CA28D93A7E00EC2612 /* ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E260C6C928D93A7E00EC2612 /* ViewModifiers.swift */; };
 		E267533927D6417A00512CAC /* EmptyWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E267533827D6417A00512CAC /* EmptyWidgetView.swift */; };
 		E26D01E225810AED009049F3 /* StoreDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26D01E125810AED009049F3 /* StoreDataSource.swift */; };
@@ -135,6 +140,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		E205E2C729EAE807001EB7A6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E235D78724DF5B58007D95BE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E235D7E224E037B9007D95BE;
+			remoteInfo = SimplistsKit;
+		};
 		E20F8A8C26D19C540016E2C7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E235D78724DF5B58007D95BE /* Project object */;
@@ -250,6 +262,9 @@
 		E203CBC627F0B4CF00651CEC /* LargeListsWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeListsWidgetView.swift; sourceTree = "<group>"; };
 		E203CBC827F0B4DE00651CEC /* ListsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsView.swift; sourceTree = "<group>"; };
 		E203CBCB27F0B8C800651CEC /* SimplistsWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimplistsWidgetBundle.swift; sourceTree = "<group>"; };
+		E205E2C229EAE807001EB7A6 /* SimplistsKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimplistsKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E205E2CC29EAE81A001EB7A6 /* SMPStorageTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMPStorageTests.swift; sourceTree = "<group>"; };
+		E205E2CE29EAE865001EB7A6 /* TestContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestContainer.swift; sourceTree = "<group>"; };
 		E20BD7782754057200671478 /* ConditionalHiddenModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionalHiddenModifier.swift; sourceTree = "<group>"; };
 		E20F8A7E26D19C510016E2C7 /* SimplistsWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SimplistsWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		E20F8A7F26D19C510016E2C7 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -265,12 +280,14 @@
 		E21B627827E4B3A500A427CC /* Localizable.stringsdict */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; path = Localizable.stringsdict; sourceTree = "<group>"; };
 		E22077C825AB941800866341 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		E228228725D09CAA009F4877 /* PrivacyPolicyParagraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyParagraphView.swift; sourceTree = "<group>"; };
+		E22B91C129E1C31800947040 /* WatchListMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListMenuView.swift; sourceTree = "<group>"; };
 		E22C615C255432710004B561 /* ArchivedListsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedListsView.swift; sourceTree = "<group>"; };
 		E22E151F24E05BBC002A140E /* SMPList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMPList.swift; sourceTree = "<group>"; };
 		E22E152224E060C2002A140E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		E22E152924E0769E002A140E /* WatchHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchHomeView.swift; sourceTree = "<group>"; };
 		E22E152F24E0871D002A140E /* SMPPersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMPPersistentContainer.swift; sourceTree = "<group>"; };
 		E231A10929212F0800EBC1BE /* Project.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
+		E2342D5429E43C78005B3164 /* WatchListOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListOptionsView.swift; sourceTree = "<group>"; };
 		E235D78F24DF5B59007D95BE /* Simplists.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Simplists.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E235D79224DF5B59007D95BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E235D79424DF5B59007D95BE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -279,16 +296,13 @@
 		E235D79E24DF5B5A007D95BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E235D7A024DF5B5A007D95BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E235D7A824DF5B88007D95BE /* WatchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E235D7AD24DF5B89007D95BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E235D7AF24DF5B89007D95BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E235D7BB24DF5B89007D95BE /* WatchListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListView.swift; sourceTree = "<group>"; };
 		E235D7C324DF5B89007D95BE /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
 		E235D7C524DF5B89007D95BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E235D7C824DF5B89007D95BE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		E235D7CA24DF5B89007D95BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E235D7D724E036F6007D95BE /* Simplists.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Simplists.entitlements; sourceTree = "<group>"; };
 		E235D7D924E0372D007D95BE /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
-		E235D7DB24E0374A007D95BE /* WatchApp Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "WatchApp Extension.entitlements"; sourceTree = "<group>"; };
+		E235D7DB24E0374A007D95BE /* WatchApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WatchApp.entitlements; sourceTree = "<group>"; };
 		E235D7DC24E0374D007D95BE /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS7.0.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		E235D7E324E037B9007D95BE /* SimplistsKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SimplistsKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E235D7E524E037B9007D95BE /* SimplistsKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimplistsKit.h; sourceTree = "<group>"; };
@@ -317,13 +331,14 @@
 		E2578B8025D033A600BCC948 /* PreviewModeWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewModeWidget.swift; sourceTree = "<group>"; };
 		E257B09627D51E990077E35F /* ListSelection.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = ListSelection.intentdefinition; sourceTree = "<group>"; };
 		E258E4E328E9DC5B00CFDDB2 /* EmptyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListView.swift; sourceTree = "<group>"; };
+		E25BFA5F29EB19D600E01E11 /* ScreenshotUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotUITests.swift; sourceTree = "<group>"; };
+		E25BFA6129EB247E00E01E11 /* Simplists.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Simplists.xctestplan; sourceTree = "<group>"; };
 		E260C6C928D93A7E00EC2612 /* ViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifiers.swift; sourceTree = "<group>"; };
 		E267533827D6417A00512CAC /* EmptyWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyWidgetView.swift; sourceTree = "<group>"; };
 		E26D01E125810AED009049F3 /* StoreDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDataSource.swift; sourceTree = "<group>"; };
 		E26D345425E3E88900EE3C3E /* WatchDebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchDebugView.swift; sourceTree = "<group>"; };
 		E26DD858250BA13E00FCC495 /* AuthenticationErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationErrorView.swift; sourceTree = "<group>"; };
 		E26EBDA025C83ADB000D031D /* FreeLimits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeLimits.swift; sourceTree = "<group>"; };
-		E271D2FD28F1E03E00AA5ECC /* iOS App.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "iOS App.xctestplan"; sourceTree = "<group>"; };
 		E2752DEA28F30821009B5AA1 /* InAppPurchaseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchaseUITests.swift; sourceTree = "<group>"; };
 		E279EAC925D0480D00A38ED6 /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
 		E279EACE25D04D9D00A38ED6 /* WidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetView.swift; sourceTree = "<group>"; };
@@ -369,6 +384,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		E205E2BF29EAE807001EB7A6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E205E2C629EAE807001EB7A6 /* SimplistsKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E20F8A7B26D19C510016E2C7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -459,6 +482,14 @@
 			path = SingleListWidget;
 			sourceTree = "<group>";
 		};
+		E205E2C329EAE807001EB7A6 /* SimplistsKitTests */ = {
+			isa = PBXGroup;
+			children = (
+				E205E2CC29EAE81A001EB7A6 /* SMPStorageTests.swift */,
+			);
+			path = SimplistsKitTests;
+			sourceTree = "<group>";
+		};
 		E20F8A8326D19C510016E2C7 /* SimplistsWidget */ = {
 			isa = PBXGroup;
 			children = (
@@ -469,6 +500,7 @@
 				E20F8A8426D19C510016E2C7 /* SingleListWidget.swift */,
 				E257B09627D51E990077E35F /* ListSelection.intentdefinition */,
 				E20F8A8726D19C540016E2C7 /* Assets.xcassets */,
+				E20F8A8F26D19C540016E2C7 /* SimplistsWidgetExtension.entitlements */,
 				E20F8A8926D19C540016E2C7 /* Info.plist */,
 				E21B627827E4B3A500A427CC /* Localizable.stringsdict */,
 			);
@@ -511,6 +543,8 @@
 				E2A60FF925E1C9AD000F492C /* WatchNewListView.swift */,
 				E2BB0B6425DEA9FD004A1AB6 /* WatchListHeaderView.swift */,
 				E235D7F924E04C3F007D95BE /* WatchListItemView.swift */,
+				E22B91C129E1C31800947040 /* WatchListMenuView.swift */,
+				E2342D5429E43C78005B3164 /* WatchListOptionsView.swift */,
 				E235D7BB24DF5B89007D95BE /* WatchListView.swift */,
 			);
 			path = Views;
@@ -548,15 +582,14 @@
 			children = (
 				E231A10829212EE400EBC1BE /* Configuration */,
 				E271D2FC28F1E01800AA5ECC /* Test Plans */,
-				E20F8A8F26D19C540016E2C7 /* SimplistsWidgetExtension.entitlements */,
 				E2B62BAE25E2C67900898B21 /* Shared */,
 				E235D79124DF5B59007D95BE /* Simplists */,
-				E235D7A924DF5B88007D95BE /* WatchApp */,
-				E235D7B824DF5B89007D95BE /* WatchApp Extension */,
+				E235D7B824DF5B89007D95BE /* WatchApp */,
 				E235D7E424E037B9007D95BE /* SimplistsKit */,
 				E20F8A8326D19C510016E2C7 /* SimplistsWidget */,
 				E252C78327D53BEE00B29F6A /* SimplistsIntentHandler */,
 				E2484C1228EBB65000AD3E0E /* SimplistsUITests */,
+				E205E2C329EAE807001EB7A6 /* SimplistsKitTests */,
 				E235D79024DF5B59007D95BE /* Products */,
 				E235D7D824E0372D007D95BE /* Frameworks */,
 			);
@@ -571,6 +604,7 @@
 				E20F8A7E26D19C510016E2C7 /* SimplistsWidgetExtension.appex */,
 				E252C78027D53BEE00B29F6A /* SimplistsIntentHandler.appex */,
 				E2484C1128EBB65000AD3E0E /* SimplistsUITests.xctest */,
+				E205E2C229EAE807001EB7A6 /* SimplistsKitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -598,38 +632,20 @@
 			path = PreviewContent;
 			sourceTree = "<group>";
 		};
-		E235D7A924DF5B88007D95BE /* WatchApp */ = {
-			isa = PBXGroup;
-			children = (
-				E235D7AD24DF5B89007D95BE /* Assets.xcassets */,
-				E235D7AF24DF5B89007D95BE /* Info.plist */,
-			);
-			path = WatchApp;
-			sourceTree = "<group>";
-		};
-		E235D7B824DF5B89007D95BE /* WatchApp Extension */ = {
+		E235D7B824DF5B89007D95BE /* WatchApp */ = {
 			isa = PBXGroup;
 			children = (
 				E2D2D6F325E7E17B00C305DA /* Extensions */,
 				E22E152824E06A6E002A140E /* Complication */,
 				E22E152724E06A4F002A140E /* Startup */,
 				E22E152624E0698B002A140E /* Views */,
-				E235D7DB24E0374A007D95BE /* WatchApp Extension.entitlements */,
+				E235D7AF24DF5B89007D95BE /* Info.plist */,
+				E235D7DB24E0374A007D95BE /* WatchApp.entitlements */,
 				E235D7C524DF5B89007D95BE /* Assets.xcassets */,
-				E235D7CA24DF5B89007D95BE /* Info.plist */,
 				E2BB0B5525DEA6A0004A1AB6 /* Localizable.strings */,
 				E2BB0B6025DEA6DE004A1AB6 /* Localizable.stringsdict */,
-				E235D7C724DF5B89007D95BE /* Preview Content */,
 			);
-			path = "WatchApp Extension";
-			sourceTree = "<group>";
-		};
-		E235D7C724DF5B89007D95BE /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				E235D7C824DF5B89007D95BE /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
+			path = WatchApp;
 			sourceTree = "<group>";
 		};
 		E235D7D824E0372D007D95BE /* Frameworks */ = {
@@ -657,6 +673,7 @@
 				E22E152F24E0871D002A140E /* SMPPersistentContainer.swift */,
 				E2AFBDBB24F16348008D9E3F /* ListEntity+Extensions.swift */,
 				E2A00B3E2917FBAF002279AE /* SMPAppSetting.swift */,
+				E205E2CE29EAE865001EB7A6 /* TestContainer.swift */,
 			);
 			path = SimplistsKit;
 			sourceTree = "<group>";
@@ -667,6 +684,7 @@
 				E2484C1328EBB65000AD3E0E /* HomeUITests.swift */,
 				E2CC70EC28EF10F100E7B131 /* ListUITests.swift */,
 				E2752DEA28F30821009B5AA1 /* InAppPurchaseUITests.swift */,
+				E25BFA5F29EB19D600E01E11 /* ScreenshotUITests.swift */,
 			);
 			path = SimplistsUITests;
 			sourceTree = "<group>";
@@ -706,7 +724,7 @@
 		E271D2FC28F1E01800AA5ECC /* Test Plans */ = {
 			isa = PBXGroup;
 			children = (
-				E271D2FD28F1E03E00AA5ECC /* iOS App.xctestplan */,
+				E25BFA6129EB247E00E01E11 /* Simplists.xctestplan */,
 			);
 			path = "Test Plans";
 			sourceTree = "<group>";
@@ -807,6 +825,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		E205E2C129EAE807001EB7A6 /* SimplistsKitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E205E2C929EAE807001EB7A6 /* Build configuration list for PBXNativeTarget "SimplistsKitTests" */;
+			buildPhases = (
+				E205E2BE29EAE807001EB7A6 /* Sources */,
+				E205E2BF29EAE807001EB7A6 /* Frameworks */,
+				E205E2C029EAE807001EB7A6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E205E2C829EAE807001EB7A6 /* PBXTargetDependency */,
+			);
+			name = SimplistsKitTests;
+			productName = SimplistsKitTests;
+			productReference = E205E2C229EAE807001EB7A6 /* SimplistsKitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		E20F8A7D26D19C510016E2C7 /* SimplistsWidgetExtension */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E20F8A9026D19C540016E2C7 /* Build configuration list for PBXNativeTarget "SimplistsWidgetExtension" */;
@@ -931,9 +967,13 @@
 		E235D78724DF5B58007D95BE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1400;
-				LastUpgradeCheck = 1410;
+				BuildIndependentTargetsInParallel = YES;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					E205E2C129EAE807001EB7A6 = {
+						CreatedOnToolsVersion = 14.3;
+					};
 					E20F8A7D26D19C510016E2C7 = {
 						CreatedOnToolsVersion = 13.0;
 					};
@@ -977,11 +1017,19 @@
 				E20F8A7D26D19C510016E2C7 /* SimplistsWidgetExtension */,
 				E252C77F27D53BEE00B29F6A /* SimplistsIntentHandler */,
 				E2484C1028EBB65000AD3E0E /* SimplistsUITests */,
+				E205E2C129EAE807001EB7A6 /* SimplistsKitTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		E205E2C029EAE807001EB7A6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E20F8A7C26D19C510016E2C7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1009,11 +1057,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2BB0B5325DEA6A0004A1AB6 /* Localizable.strings in Resources */,
-				E235D7C924DF5B89007D95BE /* Preview Assets.xcassets in Resources */,
 				E2BB0B5E25DEA6DE004A1AB6 /* Localizable.stringsdict in Resources */,
 				E2D2D70525EC456100C305DA /* Configuration.storekit in Resources */,
 				E235D7C624DF5B89007D95BE /* Assets.xcassets in Resources */,
-				E235D7AE24DF5B89007D95BE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1063,6 +1109,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		E205E2BE29EAE807001EB7A6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E205E2CD29EAE81A001EB7A6 /* SMPStorageTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E20F8A7A26D19C510016E2C7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1158,6 +1212,8 @@
 				E2B62BAF25E2C68E00898B21 /* FreeLimits.swift in Sources */,
 				E2492952294377BC00976683 /* GraphicCornerComplication.swift in Sources */,
 				E2D2D6FC25EC42AD00C305DA /* StoreService.swift in Sources */,
+				E2342D5529E43C78005B3164 /* WatchListOptionsView.swift in Sources */,
+				E205E2BD29E8D205001EB7A6 /* ConditionalHiddenModifier.swift in Sources */,
 				E2B21E1528DFEC4500DC0E47 /* SMPListColor+Extensions.swift in Sources */,
 				E24FACA4251CEC7C002B0B97 /* WatchAuthenticationErrorView.swift in Sources */,
 				E235D7C424DF5B89007D95BE /* ComplicationController.swift in Sources */,
@@ -1165,6 +1221,7 @@
 				E24929542944E57D00976683 /* GraphicExtraLargeComplication.swift in Sources */,
 				E2A6100525E2A67F000F492C /* WatchNewItemView.swift in Sources */,
 				E249295029436A1E00976683 /* GraphicCircularComplication.swift in Sources */,
+				E22B91C229E1C31800947040 /* WatchListMenuView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1173,6 +1230,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E235D7F424E046D7007D95BE /* SMPStorage.swift in Sources */,
+				E205E2CF29EAE865001EB7A6 /* TestContainer.swift in Sources */,
 				E27CDF5C24ECA7BC004B6A32 /* Simplists.xcdatamodeld in Sources */,
 				E22E152024E05BBC002A140E /* SMPList.swift in Sources */,
 				E235D7FC24E04CC1007D95BE /* SMPListItem.swift in Sources */,
@@ -1187,6 +1245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2484C1428EBB65000AD3E0E /* HomeUITests.swift in Sources */,
+				E25BFA6029EB19D600E01E11 /* ScreenshotUITests.swift in Sources */,
 				E2CC70ED28EF10F100E7B131 /* ListUITests.swift in Sources */,
 				E2752DEB28F30821009B5AA1 /* InAppPurchaseUITests.swift in Sources */,
 			);
@@ -1204,6 +1263,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		E205E2C829EAE807001EB7A6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E235D7E224E037B9007D95BE /* SimplistsKit */;
+			targetProxy = E205E2C729EAE807001EB7A6 /* PBXContainerItemProxy */;
+		};
 		E20F8A8D26D19C540016E2C7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E20F8A7D26D19C510016E2C7 /* SimplistsWidgetExtension */;
@@ -1291,6 +1355,42 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		E205E2CA29EAE807001EB7A6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 25V97QMNV5;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sleekible.SimplistsKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E205E2CB29EAE807001EB7A6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 25V97QMNV5;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sleekible.SimplistsKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		E20F8A9126D19C540016E2C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E231A10929212F0800EBC1BE /* Project.xcconfig */;
@@ -1298,7 +1398,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
-				CODE_SIGN_ENTITLEMENTS = SimplistsWidgetExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = SimplistsWidget/SimplistsWidgetExtension.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 25V97QMNV5;
@@ -1328,7 +1428,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
-				CODE_SIGN_ENTITLEMENTS = SimplistsWidgetExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = SimplistsWidget/SimplistsWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 25V97QMNV5;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1531,7 +1631,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				BUNDLE_DISPLAY_NAME = "Snaplists Debug";
-				CODE_SIGN_ENTITLEMENTS = "WatchApp Extension/WatchApp Extension.entitlements";
+				CODE_SIGN_ENTITLEMENTS = WatchApp/WatchApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMPANION_APP_BUNDLE_ID = com.sleekible.Simplists.debug;
 				DEVELOPMENT_TEAM = 25V97QMNV5;
@@ -1558,7 +1658,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				BUNDLE_DISPLAY_NAME = Snaplists;
-				CODE_SIGN_ENTITLEMENTS = "WatchApp Extension/WatchApp Extension.entitlements";
+				CODE_SIGN_ENTITLEMENTS = WatchApp/WatchApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMPANION_APP_BUNDLE_ID = com.sleekible.Simplists;
 				DEVELOPMENT_TEAM = 25V97QMNV5;
@@ -1583,12 +1683,14 @@
 				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 25V97QMNV5;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
 				INFOPLIST_FILE = SimplistsKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1596,6 +1698,8 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++14";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sleekible.SimplistsKit.debug;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -1615,12 +1719,14 @@
 				ALLOW_TARGET_PLATFORM_SPECIALIZATION = YES;
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 25V97QMNV5;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
 				INFOPLIST_FILE = SimplistsKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1628,6 +1734,8 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++14";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sleekible.SimplistsKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -1734,6 +1842,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		E205E2C929EAE807001EB7A6 /* Build configuration list for PBXNativeTarget "SimplistsKitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E205E2CA29EAE807001EB7A6 /* Debug */,
+				E205E2CB29EAE807001EB7A6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		E20F8A9026D19C540016E2C7 /* Build configuration list for PBXNativeTarget "SimplistsWidgetExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

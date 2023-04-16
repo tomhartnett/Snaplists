@@ -187,6 +187,7 @@ struct ListView: View {
                         .hideIf(focusedField == nil && focusedItemField == nil)
 
                         listActionsMenu
+                            .accessibilityIdentifier("MoreMenu")
                             .hideIf(editMode?.wrappedValue == .active || focusedField != nil || focusedItemField != nil)
                     }
             )
@@ -228,7 +229,6 @@ struct ListView: View {
 
     var listActionsMenu: some View {
         Menu(content: {
-
             Button(action: {
                 activeSheet = .editList
             }) {
@@ -492,16 +492,8 @@ struct ListView: View {
     }
 
     private func markAllItems(isComplete: Bool) {
-        let allIDS: [UUID] = list.items.map { $0.id }
-
-        for id in allIDS {
-            guard let index = list.items.firstIndex(where: { $0.id == id }) else { continue }
-            let item = list.items[index]
-            list.items.remove(at: index)
-            list.items.insert(SMPListItem(id: item.id,
-                                          title: item.title,
-                                          isComplete: isComplete),
-                              at: index)
+        for index in 0..<list.items.count {
+            list.items[index].isComplete = isComplete
         }
 
         storage.updateList(list)

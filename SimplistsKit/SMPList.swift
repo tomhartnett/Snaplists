@@ -39,7 +39,7 @@ public enum SMPListColor: Int64, CaseIterable, Hashable {
     }
 }
 
-public struct SMPList: Identifiable {
+public struct SMPList: Identifiable, Equatable {
     public var id = UUID()
     public var title: String
     public var isArchived: Bool
@@ -49,7 +49,7 @@ public struct SMPList: Identifiable {
     public var isAutoSortEnabled: Bool
     public var sortKey: Int64
 
-    public init(title: String,
+    public init(title: String = "",
                 isArchived: Bool = false,
                 lastModified: Date = Date(),
                 items: [SMPListItem] = [],
@@ -63,22 +63,6 @@ public struct SMPList: Identifiable {
         self.color = color
         self.isAutoSortEnabled = isAutoSortEnabled
         self.sortKey = sortKey
-    }
-}
-
-extension SMPList: Equatable {
-    public static func == (lhs: SMPList, rhs: SMPList) -> Bool {
-        let lhsIDs = lhs.items.map { $0.id.uuidString }
-        let rhsIDs = rhs.items.map { $0.id.uuidString }
-
-        return lhs.id == rhs.id &&
-        lhs.color == rhs.color &&
-        lhs.title == rhs.title &&
-        lhs.isArchived == rhs.isArchived &&
-        lhs.lastModified == rhs.lastModified &&
-        lhs.isAutoSortEnabled == rhs.isAutoSortEnabled &&
-        lhs.sortKey == rhs.sortKey &&
-        lhsIDs == rhsIDs
     }
 }
 

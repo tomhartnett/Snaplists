@@ -16,7 +16,7 @@ struct WatchListItemView: View {
     var tapAction: () -> Void
 
     var body: some View {
-        HStack(spacing: 16) {
+        HStack(spacing: 8) {
             ZStack {
                 Circle()
                     .stroke(accentColor, lineWidth: 2)
@@ -30,6 +30,7 @@ struct WatchListItemView: View {
                     .font(.system(size: 15, weight: .bold))
                     .foregroundColor(item.isComplete ? .black : .clear)
             }
+            .padding([.leading, .vertical])
 
             if item.isComplete {
                 Text(item.title)
@@ -38,6 +39,8 @@ struct WatchListItemView: View {
             } else {
                 Text(item.title)
             }
+
+            Spacer()
         }
         .onTapGesture {
             tapAction()
@@ -57,8 +60,8 @@ struct ListItemView_Previews: PreviewProvider {
 
             WatchListItemView(
                 item: SMPListItem(
-                    title: "Bananas",
-                    isComplete: false),
+                    title: "Pick out clothes for donation",
+                    isComplete: true),
                 accentColor: Color.white,
                 tapAction: {})
         }

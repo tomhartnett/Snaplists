@@ -71,6 +71,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.storage = storage
         self.storeDataSource = storeDataSource
 
+        #if DEBUG
+        prepareForUITests()
+        #endif
+
         // Handle URL on launch, if present.
         openURL(scene, urlContext: connectionOptions.urlContexts.first)
     }
@@ -84,8 +88,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         NSUbiquitousKeyValueStore.default.synchronize()
 
         createWelcomeList()
-
-        prepareForUITests()
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
@@ -123,42 +125,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                                 color: .purple))
 
         UserDefaults.simplistsApp.setIsSampleListCreated(true)
-    }
-
-    private func prepareForUITests() {
-        UserDefaults.simplistsAppDebug.setIsAuthorizedForPayments(true)
-
-        createTestData()
-
-        unlockInAppPurchase()
-
-        suppressReleaseNotes()
-
-        resetInAppPurchase()
-    }
-
-    private func createTestData() {
-        guard CommandLine.arguments.contains("-create-test-data") else { return }
-
-        storage?.createScreenshotSampleData()
-    }
-
-    private func unlockInAppPurchase() {
-        guard CommandLine.arguments.contains("-unlock-iap") else { return }
-
-        storeDataSource?.purchaseIAPForTesting()
-    }
-
-    private func suppressReleaseNotes() {
-        guard CommandLine.arguments.contains("-suppress-release-notes") else { return }
-
-        UserDefaults.simplistsApp.setHasSeenReleaseNotes(true)
-    }
-
-    private func resetInAppPurchase() {
-        guard CommandLine.arguments.contains("-reset-iap") else { return }
-
-        storeDataSource?.resetIAP()
     }
 
     private func synchronizeLocalSettings() {
@@ -209,3 +175,51 @@ private extension Int {
         }
     }
 }
+
+#if DEBUG
+extension SceneDelegate {
+    private func prepareForUITests() {
+        UserDefaults.simplistsAppDebug.setIsAuthorizedForPayments(true)
+
+        createTestData()
+
+        unlockInAppPurchase()
+
+        suppressReleaseNotes()
+
+        resetInAppPurchase()
+
+        toggleFakeAuthentication()
+    }
+
+    private func createTestData() {
+        guard CommandLine.arguments.contains("-create-test-data") else { return }
+
+        storage?.createScreenshotSampleData()
+    }
+
+    private func unlockInAppPurchase() {
+        guard CommandLine.arguments.contains("-unlock-iap") else { return }
+
+        storeDataSource?.purchaseIAPForTesting()
+    }
+
+    private func suppressReleaseNotes() {
+        guard CommandLine.arguments.contains("-suppress-release-notes") else { return }
+
+        UserDefaults.simplistsApp.setHasSeenReleaseNotes(true)
+    }
+
+    private func resetInAppPurchase() {
+        guard CommandLine.arguments.contains("-reset-iap") else { return }
+
+        storeDataSource?.resetIAP()
+    }
+
+    private func toggleFakeAuthentication() {
+        guard CommandLine.arguments.contains("-simulate-auth") else { return }
+
+        UserDefaults.simplistsAppDebug.setIsFakeAuthenticationEnabled(true)
+    }
+}
+#endif

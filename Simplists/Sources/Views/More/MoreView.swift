@@ -72,14 +72,14 @@ struct MoreView: View {
                         }
                     }
 
-//                    NavigationLink(destination: ReleaseNotesView(isModal: .constant(false))) {
-//                        HStack {
-//                            Image(systemName: "list.bullet.rectangle.portrait")
-//                                .frame(width: 25, height: 25)
-//                                .foregroundColor(Color("TextSecondary"))
-//                            Text("What’s New")
-//                        }
-//                    }
+                    NavigationLink(destination: ReleaseNotesView(isModal: .constant(false))) {
+                        HStack {
+                            Image(systemName: "list.bullet.rectangle.portrait")
+                                .frame(width: 25, height: 25)
+                                .foregroundColor(Color("TextSecondary"))
+                            Text("What’s New")
+                        }
+                    }
                 }
 
                 #if DEBUG

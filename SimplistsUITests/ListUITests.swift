@@ -42,7 +42,7 @@ final class ListUITests: XCTestCase {
     }
 
     func test_list_mark_all_incomplete() {
-        app.buttons["More"].firstMatch.tap()
+        app.otherElements.matching(identifier: "MoreMenu").firstMatch.tap()
 
         app.buttons["Mark all incomplete"].firstMatch.tap()
 
@@ -54,7 +54,7 @@ final class ListUITests: XCTestCase {
 
     func test_list_mark_all_complete() {
         func test_list_mark_all_incomplete() {
-            app.buttons["More"].firstMatch.tap()
+            app.otherElements.matching(identifier: "MoreMenu").firstMatch.tap()
 
             app.buttons["Mark all incomplete"].firstMatch.tap()
 
@@ -66,7 +66,7 @@ final class ListUITests: XCTestCase {
     }
 
     func test_list_delete_all_items() {
-        app.buttons["More"].firstMatch.tap()
+        app.otherElements.matching(identifier: "MoreMenu").firstMatch.tap()
 
         app.buttons["Delete all items"].firstMatch.tap()
 
@@ -85,7 +85,7 @@ final class ListUITests: XCTestCase {
     }
 
     func test_list_delete_completed_items() {
-        app.buttons["More"].firstMatch.tap()
+        app.otherElements.matching(identifier: "MoreMenu").firstMatch.tap()
 
         app.buttons["Delete completed items"].firstMatch.tap()
 
