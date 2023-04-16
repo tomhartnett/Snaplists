@@ -332,7 +332,7 @@
 		E257B09627D51E990077E35F /* ListSelection.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = ListSelection.intentdefinition; sourceTree = "<group>"; };
 		E258E4E328E9DC5B00CFDDB2 /* EmptyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListView.swift; sourceTree = "<group>"; };
 		E25BFA5F29EB19D600E01E11 /* ScreenshotUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotUITests.swift; sourceTree = "<group>"; };
-		E25BFA6129EB247E00E01E11 /* Simplists.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = Simplists.xctestplan; path = "Test Plans/Simplists.xctestplan"; sourceTree = "<group>"; };
+		E25BFA6129EB247E00E01E11 /* Simplists.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Simplists.xctestplan; sourceTree = "<group>"; };
 		E260C6C928D93A7E00EC2612 /* ViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifiers.swift; sourceTree = "<group>"; };
 		E267533827D6417A00512CAC /* EmptyWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyWidgetView.swift; sourceTree = "<group>"; };
 		E26D01E125810AED009049F3 /* StoreDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDataSource.swift; sourceTree = "<group>"; };
@@ -500,6 +500,7 @@
 				E20F8A8426D19C510016E2C7 /* SingleListWidget.swift */,
 				E257B09627D51E990077E35F /* ListSelection.intentdefinition */,
 				E20F8A8726D19C540016E2C7 /* Assets.xcassets */,
+				E20F8A8F26D19C540016E2C7 /* SimplistsWidgetExtension.entitlements */,
 				E20F8A8926D19C540016E2C7 /* Info.plist */,
 				E21B627827E4B3A500A427CC /* Localizable.stringsdict */,
 			);
@@ -579,10 +580,8 @@
 		E235D78624DF5B58007D95BE = {
 			isa = PBXGroup;
 			children = (
-				E25BFA6129EB247E00E01E11 /* Simplists.xctestplan */,
 				E231A10829212EE400EBC1BE /* Configuration */,
 				E271D2FC28F1E01800AA5ECC /* Test Plans */,
-				E20F8A8F26D19C540016E2C7 /* SimplistsWidgetExtension.entitlements */,
 				E2B62BAE25E2C67900898B21 /* Shared */,
 				E235D79124DF5B59007D95BE /* Simplists */,
 				E235D7B824DF5B89007D95BE /* WatchApp */,
@@ -725,6 +724,7 @@
 		E271D2FC28F1E01800AA5ECC /* Test Plans */ = {
 			isa = PBXGroup;
 			children = (
+				E25BFA6129EB247E00E01E11 /* Simplists.xctestplan */,
 			);
 			path = "Test Plans";
 			sourceTree = "<group>";
@@ -1398,7 +1398,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
-				CODE_SIGN_ENTITLEMENTS = SimplistsWidgetExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = SimplistsWidget/SimplistsWidgetExtension.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 25V97QMNV5;
@@ -1428,7 +1428,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
-				CODE_SIGN_ENTITLEMENTS = SimplistsWidgetExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = SimplistsWidget/SimplistsWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 25V97QMNV5;
 				GENERATE_INFOPLIST_FILE = YES;
