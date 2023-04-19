@@ -11,7 +11,7 @@ Blog posts about the app's development are available at [sleekible.com](https://
 
 Apple Watch:
 
-![watch screenshot](watch-2022.11.png)
+![watch screenshot](watch-2023.1.png)
 
 
 iPhone:
