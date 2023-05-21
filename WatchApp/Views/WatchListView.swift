@@ -8,18 +8,19 @@
 import SwiftUI
 import SimplistsKit
 
-enum WatchListActiveSheet: Identifiable {
+enum WatchListActiveSheet: Hashable, Identifiable {
     case freeLimitView
     case newItemView
+    case editItemView(id: UUID)
     case listMenu
 
-    var id: Int {
-        hashValue
+    var id: Self {
+        return self
     }
 }
 
 struct WatchListView: View {
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var storage: SMPStorage
     @EnvironmentObject var storeDataSource: StoreDataSource
     @State var list: SMPList
@@ -41,7 +42,6 @@ struct WatchListView: View {
                         prompt: Text("newitem-name-placeholder".localize()),
                         label: {
                             Label("Add", systemImage: "plus")
-
                         },
                         onSubmit: { enteredText in
                             saveNewItem(itemTitle: enteredText)
@@ -87,6 +87,9 @@ struct WatchListView: View {
                             withAnimation {
                                 updateItem(id: item.id, title: item.title, isComplete: !item.isComplete)
                             }
+                        },
+                        longPressAction: {
+                            activeSheet = .editItemView(id: item.id)
                         }
                     )
                 }
@@ -104,7 +107,20 @@ struct WatchListView: View {
                     .environmentObject(storeDataSource)
 
             case .newItemView:
-                WatchNewItemView(list: $list)
+                WatchEditItemView(title: "") { newTitle in
+                    guard newTitle.isNotEmpty else { return }
+                    saveNewItem(itemTitle: newTitle)
+                }
+
+            case .editItemView(let id):
+                let item = list.items.first(where: { $0.id == id })
+                let title = item?.title ?? ""
+                let isComplete = item?.isComplete ?? false
+
+                WatchEditItemView(title: title) { editedTitle in
+                    guard editedTitle.isNotEmpty else { return }
+                    updateItem(id: id, title: editedTitle, isComplete: isComplete)
+                }
 
             case .listMenu:
                 WatchListMenuView(model: list) { updatedList in
@@ -123,6 +139,11 @@ struct WatchListView: View {
     }
 
     private func saveNewItem(itemTitle: String) {
+        if list.items.count >= FreeLimits.numberOfItems.limit && !isPremiumIAPPurchased {
+            activeSheet = .freeLimitView
+            return
+        }
+
         guard !itemTitle.isEmpty else {
             return
         }
@@ -147,7 +168,7 @@ struct WatchListView: View {
         if let newList = storage.getList(with: list.id) {
             list = newList
         } else {
-            presentationMode.wrappedValue.dismiss()
+            dismiss()
         }
     }
 

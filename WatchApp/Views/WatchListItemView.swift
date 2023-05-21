@@ -15,6 +15,8 @@ struct WatchListItemView: View {
 
     var tapAction: () -> Void
 
+    var longPressAction: (() -> Void)?
+
     var body: some View {
         HStack(spacing: 8) {
             ZStack {
@@ -42,9 +44,19 @@ struct WatchListItemView: View {
 
             Spacer()
         }
-        .onTapGesture {
-            tapAction()
-        }
+        .contentShape(Rectangle())
+        .highPriorityGesture(
+            TapGesture()
+                .onEnded { _ in
+                    tapAction()
+                }
+        )
+        .simultaneousGesture(
+            LongPressGesture()
+                .onEnded {_ in
+                    longPressAction?()
+                }
+        )
     }
 }
 
