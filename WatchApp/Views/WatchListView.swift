@@ -36,12 +36,24 @@ struct WatchListView: View {
     var body: some View {
         List {
             HStack {
-                Button(action: {
-                    addNewItem()
-                }, label: {
-                    Label("Add", systemImage: "plus")
-                })
-                .padding()
+                if #available(watchOS 9.0, *) {
+                    TextFieldLink(
+                        prompt: Text("newitem-name-placeholder".localize()),
+                        label: {
+                            Label("Add", systemImage: "plus")
+
+                        },
+                        onSubmit: { enteredText in
+                            saveNewItem(itemTitle: enteredText)
+                        })
+                } else {
+                    Button(action: {
+                        addNewItem()
+                    }, label: {
+                        Label("Add", systemImage: "plus")
+                    })
+                    .padding()
+                }
 
                 Spacer()
 
@@ -108,6 +120,18 @@ struct WatchListView: View {
         } else {
             activeSheet = .newItemView
         }
+    }
+
+    private func saveNewItem(itemTitle: String) {
+        guard !itemTitle.isEmpty else {
+            return
+        }
+
+        let item = SMPListItem(title: itemTitle, isComplete: false)
+
+        let index = list.items.firstIndex(where: { $0.isComplete }) ?? list.items.count
+
+        storage.addItem(item, to: list, at: index)
     }
 
     private func delete(at offsets: IndexSet) {
