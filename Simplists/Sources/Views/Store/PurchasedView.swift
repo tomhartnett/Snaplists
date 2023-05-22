@@ -11,20 +11,17 @@ struct PurchasedView: View {
     var body: some View {
         VStack {
             Text("Purchased")
+                .foregroundColor(Color.red)
                 .font(.title)
                 .padding(.top, 10)
             Text("Thank you!")
                 .foregroundColor(.primary)
                 .padding([.bottom, .leading, .trailing], 10)
         }
-        .frame(minWidth: 250)
+        .frame(width: 250)
         .background(Color(UIColor.systemBackground))
-        .foregroundColor(Color.red)
-        .overlay(
-            RoundedRectangle(cornerRadius: 20)
-                .stroke(Color.red, lineWidth: 5)
-        )
-        .rotationEffect(.degrees(-15))
+        .border(.red, width: 5)
+        .rotationEffect(.degrees(-20))
     }
 }
 
