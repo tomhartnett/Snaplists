@@ -37,23 +37,14 @@ struct WatchListView: View {
     var body: some View {
         List {
             HStack {
-                if #available(watchOS 9.0, *) {
-                    TextFieldLink(
-                        prompt: Text("newitem-name-placeholder".localize()),
-                        label: {
-                            Label("Add", systemImage: "plus")
-                        },
-                        onSubmit: { enteredText in
-                            saveNewItem(itemTitle: enteredText)
-                        })
-                } else {
-                    Button(action: {
-                        addNewItem()
-                    }, label: {
+                TextFieldLink(
+                    prompt: Text("newitem-name-placeholder".localize()),
+                    label: {
                         Label("Add", systemImage: "plus")
+                    },
+                    onSubmit: { enteredText in
+                        saveNewItem(itemTitle: enteredText)
                     })
-                    .padding()
-                }
 
                 Spacer()
 
