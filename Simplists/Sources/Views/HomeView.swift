@@ -70,6 +70,18 @@ struct HomeView: View {
                                 ListRowView(color: list.color.swiftUIColor,
                                             title: list.title,
                                             itemCount: list.items.count)
+                                .dropDestination(for: TransferableItemWrapper.self, action: { items, _ in
+                                    let listIDs = Set(items.map({ $0.fromListID }))
+                                    for fromListID in listIDs {
+                                        let itemIDs: [UUID] = items
+                                            .filter({ $0.fromListID == fromListID })
+                                            .map { $0.item.id }
+
+                                        storage.moveItems(itemIDs, fromListID: fromListID, toListID: list.id)
+                                    }
+
+                                    return true
+                                })
                                 .accessibilityRepresentation {
                                     Rectangle()
                                         .accessibilityLabel(list.accessibilityLabel)
