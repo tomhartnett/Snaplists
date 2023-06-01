@@ -121,14 +121,6 @@ struct WatchListView: View {
         }
     }
 
-    private func addNewItem() {
-        if list.items.count >= FreeLimits.numberOfItems.limit && !isPremiumIAPPurchased {
-            activeSheet = .freeLimitView
-        } else {
-            activeSheet = .newItemView
-        }
-    }
-
     private func saveNewItem(itemTitle: String) {
         if list.items.count >= FreeLimits.numberOfItems.limit && !isPremiumIAPPurchased {
             activeSheet = .freeLimitView
