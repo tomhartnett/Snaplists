@@ -45,12 +45,9 @@ struct ReleaseNotesView: View {
                 .foregroundColor(.secondary)
                 .padding(.bottom, 30)
 
-            FeatureBulletView("This update brings new features to the Snaplists app for Apple Watch.")
+            FeatureBulletView("Now you can drag-and-drop items from one list to another on iPhone and iPad.")
 
-            FeatureBulletView("Improved list editing actions are now available in the watchOS app.")
-
-            // swiftlint:disable:next line_length
-            FeatureBulletView("Now you can mark all items complete, delete completed items, and more with a single tap!")
+            FeatureBulletView("On Apple Watch, now you can edit an item. Long-press on an item to edit its text.")
 
             Spacer()
 

@@ -18,6 +18,7 @@ struct TransferableItemWrapper: Codable {
 extension TransferableItemWrapper: Transferable {
     static var transferRepresentation: some TransferRepresentation {
         CodableRepresentation(contentType: .item)
+        ProxyRepresentation(exporting: \.item.title)
     }
 }
 
@@ -26,18 +27,3 @@ extension UTType {
         UTType(exportedAs: "com.sleekible.Simplists.item")
     }()
 }
-
-//extension TransferableItemWrapper: NSItemProviderReading {
-//    static var readableTypeIdentifiersForItemProvider: [String] {
-//        [UTType.item.identifier]
-//    }
-//
-//    static func object(withItemProviderData: Data, typeIdentifier: String) -> Self {
-//        let decoder = JSONDecoder()
-//        do {
-//            let item = try decoder.decode(TransferableItemWrapper.self, from: withItemProviderData)
-//        } catch {
-//            fatalError("")
-//        }
-//    }
-//}
