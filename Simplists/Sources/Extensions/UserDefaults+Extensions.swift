@@ -13,7 +13,7 @@ extension UserDefaults {
         static let isFakeAuthenticationEnabled = "Debug-isFakeAuthenticationEnabled"
         static let isPremiumIAPPurchased = "com.sleekible.simplists.iap.premium.purchased"
         static let isSampleListCreated = "Debug-isSampleListCreated"
-        static let hasSeenReleaseNotes = "com.sleekible.simplists.releasenotes.2023.1"
+        static let hasSeenReleaseNotes = "com.sleekible.simplists.releasenotes.2023.2"
     }
 
     struct SimplistsApp {

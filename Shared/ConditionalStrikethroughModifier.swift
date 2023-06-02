@@ -14,17 +14,6 @@ struct ConditionalStrikethroughModifier: ViewModifier {
         if isComplete {
             content
                 .foregroundColor(Color("TextSecondary"))
-                .modifier(IfAvailableStrikethroughModifier())
-        } else {
-            content
-        }
-    }
-}
-
-private struct IfAvailableStrikethroughModifier: ViewModifier {
-    func body(content: Content) -> some View {
-        if #available(iOS 16, *) {
-            content
                 .strikethrough()
         } else {
             content

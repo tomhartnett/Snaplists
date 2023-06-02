@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct SMPListItem: Identifiable, Equatable {
+public struct SMPListItem: Identifiable, Equatable, Codable {
     public var id = UUID()
     public var title: String
     public var isComplete: Bool

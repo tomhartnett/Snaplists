@@ -127,13 +127,16 @@ struct ListView: View {
                     },
                             content: {
                         ForEach(list.items) { item in
-                            ItemView(title: item.title,
-                                     isComplete: item.isComplete,
-                                     focusedItemField: _focusedItemField) { title, isComplete in
-                                withAnimation {
-                                    updateItem(id: item.id, title: title, isComplete: isComplete)
-                                }
-                            }
+                            ItemView(
+                                title: item.title,
+                                isComplete: item.isComplete,
+                                focusedItemField: _focusedItemField,
+                                saveAction: { title, isComplete in
+                                    withAnimation {
+                                        updateItem(id: item.id, title: title, isComplete: isComplete)
+                                    }
+                                })
+                            .draggable(TransferableItemWrapper(item: item, fromListID: list.id))
                         }
                         .onDelete(perform: delete)
                         .onMove(perform: move)

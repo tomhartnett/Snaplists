@@ -105,7 +105,7 @@
 		E2A32102250E628200A022B8 /* MoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A32101250E628200A022B8 /* MoreView.swift */; };
 		E2A376B425D1B4E2001D1615 /* UserDefaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A376B325D1B4E2001D1615 /* UserDefaults+Extensions.swift */; };
 		E2A60FFA25E1C9AD000F492C /* WatchNewListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A60FF925E1C9AD000F492C /* WatchNewListView.swift */; };
-		E2A6100525E2A67F000F492C /* WatchNewItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A6100425E2A67F000F492C /* WatchNewItemView.swift */; };
+		E2A6100525E2A67F000F492C /* WatchEditItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A6100425E2A67F000F492C /* WatchEditItemView.swift */; };
 		E2AFBDBC24F16348008D9E3F /* ListEntity+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AFBDBB24F16348008D9E3F /* ListEntity+Extensions.swift */; };
 		E2B21E1528DFEC4500DC0E47 /* SMPListColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E297905028DB315900C7D6FB /* SMPListColor+Extensions.swift */; };
 		E2B62B9A25E2C01A00898B21 /* WatchStoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B62B9925E2C01A00898B21 /* WatchStoreView.swift */; };
@@ -135,6 +135,7 @@
 		E2F3818925C04D47002740F3 /* StoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F3818825C04D47002740F3 /* StoreService.swift */; };
 		E2F3819125C58E11002740F3 /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = E2F3819025C58E10002740F3 /* Configuration.storekit */; };
 		E2F3819625C58F23002740F3 /* SKProduct+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F3819525C58F23002740F3 /* SKProduct+Extensions.swift */; };
+		E2F486772A22388400DECF00 /* TransferableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F486762A22388400DECF00 /* TransferableItem.swift */; };
 		E2F559B427D97E3C007DA24A /* OpenURLContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F559B327D97E3C007DA24A /* OpenURLContext.swift */; };
 		E2FB8EA128CA0F63005609F1 /* SimplistsWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FB8EA028CA0F63005609F1 /* SimplistsWatchApp.swift */; };
 /* End PBXBuildFile section */
@@ -360,7 +361,7 @@
 		E2A32101250E628200A022B8 /* MoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreView.swift; sourceTree = "<group>"; };
 		E2A376B325D1B4E2001D1615 /* UserDefaults+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extensions.swift"; sourceTree = "<group>"; };
 		E2A60FF925E1C9AD000F492C /* WatchNewListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchNewListView.swift; sourceTree = "<group>"; };
-		E2A6100425E2A67F000F492C /* WatchNewItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchNewItemView.swift; sourceTree = "<group>"; };
+		E2A6100425E2A67F000F492C /* WatchEditItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchEditItemView.swift; sourceTree = "<group>"; };
 		E2AFBDBB24F16348008D9E3F /* ListEntity+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListEntity+Extensions.swift"; sourceTree = "<group>"; };
 		E2B62B9925E2C01A00898B21 /* WatchStoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchStoreView.swift; sourceTree = "<group>"; };
 		E2B9C3A225CED96F0024B9F6 /* DebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugView.swift; sourceTree = "<group>"; };
@@ -379,6 +380,7 @@
 		E2F3818825C04D47002740F3 /* StoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreService.swift; sourceTree = "<group>"; };
 		E2F3819025C58E10002740F3 /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
 		E2F3819525C58F23002740F3 /* SKProduct+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKProduct+Extensions.swift"; sourceTree = "<group>"; };
+		E2F486762A22388400DECF00 /* TransferableItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferableItem.swift; sourceTree = "<group>"; };
 		E2F559B327D97E3C007DA24A /* OpenURLContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenURLContext.swift; sourceTree = "<group>"; };
 		E2FB8EA028CA0F63005609F1 /* SimplistsWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimplistsWatchApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -539,7 +541,7 @@
 				E24FACA3251CEC7C002B0B97 /* WatchAuthenticationErrorView.swift */,
 				E26D345425E3E88900EE3C3E /* WatchDebugView.swift */,
 				E22E152924E0769E002A140E /* WatchHomeView.swift */,
-				E2A6100425E2A67F000F492C /* WatchNewItemView.swift */,
+				E2A6100425E2A67F000F492C /* WatchEditItemView.swift */,
 				E2A60FF925E1C9AD000F492C /* WatchNewListView.swift */,
 				E2BB0B6425DEA9FD004A1AB6 /* WatchListHeaderView.swift */,
 				E235D7F924E04C3F007D95BE /* WatchListItemView.swift */,
@@ -777,6 +779,7 @@
 				E26D01E125810AED009049F3 /* StoreDataSource.swift */,
 				E2F3818825C04D47002740F3 /* StoreService.swift */,
 				E218230B25605F0200CAA92C /* String+Extensions.swift */,
+				E2F486762A22388400DECF00 /* TransferableItem.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -1148,6 +1151,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E235D79324DF5B59007D95BE /* AppDelegate.swift in Sources */,
+				E2F486772A22388400DECF00 /* TransferableItem.swift in Sources */,
 				E2F3818925C04D47002740F3 /* StoreService.swift in Sources */,
 				E2DAC6FB28E9C59900C1D503 /* ConditionalStrikethroughModifier.swift in Sources */,
 				E20BD7792754057200671478 /* ConditionalHiddenModifier.swift in Sources */,
@@ -1219,7 +1223,7 @@
 				E235D7C424DF5B89007D95BE /* ComplicationController.swift in Sources */,
 				E2D2D6F525E7E18D00C305DA /* UserDefaults+Extensions.swift in Sources */,
 				E24929542944E57D00976683 /* GraphicExtraLargeComplication.swift in Sources */,
-				E2A6100525E2A67F000F492C /* WatchNewItemView.swift in Sources */,
+				E2A6100525E2A67F000F492C /* WatchEditItemView.swift in Sources */,
 				E249295029436A1E00976683 /* GraphicCircularComplication.swift in Sources */,
 				E22B91C229E1C31800947040 /* WatchListMenuView.swift in Sources */,
 			);
