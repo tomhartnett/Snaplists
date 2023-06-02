@@ -53,7 +53,7 @@ struct WatchListItemView: View {
         )
         .simultaneousGesture(
             LongPressGesture()
-                .onEnded {_ in
+                .onEnded { _ in
                     longPressAction?()
                 }
         )
