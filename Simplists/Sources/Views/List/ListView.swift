@@ -46,7 +46,7 @@ struct ListView: View {
     @EnvironmentObject var storage: SMPStorage
     @EnvironmentObject var storeDataSource: StoreDataSource
     @EnvironmentObject var cancelItemEditingSource: CancelItemEditingSource
-    @State var list: SMPList
+    @State private var list: SMPList = SMPList()
     @State private var activeSheet: ListViewActiveSheet?
     @State private var deleteAction: DeleteAction?
     @State private var isPresentingConfirmDelete = false
@@ -54,8 +54,8 @@ struct ListView: View {
     @State private var selectedIDs = Set<UUID>()
     @FocusState private var focusedField: Field?
     @FocusState private var focusedItemField: UUID?
-    @Binding var selectedListID: UUID?
-    @Binding var lists: [SMPList]
+
+    var initialList: SMPList
 
     private var itemCountText: String {
         "item-count".localize(list.items.count)
@@ -97,136 +97,138 @@ struct ListView: View {
     }
 
     var body: some View {
-        if selectedListID == nil {
-            EmptyStateView(emptyStateType: lists.isEmpty ? .noLists : .noSelection)
-                .navigationBarTitle("")
-        } else {
-            VStack(alignment: .leading) {
-                HStack {
-                    if list.color != .none {
-                        Image(systemName: "app.fill")
-                            .foregroundColor(list.color.swiftUIColor)
-                    } else {
-                        EmptyView()
-                    }
-
-                    Text(list.title)
+        // TODO: show empty state if no list
+        VStack(alignment: .leading) {
+            HStack {
+                if list.color != .none {
+                    Image(systemName: "app.fill")
+                        .foregroundColor(list.color.swiftUIColor)
+                } else {
+                    EmptyView()
                 }
-                .font(.largeTitle)
-                .padding(.horizontal)
-                .accessibilityElement(children: .combine)
-                .accessibilityLabel(titleAccessibilityLabel)
-                .accessibilityAddTraits(.isHeader)
 
-                List(selection: $selectedIDs) {
-                    Section(header: HStack {
-                        Text(itemCountText)
-                            .accessibilityHidden(true)
-                        Spacer()
-                        Text(lastUpdatedText)
-                    },
-                            content: {
-                        ForEach(list.items) { item in
-                            ItemView(
-                                title: item.title,
-                                isComplete: item.isComplete,
-                                focusedItemField: _focusedItemField,
-                                saveAction: { title, isComplete in
-                                    withAnimation {
-                                        updateItem(id: item.id, title: title, isComplete: isComplete)
-                                    }
-                                })
-                            .draggable(TransferableItemWrapper(item: item, fromListID: list.id))
-                        }
-                        .onDelete(perform: delete)
-                        .onMove(perform: move)
-
-                        TextField("Add new item...", text: $newItemTitle)
-                            .focused($focusedField, equals: .addItemField)
-                            .onSubmit {
-                                addNewItem()
-                            }
-                            .submitLabel(.done)
-
-                    }).textCase(nil) // Don't upper-case section header text.
-                }
-                .padding(.top, -25)
-                .listStyle(InsetGroupedListStyle())
-                .onReceive(storage.objectWillChange, perform: { _ in
-                    reload()
-                })
-
-                HStack {
-                    Spacer()
-                    listEditMenu
-                        .disabled(selectedIDs.isEmpty)
-                    Spacer()
-                }
-                .frame(height: 30)
-                .hideIf(editMode?.wrappedValue != .active)
+                Text(list.title)
             }
-            .background(Color("SecondaryBackground"))
-            .navigationBarBackButtonHidden(editMode?.wrappedValue == .active)
-            .navigationTitle("")
-            .navigationBarItems(
-                leading: SelectAllView(selectedIDs: selectedIDs,
-                                       itemCount: list.items.count,
-                                       tapAction: selectOrDeselectAll),
-                trailing:
-                    HStack {
-                        EditButton()
-                            .hideIf(editMode?.wrappedValue != .active)
+            .font(.largeTitle)
+            .padding(.horizontal)
+            .accessibilityElement(children: .combine)
+            .accessibilityLabel(titleAccessibilityLabel)
+            .accessibilityAddTraits(.isHeader)
 
-                        Button(action: {
-                            if let id = focusedItemField {
-                                cancelItemEditingSource.itemID = id
-                            }
-                            newItemTitle = ""
-                            focusedField = nil
-                            focusedItemField = nil
-                        }) {
-                            Text("Cancel")
+            List(selection: $selectedIDs) {
+                Section(header: HStack {
+                    Text(itemCountText)
+                        .accessibilityHidden(true)
+                    Spacer()
+                    Text(lastUpdatedText)
+                },
+                        content: {
+                    ForEach(list.items) { item in
+                        ItemView(
+                            title: item.title,
+                            isComplete: item.isComplete,
+                            focusedItemField: _focusedItemField,
+                            saveAction: { title, isComplete in
+                                withAnimation {
+                                    updateItem(id: item.id, title: title, isComplete: isComplete)
+                                }
+                            })
+                        .draggable(TransferableItemWrapper(item: item, fromListID: list.id))
+                    }
+                    .onDelete(perform: delete)
+                    .onMove(perform: move)
+
+                    TextField("Add new item...", text: $newItemTitle)
+                        .focused($focusedField, equals: .addItemField)
+                        .onSubmit {
+                            addNewItem()
                         }
-                        .hideIf(focusedField == nil && focusedItemField == nil)
+                        .submitLabel(.done)
 
-                        listActionsMenu
-                            .accessibilityIdentifier("MoreMenu")
-                            .hideIf(editMode?.wrappedValue == .active || focusedField != nil || focusedItemField != nil)
-                    }
-            )
-            .sheet(item: $activeSheet) { item in
-                switch item {
-                case .editList:
-                    EditListView(
-                        model: .init(listID: list.id,
-                                     title: list.title,
-                                     color: list.color,
-                                     isAutoSortEnabled: list.isAutoSortEnabled)
-                    ) { editedModel in
-
-                        if editedModel.isAutoSortEnabled {
-                            withAnimation {
-                                list.items.sort(by: { !$0.isComplete && $1.isComplete })
-                            }
-                        }
-
-                        var updatedList = list
-                        updatedList.title = editedModel.title
-                        updatedList.color = editedModel.color
-                        updatedList.isAutoSortEnabled = editedModel.isAutoSortEnabled
-                        storage.updateList(updatedList)
-                    }
-
-                case .moveItems:
-                    let itemIDs = selectedIDs.map { $0 }
-                    MoveToListView(itemIDs: itemIDs, fromList: list) {
-                        editMode?.wrappedValue = .inactive
-                    }
-
-                case .purchaseRequired:
-                    StoreView(freeLimitMessage: FreeLimits.numberOfItems.message)
-                }
+                }).textCase(nil) // Don't upper-case section header text.
             }
+            .padding(.top, -25)
+            .listStyle(InsetGroupedListStyle())
+            .onReceive(storage.objectWillChange, perform: { _ in
+                reload()
+            })
+
+            HStack {
+                Spacer()
+                listEditMenu
+                    .disabled(selectedIDs.isEmpty)
+                Spacer()
+            }
+            .frame(height: 30)
+            .hideIf(editMode?.wrappedValue != .active)
+        }
+        .background(Color("SecondaryBackground"))
+        .navigationBarBackButtonHidden(editMode?.wrappedValue == .active)
+        .navigationTitle("")
+        .navigationBarItems(
+            leading: SelectAllView(selectedIDs: selectedIDs,
+                                   itemCount: list.items.count,
+                                   tapAction: selectOrDeselectAll),
+            trailing:
+                HStack {
+                    EditButton()
+                        .hideIf(editMode?.wrappedValue != .active)
+
+                    Button(action: {
+                        if let id = focusedItemField {
+                            cancelItemEditingSource.itemID = id
+                        }
+                        newItemTitle = ""
+                        focusedField = nil
+                        focusedItemField = nil
+                    }) {
+                        Text("Cancel")
+                    }
+                    .hideIf(focusedField == nil && focusedItemField == nil)
+
+                    listActionsMenu
+                        .accessibilityIdentifier("MoreMenu")
+                        .hideIf(editMode?.wrappedValue == .active || focusedField != nil || focusedItemField != nil)
+                }
+        )
+        .sheet(item: $activeSheet) { item in
+            switch item {
+            case .editList:
+                EditListView(
+                    model: .init(listID: list.id,
+                                 title: list.title,
+                                 color: list.color,
+                                 isAutoSortEnabled: list.isAutoSortEnabled)
+                ) { editedModel in
+
+                    if editedModel.isAutoSortEnabled {
+                        withAnimation {
+                            list.items.sort(by: { !$0.isComplete && $1.isComplete })
+                        }
+                    }
+
+                    var updatedList = list
+                    updatedList.title = editedModel.title
+                    updatedList.color = editedModel.color
+                    updatedList.isAutoSortEnabled = editedModel.isAutoSortEnabled
+                    storage.updateList(updatedList)
+                }
+
+            case .moveItems:
+                let itemIDs = selectedIDs.map { $0 }
+                MoveToListView(itemIDs: itemIDs, fromList: list) {
+                    editMode?.wrappedValue = .inactive
+                }
+
+            case .purchaseRequired:
+                StoreView(freeLimitMessage: FreeLimits.numberOfItems.message)
+            }
+        }
+        .onAppear {
+            list = initialList
+        }
+        .onChange(of: initialList) { newValue in
+            list = newValue
         }
     }
 
@@ -505,11 +507,11 @@ struct ListView: View {
     private func deleteList() {
         list.isArchived = true
         storage.updateList(list)
-        selectedListID = nil
+        // TODO: clear out list
     }
 
     private func duplicateList() {
-        if lists.count >= FreeLimits.numberOfLists.limit &&
+        if storage.getLists().count >= FreeLimits.numberOfLists.limit &&
             !storeDataSource.hasPurchasedIAP {
             activeSheet = .purchaseRequired
         } else if let newList = storage.duplicateList(list) {
@@ -538,9 +540,7 @@ struct ListView_Previews: PreviewProvider {
                     SMPListItem(title: "Item 4", isComplete: true)
                 ], color: .red)
 
-            ListView(list: list,
-                     selectedListID: .constant(UUID()),
-                     lists: .constant([]))
+            ListView(initialList: list)
                 .environmentObject(SMPStorage())
                 .environmentObject(StoreDataSource(service: StoreClient()))
                 .environmentObject(CancelItemEditingSource())

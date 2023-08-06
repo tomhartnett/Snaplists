@@ -39,7 +39,7 @@ public enum SMPListColor: Int64, CaseIterable, Hashable {
     }
 }
 
-public struct SMPList: Identifiable, Equatable {
+public struct SMPList: Identifiable, Hashable {
     public var id = UUID()
     public var title: String
     public var isArchived: Bool
