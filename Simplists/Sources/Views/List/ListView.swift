@@ -41,8 +41,6 @@ private enum Field: Hashable {
 }
 
 struct ListView: View {
-    @Environment(\.editMode) var editMode: Binding<EditMode>?
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var storage: SMPStorage
     @EnvironmentObject var storeDataSource: StoreDataSource
     @EnvironmentObject var cancelItemEditingSource: CancelItemEditingSource
@@ -52,10 +50,11 @@ struct ListView: View {
     @State private var isPresentingConfirmDelete = false
     @State private var newItemTitle = ""
     @State private var selectedIDs = Set<UUID>()
+    @State private var editMode: EditMode = .inactive
     @FocusState private var focusedField: Field?
     @FocusState private var focusedItemField: UUID?
 
-    var initialList: SMPList
+    @Binding var selectedListID: UUID?
 
     private var itemCountText: String {
         "item-count".localize(list.items.count)
@@ -97,138 +96,147 @@ struct ListView: View {
     }
 
     var body: some View {
-        // TODO: show empty state if no list
-        VStack(alignment: .leading) {
-            HStack {
-                if list.color != .none {
-                    Image(systemName: "app.fill")
-                        .foregroundColor(list.color.swiftUIColor)
-                } else {
-                    EmptyView()
-                }
-
-                Text(list.title)
-            }
-            .font(.largeTitle)
-            .padding(.horizontal)
-            .accessibilityElement(children: .combine)
-            .accessibilityLabel(titleAccessibilityLabel)
-            .accessibilityAddTraits(.isHeader)
-
-            List(selection: $selectedIDs) {
-                Section(header: HStack {
-                    Text(itemCountText)
-                        .accessibilityHidden(true)
-                    Spacer()
-                    Text(lastUpdatedText)
-                },
-                        content: {
-                    ForEach(list.items) { item in
-                        ItemView(
-                            title: item.title,
-                            isComplete: item.isComplete,
-                            focusedItemField: _focusedItemField,
-                            saveAction: { title, isComplete in
-                                withAnimation {
-                                    updateItem(id: item.id, title: title, isComplete: isComplete)
-                                }
-                            })
-                        .draggable(TransferableItemWrapper(item: item, fromListID: list.id))
-                    }
-                    .onDelete(perform: delete)
-                    .onMove(perform: move)
-
-                    TextField("Add new item...", text: $newItemTitle)
-                        .focused($focusedField, equals: .addItemField)
-                        .onSubmit {
-                            addNewItem()
-                        }
-                        .submitLabel(.done)
-
-                }).textCase(nil) // Don't upper-case section header text.
-            }
-            .padding(.top, -25)
-            .listStyle(InsetGroupedListStyle())
-            .onReceive(storage.objectWillChange, perform: { _ in
-                reload()
-            })
-
-            HStack {
-                Spacer()
-                listEditMenu
-                    .disabled(selectedIDs.isEmpty)
-                Spacer()
-            }
-            .frame(height: 30)
-            .hideIf(editMode?.wrappedValue != .active)
-        }
-        .background(Color("SecondaryBackground"))
-        .navigationBarBackButtonHidden(editMode?.wrappedValue == .active)
-        .navigationTitle("")
-        .navigationBarItems(
-            leading: SelectAllView(selectedIDs: selectedIDs,
-                                   itemCount: list.items.count,
-                                   tapAction: selectOrDeselectAll),
-            trailing:
+        if selectedListID == nil {
+            EmptyStateView(emptyStateType: storage.getLists().isEmpty ? .noLists : .noSelection)
+                        .navigationBarTitle("")
+        } else {
+            VStack(alignment: .leading) {
                 HStack {
-                    EditButton()
-                        .hideIf(editMode?.wrappedValue != .active)
-
-                    Button(action: {
-                        if let id = focusedItemField {
-                            cancelItemEditingSource.itemID = id
-                        }
-                        newItemTitle = ""
-                        focusedField = nil
-                        focusedItemField = nil
-                    }) {
-                        Text("Cancel")
-                    }
-                    .hideIf(focusedField == nil && focusedItemField == nil)
-
-                    listActionsMenu
-                        .accessibilityIdentifier("MoreMenu")
-                        .hideIf(editMode?.wrappedValue == .active || focusedField != nil || focusedItemField != nil)
-                }
-        )
-        .sheet(item: $activeSheet) { item in
-            switch item {
-            case .editList:
-                EditListView(
-                    model: .init(listID: list.id,
-                                 title: list.title,
-                                 color: list.color,
-                                 isAutoSortEnabled: list.isAutoSortEnabled)
-                ) { editedModel in
-
-                    if editedModel.isAutoSortEnabled {
-                        withAnimation {
-                            list.items.sort(by: { !$0.isComplete && $1.isComplete })
-                        }
+                    if list.color != .none {
+                        Image(systemName: "app.fill")
+                            .foregroundColor(list.color.swiftUIColor)
+                    } else {
+                        EmptyView()
                     }
 
-                    var updatedList = list
-                    updatedList.title = editedModel.title
-                    updatedList.color = editedModel.color
-                    updatedList.isAutoSortEnabled = editedModel.isAutoSortEnabled
-                    storage.updateList(updatedList)
+                    Text(list.title)
                 }
+                .font(.largeTitle)
+                .padding(.horizontal)
+                .accessibilityElement(children: .combine)
+                .accessibilityLabel(titleAccessibilityLabel)
+                .accessibilityAddTraits(.isHeader)
 
-            case .moveItems:
-                let itemIDs = selectedIDs.map { $0 }
-                MoveToListView(itemIDs: itemIDs, fromList: list) {
-                    editMode?.wrappedValue = .inactive
+                List(selection: $selectedIDs) {
+                    Section(header: HStack {
+                        Text(itemCountText)
+                            .accessibilityHidden(true)
+                        Spacer()
+                        Text(lastUpdatedText)
+                    },
+                            content: {
+                        ForEach(list.items) { item in
+                            ItemView(
+                                title: item.title,
+                                isComplete: item.isComplete,
+                                focusedItemField: _focusedItemField,
+                                saveAction: { title, isComplete in
+                                    withAnimation {
+                                        updateItem(id: item.id, title: title, isComplete: isComplete)
+                                    }
+                                })
+                            .draggable(TransferableItemWrapper(item: item, fromListID: list.id))
+                        }
+                        .onDelete(perform: delete)
+                        .onMove(perform: move)
+
+                        TextField("Add new item...", text: $newItemTitle)
+                            .focused($focusedField, equals: .addItemField)
+                            .onSubmit {
+                                addNewItem()
+                            }
+                            .submitLabel(.done)
+
+                    }).textCase(nil) // Don't upper-case section header text.
                 }
+                .environment(\.editMode, $editMode)
+                .padding(.top, -25)
+                .listStyle(InsetGroupedListStyle())
+                .onReceive(storage.objectWillChange, perform: { _ in
+                    reload()
+                })
+                .toolbar {
+                    ToolbarItem(placement: .topBarLeading) {
+                        SelectAllView(selectedIDs: selectedIDs,
+                                      itemCount: list.items.count,
+                                      tapAction: selectOrDeselectAll)
+                    }
 
-            case .purchaseRequired:
-                StoreView(freeLimitMessage: FreeLimits.numberOfItems.message)
+                    ToolbarItemGroup(placement: .topBarTrailing) {
+                        EditButton()
+                            .environment(\.editMode, $editMode)
+                            .hideIf(editMode == .inactive)
+
+                        Button(action: {
+                            if let id = focusedItemField {
+                                cancelItemEditingSource.itemID = id
+                            }
+                            newItemTitle = ""
+                            focusedField = nil
+                            focusedItemField = nil
+                        }) {
+                            Text("Cancel")
+                        }
+                        .hideIf(focusedField == nil && focusedItemField == nil)
+
+                        listActionsMenu
+                            .accessibilityIdentifier("MoreMenu")
+                            .hideIf(editMode == .active || focusedItemField != nil)
+                    }
+
+                    ToolbarItem(placement: .bottomBar) {
+                        listEditMenu
+                            .disabled(selectedIDs.isEmpty)
+                            .hideIf(editMode != .active)
+                    }
+                }
             }
-        }
-        .onAppear {
-            list = initialList
-        }
-        .onChange(of: initialList) { newValue in
-            list = newValue
+            .background(Color("SecondaryBackground"))
+            .navigationBarBackButtonHidden(editMode == .active)
+            .navigationTitle("")
+            .sheet(item: $activeSheet) { item in
+                switch item {
+                case .editList:
+                    EditListView(
+                        model: .init(listID: list.id,
+                                     title: list.title,
+                                     color: list.color,
+                                     isAutoSortEnabled: list.isAutoSortEnabled)
+                    ) { editedModel in
+
+                        if editedModel.isAutoSortEnabled {
+                            withAnimation {
+                                list.items.sort(by: { !$0.isComplete && $1.isComplete })
+                            }
+                        }
+
+                        var updatedList = list
+                        updatedList.title = editedModel.title
+                        updatedList.color = editedModel.color
+                        updatedList.isAutoSortEnabled = editedModel.isAutoSortEnabled
+                        storage.updateList(updatedList)
+                    }
+
+                case .moveItems:
+                    let itemIDs = selectedIDs.map { $0 }
+                    MoveToListView(itemIDs: itemIDs, fromList: list) {
+                        editMode = .inactive
+                    }
+
+                case .purchaseRequired:
+                    StoreView(freeLimitMessage: FreeLimits.numberOfItems.message)
+                }
+            }
+            .onAppear {
+                if let id = selectedListID, let list = storage.getList(with: id) {
+                    self.list = list
+                }
+            }
+            .onChange(of: selectedListID) { newValue in
+                if let id = newValue, let list = storage.getList(with: id) {
+                    self.list = list
+                }
+            }
         }
     }
 
@@ -242,7 +250,7 @@ struct ListView: View {
             }
 
             Button(action: {
-                editMode?.wrappedValue = .active
+                editMode = .active
             }) {
                 Text("Edit items...")
                 Image(systemName: "checklist")
@@ -461,7 +469,7 @@ struct ListView: View {
         let itemIDs = selectedIDs.map { $0 }
         storage.deleteItems(itemIDs, listID: list.id)
 
-        editMode?.wrappedValue = .inactive
+        editMode = .inactive
         selectedIDs.removeAll()
 
         storage.updateList(list)
@@ -490,7 +498,7 @@ struct ListView: View {
                               at: index)
         }
 
-        editMode?.wrappedValue = .inactive
+        editMode = .inactive
         selectedIDs.removeAll()
 
         storage.updateList(list)
@@ -507,7 +515,7 @@ struct ListView: View {
     private func deleteList() {
         list.isArchived = true
         storage.updateList(list)
-        // TODO: clear out list
+        selectedListID = nil
     }
 
     private func duplicateList() {
@@ -530,17 +538,8 @@ struct ListView: View {
 
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
-            let list = SMPList(
-                title: "Grocery",
-                items: [
-                    SMPListItem(title: "Item 1", isComplete: false),
-                    SMPListItem(title: "Item 2", isComplete: false),
-                    SMPListItem(title: "Item 3", isComplete: true),
-                    SMPListItem(title: "Item 4", isComplete: true)
-                ], color: .red)
-
-            ListView(initialList: list)
+        NavigationStack {
+            ListView(selectedListID: .constant(nil))
                 .environmentObject(SMPStorage())
                 .environmentObject(StoreDataSource(service: StoreClient()))
                 .environmentObject(CancelItemEditingSource())

@@ -29,7 +29,7 @@ struct HomeView: View {
     @State private var editMode: EditMode = .inactive
 
     @State private var lists: [SMPList] = []
-    @State private var selectedList: SMPList?
+    @State private var selectedListID: UUID?
 
     @State private var columnVisibility: NavigationSplitViewVisibility = .doubleColumn
 
@@ -52,7 +52,7 @@ struct HomeView: View {
                               dismissButton: .default(Text("icloud-warning-alert-button-text")))
                     }
 
-                List(selection: $selectedList) {
+                List(selection: $selectedListID) {
                     if !storeDataSource.hasPurchasedIAP {
                         Section {
                             PreviewModeWidget()
@@ -64,7 +64,7 @@ struct HomeView: View {
 
                     Section {
                         ForEach(lists) { list in
-                            NavigationLink(value: list) {
+                            NavigationLink(value: list.id) {
                                 ListRowView(color: list.color.swiftUIColor,
                                             title: list.title,
                                             itemCount: list.items.count)
@@ -163,11 +163,7 @@ struct HomeView: View {
             .listStyle(InsetGroupedListStyle())
             .environment(\.editMode, $editMode)
         } detail: {
-            if let selectedList {
-                ListView(initialList: selectedList)
-            } else {
-                EmptyStateView(emptyStateType: lists.isEmpty ? .noLists : .noSelection)
-            }
+            ListView(selectedListID: $selectedListID)
         }
         .onAppear {
             reload()
@@ -184,9 +180,7 @@ struct HomeView: View {
             reload()
         })
         .onReceive(openURLState.$selectedListID, perform: { id in
-            if let id = id, let list = storage.getList(with: id) {
-                selectedList = list
-            }
+            selectedListID = id
         })
         .sheet(item: $activeSheet) { item in
             switch item {
