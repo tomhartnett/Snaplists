@@ -232,7 +232,7 @@ struct ListView: View {
                     self.list = list
                 }
             }
-            .onChange(of: selectedListID) { newValue in
+            .onChange(of: selectedListID) { _, newValue in
                 if let id = newValue, let list = storage.getList(with: id) {
                     self.list = list
                 }
