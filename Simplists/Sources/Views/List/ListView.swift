@@ -51,7 +51,6 @@ struct ListView: View {
     @State private var newItemTitle = ""
     @State private var selectedIDs = Set<UUID>()
     @State private var editMode: EditMode = .inactive
-    @FocusState private var focusedField: Field?
     @FocusState private var focusedItemField: UUID?
 
     @Binding var selectedListID: UUID?
@@ -141,7 +140,6 @@ struct ListView: View {
                         .onMove(perform: move)
 
                         TextField("Add new item...", text: $newItemTitle)
-                            .focused($focusedField, equals: .addItemField)
                             .onSubmit {
                                 addNewItem()
                             }
@@ -172,12 +170,11 @@ struct ListView: View {
                                 cancelItemEditingSource.itemID = id
                             }
                             newItemTitle = ""
-                            focusedField = nil
                             focusedItemField = nil
                         }) {
                             Text("Cancel")
                         }
-                        .hideIf(focusedField == nil && focusedItemField == nil)
+                        .hideIf(focusedItemField == nil)
 
                         listActionsMenu
                             .accessibilityIdentifier("MoreMenu")
@@ -396,10 +393,7 @@ struct ListView: View {
     private func addNewItem() {
         let title = newItemTitle.trimmingCharacters(in: .whitespacesAndNewlines)
         if title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            focusedField = nil
             return
-        } else {
-            focusedField = .addItemField
         }
 
         if list.items.count >= FreeLimits.numberOfItems.limit &&

@@ -334,10 +334,6 @@ struct HomeView: View {
         var listToUpdate = list
         listToUpdate.isArchived = true
         storage.updateList(listToUpdate)
-
-//        if selectedListID == list.id {
-//            selectedListID = nil
-//        }
     }
 
     private func archive(at offsets: IndexSet) {
@@ -348,10 +344,6 @@ struct HomeView: View {
             var listToUpdate = lists[$0]
             listToUpdate.isArchived = true
             storage.updateList(listToUpdate)
-
-//            if selectedListID == listToUpdate.id {
-//                selectedListID = nil
-//            }
         }
     }
 
