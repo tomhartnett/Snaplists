@@ -18,6 +18,13 @@
   },
   "testTargets" : [
     {
+      "target" : {
+        "containerPath" : "container:Simplists.xcodeproj",
+        "identifier" : "E205E2C129EAE807001EB7A6",
+        "name" : "SimplistsKitTests"
+      }
+    },
+    {
       "parallelizable" : true,
       "target" : {
         "containerPath" : "container:Simplists.xcodeproj",

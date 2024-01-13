@@ -60,6 +60,7 @@ final class HomeUITests: XCTestCase {
         app.buttons["List options"].tap()
 
         let titleField = app.textFields["TODOs"]
+        XCTAssertTrue(titleField.waitForExistence())
         titleField.tap()
         titleField.typeText(" & Tasks")
 
