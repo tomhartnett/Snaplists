@@ -86,6 +86,7 @@ struct ListsWidget: Widget {
         .configurationDisplayName("Lists")
         .description("Get quick access to your lists.")
         .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
+        .contentMarginsDisabled()
     }
 }
 
