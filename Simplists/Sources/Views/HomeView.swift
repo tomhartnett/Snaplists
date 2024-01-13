@@ -55,7 +55,7 @@ struct HomeView: View {
                 List(selection: $selectedListID) {
                     if !storeDataSource.hasPurchasedIAP {
                         Section {
-                            PreviewModeWidget()
+                            PremiumModeWidget()
                                 .onTapGesture {
                                     activeSheet = .storeView
                                 }

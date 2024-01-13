@@ -1,5 +1,5 @@
 //
-//  PreviewModeWidget.swift
+//  PremiumModeWidget.swift
 //  Simplists
 //
 //  Created by Tom Hartnett on 2/7/21.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PreviewModeWidget: View {
+struct PremiumModeWidget: View {
     var body: some View {
         HStack {
             Image(systemName: "dollarsign.circle")
@@ -27,6 +27,6 @@ struct PreviewModeWidget: View {
 
 struct PreviewModeWidget_Previews: PreviewProvider {
     static var previews: some View {
-        PreviewModeWidget()
+        PremiumModeWidget()
     }
 }

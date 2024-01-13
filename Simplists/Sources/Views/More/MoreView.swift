@@ -31,7 +31,7 @@ struct MoreView: View {
 
             List {
                 Section(header: Text("Optional In-App Purchases")) {
-                    PreviewModeWidget()
+                    PremiumModeWidget()
                         .onTapGesture {
                             actionSheet = .storeView
                         }
