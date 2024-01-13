@@ -25,7 +25,6 @@ struct EmptyListView: View {
 
                     Spacer()
                 }
-                .padding([.leading, .top], 15)
 
                 Spacer()
             }

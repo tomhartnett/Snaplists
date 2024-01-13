@@ -100,7 +100,6 @@ struct SingleListWidget: Widget {
         .configurationDisplayName("Specific List")
         .description("Choose a list for quick access.")
         .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
-        .contentMarginsDisabled()
     }
 }
 

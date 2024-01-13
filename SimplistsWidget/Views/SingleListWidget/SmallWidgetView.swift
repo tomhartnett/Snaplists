@@ -56,7 +56,6 @@ struct SmallWidgetView: View {
 
                     Spacer()
                 }
-                .padding([.leading, .top], 15)
 
                 Spacer()
             }

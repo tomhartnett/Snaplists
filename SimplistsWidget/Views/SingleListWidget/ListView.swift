@@ -67,7 +67,6 @@ struct ListView: View {
 
             Spacer()
         }
-        .padding(.all, 15)
         .containerBackground(Color("WidgetBackground"), for: .widget)
     }
 }
