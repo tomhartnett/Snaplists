@@ -60,7 +60,7 @@ struct SmallWidgetView: View {
 
                 Spacer()
             }
-            .background(Color("WidgetBackground"))
+            .containerBackground(Color("WidgetBackground"), for: .widget)
         }
     }
 }

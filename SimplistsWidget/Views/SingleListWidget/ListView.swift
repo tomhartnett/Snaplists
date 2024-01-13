@@ -68,7 +68,26 @@ struct ListView: View {
             Spacer()
         }
         .padding(.all, 15)
-        .background(Color("WidgetBackground"))
+        .containerBackground(Color("WidgetBackground"), for: .widget)
     }
+}
 
+struct ListWidgetView_Previews: PreviewProvider {
+    static var previews: some View {
+        var items = [SMPListItem]()
+
+        for index in 1..<20 {
+            items.append(SMPListItem(title: "Item \(index)", isComplete: index < 2))
+        }
+
+        return ListView(
+            list: SMPList(title: "Medium List",
+                          isArchived: false,
+                          lastModified: Date().addingTimeInterval(-60),
+                          items: items,
+                          color: .purple),
+            maxVisibleItemCount: 3
+        )
+        .previewContext(WidgetPreviewContext(family: .systemMedium))
+    }
 }

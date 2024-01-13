@@ -72,7 +72,7 @@ struct ListsView: View {
             }
         }
         .padding(.all, 15)
-        .background(Color("WidgetBackground"))
+        .containerBackground(Color("WidgetBackground"), for: .widget)
     }
 }
 
