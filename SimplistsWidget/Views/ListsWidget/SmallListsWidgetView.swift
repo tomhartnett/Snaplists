@@ -66,8 +66,7 @@ struct SmallListsWidgetView: View {
                 Spacer()
             }
         }
-        .padding([.all], 15)
-        .background(Color("WidgetBackground"))
+        .containerBackground(Color("WidgetBackground"), for: .widget)
     }
 }
 

@@ -20,7 +20,7 @@ struct EmptyWidgetView: View {
                 .frame(maxWidth: .infinity)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color("WidgetBackground"))
+        .containerBackground(Color("WidgetBackground"), for: .widget)
     }
 }
 

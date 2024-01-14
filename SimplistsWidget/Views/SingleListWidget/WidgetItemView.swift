@@ -37,13 +37,3 @@ struct WidgetItemView: View {
         }
     }
 }
-
-struct WidgetItemView_Previews: PreviewProvider {
-    static var previews: some View {
-        VStack {
-            WidgetItemView(title: "My test item", isComplete: true)
-            WidgetItemView(title: "My test item", isComplete: false)
-        }
-        .previewContext(WidgetPreviewContext(family: .systemSmall))
-    }
-}

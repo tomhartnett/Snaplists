@@ -25,7 +25,6 @@ struct EmptyListView: View {
 
                     Spacer()
                 }
-                .padding([.leading, .top], 15)
 
                 Spacer()
             }
@@ -34,7 +33,7 @@ struct EmptyListView: View {
                 .foregroundColor(.secondary)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
-        .background(Color("WidgetBackground"))
+        .containerBackground(Color("WidgetBackground"), for: .widget)
     }
 }
 

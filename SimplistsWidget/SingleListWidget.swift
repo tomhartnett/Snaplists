@@ -105,16 +105,20 @@ struct SingleListWidget: Widget {
 
 struct SingleListWidget_Previews: PreviewProvider {
     static var previews: some View {
-        SingleListWidgetEntryView(entry: SingleListEntry(date: Date(),
-                                                         list: SMPList(title: "Grocery",
-                                                                       isArchived: false,
-                                                                       lastModified: Date(),
-                                                                       items: [
-                                                                        SMPListItem(title: "Milk", isComplete: false),
-                                                                        SMPListItem(title: "Bread", isComplete: true),
-                                                                        SMPListItem(title: "Beer", isComplete: true)
-                                                                       ]),
-                                                         totalListCount: 3))
+        SingleListWidgetEntryView(
+            entry: SingleListEntry(
+                date: Date(),
+                list: SMPList(title: "Grocery",
+                              isArchived: false,
+                              lastModified: Date(),
+                              items: [
+                                SMPListItem(title: "Milk", isComplete: false),
+                                SMPListItem(title: "Bread", isComplete: true),
+                                SMPListItem(title: "Beer", isComplete: true)
+                              ]),
+                totalListCount: 3
+            )
+        )
         .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }

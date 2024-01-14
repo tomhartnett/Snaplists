@@ -22,19 +22,23 @@ struct HomeView: View {
     @EnvironmentObject var storage: SMPStorage
     @EnvironmentObject var storeDataSource: StoreDataSource
     @EnvironmentObject var openURLState: OpenURLContext
-    @State private var lists: [SMPList] = []
+
     @State private var isPresentingAuthError = false
     @State private var activeSheet: HomeViewActiveSheet?
-    @State private var selectedListID: UUID?
     @State private var listsSortType: SMPListsSortType = .lastModifiedDescending
     @State private var editMode: EditMode = .inactive
+
+    @State private var lists: [SMPList] = []
+    @State private var selectedListID: UUID?
+
+    @State private var columnVisibility: NavigationSplitViewVisibility = .doubleColumn
 
     private var archivedListCount: Int {
         return storage.getListsCount(isArchived: true)
     }
 
     var body: some View {
-        NavigationView {
+        NavigationSplitView(columnVisibility: $columnVisibility) {
             VStack(alignment: .leading) {
 
                 AuthenticationErrorView()
@@ -48,11 +52,10 @@ struct HomeView: View {
                               dismissButton: .default(Text("icloud-warning-alert-button-text")))
                     }
 
-                List {
-
+                List(selection: $selectedListID) {
                     if !storeDataSource.hasPurchasedIAP {
                         Section {
-                            PreviewModeWidget()
+                            PremiumModeWidget()
                                 .onTapGesture {
                                     activeSheet = .storeView
                                 }
@@ -61,12 +64,7 @@ struct HomeView: View {
 
                     Section {
                         ForEach(lists) { list in
-                            NavigationLink(destination: ListView(list: list,
-                                                                 selectedListID: $selectedListID,
-                                                                 lists: $lists),
-                                           tag: list.id,
-                                           selection: $selectedListID) {
-
+                            NavigationLink(value: list.id) {
                                 ListRowView(color: list.color.swiftUIColor,
                                             title: list.title,
                                             itemCount: list.items.count)
@@ -164,10 +162,8 @@ struct HomeView: View {
             )
             .listStyle(InsetGroupedListStyle())
             .environment(\.editMode, $editMode)
-
-            VStack {
-                EmptyStateView(emptyStateType: lists.isEmpty ? .noLists : .noSelection)
-            }
+        } detail: {
+            ListView(selectedListID: $selectedListID)
         }
         .onAppear {
             reload()
@@ -338,10 +334,6 @@ struct HomeView: View {
         var listToUpdate = list
         listToUpdate.isArchived = true
         storage.updateList(listToUpdate)
-
-        if selectedListID == list.id {
-            selectedListID = nil
-        }
     }
 
     private func archive(at offsets: IndexSet) {
@@ -352,10 +344,6 @@ struct HomeView: View {
             var listToUpdate = lists[$0]
             listToUpdate.isArchived = true
             storage.updateList(listToUpdate)
-
-            if selectedListID == listToUpdate.id {
-                selectedListID = nil
-            }
         }
     }
 

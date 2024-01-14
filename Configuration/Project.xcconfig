@@ -8,6 +8,6 @@
 // Configuration settings file format documentation can be found at:
 // https://help.apple.com/xcode/#/dev745c5c974
 
-IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-MARKETING_VERSION = 2023.2
-WATCHOS_DEPLOYMENT_TARGET = 9.0;
+IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+MARKETING_VERSION = 2024.1
+WATCHOS_DEPLOYMENT_TARGET = 10.0;

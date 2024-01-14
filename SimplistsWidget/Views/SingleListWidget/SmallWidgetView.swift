@@ -56,11 +56,10 @@ struct SmallWidgetView: View {
 
                     Spacer()
                 }
-                .padding([.leading, .top], 15)
 
                 Spacer()
             }
-            .background(Color("WidgetBackground"))
+            .containerBackground(Color("WidgetBackground"), for: .widget)
         }
     }
 }
