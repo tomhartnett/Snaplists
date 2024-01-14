@@ -25,8 +25,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     private var storage: SMPStorage?
 
-    private var storeDataSource: StoreDataSource?
-
     func scene(_ scene: UIScene,
                willConnectTo session: UISceneSession,
                options connectionOptions: UIScene.ConnectionOptions) {
@@ -37,24 +35,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let storage = SMPStorage()
 
-        let client = StoreClient()
-        SKPaymentQueue.default().add(client)
-
-        let storeDataSource = StoreDataSource(service: client)
-        storeDataSource.getProducts()
-
-        storeDataSource.objectWillChange
-            .sink(receiveValue: { [storage, storeDataSource] in
-                if storeDataSource.hasPurchasedIAP {
-                    storage.savePremiumIAPItem()
-                }
-            })
-            .store(in: &subscriptions)
-
         // Create the SwiftUI view that provides the window contents.
         let listsView = HomeView()
             .environmentObject(storage)
-            .environmentObject(storeDataSource)
             .environmentObject(openURLContext)
             .environmentObject(cancelItemEditingSource)
 
@@ -69,7 +52,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
 
         self.storage = storage
-        self.storeDataSource = storeDataSource
 
         #if DEBUG
         prepareForUITests()
@@ -183,11 +165,7 @@ extension SceneDelegate {
 
         createTestData()
 
-        unlockInAppPurchase()
-
         suppressReleaseNotes()
-
-        resetInAppPurchase()
 
         toggleFakeAuthentication()
     }
@@ -198,22 +176,10 @@ extension SceneDelegate {
         storage?.createScreenshotSampleData()
     }
 
-    private func unlockInAppPurchase() {
-        guard CommandLine.arguments.contains("-unlock-iap") else { return }
-
-        storeDataSource?.purchaseIAPForTesting()
-    }
-
     private func suppressReleaseNotes() {
         guard CommandLine.arguments.contains("-suppress-release-notes") else { return }
 
         UserDefaults.simplistsApp.setHasSeenReleaseNotes(true)
-    }
-
-    private func resetInAppPurchase() {
-        guard CommandLine.arguments.contains("-reset-iap") else { return }
-
-        storeDataSource?.resetIAP()
     }
 
     private func toggleFakeAuthentication() {

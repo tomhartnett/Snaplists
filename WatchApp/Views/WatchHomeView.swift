@@ -20,7 +20,6 @@ enum WatchHomeActiveSheet: Identifiable {
 
 struct WatchHomeView: View {
     @EnvironmentObject var storage: SMPStorage
-    @EnvironmentObject var storeDataSource: StoreDataSource
     @State var lists: [SMPList]
     @State private var activeSheet: WatchHomeActiveSheet?
     @State private var isAuthenticated: Bool = false
@@ -77,8 +76,7 @@ struct WatchHomeView: View {
 
                 ForEach(lists) { list in
                     NavigationLink(destination: WatchListView(list: list)
-                                    .environmentObject(storage)
-                                    .environmentObject(storeDataSource)) {
+                                    .environmentObject(storage)) {
                         HStack {
                             if list.color != .none {
                                 Image(systemName: "app.fill")
@@ -99,8 +97,7 @@ struct WatchHomeView: View {
                 #if DEBUG
                 NavigationLink(destination:
                                 WatchDebugView(isAuthenticated: $isAuthenticated)
-                                .environmentObject(storage)
-                                .environmentObject(storeDataSource)) {
+                                .environmentObject(storage)) {
                     Text("Debug View")
                 }
                 #else
@@ -130,11 +127,6 @@ struct WatchHomeView: View {
         .onReceive(storage.objectWillChange, perform: { _ in
             reload()
         })
-        .onReceive(storeDataSource.objectWillChange) { _ in
-            if storeDataSource.hasPurchasedIAP {
-                storage.savePremiumIAPItem()
-            }
-        }
         .sheet(item: $activeSheet) { item in
             switch item {
             case .authErrorView:
@@ -216,7 +208,6 @@ struct WatchHomeView_Previews: PreviewProvider {
 
         WatchHomeView(lists: lists)
             .environmentObject(SMPStorage())
-            .environmentObject(StoreDataSource(service: StoreClient()))
             .previewDevice(PreviewDevice(rawValue: "Apple Watch Series 6 - 40mm"))
     }
 }

@@ -10,7 +10,6 @@ import SimplistsKit
 import SwiftUI
 
 enum MoreViewActionSheet: Identifiable {
-    case storeView
     case mailView
 
     var id: Int {
@@ -30,13 +29,6 @@ struct MoreView: View {
             }
 
             List {
-                Section(header: Text("Optional In-App Purchases")) {
-                    PremiumModeWidget()
-                        .onTapGesture {
-                            actionSheet = .storeView
-                        }
-                }
-
                 Section(header: Text("Feedback")) {
                     WidgetView(systemImageName: "star", lableText: "Please Rate this App".localize())
                         .onTapGesture {
@@ -113,8 +105,6 @@ struct MoreView: View {
         }
         .sheet(item: $actionSheet) { item in
             switch item {
-            case .storeView:
-                StoreView()
             case .mailView:
                 MailView()
             }

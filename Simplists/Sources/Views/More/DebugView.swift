@@ -10,37 +10,10 @@ import SwiftUI
 
 struct DebugView: View {
     @EnvironmentObject var storage: SMPStorage
-    @EnvironmentObject var storeDataSource: StoreDataSource
     @State private var isHack = false
 
     var body: some View {
         Form {
-            Section(header: Text("IAP Status")) {
-                HStack {
-                    Text(storeDataSource.premiumIAPPurchaseStatus.title)
-                    Spacer()
-                    Button(action: {
-                        storeDataSource.resetIAP()
-                        isHack.toggle()
-                    }, label: {
-                        Text("Reset")
-                    })
-                }
-            }
-
-            Section(header: Text("Has IAP Item")) {
-                HStack {
-                    Text(storage.hasPremiumIAPItem.yesOrNoString)
-                    Spacer()
-                    Button(action: {
-                        storage.deletePremiumIAPItem()
-                        isHack.toggle()
-                    }, label: {
-                        Text("Delete")
-                    })
-                }
-            }
-
             Section(header: Text("Welcome list")) {
                 HStack {
                     Text(UserDefaults.simplistsApp.isSampleListCreated.yesOrNoString)
@@ -138,8 +111,6 @@ struct DebugView: View {
 
 struct DebugView_Previews: PreviewProvider {
     static var previews: some View {
-        let client = StoreClient()
-        let dataSource = StoreDataSource(service: client)
-        DebugView().environmentObject(dataSource)
+        DebugView().environmentObject(SMPStorage())
     }
 }

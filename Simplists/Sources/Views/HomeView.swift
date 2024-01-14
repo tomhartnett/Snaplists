@@ -12,14 +12,12 @@ enum HomeViewActiveSheet: Identifiable, Hashable {
     case editList(id: UUID)
     case newList
     case releaseNotes
-    case storeView
 
     var id: Self { self }
 }
 
 struct HomeView: View {
     @EnvironmentObject var storage: SMPStorage
-    @EnvironmentObject var storeDataSource: StoreDataSource
     @EnvironmentObject var openURLState: OpenURLContext
 
     @State private var isPresentingAuthError = false
@@ -52,15 +50,6 @@ struct HomeView: View {
                     }
 
                 List(selection: $selectedListID) {
-                    if !storeDataSource.hasPurchasedIAP {
-                        Section {
-                            PremiumModeWidget()
-                                .onTapGesture {
-                                    activeSheet = .storeView
-                                }
-                        }
-                    }
-
                     Section {
                         ForEach(lists) { list in
                             NavigationLink(value: list.id) {
@@ -206,9 +195,6 @@ struct HomeView: View {
 
             case .releaseNotes:
                 ReleaseNotesView(isModal: .constant(true))
-
-            case .storeView:
-                StoreView()
             }
         }
     }
@@ -367,10 +353,6 @@ fileprivate extension HomeView {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-
-        let client = StoreClient()
-        let dataSource = StoreDataSource(service: client)
-
         let lists = [
             SMPList(title: "List 1",
                     isArchived: false,
@@ -388,7 +370,6 @@ struct HomeView_Previews: PreviewProvider {
 
         HomeView(lists)
         .environmentObject(SMPStorage())
-        .environmentObject(dataSource)
         .environmentObject(OpenURLContext())
     }
 }

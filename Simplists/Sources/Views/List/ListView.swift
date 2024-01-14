@@ -41,7 +41,6 @@ private enum Field: Hashable {
 
 struct ListView: View {
     @EnvironmentObject var storage: SMPStorage
-    @EnvironmentObject var storeDataSource: StoreDataSource
     @EnvironmentObject var cancelItemEditingSource: CancelItemEditingSource
     @State private var list: SMPList = SMPList()
     @State private var activeSheet: ListViewActiveSheet?
@@ -524,7 +523,6 @@ struct ListView_Previews: PreviewProvider {
         NavigationStack {
             ListView(selectedListID: .constant(nil))
                 .environmentObject(SMPStorage())
-                .environmentObject(StoreDataSource(service: StoreClient()))
                 .environmentObject(CancelItemEditingSource())
                 .navigationBarTitleDisplayMode(.inline)
         }

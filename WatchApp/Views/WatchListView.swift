@@ -21,7 +21,6 @@ enum WatchListActiveSheet: Hashable, Identifiable {
 struct WatchListView: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var storage: SMPStorage
-    @EnvironmentObject var storeDataSource: StoreDataSource
     @State var list: SMPList
     @State private var activeSheet: WatchListActiveSheet?
 
