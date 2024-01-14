@@ -15,7 +15,7 @@ final class ListUITests: XCTestCase {
         super.setUp()
 
         app = XCUIApplication()
-        app.launchArguments = ["-create-test-data", "-unlock-iap", "-suppress-release-notes"]
+        app.launchArguments = ["-create-test-data", "-suppress-release-notes"]
         app.launch()
 
         app.buttons["TODOs list, 4 items"].tap()

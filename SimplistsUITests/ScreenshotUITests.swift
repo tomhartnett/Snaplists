@@ -15,7 +15,7 @@ final class ScreenshotUITests: XCTestCase {
         super.setUp()
 
         app = XCUIApplication()
-        app.launchArguments = ["-create-test-data", "-unlock-iap", "-suppress-release-notes", "-simulate-auth"]
+        app.launchArguments = ["-create-test-data", "-suppress-release-notes", "-simulate-auth"]
         app.launch()
 
         continueAfterFailure = false
