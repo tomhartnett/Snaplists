@@ -21,6 +21,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     private let cancelItemEditingSource = CancelItemEditingSource()
 
+    private let store = Store()
+
     private var subscriptions = Set<AnyCancellable>()
 
     private var storage: SMPStorage?
@@ -40,6 +42,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             .environmentObject(storage)
             .environmentObject(openURLContext)
             .environmentObject(cancelItemEditingSource)
+            .environmentObject(store)
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {

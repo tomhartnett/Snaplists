@@ -49,7 +49,7 @@
 		E235D7BC24DF5B89007D95BE /* WatchListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D7BB24DF5B89007D95BE /* WatchListView.swift */; };
 		E235D7C424DF5B89007D95BE /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D7C324DF5B89007D95BE /* ComplicationController.swift */; };
 		E235D7C624DF5B89007D95BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E235D7C524DF5B89007D95BE /* Assets.xcassets */; };
-		E235D7CE24DF5B89007D95BE /* WatchApp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = E235D7A824DF5B88007D95BE /* WatchApp.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E235D7CE24DF5B89007D95BE /* Snaplists.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = E235D7A824DF5B88007D95BE /* Snaplists.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E235D7DA24E0372D007D95BE /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E235D7D924E0372D007D95BE /* CloudKit.framework */; };
 		E235D7DD24E0374D007D95BE /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E235D7DC24E0374D007D95BE /* CloudKit.framework */; };
 		E235D7E724E037B9007D95BE /* SimplistsKit.h in Headers */ = {isa = PBXBuildFile; fileRef = E235D7E524E037B9007D95BE /* SimplistsKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -63,6 +63,10 @@
 		E249295029436A1E00976683 /* GraphicCircularComplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = E249294F29436A1E00976683 /* GraphicCircularComplication.swift */; };
 		E2492952294377BC00976683 /* GraphicCornerComplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2492951294377BC00976683 /* GraphicCornerComplication.swift */; };
 		E24929542944E57D00976683 /* GraphicExtraLargeComplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24929532944E57D00976683 /* GraphicExtraLargeComplication.swift */; };
+		E24C85BA2B545D9C00BBFCFA /* TipJarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24C85B72B545D9C00BBFCFA /* TipJarView.swift */; };
+		E24C85BB2B545D9C00BBFCFA /* TipProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24C85B82B545D9C00BBFCFA /* TipProduct.swift */; };
+		E24C85BC2B545D9C00BBFCFA /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24C85B92B545D9C00BBFCFA /* Store.swift */; };
+		E24C85BE2B545F5200BBFCFA /* LocalProducts.storekit in Resources */ = {isa = PBXBuildFile; fileRef = E24C85BD2B545F5200BBFCFA /* LocalProducts.storekit */; };
 		E24FACA4251CEC7C002B0B97 /* WatchAuthenticationErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24FACA3251CEC7C002B0B97 /* WatchAuthenticationErrorView.swift */; };
 		E250E1B0269B2B6C00860DEC /* EditListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E250E1AC269B2B6C00860DEC /* EditListView.swift */; };
 		E250E1B1269B2B6C00860DEC /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E250E1AD269B2B6C00860DEC /* ListView.swift */; };
@@ -208,7 +212,7 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				E235D7CE24DF5B89007D95BE /* WatchApp.app in Embed Watch Content */,
+				E235D7CE24DF5B89007D95BE /* Snaplists.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -272,14 +276,14 @@
 		E22E152F24E0871D002A140E /* SMPPersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMPPersistentContainer.swift; sourceTree = "<group>"; };
 		E231A10929212F0800EBC1BE /* Project.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
 		E2342D5429E43C78005B3164 /* WatchListOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListOptionsView.swift; sourceTree = "<group>"; };
-		E235D78F24DF5B59007D95BE /* Simplists.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Simplists.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E235D78F24DF5B59007D95BE /* Snaplists.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Snaplists.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E235D79224DF5B59007D95BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E235D79424DF5B59007D95BE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E235D79824DF5B5A007D95BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E235D79B24DF5B5A007D95BE /* PreviewAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = PreviewAssets.xcassets; sourceTree = "<group>"; };
 		E235D79E24DF5B5A007D95BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E235D7A024DF5B5A007D95BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E235D7A824DF5B88007D95BE /* WatchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E235D7A824DF5B88007D95BE /* Snaplists.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Snaplists.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E235D7AF24DF5B89007D95BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E235D7BB24DF5B89007D95BE /* WatchListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListView.swift; sourceTree = "<group>"; };
 		E235D7C324DF5B89007D95BE /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
@@ -300,6 +304,10 @@
 		E249294F29436A1E00976683 /* GraphicCircularComplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicCircularComplication.swift; sourceTree = "<group>"; };
 		E2492951294377BC00976683 /* GraphicCornerComplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicCornerComplication.swift; sourceTree = "<group>"; };
 		E24929532944E57D00976683 /* GraphicExtraLargeComplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicExtraLargeComplication.swift; sourceTree = "<group>"; };
+		E24C85B72B545D9C00BBFCFA /* TipJarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipJarView.swift; sourceTree = "<group>"; };
+		E24C85B82B545D9C00BBFCFA /* TipProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipProduct.swift; sourceTree = "<group>"; };
+		E24C85B92B545D9C00BBFCFA /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		E24C85BD2B545F5200BBFCFA /* LocalProducts.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = LocalProducts.storekit; sourceTree = "<group>"; };
 		E24FACA3251CEC7C002B0B97 /* WatchAuthenticationErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchAuthenticationErrorView.swift; sourceTree = "<group>"; };
 		E250E1AC269B2B6C00860DEC /* EditListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditListView.swift; sourceTree = "<group>"; };
 		E250E1AD269B2B6C00860DEC /* ListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
@@ -483,6 +491,7 @@
 		E22E152424E06963002A140E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E24C85B62B545D8500BBFCFA /* TipJar */,
 				E250E1AB269B2B1500860DEC /* List */,
 				E2B9C3A725CF039B0024B9F6 /* Store */,
 				E2A32107250E8AC600A022B8 /* More */,
@@ -571,8 +580,8 @@
 		E235D79024DF5B59007D95BE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E235D78F24DF5B59007D95BE /* Simplists.app */,
-				E235D7A824DF5B88007D95BE /* WatchApp.app */,
+				E235D78F24DF5B59007D95BE /* Snaplists.app */,
+				E235D7A824DF5B88007D95BE /* Snaplists.app */,
 				E235D7E324E037B9007D95BE /* SimplistsKit.framework */,
 				E20F8A7E26D19C510016E2C7 /* SimplistsWidgetExtension.appex */,
 				E252C78027D53BEE00B29F6A /* SimplistsIntentHandler.appex */,
@@ -659,6 +668,17 @@
 				E25BFA5F29EB19D600E01E11 /* ScreenshotUITests.swift */,
 			);
 			path = SimplistsUITests;
+			sourceTree = "<group>";
+		};
+		E24C85B62B545D8500BBFCFA /* TipJar */ = {
+			isa = PBXGroup;
+			children = (
+				E24C85BD2B545F5200BBFCFA /* LocalProducts.storekit */,
+				E24C85B92B545D9C00BBFCFA /* Store.swift */,
+				E24C85B72B545D9C00BBFCFA /* TipJarView.swift */,
+				E24C85B82B545D9C00BBFCFA /* TipProduct.swift */,
+			);
+			path = TipJar;
 			sourceTree = "<group>";
 		};
 		E250E1AB269B2B1500860DEC /* List */ = {
@@ -847,7 +867,7 @@
 			packageProductDependencies = (
 			);
 			productName = Simplists;
-			productReference = E235D78F24DF5B59007D95BE /* Simplists.app */;
+			productReference = E235D78F24DF5B59007D95BE /* Snaplists.app */;
 			productType = "com.apple.product-type.application";
 		};
 		E235D7A724DF5B88007D95BE /* WatchApp */ = {
@@ -866,7 +886,7 @@
 			);
 			name = WatchApp;
 			productName = WatchApp;
-			productReference = E235D7A824DF5B88007D95BE /* WatchApp.app */;
+			productReference = E235D7A824DF5B88007D95BE /* Snaplists.app */;
 			productType = "com.apple.product-type.application";
 		};
 		E235D7E224E037B9007D95BE /* SimplistsKit */ = {
@@ -1009,6 +1029,7 @@
 				E2A320FE250D704700A022B8 /* Localizable.strings in Resources */,
 				E22077C725AB941800866341 /* Localizable.stringsdict in Resources */,
 				E235D79C24DF5B5A007D95BE /* PreviewAssets.xcassets in Resources */,
+				E24C85BE2B545F5200BBFCFA /* LocalProducts.storekit in Resources */,
 				E235D79924DF5B5A007D95BE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1107,11 +1128,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E24C85BA2B545D9C00BBFCFA /* TipJarView.swift in Sources */,
 				E235D79324DF5B59007D95BE /* AppDelegate.swift in Sources */,
 				E2F486772A22388400DECF00 /* TransferableItem.swift in Sources */,
+				E24C85BC2B545D9C00BBFCFA /* Store.swift in Sources */,
 				E2DAC6FB28E9C59900C1D503 /* ConditionalStrikethroughModifier.swift in Sources */,
 				E20BD7792754057200671478 /* ConditionalHiddenModifier.swift in Sources */,
 				E260C6CA28D93A7E00EC2612 /* ViewModifiers.swift in Sources */,
+				E24C85BB2B545D9C00BBFCFA /* TipProduct.swift in Sources */,
 				E29AB80E27F8D32E00868DA1 /* ReleaseNotesView.swift in Sources */,
 				E250E1B3269B2B6C00860DEC /* ItemView.swift in Sources */,
 				E250E1B0269B2B6C00860DEC /* EditListView.swift in Sources */,
@@ -1531,7 +1555,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sleekible.Simplists.debug;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Snaplists;
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1557,7 +1581,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sleekible.Simplists;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Snaplists;
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1583,7 +1607,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sleekible.Simplists.debug.watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Snaplists;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -1610,7 +1634,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sleekible.Simplists.watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Snaplists;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;

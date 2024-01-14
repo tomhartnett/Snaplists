@@ -67,6 +67,9 @@
             ReferencedContainer = "container:Simplists.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <StoreKitConfigurationFileReference
+         identifier = "../../Simplists/Sources/Views/TipJar/LocalProducts.storekit">
+      </StoreKitConfigurationFileReference>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

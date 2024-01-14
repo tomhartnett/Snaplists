@@ -74,6 +74,17 @@ struct MoreView: View {
                     }
                 }
 
+                Section {
+                    NavigationLink(destination: TipJarView()) {
+                        HStack {
+                            Image(systemName: "dollarsign.circle")
+                                .frame(width: 25, height: 25)
+                                .foregroundColor(Color("TextSecondary"))
+                            Text("Tip Jar")
+                        }
+                    }
+                }
+
                 #if DEBUG
                 Section {
                     NavigationLink(destination: DebugView()) {
