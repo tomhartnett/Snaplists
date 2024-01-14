@@ -24,14 +24,6 @@ struct WatchHomeView: View {
     @State private var activeSheet: WatchHomeActiveSheet?
     @State private var isAuthenticated: Bool = false
 
-    var isPremiumIAPPurchased: Bool {
-        if UserDefaults.simplistsApp.isPremiumIAPPurchased {
-            return true
-        } else {
-            return storage.hasPremiumIAPItem
-        }
-    }
-
     var versionString: String {
         let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "?"
         let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "?"

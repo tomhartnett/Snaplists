@@ -62,11 +62,6 @@ struct WatchDebugView: View {
         .navigationTitle("Debug")
     }
 
-    func togglePremiumIAPPurchased() {
-        let currentValue = UserDefaults.simplistsApp.isPremiumIAPPurchased
-        UserDefaults.simplistsApp.setIsPremiumIAPPurchased(!currentValue)
-    }
-
     func toggleFakeAuthentication() {
         let currentValue = UserDefaults.simplistsAppDebug.isFakeAuthenticationEnabled
         UserDefaults.simplistsAppDebug.setIsFakeAuthenticationEnabled(!currentValue)
