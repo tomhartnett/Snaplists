@@ -29,7 +29,6 @@ private enum DeleteAction {
 private enum ListViewActiveSheet: Identifiable {
     case editList
     case moveItems
-    case purchaseRequired
 
     var id: Int {
         hashValue
@@ -219,9 +218,6 @@ struct ListView: View {
                     MoveToListView(itemIDs: itemIDs, fromList: list) {
                         editMode = .inactive
                     }
-
-                case .purchaseRequired:
-                    StoreView(freeLimitMessage: FreeLimits.numberOfItems.message)
                 }
             }
             .onAppear {
@@ -396,12 +392,6 @@ struct ListView: View {
             return
         }
 
-        if list.items.count >= FreeLimits.numberOfItems.limit &&
-            !storeDataSource.hasPurchasedIAP {
-            activeSheet = .purchaseRequired
-            return
-        }
-
         let item = SMPListItem(title: title, isComplete: false)
 
         let index: Int
@@ -513,12 +503,11 @@ struct ListView: View {
     }
 
     private func duplicateList() {
-        if storage.getLists().count >= FreeLimits.numberOfLists.limit &&
-            !storeDataSource.hasPurchasedIAP {
-            activeSheet = .purchaseRequired
-        } else if let newList = storage.duplicateList(list) {
-            list = newList
+        guard let newList = storage.duplicateList(list) else {
+            return
         }
+
+        list = newList
     }
 
     private func selectOrDeselectAll() {

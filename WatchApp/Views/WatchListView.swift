@@ -9,7 +9,6 @@ import SwiftUI
 import SimplistsKit
 
 enum WatchListActiveSheet: Hashable, Identifiable {
-    case freeLimitView
     case newItemView
     case editItemView(id: UUID)
     case listMenu
@@ -93,10 +92,6 @@ struct WatchListView: View {
         })
         .sheet(item: $activeSheet) { item in
             switch item {
-            case .freeLimitView:
-                WatchStoreView(freeLimitMessage: FreeLimits.numberOfItems.message)
-                    .environmentObject(storeDataSource)
-
             case .newItemView:
                 WatchEditItemView(title: "") { newTitle in
                     guard newTitle.isNotEmpty else { return }
@@ -122,11 +117,6 @@ struct WatchListView: View {
     }
 
     private func saveNewItem(itemTitle: String) {
-        if list.items.count >= FreeLimits.numberOfItems.limit && !isPremiumIAPPurchased {
-            activeSheet = .freeLimitView
-            return
-        }
-
         guard !itemTitle.isEmpty else {
             return
         }

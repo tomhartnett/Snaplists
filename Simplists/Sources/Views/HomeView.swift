@@ -13,7 +13,6 @@ enum HomeViewActiveSheet: Identifiable, Hashable {
     case newList
     case releaseNotes
     case storeView
-    case storeViewHitLimit
 
     var id: Self { self }
 }
@@ -93,12 +92,7 @@ struct HomeView: View {
                                     }
 
                                     Button(action: {
-                                        if lists.count >= FreeLimits.numberOfLists.limit &&
-                                            !storeDataSource.hasPurchasedIAP {
-                                            activeSheet = .storeViewHitLimit
-                                        } else {
-                                            storage.duplicateList(list)
-                                        }
+                                        storage.duplicateList(list)
                                     }) {
                                         Text("Duplicate")
                                         Image(systemName: "plus.square.on.square")
@@ -213,9 +207,6 @@ struct HomeView: View {
             case .releaseNotes:
                 ReleaseNotesView(isModal: .constant(true))
 
-            case .storeViewHitLimit:
-                StoreView(freeLimitMessage: FreeLimits.numberOfLists.message)
-
             case .storeView:
                 StoreView()
             }
@@ -224,12 +215,6 @@ struct HomeView: View {
 
     var addListButton: some View {
         Button(action: {
-            if lists.count >= FreeLimits.numberOfLists.limit &&
-                !storeDataSource.hasPurchasedIAP {
-                activeSheet = .storeViewHitLimit
-                return
-            }
-
             activeSheet = .newList
         }) {
             HStack {
@@ -245,12 +230,6 @@ struct HomeView: View {
     var sortActionsMenu: some View {
         Menu(content: {
             Button(action: {
-                if lists.count >= FreeLimits.numberOfLists.limit &&
-                    !storeDataSource.hasPurchasedIAP {
-                    activeSheet = .storeViewHitLimit
-                    return
-                }
-
                 activeSheet = .newList
             }) {
                 Text("Add new list...")

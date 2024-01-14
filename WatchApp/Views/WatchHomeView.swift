@@ -11,7 +11,6 @@ import SwiftUI
 
 enum WatchHomeActiveSheet: Identifiable {
     case authErrorView
-    case freeLimitView
     case newListView
 
     var id: Int {
@@ -142,19 +141,12 @@ struct WatchHomeView: View {
                 WatchAuthenticationErrorView()
             case .newListView:
                 WatchNewListView()
-            case .freeLimitView:
-                WatchStoreView(freeLimitMessage: FreeLimits.numberOfLists.message)
-                    .environmentObject(storeDataSource)
             }
         }
     }
 
     private func addNewList() {
-        if lists.count >= FreeLimits.numberOfLists.limit && !isPremiumIAPPurchased {
-            activeSheet = .freeLimitView
-        } else {
-            activeSheet = .newListView
-        }
+        activeSheet = .newListView
     }
 
     private func archive(at offsets: IndexSet) {

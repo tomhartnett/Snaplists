@@ -103,12 +103,3 @@ struct WatchStoreView: View {
         }
     }
 }
-
-struct WatchFreeLimitView_Previews: PreviewProvider {
-    static var previews: some View {
-        let client = StoreClient()
-        let dataSource = StoreDataSource(service: client)
-        WatchStoreView(freeLimitMessage: FreeLimits.numberOfLists.message)
-            .environmentObject(dataSource)
-    }
-}

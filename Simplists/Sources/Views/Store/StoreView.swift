@@ -74,13 +74,6 @@ struct StoreView: View {
                              ])
                     .padding(.bottom, 15)
 
-                FeaturesView(headerText: "Free limits".localize(),
-                             bulletPoints: [
-                                "free-limit-list-count".localize(FreeLimits.numberOfLists.limit),
-                                "free-limit-item-count".localize(FreeLimits.numberOfItems.limit)
-                             ])
-                    .padding(.bottom, 15)
-
                 Text("store-support-the-app-text")
 
                 Spacer()
