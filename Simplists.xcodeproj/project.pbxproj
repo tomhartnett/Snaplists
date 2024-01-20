@@ -49,7 +49,7 @@
 		E235D7BC24DF5B89007D95BE /* WatchListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D7BB24DF5B89007D95BE /* WatchListView.swift */; };
 		E235D7C424DF5B89007D95BE /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D7C324DF5B89007D95BE /* ComplicationController.swift */; };
 		E235D7C624DF5B89007D95BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E235D7C524DF5B89007D95BE /* Assets.xcassets */; };
-		E235D7CE24DF5B89007D95BE /* WatchApp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = E235D7A824DF5B88007D95BE /* WatchApp.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E235D7CE24DF5B89007D95BE /* Simplists.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = E235D7A824DF5B88007D95BE /* Simplists.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E235D7DA24E0372D007D95BE /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E235D7D924E0372D007D95BE /* CloudKit.framework */; };
 		E235D7DD24E0374D007D95BE /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E235D7DC24E0374D007D95BE /* CloudKit.framework */; };
 		E235D7E724E037B9007D95BE /* SimplistsKit.h in Headers */ = {isa = PBXBuildFile; fileRef = E235D7E524E037B9007D95BE /* SimplistsKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -59,11 +59,14 @@
 		E235D7FA24E04C3F007D95BE /* WatchListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D7F924E04C3F007D95BE /* WatchListItemView.swift */; };
 		E235D7FC24E04CC1007D95BE /* SMPListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D7FB24E04CC1007D95BE /* SMPListItem.swift */; };
 		E23925B726A460BE00C59053 /* ListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23925B626A460BE00C59053 /* ListRowView.swift */; };
-		E241A046258FBA7D000277BE /* StoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E241A045258FBA7D000277BE /* StoreView.swift */; };
 		E2484C1428EBB65000AD3E0E /* HomeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2484C1328EBB65000AD3E0E /* HomeUITests.swift */; };
 		E249295029436A1E00976683 /* GraphicCircularComplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = E249294F29436A1E00976683 /* GraphicCircularComplication.swift */; };
 		E2492952294377BC00976683 /* GraphicCornerComplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2492951294377BC00976683 /* GraphicCornerComplication.swift */; };
 		E24929542944E57D00976683 /* GraphicExtraLargeComplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24929532944E57D00976683 /* GraphicExtraLargeComplication.swift */; };
+		E24C85BA2B545D9C00BBFCFA /* TipJarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24C85B72B545D9C00BBFCFA /* TipJarView.swift */; };
+		E24C85BB2B545D9C00BBFCFA /* TipProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24C85B82B545D9C00BBFCFA /* TipProduct.swift */; };
+		E24C85BC2B545D9C00BBFCFA /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24C85B92B545D9C00BBFCFA /* Store.swift */; };
+		E24C85BE2B545F5200BBFCFA /* LocalProducts.storekit in Resources */ = {isa = PBXBuildFile; fileRef = E24C85BD2B545F5200BBFCFA /* LocalProducts.storekit */; };
 		E24FACA4251CEC7C002B0B97 /* WatchAuthenticationErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24FACA3251CEC7C002B0B97 /* WatchAuthenticationErrorView.swift */; };
 		E250E1B0269B2B6C00860DEC /* EditListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E250E1AC269B2B6C00860DEC /* EditListView.swift */; };
 		E250E1B1269B2B6C00860DEC /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E250E1AD269B2B6C00860DEC /* ListView.swift */; };
@@ -74,17 +77,13 @@
 		E252C78927D53BEE00B29F6A /* SimplistsIntentHandler.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = E252C78027D53BEE00B29F6A /* SimplistsIntentHandler.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E252C78E27D53D4F00B29F6A /* ListSelection.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = E257B09627D51E990077E35F /* ListSelection.intentdefinition */; };
 		E2558E6A28E87B1F0069C8CF /* SMPList+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2558E6828E879FA0069C8CF /* SMPList+Extensions.swift */; };
-		E2578B8125D033A600BCC948 /* PremiumModeWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2578B8025D033A600BCC948 /* PremiumModeWidget.swift */; };
 		E257B09827D51EAD0077E35F /* ListSelection.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = E257B09627D51E990077E35F /* ListSelection.intentdefinition */; };
 		E258E4E428E9DC5B00CFDDB2 /* EmptyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E258E4E328E9DC5B00CFDDB2 /* EmptyListView.swift */; };
 		E25BFA6029EB19D600E01E11 /* ScreenshotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25BFA5F29EB19D600E01E11 /* ScreenshotUITests.swift */; };
 		E260C6CA28D93A7E00EC2612 /* ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E260C6C928D93A7E00EC2612 /* ViewModifiers.swift */; };
 		E267533927D6417A00512CAC /* EmptyWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E267533827D6417A00512CAC /* EmptyWidgetView.swift */; };
-		E26D01E225810AED009049F3 /* StoreDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26D01E125810AED009049F3 /* StoreDataSource.swift */; };
 		E26D345525E3E88900EE3C3E /* WatchDebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26D345425E3E88900EE3C3E /* WatchDebugView.swift */; };
 		E26DD859250BA13E00FCC495 /* AuthenticationErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26DD858250BA13E00FCC495 /* AuthenticationErrorView.swift */; };
-		E26EBDA125C83ADB000D031D /* FreeLimits.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26EBDA025C83ADB000D031D /* FreeLimits.swift */; };
-		E2752DEB28F30821009B5AA1 /* InAppPurchaseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2752DEA28F30821009B5AA1 /* InAppPurchaseUITests.swift */; };
 		E279EACA25D0480D00A38ED6 /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E279EAC925D0480D00A38ED6 /* MailView.swift */; };
 		E279EACF25D04D9D00A38ED6 /* WidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E279EACE25D04D9D00A38ED6 /* WidgetView.swift */; };
 		E27CDF5C24ECA7BC004B6A32 /* Simplists.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E27CDF5A24ECA7BC004B6A32 /* Simplists.xcdatamodeld */; };
@@ -108,8 +107,6 @@
 		E2A6100525E2A67F000F492C /* WatchEditItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A6100425E2A67F000F492C /* WatchEditItemView.swift */; };
 		E2AFBDBC24F16348008D9E3F /* ListEntity+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2AFBDBB24F16348008D9E3F /* ListEntity+Extensions.swift */; };
 		E2B21E1528DFEC4500DC0E47 /* SMPListColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E297905028DB315900C7D6FB /* SMPListColor+Extensions.swift */; };
-		E2B62B9A25E2C01A00898B21 /* WatchStoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B62B9925E2C01A00898B21 /* WatchStoreView.swift */; };
-		E2B62BAF25E2C68E00898B21 /* FreeLimits.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26EBDA025C83ADB000D031D /* FreeLimits.swift */; };
 		E2B9C3A325CED96F0024B9F6 /* DebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B9C3A225CED96F0024B9F6 /* DebugView.swift */; };
 		E2BB0B4F25DEA327004A1AB6 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E218230B25605F0200CAA92C /* String+Extensions.swift */; };
 		E2BB0B5325DEA6A0004A1AB6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E2BB0B5525DEA6A0004A1AB6 /* Localizable.strings */; };
@@ -118,23 +115,13 @@
 		E2C4B26D28B1349F0046A1BA /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E235D7D924E0372D007D95BE /* CloudKit.framework */; };
 		E2C6332327F2932300CC2255 /* ConditionalHiddenModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20BD7782754057200671478 /* ConditionalHiddenModifier.swift */; };
 		E2C6670725CF17010063D7E8 /* ErrorMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C6670625CF17010063D7E8 /* ErrorMessageView.swift */; };
-		E2C6670C25CF1BD80063D7E8 /* PurchaseButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C6670B25CF1BD80063D7E8 /* PurchaseButtonsView.swift */; };
-		E2C6671125CF1F3B0063D7E8 /* FeaturesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C6671025CF1F3B0063D7E8 /* FeaturesView.swift */; };
-		E2C6671925CF277D0063D7E8 /* PurchasedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C6671825CF277D0063D7E8 /* PurchasedView.swift */; };
 		E2C6671E25CF2FF20063D7E8 /* CannotPurchaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C6671D25CF2FF20063D7E8 /* CannotPurchaseView.swift */; };
 		E2C9648827DE8A6900EA6704 /* SimplistsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E235D7E324E037B9007D95BE /* SimplistsKit.framework */; };
 		E2C9648927DE8A6900EA6704 /* SimplistsKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E235D7E324E037B9007D95BE /* SimplistsKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E2CC70ED28EF10F100E7B131 /* ListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CC70EC28EF10F100E7B131 /* ListUITests.swift */; };
 		E2CE179626E69ADD00664BF3 /* WidgetItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CE179526E69ADD00664BF3 /* WidgetItemView.swift */; };
 		E2D2D6F525E7E18D00C305DA /* UserDefaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D2D6F425E7E18D00C305DA /* UserDefaults+Extensions.swift */; };
-		E2D2D6FC25EC42AD00C305DA /* StoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F3818825C04D47002740F3 /* StoreService.swift */; };
-		E2D2D6FD25EC42AD00C305DA /* StoreDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26D01E125810AED009049F3 /* StoreDataSource.swift */; };
-		E2D2D70125EC455C00C305DA /* SKProduct+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F3819525C58F23002740F3 /* SKProduct+Extensions.swift */; };
-		E2D2D70525EC456100C305DA /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = E2F3819025C58E10002740F3 /* Configuration.storekit */; };
 		E2DAC6FB28E9C59900C1D503 /* ConditionalStrikethroughModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DAC6FA28E9C59900C1D503 /* ConditionalStrikethroughModifier.swift */; };
-		E2F3818925C04D47002740F3 /* StoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F3818825C04D47002740F3 /* StoreService.swift */; };
-		E2F3819125C58E11002740F3 /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = E2F3819025C58E10002740F3 /* Configuration.storekit */; };
-		E2F3819625C58F23002740F3 /* SKProduct+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F3819525C58F23002740F3 /* SKProduct+Extensions.swift */; };
 		E2F486772A22388400DECF00 /* TransferableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F486762A22388400DECF00 /* TransferableItem.swift */; };
 		E2F559B427D97E3C007DA24A /* OpenURLContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F559B327D97E3C007DA24A /* OpenURLContext.swift */; };
 		E2FB8EA128CA0F63005609F1 /* SimplistsWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FB8EA028CA0F63005609F1 /* SimplistsWatchApp.swift */; };
@@ -225,7 +212,7 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				E235D7CE24DF5B89007D95BE /* WatchApp.app in Embed Watch Content */,
+				E235D7CE24DF5B89007D95BE /* Simplists.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -296,7 +283,7 @@
 		E235D79B24DF5B5A007D95BE /* PreviewAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = PreviewAssets.xcassets; sourceTree = "<group>"; };
 		E235D79E24DF5B5A007D95BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E235D7A024DF5B5A007D95BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E235D7A824DF5B88007D95BE /* WatchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E235D7A824DF5B88007D95BE /* Simplists.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Simplists.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E235D7AF24DF5B89007D95BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E235D7BB24DF5B89007D95BE /* WatchListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListView.swift; sourceTree = "<group>"; };
 		E235D7C324DF5B89007D95BE /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
@@ -312,12 +299,15 @@
 		E235D7F924E04C3F007D95BE /* WatchListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListItemView.swift; sourceTree = "<group>"; };
 		E235D7FB24E04CC1007D95BE /* SMPListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMPListItem.swift; sourceTree = "<group>"; };
 		E23925B626A460BE00C59053 /* ListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowView.swift; sourceTree = "<group>"; };
-		E241A045258FBA7D000277BE /* StoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreView.swift; sourceTree = "<group>"; };
 		E2484C1128EBB65000AD3E0E /* SimplistsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimplistsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2484C1328EBB65000AD3E0E /* HomeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUITests.swift; sourceTree = "<group>"; };
 		E249294F29436A1E00976683 /* GraphicCircularComplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicCircularComplication.swift; sourceTree = "<group>"; };
 		E2492951294377BC00976683 /* GraphicCornerComplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicCornerComplication.swift; sourceTree = "<group>"; };
 		E24929532944E57D00976683 /* GraphicExtraLargeComplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicExtraLargeComplication.swift; sourceTree = "<group>"; };
+		E24C85B72B545D9C00BBFCFA /* TipJarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipJarView.swift; sourceTree = "<group>"; };
+		E24C85B82B545D9C00BBFCFA /* TipProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipProduct.swift; sourceTree = "<group>"; };
+		E24C85B92B545D9C00BBFCFA /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		E24C85BD2B545F5200BBFCFA /* LocalProducts.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = LocalProducts.storekit; sourceTree = "<group>"; };
 		E24FACA3251CEC7C002B0B97 /* WatchAuthenticationErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchAuthenticationErrorView.swift; sourceTree = "<group>"; };
 		E250E1AC269B2B6C00860DEC /* EditListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditListView.swift; sourceTree = "<group>"; };
 		E250E1AD269B2B6C00860DEC /* ListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
@@ -329,18 +319,14 @@
 		E252C78627D53BEE00B29F6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E252C78A27D53BEE00B29F6A /* SimplistsIntentHandler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SimplistsIntentHandler.entitlements; sourceTree = "<group>"; };
 		E2558E6828E879FA0069C8CF /* SMPList+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SMPList+Extensions.swift"; sourceTree = "<group>"; };
-		E2578B8025D033A600BCC948 /* PremiumModeWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumModeWidget.swift; sourceTree = "<group>"; };
 		E257B09627D51E990077E35F /* ListSelection.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = ListSelection.intentdefinition; sourceTree = "<group>"; };
 		E258E4E328E9DC5B00CFDDB2 /* EmptyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListView.swift; sourceTree = "<group>"; };
 		E25BFA5F29EB19D600E01E11 /* ScreenshotUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotUITests.swift; sourceTree = "<group>"; };
 		E25BFA6129EB247E00E01E11 /* Simplists.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Simplists.xctestplan; sourceTree = "<group>"; };
 		E260C6C928D93A7E00EC2612 /* ViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifiers.swift; sourceTree = "<group>"; };
 		E267533827D6417A00512CAC /* EmptyWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyWidgetView.swift; sourceTree = "<group>"; };
-		E26D01E125810AED009049F3 /* StoreDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDataSource.swift; sourceTree = "<group>"; };
 		E26D345425E3E88900EE3C3E /* WatchDebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchDebugView.swift; sourceTree = "<group>"; };
 		E26DD858250BA13E00FCC495 /* AuthenticationErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationErrorView.swift; sourceTree = "<group>"; };
-		E26EBDA025C83ADB000D031D /* FreeLimits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeLimits.swift; sourceTree = "<group>"; };
-		E2752DEA28F30821009B5AA1 /* InAppPurchaseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchaseUITests.swift; sourceTree = "<group>"; };
 		E279EAC925D0480D00A38ED6 /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
 		E279EACE25D04D9D00A38ED6 /* WidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetView.swift; sourceTree = "<group>"; };
 		E27CDF5B24ECA7BC004B6A32 /* Simplists.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Simplists.xcdatamodel; sourceTree = "<group>"; };
@@ -363,23 +349,16 @@
 		E2A60FF925E1C9AD000F492C /* WatchNewListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchNewListView.swift; sourceTree = "<group>"; };
 		E2A6100425E2A67F000F492C /* WatchEditItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchEditItemView.swift; sourceTree = "<group>"; };
 		E2AFBDBB24F16348008D9E3F /* ListEntity+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListEntity+Extensions.swift"; sourceTree = "<group>"; };
-		E2B62B9925E2C01A00898B21 /* WatchStoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchStoreView.swift; sourceTree = "<group>"; };
 		E2B9C3A225CED96F0024B9F6 /* DebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugView.swift; sourceTree = "<group>"; };
 		E2BB0B5425DEA6A0004A1AB6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E2BB0B5F25DEA6DE004A1AB6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		E2BB0B6425DEA9FD004A1AB6 /* WatchListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListHeaderView.swift; sourceTree = "<group>"; };
 		E2C6670625CF17010063D7E8 /* ErrorMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessageView.swift; sourceTree = "<group>"; };
-		E2C6670B25CF1BD80063D7E8 /* PurchaseButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseButtonsView.swift; sourceTree = "<group>"; };
-		E2C6671025CF1F3B0063D7E8 /* FeaturesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturesView.swift; sourceTree = "<group>"; };
-		E2C6671825CF277D0063D7E8 /* PurchasedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchasedView.swift; sourceTree = "<group>"; };
 		E2C6671D25CF2FF20063D7E8 /* CannotPurchaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CannotPurchaseView.swift; sourceTree = "<group>"; };
 		E2CC70EC28EF10F100E7B131 /* ListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUITests.swift; sourceTree = "<group>"; };
 		E2CE179526E69ADD00664BF3 /* WidgetItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetItemView.swift; sourceTree = "<group>"; };
 		E2D2D6F425E7E18D00C305DA /* UserDefaults+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extensions.swift"; sourceTree = "<group>"; };
 		E2DAC6FA28E9C59900C1D503 /* ConditionalStrikethroughModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionalStrikethroughModifier.swift; sourceTree = "<group>"; };
-		E2F3818825C04D47002740F3 /* StoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreService.swift; sourceTree = "<group>"; };
-		E2F3819025C58E10002740F3 /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
-		E2F3819525C58F23002740F3 /* SKProduct+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKProduct+Extensions.swift"; sourceTree = "<group>"; };
 		E2F486762A22388400DECF00 /* TransferableItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferableItem.swift; sourceTree = "<group>"; };
 		E2F559B327D97E3C007DA24A /* OpenURLContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenURLContext.swift; sourceTree = "<group>"; };
 		E2FB8EA028CA0F63005609F1 /* SimplistsWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimplistsWatchApp.swift; sourceTree = "<group>"; };
@@ -512,6 +491,7 @@
 		E22E152424E06963002A140E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E24C85B62B545D8500BBFCFA /* TipJar */,
 				E250E1AB269B2B1500860DEC /* List */,
 				E2B9C3A725CF039B0024B9F6 /* Store */,
 				E2A32107250E8AC600A022B8 /* More */,
@@ -601,7 +581,7 @@
 			isa = PBXGroup;
 			children = (
 				E235D78F24DF5B59007D95BE /* Simplists.app */,
-				E235D7A824DF5B88007D95BE /* WatchApp.app */,
+				E235D7A824DF5B88007D95BE /* Simplists.app */,
 				E235D7E324E037B9007D95BE /* SimplistsKit.framework */,
 				E20F8A7E26D19C510016E2C7 /* SimplistsWidgetExtension.appex */,
 				E252C78027D53BEE00B29F6A /* SimplistsIntentHandler.appex */,
@@ -685,10 +665,20 @@
 			children = (
 				E2484C1328EBB65000AD3E0E /* HomeUITests.swift */,
 				E2CC70EC28EF10F100E7B131 /* ListUITests.swift */,
-				E2752DEA28F30821009B5AA1 /* InAppPurchaseUITests.swift */,
 				E25BFA5F29EB19D600E01E11 /* ScreenshotUITests.swift */,
 			);
 			path = SimplistsUITests;
+			sourceTree = "<group>";
+		};
+		E24C85B62B545D8500BBFCFA /* TipJar */ = {
+			isa = PBXGroup;
+			children = (
+				E24C85BD2B545F5200BBFCFA /* LocalProducts.storekit */,
+				E24C85B92B545D9C00BBFCFA /* Store.swift */,
+				E24C85B72B545D9C00BBFCFA /* TipJarView.swift */,
+				E24C85B82B545D9C00BBFCFA /* TipProduct.swift */,
+			);
+			path = TipJar;
 			sourceTree = "<group>";
 		};
 		E250E1AB269B2B1500860DEC /* List */ = {
@@ -744,7 +734,6 @@
 		E282850525F52A4500EE8997 /* Store */ = {
 			isa = PBXGroup;
 			children = (
-				E2B62B9925E2C01A00898B21 /* WatchStoreView.swift */,
 				E282850625F52A7700EE8997 /* WatchStoreErrorView.swift */,
 				E282850E25F52E0B00EE8997 /* WatchPrivacyPolicyView.swift */,
 				E282851325F52E2F00EE8997 /* WatchParagraphView.swift */,
@@ -762,6 +751,7 @@
 				E21123DA2504420700B3D76D /* PrivacyPolicyView.swift */,
 				E228228725D09CAA009F4877 /* PrivacyPolicyParagraphView.swift */,
 				E29AB80D27F8D32E00868DA1 /* ReleaseNotesView.swift */,
+				E281EBD8259A2C7400DF1CEB /* FeatureBulletView.swift */,
 				E279EACE25D04D9D00A38ED6 /* WidgetView.swift */,
 			);
 			path = More;
@@ -770,14 +760,9 @@
 		E2B62BAE25E2C67900898B21 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				E2F3819025C58E10002740F3 /* Configuration.storekit */,
 				E20BD7782754057200671478 /* ConditionalHiddenModifier.swift */,
 				E2DAC6FA28E9C59900C1D503 /* ConditionalStrikethroughModifier.swift */,
-				E26EBDA025C83ADB000D031D /* FreeLimits.swift */,
-				E2F3819525C58F23002740F3 /* SKProduct+Extensions.swift */,
 				E297905028DB315900C7D6FB /* SMPListColor+Extensions.swift */,
-				E26D01E125810AED009049F3 /* StoreDataSource.swift */,
-				E2F3818825C04D47002740F3 /* StoreService.swift */,
 				E218230B25605F0200CAA92C /* String+Extensions.swift */,
 				E2F486762A22388400DECF00 /* TransferableItem.swift */,
 			);
@@ -788,12 +773,6 @@
 			isa = PBXGroup;
 			children = (
 				E2C6671D25CF2FF20063D7E8 /* CannotPurchaseView.swift */,
-				E281EBD8259A2C7400DF1CEB /* FeatureBulletView.swift */,
-				E241A045258FBA7D000277BE /* StoreView.swift */,
-				E2C6670B25CF1BD80063D7E8 /* PurchaseButtonsView.swift */,
-				E2C6671025CF1F3B0063D7E8 /* FeaturesView.swift */,
-				E2C6671825CF277D0063D7E8 /* PurchasedView.swift */,
-				E2578B8025D033A600BCC948 /* PremiumModeWidget.swift */,
 			);
 			path = Store;
 			sourceTree = "<group>";
@@ -907,7 +886,7 @@
 			);
 			name = WatchApp;
 			productName = WatchApp;
-			productReference = E235D7A824DF5B88007D95BE /* WatchApp.app */;
+			productReference = E235D7A824DF5B88007D95BE /* Simplists.app */;
 			productType = "com.apple.product-type.application";
 		};
 		E235D7E224E037B9007D95BE /* SimplistsKit */ = {
@@ -972,7 +951,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1520;
 				TargetAttributes = {
 					E205E2C129EAE807001EB7A6 = {
 						CreatedOnToolsVersion = 14.3;
@@ -1047,10 +1026,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E235D79F24DF5B5A007D95BE /* LaunchScreen.storyboard in Resources */,
-				E2F3819125C58E11002740F3 /* Configuration.storekit in Resources */,
 				E2A320FE250D704700A022B8 /* Localizable.strings in Resources */,
 				E22077C725AB941800866341 /* Localizable.stringsdict in Resources */,
 				E235D79C24DF5B5A007D95BE /* PreviewAssets.xcassets in Resources */,
+				E24C85BE2B545F5200BBFCFA /* LocalProducts.storekit in Resources */,
 				E235D79924DF5B5A007D95BE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1061,7 +1040,6 @@
 			files = (
 				E2BB0B5325DEA6A0004A1AB6 /* Localizable.strings in Resources */,
 				E2BB0B5E25DEA6DE004A1AB6 /* Localizable.stringsdict in Resources */,
-				E2D2D70525EC456100C305DA /* Configuration.storekit in Resources */,
 				E235D7C624DF5B89007D95BE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1150,12 +1128,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E24C85BA2B545D9C00BBFCFA /* TipJarView.swift in Sources */,
 				E235D79324DF5B59007D95BE /* AppDelegate.swift in Sources */,
 				E2F486772A22388400DECF00 /* TransferableItem.swift in Sources */,
-				E2F3818925C04D47002740F3 /* StoreService.swift in Sources */,
+				E24C85BC2B545D9C00BBFCFA /* Store.swift in Sources */,
 				E2DAC6FB28E9C59900C1D503 /* ConditionalStrikethroughModifier.swift in Sources */,
 				E20BD7792754057200671478 /* ConditionalHiddenModifier.swift in Sources */,
 				E260C6CA28D93A7E00EC2612 /* ViewModifiers.swift in Sources */,
+				E24C85BB2B545D9C00BBFCFA /* TipProduct.swift in Sources */,
 				E29AB80E27F8D32E00868DA1 /* ReleaseNotesView.swift in Sources */,
 				E250E1B3269B2B6C00860DEC /* ItemView.swift in Sources */,
 				E250E1B0269B2B6C00860DEC /* EditListView.swift in Sources */,
@@ -1168,7 +1148,6 @@
 				E218242B26D0325D00425947 /* SelectAllView.swift in Sources */,
 				E2A32102250E628200A022B8 /* MoreView.swift in Sources */,
 				E2A376B425D1B4E2001D1615 /* UserDefaults+Extensions.swift in Sources */,
-				E26EBDA125C83ADB000D031D /* FreeLimits.swift in Sources */,
 				E22E152324E060C2002A140E /* HomeView.swift in Sources */,
 				E2B9C3A325CED96F0024B9F6 /* DebugView.swift in Sources */,
 				E2029FFA25FB9E3300490043 /* ReviewHelper.swift in Sources */,
@@ -1177,21 +1156,14 @@
 				E279EACF25D04D9D00A38ED6 /* WidgetView.swift in Sources */,
 				E29AB81027F8D86900868DA1 /* Bool+Extensions.swift in Sources */,
 				E2F559B427D97E3C007DA24A /* OpenURLContext.swift in Sources */,
-				E26D01E225810AED009049F3 /* StoreDataSource.swift in Sources */,
 				E2A0302825B4CE81003BD447 /* EmptyStateView.swift in Sources */,
 				E21123DB2504420700B3D76D /* PrivacyPolicyView.swift in Sources */,
 				E23925B726A460BE00C59053 /* ListRowView.swift in Sources */,
 				E26DD859250BA13E00FCC495 /* AuthenticationErrorView.swift in Sources */,
 				E218230C25605F0200CAA92C /* String+Extensions.swift in Sources */,
 				E22C615D255432710004B561 /* ArchivedListsView.swift in Sources */,
-				E2C6671925CF277D0063D7E8 /* PurchasedView.swift in Sources */,
 				E235D79524DF5B59007D95BE /* SceneDelegate.swift in Sources */,
-				E2C6670C25CF1BD80063D7E8 /* PurchaseButtonsView.swift in Sources */,
-				E2C6671125CF1F3B0063D7E8 /* FeaturesView.swift in Sources */,
-				E241A046258FBA7D000277BE /* StoreView.swift in Sources */,
-				E2578B8125D033A600BCC948 /* PremiumModeWidget.swift in Sources */,
 				E2C6671E25CF2FF20063D7E8 /* CannotPurchaseView.swift in Sources */,
-				E2F3819625C58F23002740F3 /* SKProduct+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1205,17 +1177,12 @@
 				E282850F25F52E0B00EE8997 /* WatchPrivacyPolicyView.swift in Sources */,
 				E235D7FA24E04C3F007D95BE /* WatchListItemView.swift in Sources */,
 				E2A60FFA25E1C9AD000F492C /* WatchNewListView.swift in Sources */,
-				E2D2D70125EC455C00C305DA /* SKProduct+Extensions.swift in Sources */,
-				E2B62B9A25E2C01A00898B21 /* WatchStoreView.swift in Sources */,
 				E2FB8EA128CA0F63005609F1 /* SimplistsWatchApp.swift in Sources */,
 				E2BB0B4F25DEA327004A1AB6 /* String+Extensions.swift in Sources */,
 				E26D345525E3E88900EE3C3E /* WatchDebugView.swift in Sources */,
-				E2D2D6FD25EC42AD00C305DA /* StoreDataSource.swift in Sources */,
 				E22E152A24E0769E002A140E /* WatchHomeView.swift in Sources */,
 				E282851425F52E2F00EE8997 /* WatchParagraphView.swift in Sources */,
-				E2B62BAF25E2C68E00898B21 /* FreeLimits.swift in Sources */,
 				E2492952294377BC00976683 /* GraphicCornerComplication.swift in Sources */,
-				E2D2D6FC25EC42AD00C305DA /* StoreService.swift in Sources */,
 				E2342D5529E43C78005B3164 /* WatchListOptionsView.swift in Sources */,
 				E205E2BD29E8D205001EB7A6 /* ConditionalHiddenModifier.swift in Sources */,
 				E2B21E1528DFEC4500DC0E47 /* SMPListColor+Extensions.swift in Sources */,
@@ -1251,7 +1218,6 @@
 				E2484C1428EBB65000AD3E0E /* HomeUITests.swift in Sources */,
 				E25BFA6029EB19D600E01E11 /* ScreenshotUITests.swift in Sources */,
 				E2CC70ED28EF10F100E7B131 /* ListUITests.swift in Sources */,
-				E2752DEB28F30821009B5AA1 /* InAppPurchaseUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1589,7 +1555,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sleekible.Simplists.debug;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Simplists;
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1615,7 +1581,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sleekible.Simplists;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Simplists;
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1641,7 +1607,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sleekible.Simplists.debug.watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Simplists;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -1668,7 +1634,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sleekible.Simplists.watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Simplists;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;

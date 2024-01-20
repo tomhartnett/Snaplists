@@ -11,21 +11,6 @@ extension UserDefaults {
     private enum Key {
         static let isAuthorizedForPayments = "Debug-isAuthorizedForPayments"
         static let isFakeAuthenticationEnabled = "Debug-isFakeAuthenticationEnabled"
-        static let isPremiumIAPPurchased = "com.sleekible.simplists.iap.premium.purchased"
-    }
-
-    struct SimplistsApp {
-        var isPremiumIAPPurchased: Bool {
-            return UserDefaults.standard.bool(forKey: Key.isPremiumIAPPurchased)
-        }
-
-        func setIsPremiumIAPPurchased(_ value: Bool) {
-            UserDefaults.standard.set(value, forKey: Key.isPremiumIAPPurchased)
-        }
-    }
-
-    static var simplistsApp: SimplistsApp {
-        return SimplistsApp()
     }
 }
 

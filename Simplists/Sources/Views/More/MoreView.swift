@@ -10,7 +10,6 @@ import SimplistsKit
 import SwiftUI
 
 enum MoreViewActionSheet: Identifiable {
-    case storeView
     case mailView
 
     var id: Int {
@@ -18,10 +17,19 @@ enum MoreViewActionSheet: Identifiable {
     }
 }
 
+enum MoreNavigation: Hashable {
+    case privacyPolicy
+    case about
+    case releaseNotes
+    case tipJar
+    case debug
+}
+
 struct MoreView: View {
     @EnvironmentObject var storage: SMPStorage
     @State private var errorMessage: String?
     @State private var actionSheet: MoreViewActionSheet?
+    @State private var path: [MoreNavigation] = []
 
     var body: some View {
         VStack {
@@ -29,74 +37,70 @@ struct MoreView: View {
                 ErrorMessageView(message: message)
             }
 
-            List {
-                Section(header: Text("Optional In-App Purchases")) {
-                    PremiumModeWidget()
-                        .onTapGesture {
-                            actionSheet = .storeView
-                        }
-                }
-
-                Section(header: Text("Feedback")) {
-                    WidgetView(systemImageName: "star", lableText: "Please Rate this App".localize())
-                        .onTapGesture {
-                            guard let url = URL(string: "itms-apps://itunes.apple.com/app/id1527429580") else { return }
-                            UIApplication.shared.open(url)
-                        }
-                    WidgetView(systemImageName: "envelope", lableText: "Send Feedback via Email".localize())
-                        .onTapGesture {
-                            guard MFMailComposeViewController.canSendMail() else {
-                                errorMessage = "Email can't be sent from this device.".localize()
-                                return
+            NavigationStack(path: $path) {
+                List {
+                    Section(header: Text("Feedback")) {
+                        WidgetView(systemImageName: "star", lableText: "Please Rate this App".localize())
+                            .onTapGesture {
+                                guard let url = URL(string: "itms-apps://itunes.apple.com/app/id1527429580") else {
+                                    return
+                                }
+                                UIApplication.shared.open(url)
                             }
+                        WidgetView(systemImageName: "envelope", lableText: "Send Feedback via Email".localize())
+                            .onTapGesture {
+                                guard MFMailComposeViewController.canSendMail() else {
+                                    errorMessage = "Email can't be sent from this device.".localize()
+                                    return
+                                }
 
-                            actionSheet = .mailView
-                        }
-                }
-
-                Section(header: Text("About the App")) {
-                    NavigationLink(destination: PrivacyPolicyView()) {
-                        HStack {
-                            Image(systemName: "lock")
-                                .frame(width: 25, height: 25)
-                                .foregroundColor(Color("TextSecondary"))
-                            Text("Privacy Policy")
-                        }
-                    }
-                    NavigationLink(destination: AboutView()) {
-                        HStack {
-                            Image(systemName: "info.circle")
-                                .frame(width: 25, height: 25)
-                                .foregroundColor(Color("TextSecondary"))
-                            Text("About")
-                        }
+                                actionSheet = .mailView
+                            }
                     }
 
-                    NavigationLink(destination: ReleaseNotesView(isModal: .constant(false))) {
-                        HStack {
-                            Image(systemName: "list.bullet.rectangle.portrait")
-                                .frame(width: 25, height: 25)
-                                .foregroundColor(Color("TextSecondary"))
-                            Text("What’s New")
+                    Section(header: Text("About the App")) {
+                        NavigationLink(value: MoreNavigation.privacyPolicy) {
+                            HStack {
+                                Image(systemName: "lock")
+                                    .frame(width: 25, height: 25)
+                                    .foregroundColor(Color("TextSecondary"))
+                                Text("Privacy Policy")
+                            }
                         }
-                    }
-                }
 
-                #if DEBUG
-                Section {
-                    NavigationLink(destination: DebugView()) {
-                        HStack {
-                            Image(systemName: "gearshape.2")
-                                .frame(width: 25, height: 25)
-                                .foregroundColor(Color("TextSecondary"))
-                            Text("Debug")
+                        NavigationLink(value: MoreNavigation.about) {
+                            HStack {
+                                Image(systemName: "info.circle")
+                                    .frame(width: 25, height: 25)
+                                    .foregroundColor(Color("TextSecondary"))
+                                Text("About")
+                            }
+                        }
+
+                        NavigationLink(value: MoreNavigation.releaseNotes) {
+                            HStack {
+                                Image(systemName: "list.bullet.rectangle.portrait")
+                                    .frame(width: 25, height: 25)
+                                    .foregroundColor(Color("TextSecondary"))
+                                Text("What’s New")
+                            }
                         }
                     }
-                }
-                #else
-                if storage.hasShowDebugView {
+
                     Section {
-                        NavigationLink(destination: DebugView()) {
+                        NavigationLink(value: MoreNavigation.tipJar) {
+                            HStack {
+                                Image(systemName: "dollarsign.circle")
+                                    .frame(width: 25, height: 25)
+                                    .foregroundColor(Color("TextSecondary"))
+                                Text("Tip Jar")
+                            }
+                        }
+                    }
+
+#if DEBUG
+                    Section {
+                        NavigationLink(value: MoreNavigation.debug) {
                             HStack {
                                 Image(systemName: "gearshape.2")
                                     .frame(width: 25, height: 25)
@@ -105,16 +109,41 @@ struct MoreView: View {
                             }
                         }
                     }
+#else
+                    if storage.hasShowDebugView {
+                        Section {
+                            NavigationLink(value: MoreNavigation.debug) {
+                                HStack {
+                                    Image(systemName: "gearshape.2")
+                                        .frame(width: 25, height: 25)
+                                        .foregroundColor(Color("TextSecondary"))
+                                    Text("Debug")
+                                }
+                            }
+                        }
+                    }
+#endif
                 }
-                #endif
+                .navigationBarTitle("More")
+                .navigationDestination(for: MoreNavigation.self) { destination in
+                    switch destination {
+                    case .privacyPolicy:
+                        PrivacyPolicyView()
+                    case .about:
+                        AboutView()
+                    case .releaseNotes:
+                        ReleaseNotesView(isModal: .constant(false))
+                    case .tipJar:
+                        TipJarView()
+                    case .debug:
+                        DebugView()
+                    }
+                }
+                .listStyle(InsetGroupedListStyle())
             }
-            .navigationBarTitle("More")
-            .listStyle(InsetGroupedListStyle())
         }
         .sheet(item: $actionSheet) { item in
             switch item {
-            case .storeView:
-                StoreView()
             case .mailView:
                 MailView()
             }

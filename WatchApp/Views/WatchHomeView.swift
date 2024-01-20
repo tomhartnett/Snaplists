@@ -11,7 +11,6 @@ import SwiftUI
 
 enum WatchHomeActiveSheet: Identifiable {
     case authErrorView
-    case freeLimitView
     case newListView
 
     var id: Int {
@@ -21,18 +20,9 @@ enum WatchHomeActiveSheet: Identifiable {
 
 struct WatchHomeView: View {
     @EnvironmentObject var storage: SMPStorage
-    @EnvironmentObject var storeDataSource: StoreDataSource
     @State var lists: [SMPList]
     @State private var activeSheet: WatchHomeActiveSheet?
     @State private var isAuthenticated: Bool = false
-
-    var isPremiumIAPPurchased: Bool {
-        if UserDefaults.simplistsApp.isPremiumIAPPurchased {
-            return true
-        } else {
-            return storage.hasPremiumIAPItem
-        }
-    }
 
     var versionString: String {
         let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "?"
@@ -78,8 +68,7 @@ struct WatchHomeView: View {
 
                 ForEach(lists) { list in
                     NavigationLink(destination: WatchListView(list: list)
-                                    .environmentObject(storage)
-                                    .environmentObject(storeDataSource)) {
+                                    .environmentObject(storage)) {
                         HStack {
                             if list.color != .none {
                                 Image(systemName: "app.fill")
@@ -98,18 +87,18 @@ struct WatchHomeView: View {
                 .onDelete(perform: archive)
 
                 #if DEBUG
-                NavigationLink(destination:
-                                WatchDebugView(isAuthenticated: $isAuthenticated)
-                                .environmentObject(storage)
-                                .environmentObject(storeDataSource)) {
+                NavigationLink(
+                    destination: WatchDebugView(isAuthenticated: $isAuthenticated)
+                        .environmentObject(storage)
+                ) {
                     Text("Debug View")
                 }
                 #else
                 if storage.hasShowDebugView {
-                    NavigationLink(destination:
-                                    WatchDebugView(isAuthenticated: $isAuthenticated)
-                                    .environmentObject(storage)
-                                    .environmentObject(storeDataSource)) {
+                    NavigationLink(
+                        destination: WatchDebugView(isAuthenticated: $isAuthenticated)
+                            .environmentObject(storage)
+                    ) {
                         Text("Debug View")
                     }
                 }
@@ -131,30 +120,18 @@ struct WatchHomeView: View {
         .onReceive(storage.objectWillChange, perform: { _ in
             reload()
         })
-        .onReceive(storeDataSource.objectWillChange) { _ in
-            if storeDataSource.hasPurchasedIAP {
-                storage.savePremiumIAPItem()
-            }
-        }
         .sheet(item: $activeSheet) { item in
             switch item {
             case .authErrorView:
                 WatchAuthenticationErrorView()
             case .newListView:
                 WatchNewListView()
-            case .freeLimitView:
-                WatchStoreView(freeLimitMessage: FreeLimits.numberOfLists.message)
-                    .environmentObject(storeDataSource)
             }
         }
     }
 
     private func addNewList() {
-        if lists.count >= FreeLimits.numberOfLists.limit && !isPremiumIAPPurchased {
-            activeSheet = .freeLimitView
-        } else {
-            activeSheet = .newListView
-        }
+        activeSheet = .newListView
     }
 
     private func archive(at offsets: IndexSet) {
@@ -224,7 +201,6 @@ struct WatchHomeView_Previews: PreviewProvider {
 
         WatchHomeView(lists: lists)
             .environmentObject(SMPStorage())
-            .environmentObject(StoreDataSource(service: StoreClient()))
             .previewDevice(PreviewDevice(rawValue: "Apple Watch Series 6 - 40mm"))
     }
 }

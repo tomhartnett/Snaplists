@@ -14,14 +14,6 @@ import SwiftUI
 struct SimplistsWatchApp: App {
     @StateObject var storage = SMPStorage()
 
-    @StateObject var storeDataSource: StoreDataSource = {
-        let client = StoreClient()
-        SKPaymentQueue.default().add(client)
-        let dataSource = StoreDataSource(service: client)
-        dataSource.getProducts()
-        return dataSource
-    }()
-
     private var subscriptions = Set<AnyCancellable>()
 
     var body: some Scene {
@@ -29,7 +21,6 @@ struct SimplistsWatchApp: App {
             NavigationView {
                 WatchHomeView(lists: [])
                     .environmentObject(storage)
-                    .environmentObject(storeDataSource)
             }
         }
     }

@@ -11,16 +11,11 @@ extension UserDefaults {
     private enum Key {
         static let isAuthorizedForPayments = "Debug-isAuthorizedForPayments"
         static let isFakeAuthenticationEnabled = "Debug-isFakeAuthenticationEnabled"
-        static let isPremiumIAPPurchased = "com.sleekible.simplists.iap.premium.purchased"
         static let isSampleListCreated = "Debug-isSampleListCreated"
         static let hasSeenReleaseNotes = "com.sleekible.simplists.releasenotes.2023.2"
     }
 
     struct SimplistsApp {
-        var isPremiumIAPPurchased: Bool {
-            return getValue(for: Key.isPremiumIAPPurchased)
-        }
-
         var isSampleListCreated: Bool {
             return getValue(for: Key.isSampleListCreated)
         }
@@ -36,10 +31,6 @@ extension UserDefaults {
             return FileManager.default.ubiquityIdentityToken != nil
         }
 
-        func setIsPremiumIAPPurchased(_ value: Bool) {
-            setValue(value, forKey: Key.isPremiumIAPPurchased)
-        }
-
         func setIsSampleListCreated(_ value: Bool) {
             setValue(value, forKey: Key.isSampleListCreated)
         }
@@ -49,7 +40,7 @@ extension UserDefaults {
         }
 
         func synchronizeFromRemote() {
-            [Key.isPremiumIAPPurchased, Key.isSampleListCreated].forEach {
+            [Key.isSampleListCreated].forEach {
                 let value = NSUbiquitousKeyValueStore.default.bool(forKey: $0)
                 setValue(value, forKey: $0)
             }

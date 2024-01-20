@@ -426,24 +426,11 @@ public extension SMPStorage {
     }
 }
 
-// MARK: - IAP Hack Stuff
+// MARK: - Debug Menu in Release builds
 
 public extension SMPStorage {
-
-    private var premiumIAPIdentifier: UUID {
-        return UUID(uuidString: "00000000-0000-0000-0000-000000000001")!
-    }
-
     private var showDebugViewIdentifier: UUID {
         return UUID(uuidString: "00000000-0000-0000-0000-000000000002")!
-    }
-
-    var hasPremiumIAPItem: Bool {
-        if getItemEntity(with: premiumIAPIdentifier) != nil {
-            return true
-        } else {
-            return false
-        }
     }
 
     var hasShowDebugView: Bool {
@@ -452,23 +439,6 @@ public extension SMPStorage {
         } else {
             return false
         }
-    }
-
-    func deletePremiumIAPItem() {
-        guard let entity = getItemEntity(with: premiumIAPIdentifier) else { return }
-        context.delete(entity)
-        saveChanges()
-    }
-
-    func savePremiumIAPItem() {
-        if hasPremiumIAPItem { return }
-
-        let itemEntity = ItemEntity(context: context)
-        itemEntity.identifier = premiumIAPIdentifier
-        itemEntity.isComplete = true
-        itemEntity.title = "Snaplists Premium"
-
-        saveChanges()
     }
 }
 
