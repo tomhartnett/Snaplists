@@ -87,17 +87,18 @@ struct WatchHomeView: View {
                 .onDelete(perform: archive)
 
                 #if DEBUG
-                NavigationLink(destination:
-                                WatchDebugView(isAuthenticated: $isAuthenticated)
-                                .environmentObject(storage)) {
+                NavigationLink(
+                    destination: WatchDebugView(isAuthenticated: $isAuthenticated)
+                        .environmentObject(storage)
+                ) {
                     Text("Debug View")
                 }
                 #else
                 if storage.hasShowDebugView {
-                    NavigationLink(destination:
-                                    WatchDebugView(isAuthenticated: $isAuthenticated)
-                                    .environmentObject(storage)
-                                    .environmentObject(storeDataSource)) {
+                    NavigationLink(
+                        destination: WatchDebugView(isAuthenticated: $isAuthenticated)
+                            .environmentObject(storage)
+                    ) {
                         Text("Debug View")
                     }
                 }
