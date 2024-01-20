@@ -13,8 +13,9 @@ struct TipJarView: View {
 
     @State private var tipProducts: [TipProduct] = []
 
-    @State private var errorTitle = ""
-    @State private var isShowingError = false
+    @State private var isShowingPurchaseError = false
+
+    @State private var isShowingNoProductsError = false
 
     private static var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -60,13 +61,13 @@ struct TipJarView: View {
             return [
                 SimpleTipProduct(id: TipProductID.smallTip,
                                  displayName: "🙂 Small Tip",
-                                 displayPrice: "$0.99"),
+                                 displayPrice: "---"),
                 SimpleTipProduct(id: TipProductID.mediumTip,
                                  displayName: "😄 Medium Tip",
-                                 displayPrice: "$1.99"),
+                                 displayPrice: "---"),
                 SimpleTipProduct(id: TipProductID.largeTip,
                                  displayName: "🤩 Large Tip",
-                                 displayPrice: "$3.99")
+                                 displayPrice: "---")
             ]
         } else {
             return store.tipProducts
@@ -92,15 +93,15 @@ struct TipJarView: View {
                     }
                     .buttonStyle(.borderedProminent)
                     .disabled(store.tipProducts.isEmpty)
-                    .onTapGesture {
-                        guard store.tipProducts.isEmpty else { return }
-                        errorTitle = "Sorry, tip purchasing is not available right now."
-                        isShowingError.toggle()
-                    }
                 }
                 .padding([.leading, .trailing], 20)
             }
             .opacity(store.tipProducts.isEmpty ? 0.5 : 1.0)
+
+            if isShowingNoProductsError {
+                ErrorMessageView(message: "Tip purchasing is currently unavailable")
+                    .padding()
+            }
 
             Text(tipTotalMessage)
                 .font(.subheadline)
@@ -130,17 +131,21 @@ struct TipJarView: View {
         .background(Color(UIColor.secondarySystemBackground))
         .navigationTitle("Tip Jar")
         .navigationBarTitleDisplayMode(.inline)
-        .alert(isPresented: $isShowingError, content: {
-            Alert(title: Text(errorTitle), message: nil, dismissButton: .default(Text("OK")))
-        })
+        .alert(isPresented: $isShowingPurchaseError) {
+            Alert(title: Text("Sorry, something went wrong."), message: nil, dismissButton: .default(Text("OK")))
+        }
+        .onAppear {
+            if store.tipProducts.isEmpty {
+                isShowingNoProductsError = true
+            }
+        }
     }
 
     func purchase(_ id: String) async {
         do {
             try await store.purchase(id)
         } catch {
-            errorTitle = "Sorry, something went wrong."
-            isShowingError.toggle()
+            isShowingPurchaseError.toggle()
         }
     }
 }
