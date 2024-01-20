@@ -16,6 +16,12 @@ enum HomeViewActiveSheet: Identifiable, Hashable {
     var id: Self { self }
 }
 
+enum HomeNavigation: Hashable {
+    case list(UUID)
+    case archivedLists
+    case more
+}
+
 struct HomeView: View {
     @EnvironmentObject var storage: SMPStorage
     @EnvironmentObject var openURLState: OpenURLContext
@@ -24,11 +30,9 @@ struct HomeView: View {
     @State private var activeSheet: HomeViewActiveSheet?
     @State private var listsSortType: SMPListsSortType = .lastModifiedDescending
     @State private var editMode: EditMode = .inactive
-
     @State private var lists: [SMPList] = []
-    @State private var selectedListID: UUID?
-
     @State private var columnVisibility: NavigationSplitViewVisibility = .doubleColumn
+    @State private var navigation: HomeNavigation?
 
     private var archivedListCount: Int {
         return storage.getListsCount(isArchived: true)
@@ -49,10 +53,10 @@ struct HomeView: View {
                               dismissButton: .default(Text("icloud-warning-alert-button-text")))
                     }
 
-                List(selection: $selectedListID) {
+                List(selection: $navigation) {
                     Section {
                         ForEach(lists) { list in
-                            NavigationLink(value: list.id) {
+                            NavigationLink(value: HomeNavigation.list(list.id)) {
                                 ListRowView(color: list.color.swiftUIColor,
                                             title: list.title,
                                             itemCount: list.items.count)
@@ -107,7 +111,7 @@ struct HomeView: View {
                     }
 
                     Section {
-                        NavigationLink(destination: ArchivedListsView()) {
+                        NavigationLink(value: HomeNavigation.archivedLists) {
                             HStack {
                                 Image(systemName: "trash")
                                     .frame(width: 25, height: 25)
@@ -121,7 +125,7 @@ struct HomeView: View {
                     }
 
                     Section {
-                        NavigationLink(destination: MoreView()) {
+                        NavigationLink(value: HomeNavigation.more) {
                             Image(systemName: "ellipsis.circle")
                                 .frame(width: 25, height: 25)
                                 .foregroundColor(Color("TextSecondary"))
@@ -146,7 +150,21 @@ struct HomeView: View {
             .listStyle(InsetGroupedListStyle())
             .environment(\.editMode, $editMode)
         } detail: {
-            ListView(selectedListID: $selectedListID)
+            if let navigation {
+                switch navigation {
+                case .list:
+                    ListView(navigation: $navigation)
+                case .archivedLists:
+                    ArchivedListsView()
+                case .more:
+                    MoreView()
+                }
+            } else {
+                EmptyStateView(
+                    emptyStateType: storage.getLists().isEmpty ? .noLists : .noSelection
+                )
+                .navigationBarTitle("")
+            }
         }
         .onAppear {
             reload()
@@ -163,7 +181,9 @@ struct HomeView: View {
             reload()
         })
         .onReceive(openURLState.$selectedListID, perform: { id in
-            selectedListID = id
+            if let id {
+                navigation = .list(id)
+            }
         })
         .sheet(item: $activeSheet) { item in
             switch item {
