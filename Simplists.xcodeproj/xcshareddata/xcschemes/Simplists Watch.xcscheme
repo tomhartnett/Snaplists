@@ -70,7 +70,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E235D7A724DF5B88007D95BE"
-            BuildableName = "Snaplists.app"
+            BuildableName = "Simplists.app"
             BlueprintName = "WatchApp"
             ReferencedContainer = "container:Simplists.xcodeproj">
          </BuildableReference>
@@ -87,7 +87,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E235D7A724DF5B88007D95BE"
-            BuildableName = "Snaplists.app"
+            BuildableName = "Simplists.app"
             BlueprintName = "WatchApp"
             ReferencedContainer = "container:Simplists.xcodeproj">
          </BuildableReference>
