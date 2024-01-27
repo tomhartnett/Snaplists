@@ -17,6 +17,8 @@ struct TipJarView: View {
 
     @State private var isShowingNoProductsError = false
 
+    @State private var isPurchasing = false
+
     private static var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "MMM d, yyyy"
@@ -92,7 +94,7 @@ struct TipJarView: View {
                         Text(product.displayPrice)
                     }
                     .buttonStyle(.borderedProminent)
-                    .disabled(store.tipProducts.isEmpty)
+                    .disabled(store.tipProducts.isEmpty || isPurchasing)
                 }
                 .padding([.leading, .trailing], 20)
             }
@@ -143,10 +145,13 @@ struct TipJarView: View {
 
     func purchase(_ id: String) async {
         do {
+            isPurchasing = true
             try await store.purchase(id)
         } catch {
             isShowingPurchaseError.toggle()
         }
+
+        isPurchasing = false
     }
 }
 
