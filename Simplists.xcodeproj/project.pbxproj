@@ -47,7 +47,6 @@
 		E235D79C24DF5B5A007D95BE /* PreviewAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E235D79B24DF5B5A007D95BE /* PreviewAssets.xcassets */; };
 		E235D79F24DF5B5A007D95BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E235D79D24DF5B5A007D95BE /* LaunchScreen.storyboard */; };
 		E235D7BC24DF5B89007D95BE /* WatchListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D7BB24DF5B89007D95BE /* WatchListView.swift */; };
-		E235D7C424DF5B89007D95BE /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D7C324DF5B89007D95BE /* ComplicationController.swift */; };
 		E235D7C624DF5B89007D95BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E235D7C524DF5B89007D95BE /* Assets.xcassets */; };
 		E235D7CE24DF5B89007D95BE /* Simplists.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = E235D7A824DF5B88007D95BE /* Simplists.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E235D7DA24E0372D007D95BE /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E235D7D924E0372D007D95BE /* CloudKit.framework */; };
@@ -60,9 +59,6 @@
 		E235D7FC24E04CC1007D95BE /* SMPListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E235D7FB24E04CC1007D95BE /* SMPListItem.swift */; };
 		E23925B726A460BE00C59053 /* ListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23925B626A460BE00C59053 /* ListRowView.swift */; };
 		E2484C1428EBB65000AD3E0E /* HomeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2484C1328EBB65000AD3E0E /* HomeUITests.swift */; };
-		E249295029436A1E00976683 /* GraphicCircularComplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = E249294F29436A1E00976683 /* GraphicCircularComplication.swift */; };
-		E2492952294377BC00976683 /* GraphicCornerComplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2492951294377BC00976683 /* GraphicCornerComplication.swift */; };
-		E24929542944E57D00976683 /* GraphicExtraLargeComplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24929532944E57D00976683 /* GraphicExtraLargeComplication.swift */; };
 		E24C85BA2B545D9C00BBFCFA /* TipJarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24C85B72B545D9C00BBFCFA /* TipJarView.swift */; };
 		E24C85BB2B545D9C00BBFCFA /* TipProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24C85B82B545D9C00BBFCFA /* TipProduct.swift */; };
 		E24C85BC2B545D9C00BBFCFA /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24C85B92B545D9C00BBFCFA /* Store.swift */; };
@@ -309,7 +305,6 @@
 		E235D7A824DF5B88007D95BE /* Simplists.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Simplists.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E235D7AF24DF5B89007D95BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E235D7BB24DF5B89007D95BE /* WatchListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListView.swift; sourceTree = "<group>"; };
-		E235D7C324DF5B89007D95BE /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
 		E235D7C524DF5B89007D95BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E235D7D724E036F6007D95BE /* Simplists.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Simplists.entitlements; sourceTree = "<group>"; };
 		E235D7D924E0372D007D95BE /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
@@ -324,9 +319,6 @@
 		E23925B626A460BE00C59053 /* ListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowView.swift; sourceTree = "<group>"; };
 		E2484C1128EBB65000AD3E0E /* SimplistsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimplistsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2484C1328EBB65000AD3E0E /* HomeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUITests.swift; sourceTree = "<group>"; };
-		E249294F29436A1E00976683 /* GraphicCircularComplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicCircularComplication.swift; sourceTree = "<group>"; };
-		E2492951294377BC00976683 /* GraphicCornerComplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicCornerComplication.swift; sourceTree = "<group>"; };
-		E24929532944E57D00976683 /* GraphicExtraLargeComplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicExtraLargeComplication.swift; sourceTree = "<group>"; };
 		E24C85B72B545D9C00BBFCFA /* TipJarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipJarView.swift; sourceTree = "<group>"; };
 		E24C85B82B545D9C00BBFCFA /* TipProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipProduct.swift; sourceTree = "<group>"; };
 		E24C85B92B545D9C00BBFCFA /* Store.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
@@ -576,17 +568,6 @@
 			path = Startup;
 			sourceTree = "<group>";
 		};
-		E22E152824E06A6E002A140E /* Complication */ = {
-			isa = PBXGroup;
-			children = (
-				E235D7C324DF5B89007D95BE /* ComplicationController.swift */,
-				E249294F29436A1E00976683 /* GraphicCircularComplication.swift */,
-				E2492951294377BC00976683 /* GraphicCornerComplication.swift */,
-				E24929532944E57D00976683 /* GraphicExtraLargeComplication.swift */,
-			);
-			path = Complication;
-			sourceTree = "<group>";
-		};
 		E231A10829212EE400EBC1BE /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
@@ -656,7 +637,6 @@
 			isa = PBXGroup;
 			children = (
 				E2D2D6F325E7E17B00C305DA /* Extensions */,
-				E22E152824E06A6E002A140E /* Complication */,
 				E22E152724E06A4F002A140E /* Startup */,
 				E22E152624E0698B002A140E /* Views */,
 				E235D7AF24DF5B89007D95BE /* Info.plist */,
@@ -1261,16 +1241,12 @@
 				E26D345525E3E88900EE3C3E /* WatchDebugView.swift in Sources */,
 				E22E152A24E0769E002A140E /* WatchHomeView.swift in Sources */,
 				E282851425F52E2F00EE8997 /* WatchParagraphView.swift in Sources */,
-				E2492952294377BC00976683 /* GraphicCornerComplication.swift in Sources */,
 				E2342D5529E43C78005B3164 /* WatchListOptionsView.swift in Sources */,
 				E205E2BD29E8D205001EB7A6 /* ConditionalHiddenModifier.swift in Sources */,
 				E2B21E1528DFEC4500DC0E47 /* SMPListColor+Extensions.swift in Sources */,
 				E24FACA4251CEC7C002B0B97 /* WatchAuthenticationErrorView.swift in Sources */,
-				E235D7C424DF5B89007D95BE /* ComplicationController.swift in Sources */,
 				E2D2D6F525E7E18D00C305DA /* UserDefaults+Extensions.swift in Sources */,
-				E24929542944E57D00976683 /* GraphicExtraLargeComplication.swift in Sources */,
 				E2A6100525E2A67F000F492C /* WatchEditItemView.swift in Sources */,
-				E249295029436A1E00976683 /* GraphicCircularComplication.swift in Sources */,
 				E22B91C229E1C31800947040 /* WatchListMenuView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
