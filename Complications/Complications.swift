@@ -56,9 +56,12 @@ struct CircularView: View {
     var body: some View {
         ZStack {
             AccessoryWidgetBackground()
-            Image("CircularComplication")
-                .resizable()
+
+            Image("Complication")
                 .renderingMode(.template)
+                .resizable()
+                .padding(.horizontal, 10)
+                .padding(.vertical, 12)
                 .widgetAccentable()
         }
         .widgetLabel {
@@ -71,9 +74,12 @@ struct CornerView: View {
     var body: some View {
         ZStack {
             AccessoryWidgetBackground()
-            Image("CornerComplication")
-                .resizable()
+
+            Image("Complication")
                 .renderingMode(.template)
+                .resizable()
+                .padding(.horizontal, 7)
+                .padding(.vertical, 9)
                 .widgetAccentable()
         }
     }
