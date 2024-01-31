@@ -109,6 +109,8 @@ struct RectangularView: View {
                 .widgetAccentable()
 
                 Text("Tap to open")
+
+                Spacer()
             }
             Spacer()
         }
