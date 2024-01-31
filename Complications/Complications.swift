@@ -46,6 +46,9 @@ struct ComplicationEntryView: View {
         case .accessoryInline:
             InlineView()
 
+        case .accessoryRectangular:
+            RectangularView()
+
         default:
             EmptyView()
         }
@@ -92,6 +95,27 @@ struct InlineView: View {
     }
 }
 
+struct RectangularView: View {
+    var body: some View {
+        HStack {
+            VStack(alignment: .leading, spacing: 0) {
+                HStack {
+                    Image(systemName: "list.bullet")
+
+                    Text("Snaplists")
+                }
+                .font(.headline)
+                .foregroundStyle(Color.blue)
+                .widgetAccentable()
+
+                Text("Tap to open")
+            }
+            Spacer()
+        }
+        .containerBackground(.gray.gradient, for: .widget)
+    }
+}
+
 @main
 struct Complication: Widget {
     let kind: String = "Complications"
@@ -106,7 +130,8 @@ struct Complication: Widget {
         .supportedFamilies([
             .accessoryCircular,
             .accessoryCorner,
-            .accessoryInline
+            .accessoryInline,
+            .accessoryRectangular
         ])
     }
 }
@@ -124,6 +149,12 @@ struct Complication: Widget {
 }
 
 #Preview("accessoryInline", as: .accessoryInline) {
+    Complication()
+} timeline: {
+    SimpleEntry(date: Date())
+}
+
+#Preview("accessoryRect", as: .accessoryRectangular) {
     Complication()
 } timeline: {
     SimpleEntry(date: Date())
