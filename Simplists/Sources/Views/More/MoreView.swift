@@ -76,15 +76,6 @@ struct MoreView: View {
                                 Text("About")
                             }
                         }
-
-                        NavigationLink(value: MoreNavigation.releaseNotes) {
-                            HStack {
-                                Image(systemName: "list.bullet.rectangle.portrait")
-                                    .frame(width: 25, height: 25)
-                                    .foregroundColor(Color("TextSecondary"))
-                                Text("What’s New")
-                            }
-                        }
                     }
 
                     Section {
