@@ -7,6 +7,9 @@
 
 import ClockKit
 
+/// Formerly the `CLKComplicationDataSource` for the complications. Now this just provides a
+/// `CLKComplicationWidgetMigrator` so any ClockKit complications are replaced with WidgetKit
+/// complications (when app is upgraded or watch face is shared).
 class ComplicationController: NSObject, CLKComplicationDataSource, CLKComplicationWidgetMigrator {
     var widgetMigrator: CLKComplicationWidgetMigrator {
         self
