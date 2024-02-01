@@ -82,28 +82,35 @@ struct TipJarView: View {
                 .font(.headline)
                 .padding(.bottom)
 
-            ForEach(products, id: \.id) { product in
-                HStack {
-                    Text(product.muchCoolerDisplayName)
-                    Spacer()
-                    Button(action: {
-                        Task {
-                            await purchase(product.id)
+            ZStack {
+                VStack {
+                    ForEach(products, id: \.id) { product in
+                        HStack {
+                            Text(product.muchCoolerDisplayName)
+                            Spacer()
+                            Button(action: {
+                                Task {
+                                    await purchase(product.id)
+                                }
+                            }) {
+                                Text(product.displayPrice)
+                            }
+                            .buttonStyle(.borderedProminent)
+                            .disabled(store.tipProducts.isEmpty || isPurchasing)
                         }
-                    }) {
-                        Text(product.displayPrice)
+                        .padding([.leading, .trailing], 20)
                     }
-                    .buttonStyle(.borderedProminent)
-                    .disabled(store.tipProducts.isEmpty || isPurchasing)
+                    .opacity(store.tipProducts.isEmpty ? 0.5 : 1.0)
                 }
-                .padding([.leading, .trailing], 20)
-            }
-            .opacity(store.tipProducts.isEmpty ? 0.5 : 1.0)
 
-            if isShowingNoProductsError {
-                ErrorMessageView(message: "Tip purchasing is currently unavailable")
-                    .padding()
+                ProgressView()
+                    .controlSize(.extraLarge)
+                    .hideIf(!isPurchasing)
             }
+
+            ErrorMessageView(message: "Tip purchasing is currently unavailable")
+                .padding()
+                .hideIf(!isShowingNoProductsError)
 
             Text(tipTotalMessage)
                 .font(.subheadline)
