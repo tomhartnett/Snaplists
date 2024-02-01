@@ -76,6 +76,7 @@
 		E257B09827D51EAD0077E35F /* ListSelection.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = E257B09627D51E990077E35F /* ListSelection.intentdefinition */; };
 		E258E4E428E9DC5B00CFDDB2 /* EmptyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E258E4E328E9DC5B00CFDDB2 /* EmptyListView.swift */; };
 		E25BFA6029EB19D600E01E11 /* ScreenshotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25BFA5F29EB19D600E01E11 /* ScreenshotUITests.swift */; };
+		E25EDAC02B6B18FE0005C49D /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25EDABF2B6B18FE0005C49D /* ComplicationController.swift */; };
 		E260C6CA28D93A7E00EC2612 /* ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E260C6C928D93A7E00EC2612 /* ViewModifiers.swift */; };
 		E267533927D6417A00512CAC /* EmptyWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E267533827D6417A00512CAC /* EmptyWidgetView.swift */; };
 		E26D345525E3E88900EE3C3E /* WatchDebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26D345425E3E88900EE3C3E /* WatchDebugView.swift */; };
@@ -338,6 +339,7 @@
 		E258E4E328E9DC5B00CFDDB2 /* EmptyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListView.swift; sourceTree = "<group>"; };
 		E25BFA5F29EB19D600E01E11 /* ScreenshotUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotUITests.swift; sourceTree = "<group>"; };
 		E25BFA6129EB247E00E01E11 /* Simplists.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Simplists.xctestplan; sourceTree = "<group>"; };
+		E25EDABF2B6B18FE0005C49D /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
 		E260C6C928D93A7E00EC2612 /* ViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifiers.swift; sourceTree = "<group>"; };
 		E267533827D6417A00512CAC /* EmptyWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyWidgetView.swift; sourceTree = "<group>"; };
 		E26D345425E3E88900EE3C3E /* WatchDebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchDebugView.swift; sourceTree = "<group>"; };
@@ -639,6 +641,7 @@
 				E2D2D6F325E7E17B00C305DA /* Extensions */,
 				E22E152724E06A4F002A140E /* Startup */,
 				E22E152624E0698B002A140E /* Views */,
+				E25EDABF2B6B18FE0005C49D /* ComplicationController.swift */,
 				E235D7AF24DF5B89007D95BE /* Info.plist */,
 				E235D7DB24E0374A007D95BE /* WatchApp.entitlements */,
 				E235D7C524DF5B89007D95BE /* Assets.xcassets */,
@@ -1242,6 +1245,7 @@
 				E22E152A24E0769E002A140E /* WatchHomeView.swift in Sources */,
 				E282851425F52E2F00EE8997 /* WatchParagraphView.swift in Sources */,
 				E2342D5529E43C78005B3164 /* WatchListOptionsView.swift in Sources */,
+				E25EDAC02B6B18FE0005C49D /* ComplicationController.swift in Sources */,
 				E205E2BD29E8D205001EB7A6 /* ConditionalHiddenModifier.swift in Sources */,
 				E2B21E1528DFEC4500DC0E47 /* SMPListColor+Extensions.swift in Sources */,
 				E24FACA4251CEC7C002B0B97 /* WatchAuthenticationErrorView.swift in Sources */,
