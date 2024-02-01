@@ -9,26 +9,26 @@ import WidgetKit
 import SwiftUI
 
 struct Provider: TimelineProvider {
-    func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date())
+    func placeholder(in context: Context) -> StaticEntry {
+        StaticEntry(date: Date())
     }
 
-    func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> Void) {
-        let entry = SimpleEntry(date: Date())
+    func getSnapshot(in context: Context, completion: @escaping (StaticEntry) -> Void) {
+        let entry = StaticEntry(date: Date())
         completion(entry)
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> Void) {
-        let timeline = Timeline(entries: [SimpleEntry(date: Date())], policy: .atEnd)
+        let timeline = Timeline(entries: [StaticEntry(date: Date())], policy: .atEnd)
         completion(timeline)
     }
 }
 
-struct SimpleEntry: TimelineEntry {
+struct StaticEntry: TimelineEntry {
     var date: Date
 }
 
-struct ComplicationEntryView: View {
+struct StaticComplicationEntryView: View {
     @Environment(\.showsWidgetLabel) var showsWidgetLabel
 
     @Environment(\.widgetFamily) var family
@@ -54,6 +54,28 @@ struct ComplicationEntryView: View {
         }
     }
 }
+
+@main
+struct StaticComplication: Widget {
+    let kind: String = "Static-Complication"
+
+    var body: some WidgetConfiguration {
+        StaticConfiguration(kind: kind, provider: Provider()) { entry in
+            StaticComplicationEntryView(entry: entry)
+                .containerBackground(.fill.tertiary, for: .widget)
+        }
+        .configurationDisplayName("Launch app")
+        .description("This complication launches the app.")
+        .supportedFamilies([
+            .accessoryCircular,
+            .accessoryCorner,
+            .accessoryInline,
+            .accessoryRectangular
+        ])
+    }
+}
+
+// MARK: - Views
 
 struct CircularView: View {
     var body: some View {
@@ -118,46 +140,28 @@ struct RectangularView: View {
     }
 }
 
-@main
-struct Complication: Widget {
-    let kind: String = "Complications"
-
-    var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: Provider()) { entry in
-            ComplicationEntryView(entry: entry)
-                .containerBackground(.fill.tertiary, for: .widget)
-        }
-        .configurationDisplayName("Snaplists")
-        .description("This complication launches the app.")
-        .supportedFamilies([
-            .accessoryCircular,
-            .accessoryCorner,
-            .accessoryInline,
-            .accessoryRectangular
-        ])
-    }
-}
+// MARK: - Previews
 
 #Preview("accessoryCircular", as: .accessoryCircular) {
-    Complication()
+    StaticComplication()
 } timeline: {
-    SimpleEntry(date: Date())
+    StaticEntry(date: Date())
 }
 
 #Preview("accessoryCorner", as: .accessoryCorner) {
-    Complication()
+    StaticComplication()
 } timeline: {
-    SimpleEntry(date: Date())
+    StaticEntry(date: Date())
 }
 
 #Preview("accessoryInline", as: .accessoryInline) {
-    Complication()
+    StaticComplication()
 } timeline: {
-    SimpleEntry(date: Date())
+    StaticEntry(date: Date())
 }
 
 #Preview("accessoryRect", as: .accessoryRectangular) {
-    Complication()
+    StaticComplication()
 } timeline: {
-    SimpleEntry(date: Date())
+    StaticEntry(date: Date())
 }
