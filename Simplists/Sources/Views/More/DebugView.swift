@@ -114,3 +114,13 @@ struct DebugView_Previews: PreviewProvider {
         DebugView().environmentObject(SMPStorage())
     }
 }
+
+fileprivate extension Bool {
+    var yesOrNoString: String {
+        if self {
+            return "Yes"
+        } else {
+            return "No"
+        }
+    }
+}

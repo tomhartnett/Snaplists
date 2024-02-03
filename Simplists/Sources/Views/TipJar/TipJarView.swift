@@ -28,6 +28,7 @@ struct TipJarView: View {
             Text("If you‘re enjoying Snaplists and would like to tip the developer, it would be most appreciated!")
                 .font(.headline)
                 .padding(.bottom)
+                .accessibilityIdentifier("TipJarView.headerLabel")
 
             ZStack {
                 VStack {
@@ -64,9 +65,11 @@ struct TipJarView: View {
             Text(tipTotalMessage)
                 .font(.subheadline)
                 .padding(.top)
+                .accessibilityIdentifier("TipJarView.tipTotalLabel")
 
             if let message = lastTipMessage {
                 Text(message)
+                    .accessibilityIdentifier("TipJarView.lastTipLabel")
                     .font(.subheadline)
                     .padding(.top, 5)
             }
@@ -74,6 +77,7 @@ struct TipJarView: View {
             Text("Snaplists is a free app with no ads, so any contributions help support the development of the app.")
                 .font(.headline)
                 .padding(.top)
+                .accessibilityIdentifier("TipJarView.footerLabel")
 
             Spacer()
 

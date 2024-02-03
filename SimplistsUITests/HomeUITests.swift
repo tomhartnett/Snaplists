@@ -17,8 +17,6 @@ final class HomeUITests: XCTestCase {
         app = XCUIApplication()
         app.launchArguments = ["-create-test-data", "-suppress-release-notes"]
         app.launch()
-
-        continueAfterFailure = false
     }
 
     func test_add_list() {

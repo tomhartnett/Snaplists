@@ -40,14 +40,15 @@ struct MoreView: View {
             NavigationStack(path: $path) {
                 List {
                     Section(header: Text("Feedback")) {
-                        WidgetView(systemImageName: "star", lableText: "Please Rate this App".localize())
+                        WidgetView(systemImageName: "star", labelText: "Please Rate this App".localize())
                             .onTapGesture {
                                 guard let url = URL(string: "itms-apps://itunes.apple.com/app/id1527429580") else {
                                     return
                                 }
                                 UIApplication.shared.open(url)
                             }
-                        WidgetView(systemImageName: "envelope", lableText: "Send Feedback via Email".localize())
+
+                        WidgetView(systemImageName: "envelope", labelText: "Send Feedback via Email".localize())
                             .onTapGesture {
                                 guard MFMailComposeViewController.canSendMail() else {
                                     errorMessage = "Email can't be sent from this device.".localize()

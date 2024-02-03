@@ -10,23 +10,28 @@ import SwiftUI
 struct WidgetView: View {
 
     var systemImageName: String
-    var lableText: String
+    var labelText: String
 
     var body: some View {
         HStack {
             Image(systemName: systemImageName)
                 .frame(width: 25, height: 25)
                 .foregroundColor(Color("TextSecondary"))
-            Text(lableText)
+            Text(labelText)
             Spacer()
         }
         .frame(maxWidth: .infinity)
         .contentShape(Rectangle())
+        .accessibilityRepresentation {
+            Button(action: {}) {
+                Text(labelText)
+            }
+        }
     }
 }
 
 struct WidgetView_Previews: PreviewProvider {
     static var previews: some View {
-        WidgetView(systemImageName: "envelope", lableText: "Send Feedback via Email".localize())
+        WidgetView(systemImageName: "envelope", labelText: "Send Feedback via Email".localize())
     }
 }

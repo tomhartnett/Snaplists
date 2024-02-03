@@ -131,6 +131,7 @@ struct HomeView: View {
                                 .foregroundColor(Color("TextSecondary"))
                             Text("More")
                         }
+                        .accessibilityIdentifier("MoreNavigationLink")
                     }
                 }
             }

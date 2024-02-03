@@ -34,17 +34,21 @@ struct AboutView: View {
             Text("Snaplists")
                 .font(.system(size: 48))
                 .fontWeight(.semibold)
+                .accessibilityIdentifier("AboutView.headerLabel")
 
             Text(versionString)
                 .foregroundColor(Color("TextSecondary"))
+                .accessibilityIdentifier("AboutView.versionLabel")
 
             Image("AboutIcon")
                 .resizable().aspectRatio(contentMode: .fit)
                 .frame(width: 200, height: 200)
                 .padding([.top, .bottom], 48)
+                .accessibilityIdentifier("AboutView.appIcon")
 
             Text(copyrightString)
                 .foregroundColor(Color("TextSecondary"))
+                .accessibilityIdentifier("AboutView.copyrightLabel")
 
             Text("Created by")
                 .foregroundColor(Color("TextSecondary"))
@@ -57,6 +61,7 @@ struct AboutView: View {
                     .foregroundColor(Color("TextSecondary"))
                     .underline()
             })
+            .accessibilityIdentifier("AboutView.authorButton")
 
             Spacer()
         }

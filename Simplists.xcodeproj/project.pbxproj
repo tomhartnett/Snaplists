@@ -75,6 +75,7 @@
 		E2558E6A28E87B1F0069C8CF /* SMPList+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2558E6828E879FA0069C8CF /* SMPList+Extensions.swift */; };
 		E257B09827D51EAD0077E35F /* ListSelection.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = E257B09627D51E990077E35F /* ListSelection.intentdefinition */; };
 		E258E4E428E9DC5B00CFDDB2 /* EmptyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E258E4E328E9DC5B00CFDDB2 /* EmptyListView.swift */; };
+		E259C4252B6EC9F5004AEC17 /* MoreUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E259C4242B6EC9F5004AEC17 /* MoreUITests.swift */; };
 		E25BFA6029EB19D600E01E11 /* ScreenshotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25BFA5F29EB19D600E01E11 /* ScreenshotUITests.swift */; };
 		E25EDAC02B6B18FE0005C49D /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25EDABF2B6B18FE0005C49D /* ComplicationController.swift */; };
 		E260C6CA28D93A7E00EC2612 /* ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E260C6C928D93A7E00EC2612 /* ViewModifiers.swift */; };
@@ -99,7 +100,6 @@
 		E28D0CF32B656F6F00553C5A /* WatchComplicationsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = E28D0CE82B656F6D00553C5A /* WatchComplicationsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E297905128DB315900C7D6FB /* SMPListColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E297905028DB315900C7D6FB /* SMPListColor+Extensions.swift */; };
 		E29AB80E27F8D32E00868DA1 /* ReleaseNotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29AB80D27F8D32E00868DA1 /* ReleaseNotesView.swift */; };
-		E29AB81027F8D86900868DA1 /* Bool+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29AB80F27F8D86900868DA1 /* Bool+Extensions.swift */; };
 		E2A00B3F2917FBAF002279AE /* SMPAppSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A00B3E2917FBAF002279AE /* SMPAppSetting.swift */; };
 		E2A0302825B4CE81003BD447 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A0302725B4CE80003BD447 /* EmptyStateView.swift */; };
 		E2A320FE250D704700A022B8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E2A32100250D704700A022B8 /* Localizable.strings */; };
@@ -337,6 +337,7 @@
 		E2558E6828E879FA0069C8CF /* SMPList+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SMPList+Extensions.swift"; sourceTree = "<group>"; };
 		E257B09627D51E990077E35F /* ListSelection.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = ListSelection.intentdefinition; sourceTree = "<group>"; };
 		E258E4E328E9DC5B00CFDDB2 /* EmptyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListView.swift; sourceTree = "<group>"; };
+		E259C4242B6EC9F5004AEC17 /* MoreUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreUITests.swift; sourceTree = "<group>"; };
 		E25BFA5F29EB19D600E01E11 /* ScreenshotUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotUITests.swift; sourceTree = "<group>"; };
 		E25BFA6129EB247E00E01E11 /* Simplists.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Simplists.xctestplan; sourceTree = "<group>"; };
 		E25EDABF2B6B18FE0005C49D /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
@@ -361,7 +362,6 @@
 		E28D0CF02B656F6F00553C5A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E297905028DB315900C7D6FB /* SMPListColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SMPListColor+Extensions.swift"; sourceTree = "<group>"; };
 		E29AB80D27F8D32E00868DA1 /* ReleaseNotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseNotesView.swift; sourceTree = "<group>"; };
-		E29AB80F27F8D86900868DA1 /* Bool+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bool+Extensions.swift"; sourceTree = "<group>"; };
 		E2A00B3E2917FBAF002279AE /* SMPAppSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMPAppSetting.swift; sourceTree = "<group>"; };
 		E2A0302725B4CE80003BD447 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 		E2A320FF250D704700A022B8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -686,6 +686,7 @@
 			children = (
 				E2484C1328EBB65000AD3E0E /* HomeUITests.swift */,
 				E2CC70EC28EF10F100E7B131 /* ListUITests.swift */,
+				E259C4242B6EC9F5004AEC17 /* MoreUITests.swift */,
 				E25BFA5F29EB19D600E01E11 /* ScreenshotUITests.swift */,
 			);
 			path = SimplistsUITests;
@@ -728,7 +729,6 @@
 		E26D01DD257E71D3009049F3 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				E29AB80F27F8D86900868DA1 /* Bool+Extensions.swift */,
 				E2A376B325D1B4E2001D1615 /* UserDefaults+Extensions.swift */,
 			);
 			path = Extensions;
@@ -1216,7 +1216,6 @@
 				E281EBD9259A2C7400DF1CEB /* FeatureBulletView.swift in Sources */,
 				E2C6670725CF17010063D7E8 /* ErrorMessageView.swift in Sources */,
 				E279EACF25D04D9D00A38ED6 /* WidgetView.swift in Sources */,
-				E29AB81027F8D86900868DA1 /* Bool+Extensions.swift in Sources */,
 				E2F559B427D97E3C007DA24A /* OpenURLContext.swift in Sources */,
 				E2A0302825B4CE81003BD447 /* EmptyStateView.swift in Sources */,
 				E21123DB2504420700B3D76D /* PrivacyPolicyView.swift in Sources */,
@@ -1274,6 +1273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E259C4252B6EC9F5004AEC17 /* MoreUITests.swift in Sources */,
 				E2484C1428EBB65000AD3E0E /* HomeUITests.swift in Sources */,
 				E25BFA6029EB19D600E01E11 /* ScreenshotUITests.swift in Sources */,
 				E2CC70ED28EF10F100E7B131 /* ListUITests.swift in Sources */,

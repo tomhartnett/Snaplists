@@ -9,7 +9,6 @@
     }
   ],
   "defaultOptions" : {
-    "codeCoverage" : false,
     "targetForVariableExpansion" : {
       "containerPath" : "container:Simplists.xcodeproj",
       "identifier" : "E235D78E24DF5B59007D95BE",
