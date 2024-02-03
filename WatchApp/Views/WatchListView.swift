@@ -156,7 +156,7 @@ struct WatchListView: View {
 
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
+        NavigationStack {
             WatchListView(
                 list: SMPList(
                     title: "Grocery",
