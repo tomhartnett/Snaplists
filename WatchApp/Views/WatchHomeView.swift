@@ -51,21 +51,6 @@ struct WatchHomeView: View {
                     }
                 }
 
-                Button(action: {
-                    addNewList()
-                }, label: {
-                    HStack {
-                        Image(systemName: "plus")
-                        Text("home-new-list-button-text")
-                    }
-                    .font(.headline)
-                })
-                .listRowBackground(
-                    Color("ButtonBlue")
-                        .clipped()
-                        .cornerRadius(8)
-                )
-
                 ForEach(lists) { list in
                     NavigationLink(destination: WatchListView(list: list)
                                     .environmentObject(storage)) {
@@ -126,6 +111,16 @@ struct WatchHomeView: View {
                 WatchAuthenticationErrorView()
             case .newListView:
                 WatchNewListView()
+            }
+        }
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button(action: {
+                    addNewList()
+                }, label: {
+                    Label("New list", systemImage: "plus")
+                        .foregroundStyle(Color("ButtonBlue"))
+                })
             }
         }
     }

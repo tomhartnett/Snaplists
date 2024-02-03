@@ -18,7 +18,7 @@ struct SimplistsWatchApp: App {
 
     var body: some Scene {
         WindowGroup {
-            NavigationView {
+            NavigationStack {
                 WatchHomeView(lists: [])
                     .environmentObject(storage)
             }

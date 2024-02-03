@@ -24,7 +24,6 @@ struct WatchNewListView: View {
     var body: some View {
         ScrollViewReader { proxy in
             VStack(alignment: .leading) {
-
                 List {
                     Section {
                         TextField("newlist-name-placeholder".localize(), text: $listTitle)
@@ -59,6 +58,7 @@ struct WatchNewListView: View {
                     }).textCase(nil)
                 }
             }
+            .navigationTitle("New list")
         }
     }
 
@@ -67,7 +67,7 @@ struct WatchNewListView: View {
             return
         }
 
-        let list = SMPList(title: listTitle)
+        let list = SMPList(title: listTitle, color: .blue)
         storage.addList(list)
 
         presentationMode.wrappedValue.dismiss()
