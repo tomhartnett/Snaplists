@@ -151,7 +151,7 @@ struct TipJarView: View {
 
 struct TipJarView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
+        NavigationStack {
             TipJarView()
                 .environmentObject(Store())
         }

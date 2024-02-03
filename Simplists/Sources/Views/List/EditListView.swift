@@ -30,7 +30,7 @@ struct EditListView: View {
     var doneAction: ((Model) -> Void)
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             List {
                 Section {
                     TextField("Enter name...".localize(), text: $editedModel.title)

@@ -21,7 +21,7 @@ struct MoveToListView: View {
     var completion: (() -> Void)?
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 List {
                     Section(header: Text("Destination list")) {
@@ -64,7 +64,7 @@ struct MoveToListView: View {
 
 struct MoveToListView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
+        NavigationStack {
             MoveToListView(itemIDs: [UUID(), UUID()],
                            fromList: SMPList(title: "Old List"))
                 .environmentObject(SMPStorage())
