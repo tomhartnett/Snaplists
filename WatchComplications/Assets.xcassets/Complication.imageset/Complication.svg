@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Created with Vectornator (http://vectornator.io/) -->
+<svg height="100%" stroke-miterlimit="10" style="fill-rule:nonzero;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" version="1.1" viewBox="142.5 204.5 733.5 615" width="100%" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs/>
+<g id="FG">
+<path d="M200 212L200 212C227.614 212 250 234.386 250 262L250 262C250 289.614 227.614 312 200 312L200 312C172.386 312 150 289.614 150 262L150 262C150 234.386 172.386 212 200 212Z" fill="none" opacity="1" stroke="#ffffff" stroke-linecap="butt" stroke-linejoin="round" stroke-width="15"/>
+<path d="M200 462L200 462C227.614 462 250 484.386 250 512L250 512C250 539.614 227.614 562 200 562L200 562C172.386 562 150 539.614 150 512L150 512C150 484.386 172.386 462 200 462Z" fill="#ffffff" fill-rule="nonzero" opacity="1" stroke="#ffffff" stroke-linecap="butt" stroke-linejoin="round" stroke-width="15"/>
+<path d="M200 712L200 712C227.614 712 250 734.386 250 762L250 762C250 789.614 227.614 812 200 812L200 812C172.386 812 150 789.614 150 762L150 762C150 734.386 172.386 712 200 712Z" fill="#ffffff" fill-rule="nonzero" opacity="1" stroke="#ffffff" stroke-linecap="butt" stroke-linejoin="round" stroke-width="15"/>
+<path d="M316.262 222L867.738 222C872.301 222 876 226.093 876 231.143L876 292.857C876 297.907 872.301 302 867.738 302L316.262 302C311.699 302 308 297.907 308 292.857L308 231.143C308 226.093 311.699 222 316.262 222Z" fill="#ffffff" fill-rule="nonzero" opacity="1" stroke="none"/>
+<path d="M316.262 472L867.738 472C872.301 472 876 476.093 876 481.143L876 542.857C876 547.907 872.301 552 867.738 552L316.262 552C311.699 552 308 547.907 308 542.857L308 481.143C308 476.093 311.699 472 316.262 472Z" fill="#ffffff" fill-rule="nonzero" opacity="1" stroke="none"/>
+<path d="M316.262 722L867.738 722C872.301 722 876 726.093 876 731.143L876 792.857C876 797.907 872.301 802 867.738 802L316.262 802C311.699 802 308 797.907 308 792.857L308 731.143C308 726.093 311.699 722 316.262 722Z" fill="#ffffff" fill-rule="nonzero" opacity="1" stroke="none"/>
+</g>
+</svg>

@@ -17,62 +17,11 @@ struct TipJarView: View {
 
     @State private var isShowingNoProductsError = false
 
-    private static var dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MMM d, yyyy"
-        return formatter
-    }()
+    @State private var isPurchasing = false
 
-    private static var numberFormatter: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        formatter.locale = Locale.autoupdatingCurrent
-        return formatter
-    }()
+    @State private var tipTotalMessage: String = ""
 
-    private static var timeFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "h:mm a"
-        return formatter
-    }()
-
-    var tipTotalMessage: String {
-        let total = store.tipTotal
-        guard total.decimalValue > 0,
-              let displayTotal = TipJarView.numberFormatter.string(from: total) else {
-            return "You have not given any tips"
-        }
-
-        return "You have tipped a total of \(displayTotal) ❤️"
-    }
-
-    var lastTipMessage: String? {
-        if let date = store.lastTipDate {
-            let displayDate = TipJarView.dateFormatter.string(from: date)
-            let displayTime = TipJarView.timeFormatter.string(from: date)
-            return "Your last tip was \(displayDate) at \(displayTime)"
-        } else {
-            return nil
-        }
-    }
-
-    var products: [TipProduct] {
-        if store.tipProducts.isEmpty {
-            return [
-                SimpleTipProduct(id: TipProductID.smallTip,
-                                 displayName: "🙂 Small Tip",
-                                 displayPrice: "---"),
-                SimpleTipProduct(id: TipProductID.mediumTip,
-                                 displayName: "😄 Medium Tip",
-                                 displayPrice: "---"),
-                SimpleTipProduct(id: TipProductID.largeTip,
-                                 displayName: "🤩 Large Tip",
-                                 displayPrice: "---")
-            ]
-        } else {
-            return store.tipProducts
-        }
-    }
+    @State private var lastTipMessage: String?
 
     var body: some View {
         VStack {
@@ -80,28 +29,37 @@ struct TipJarView: View {
                 .font(.headline)
                 .padding(.bottom)
 
-            ForEach(products, id: \.id) { product in
-                HStack {
-                    Text(product.muchCoolerDisplayName)
-                    Spacer()
-                    Button(action: {
-                        Task {
-                            await purchase(product.id)
-                        }
-                    }) {
-                        Text(product.displayPrice)
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .disabled(store.tipProducts.isEmpty)
-                }
-                .padding([.leading, .trailing], 20)
-            }
-            .opacity(store.tipProducts.isEmpty ? 0.5 : 1.0)
+            ZStack {
+                VStack {
+                    ForEach(tipProducts, id: \.id) { product in
+                        HStack {
+                            Text(product.muchCoolerDisplayName)
+                                .opacity(isShowingNoProductsError ? 0.5 : 1.0)
 
-            if isShowingNoProductsError {
-                ErrorMessageView(message: "Tip purchasing is currently unavailable")
-                    .padding()
+                            Spacer()
+
+                            Button(action: {
+                                Task {
+                                    await purchase(product.id)
+                                }
+                            }) {
+                                Text(product.displayPrice)
+                            }
+                            .buttonStyle(.borderedProminent)
+                            .disabled(isShowingNoProductsError || isPurchasing)
+                        }
+                        .padding([.leading, .trailing], 20)
+                    }
+                }
+
+                ProgressView()
+                    .controlSize(.extraLarge)
+                    .hideIf(!isPurchasing)
             }
+
+            ErrorMessageView(message: "Tip purchasing is currently unavailable")
+                .padding()
+                .hideIf(!isShowingNoProductsError)
 
             Text(tipTotalMessage)
                 .font(.subheadline)
@@ -122,6 +80,7 @@ struct TipJarView: View {
 #if DEBUG
             Button(action: {
                 store.testHooks.resetTips()
+                loadTips()
             }) {
                 Text("Reset Tips")
             }
@@ -135,24 +94,64 @@ struct TipJarView: View {
             Alert(title: Text("Sorry, something went wrong."), message: nil, dismissButton: .default(Text("OK")))
         }
         .onAppear {
-            if store.tipProducts.isEmpty {
-                isShowingNoProductsError = true
-            }
+            loadProducts()
+            loadTips()
+        }
+    }
+
+    func loadProducts() {
+        if store.tipProducts.isEmpty {
+            tipProducts = [
+                SimpleTipProduct(id: TipProductID.smallTip,
+                                 displayName: "🙂 Small Tip",
+                                 displayPrice: "---"),
+                SimpleTipProduct(id: TipProductID.mediumTip,
+                                 displayName: "😄 Medium Tip",
+                                 displayPrice: "---"),
+                SimpleTipProduct(id: TipProductID.largeTip,
+                                 displayName: "🤩 Large Tip",
+                                 displayPrice: "---")
+            ]
+
+            isShowingNoProductsError = true
+        } else {
+            tipProducts = store.tipProducts
+        }
+    }
+
+    func loadTips() {
+        let total = store.tipTotal
+        if total.decimalValue > 0 {
+            let formattedTotal = NumberFormatter.localizedString(from: total, number: .currency)
+            tipTotalMessage = "You have tipped a total of \(formattedTotal) ❤️"
+        } else {
+            tipTotalMessage = "You have not given any tips"
+        }
+
+        if let date = store.lastTipDate {
+            let timestamp = DateFormatter.localizedString(from: date, dateStyle: .medium, timeStyle: .short)
+            lastTipMessage = "Your last tip was \(timestamp)"
+        } else {
+            lastTipMessage = nil
         }
     }
 
     func purchase(_ id: String) async {
         do {
+            isPurchasing = true
             try await store.purchase(id)
+            loadTips()
         } catch {
             isShowingPurchaseError.toggle()
         }
+
+        isPurchasing = false
     }
 }
 
 struct TipJarView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
+        NavigationStack {
             TipJarView()
                 .environmentObject(Store())
         }

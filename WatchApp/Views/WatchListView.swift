@@ -26,30 +26,6 @@ struct WatchListView: View {
 
     var body: some View {
         List {
-            HStack {
-                TextFieldLink(
-                    prompt: Text("newitem-name-placeholder".localize()),
-                    label: {
-                        Label("Add", systemImage: "plus")
-                    },
-                    onSubmit: { enteredText in
-                        saveNewItem(itemTitle: enteredText)
-                    })
-
-                Spacer()
-
-                Button(action: {
-                    activeSheet = .listMenu
-                }, label: {
-                    Image(systemName: "ellipsis.circle")
-                })
-                .padding()
-            }
-            .buttonStyle(BorderlessButtonStyle())
-            .foregroundColor(.primary)
-            .listRowBackground(EmptyView())
-            .font(.title3)
-
             if list.items.isEmpty {
                 HStack {
                     Spacer()
@@ -105,6 +81,30 @@ struct WatchListView: View {
                 }
             }
         }
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button(action: {
+                    activeSheet = .listMenu
+                }, label: {
+                    Label("List options", systemImage: "ellipsis")
+                })
+            }
+
+            ToolbarItemGroup(placement: .bottomBar) {
+                Spacer()
+
+                TextFieldLink(
+                    prompt: Text("newitem-name-placeholder".localize()),
+                    label: {
+                        Label("Add item", systemImage: "plus")
+                    },
+                    onSubmit: { enteredText in
+                        saveNewItem(itemTitle: enteredText)
+                    })
+                .foregroundStyle(Color("ButtonBlue"))
+                .controlSize(.large)
+            }
+        }
     }
 
     private func saveNewItem(itemTitle: String) {
@@ -156,7 +156,7 @@ struct WatchListView: View {
 
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
+        NavigationStack {
             WatchListView(
                 list: SMPList(
                     title: "Grocery",

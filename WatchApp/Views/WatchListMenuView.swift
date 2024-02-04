@@ -36,7 +36,7 @@ struct WatchListMenuView: View {
     var onDismiss: ((SMPList) -> Void)
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ScrollView {
                 NavigationLink(destination: WatchListOptionsView(
                     model: editedModel,
@@ -55,7 +55,7 @@ struct WatchListMenuView: View {
 
                 Button(action: {
                     markAllItems(isComplete: true)
-                    saveAndDismiss()
+                    dismiss()
                 }) {
                     Label("Mark all complete",
                           systemImage: "checkmark.circle")
@@ -66,7 +66,7 @@ struct WatchListMenuView: View {
 
                 Button(action: {
                     markAllItems(isComplete: false)
-                    saveAndDismiss()
+                    dismiss()
                 }) {
                     Label("Mark all incomplete",
                           systemImage: "circle")
@@ -117,7 +117,7 @@ struct WatchListMenuView: View {
                     break
                 }
 
-                saveAndDismiss()
+                dismiss()
             }
         } message: {
             Text("This action cannot be undone")
@@ -125,11 +125,9 @@ struct WatchListMenuView: View {
         .onAppear {
             editedModel = model
         }
-        .toolbar {
-            ToolbarItem(placement: .cancellationAction) {
-                Button("Done") {
-                    saveAndDismiss()
-                }
+        .onDisappear {
+            if model != editedModel {
+                onDismiss(editedModel)
             }
         }
     }
@@ -138,13 +136,6 @@ struct WatchListMenuView: View {
         for index in 0..<editedModel.items.count {
             editedModel.items[index].isComplete = isComplete
         }
-    }
-
-    private func saveAndDismiss() {
-        if model != editedModel {
-            onDismiss(editedModel)
-        }
-        dismiss()
     }
 }
 

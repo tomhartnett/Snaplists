@@ -29,35 +29,7 @@ struct WatchListOptionsView: View {
             Divider()
                 .padding(.vertical)
 
-            ForEach(SMPListColor.allCases, id: \.self) { caseColor in
-                HStack {
-                    if caseColor == .none {
-                        Image(systemName: "app")
-                            .frame(width: 25, height: 25)
-                            .foregroundColor(Color("TextSecondary"))
-                    } else {
-                        Image(systemName: "app.fill")
-                            .frame(width: 25, height: 25)
-                            .foregroundColor(caseColor.swiftUIColor)
-                    }
-
-                    Text(caseColor.title)
-
-                    Spacer()
-
-                    if editedModel.color == caseColor {
-                        Image(systemName: "checkmark")
-                            .padding(.trailing)
-                    } else {
-                        EmptyView()
-                    }
-                }
-                .frame(height: 35)
-                .contentShape(Rectangle())
-                .onTapGesture {
-                    editedModel.color = caseColor
-                }
-            }
+            WatchListColorsView(list: $editedModel)
         }
         .onAppear {
             editedModel = model
@@ -65,6 +37,42 @@ struct WatchListOptionsView: View {
         .onDisappear {
             if model != editedModel {
                 onDismiss(editedModel)
+            }
+        }
+    }
+}
+
+struct WatchListColorsView: View {
+    @Binding var list: SMPList
+
+    var body: some View {
+        ForEach(SMPListColor.allCases, id: \.self) { caseColor in
+            HStack {
+                if caseColor == .none {
+                    Image(systemName: "app")
+                        .frame(width: 25, height: 25)
+                        .foregroundColor(Color("TextSecondary"))
+                } else {
+                    Image(systemName: "app.fill")
+                        .frame(width: 25, height: 25)
+                        .foregroundColor(caseColor.swiftUIColor)
+                }
+
+                Text(caseColor.title)
+
+                Spacer()
+
+                if list.color == caseColor {
+                    Image(systemName: "checkmark")
+                        .padding(.trailing)
+                } else {
+                    EmptyView()
+                }
+            }
+            .frame(height: 35)
+            .contentShape(Rectangle())
+            .onTapGesture {
+                list.color = caseColor
             }
         }
     }
