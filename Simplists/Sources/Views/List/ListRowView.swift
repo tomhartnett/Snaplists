@@ -43,6 +43,9 @@ struct ListRowView: View {
                 .foregroundColor(.secondary)
         }
         .contentShape(Rectangle())
+        .accessibilityRepresentation {
+            Text("\(title), list")
+        }
     }
 }
 

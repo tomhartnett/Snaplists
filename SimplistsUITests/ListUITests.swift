@@ -36,32 +36,32 @@ final class ListUITests: XCTestCase {
 
         for item in items {
             let buttonText = "\(item.isComplete ? "checked" : "unchecked") \(item.title)"
-            XCTAssertTrue(app.buttons[buttonText].firstMatch.exists)
-            XCTAssertTrue(app.textFields[item.title].firstMatch.exists)
+            XCTAssertTrue(app.buttons[buttonText].exists)
+            XCTAssertTrue(app.textFields[item.title].exists)
         }
     }
 
     func test_list_mark_all_incomplete() {
         app.otherElements.matching(identifier: "MoreMenu").firstMatch.tap()
 
-        app.buttons["Mark all incomplete"].firstMatch.tap()
+        app.buttons["Mark all incomplete"].tap()
 
-        XCTAssertTrue(app.buttons["unchecked Vacuum & dust"].firstMatch.exists)
-        XCTAssertTrue(app.buttons["unchecked Mow lawn"].firstMatch.exists)
-        XCTAssertTrue(app.buttons["unchecked Clean up garage"].firstMatch.exists)
-        XCTAssertTrue(app.buttons["unchecked Pick out clothes for donation"].firstMatch.exists)
+        XCTAssertTrue(app.buttons["unchecked Vacuum & dust"].exists)
+        XCTAssertTrue(app.buttons["unchecked Mow lawn"].exists)
+        XCTAssertTrue(app.buttons["unchecked Clean up garage"].exists)
+        XCTAssertTrue(app.buttons["unchecked Pick out clothes for donation"].exists)
     }
 
     func test_list_mark_all_complete() {
         func test_list_mark_all_incomplete() {
             app.otherElements.matching(identifier: "MoreMenu").firstMatch.tap()
 
-            app.buttons["Mark all incomplete"].firstMatch.tap()
+            app.buttons["Mark all incomplete"].tap()
 
-            XCTAssertTrue(app.buttons["checked Vacuum & dust"].firstMatch.exists)
-            XCTAssertTrue(app.buttons["checked Mow lawn"].firstMatch.exists)
-            XCTAssertTrue(app.buttons["checked Clean up garage"].firstMatch.exists)
-            XCTAssertTrue(app.buttons["checked Pick out clothes for donation"].firstMatch.exists)
+            XCTAssertTrue(app.buttons["checked Vacuum & dust"].exists)
+            XCTAssertTrue(app.buttons["checked Mow lawn"].exists)
+            XCTAssertTrue(app.buttons["checked Clean up garage"].exists)
+            XCTAssertTrue(app.buttons["checked Pick out clothes for donation"].exists)
         }
     }
 
@@ -78,10 +78,10 @@ final class ListUITests: XCTestCase {
 
         wait(for: [expectation], timeout: 3.0)
 
-        XCTAssertFalse(app.textFields["Vacuum & dust"].firstMatch.exists)
-        XCTAssertFalse(app.textFields["Mow lawn"].firstMatch.exists)
-        XCTAssertFalse(app.textFields["Clean up garage"].firstMatch.exists)
-        XCTAssertFalse(app.textFields["Pick out clothes for donation"].firstMatch.exists)
+        XCTAssertFalse(app.textFields["Vacuum & dust"].exists)
+        XCTAssertFalse(app.textFields["Mow lawn"].exists)
+        XCTAssertFalse(app.textFields["Clean up garage"].exists)
+        XCTAssertFalse(app.textFields["Pick out clothes for donation"].exists)
     }
 
     func test_list_delete_completed_items() {
@@ -97,9 +97,20 @@ final class ListUITests: XCTestCase {
 
         wait(for: [expectation], timeout: 3.0)
 
-        XCTAssertTrue(app.textFields["Vacuum & dust"].firstMatch.exists)
-        XCTAssertFalse(app.textFields["Mow lawn"].firstMatch.exists)
-        XCTAssertFalse(app.textFields["Clean up garage"].firstMatch.exists)
-        XCTAssertFalse(app.textFields["Pick out clothes for donation"].firstMatch.exists)
+        XCTAssertTrue(app.textFields["Vacuum & dust"].exists)
+        XCTAssertFalse(app.textFields["Mow lawn"].exists)
+        XCTAssertFalse(app.textFields["Clean up garage"].exists)
+        XCTAssertFalse(app.textFields["Pick out clothes for donation"].exists)
+    }
+
+    func test_list_move_items() {
+        app.otherElements.matching(identifier: "MoreMenu").firstMatch.tap()
+        XCTAssertTrue(app.staticTexts["TODOs list, 4 items, Red accent color"].exists)
+        app.buttons["Edit items..."].tap()
+        app.textFields["Vacuum & dust"].tap()
+        app.buttons["Move"].tap()
+        XCTAssertTrue(app.navigationBars["Move 1 items"].waitForExistence())
+        app.staticTexts["Shopping, list"].tap()
+        XCTAssertTrue(app.staticTexts["TODOs list, 3 items, Red accent color"].waitForExistence())
     }
 }

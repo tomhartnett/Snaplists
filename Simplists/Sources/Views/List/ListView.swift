@@ -134,6 +134,7 @@ struct ListView: View {
                     .onMove(perform: move)
 
                     TextField("Add new item...", text: $newItemTitle)
+                        .hideIf(editMode == .active)
                         .onSubmit {
                             addNewItem()
                         }
