@@ -25,7 +25,6 @@
       }
     },
     {
-      "parallelizable" : true,
       "target" : {
         "containerPath" : "container:Simplists.xcodeproj",
         "identifier" : "E2484C1028EBB65000AD3E0E",
